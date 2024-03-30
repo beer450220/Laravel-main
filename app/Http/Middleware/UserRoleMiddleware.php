@@ -26,6 +26,7 @@ class UserRoleMiddleware
         // return response()->json(["/login"]);
         // return response()->json(["url" => "/login"]);
 
+
          return response()->json(["You don't have permission to access this page"]);
     }
 }

@@ -32,53 +32,79 @@
 
 
     <body class="antialiased">
+        <header class="bg-dark text-white d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
 
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
+              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+              {{-- <li><div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    สมัครสหกิจ
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลสมัครสหกิจ</a></li>
+                  <li><a class="dropdown-item" href="/cooperative2">รายการสถานะสมัครสหกิจ</a></li>
+                </ul>
+              </div></li> --}}
+              <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+            </ul>
 
-        <header class="p-3 bg-dark text-white">
+            <div class="col-2 text-end">
+              <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a>
+              <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
+            </div>
+          </header>
+
+        {{-- <header class=" bg-dark text-white d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="container">
               <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                   <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                 </a>
 
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> --}}
                     {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
-                    <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
+                    {{-- <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li> --}}
+                     {{-- <li><a href="/establishment" class=" col-6 text-white"></a></li>
                     <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-                    <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+                    <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li> --}}
                     {{-- <li><a href="/cooperative1" class="nav-link px-2 text-white">ยื่นประสงค์ฝึกประสบการณ์</a></li> --}}
-                    <li> <div class="dropdown">
+                    {{-- <li> <div class="dropdown">
                       <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                          ยื่นประสงค์ฝึกประสบการณ์
+                          สมัครสหกิจ
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลประสงค์ฝึกประสบการณ์</a></li>
-                        <li><a class="dropdown-item" href="/cooperative2">รายการสถานะยื่นประสงค์</a></li>
+                        <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลสมัครสหกิจ</a></li>
+                        <li><a class="dropdown-item" href="/cooperative2">รายการสถานะสมัครสหกิจ</a></li>
                       </ul>
-                    </div></li>
+                    </div></li> --}}
 
                   {{-- <li><a href="/test4" class="nav-link px-2 text-white">ทดสอบ</a></li>
                   <li><a href="/test6" class="nav-link px-2 text-white">ทดสอบ2</a></li> --}}
                   {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                   <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
-                </ul>
+                {{-- </ul> --}}
 
                 {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                   <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
                 </form> --}}
-
-                <div class="text-end">
+{{--
+                <div class="text-end"> --}}
                   {{-- <a type="button" href="{{ route('login') }}" class="btn btn-outline-light me-2">Login</a> --}}
                   {{-- <a type="button" href="" class="btn btn-outline-light me-2"data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a> --}}
                   {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-warning">Sign-up</a> --}}
 
                   {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-outline-warning me-2">สมัครสมาชิก</a> --}}
-                  <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
                   {{-- <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
-                </div>
+                  {{-- <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
+                {{-- </div>
               </div>
             </div>
-          </header>
+          </header> --}}
 
 
         {{-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">

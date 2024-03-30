@@ -21,8 +21,8 @@ class establishment extends Model
         "em_Contact_email",
         'em_contactposition',
         "em_job",
-        'status',
-       ' major_id',
+        'Student_id',
+       'website',
 
     ];
     public function Users(){

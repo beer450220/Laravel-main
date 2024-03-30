@@ -331,7 +331,8 @@
                                     <main role="main" class="">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">
-                                          <div class="col-7">
+                                          <div class="row">
+                                            <div class="col-6">
                                             {{-- <h2 class="page-title">Form elements</h2> --}}
 
                                             <div class="card shadow mb-4">
@@ -346,48 +347,45 @@
                                               {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
                                                 @csrf --}}
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <input type="text"value="{{ Auth::user()->username }}" disabled="" id="simpleinput" class="form-control">
+                                                      <input type="text"value="{{ $users->id }}" disabled="" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง นามสกุล</label>
-                                                      <input type="email" id="example-email"value="{{ Auth::user()->fname }}  {{ Auth::user()->surname }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                      <input type="email" id="example-email"value="{{ $users->fname }}  {{ $users->surname }}" disabled="" name="example-email" class="form-control" placeholder="Email">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-password">อีเมล์</label>
-                                                      <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->email }}">
+                                                      <input type="text" id="example-password" class="form-control" value="{{ $users->email }}">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" disabled="" class="form-control" placeholder="placeholder">
+                                                      <input type="text" id="example-palaceholder"value="{{ $users->GPA }}" disabled="" class="form-control" placeholder="placeholder">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
+                                                      <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
                                                     </div>
 
                                                 </div> <!-- /.col -->
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
                                                       <label for="example-helping">ที่อยู่</label>
-                                                      <input type="text" id="example-helping"value="{{ Auth::user()->address }}" disabled="" class="form-control" placeholder="Input with helping text">
+                                                      <input type="text" id="example-helping"value="{{ $users->address }}" disabled="" class="form-control" placeholder="Input with helping text">
 
                                                     </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-readonly">ชื่อสถานประกอบการ</label>
-                                                      <input type="text" id="example-readonly"value="{{ Auth::user()->em_name}}" disabled="" class="form-control" readonly="" value="Readonly value">
-                                                    </div>
+
                                                     <div class="form-group mb-3">
                                                       <label for="example-static">หลักสูตร</label>
-                                                      <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
+                                                      <input type="text" readonly=""value="{{ $users->major_id}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-disable">ปีการศึกษา</label>
-                                                      <input type="text" class="form-control"value="{{ Auth::user()->year}}" disabled="" id="example-disable" disabled="" value="Disabled value">
+                                                      <input type="text" class="form-control"value="{{ $users->year}}" disabled="" id="example-disable" disabled="" value="Disabled value">
                                                     </div>
 
                                                     <div class="form-group mb-3">
                                                       <label for="example-static">ภาคเรียน</label>
-                                                      <input type="text" readonly=""value="{{ Auth::user()->term}}" disabled="" class="form-control" id="example-static" >
+                                                      <input type="text" readonly=""value="{{ $users->term}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
 
 {{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
@@ -417,11 +415,85 @@
                                                       {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
 
                                                     {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
-                                                      <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div>
+                                                      <a href="/studenthome/editpersonal2/{{$users->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div>
                                                 </div>
                                                     </div>
                                             </div> <!-- / .card -->
                                           </div>
+                                          <div class="col-6">
+                                          <div class="card shadow mb-4">
+                                            <div class="card-header">
+                                              <strong class="card-title">ข้อมูลสถานประกอบการ</strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
+                                                          @csrf --}}
+                                                                <label for="simpleinput">รหัสนักศึกษา</label>
+                                                                <input type="text"value="{{ $users->id }}" disabled="" id="simpleinput" class="form-control">
+                                                              </div>
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-email">ชื่อสถานประกอบการ</label>
+                                                                <input type="email" id="example-email"value="{{ $users->fname }}  {{ $users->surname }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                              </div>
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-password">ที่อยู่</label>
+                                                                <input type="text" id="example-password" class="form-control" value="{{ $users->email }}">
+                                                              </div>
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-palaceholder">เบอร์โทร</label>
+                                                                <input type="text" id="example-palaceholder"value="{{ $users->GPA }}" disabled="" class="form-control" placeholder="placeholder">
+                                                              </div>
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-palaceholder">อีเมล์	</label>
+                                                                <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
+                                                              </div>
+
+
+                                                          </div> <!-- /.col -->
+                                                            <div class="col-md-6">
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-helping">ชื่อผู้ติดต่อ</label>
+                                                                <input type="text" id="example-helping"value="{{ $users->address }}" disabled="" class="form-control" placeholder="Input with helping text">
+
+                                                              </div>
+
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-static">อีเมล์ผู้ติดต่อ</label>
+                                                                <input type="text" readonly=""value="{{ $users->major_id}}" disabled="" class="form-control" id="example-static" >
+                                                              </div>
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-disable">ตำแหน่งผู้ติดต่อ</label>
+                                                                <input type="text" class="form-control"value="{{ $users->year}}" disabled="" id="example-disable" disabled="" value="Disabled value">
+                                                              </div>
+
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-static">รายละเอียดงาน</label>
+                                                                <input type="text" readonly=""value="{{ $users->term}}" disabled="" class="form-control" id="example-static" >
+                                                              </div>
+                                                              <div class="form-group mb-3">
+                                                                <label for="example-palaceholder">เว็บไซต์บริษัท</label>
+                                                                <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
+
+                                                            </div> </div>
+                                                        </div>
+                                                        <div class="col-6 text-center"></div>
+
+                                                                        <div class="col text-center">
+                                                        <div class="d-grid gap-2 d-md-flex   ">
+                                                            {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
+                                                            &nbsp;&nbsp;
+                                                            {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a> --}}
+                                                              &nbsp;&nbsp;
+                                                              {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
+
+                                                            {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
+                                                              <a href="/studenthome/editpersonal2/{{$users->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div>
+                                                        </div>
+                                                            </div>
+                                                    </div>
                                         </div>
 
                                       </div>

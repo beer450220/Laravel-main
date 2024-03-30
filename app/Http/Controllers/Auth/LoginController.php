@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
     use Hash;
     use App\Models\User;
     use App\Models\Users;
+    use App\Models\test;
 class LoginController extends Controller
 {
     /*
@@ -61,49 +62,58 @@ class LoginController extends Controller
 
             // 'password' => Hash::make($request->password)
         ]);
+        // dd($request);
         // $passwordToCheck = $input['password']; // รหัสผ่านจากผู้ใช้
         // $hashedPasswordFromDatabase = Users::where('username', $input['username'])->first()->password; // รหัสผ่านที่เก็บในฐานข้อมูล
 
         // if (Hash::check($passwordToCheck, $hashedPasswordFromDatabase)){
+            // $result = auth()->attempt(['username' => $input["username"], 'password' => $input['password']]);
 
-        if(auth()->attempt(['username'=>$input["username"], 'password'=>
-        ($input['password'])]))
-
-
-        //   if(!Hash::check(['username'=>$input["username"], 'password'=>($input['password'])]))
-        {
-            if(auth()->user()->role == 'admin')
-            {
-                return redirect()->route('admin.adminhome');
-            }
-            else if(auth()->user()->role == 'officer')
-            {
-                return redirect()->route('officer.officerhome');
-            }
-            else if(auth()->user()->role == 'teacher')
-            {
-                return redirect()->route('teacher.teacherhome');
-            }
-            else if(auth()->user()->role == '0')
-            {
-                return redirect()->route('test1.home');
-            }
-            else
-            {
-                return redirect()->route('student.studenthome');
-            }
-
-        }
-        else
-        {
-            return redirect('/login')
-            // ->route("login")
-            ->with('error','ไม่ถูกต้อง username หรือ password');
-        }
-
-    }
+            if(auth()->attempt(['username' => $input["username"], 'password' => $input['password']])) {
+            // if(auth()->guard('test')->attempt(['username' => $input["username"], 'password' => $input['password']])) {
+               // $user = auth()->guard('test')->user();
+                $user = auth()->user();
+                // dd($user);
+//                 if($user) {
+//                     if($user->role == 'admin') {
+//                         return redirect()->route('admin.adminhome');
+//                     } else if($user->role == 'officer') {
+//                         return redirect()->route('officer.officerhome');
+//                     } else if($user->role == 'teacher') {
+//                         return redirect()->route('teacher.teacherhome');
+//                     } else if($user->role == '0') {
+//                         return redirect()->route('test1.home');
+//                     } else if($user->role == 'teacher2') {
+//                         return redirect()->route('teacher.teacherhome');
+//                     } else {
+//                         return redirect()->route('student.studenthome');
+//                     }
+//                 } else {
+//                     return redirect('/login')->with('error', 'ไม่ถูกต้อง username หรือ password');
+//                 }
+//             } else {
+//                 return redirect('/login')->with('error', 'ไม่ถูกต้อง username หรือ password');
+//             }
+// }
+// $user = auth()->guard('test')->user();
+//  dd($user);
+if($user->role == 'admin') {
+    return redirect()->route('admin.adminhome');
+} else if($user->role == 'officer') {
+    return redirect()->route('officer.officerhome');
+} else if($user->role == 'teacher') {
+    return redirect()->route('teacher.teacherhome');
+} else if($user->role == '0') {
+    return redirect()->route('test1.home');
+} else if($user->role == 'teacher2') {
+    return redirect()->route('teacher.teacherhome');
+} else {
+    return redirect()->route('student.studenthome');
 }
-//}
+} else {
+return redirect('/login')->with('error', 'ไม่ถูกต้อง username หรือ password');
+}
+}}
 ?>
 
 

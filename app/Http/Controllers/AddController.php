@@ -20,7 +20,7 @@ use App\Models\major;
 use App\Models\teacher;
 use App\Models\permission;
 use App\Models\category;
-
+use App\Models\student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -312,9 +312,120 @@ class AddController extends Controller
 
 
 
+      public function addpersonal1(Request $request) {
+        //ตรวจสอบข้อมูล
+        //  dd($request);
 
 
+          {
+              $request->validate([
+                  // 'filess' => 'required|mimes:pdf',
+                  // 'filess' => 'required|mimes:jpeg,jpg,png',
+                  // 'filess' => 'mimes:jpeg,jpg,png',
 
+                  // 'namefile' => 'required|unique:namefile',
+                  // 'user_id' => 'required|unique:user_id',
+                ],[
+                      // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+                  //    'namefile.required' => "กรุณาชื่อไฟล์",
+                  //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+                  ]
+              );
+
+
+                  $post =new student([
+                    // "user_id" => $request->user_id,
+                    "id" => $request->id,
+                    "fname" => $request->fname,
+
+                      "surname" => $request->surname,
+                      "email" => $request->email,
+                      "year" => $request->year,
+                      "GPA" => $request->GPA,
+                      "major_id" => $request->major_id,
+                      "telephonenumber" => $request->telephonenumber,
+                      "year" => $request->year,
+                      "term" => $request->term,
+
+                      "address" => $request->address,
+
+                  ]);
+              //   $post->annotation ="-";
+              //   $post->Status_registers ="รอตรวจสอบ";
+                $post->user_id = Auth::user()->id;
+                $post->save();
+
+
+                return redirect('/personal3')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+
+              // return redirect('/studenthome/register')
+              //     ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+
+
+              // return redirect('/studenthome/register')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+      }
+  }
+
+  public function addpersonal3(Request $request) {
+    //ตรวจสอบข้อมูล
+    //   dd($request);
+
+
+      {
+          $request->validate([
+              // 'filess' => 'required|mimes:pdf',
+              // 'filess' => 'required|mimes:jpeg,jpg,png',
+              // 'filess' => 'mimes:jpeg,jpg,png',
+
+              // 'namefile' => 'required|unique:namefile',
+              // 'user_id' => 'required|unique:user_id',
+            ],[
+                  // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+              //    'namefile.required' => "กรุณาชื่อไฟล์",
+              //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+              ]
+          );
+          if($request->hasFile("images")){
+            $file=$request->file("images");
+             $imageName=time().'_'.$file->getClientOriginalName();
+            $file->move(\public_path("/รูปโปรไฟล์"),$imageName);
+
+
+              $post =new establishment([
+                // "user_id" => $request->user_id,
+                "em_name" => $request->em_name,
+                "em_address" => $request->em_address,
+
+                  "em_telephone" => $request->em_telephone,
+                  "em_email" => $request->em_email,
+                  "em_contact_name" => $request->em_contact_name,
+                  "em_Contact_email" => $request->em_Contact_email,
+                  "em_contactposition" => $request->em_contactposition,
+                  "Student_id" => $request->Student_id,
+                  "em_job" => $request->em_job,
+                  "website" => $request->website,
+
+
+                  "images" =>$imageName,
+
+
+              ]);
+
+          //   $post->annotation ="-";
+          //   $post->Status_registers ="รอตรวจสอบ";
+            // $post->user_id = Auth::user()->id;
+            $post->save();
+ }
+
+            return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+
+          // return redirect('/studenthome/register')
+          //     ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+
+
+          // return redirect('/studenthome/register')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+  }
+}
 
 
 
@@ -1041,11 +1152,13 @@ $post =new category
        //dd($request);
 
        $request->validate([
+        'filess' => 'mimes:pdf|max:1024', // ตรวจสอบไฟล์รูปภาพที่มีขนาดไม่เกิน 2 MB (2048 KB)
         //  'name' => 'required|unique:name',
         //  'test' => 'required|unique:test',
     ]
   ,[
-
+    'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+    'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
     // 'name.required'=>"กรุณากรอกชื่อ",
     // 'test.required'=>"กรุณาเทส",
   ]

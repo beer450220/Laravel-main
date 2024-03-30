@@ -83,6 +83,8 @@ Route::middleware(['auth','user-role:student'])->group(function()
 {
     //ข้อมูลส่วนตัว
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
+
+    Route::get("/studenthome3",[HomeController::class,'studentHome3'])->name('studenthome3');
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
 
     Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
@@ -91,6 +93,19 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/updateuser2/{id}",[EditController::class,'updateuser2'])->name('updateuser2');
 
     Route::get("/personal/{id}",[HomeController::class,'personal'])->name('personal');
+
+    //ข้อมูลนักศึกษา
+    Route::get("/personal1",[HomeController::class,'personal1'])->name('personal1');
+    Route::post("/studenthome/addpersonal1",[AddController::class,'addpersonal1'])->name('addpersonal1');
+    Route::get("/personal2/{id}",[HomeController::class,'personal2'])->name('personal2');
+
+    Route::get("/studenthome/editpersonal2/{id}",[EditController::class,'editpersonal2'])->name('editpersonal2');
+    Route::post("/studenthome/updatepersonal2/{id}",[EditController::class,'updatepersonal2'])->name('updatepersonal2');
+    //ข้อมูลสถานประกอบการ
+    Route::get("/personal3",[HomeController::class,'personal3'])->name('personal3');
+    Route::get("/personal4/{id}",[HomeController::class,'personal4'])->name('personal4');
+    Route::post("/studenthome/addpersonal3",[AddController::class,'addpersonal3'])->name('addpersonal3');
+
     //Route::get("/Studentinformation",[HomeController::class,'Student'])->name('Student');
 
 
@@ -590,3 +605,4 @@ Route::controller(BasicController::class)->group(function () {
     Route::post('/post_edit', 'post_edit_fn');
 
 });
+

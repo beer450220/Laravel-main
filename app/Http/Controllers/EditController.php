@@ -19,6 +19,7 @@ use App\Models\major;
 use App\Models\teacher;
 use App\Models\permission;
 use App\Models\category;
+use App\Models\student;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -2385,7 +2386,28 @@ $post->update
 
  }
 
+ public function editpersonal2($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+      $users=student::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+     // dd($Evaluationdocuments);
+     $major=DB::table('major')
 
+     ->paginate(5);
+     return view('student.Edit.edituser2',compact('users','major'));
+
+ }
 
  public function   updateuser1(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -2450,6 +2472,64 @@ $post->update
 
     return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
+
+
+ public function   updatepersonal2(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=student::findOrFail($id);
+
+
+    $post->update
+    ([
+       "GPA" =>$request->GPA,
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+        //  "images"=>$post->images,
+
+    //    "username" =>$request->username,
+
+
+    //    "code_id" =>$request->code_id,
+       "major_id" =>$request->major_id,
+    //    "establishment_id" =>$request->establishment_id,
+       "fname" =>$request->fname,
+       "surname" =>$request->surname,
+       "telephonenumber" =>$request->telephonenumber,
+       "address" =>$request->address,
+
+    //    "em_name" =>$request->em_name,
+       "year" =>$request->year,
+       "term" =>$request->term,
+
+       "email" =>$request->email,
+
+    //    "password" => Hash::make($request->password),
+
+    //    "role" =>$request->role,
+    //    "status" =>$request->status,
+    ]);
+
+
+    return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+
+
 
  public function   updateuser2(Request $request,$id) {
     //ตรวจสอบข้อมูล

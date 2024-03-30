@@ -17,7 +17,10 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-
+    'test' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\test2::class,
+    ],
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -39,6 +42,14 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        // 'web' => [
+        //     'driver' => 'session',
+        //     'provider' => 'test',
+        // ],
+        'test' => [
+            'driver' => 'session',
+            'provider' => 'test_users',
         ],
     ],
 
@@ -64,11 +75,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Users::class,
         ],
-
+        // 'test' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\test::class,
+        // ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'test_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\test2::class,
+        ],
     ],
 
     /*
@@ -93,6 +111,16 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'test_users' => [
+            'provider' => 'test_users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        // 'test_users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\test::class,
+        // ],
     ],
 
     /*

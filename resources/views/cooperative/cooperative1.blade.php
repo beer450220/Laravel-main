@@ -56,21 +56,47 @@
 
 <body class="antialiased">
 
+    <header class="bg-dark text-white d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
 
-    <header class="p-3 bg-dark text-white">
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
+          <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+          {{-- <li><div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                สมัครสหกิจ
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลสมัครสหกิจ</a></li>
+              <li><a class="dropdown-item" href="/cooperative2">รายการสถานะสมัครสหกิจ</a></li>
+            </ul>
+          </div></li> --}}
+          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+        </ul>
+
+        <div class="col-2 text-end">
+          {{-- <button type="button" class="btn btn-outline-primary me-2">Login</button> --}}
+          <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a>
+          <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
+        </div>
+      </header>
+    {{-- <header class="p-3 bg-dark text-white">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-            </a>
+            </a> --}}
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            {{-- <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> --}}
               {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
-              <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
+              {{-- <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li> --}}
               {{-- <li><a href="/cooperative1" class="nav-link px-2 text-white">ยื่นประสงค์ฝึกประสบการณ์</a></li> --}}
-              <li> <div class="dropdown">
+              {{-- <li> <div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     ยื่นประสงค์ฝึกประสบการณ์
                 </button>
@@ -78,28 +104,28 @@
                   <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลประสงค์ฝึกประสบการณ์</a></li>
                   <li><a class="dropdown-item" href="/cooperative2">รายการสถานะยื่นประสงค์</a></li>
                 </ul>
-              </div></li>
+              </div></li> --}}
 
               {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
               <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
-            </ul>
+            {{-- </ul> --}}
 
             {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
               <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
             </form> --}}
 
-            <div class="text-end">
+            {{-- <div class="text-end"> --}}
               {{-- <a type="button" href="{{ route('login') }}" class="btn btn-outline-light me-2">Login</a> --}}
               {{-- <a type="button" href="" class="btn btn-outline-light me-2"data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a> --}}
               {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-warning">Sign-up</a> --}}
 
               {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-outline-warning me-2">สมัครสมาชิก</a> --}}
-              <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
+              {{-- <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
             </div>
           </div>
         </div>
 
-      </header>
+      </header> --}}
       <div class="container">
       <div class="row   ">
       <div class="col  ">
@@ -117,7 +143,7 @@
                                 {{-- <form method="POST" action="{{ route('register') }}"> --}}
                                     <form method="POST" action="{{ route('addcooperative1') }}" enctype="multipart/form-data">
                                     @csrf
-            <h4 class="text-">ข้อมูลยื่นประสงค์ฝึกประสบการณ์</h4>
+            <h4 class="text-">ข้อมูลสมัครสหกิจ</h4>
             @foreach ($errors->all() as $error)
             <li class="alert alert-danger col-6">{{ $error }}</li>
             @endforeach
@@ -131,7 +157,7 @@
                                     <div class="row mb-3">
                                         <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('รหัสประจำตัว') }}</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"maxlength="11" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                                             @error('code_id')
@@ -142,9 +168,9 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อจริง') }}</label>
+                                        <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname">
 
                                             @error('fname')
@@ -157,7 +183,7 @@
                                     <div class="row mb-3">
                                         <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <input id="surname" type="surname" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname">
 
                                             @error('surname')
@@ -171,7 +197,7 @@
                                     <div class="row mb-3">
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน') }}</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                             @error('password')
@@ -183,101 +209,25 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล์') }}</label>
+                                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('ยืนยันรหัสผ่าน') }}</label>
 
-                                        <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control" name="email" required autocomplete="email">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ที่อยู่') }}</label>
-
-                                        <div class="col-md-6">
-                                            <input id="address" type="text" class="form-control" name="address" required autocomplete="address">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('เบอร์โทรศัพท์') }}</label>
-
-                                        <div class="col-md-6">
-                                            {{-- <div class="badge rounded-pill bg-warning text-dark">*** 123-45-678</div> --}}
-                                            <input id="telephonenumber" type="tel" class="form-control" name="telephonenumber"maxlength="10" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"placeholder="123-45-678" required autocomplete="telephonenumber">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('หลักสูตร') }}</label>
-
-                                        <div class="col-md-6">
-                                            {{-- <input id="telephonenumber" type="text" class="form-control" name="major_id" required autocomplete="major_id"> --}}
-                                            <select class="form-select" id="validationSelect1" name="major_id"required >
-                                                <option value="">กรุณาเลือกหลักสูตร</option>
-                                                @foreach ($major as $row)
-                                                {{-- <optgroup label="Mountain Time Zone"> --}}
-                                                  <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option>
-                                                  {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                                </optgroup>
-
-                                                @endforeach
-                                              </select>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('เกรดเฉลี่ย') }}</label>
-
-                                        <div class="col-md-6">
-                                            <input id="telephonenumber" type="text" class="form-control" name="GPA" required autocomplete="GPA">
+                                        <div class="col-md-3">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                         </div>
                                     </div>
 
 
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อสถานประกอบการ') }}</label>
 
-                                        <div class="col-md-6">
-                                            <input id="em_name" type="text" class="form-control" name="em_name" required autocomplete="em_name">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ภาคเรียนที่') }}</label>
 
-                                        <div class="col-md-6">
-                                            <select class="form-select "  name="term" required>
-                                                <option value="">กรุณาเลือกภาคเรียน</option>
 
-                                              <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
-                                                <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
-                                              </select>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ปีการศึกษา') }}</label>
 
-                                        <div class="col-md-6">
-                                            <select class="form-select "  name="year"required >
-                                                {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
-                                                <option value="{{ $year }}">{{ $year }}</option>
-                                            @endforeach --}}
-                                            <option value="">กรุณาเลือกปีการศึกษา</option>
-                                            @php
-                                            $currentYear = date('Y') + 543; // ปีปัจจุบัน
-                                            $startYear = 2566; // ปีเริ่มต้น
-                                            $endYear = $currentYear + 50; // ปีสิ้นสุด
-                                        @endphp
 
-                                        @for ($i = $endYear; $i >= $startYear; $i--)
-                                            @for ($j = 1; $j <= 1; $j++)
-                                                <option value="{{ $i }}">{{ $i }}</option>
-                                            @endfor
-                                        @endfor
-                                        </select>
-                                        </div>
-                                    </div>
+
 
                                     <div class="row mb-3">
                                         <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('รูปภาพผู้ใช้งาน') }}</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             {{-- <input id="inputGroupFile02" type="file" class="form-control" name="images" required autocomplete="images"> --}}
                                             <input class="form-control" type="file" id="formFile"name="images" required>
 

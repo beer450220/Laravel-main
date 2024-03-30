@@ -429,7 +429,7 @@ div.second {
                                           {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
                                  @foreach ($student as $row)
 
-                                         @if ($row->id === $row->id)
+                                         @if ($row->id === 'รอตรวจสอบ')
                                          <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
                                      @elseif ($row->id === 'ตรวจสอบแล้ว')
                                          <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
@@ -474,79 +474,11 @@ div.second {
                                         </div>
                                         @else
 
-                                        @foreach ($student as $row)
-
-                                        @if (Auth::user()->id === $row->user_id)
-
-                                        <div class="col-md-12 mb-4">
-                                            {{-- <div class="accordion w-100" id="accordion1"> --}}
-                                              <div class="card shadow">
-                                                <div class="card-header" id="heading1">
-                                                  {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
-                                         {{-- @foreach ($student as $row)
-
-                                                 @if ($row->id === $row->id)
-                                                 <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
-                                             @elseif ($row->id === 'ตรวจสอบแล้ว')
-                                                 <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
-                                             @elseif ($row->id === 'ไม่ผ่าน')
-                                                 <span class="badge badge-pill badge-danger">{{ $row->id}}</span>
-                                             @endif
-
-                                        @endforeach --}}
+                                        @endif
 
 
 
 
-                                                     <H2><strong>ข้อมูลนักศึกษา</strong> </a> <span class="">
-                                                        {{-- @foreach ($student as $row)
-                                                        @if ($row->id === 'รอตรวจสอบ')
-                                                            <span class="text-warning">รอตรวจสอบเอกสาร</span>
-                                                        @elseif ($row->id === 'ตรวจสอบแล้ว')
-                                                            <span class="text-Success ">ตรวจสอบแล้ว</span>
-                                                        @elseif ($row->id === 'ไม่ผ่าน')
-                                                            <span class="text-Danger ">{{ $row->id }}</span>
-
-
-
-                                                            @endif
-                                                    @endforeach --}}
-                                                     {{-- <span class="badge badge-pill badge-danger">(กรุณากรอกข้อมูลนักศึกษา)</span> --}}
-                                                     </H2>
-                                                    {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
-
-                                                    <a href="/personal2/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
-                                                  @foreach ($establishment as $row)
-                                                  @if (Auth::user()->id === $row->user_id)
-
-                                                  <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
- @endif
-                                                  @endforeach
-                                                    {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
-                                                    </span>
-
-
-                                                </div>
-                                                <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-                                                  <div class="card-body">
-                                                    {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-                                                </div>
-                                                <br>
-
-
-                                                  </div>
-
-                                                </div>
-                                        @elseif ($row->id === $row->id)
-s
-@else ()
-
-
-
-@endif
-{{-- class="circle circle-sm bg-warning-light"> --}}
-@endforeach
-@endif
 
 
 

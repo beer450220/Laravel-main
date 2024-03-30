@@ -23,6 +23,7 @@ use App\Models\supervision;
 use App\Models\acceptance;
 use App\Models\permission;
 use App\Models\schedules;
+use App\Models\student;
 
 
 class HomeController extends Controller
@@ -144,6 +145,16 @@ class HomeController extends Controller
         ->select('registers.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
 
+        $student=DB::table('student')
+        ->join('users','student.user_id','users.id')
+        ->select('student.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $establishment=DB::table('establishment')
+        ->join('users','establishment.user_id','users.id')
+        ->select('establishment.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+// dd( $establishment);
         $registers1=DB::table('registers')
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
@@ -201,28 +212,171 @@ class HomeController extends Controller
 
 
 
-        $activity=DB::table('schedule')
-        // ->join('users','registers.user_id','users.id')
-        // ->select('registers.*','users.name')->where('user_id', auth()->id())
-        ->paginate(5);
+        // $activity=DB::table('schedule')
+        // // ->join('users','registers.user_id','users.id')
+        // // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        // ->paginate(5);
 
         // return view('student.register',compact('registers','registers1'
 
 
         // ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
-        return view('student.studenthome',compact('registers','registers1'
+        return view('student.studenthome',compact('registers','registers1','student','establishment'
 
 
-        ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
+        ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8'));
     }
+
+    public function studentHome3()
+    {
+        $registers=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $student=DB::table('student')
+        ->join('users','student.user_id','users.id')
+        ->select('student.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+
+        $registers1=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers2=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers3=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers4=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรประชาชน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers5=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรนักศึกษา')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers6=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ผลการเรียน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers7=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers8=DB::table('acceptance')
+        ->join('users','acceptance.user_id','users.id')
+        ->select('acceptance.*','users.fname')
+        ->where('acceptance.namefile','แบบตอบรับและเสนองานนักศึกสหกิจศึกษา')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+
+
+        // $activity=DB::table('schedule')
+        // // ->join('users','registers.user_id','users.id')
+        // // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        // ->paginate(5);
+
+        // return view('student.register',compact('registers','registers1'
+
+
+        // ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
+        return view('student.studenthome',compact('registers','registers1','student'
+
+
+        ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8'));
+    }
+
+
+
 
     public function personal()
     {
         return view('student.personal',["msg"=>"I am Editor role"]);
     }
+    public function personal2($id)
+    {
 
+     $users=student::find($id);
 
+     // $acceptances=DB::table('acceptance')->first();
+      //$establishment=DB::table('establishment')
+      // ->join('supervision','supervision.supervision_id')
+       //->join('supervision', 'establishments.id', '=', 'supervision.id')
+      // ->select('supervision.*','establishment.*')
+     // ->get();
+      //dd($acceptances);
+       // dd($Evaluationdocuments);
+       $major=DB::table('major')
 
+       ->paginate(5);
+
+        return view('student.personal2',["msg"=>"I am Editor role"],compact('users','major'));
+    }
+
+    public function personal3($id)
+    {
+
+     $users=establishment::find($id);
+
+     // $acceptances=DB::table('acceptance')->first();
+      //$establishment=DB::table('establishment')
+      // ->join('supervision','supervision.supervision_id')
+       //->join('supervision', 'establishments.id', '=', 'supervision.id')
+      // ->select('supervision.*','establishment.*')
+     // ->get();
+      //dd($acceptances);
+       // dd($Evaluationdocuments);
+       $major=DB::table('major')
+
+       ->paginate(5);
+
+        return view('student.personal2',["msg"=>"I am Editor role"],compact('users','major'));
+    }
+
+    public function personal1()
+    {
+        $major=DB::table('major')
+
+        ->paginate(5);
+        return view('student.personal1',["msg"=>"I am Editor role"],compact('major'));
+    }
+    public function personal4($id)
+    {
+        $users=establishment::find($id);
+        $major=DB::table('major')
+
+        ->paginate(5);
+        $student=DB::table('student')
+        ->orderBy('id', 'desc')
+        ->paginate(5);
+        return view('student.personal3',["msg"=>"I am Editor role"],compact('major','student','users'));
+    }
     public function addToCart($id)
     {
         $product = establishment::findOrFail($id);
@@ -2092,12 +2246,12 @@ public function category()
 
     public function cooperative1()
     {
-        $major=DB::table('major')
+        // $major=DB::table('major')
 
-        ->paginate(5);
+        // ->paginate(5);
 
-        return view('cooperative.cooperative1',["msg"=>"I am Admin role"],compact('major'));
-
+        return view('cooperative.cooperative1',["msg"=>"I am Admin role"]);
+// ,compact('major')
     }
     public function cooperative2()
     {

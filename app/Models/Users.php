@@ -18,24 +18,24 @@ class users extends Authenticatable
         // 'username',
         // 'code_id',
         'user_id',
-        'GPA',
+        // 'GPA',
         'images',
-        'Status',
+        // 'Status',
         'username',
 
-        'major_id',
+        // 'major_id',
         'fname',
         'surname',
-        'telephonenumber',
-        'address',
-        'em_name',
+        // 'telephonenumber',
+        // 'address',
+        // 'em_name',
 
-        'year',
-        'term',
-        'email',
+        // 'year',
+        // 'term',
+        // 'email',
         'password',
         'role',
-        'annotation',
+        // 'annotation',
 
 
 
@@ -49,5 +49,8 @@ class users extends Authenticatable
     ];
     public function Users(){
         return $this->hasOne(Users::class,'user_id','name');
+    }
+    public function test(){
+        return $this->hasOne(test::class,'id','username','password');
     }
 }
