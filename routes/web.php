@@ -97,15 +97,18 @@ Route::middleware(['auth','user-role:student'])->group(function()
     //ข้อมูลนักศึกษา
     Route::get("/personal1",[HomeController::class,'personal1'])->name('personal1');
     Route::post("/studenthome/addpersonal1",[AddController::class,'addpersonal1'])->name('addpersonal1');
-    Route::get("/personal2/{id}",[HomeController::class,'personal2'])->name('personal2');
 
-    Route::get("/studenthome/editpersonal2/{id}",[EditController::class,'editpersonal2'])->name('editpersonal2');
-    Route::post("/studenthome/updatepersonal2/{id}",[EditController::class,'updatepersonal2'])->name('updatepersonal2');
+    Route::get("/personal2/{student_id}",[HomeController::class,'personal2'])->name('personal2');
+    Route::get("/studenthome/editpersonal2/{student_id}",[EditController::class,'editpersonal2'])->name('editpersonal2');
+    Route::post("/studenthome/updatepersonal2/{student_id}",[EditController::class,'updatepersonal2'])->name('updatepersonal2');
+
     //ข้อมูลสถานประกอบการ
     Route::get("/personal3",[HomeController::class,'personal3'])->name('personal3');
-    Route::get("/personal4/{id}",[HomeController::class,'personal4'])->name('personal4');
     Route::post("/studenthome/addpersonal3",[AddController::class,'addpersonal3'])->name('addpersonal3');
 
+    Route::get("/personal4/{id}",[HomeController::class,'personal4'])->name('personal4');
+    Route::get("/studenthome/editpersonal4/{id}",[EditController::class,'editpersonal4'])->name('editpersonal4');
+    Route::post("/studenthome/updatepersonal4/{id}",[EditController::class,'updatepersonal4'])->name('updatepersonal4');
     //Route::get("/Studentinformation",[HomeController::class,'Student'])->name('Student');
 
 

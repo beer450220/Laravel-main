@@ -318,96 +318,79 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <form method="POST" action="{{url('/studenthome/updatepersonal2/'.$users->student_id)}}" enctype="multipart/form-data">
+                                                      <form method="POST" action="{{url('/studenthome/updatepersonal4/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <input type="text"value="{{ $users->student_id }}" disabled="" id="simpleinput" class="form-control">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-email">ชื่อจริง </label>
-                                                      <input type="text" id="example-email"value="{{ $users->fname }}"  name="fname" class="form-control"required placeholder="">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="example-email">นามสกุล</label>
-                                                        <input type="text" id="example-email"value="{{ $users->surname}}"  name="surname" class="form-control"required placeholder="">
-                                                      </div>
-                                                    {{-- <div class="form-group mb-3">
-                                                      <label for="example-password">Password</label>
-                                                      <input type="password" id="example-password" class="form-control" value="password">
-                                                    </div> --}}
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">อีเมล์</label>
-                                                      <input type="email" id="example-palaceholder"value="{{ $users->email}}"name="email"  class="form-control"required placeholder="">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ $users->GPA }}" name="GPA"  class="form-control"required placeholder="">
-
-                                                    </div>
-
-
-                                                  </div> <!-- /.col -->
-                                                  <div class="col-md-6">
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-helping">ที่อยู่</label>
-                                                      <input type="text" id="example-helping"value="{{ $users->address}}" name="address" class="form-control"required placeholder="">
-
-                                                    </div>
-
-
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-static">หลักสูตร</label>
-                                                      <select class="form-control" id="validationSelect1" name="major_id" required>
-                                                        <option value="">กรุณาเลือกหลักสูตร</option>
-                                                        <option value="-"@if($users->major_id=="-") selected @endif required>-</option>
-                                                        @foreach ($major as $row)
+                                                      <select class="form-control" id="validationSelect1" name="Student_id" >
+                                                        <option value="">กรุณาเลือก</option>
+                                                        @foreach ($student as $row)
                                                         {{-- <optgroup label="Mountain Time Zone"> --}}
-                                                          <option value="{{$row->major_id}}"{{$row->major_id==$users->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
+                                                          <option value="{{$row->id}}"{{$row->id==$users->Student_id ?'selected':''}}>{{$row->id}}  ({{$row->fname}} {{$row->surname}})</option>
                                                           {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
                                                         </optgroup>
 
                                                         @endforeach
                                                       </select>
                                                     </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-email">ชื่อสถานประกอบการ </label>
+                                                      <input type="text" id="example-email"value="{{ $users->em_name }}"  name="em_name" class="form-control"required placeholder="">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-email">ที่อยู่</label>
+                                                        <input type="text" id="example-email"value="{{ $users->em_address}}"  name="em_address" class="form-control"required placeholder="">
+                                                      </div>
+                                                    {{-- <div class="form-group mb-3">
+                                                      <label for="example-password">Password</label>
+                                                      <input type="password" id="example-password" class="form-control" value="password">
+                                                    </div> --}}
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-palaceholder">เบอร์โทร</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ $users->em_telephone}}"name="em_telephone"  class="form-control"required placeholder="">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-palaceholder">อีเมล์	</label>
+                                                      <input type="email" id="example-palaceholder"value="{{ $users->em_email}}" name="em_email"  class="form-control"required placeholder="">
+
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-palaceholder">รูปภาพสถานประกอบการ	</label>
+                                                        <input type="file" id="example-palaceholder"value="{{ $users->images}}" name="images"  class="form-control" placeholder="">
+
+                                                      </div>
+
+                                                  </div> <!-- /.col -->
+                                                  <div class="col-md-6">
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-helping">ชื่อผู้ติดต่อ</label>
+                                                      <input type="text" id="example-helping"value="{{ $users->em_contact_name}}" name="em_contact_name" class="form-control"required placeholder="">
+
+                                                    </div>
+
 
                                                     <div class="form-group mb-3">
-                                                        <label for="example-static">ปีการศึกษา</label>
-                                                        <select class="form-control "  name="year"required >
-                                                            {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
-                                                            <option value="{{ $year }}">{{ $year }}</option>
-                                                        @endforeach --}}
-                                                        <option value="">กรุณาเลือกปีการศึกษา</option>
-                                                        @php
-                                                        $currentYear = date('Y') + 543; // ปีปัจจุบัน
-                                                        $startYear = 2566; // ปีเริ่มต้น
-                                                        $endYear = $currentYear + 2; // ปีสิ้นสุด
-                                                    @endphp
+                                                      <label for="example-static">อีเมล์ผู้ติดต่อ</label>
+                                                      <input type="email" id="example-helping"value="{{ $users->em_Contact_email}}" name="em_Contact_email" class="form-control"required placeholder="">
+                                                    </div>
 
-                                                    @for ($i = $endYear; $i >= $startYear; $i--)
-                                                        @for ($j = 1; $j <= 1; $j++)
-                                                            <option value="{{ $i }}"@if($users->year==$i ) selected @endif>{{ $i }}</option>
-                                                        @endfor
-                                                    @endfor
-                                                    </select>
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-static">ตำแหน่งผู้ติดต่อ</label>
+                                                        <input type="text" id="example-helping"value="{{ $users->em_contactposition}}" name="em_contactposition" class="form-control"required placeholder="">
                                                       </div>
 
                                                       <div class="form-group mb-3">
-                                                        <label for="example-static">ภาคเรียน</label>
-                                                        <select class="form-control"  name="term" required>
-                                                            <option value="">กรุณาเลือกภาคเรียน</option>
-
-                                                          <option value="1"@if( $users->term=="1") selected @endif>1 </option>
-                                                            <option value="2"@if( $users->term=="2") selected @endif>2 </option>
-                                                          </select>
+                                                        <label for="example-static">รายละเอียดงาน</label>
+                                                        <input type="text" id="example-helping"value="{{ $users->em_job}}" name="em_job" class="form-control"required placeholder="">
                                                       </div>
                                                       <div class="form-group mb-3">
-                                                        <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                        <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}"name="telephonenumber"  class="form-control" placeholder=""required>
+                                                        <label for="example-palaceholder">เว็บไซต์บริษัท</label>
+                                                        <input type="text" id="example-palaceholder"value="{{ $users->website}}"name="website"  class="form-control" placeholder=""required>
                                                       </div>
                                                     </div>
 
                                                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                                       <a href="/studenthome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
+                                                      <button type="reset"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">ยกเลิก</button>
                                                       &nbsp;&nbsp;
                                                       <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">อัพเดทข้อมูล</button>
                                                    </div>  </div></form>

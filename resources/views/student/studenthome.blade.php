@@ -515,13 +515,17 @@ div.second {
                                                      </H2>
                                                     {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
 
-                                                    <a href="/personal2/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
-                                                  @foreach ($establishment as $row)
-                                                  @if (Auth::user()->id === $row->user_id)
+                                                    <a href="/personal2/{{$row->student_id}}"  class=" btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
+                                                  {{-- @foreach ($establishment as $row)
+                                                  @php
+                                                  $student = App\Models\student::find($row->student_id); // ดึงข้อมูลของนักเรียนจากฐานข้อมูล
+                                              @endphp
+                                                  @if ($student===$row->student_id)
 
                                                   <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
- @endif
-                                                  @endforeach
+                                                  @endif
+
+                                              @endforeach --}}
                                                     {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
                                                     </span>
 

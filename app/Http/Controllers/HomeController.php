@@ -150,11 +150,16 @@ class HomeController extends Controller
         ->select('student.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
 
-        $establishment=DB::table('establishment')
-        ->join('users','establishment.user_id','users.id')
-        ->select('establishment.*','users.fname')->where('user_id', auth()->id())
-        ->paginate(5);
-// dd( $establishment);
+        // $establishment=DB::table('establishment')
+        // ->join('users','establishment.user_id','users.id')
+        // ->select('establishment.*','users.fname')->where('user_id', auth()->id())
+        // ->paginate(5);
+
+        $establishment = DB::table('establishment')
+    ->join('student', 'establishment.student_id', '=', 'student.student_id')
+    ->get();
+        // dd( $student);
+//   dd( $establishment);
         $registers1=DB::table('registers')
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
@@ -319,11 +324,12 @@ class HomeController extends Controller
     {
         return view('student.personal',["msg"=>"I am Editor role"]);
     }
-    public function personal2($id)
+
+    public function personal2($student_id)
     {
-
-     $users=student::find($id);
-
+// dd($student_id);
+     $users=student::find($student_id);
+ dd($users);
      // $acceptances=DB::table('acceptance')->first();
       //$establishment=DB::table('establishment')
       // ->join('supervision','supervision.supervision_id')
@@ -339,10 +345,31 @@ class HomeController extends Controller
         return view('student.personal2',["msg"=>"I am Editor role"],compact('users','major'));
     }
 
-    public function personal3($id)
+    public function personal3()
     {
 
-     $users=establishment::find($id);
+    //  $users=establishment::find($id);
+
+     // $acceptances=DB::table('acceptance')->first();
+      //$establishment=DB::table('establishment')
+      // ->join('supervision','supervision.supervision_id')
+       //->join('supervision', 'establishments.id', '=', 'supervision.id')
+      // ->select('supervision.*','establishment.*')
+     // ->get();
+      //dd($acceptances);
+       // dd($Evaluationdocuments);
+       $major=DB::table('major')
+
+       ->paginate(5);
+       $student=DB::table('student')
+       ->orderBy('id', 'desc')
+       ->paginate(10);
+        return view('student.personal02',["msg"=>"I am Editor role"],compact('major',"student"));
+    }
+    public function personal03()
+    {
+
+      $users=establishment::find($id);
 
      // $acceptances=DB::table('acceptance')->first();
       //$establishment=DB::table('establishment')
@@ -358,7 +385,6 @@ class HomeController extends Controller
 
         return view('student.personal2',["msg"=>"I am Editor role"],compact('users','major'));
     }
-
     public function personal1()
     {
         $major=DB::table('major')
@@ -372,6 +398,7 @@ class HomeController extends Controller
         $major=DB::table('major')
 
         ->paginate(5);
+        // dd($users);
         $student=DB::table('student')
         ->orderBy('id', 'desc')
         ->paginate(5);

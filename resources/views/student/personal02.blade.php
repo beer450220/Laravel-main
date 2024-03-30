@@ -282,12 +282,12 @@
                       {{-- <div class="progress">
                           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                       </div> --}}
-                      <br> <!-- fieldsets --></form>
+                      <br> </form><!-- fieldsets -->
                       <fieldset>
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-                                      <h2 class="fs-title col">ข้อมูลนักศึกษา:</h2>
+                                      <h2 class="fs-title col">ข้อมูลสถานประกอบการ:</h2>
                                   </div>
                                   <div class="col-4">
                                       {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
@@ -322,7 +322,7 @@
                                     <br>
                                     <br>
                                     <div class="text-center">
-                                      <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
+                                      {{-- <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
 
                                     </div>
 
@@ -331,8 +331,8 @@
                                     <main role="main" class="">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">
-
-                                          <div class="col-7">
+                                          <div class="row">
+                                            <div class="col-12">
                                             {{-- <h2 class="page-title">Form elements</h2> --}}
 
                                             <div class="card shadow mb-4">
@@ -344,82 +344,82 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                              <form method="POST" action="{{ route('addpersonal1') }}" enctype="multipart/form-data">
-                                                @csrf
-                                                      <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <input type="text"value=""  id="simpleinput" name="student_id" class="form-control">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-email">ชื่อจริง นามสกุล</label>
-                                                      <input type="text" id="example-email"value=""  name="fname" class="form-control" placeholder="">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="example-email">นามสกุล</label>
-                                                        <input type="text" id="example-email"value=""  name="surname" class="form-control" placeholder="">
-                                                      </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-password">อีเมล์</label>
-                                                      <input type="email" id="example-password" class="form-control"name="email" value="">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">เกรดเฉลี่ย(GPA)</label>
-                                                      <input type="text" id="example-palaceholder"value=""name="GPA"  class="form-control" placeholder="placeholder">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                      <input type="text" id="example-palaceholder"value="" name="telephonenumber" class="form-control" placeholder="placeholder">
-                                                    </div>
+                                                        <form method="POST" action="{{ route('addpersonal3') }}" enctype="multipart/form-data">
+                                                            @csrf
+                                                <label for="simpleinput">รหัสนักศึกษา</label>
+                                                <select class="form-control" id="validationSelect1" name="Student_id" >
+                                                    <option value="">กรุณาเลือก</option>
+                                                    @foreach ($student as $row)
+                                                    {{-- <optgroup label="Mountain Time Zone"> --}}
+                                                      <option value="{{$row->id}}">{{$row->student_id}}  ({{$row->fname}} {{$row->surname}})</option>
+                                                      {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                                                    </optgroup>
 
-                                                </div> <!-- /.col -->
-                                                  <div class="col-md-6">
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-helping">ที่อยู่</label>
-                                                      <input type="text" id="example-helping"value="" name="address" class="form-control" placeholder="Input with helping text">
+                                                    @endforeach
+                                                  </select>
+                                              </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-email">ชื่อสถานประกอบการ</label>
+                                                <input type="text" id="example-email"value="" name="em_name" name="" class="form-control" placeholder="">
 
-                                                    </div>
+                                            </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-password">ที่อยู่</label>
+                                                <input type="text" id="example-password" class="form-control" name="em_address"value="">
+                                              </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-palaceholder">เบอร์โทร</label>
+                                                <input type="text" id="example-palaceholder"value=""name="em_telephone"  class="form-control" placeholder="">
+                                              </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-palaceholder">อีเมล์	</label>
+                                                <input type="email" id="example-palaceholder"value="" name="em_email" class="form-control" placeholder="">
+                                              </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-palaceholder">รูปภาพสถานประกอบการ</label>
+                                                <input type="file" id="example-palaceholder"value=""name="images"  class="form-control" placeholder="">
 
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-static">หลักสูตร</label>
-                                                      <select class="form-control" id="validationSelect1" name="major_id" >
-                                                        <option value="">กรุณาเลือกหลักสูตร</option>
-                                                        @foreach ($major as $row)
-                                                        {{-- <optgroup label="Mountain Time Zone"> --}}
-                                                          <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option>
-                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                                        </optgroup>
+                                            </div>
 
-                                                        @endforeach
-                                                      </select>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-disable">ปีการศึกษา</label>
-                                                      <select class="form-control "  name="year"required >
-                                                        {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
-                                                        <option value="{{ $year }}">{{ $year }}</option>
-                                                    @endforeach --}}
-                                                    <option value="">กรุณาเลือกปีการศึกษา</option>
-                                                    @php
-                                                    $currentYear = date('Y') + 543; // ปีปัจจุบัน
-                                                    $startYear = 2566; // ปีเริ่มต้น
-                                                    $endYear = $currentYear + 1; // ปีสิ้นสุด
-                                                @endphp
+                                          </div> <!-- /.col -->
+                                            <div class="col-md-6">
+                                              <div class="form-group mb-3">
+                                                <label for="example-helping">ชื่อผู้ติดต่อ</label>
+                                                <input type="text" id="example-helping"value=""name="em_contact_name"  class="form-control" placeholder="">
 
-                                                @for ($i = $endYear; $i >= $startYear; $i--)
-                                                    @for ($j = 1; $j <= 1; $j++)
-                                                        <option value="{{ $i }}">{{ $i }}</option>
-                                                    @endfor
-                                                @endfor
-                                                </select>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-static">ภาคเรียน</label>
-                                                      <select class="form-control"  name="term" required>
-                                                        <option value="">กรุณาเลือกภาคเรียน</option>
+                                              </div>
 
-                                                      <option value="1">1 </option>
-                                                        <option value="2">2 </option>
-                                                      </select>
-                                                    </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-static">อีเมล์ผู้ติดต่อ</label>
+                                                <input type="email" value=""name="em_Contact_email"  class="form-control" id="example-static" >
+                                              </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-disable">ตำแหน่งผู้ติดต่อ</label>
+                                                <input type="text" class="form-control"value="" name="em_contactposition" id="example-disable"  value="">
+                                              </div>
 
+                                              <div class="form-group mb-3">
+                                                <label for="example-static">รายละเอียดงาน</label>
+                                                <input type="text" value="" name="em_job" class="form-control" >
+                                              </div>
+                                              <div class="form-group mb-3">
+                                                <label for="example-palaceholder">เว็บไซต์บริษัท</label>
+                                                <input type="text" id="example-palaceholder"value=""name="website"  class="form-control" placeholder="">
+
+                                            </div>
+
+                                        </div>
+
+{{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
+
+
+
+                                                      {{-- </form> --}}
+
+
+                                                  {{-- <button id="btn">Button</button> --}}
+
+                                                      {{-- <script src="index.js"></script> --}}
 
 
 
@@ -437,28 +437,26 @@
                                                       {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
 
                                                     {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
-                                                      {{-- <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> --}}
-                                                      {{-- <a href="/studenthome/addpersonal1"  class="btn btn-outline-warning " type="button">บันทึกข้อมูล</a> --}}
+                                                      {{-- <a href="/studenthome/editpersonal2/{{$users->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div> --}}
                                                       <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">
                                                         {{ __('บันทึกข้อมูล') }}
                                                     </button>
-                                                    </div></form>
-                                                </div>
+                                                    </div>
                                                     </div>
                                             </div> <!-- / .card -->
                                           </div>
-                                        </div>
+
+
 
                                       </div>
+                                      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                                      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-
-
-
-
-
-
-
-
+                                      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+                                      <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
+                                      <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
+                                      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 @endsection

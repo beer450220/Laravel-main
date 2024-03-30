@@ -335,7 +335,7 @@ class AddController extends Controller
 
                   $post =new student([
                     // "user_id" => $request->user_id,
-                    "id" => $request->id,
+                    "student_id" => $request->student_id,
                     "fname" => $request->fname,
 
                       "surname" => $request->surname,

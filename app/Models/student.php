@@ -9,11 +9,11 @@ class student extends Model
 {
     use HasFactory;
     public $table="student";
-    public $primarykey="id";
+    public $primarykey="student_id";
     protected $fillable=[
         // 'username',
         // 'code_id',
-        'id',
+        'student_id',
         'user_id',
         // 'GPA',
         // 'images',

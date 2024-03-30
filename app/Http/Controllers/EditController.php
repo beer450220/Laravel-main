@@ -2386,14 +2386,15 @@ $post->update
 
  }
 
- public function editpersonal2($id) {
+ public function editpersonal2($student_id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       //->get();
-      $users=student::find($id);
+      $users=student::find($student_id);
+    //   $acceptances=acceptance::find($acceptance_id);
    // $acceptances=DB::table('acceptance')->first();
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
@@ -2408,7 +2409,32 @@ $post->update
      return view('student.Edit.edituser2',compact('users','major'));
 
  }
+ public function editpersonal4($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+      $users=establishment::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+     // dd($Evaluationdocuments);
+     $major=DB::table('major')
 
+     ->paginate(5);
+     $student=DB::table('student')
+     ->orderBy('id', 'desc')
+     ->get();
+    //  ->paginate(5);
+     return view('student.Edit.edituser3',compact('users','major',"student"));
+
+ }
  public function   updateuser1(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -2529,7 +2555,70 @@ $post->update
     return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
+ public function   updatepersonal4(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=establishment::findOrFail($id);
+
+   if($request->hasFile("images")){
+    if (File::exists("รูปโปรไฟล์/".$post->images)) {
+        File::delete("รูปโปรไฟล์/".$post->images);
+    }
+    $file=$request->file("images");
+     $post->images=time()."_".$file->getClientOriginalName();
+     $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+     $request['images']=$post->images;
+  // dd($post);
+}
+    $post->update
+    ([
+       "em_name" =>$request->em_name,
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+          "images"=>$post->images,
+
+    //    "username" =>$request->username,
+
+
+    //    "code_id" =>$request->code_id,
+       "em_address" =>$request->em_address,
+    //    "establishment_id" =>$request->establishment_id,
+       "em_telephone" =>$request->em_telephone,
+       "em_email" =>$request->em_email,
+       "em_contact_name" =>$request->em_contact_name,
+       "em_Contact_email" =>$request->em_Contact_email,
+
+    //    "em_name" =>$request->em_name,
+       "em_contactposition" =>$request->em_contactposition,
+       "em_job" =>$request->em_job,
+
+       "Student_id" =>$request->Student_id,
+
+    //    "password" => Hash::make($request->password),
+
+       "website" =>$request->website,
+    //    "status" =>$request->status,
+
+    ]);
+
+
+    return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
 
  public function   updateuser2(Request $request,$id) {
     //ตรวจสอบข้อมูล
