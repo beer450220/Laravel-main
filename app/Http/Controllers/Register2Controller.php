@@ -77,6 +77,7 @@ class Register2Controller extends Controller
           // ($postCount < 1 && $user->Status_registers == "ไม่ผ่าน")
        //   {
               $request->validate([
+                'filess' => 'mimes:pdf|max:1024',
                   // 'filess' => 'required|mimes:pdf',
                   // 'filess' => 'required|mimes:jpeg,jpg,png',
                 //   'filess' => 'mimes:jpeg,jpg,png',
@@ -87,6 +88,8 @@ class Register2Controller extends Controller
                       // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
                   //    'namefile.required' => "กรุณาชื่อไฟล์",
                   //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+                  'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                  'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
                   ]
               );
                 if($request->hasFile("filess")){
@@ -101,8 +104,8 @@ class Register2Controller extends Controller
                       "filess" =>$imageName,
                       "annotation" => "-",
                       "Status_registers" => "รอตรวจสอบ",
-                      "year" => $request->year,
-                      "term" => $request->term,
+                    //   "year" => $request->year,
+                    //   "term" => $request->term,
                   ]);
               //   $post->annotation ="-";
               //   $post->Status_registers ="รอตรวจสอบ";
@@ -174,13 +177,15 @@ public function addregisteruser3(Request $request) {
               // 'filess' => 'required|mimes:pdf',
               // 'filess' => 'required|mimes:jpeg,jpg,png',
             //   'filess' => 'mimes:jpeg,jpg,png',
-
+            'filess' => 'mimes:pdf|max:1024',
               // 'namefile' => 'required|unique:namefile',
               // 'user_id' => 'required|unique:user_id',
             ],[
                   // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
               //    'namefile.required' => "กรุณาชื่อไฟล์",
               //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+              'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+              'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
               ]
           );
             if($request->hasFile("filess")){
@@ -195,8 +200,8 @@ public function addregisteruser3(Request $request) {
                   "filess" =>$imageName,
                   "annotation" => "-",
                   "Status_registers" => "รอตรวจสอบ",
-                  "year" => $request->year,
-                  "term" => $request->term,
+                //   "year" => $request->year,
+                //   "term" => $request->term,
               ]);
           //   $post->annotation ="-";
           //   $post->Status_registers ="รอตรวจสอบ";
@@ -259,13 +264,16 @@ public function addregisteruser3(Request $request) {
                   // 'filess' => 'required|mimes:pdf',
                   // 'filess' => 'required|mimes:jpeg,jpg,png',
                 //   'filess' => 'mimes:jpeg,jpg,png',
-
+                'filess' => 'mimes:pdf|max:1024',
                   // 'namefile' => 'required|unique:namefile',
                   // 'user_id' => 'required|unique:user_id',
                 ],[
                       // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
                   //    'namefile.required' => "กรุณาชื่อไฟล์",
                   //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+
+ 'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+ 'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
                   ]
               );
                 if($request->hasFile("filess")){
@@ -280,8 +288,8 @@ public function addregisteruser3(Request $request) {
                       "filess" =>$imageName,
                       "annotation" => "-",
                       "Status_registers" => "รอตรวจสอบ",
-                      "year" => $request->year,
-                      "term" => $request->term,
+                    //   "year" => $request->year,
+                    //   "term" => $request->term,
                   ]);
               //   $post->annotation ="-";
               //   $post->Status_registers ="รอตรวจสอบ";
@@ -345,12 +353,16 @@ public function addregisteruser3(Request $request) {
                       // 'filess' => 'required|mimes:jpeg,jpg,png',
                     //   'filess' => 'mimes:jpeg,jpg,png',
 
+                    'filess' => 'mimes:pdf|max:1024',
                       // 'namefile' => 'required|unique:namefile',
                       // 'user_id' => 'required|unique:user_id',
                     ],[
                           // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
                       //    'namefile.required' => "กรุณาชื่อไฟล์",
                       //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+
+ 'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+ 'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
                       ]
                   );
                     if($request->hasFile("filess")){
@@ -365,8 +377,8 @@ public function addregisteruser3(Request $request) {
                           "filess" =>$imageName,
                           "annotation" => "-",
                           "Status_registers" => "รอตรวจสอบ",
-                          "year" => $request->year,
-                      "term" => $request->term,
+                    //       "year" => $request->year,
+                    //   "term" => $request->term,
                       ]);
                   //   $post->annotation ="-";
                   //   $post->Status_registers ="รอตรวจสอบ";
@@ -430,12 +442,15 @@ public function addregisteruser3(Request $request) {
                           // 'filess' => 'required|mimes:jpeg,jpg,png',
                         //   'filess' => 'mimes:jpeg,jpg,png',
 
+                        'filess' => 'mimes:pdf|max:1024',
                           // 'namefile' => 'required|unique:namefile',
                           // 'user_id' => 'required|unique:user_id',
                         ],[
                               // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
                           //    'namefile.required' => "กรุณาชื่อไฟล์",
                           //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+                          'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
                           ]
                       );
                         if($request->hasFile("filess")){
@@ -450,8 +465,8 @@ public function addregisteruser3(Request $request) {
                               "filess" =>$imageName,
                               "annotation" => "-",
                               "Status_registers" => "รอตรวจสอบ",
-                              "year" => $request->year,
-                              "term" => $request->term,
+                            //   "year" => $request->year,
+                            //   "term" => $request->term,
                           ]);
                       //   $post->annotation ="-";
                       //   $post->Status_registers ="รอตรวจสอบ";
@@ -514,13 +529,15 @@ public function addregisteruser3(Request $request) {
                               // 'filess' => 'required|mimes:pdf',
                               // 'filess' => 'required|mimes:jpeg,jpg,png',
                             //   'filess' => 'mimes:jpeg,jpg,png',
-
+                            'filess' => 'mimes:pdf|max:1024',
                               // 'namefile' => 'required|unique:namefile',
                               // 'user_id' => 'required|unique:user_id',
                             ],[
                                   // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
                               //    'namefile.required' => "กรุณาชื่อไฟล์",
                               //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+                              'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
                               ]
                           );
                             if($request->hasFile("filess")){

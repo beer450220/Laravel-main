@@ -342,7 +342,7 @@ div.second {
                     </li></a> --}}
                         <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียนนักศึกษา
                             สหกิจศึกษา</strong></li></a>
-                          <a  href="/studenthome/informdetails"> <li id="confirm"><strong>เอกสารปฏิบัติงานนักศึกษา</strong></li></a>
+                          {{-- <a  href="/studenthome/informdetails"> <li id="confirm"><strong>เอกสารปฏิบัติงานนักศึกษา</strong></li></a> --}}
                             <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
                               {{-- <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a> --}}
                     </ul>
@@ -357,7 +357,7 @@ div.second {
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 1 - 4</h2>
+                                    <h2 class="steps">ขั้นตอน 1 - 2</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
@@ -515,17 +515,15 @@ div.second {
                                                      </H2>
                                                     {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
 
-                                                    <a href="/personal2/{{$row->student_id}}"  class=" btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
-                                                  {{-- @foreach ($establishment as $row)
-                                                  @php
-                                                  $student = App\Models\student::find($row->student_id); // ดึงข้อมูลของนักเรียนจากฐานข้อมูล
-                                              @endphp
-                                                  @if ($student===$row->student_id)
+                                                    <a href="/personal2/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
+                                                  @foreach ($establishment as $row)
+
+                                                  @if (Auth::user()->id === $row->user_id)
 
                                                   <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
                                                   @endif
 
-                                              @endforeach --}}
+                                              @endforeach
                                                     {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
                                                     </span>
 
@@ -554,7 +552,7 @@ s
 
 
 
-<div class="col-md-12 mb-4">
+{{-- <div class="col-md-12 mb-4"> --}}
     {{-- <div class="accordion w-100" id="accordion1"> --}}
       <div class="card shadow">
         <div class="card-header" id="heading2">
@@ -568,7 +566,7 @@ s
               {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
             </H2>
             {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
-            <a href="/studenthome/addregister"  class=" btn btn-outline-success">สมัครสหกิจศึกษาใหม่</a>
+            <a href="/studenthome1"  class=" btn btn-outline-success">สมัครสหกิจศึกษาใหม่</a>
             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
             </span>
 
@@ -581,14 +579,103 @@ s
         <br>
 
 
-          </div>
+
 
         </div>
 
 
 
+        {{-- <div class="col-md-12 mb-4"> --}}
+            {{-- <div class="accordion w-100" id="accordion1"> --}}
+              <div class="card shadow">
+                <div class="card-header" id="heading2">
+                  {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
 
 
+
+
+
+                     <H2><strong>ข้อมูลเอกสารตอบรับ</strong> </a> <span class="">
+                      {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
+                    </H2>
+                    {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
+                    @foreach ($acceptance as $row)
+                    {{-- @if (Auth::user()->id === $row->user_id) --}}
+                    {{$row->namefile}}
+
+                    @if ($row->Status_acceptance === 'รอตรวจสอบ')
+                                                    <span class="text-warning">รอตรวจสอบเอกสาร</span>
+                                                @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                                                    <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
+                                                @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                                                    <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
+                                                @else (sss)
+                                                    <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+
+                                                    @endif
+                    {{-- class="circle circle-sm bg-warning-light"> --}}
+         {{-- {{$row->Status_acceptance}} --}}
+                    <a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
+                    {{-- @endif --}}
+                    @endforeach
+                    {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                    </span>
+
+
+                </div>
+                <div id="collapse1" class="collapse" aria-labelledby="heading2" data-parent="#accordion1" style="">
+                  <div class="card-body">
+                    {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                </div>
+                <br>
+
+
+                  </div>
+
+                </div>
+
+
+                <div class="card shadow">
+                    <div class="card-header" id="heading2">
+                      {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+
+
+
+
+
+
+                         <H2><strong>ข้อมูลเอกสารปฏิบัติงานนักศึกษา</strong> </a> <span class="">
+                          {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
+                        </H2>@foreach ($acceptance as $row)
+  @if ($row->Status_acceptance === 'รอตรวจสอบ')
+
+  @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+
+
+  @endif
+                        {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
+
+                        {{-- class="circle circle-sm bg-warning-light"> --}}
+             {{-- {{$row->Status_acceptance}} --}}
+                        {{-- <a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a> --}}
+                        <a href="/studenthome/informdetails"  class=" btn btn-outline-success">เอกสารปฏิบัติงานใหม่</a>
+                        @endforeach  {{-- @endif --}}
+
+                        {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                        </span>
+
+
+                    </div>
+                    <div id="collapse1" class="collapse" aria-labelledby="heading2" data-parent="#accordion1" style="">
+                      <div class="card-body">
+                        {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                    </div>
+                    <br>
+
+
+                      </div>
+
+                    </div>
 
 
 
@@ -869,9 +956,27 @@ $(document).ready(function () {
 
   </div></div></div></div>  <br>
 <div class="d-grid gap-2 text-center" >
+    @foreach ($acceptance as $row)
+    {{-- @if (Auth::user()->id === $row->user_id) --}}
 
-    <h4>ขั้นตอนต่อไป</h4><a href="/studenthome/informdetails"   class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
-    </div>
+
+    @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
+
+                                @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                                <h4>ขั้นตอนต่อไป</h4><a href="/studenthome/calendar2confirm"   class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+                                @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+
+                                @else (sss)
+
+
+                                    @endif
+    {{-- class="circle circle-sm bg-warning-light"> --}}
+{{-- {{$row->Status_acceptance}} --}}
+
+    {{-- @endif --}}
+
+
+    </div>  @endforeach
     {{-- id="show-alert" --}}
   <br>
 <br>

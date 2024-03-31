@@ -217,6 +217,7 @@ class AddController extends Controller
         {
             $request->validate([
                 // 'filess' => 'required|mimes:pdf',
+                'filess' => 'mimes:pdf|max:1024', // ตรวจสอบไฟล์รูปภาพที่มีขนาดไม่เกิน 2 MB (2048 KB)
                 // 'filess' => 'required|mimes:jpeg,jpg,png',
                 // 'filess' => 'mimes:jpeg,jpg,png',
 
@@ -226,21 +227,23 @@ class AddController extends Controller
                     // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
                 //    'namefile.required' => "กรุณาชื่อไฟล์",
                 //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+                'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
                 ]
             );
               if($request->hasFile("filess")){
                 $file=$request->file("filess");
                  $imageName=time().'_'.$file->getClientOriginalName();
-                $file->move(\public_path("/file"),$imageName);
+                $file->move(\public_path("/ลงทะเบียน"),$imageName);
 
 
                 $post =new registers([
-                  "user_id" => $request->user_id,
+                //   "user_id" => $request->user_id,
                      "namefile" => $request->namefile,
                     "filess" =>$imageName,
                     "annotation" => "-",
-                    "year" => $request->year,
-                    "term" => $request->term,
+                    // "year" => $request->year,
+                    // "term" => $request->term,
 
                     "Status_registers" => "รอตรวจสอบ",
                 ]);
@@ -281,7 +284,7 @@ class AddController extends Controller
             //         $post->save();
 
 
-              return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+              return redirect('/studenthome1')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
 
             // return redirect('/studenthome/register')
             //     ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
@@ -410,7 +413,7 @@ class AddController extends Controller
 
 
               ]);
-
+              $post->user_id = Auth::user()->id;
           //   $post->annotation ="-";
           //   $post->Status_registers ="รอตรวจสอบ";
             // $post->user_id = Auth::user()->id;

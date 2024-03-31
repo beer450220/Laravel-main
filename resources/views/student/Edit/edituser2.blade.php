@@ -318,7 +318,7 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <form method="POST" action="{{url('/studenthome/updatepersonal2/'.$users->student_id)}}" enctype="multipart/form-data">
+                                                      <form method="POST" action="{{url('/studenthome/updatepersonal2/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
                                                       <input type="text"value="{{ $users->student_id }}" disabled="" id="simpleinput" class="form-control">

@@ -284,10 +284,11 @@
                     <ul id="progressbar">
                       {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
-                          <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียนนักศึกษา
+                            สหกิจศึกษา</strong></li></a>
+                          {{-- <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a> --}}
                             <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                              <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                              {{-- <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a> --}}
                     </ul>
                     <div class="progress">
                         {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -296,16 +297,16 @@
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title col">รายงานสถานะการเข้าปฏิบัติงาน:</h2>
+                                    <h2 class="fs-title col">เอกสารปฏิบัติงานนักศึกษา:</h2>
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 2 - 4</h2>
+                                    <h2 class="steps">ขั้นตอน 2 - 2</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
 
-                                   <b> ขั้นตอนที่ 2 รายงานสถานะการเข้าปฏิบัติงาน:</b> ให้อัพโหลดไฟล์เอกสารให้เรียบร้อย
+                                   <b> ขั้นตอนที่ 2 เอกสารปฏิบัติงานนักศึกษา:</b> ให้อัพโหลดไฟล์เอกสารให้เรียบร้อย
                                       <br>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07) <b>ภายในสัปดาห์แรก</b>
                                       <br>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08) <b>ภายในสัปดาห์ที่สอง</b>
                                       <br>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)<b>ภายในสัปดาห์ที่สาม</b>
@@ -344,122 +345,34 @@
                             @endif
                                       </div>
                                       </div>
-                            <div class="col-md-12 my-4">
+                            {{-- <div class="col-md-12 my-4">
                                 <div class="card shadow">
-                                  <div class="card-body">
-                                    <h5 class="card-title">เอกสารแจ้งรายละเอียดการปฎิบัติงาน</h5>
-                                    <div class="container">
+                                  <div class="card-body"> --}}
+                                    {{-- <h5 class="card-title">เอกสารแจ้งรายละเอียดการปฎิบัติงาน</h5> --}}
+                                    {{-- <div class="container">
                                         <div class="row">
                                           <div class="col-9">
                                             <p class="card-text"> <tbody>
                                             </p>
-                                          </div>
+                                          </div> --}}
                                           {{-- <div class="col col-lg-2 ">
                                             <a href=""  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a>
 
                                             <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
                                         </div> --}}
-                                        <p>
-                                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                ปฏิทินสหกิจ
-                                            </a>
-                                            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-                                                ดาวน์โหลดไฟล์เอกสาร
-                                            </button>
-                                            <hr>
-                                          </p>
-                                          <div class="collapse" id="collapseExample">
-                                            <div class="card card-body">
-                                                <table class="table table-hover">
-                                                    <thead class="thead-dark">
-                                                      <tr>
-                                                          <th></th>
-                                                            <th>ปฏิทินสหกิจ</th>
-
-
-                                                        <th></th>
-
-
-                                                      </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                      @foreach ($activity as $row)
-                                                      <tr>
-                                                        <td class="col-1 text-center">{{ $activity->firstItem() + $loop->index }}.</td>
-                                                        <td><a class="text-dark  "style="text-decoration: none;" href="/กำหนดการปฏิทิน/{{ $row->filess }}" target="_blank">{{$row->title}}  {{$row->term}} {{$row->year}}</a></td>
 
 
 
-                                                       <td></td>
-                                  {{-- download --}}<i class=" "></i>
-                                                      </tr>
-                                                      @endforeach
-
-                                                    </tbody>
-                                                  </table>
-                                            </div>
-                                          </div>
-
-                                          <div class="collapse" id="collapseExample2">
-                                            <div class="card card-body">
-                                                <table class="table table-hover">
-                                                    <thead class="thead-dark">
-                                                        <tr class="">
-                                                            <th>#</th>
-                                                            <th>ชื่อฟอร์ม</th>
-                                                            <th class="text-center">ดาวน์โหลด</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                                                                                                                                <tr>
-                                                                <th scope="row">1</th>
-                                                                    <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td>
-                                                                    <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                                                </tr>
-                                                                                                                    <tr>
-                                                                <th scope="row">2</th>
-                                                                    <td>สก.03 ใบสมัครงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
-                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.03.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                                                </tr>
-                                                                                                                    <tr>
-                                                                <th scope="row">3</th>
-                                                                    <td>สก 04 แบบคำขอหนักงสือขอความอนุเคราะห์รับนักศึกษา (สำหรับนักศึกษา)</td>
-                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.04.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                                                </tr>
-                                                                                                                    <tr>
-                                                                <th scope="row">4</th>
-                                                                    <td>สก 07 แบบแจ้งรายละเอียดการปฏิบัติงาน (สำหรับนักศึกษา)</td>
-                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.07.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                                                </tr>
-                                                                                                                    <tr>
-                                                                <th scope="row">5</th>
-                                                                    <td>สก 08 แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
-                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                                                </tr>
-                                                                                                                    <tr>
-                                                                <th scope="row">6</th>
-                                                                    <td>สก 09 แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
-                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                                                </tr>
-                                                    </tbody>
-                                                  </table>
-                                            </div>
-                                          </div>
-        </div>
-
-
-                                                    </div>
+                                                    {{-- </div>
                                             </div>
 
-                                        </div>
+                                        </div> --}}
 
                                     <br>
 
 
-                                </div> <!-- end section -->
-                            </div> <!-- end section -->
-                                <br>
-                                <br>
+
+
                                 @if ($informdetails1->isEmpty())
                                 <div class="col-md-12 mb-4">
                                     <div class="accordion w-100" id="accordion1">
@@ -1212,7 +1125,7 @@
   </div></div></div></div>  <br>
 <div class="d-grid gap-2 text-center" >
 
-    <h4>ขั้นตอนต่อไป</h4><a href="/studenthome/calendar2confirm"   class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+    <h4></h4><a href="/studenthome"   class="btn btn-outline-warning " type="button">>ย้อนกลับ<</a>
     </div>
     {{-- id="show-alert" --}}
   <br>

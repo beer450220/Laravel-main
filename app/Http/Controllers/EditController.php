@@ -2386,14 +2386,15 @@ $post->update
 
  }
 
- public function editpersonal2($student_id) {
+ public function editpersonal2($id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       //->get();
-      $users=student::find($student_id);
+      $users=student::find($id);
+
     //   $acceptances=acceptance::find($acceptance_id);
    // $acceptances=DB::table('acceptance')->first();
     //$establishment=DB::table('establishment')
@@ -2429,7 +2430,7 @@ $post->update
 
      ->paginate(5);
      $student=DB::table('student')
-     ->orderBy('id', 'desc')
+     ->orderBy('student_id', 'desc')
      ->get();
     //  ->paginate(5);
      return view('student.Edit.edituser3',compact('users','major',"student"));

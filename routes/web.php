@@ -98,9 +98,9 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/personal1",[HomeController::class,'personal1'])->name('personal1');
     Route::post("/studenthome/addpersonal1",[AddController::class,'addpersonal1'])->name('addpersonal1');
 
-    Route::get("/personal2/{student_id}",[HomeController::class,'personal2'])->name('personal2');
-    Route::get("/studenthome/editpersonal2/{student_id}",[EditController::class,'editpersonal2'])->name('editpersonal2');
-    Route::post("/studenthome/updatepersonal2/{student_id}",[EditController::class,'updatepersonal2'])->name('updatepersonal2');
+    Route::get("/personal2/{id}",[HomeController::class,'personal2'])->name('personal2');
+    Route::get("/studenthome/editpersonal2/{id}",[EditController::class,'editpersonal2'])->name('editpersonal2');
+    Route::post("/studenthome/updatepersonal2/{id}",[EditController::class,'updatepersonal2'])->name('updatepersonal2');
 
     //ข้อมูลสถานประกอบการ
     Route::get("/personal3",[HomeController::class,'personal3'])->name('personal3');
@@ -111,6 +111,11 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::post("/studenthome/updatepersonal4/{id}",[EditController::class,'updatepersonal4'])->name('updatepersonal4');
     //Route::get("/Studentinformation",[HomeController::class,'Student'])->name('Student');
 
+//ข้อมูลมัครสหกิจ
+Route::get("/studenthome1",[HomeController::class,'studentHome1'])->name('studenthome1');
+
+// //ข้อมูลเอกสารตอบรับ
+// Route::get("/studenthome1",[HomeController::class,'studentHome1'])->name('studenthome1');
 
 
     //สถานประกอบการ
@@ -150,7 +155,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
     //    Route::get("/studenthome/acceptancedocument",[HomeController::class,'acceptancedocument'])->name('student.acceptancedocument');
 
 
-    Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
+    // Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
     Route::get("/studenthome/edit9register/{id}",[Register2Controller::class,'edit9register'])->name('edit9register');
 Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
     // แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)

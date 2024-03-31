@@ -284,10 +284,11 @@
                     <ul id="progressbar">
                       {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
-                          <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียนนักศึกษา
+                            สหกิจศึกษา</strong></li></a>
+                          {{-- <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a> --}}
                             <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
-                              <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                              {{-- <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a> --}}
                     </ul>
                     <div class="progress">
                         {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -300,12 +301,12 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 3 - 4</h2>
+                                    <h2 class="steps">ขั้นตอน 2 - 2</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
 
-                                <b> ขั้นตอนที่ 5 นิเทศงาน:</b>
+                                <b> ขั้นตอนที่ 2 นิเทศงาน:</b>
                                 <br>ตารางนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษาและยืนยันเวลานัดนิเทศ
                                 <br>
 
@@ -313,7 +314,7 @@
                                       {{-- <br>  <a href="/studenthome/report"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป --}}
 
 
-                                    </div>   <br>   <br>
+                                    </div>
                           </div>
                           {{-- <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
@@ -343,29 +344,7 @@
                             @endif
                                       </div>
                                       </div>
-                            <div class="col-md-12 my-4">
-                                <div class="card shadow">
-                                  <div class="card-body">
 
-
-                                    {{-- <h5 class="card-title">ตารางการนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษา</h5> --}}
-                                    <div class="container">
-                                        <div class="row">
-                                          <div class="col-9">
-                                            <p class="card-text"> <tbody>
-                                            </p>
-                                          </div>
-
-                                        <div class="col-9">
-
-
-
-
-                                          </div>
-                                        </div>
-
-                                    </div>
-                                    <br>
                                     <div class="col-md-12 my-4">
                                         <div class="card shadow">
                                           <div class="card-body">

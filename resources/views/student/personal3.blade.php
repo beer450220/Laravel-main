@@ -347,7 +347,7 @@
                                               {{-- <form method="POST" action="{{ route('addpersonal3') }}" enctype="multipart/form-data">
                                                 @csrf --}}
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <input type="email" id="example-email"value="{{ $users->Student_id }} " disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                      <input type="text" id="example-email"value="{{ $users->student_id }} " disabled="" name="example-email" class="form-control" placeholder="Email">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อสถานประกอบการ</label>

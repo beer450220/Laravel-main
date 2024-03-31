@@ -351,7 +351,7 @@
                                                     <option value="">กรุณาเลือก</option>
                                                     @foreach ($student as $row)
                                                     {{-- <optgroup label="Mountain Time Zone"> --}}
-                                                      <option value="{{$row->id}}">{{$row->student_id}}  ({{$row->fname}} {{$row->surname}})</option>
+                                                      <option value="{{$row->student_id}}">{{$row->student_id}}  ({{$row->fname}} {{$row->surname}})</option>
                                                       {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
                                                     </optgroup>
 

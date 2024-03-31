@@ -256,10 +256,11 @@
                     <ul id="progressbar">
                       {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
-                        <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียนนักศึกษา
+                            สหกิจศึกษา</strong></li></a>
+                        {{-- <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a> --}}
                         <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                          <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                          {{-- <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a> --}}
                     </ul>
                     <div class="progress">
                         {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -272,7 +273,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 1 - 4</h2>
+                                    <h2 class="steps">ขั้นตอน 1 - 2</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -305,20 +306,20 @@
 
                                         <div class="card shadow mb-4">
                                           <div class="card-header">
-                                             @if ($errors->any())
-    <div class="alert alert-danger">
+
+
+   <strong class="card-title">ลงทะเบียน</strong>
+    </div>
+    @if ($errors->any())
+    <div class="alert alert-danger col-3">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-        </ul>@endif
+        </ul></div>@endif
 @if(session("error"))
-<div class="alert alert-danger col-6">{{session('error')}}
+<div class="alert alert-danger col-3">{{session('error')}}</div>
 @endif
-
-   <strong class="card-title">ลงทะเบียน</strong>
-    </div>
-
 
 
                                           <div class="card-body">
@@ -357,13 +358,13 @@
                                                     {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
                                                   </div>
                                                 </div>
-  <div class="form-group mb-3">
+  {{-- <div class="form-group mb-3">
                                                     <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
       <select class="form-control "  name="year"required >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
-    <option value="">กรุณาเลือกปีการศึกษา</option>
+    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2566; // ปีเริ่มต้น
@@ -375,14 +376,14 @@
         <option value="{{ $i }}">{{ $i }}</option>
     @endfor
 @endfor
-</select>    </div>
+</select>    </div> --}}
 
 
                                                       {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
 
 
 
-                                                  <div class="form-group mb-3">
+                                                  {{-- <div class="form-group mb-3">
                                                       <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
                                                       <select class="form-control "  name="term"required>
                                                         <option value="">กรุณาเลือกภาคเรียน</option>
@@ -390,7 +391,7 @@
                                                       <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
                                                         <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
                                                       </select>
-                                                  </div>
+                                                  </div> --}}
 
                                             </div> <!-- /.col -->
                                               {{-- <div class="col-md-6">
@@ -404,7 +405,7 @@
                                                 </div><div class="modal-footer">
                                                     <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
-                                                    <a href="/studenthome" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
+                                                    <a href="/studenthome1" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
                                                   </div></form>
                                                 <div class="form-group mb-3">
 
