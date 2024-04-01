@@ -95,7 +95,7 @@ class Register2Controller extends Controller
                 if($request->hasFile("filess")){
                   $file=$request->file("filess");
                    $imageName=time().'_'.$file->getClientOriginalName();
-                  $file->move(\public_path("/file"),$imageName);
+                  $file->move(\public_path("/ลงทะเบียน"),$imageName);
 
 
                   $post =new registers([
@@ -144,7 +144,7 @@ class Register2Controller extends Controller
               //         $post->save();
 
 
-                return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+                return redirect('/studenthome1')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
           }
     //        else {
     //           return redirect('/studenthome/register')
@@ -191,7 +191,7 @@ public function addregisteruser3(Request $request) {
             if($request->hasFile("filess")){
               $file=$request->file("filess");
                $imageName=time().'_'.$file->getClientOriginalName();
-              $file->move(\public_path("/file"),$imageName);
+              $file->move(\public_path("/ลงทะเบียน"),$imageName);
 
 
               $post =new registers([
@@ -240,7 +240,7 @@ public function addregisteruser3(Request $request) {
           //         $post->save();
 
 
-            return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+            return redirect('/studenthome1')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
       }
       public function addregisteruser4(Request $request) {
         //ตรวจสอบข้อมูล
@@ -279,7 +279,7 @@ public function addregisteruser3(Request $request) {
                 if($request->hasFile("filess")){
                   $file=$request->file("filess");
                    $imageName=time().'_'.$file->getClientOriginalName();
-                  $file->move(\public_path("/file"),$imageName);
+                  $file->move(\public_path("/ลงทะเบียน"),$imageName);
 
 
                   $post =new registers([
@@ -328,7 +328,7 @@ public function addregisteruser3(Request $request) {
               //         $post->save();
 
 
-                return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+                return redirect('/studenthome1')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
           }
           public function addregisteruser5(Request $request) {
             //ตรวจสอบข้อมูล
@@ -368,7 +368,7 @@ public function addregisteruser3(Request $request) {
                     if($request->hasFile("filess")){
                       $file=$request->file("filess");
                        $imageName=time().'_'.$file->getClientOriginalName();
-                      $file->move(\public_path("/file"),$imageName);
+                      $file->move(\public_path("/ลงทะเบียน"),$imageName);
 
 
                       $post =new registers([
@@ -417,7 +417,7 @@ public function addregisteruser3(Request $request) {
                   //         $post->save();
 
 
-                    return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+                    return redirect('/studenthome1')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
               }
               public function addregisteruser6(Request $request) {
                 //ตรวจสอบข้อมูล
@@ -456,7 +456,7 @@ public function addregisteruser3(Request $request) {
                         if($request->hasFile("filess")){
                           $file=$request->file("filess");
                            $imageName=time().'_'.$file->getClientOriginalName();
-                          $file->move(\public_path("/file"),$imageName);
+                          $file->move(\public_path("/ลงทะเบียน"),$imageName);
 
 
                           $post =new registers([
@@ -505,7 +505,7 @@ public function addregisteruser3(Request $request) {
                       //         $post->save();
 
 
-                        return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+                        return redirect('/studenthome1')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
                   }
                   public function addregisteruser7(Request $request) {
                     //ตรวจสอบข้อมูล
@@ -543,7 +543,7 @@ public function addregisteruser3(Request $request) {
                             if($request->hasFile("filess")){
                               $file=$request->file("filess");
                                $imageName=time().'_'.$file->getClientOriginalName();
-                              $file->move(\public_path("/file"),$imageName);
+                              $file->move(\public_path("/ลงทะเบียน"),$imageName);
 
 
                               $post =new registers([
@@ -590,7 +590,7 @@ public function addregisteruser3(Request $request) {
                           //         $post->save();
 
 
-                            return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+                            return redirect('/studenthome1')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
                       }
                       public function addregisteruser8(Request $request) {
                         //ตรวจสอบข้อมูล

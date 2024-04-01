@@ -615,11 +615,11 @@ s
                                                     @endif
                     {{-- class="circle circle-sm bg-warning-light"> --}}
          {{-- {{$row->Status_acceptance}} --}}
-                    <a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
+
                     {{-- @endif --}}
                     @endforeach
                     {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
-                    </span>
+                    </span> <br><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
 
 
                 </div>

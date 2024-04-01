@@ -21,7 +21,7 @@ class informdetails extends Model
         "annotation" ,
         "namefile",
          "Status_informdetails",
-         'term','year'
+        //  'term','year'
     ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');

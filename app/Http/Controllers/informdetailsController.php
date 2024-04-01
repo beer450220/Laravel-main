@@ -39,17 +39,19 @@ class informdetailsController extends Controller
           // 'filess' => 'required|mimes:pdf',
           // 'user_id' => 'required|unique:user_id',
         //   'files' => 'mimes:jpeg,jpg,png',
-
+        'files' => 'mimes:pdf|max:1024',
           'namefile' => 'required',
         ],[
             // 'name.required' => "กรุณา",
             'namefile.required' => "กรุณาชื่อไฟล์",
+            'files.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'files.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
           ]
       );
         if($request->hasFile("files")){
           $file=$request->file("files");
            $imageName=time().'_'.$file->getClientOriginalName();
-          $file->move(\public_path("/fileinformdetails"),$imageName);
+          $file->move(\public_path("/เอกสารปฏิบัติงานนักศึกษา"),$imageName);
   {
 
           $post =new informdetails
@@ -66,8 +68,8 @@ class informdetailsController extends Controller
               "namefile" => $request->namefile,
             //  'establishment' => $request->establishment,
               "files" =>$imageName,
-              "year" => $request->year,
-              "term" => $request->term,
+            //   "year" => $request->year,
+            //   "term" => $request->term,
 
           ]);// dd($request);dd($request->Status);
 
@@ -95,17 +97,19 @@ class informdetailsController extends Controller
       // 'filess' => 'required|mimes:pdf',
       // 'user_id' => 'required|unique:user_id',
     //   'files' => 'mimes:jpeg,jpg,png',
-
+    'files' => 'mimes:pdf|max:1024',
       'namefile' => 'required',
     ],[
         // 'name.required' => "กรุณา",
         'namefile.required' => "กรุณาชื่อไฟล์",
+        'files.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'files.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
       ]
   );
     if($request->hasFile("files")){
       $file=$request->file("files");
        $imageName=time().'_'.$file->getClientOriginalName();
-      $file->move(\public_path("/fileinformdetails"),$imageName);
+      $file->move(\public_path("/เอกสารปฏิบัติงานนักศึกษา"),$imageName);
 {
 
       $post =new informdetails
@@ -122,8 +126,8 @@ class informdetailsController extends Controller
           "namefile" => $request->namefile,
         //  'establishment' => $request->establishment,
           "files" =>$imageName,
-          "year" => $request->year,
-          "term" => $request->term,
+        //   "year" => $request->year,
+        //   "term" => $request->term,
 
       ]);// dd($request);dd($request->Status);
 

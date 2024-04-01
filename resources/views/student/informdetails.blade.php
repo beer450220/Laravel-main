@@ -490,7 +490,7 @@
                     <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                 @endif
             @endforeach</H2>
-
+            <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular  ">ดูไฟล์เอกสาร</a>
             {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 
             </span>
@@ -540,7 +540,7 @@
                                                         <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                                     @endif
                                                 @endforeach</H2>
-
+                                                <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular  ">ดูไฟล์เอกสาร</a>
                                                 {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 
                                                 </span>
@@ -713,6 +713,7 @@
           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
       @endif
   @endforeach </h2>
+  <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular  ">ดูไฟล์เอกสาร</a>
   {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
     </div>
     <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
@@ -753,6 +754,7 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach </h2>
+                                      <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular  ">ดูไฟล์เอกสาร</a>
                                       {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
@@ -912,6 +914,7 @@
          <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
      @endif
  @endforeach</h2>
+ <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular  ">ดูไฟล์เอกสาร</a>
  {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
    </div>
    <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
@@ -952,6 +955,7 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach</h2>
+                                      <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular  ">ดูไฟล์เอกสาร</a>
                                       {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                                         </div>
                                         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
@@ -1007,19 +1011,19 @@
 
 
 
-{{----}} <main role="main" class="">
+ {{-- <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-12"> --}}
           {{-- @if(session("success"))
           <div class="alert alert-success col-4">{{session('success')}}
 @endif
  @if(session("success1"))
           <div class="alert alert-danger col-4">{{session('success1')}}
 @endif--}}
-</div>
-</div>
-<div class="col-md-12 my-4">
+{{-- </div>
+</div> --}}
+{{-- <div class="col-md-12 my-4">
     <div class="card shadow  ">
         <div class="card-body">
           <h5 class="card-title p-3 mb-2 bg-dark text-white">รายการแจ้งรายละเอียดการปฎิบัติงาน</h5>
@@ -1028,7 +1032,7 @@
                 <div class="col-9">
                   <p class="card-text"> <tbody>
                   </p>
-                </div>
+                </div> --}}
 
         {{-- @foreach ($informdetails as $row)    @endforeach --}}
         {{-- <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
@@ -1040,15 +1044,15 @@
                 <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มข้อมูล</a>
 
               </div> --}}
-            </div>
+            {{-- </div>
 
         </div>
 
-<br>
+<br> --}}
 
 
 
-<div class="container ">
+{{-- <div class="container ">
     <div class="row ">
 
      @foreach ($informdetails as $row)
@@ -1056,9 +1060,9 @@
 
          <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
             <div class="card mb-4 shadow">
-            <div class="img_thumbnail productlist"><br>
+            <div class="img_thumbnail productlist"><br> --}}
                  {{-- <img src="{{ asset('/image') }}/" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
-                 <h4 class="card-title text-center">ชื่อเอกสาร </h4>  <p class="text-center">{{ $row->namefile }}</p>
+                 {{-- <h4 class="card-title text-center">ชื่อเอกสาร </h4>  <p class="text-center">{{ $row->namefile }}</p>
                  <hr>
                  <div class="caption card-body">
                     <p> สถานะ::   @if ($row->Status_informdetails === 'รอตรวจสอบ')
@@ -1069,7 +1073,7 @@
                         <span class="badge rounded-pill bg-danger ">{{ $row->Status_informdetails}}</span>
                     @endif
                 </p>
-                หมายเหตุ ::   {{ $row->annotation}}
+                หมายเหตุ ::   {{ $row->annotation}} --}}
                      {{-- <h4 class="card-title">:{{ $row->namefile }}</h4> --}}
 
                      {{-- <p  class="card-text"><strong>หลักสูตร --}}
@@ -1079,7 +1083,7 @@
                          @endif
                      @endforeach --}}
                     {{-- </strong> </p> --}}
-                    <div class="card-footer">
+                    {{-- <div class="card-footer">
                     <div class="d-grid gap-2 d-md-block">
                         <p class="">
                             @if ($row->Status_informdetails === 'รอตรวจสอบ')
@@ -1088,7 +1092,7 @@
 
                             @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
                             <a href="/studenthome/editinformdetails0/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "> </a>
-                            @endif
+                            @endif --}}
 
 
                             {{-- @foreach ($registers as $row)
@@ -1105,24 +1109,24 @@
                         @endforeach --}}
 
 
-                            <a href="../fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a>
-                      </div>
+                            {{-- <a href="../fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a>
+                      </div> --}}
                      {{-- <p class="btn-holder text-center"><a href="/establishment/edit/" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
                         </p><br> --}}
-                 </div>    </div>
+                 {{-- </div>    </div>
              </div>
          </div>   </div>
      @endforeach
     </div>
-</div>
-<br>
+</div> --}}
+
 <main role="main" class="text-center">
     <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-12 my-4 " >
    </div>
 
-  </div></div></div></div>  <br>
+  </div></div></div></div>
 <div class="d-grid gap-2 text-center" >
 
     <h4></h4><a href="/studenthome"   class="btn btn-outline-warning " type="button">>ย้อนกลับ<</a>

@@ -365,13 +365,13 @@
                                                       </div>
                                                   </div>
                                                 </div>
-                                                <div class="form-group mb-3">
+                                                {{-- <div class="form-group mb-3">
                                                     <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year"required >
+      <select class="form-control "  name="year"required > --}}
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
-    <option value="">กรุณาเลือกปีการศึกษา</option>
+    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2566; // ปีเริ่มต้น
@@ -383,14 +383,14 @@
         <option value="{{ $i }}"@if($establishments->year==$i ) selected @endif>{{ $i }}</option>
     @endfor
 @endfor
-</select>    </div>
+</select>    </div> --}}
 
 
                                                       {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
 
 
 
-                                                  <div class="form-group mb-3">
+                                                  {{-- <div class="form-group mb-3">
                                                       <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
                                                       <select class="form-control "  name="term"required>
                                                         <option value="">กรุณาเลือกภาคเรียน</option>
@@ -399,7 +399,7 @@
                                                         <option value="ภาคเรียนที่2"@if($establishments->term=="ภาคเรียนที่2") selected @endif>ภาคเรียนที่:2 </option>
                                                       </select>
                                                   </div>
-                                            </div>
+                                            </div> --}}
                                             </div> <!-- /.col -->
                                               {{-- <div class="col-md-6">
                                                 <div class="form-group mb-3">

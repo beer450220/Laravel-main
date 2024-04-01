@@ -427,8 +427,7 @@
                               </div>@endforeach
 
 
-                                <br>
-                                <br>
+
 
 
 
@@ -452,7 +451,7 @@
                                       </div></div></div></div>  <br>
                                     <div class="d-grid gap-2 text-center" >
 
-                                        <h4>ขั้นตอนต่อไป</h4><a href="/studenthome/report"   class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+                                        <h4></h4><a href="/studenthome"   class="btn btn-outline-warning " type="button">>ย้อนกลับ<</a>
                                         </div>
                                   </div>
                                 <br>
