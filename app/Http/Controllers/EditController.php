@@ -1561,9 +1561,11 @@ public function editcategory($category_id) {
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        'filess' => 'mimes:pdf|max:1024',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
     // $post=Event::findOrFail($id);
@@ -1574,7 +1576,7 @@ public function editcategory($category_id) {
 //    $post=supervision::findOrFail($supervision_id);
    $post=supervision::findOrFail($supervision_id);
    //    $post->user_id = Auth::user()->id;
-      $post->Status_supervision ="รอตรวจสอบ";
+    //   $post->Status_supervision ="รอตรวจสอบ";
       if($request->hasFile("filess")){
           if (File::exists("ไฟล์เอกสารประเมิน/".$post->filess)) {
               File::delete("ไฟล์เอกสารประเมิน/".$post->filess);
@@ -1589,9 +1591,9 @@ public function editcategory($category_id) {
        ([
            "namefile" =>$request->namefile,
            "user_id" =>$request->user_id,
-          "year" =>$request->year,
+        //   "year" =>$request->year,
            //"establishment"=>$request->establishment,
-            "term"=>$request->term,
+            // "term"=>$request->term,
            "score"=>$request->score,
             "filess"=>$post->filess,
            // "presentation"=>$post->presentation,
@@ -1603,7 +1605,7 @@ public function editcategory($category_id) {
           // "projectsummary" =>$images1,
           "annotation" =>$request->annotation,
           //"establishment"=>$request->establishment,
-           "Status_supervision"=>$request->Status_supervision,
+        //    "Status_supervision"=>$request->Status_supervision,
        ]);
   // $post->user_id = Auth::user()->id;
    //$post->Status ="รอตรวจสอบ";
@@ -1611,7 +1613,7 @@ public function editcategory($category_id) {
 
      // dd($request);
 
-    return redirect('/officer/Evaluate')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/officer/Evaluate')->with('error','success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
 
@@ -1839,10 +1841,10 @@ $post->update
    }
     $post->update
     ([
-       "year" =>$request->year,
+    //    "year" =>$request->year,
        "user_id" =>$request->user_id,
         //"establishment"=>$request->establishment,
-         "term"=>$request->term,
+        //  "term"=>$request->term,
         "annotation"=>$request->annotation,
          "filess"=>$post->filess,
         // "presentation"=>$post->presentation,
@@ -2101,7 +2103,7 @@ $post->update
     return redirect('/teacher/supervision')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
- public function editschedule1($schedule_id) {
+ public function editschedule1($id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
@@ -2109,7 +2111,7 @@ $post->update
       //->select('users.*','establishment.*')
       //->get();
 
-     $schedules=schedule::find($schedule_id);
+     $schedules=schedule::find($id);
    // $acceptances=DB::table('acceptance')->first();
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
@@ -2123,7 +2125,7 @@ $post->update
  }
 
 
- public function   updateschedule1(Request $request,$schedule_id) {
+ public function   updateschedule1(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
     //dd($request);
@@ -2133,9 +2135,12 @@ $post->update
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+
+ 'filess' => 'mimes:pdf|max:1024',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
     // $post=Event::findOrFail($id);
@@ -2143,27 +2148,28 @@ $post->update
     // $post->Status ="รอตรวจสอบ";
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
-   $post=schedule::findOrFail($schedule_id);
+   $post=schedule::findOrFail($id);
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รอตรวจสอบ";
 
      // dd($post);
      if($request->hasFile("filess")){
-        if (File::exists("กำหนดการปฏิทิน/".$post->filess)) {
-            File::delete("กำหนดการปฏิทิน/".$post->filess);
+        if (File::exists("ไฟล์เอกสารดาวน์โหลด/".$post->filess)) {
+            File::delete("ไฟล์เอกสารดาวน์โหลด/".$post->filess);
         }
         $file=$request->file("filess");
          $post->filess=time()."_".$file->getClientOriginalName();
-         $file->move(\public_path("/กำหนดการปฏิทิน"),$post->filess);
+         $file->move(\public_path("/ไฟล์เอกสารดาวน์โหลด"),$post->filess);
          $request['filess']=$post->filess;
       // dd($post);
     }
      $post->update
      ([
-        "year" =>$request->year,
- "title" =>$request->title,
-          "term"=>$request->term,
-
+//         "year" =>$request->year,
+//  "title" =>$request->title,
+//           "term"=>$request->term,
+          "namefile" =>$request->namefile,
+          "status"=>$request->status,
           "filess"=>$post->filess,
 
 
@@ -2175,13 +2181,13 @@ $post->update
     return redirect('/officer/schedule')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
- public function delschedule1($schedule_id) {
+ public function delschedule1($id) {
     //ตรวจสอบข้อมูล
 
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
 
-    $posts=schedule::findOrFail($schedule_id);
+    $posts=schedule::findOrFail($id);
 
 
     //  dd($posts);

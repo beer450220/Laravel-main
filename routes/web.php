@@ -420,9 +420,9 @@ Route::get('/officer/search7',[HomeController::class,'searchschedule'])->name('s
     Route::get("/officer/schedule",[HomeController::class,'schedule']);
     Route::get("/officer/addschedule",[addController::class,'addschedule'])->name('addschedule');
     Route::post("/officer/addschedule1",[addController::class,'addschedule1'])->name('addschedule1');
-    Route::get("/officer/editschedule1/{schedule_id}",[EditController::class,'editschedule1'])->name('editschedule1');
-    Route::post("/officer/updateschedule1/{schedule_id}",[EditController::class,'updateschedule1'])->name('updateschedule1');
-    Route::get('/officer/deleschedule1/{schedule_id}', [EditController::class,'delschedule1'])->name('delschedule1');
+    Route::get("/officer/editschedule1/{id}",[EditController::class,'editschedule1'])->name('editschedule1');
+    Route::post("/officer/updateschedule1/{id}",[EditController::class,'updateschedule1'])->name('updateschedule1');
+    Route::get('/officer/deleschedule1/{id}', [EditController::class,'delschedule1'])->name('delschedule1');
 
     // Route::get('/officer/viewschedule/{schedule_id}', [HomeController::class,'viewschedule'])->name('viewschedule');
 

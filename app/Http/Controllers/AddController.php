@@ -892,11 +892,14 @@ public function addestimate3(Request $request) {
      $request->validate([
       //  'name' => 'required|unique:name',
       //  'test' => 'required|unique:test',
+      'filess' => 'mimes:pdf|max:1024',
   ]
 ,[
 
   // 'name.required'=>"กรุณากรอกชื่อ",
   // 'test.required'=>"กรุณาเทส",
+  'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
 ]
 
 );
@@ -911,9 +914,9 @@ if($request->hasFile("filess"))
   $post =new supervision
   ([
       "user_id" => $request->user_id,
-      "term" => $request->term,
+    //   "term" => $request->term,
       'namefile' => $request->namefile,
-      "year" => $request->year,
+    //   "year" => $request->year,
       'score' => $request->score,
       "filess" =>$imageName,
 
@@ -1180,9 +1183,9 @@ if($request->hasFile("filess"))
     $post =new acceptance
     ([
         "user_id" => $request->user_id,
-        "term" => $request->term,
+        // "term" => $request->term,
         // 'establishment_id' => $request->establishment_id,
-        "year" => $request->year,
+        // "year" => $request->year,
         'annotation' => $request->annotation,
         "filess" =>$imageName,
         'Status_acceptance'=>$request->Status_acceptance,
@@ -1419,11 +1422,14 @@ public function addsupervision()
        $request->validate([
         //  'name' => 'required|unique:name',
         //  'test' => 'required|unique:test',
+        'filess' => 'mimes:pdf|max:1024',
     ]
   ,[
 
     // 'name.required'=>"กรุณากรอกชื่อ",
     // 'test.required'=>"กรุณาเทส",
+    'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+    'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
   ]
 
 );
@@ -1431,16 +1437,16 @@ if($request->hasFile("filess"))
       {
         $file=$request->file("filess");
          $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/กำหนดการปฏิทิน"),$imageName);
+        $file->move(\public_path("/ไฟล์เอกสารดาวน์โหลด"),$imageName);
     // $post=Event::findOrFail($id);
 
     $post =new  schedule
     ([
-        "title" => $request->title,
-
-        "term" => $request->term,
-        "year" => $request->year,
-
+        // "title" => $request->title,
+        "namefile" => $request->namefile,
+        // "term" => $request->term,
+        // "year" => $request->year,
+"status" => $request->status,
         "filess" =>$imageName,
 
 

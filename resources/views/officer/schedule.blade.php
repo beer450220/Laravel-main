@@ -10,7 +10,7 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">กำหนดการปฏิทินสหกิจ</h5>
+        <h5 class="card-title">ดาวน์โหลดเอกสาร</h5>
         <form action="{{ route('searchschedule') }}" method="GET" class="form-inline">
 
             <div class="form-row">
@@ -60,12 +60,12 @@
             <tr>
               <th>ลำดับ</th>
 
-              <th>หัวเรื่อง</th>
+              <th>ชื่อเอกสาร</th>
                <th>ไฟล์เอกสาร</th>
-              <th>ปีการศึกษา</th>
-              <th>ภาคเรียน</th>
+              {{-- <th>ปีการศึกษา</th>
+              <th>ภาคเรียน</th> --}}
 
-
+              <th>สถานะ</th>
 
               <th>แก้ไข</th>
               <th>ลบ</th>
@@ -76,12 +76,20 @@
             <tr>
               <td class="col-1 text center">{{$schedules->firstItem()+$loop->index}}</td>
 
-              <td>{{$row->title}}</td>
-              <td><a href="../กำหนดการปฏิทิน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-              <td>{{$row->year}}</td>
-              <td>{{$row->term}}</td>
-              <td><a href="/officer/editschedule1/{{$row->schedule_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              <td><a href="/officer/deleschedule1/{{$row->schedule_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              <td>{{$row->namefile}}</td>
+              <td><a href="../ไฟล์เอกสารดาวน์โหลด/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td>
+                @if ($row->status === '1')
+                    <span class="badge badge-pill badge-warning">สำหรับนักศึกษา</span>
+                @elseif ($row->status === '2')
+                    <span class="badge badge-pill badge-success">สำหรับอาจารย์</span>
+                @elseif ($row->status === '3')
+                    <span class="badge badge-pill badge-danger">สำหรับสถานประกอบการ</span>
+                @endif
+            </td>
+              {{-- <td>{{$row->term}}</td> --}}
+              <td><a href="/officer/editschedule1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
+              <td><a href="/officer/deleschedule1/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
             </tr>
 
             @endforeach

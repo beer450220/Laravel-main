@@ -134,18 +134,18 @@
           </div>
            <div class="row">
             <div class="form-group col-md-4">
-              <label for="inputAddress">หัวเรื่อง</label>
-       <input type="text" class="form-control" @error('title') is-invalid @enderror name="title" value="{{ old('title') }}"  autofocus placeholder=""required>
+              <label for="inputAddress">ชื่อเอกสาร</label>
+       <input type="text" class="form-control" @error('namefile') is-invalid @enderror name="namefile" value="{{ old('namefile') }}"  autofocus placeholder=""required>
 
 
-              @error('name')
+              @error('namefile')
               <span class="invalid-feedback" >
                   {{ $message }}
               </span>
           @enderror
             </div>
             <div class="form-group col-md-4">
-                <label for="inputAddress">กำหนดการปฏิทินสหกิจ</label>
+                <label for="inputAddress">ไฟล์เอกสาร</label>
          <input type="file" class="form-control" @error('files') is-invalid @enderror name="filess" value=""  autofocus placeholder=""required>
 
 
@@ -166,21 +166,22 @@
 
           <div class="row">
       <div class="col-md-3">
-        <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-control "  name="term"required>
-          <option value="">กรุณาเลือกภาคเรียน</option>
+        <label for="inputAddress"class="col-form-label ">สถานนะ</label>
+        <select class="form-control "  name="status"required>
+          <option value="">กรุณาเลือก</option>
 
-        <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
-          <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
+        <option value="1">สำหรับนักศึกษา </option>
+          <option value="2">สำหรับอาจารย์</option>
+          <option value="3">สำหรับสถานประกอบการ</option>
         </select>
     </div>
-    <div class="col-md-3">
+    {{-- <div class="col-md-3">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year"required >
+      <select class="form-control "  name="year"required > --}}
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
-    <option value="">กรุณาเลือกปีการศึกษา</option>
+    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2566; // ปีเริ่มต้น
@@ -197,14 +198,14 @@
 
 
       </select>
-  </div>
+  </div> --}}
 
 
 
 
- </div>
+ {{-- </div> --}}
 
-</div>
+{{-- </div> --}}
       </div>
       <br>
       <br>

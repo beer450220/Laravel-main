@@ -60,7 +60,7 @@
            <i class="fa fa-user" aria-hidden="true"></i>
 
 
-                <span>กำหนดการปฏิทินสหกิจ</span></a>
+                <span>ดาวน์โหลดเอกสาร</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
@@ -75,7 +75,7 @@
                     {{-- <a class="collapse-item "href="/officer/schedule">ตารางกำหนดการปฏิทินสหกิจ</a> --}}
                     {{-- <a class="collapse-item "href="/officer/calendar6">กำหนดการปฏิทินสหกิจ</a> --}}
                     <a class="collapse-item "href="/officer/establishmentuser1">สถานประกอบการ</a>
-                    <a class="collapse-item "href="/officer/category">หนวดหมู่</a>
+                    {{-- <a class="collapse-item "href="/officer/category">หนวดหมู่</a> --}}
                     <a class="collapse-item "href="/officer/major">หลักสูตรสาขา</a>
                 </div>
             </div>
@@ -95,6 +95,7 @@
                     {{-- <a class="collapse-item "href="/officer/calendar6">กำหนดการปฏิทินสหกิจ</a> --}}
                     <a class="collapse-item "href="/officer/register1">ลงทะเบียนสหกิจ</a>
                     <a class="collapse-item "href="/officer/acceptancedocument1">เอกสารตอบรับ/นักศึกษา</a>
+                    <a class="collapse-item "href="/officer/informdetails2">เอกสารแจ้งรายละเอียด</a>
                 </div>
             </div>
         </li>
@@ -109,16 +110,16 @@
                 <span>เอกสารตอบรับ/นักศึกษา</span></a>
         </li> --}}
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link"href="/officer/informdetails2">
 
            <i class="fa fa-user" aria-hidden="true"></i>
 
 
                 <span>เอกสารแจ้งรายละเอียด</span></a>
-        </li>
+        </li> --}}
 
-
+{{--
         <li class="nav-item">
             <a class="nav-link"href="/officer/es1">
 
@@ -126,7 +127,7 @@
 
 
                 <span>เอกสารขออนุญาตนิเทศงาน</span></a>
-        </li>
+        </li> --}}
 
         {{-- <li class="nav-item">
             <a class="nav-link"href="/officer/record2">
@@ -146,7 +147,7 @@
         </li>
 
 
-
+{{--
         <li class="nav-item">
             <a class="nav-link"href="/officer/experiencereport2">
 
@@ -154,7 +155,7 @@
 
 
                 <span>เอกสารฝึกประสบการณ์</span></a>
-        </li>
+        </li> --}}
 {{--
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"

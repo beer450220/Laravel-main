@@ -115,7 +115,7 @@
 
       <div class="modal-body">
 
-        <form method="POST" action="{{url('/officer/updateschedule1/'.$schedules->schedule_id)}}"enctype="multipart/form-data">
+        <form method="POST" action="{{url('/officer/updateschedule1/'.$schedules->id)}}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -139,22 +139,22 @@
           </div>
            <div class="row">
             <div class="form-group col-md-4">
-              <label for="inputAddress">หัวเรื่อง</label>
-       <input type="text" class="form-control" @error('title') is-invalid @enderror name="title" value="{{$schedules->title}} "  autofocus placeholder="title"required>
+              <label for="inputAddress">ชื่อเอกสาร</label>
+       <input type="text" class="form-control" @error('namefile') is-invalid @enderror name="namefile" value="{{$schedules->namefile}} "  autofocus placeholder=""required>
 
 
-              @error('name')
+              @error('namefile')
               <span class="invalid-feedback" >
                   {{ $message }}
               </span>
           @enderror
             </div>
-          <div class="form-group col-md-4">
-            <label for="inputAddress">กำหนดการปฏิทินสหกิจ</label>
-            <input type="file" class="form-control" @error('start') is-invalid @enderror name="filess" value="{{$schedules->start}}"  autofocus placeholder=""required>
+          <div class="form-group col-md-3">
+            <label for="inputAddress">ไฟล์เอกสาร</label>
+            <input type="file" class="form-control" @error('filess') is-invalid @enderror name="filess" value="{{$schedules->filess}}"  autofocus placeholder="">
 
 
-            @error('name')
+            @error('filess')
             <span class="invalid-feedback" >
                 {{ $message }}
             </span>
@@ -170,26 +170,31 @@
 
       </div>
       <div class="row">
-      <div class="col-md-2">
-        <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-select "  name="term"required>
-          <option value="">กรุณาเลือกภาคเรียน</option>
+      <div class="col-md-3">
+        <label for="inputAddress"class="col-form-label ">สถานนะ</label>
+        <select class="form-select "  name="status"required>
+          <option value="">กรุณาเลือก</option>
+
+        <option value="1"@if($schedules->status=="1") selected @endif required>สำหรับนักศึกษา </option>
+          <option value="2"@if($schedules->status=="2") selected @endif required>สำหรับอาจารย์</option>
+          <option value="3"@if($schedules->status=="3") selected @endif required>สำหรับสถานประกอบการ</option>
+        </select>
 
 
-           <option value="ภาคเรียนที่1"@if($schedules->term=="ภาคเรียนที่1") selected @endif required>ภาคเรียนที่1</option>
-          <option value="ภาคเรียนที่2"@if($schedules->term=="ภาคเรียนที่2") selected @endif required>ภาคเรียนที่2</option>
+
+
 
 
 
         </select>
     </div>
-    <div class="col-md-2">
+    {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-select "  name="year" required>
+      <select class="form-select "  name="year" required> --}}
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
-    <option value="">กรุณาเลือกปีการศึกษา</option>
+    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2566; // ปีเริ่มต้น
@@ -202,12 +207,12 @@
     @endfor
 @endfor
 
-</select>
+</select> --}}
 
 
 
-      </select>
-  </div>
+      {{-- </select> --}}
+  {{-- </div> --}}
 
 
 

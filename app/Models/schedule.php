@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class schedule extends Model
 {
     use HasFactory;
-    protected $table ='schedule';
-    protected $primaryKey = 'schedule_id';
-    protected $fillable = ['title','filess','term','year'];
+    // protected $table ='schedule';
+    // protected $primaryKey = 'schedule_id';
+    // protected $fillable = ['title','filess','term','year'];
+    protected $table ='download';
+    protected $primaryKey = 'id';
+    protected $fillable = ['namefile','filess','status'];
 }

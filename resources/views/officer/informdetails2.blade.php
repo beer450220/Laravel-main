@@ -62,12 +62,12 @@
                 <th>ชื่อนักศึกษา</th>
                 {{-- <th>ชื่อสถานประกอบการ</th> --}}
                 <th>ชื่อไฟล์</th>
-                <th>ปีการศึกษา</th>
-                <th>ภาคเรียน</th>
-                <th>สถานะ</th>
+                {{-- <th>ปีการศึกษา</th>
+                <th>ภาคเรียน</th> --}}
+                {{-- <th>สถานะ</th> --}}
                 <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
-                <th>ยืนยันข้อมูล</th>
+                {{-- <th>ยืนยันข้อมูล</th> --}}
 
             </tr>
           </thead>
@@ -75,21 +75,21 @@
             @foreach ($informdetails as $row)
 
 
-              <tr class="{{
+              {{-- <tr class="{{
                 $row->Status_informdetails === 'รอตรวจสอบเอกสาร' ? 'table-warning' : (
                     $row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว' ? 'table-success' : (
                         $row->Status_informdetails === 'เอกสารไม่ผ่าน' ? 'table-danger' : ''
                     )
                 )
-            }}">
+            }}"> --}}
                 <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
                 <td>{{ $row->fname }}  {{ $row->surname}}</td>
                 {{-- <td></td> --}}
                 <td>{{ $row->namefile }}</td>
-                <td>{{ $row->year }}</td>
-                <td>{{ $row->term }}</td>
+                {{-- <td>{{ $row->year }}</td>
+                <td>{{ $row->term }}</td> --}}
 
-                <td>
+                {{-- <td>
                     @if ($row->Status_informdetails === 'รอตรวจสอบ')
                         <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
                     @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
@@ -97,22 +97,22 @@
                     @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
                         <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
                     @endif
-                </td>
+                </td> --}}
                 <td>{{ $row->annotation }}</td>
                 <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-              <td>
+              {{-- <td>
                 @if ($row->Status_informdetails=== 'รอตรวจสอบ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/officer/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
-                <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
+                <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td> --}}
                 {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
-            </td>
+            {{-- </td>
             </div>
                 @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
 
             @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
 
-            @endif
+            @endif --}}
 
 
             </tr>

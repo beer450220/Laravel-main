@@ -385,6 +385,8 @@
 
                                       <p class=" text mb-0 ">วันเวลาการนิเทศ: {{ $row->start}}</p>
                                       <p class=""><span class=" text-muted">อาจารย์นิเทศ: {{ $row->teacher_name }}</span></p>
+                                      <p class=""><span class=" text-muted">ไฟล์เอกสาร:  <a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
+
                                       <hr>
                                       <p class=" text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
                                         <span class="badge badge-pill badge-warning">{{ $row->Status_events }}</span>
@@ -448,7 +450,7 @@
                                         <div class="col-md-12 my-4 " >
                                        </div>
 
-                                      </div></div></div></div>  <br>
+                                      </div></div></div></div>
                                     <div class="d-grid gap-2 text-center" >
 
                                         <h4></h4><a href="/studenthome"   class="btn btn-outline-warning " type="button">>ย้อนกลับ<</a>

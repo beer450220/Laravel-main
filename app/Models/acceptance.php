@@ -12,11 +12,11 @@ class acceptance extends Model
     protected $table="acceptance";
     // protected $primarykey = "";
     protected $fillable=[
-        'term',
+        // 'term',
         'Status_acceptance',
         // 'establishment_id',
         // 'Status',
-        'year',
+        // 'year',
         // 'score',
         'filess',
         'annotation',

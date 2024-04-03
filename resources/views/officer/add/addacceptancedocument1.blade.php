@@ -200,7 +200,7 @@
           </select>
 
       </div>
-      <div class="col-md-2">
+      {{-- <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
         <select class="form-control "  name="term" required>
           <option value="">กรุณาเลือกภาคเรียน</option>
@@ -212,14 +212,14 @@
 
 
         </select>
-    </div>
-    <div class="col-md-2">
+    </div> --}}
+    {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" required>
+      <select class="form-control "  name="year" required> --}}
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
-    <option value="">กรุณาเลือกปีการศึกษา</option>
+    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2566; // ปีเริ่มต้น
@@ -235,8 +235,8 @@
 
 
 
-      </select>
-  </div>
+      </select> --}}
+  {{-- </div> --}}
   <div class="col-md-2">
     <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
      <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="annotation" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name"required>

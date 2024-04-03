@@ -96,12 +96,12 @@
       </li>
     </ul> --}}
 
-    <ul class="navbar-nav flex-fill w-100 mb-2">
+    {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item ">
           <a href="/teacher/request"  class=" nav-link">
             <i class="fe fe-box fe-16"></i>
             <span class="ml-3 item-text">ยื่นประสงค์ฝึกประสบการณ์</span>
-          </a>
+          </a> --}}
 
 
         </li>
@@ -161,11 +161,11 @@
             </a>
           </li> --}}
       </li>
-       <li class="nav-item">
+       {{-- <li class="nav-item">
         <a class="nav-link pl-3" href="/teacher/es1"><span class="ml-1 item-text">เอกสารขออนุญาตนิเทศงาน
             </span>
         </a>
-      </li>
+      </li> --}}
       {{-- <li class="nav-item">
         <a class="nav-link pl-3" href="/teacher/estimate1"><span class="ml-1 item-text">   เอกสารรายงานผลประเมิน
              </span>
@@ -195,7 +195,7 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav flex-fill w-100 mb-2">
+      {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item ">
           <a href="/teacher/reportresults1"  class=" nav-link">
             <i class="fe fe-box fe-16"></i>
@@ -204,7 +204,7 @@
 
 
         </li>
-      </ul>
+      </ul> --}}
     {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
         <a href="#ui-elementsss3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">

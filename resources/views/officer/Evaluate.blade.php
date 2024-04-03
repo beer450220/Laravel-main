@@ -10,7 +10,7 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">เอกสารประเมินผล</h5>
+        <h5 class="card-title">เอกสารผลประเมินสหกิจศึกษา</h5>
         <form action="{{ route('searchEvaluate') }}" method="GET" class="form-inline">
 
             <div class="form-row">
@@ -65,8 +65,8 @@
               <th>ลำดับ</th>
               <th>ชื่อนักศึกษา</th>
               <th>ชื่อไฟล์เอกสาร</th>
-              <th>ภาคเรียน</th>
-                <th>ปีการศึกษา</th>
+              {{-- <th>ภาคเรียน</th>
+                <th>ปีการศึกษา</th> --}}
               <th>คะแนน</th>
               <th>หมายเหตุ</th>
                  <th>ไฟล์เอกสาร</th>
@@ -82,8 +82,8 @@
               <td>
                 {{$row->fname}}  {{$row->surname}}</td>
                 <td>{{$row->namefile}}</td>
-              <td>{{$row->term}}</td>
-              <td>{{$row->year}}</td>
+              {{-- <td>{{$row->term}}</td>
+              <td>{{$row->year}}</td> --}}
               <td>{{$row->score}}</td>
 
               <td>{{$row->annotation}}</td>

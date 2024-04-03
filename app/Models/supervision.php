@@ -12,11 +12,11 @@ class supervision extends Model
     protected $table="supervision";
     // protected $primarykey = "";
     protected $fillable=[
-        'term',
+        // 'term',
         'user_id',
         'namefile',
-        'Status_supervision',
-        'year',
+        // 'Status_supervision',
+        // 'year',
         'score',
         'filess',
         'annotation',

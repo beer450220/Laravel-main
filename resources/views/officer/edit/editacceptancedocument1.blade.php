@@ -71,7 +71,7 @@
                       </div>
 
 
-                      <div class="col-md-2">
+                      {{-- <div class="col-md-2">
                         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
                         <select class="form-select"  name="term" required>
                           <option value="">กรุณาเลือกภาคเรียน</option>
@@ -84,14 +84,14 @@
 
                         </select>
 
-                    </div>
-                    <div class="col-md-2">
+                    </div> --}}
+                    {{-- <div class="col-md-2">
                       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-                      <select class="form-select "  name="year" required>
+                      <select class="form-select "  name="year" required> --}}
                         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
                     @endforeach --}}
-                    <option value="">กรุณาเลือกปีการศึกษา</option>
+                    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
                     @php
                     $currentYear = date('Y') + 543; // ปีปัจจุบัน
                     $startYear = 2500; // ปีเริ่มต้น
@@ -109,7 +109,7 @@
 
 
                       </select>
-                  </div>
+                  </div> --}}
                          <div class="row">
           <div class=" col-md-4">
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารตอบรับ (สก.02)</label>

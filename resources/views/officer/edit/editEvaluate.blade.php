@@ -37,13 +37,14 @@
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
+                    <div class="alert alert-danger col-md-4">
 
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
 
-                <ul>
-                    @foreach ($errors->all() as $error)
-
-                    @endforeach
-                </ul>
             </div>
         @endif
 
@@ -80,7 +81,7 @@
                   @foreach ($users as $row)
                   {{-- <optgroup label="Mountain Time Zone"> --}}
                     {{-- <option value="{{$row->id}}">{{$row->fname}}</option> --}}
-                    <option value="{{$row->id}}"{{$row->id==$supervisions->user_id ?'selected':''}}>{{$row->fname}}</option>
+                    <option value="{{$row->id}}"{{$row->id==$supervisions->user_id ?'selected':''}}>{{$row->fname}}{{$row->surname}}</option>
                   </optgroup>
 
                   @endforeach
@@ -107,7 +108,7 @@
                     @enderror
 
                       </div>
-                      <div class="col-md-4">
+                      {{-- <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
                         <select class="form-select " aria-label=".form-select-sm example" name="Status_supervision"required>
@@ -123,7 +124,7 @@
                         </span>
                     @enderror
 
-                      </div>
+                      </div> --}}
 
 
 
@@ -141,7 +142,7 @@
                             <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"required>
 
                         </div>
-                        <div class="col-md-2">
+                        {{-- <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
                             <select class="form-select "  name="term" required>
                               <option value="">กรุณาเลือกภาคเรียน</option>
@@ -153,14 +154,14 @@
 
 
                             </select>
-                        </div>
-                        <div class="col-md-2">
+                        </div> --}}
+                        {{-- <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-                            <select class="form-control "  name="year" required>
+                            <select class="form-control "  name="year" required> --}}
                               {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
                               <option value="{{ $year }}">{{ $year }}</option>
                           @endforeach --}}
-                          <option value="">กรุณาเลือกปีการศึกษา</option>
+                          {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
                           @php
                           $currentYear = date('Y') + 543; // ปีปัจจุบัน
                           $startYear = 2500; // ปีเริ่มต้น
@@ -172,9 +173,10 @@
                               <option value="{{ $i }}"@if($supervisions->year==$i) selected @endif>{{ $i }}</option>
                           @endfor
                       @endfor
-                      </select>
+                      </select> --}}
 
-                      </div>  </div>
+                      {{-- </div> --}}
+                     </div>
               </div>
                 <div class="modal-footer">
 
