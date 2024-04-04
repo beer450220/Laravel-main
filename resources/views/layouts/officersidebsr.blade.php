@@ -75,6 +75,7 @@
                     {{-- <a class="collapse-item "href="/officer/schedule">ตารางกำหนดการปฏิทินสหกิจ</a> --}}
                     {{-- <a class="collapse-item "href="/officer/calendar6">กำหนดการปฏิทินสหกิจ</a> --}}
                     <a class="collapse-item "href="/officer/establishmentuser1">สถานประกอบการ</a>
+                    <a class="collapse-item "href="/officer/student">ข้อมูลนักศึกษา</a>
                     {{-- <a class="collapse-item "href="/officer/category">หนวดหมู่</a> --}}
                     <a class="collapse-item "href="/officer/major">หลักสูตรสาขา</a>
                 </div>

@@ -106,8 +106,15 @@
                     <span aria-hidden="true">&times;</span>
                   </button> --}}
                 </div>
-
-
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div class="modal-body">
 
 
@@ -158,18 +165,8 @@
                           <input type="text" class="form-control"name="em_contactposition" placeholder="" aria-label="First name"value="{{$establishments->em_contactposition}}">
                         </div>
                         <div class="col-md-4">
-                            <label for="recipient-name" class="col-form-label">หลักสูตร</label>
-                            <select class="form-select" id="validationSelect1" name="major_id" >
-                                <option value="">กรุณาเลือกหลักสูตร</option>
-                                @foreach ($major as $row)
-                                {{-- <optgroup label="Mountain Time Zone"> --}}
-                                  <option value="{{$row->major_id}}"{{$row->major_id==$establishments->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
-                                  {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                </optgroup>
-
-                                @endforeach
-                              </select>
-
+                            <label for="recipient-name" class="col-form-label">เว็บไซต์</label>
+                            <input type="text" class="form-control" name="website" value=" {{$establishments->website}}" required>
                           </div>
 
 
@@ -187,20 +184,20 @@
 
                       <div class="row">
 
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">หมวดหมู่</label>
                             <select class="form-select" id="validationSelect1" name="category_id" >
                                 <option value="">กรุณาเลือกหมวดหมู่</option>
-                                @foreach ($major1 as $row)
+                                @foreach ($major1 as $row) --}}
                                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                                  <option value="{{$row->category_id}}"{{$row->category_id==$establishments->category_id ?'selected':''}}>{{$row->name}}  </option>
+                                  {{-- <option value="{{$row->category_id}}"{{$row->category_id==$establishments->category_id ?'selected':''}}>{{$row->name}}  </option> --}}
                                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                </optgroup>
+                                {{-- </optgroup>
 
                                 @endforeach
                               </select>
 
-                          </div>
+                          </div> --}}
                     <div class="row">
                         <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">รายละเอียดงาน</label>

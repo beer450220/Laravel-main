@@ -308,6 +308,10 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
     Route::get('/officer/view/{id}', [HomeController::class,'viewestablishment'])->name('viewestablishment');
 
+//ข้อมูลนักศึกษา
+    Route::get('/officer/search9',[HomeController::class,'searchstudent1'])->name('searchstudent1');
+    Route::get("/officer/student",[HomeController::class,'student1'])->name('student1');
+    Route::get('/officer/viewstudent/{id}', [HomeController::class,'viewstudent'])->name('viewstudent');
 
     //หลักสูตรสาขา
     Route::get("/officer/major",[HomeController::class,'major'])->name('major');

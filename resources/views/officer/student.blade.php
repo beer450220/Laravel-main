@@ -26,8 +26,8 @@
                   <div class="card-body">
                     {{-- <div class="toolbar row mb-3"> --}}
                       <div class="col">
-                           <h2 class="h4 mb-1">สถานประกอบการ</h2><br>
-                        <form action="{{ route('searchestablishment') }}" method="GET" class="form-inline">
+                           <h2 class="h4 mb-1">ข้อมูนักศึกษา</h2><br>
+                        <form action="{{ route('searchstudent1') }}" method="GET" class="form-inline">
 
                           <div class="form-row">
                             <div class="form-group col-auto">
@@ -52,7 +52,7 @@
                           </div>
 
                           <div class="">
-                            <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+                            {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
 
@@ -87,7 +87,7 @@
 
                           <th >ลำดับ</th>
                           <th >ขื่อนักศึกษา</th>
-                          <th >ชื่อสถานประกอบการ</th>
+                          {{-- <th >ชื่อสถานประกอบการ</th> --}}
                           {{-- <th colspan="1">ที่อยู่</th>
                           <th colspan="1">เบอร์โทร</th> --}}
                           {{-- <th >รูปหน่วยงาน</th> --}}
@@ -104,12 +104,12 @@
                           <td >{{$establishments->firstItem()+$loop->index}}</td>
                           <td>{{$row->fname}}  {{$row->surname}}</td>
 
-                          <td>{{$row->em_name}}</td>
+                          {{-- <td>{{$row->student_id}}</td> --}}
                          {{--  <td>{{$row->address}}</td>
                           <td>{{$row->phone}}</td>--}}
                           {{-- <td><img src="/image/{{ $row->images }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
 
-                          <td class=""><a href="/officer/view/{{$row->id}}" class="btn mb btn-outline-primary fa-solid fa-eye  "></a></td>
+                          <td class=""><a href="/officer/viewstudent/{{$row->id}}" class="btn mb btn-outline-primary fa-solid fa-eye  "></a></td>
                           {{-- <td ><a href="/officer/establishmentuser1/{{$row->id}}" class="btn mb btn-outline-secondary fa-solid fa-pen-to-square  "></a></td> --}}
                           {{-- <td ><a href="/officer/delete/{{$row->id}}" class="btn mb btn-outline-danger fa-solid fa-trash-can  "onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
                           {{-- {{url('/officer/editestablishmentuser1/'.$row->id)}} --}}

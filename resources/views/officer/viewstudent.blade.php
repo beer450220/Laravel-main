@@ -114,25 +114,25 @@
                   <form method="POST" action="">
                     @csrf
 
-                    <img src="/image/{{ $establishments->images }}" class="img-responsive rounded mx-auto d-block" style="max-height: 300px; max-width: 200px;" alt="" srcset="">
+                    {{-- <img src="/image/{{ $establishments->images }}" class="img-responsive rounded mx-auto d-block" style="max-height: 300px; max-width: 200px;" alt="" srcset=""> --}}
                     <br>
 
 
                     <div class="row">
 
                       <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">ชื่อสถานประกอบการ</label><br>
+                        <label for="recipient-name" class="col-form-label">รหัสนักศึกษา</label><br>
 
-                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->em_name}}"disabled required>
+                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->student_id}}"disabled required>
                     </div>
                       <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">ที่อยู่</label><br>
+                        <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label><br>
 
-                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->em_address}}"disabled required>
+                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->fname}}{{$establishments->surname}}"disabled required>
                       </div>
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">เบอร์โทร</label><br>
-                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->em_telephone}}"disabled required>
+                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->telephonenumber}}"disabled required>
 
                       </div>
                     </div>
@@ -140,46 +140,57 @@
                     <div class="row">
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">อีเมล์</label><br>
-                        <input type="text" class="form-control" name="annotation" value="{{$establishments->em_email}}"disabled required>
+                        <input type="text" class="form-control" name="annotation" value="{{$establishments->email}}"disabled required>
 
                       </div>
                       <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">ชื่อผู้ติดต่อ</label><br>
-                        <input type="text" class="form-control" name="annotation" value="{{$establishments->em_contact_name}}"disabled required>
+                        <label for="recipient-name" class="col-form-label">เกรดเฉลี่ย</label><br>
+                        <input type="text" class="form-control" name="annotation" value="{{$establishments->GPA}}"disabled required>
 
                       </div>
 
                       <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">อีเมล์ผู้ติดต่อ</label><br>
-                        <input type="text" class="form-control" name="annotation" value="{{$establishments->em_Contact_email}}"disabled required>
+                        <label for="recipient-name" class="col-form-label">ที่อยู่</label><br>
+                        <input type="text" class="form-control" name="annotation" value="{{$establishments->address}}"disabled required>
 
                       </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-4">
-                          <label for="recipient-name" class="col-form-label">ตำแหน่งผู้ติดต่อ</label><br>
-                          <input type="text" class="form-control" name="annotation" value="{{$establishments->em_contactposition}}"disabled required>
+                          <label for="recipient-name" class="col-form-label">หลักสูตร</label><br>
+                          {{-- <input type="text" class="form-control" name="annotation" value="{{}}"disabled required> --}}
+                          <select class="form-control " id="validationSelect1" name="major_id"disabled >
+                            <option value="">กรุณาเลือกหลักสูตร</option>
+                            <option value="-"@if($establishments->major_id=="-") selected @endif required>-</option>
+                            @foreach ($users as $row)
+                            {{-- <optgroup label="Mountain Time Zone"> --}}
+                              <option value="{{$row->major_id}}"{{$row->major_id==$establishments->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
+                              {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                            </optgroup>
 
+                            @endforeach
+                          </select>
                         </div>
-                        <div class="col-md-4">
-                            <label for="recipient-name" class="col-form-label">เว็บไซต์</label><br>
-                            <input type="text" class="form-control" name="annotation" value=" {{$establishments->website}}"disabled required>
+                        <div class="col-md-2">
+                            <label for="recipient-name" class="col-form-label">ปีการศึกษา</label><br>
+                            <input type="text" class="form-control" name="annotation" value=" {{$establishments->year}}"disabled required>
 
                           </div>
                         <div class="row">
-                        <div class="col-md-4">
-                          <label for="recipient-name" class="col-form-label">รายละเอียดงาน</label><br>
+                        <div class="col-md-2">
+                          <label for="recipient-name" class="col-form-label">ภาคเรียนที่</label><br>
 
                           {{-- <textarea  rows="4" cols="50" name="em_job" disabled readonly >
                         </textarea> --}}
-{{$establishments->em_job}}
+                         <input type="text" class="form-control" name="annotation" value=" {{$establishments->term}}"disabled required>
+
                         </div>
                       </div>
                 </div>
                 <div class="modal-footer">
 
-                  <a href="/officer/establishmentuser1" class="btn mb-2 btn-primary">ย้อนกลับ</a>
+                  <a href="/officer/student" class="btn mb-2 btn-primary">ย้อนกลับ</a>
                 </div></form>
               </div>
             </div>

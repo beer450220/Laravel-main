@@ -40,8 +40,8 @@ class EditController extends Controller
         // $establishments=DB::table('establishment')->find($id);
         //  dd($establishments);
         $major=DB::table('major')->paginate(5);
-        $major1=DB::table('category')->paginate(5);
-         return view('officer.editestablishmentuser1',compact('establishments','major','major1'));
+        // $major1=DB::table('category')->paginate(5);
+         return view('officer.editestablishmentuser1',compact('establishments','major'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
@@ -94,7 +94,14 @@ class EditController extends Controller
         $request->validate([
             // 'images' => ['required','mimes:jpg,jpeg,png'],
             // 'name' => ['required','min:5'],
-        ]);
+            'images' => 'mimes:jpg,jpeg,png|max:1024',
+        ]
+    ,[
+
+        'images.mimes' => 'ไฟล์ต้องเป็นjpg,jpeg,pngเท่านั้น',
+        'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+    ]
+    );
 
 
 
@@ -124,11 +131,11 @@ class EditController extends Controller
            "em_Contact_email" => $request->em_Contact_email,
            'em_contactposition' => $request->em_contactposition,
            "em_job" => $request->em_job,
-           "status" =>'0',
-           "user_id" =>'0',
+        //    "status" =>'0',
+        //    "user_id" =>'0',
 
- $post->major_id = $request->major_id,
- $post->category_id = $request->category_id,
+//  $post->major_id = $request->major_id,
+//  $post->category_id = $request->category_id,
            "images"=>$post->images,
         ]);
 
@@ -136,7 +143,7 @@ class EditController extends Controller
      //   $post->major_id = $request->major_id;
 
     //   DB::table('establishment')($data);
-        return redirect('/officer/establishmentuser1')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+        return redirect('/officer/establishmentuser1')->with('error','success', 'แก้ไขข้อมูลสำเร็จ.');
         //  return view('officer.editestablishmentuser1',compact('establishments'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
