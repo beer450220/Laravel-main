@@ -1047,9 +1047,9 @@ $users=DB::table('users')
             ->where(function ($query) use ($keyword) {
                 $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
                       ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
-                      ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
-                      ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
+                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
             })
             ->select('informdetails.*', 'users.fname', 'users.surname')
             ->paginate(10);
@@ -1651,7 +1651,15 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         $major=DB::table('major')->paginate(5);
         return view('officer.establishmentuser1',compact('establishments','major'),["msg"=>"I am Editor role"]);
     }
-
+    public function establishmentuser7()
+    {
+        $establishments=DB::table('establishment')
+        ->join('users','establishment.user_id','users.id')
+        ->select('establishment.*','users.fname','users.surname')
+        ->paginate(5);
+        $major=DB::table('major')->paginate(5);
+        return view('teacher.establishmentuser1',compact('establishments','major'),["msg"=>"I am Editor role"]);
+    }
 
     public function student1()
     {
@@ -1663,7 +1671,15 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         return view('officer.student',compact('establishments','major'),["msg"=>"I am Editor role"]);
     }
 
-
+    public function student2()
+    {
+        $establishments=DB::table('student')
+        ->join('users','student.user_id','users.id')
+        ->select('student.*','users.fname','users.surname')
+        ->paginate(5);
+        $major=DB::table('major')->paginate(5);
+        return view('teacher.student',compact('establishments','major'),["msg"=>"I am Editor role"]);
+    }
 
 
 
@@ -1684,6 +1700,25 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
       ->get();
          return view('officer.viewestablishmentuser1',compact('establishments','users','establishments1'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
+     public function viewestablishment1($id) {
+        //ตรวจสอบข้อมูล
+
+        // $establishments=establishment::find($id);
+        $establishments=DB::table('establishment')
+
+        ->find($id);
+        //  dd($establishments);
+        $establishments1=DB::table('establishment')
+        ->join('users','establishment.user_id','users.id')
+        ->select('establishment.*','users.fname','users.surname')
+        ->paginate(5);
+        $users=DB::table('users')
+      ->where('role',"student")
+
+      ->get();
+         return view('teacher.viewestablishmentuser1',compact('establishments','users','establishments1'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
@@ -1710,6 +1745,32 @@ return view('teacher.reportresults1',  ['report' => $report,]);
          return view('officer.viewstudent',compact('establishments','users','establishments1'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
+
+     public function viewstudent1($id) {
+        //ตรวจสอบข้อมูล
+
+        // $establishments=establishment::find($id);
+        $establishments=DB::table('student')
+
+        ->find($id);
+        //  dd($establishments);
+        $establishments1=DB::table('student')
+        ->join('users','student.user_id','users.id')
+        ->select('student.*','users.fname','users.surname')
+        ->paginate(5);
+    //     $users=DB::table('users')
+    //   ->where('role',"student")
+
+    //   ->get();
+      $users=DB::table('major')
+    //   ->where('role',"student")
+
+      ->get();
+         return view('teacher.viewstudent',compact('establishments','users','establishments1'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
+
+
     // public function editestablishmentuser1()
     // {
     //     // $establishments=DB::table('establishment')->paginate(5);
@@ -1731,7 +1792,17 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 //dd($registers);
         return view('officer.register1',compact('registers'));
     }
+    public function register3()
+    {
 
+        $registers=DB::table('registers')
+
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname','users.surname')
+        ->paginate(10);
+//dd($registers);
+        return view('teacher.register1',compact('registers'));
+    }
 //หลักสูตรสาขา
     public function major()
     {
@@ -1770,6 +1841,17 @@ public function category()
         ->paginate(5);
         return view('officer.acceptancedocument1',compact('acceptances'));
     }
+
+    public function acceptancedocument4()
+    {
+        $acceptances=DB::table('acceptance')
+        ->join('users','acceptance.user_id','users.id')
+       // ->join('establishment','acceptance.establishment_id','establishment.id')
+        ->select('acceptance.*','users.fname','users.surname')
+        ->paginate(5);
+        return view('teacher.acceptancedocument1',compact('acceptances'));
+    }
+
     public function informdetails2()
     {
         $informdetails=DB::table('informdetails')

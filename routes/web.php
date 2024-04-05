@@ -567,7 +567,50 @@ Route::get("/teacher/edites1/{id}",[EditController::class,'edites1'])->name('edi
 Route::post("teacher/updatees1/{id}",[EditController::class,'updatees1'])->name('updatees1');
 Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
 
+//ลงทะเบียน
+//ค้นหา
+Route::get('/officer/search1',[HomeController::class,'searchregister1'])->name('searchregister1');
+Route::get("/teacher/register1",[HomeController::class,'register3'])->name('register3');
 
+Route::get("/officer/editregister1/{id}",[EditController::class,'editregister1'])->name('editregister1');
+Route::post("/officer/updateregister1/{id}",[EditController::class,'updateregister1'])->name('updateregister1');
+
+Route::get("/officer/confirm2/{id}",[EditController::class,'confirm2'])->name('confirm2');
+
+
+  //ตอบรับนักศึกษา
+    //ค้นหา
+    Route::get('/officer/search3',[HomeController::class,'searchacceptancedocument'])->name('searchacceptancedocument');
+    Route::get("/teacher/acceptancedocument1",[HomeController::class,'acceptancedocument4']);
+    // Route::get("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument1'])->name('addacceptancedocument1');
+    // Route::post("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument'])->name('addacceptancedocument');
+    // Route::get("/officer/editacceptancedocument1/{acceptance_id}",[EditController::class,'editacceptance'])->name('editacceptance');
+    // Route::post("/officer/updateacceptance/{acceptance_id}",[EditController::class,'updateacceptance'])->name('updateacceptance');
+    // Route::get('/officer/deletacceptance/{acceptance_id}', [EditController::class,'delacceptance'])->name('delacceptance');
+
+
+   //สถานประกอบการ
+//ค้นหา
+Route::get('/officer/search',[HomeController::class,'searchestablishment'])->name('searchestablishment');
+Route::get("/teacher/establishmentuser1",[HomeController::class,'establishmentuser7'])->name('establishmentuser7');
+//เพิ่ม
+// Route::get("/officer/addestablishmentuser1",[addController::class,'addestablishmentuser1'])->name('addestablishmentuser1');
+// Route::post('/officer/establishmentuser1', [AddController::class,'addestablishment'])->name('addestablishment');
+
+// Route::get('/officer/establishmentuser1/{id}', [EditController::class,'editestablishment'])->name('editestablishment');
+// Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
+
+
+
+// Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
+// Route::get('/officer/delete/{id}', [EditController::class,'delestablishment'])->name('delestablishment');
+// Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
+Route::get('/teacher/view/{id}', [HomeController::class,'viewestablishment1'])->name('viewestablishment1');
+
+//ข้อมูลนักศึกษา
+Route::get('/officer/search9',[HomeController::class,'searchstudent1'])->name('searchstudent1');
+Route::get("/teacher/student",[HomeController::class,'student2'])->name('student2');
+Route::get('/teacher/viewstudent/{id}', [HomeController::class,'viewstudent1'])->name('viewstudent1');
 
 });
 
