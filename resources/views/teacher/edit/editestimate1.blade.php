@@ -150,7 +150,7 @@
           <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
 
       </div>
-      <div class="col-md-2">
+      {{-- <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
         <select class="form-control "  name="term" required>
           <option value="">กรุณาเลือกภาคเรียน</option>
@@ -162,14 +162,14 @@
 
 
         </select>
-    </div>
-    <div class="col-md-2">
+    </div> --}}
+    {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" required>
+      <select class="form-control "  name="year" required> --}}
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
-    <option value="">กรุณาเลือกปีการศึกษา</option>
+    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2500; // ปีเริ่มต้น
@@ -186,13 +186,13 @@
 
 
       </select>
-  </div>
+  </div> --}}
       </div>
       <br>
           <div class="modal-footer">
             <a href="/teacher/estimate1" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันข้อมูล !!');">ตกลง</button>
           </div>
         </form>
       </div> <!-- /. card-body -->

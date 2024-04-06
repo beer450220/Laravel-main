@@ -45,10 +45,11 @@
           <thead class="thead-dark">
             <tr>
               <th>ลำดับ</th>
-                <th>ชื่อเอกสาร</th>
               <th>ชื่อนักศึกษา</th>
-              <th>ปีการศึกษา</th>
-              <th>ภาคเรียนที่</th>
+                <th>ชื่อเอกสาร</th>
+
+              {{-- <th>ปีการศึกษา</th>
+              <th>ภาคเรียนที่</th> --}}
               <th>คะแนน</th>
 
               <th>ไฟล์เอกสาร</th>
@@ -60,11 +61,12 @@
             @foreach ($supervision as $row)
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
-              <td>{{$row->namefile}}</td>
+
 
                 <td>{{$row->fname}} {{$row->surname}}</td>
-                <td>{{$row->year}}</td>
-                <td>{{$row->term}}</td>
+                <td>{{$row->namefile}}</td>
+                {{-- <td>{{$row->year}}</td>
+                <td>{{$row->term}}</td> --}}
               <td>{{$row->score}}</td>
               <td><a href="/ไฟล์เอกสารประเมิน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td><a href="/teacher/editestimate1/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>

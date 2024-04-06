@@ -555,7 +555,7 @@ Route::get('/teacher/search1',[HomeController::class,'searchsupervision0'])->nam
     Route::get("/teacher/editsupervision02/{id}",[EditController::class,'editsupervision02'])->name('editsupervision02');
     Route::post("/teacher/updatesupervision02/{id}",[EditController::class,'updatesupervision02'])->name('updatesupervision02');
     Route::get('/teacher/deletsupervision/{id}', [EditController::class,'deletsupervision'])->name('deletsupervision');
-
+    Route::get('/teacher/view1/{id}', [HomeController::class,'viewevents'])->name('viewevents');
 
 //เอกสารขออนุญาตนิเทศงาน(สก10)
 //ค้นหา

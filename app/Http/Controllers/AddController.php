@@ -845,9 +845,11 @@ public function addestimate1()
        $request->validate([
         //  'name' => 'required|unique:name',
         //  'test' => 'required|unique:test',
+        'filess' => 'mimes:pdf|max:1024',
     ]
   ,[
-
+    'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+    'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
     // 'name.required'=>"กรุณากรอกชื่อ",
     // 'test.required'=>"กรุณาเทส",
   ]
@@ -864,9 +866,9 @@ if($request->hasFile("filess"))
     $post =new supervision
     ([
         "user_id" => $request->user_id,
-        "term" => $request->term,
+        // "term" => $request->term,
         'namefile' => $request->namefile,
-        "year" => $request->year,
+        // "year" => $request->year,
         'score' => $request->score,
         "filess" =>$imageName,
 
@@ -874,7 +876,7 @@ if($request->hasFile("filess"))
     ]);
 
     $post->annotation ="-";
-    $post->Status_supervision ="รอตรวจสอบ";
+    // $post->Status_supervision ="รอตรวจสอบ";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;
@@ -1241,13 +1243,13 @@ public function addsupervision()
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       ->get();
-    //   $establishment=DB::table('establishment')
-    //   //->where('role',"student")
-    //   ->get();
+      $establishment=DB::table('establishment')
+      //->where('role',"student")
+      ->get();
      // dd($users);
      // ->paginate(5);
      $major=DB::table('users')->paginate(5);
-        return view('teacher.add.addsupervision',compact('users','users2'),compact('major'));
+        return view('teacher.add.addsupervision',compact('users','users2','establishment'),compact('major'));
     }
 
     public function addsupervision1(Request $request) {
@@ -1293,34 +1295,43 @@ public function addsupervision()
 
     public function addsupervision02(Request $request) {
         //ตรวจสอบข้อมูล
-         //dd($request);
+        //  dd($request);
 
          $request->validate([
           //  'name' => 'required|unique:name',
           //  'test' => 'required|unique:test',
+          'filess' => 'mimes:pdf|max:1024',
       ]
     ,[
 
       // 'name.required'=>"กรุณากรอกชื่อ",
       // 'test.required'=>"กรุณาเทส",
+      'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
     ]
 
   );
+  if($request->hasFile("filess"))
+    {
+      $file=$request->file("filess");
+       $imageName=time().'_'.$file->getClientOriginalName();
+      $file->move(\public_path("/ไฟล์เอกสารขออนุญาตนิเทศงาน"),$imageName);
       $post =new Event
       ([
           // "title" => $request->title,
           "start" => $request->start,
+          "namefiles" => $request->namefiles,
           // 'end' => $request->end,
-          "term" => $request->term,
-          "year" => $request->year,
+        //   "term" => $request->term,
+        //   "year" => $request->year,
           "appointment_time" => $request->appointment_time,
-          "executive_name" => $request->executive_name,
-          "contact_person" => $request->contact_person,
-          "establishment_name" => $request->establishment_name,
+        //   "executive_name" => $request->executive_name,
+        //   "contact_person" => $request->contact_person,
+          "em_id" => implode(",",$request->em_id),
         "Status_events" => $request->Status_events,
            "student_name" => implode(",",$request->student_name),
            //$request->student_name,
-
+           "filess" =>$imageName,
            "teacher_name" => $request->teacher_name,
 
       ]);
@@ -1341,7 +1352,7 @@ public function addsupervision()
          return redirect('/teacher/supervision')->with('success', 'สมัครสำเร็จ.');
 
       }
-
+    }
 
     public function addSupervise()
     {

@@ -56,12 +56,13 @@
               <th>#</th>
               <th>วันเวลาการนิเทศ</th>
               <th>ชื่อนักศึกษา</th>
-              <th>ชื่อสถานประกอบการ</th>
-              <th>ปีการศึกษา</th>
-              <th>ภาคเรียนที่</th>
+              {{-- <th>ชื่อสถานประกอบการ</th> --}}
+              {{-- <th>ปีการศึกษา</th>
+              <th>ภาคเรียนที่</th> --}}
               {{-- <th>ดูข้อมูล</th> --}}
               <th>สถานะเวลานัดนิเทศ</th>
-              <th>ขอเปลี่ยนเวลานัดนิเทศ</th>
+              {{-- <th>ขอเปลี่ยนเวลานัดนิเทศ</th> --}}
+              <th >ดูข้อมูล</th>
               <th>แก้ไขข้อมูล</th>
               <th>ลบ</th>
             </tr>
@@ -76,9 +77,9 @@
 
 
             </td>
-            <td class="">{{$row->establishment_name}}</td>
+            {{-- <td class="">{{$row->establishment_name}}</td>
             <td>{{$row->year}}</td>
-                <td>{{$row->term}}</td>
+                <td>{{$row->term}}</td> --}}
               {{-- <td>{{$row->fname}}</td> --}}
               {{-- <td> @foreach ($major as $row1)
 
@@ -101,7 +102,8 @@
 
 
                </td>
-              <td class="">{{$row->appointment_time}}</td>
+              {{-- <td class="">{{$row->appointment_time}}</td> --}}
+              <td class=""><a href="/teacher/view1/{{$row->id}}" class="btn mb btn-outline-primary fa-solid fa-eye  "></a></td>
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}
               <td><a href="/teacher/editsupervision02/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
               <td><a href="/teacher/deletsupervision/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>

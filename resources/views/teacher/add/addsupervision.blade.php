@@ -169,18 +169,19 @@
 
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อสถานประกอบการ</label>
-            <input class="form-control" id="example-date" type="text" name="establishment_name"  autofocus placeholder=""required>
+            {{-- <input class="form-control" id="example-date" type="text" name="establishment_name"  autofocus placeholder=""required> --}}
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" >
-              <option value="">Select state</option>
+            {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" > --}}
+                <select class="form-control select2" data-placeholder="เลือกสถานประกอบการ"  multiple name="em_id[]"required >
+                <option value="">Select state</option>
               @foreach ($establishment as $row)
 
-                <option value="{{$row->em_name}}">{{$row->em_name}}</option>
+                <option value="{{$row->id}}">{{$row->em_name}}</option>
 
               </optgroup>
 
               @endforeach
-            </select> --}}
+            </select>
 
             @error('test')
             <span class="invalid-feedback" >
@@ -312,8 +313,9 @@ $( '#multiple-select-field1' ).select2( {
 
       </div>
       <div class="col-md-2">
-        <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-control "  name="term"required>
+        <label for="inputAddress"class="col-form-label ">ไฟล์เอกสาร</label>
+        <input class="form-control" id="example-date" type="file" name="filess"  autofocus placeholder=""required>
+        {{-- <select class="form-control "  name="term"required>
           <option value="">กรุณาเลือกภาคเรียน</option>
 
         <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
@@ -322,15 +324,25 @@ $( '#multiple-select-field1' ).select2( {
 
 
 
-        </select>
+        </select> --}}
     </div>
     <div class="col-md-2">
-      <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year"required >
+      <label for="inputAddress"class="col-form-label ">ชื่อไฟล์เอกสาร</label>
+      <select class="form-control select" id="validationSelect2" name="namefiles" required>
+        <option value="">กรุณาเลือก</option>
+        {{-- @foreach ($users as $row) --}}
+        {{-- <optgroup label="Mountain Time Zone"> --}}
+          <option value="สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา">สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา</option>
+
+        </optgroup>
+
+
+      </select>
+      {{-- <select class="form-control "  name="year"required > --}}
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
-    <option value="">กรุณาเลือกปีการศึกษา</option>
+    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2500; // ปีเริ่มต้น
@@ -357,12 +369,12 @@ $( '#multiple-select-field1' ).select2( {
 
 </div>
       </div>
-      <div class="row-2">
+      {{-- <div class="row-2">
       <div class="col-md-3">
-        <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label>
+        <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label> --}}
 
         {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
-        <textarea rows="4" cols="50" name="executive_name" required >
+        {{-- <textarea rows="4" cols="50" name="executive_name" required >
         </textarea>
 
         @error('test')
@@ -370,12 +382,12 @@ $( '#multiple-select-field1' ).select2( {
             {{ $message }}
         </span>
     @enderror
-      </div>
-      <div class="col-md-3">
+      </div> --}}
+      {{-- <div class="col-md-3"> --}}
         {{-- <label for="inputAddress" >ชื่อผู้ติดต่อ</label> --}}
-        <label for="inputAddress"class="col-form-label ">ชื่อผู้ติดต่อ</label>
+        {{-- <label for="inputAddress"class="col-form-label ">ชื่อผู้ติดต่อ</label> --}}
         {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
-        <textarea rows="4" cols="50" name="contact_person"required  >
+        {{-- <textarea rows="4" cols="50" name="contact_person"required  >
         </textarea>
 
         @error('test')
@@ -383,7 +395,7 @@ $( '#multiple-select-field1' ).select2( {
             {{ $message }}
         </span>
     @enderror
-      </div> </div>
+      </div> </div> --}}
 
 
 

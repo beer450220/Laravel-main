@@ -1052,9 +1052,11 @@ $post->update
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        'filess' => 'mimes:pdf|max:1024',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
     // $post=Event::findOrFail($id);
@@ -1064,7 +1066,7 @@ $post->update
    //dd($request->Status);
    $post=supervision::findOrFail($supervision_id);
 //    $post->user_id = Auth::user()->id;
-   $post->Status_supervision ="รอตรวจสอบ";
+//    $post->Status_supervision ="รอตรวจสอบ";
    if($request->hasFile("filess")){
        if (File::exists("ไฟล์เอกสารประเมิน/".$post->filess)) {
            File::delete("ไฟล์เอกสารประเมิน/".$post->filess);
@@ -1079,9 +1081,9 @@ $post->update
     ([
         "namefile" =>$request->namefile,
         "user_id" =>$request->user_id,
-       "year" =>$request->year,
+    //    "year" =>$request->year,
         //"establishment"=>$request->establishment,
-         "term"=>$request->term,
+        //  "term"=>$request->term,
         "score"=>$request->score,
          "filess"=>$post->filess,
         // "presentation"=>$post->presentation,
