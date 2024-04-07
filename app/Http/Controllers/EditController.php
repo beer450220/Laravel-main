@@ -2032,46 +2032,11 @@ $post->update
 
         ]
     );
-    // $post=Event::findOrFail($id);
-    // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
-   //dd($request->Status);
-   $post=Event::findOrFail($id);
-  // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
-
-     // dd($post);
-
-    $post->update
-    ([
-       "term" =>$request->term,
-       "title" =>$request->title,
-         "start"=>$request->start,
-        "end"=>$request->end,
-        "year"=>$request->year,
-
-    ]);
-
-
-    return redirect('/officer/supervision')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
- }
-
- public function   updatesupervision02(Request $request,$id) {
-    //ตรวจสอบข้อมูล
-
-    //dd($request);
-
-    $request->validate([
-        // 'images' => ['required','mimes:jpg,jpeg,png'],
-        // 'name' => ['required','min:5'],
-        // 'filess' => 'required|mimes:pdf',
-        // 'establishment' => 'required',
-    ],[
-            //'establishment.required' => "กรุณา",
-
-        ]
-    );
+    if($request->hasFile("filess"))
+    {
+      $file=$request->file("filess");
+       $imageName=time().'_'.$file->getClientOriginalName();
+      $file->move(\public_path("/ไฟล์เอกสารขออนุญาตนิเทศงาน"),$imageName);
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
     // $post->Status ="รอตรวจสอบ";
@@ -2086,32 +2051,93 @@ $post->update
     $post->update
     ([
     //    "term" =>$request->term,
+    //    "title" =>$request->title,
+         "start"=>$request->start,
+        "end"=>$request->end,
+        "year"=>$request->year,
+
+    ]);
+
+
+    return redirect('/officer/supervision')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
+ }
+ public function   updatesupervision02(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+    //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+        'filess' => 'mimes:pdf|max:1024',
+    ],[
+            //'establishment.required' => "กรุณา",
+            'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+        ]
+    );
+    // $post=Event::findOrFail($id);
+    // $post->user_id = Auth::user()->id;
+    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รอตรวจสอบ";
+   //dd($request->Status);
+ $post=Event::findOrFail($id);
+   if($request->hasFile("filess")){
+    // if (File::exists(public_path("file/".$post->filess))) {
+    //     File::delete(public_path("file/".$post->filess));
+    // }
+    if (File::exists("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess)) {
+        File::delete("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess);
+    }
+    $file=$request->file("filess");
+    $post->filess=time()."_".$file->getClientOriginalName();
+    $file->move(\public_path("/ไฟล์เอกสารขออนุญาตนิเทศงาน"),$post->filess);
+    $request['filess']=$post->filess;
+    // $file = $request->file("filess");
+    // $post->filess = time() . "_" . $file->getClientOriginalName();
+    // $file->move(public_path("/file"), $post->filess);
+}
+
+
+
+  // $post->user_id = Auth::user()->id;
+  // $post->Status ="รอตรวจสอบ";
+
+     // dd($post);
+
+    $post->update
+    ([
+    //    "term" =>$request->term,
     //    "establishment_name" =>$request->establishment_name,
     //      "start"=>$request->start,
     //     // "end"=>$request->end,
     //     "year"=>$request->year,
     //     "student_name" => implode(",",$request->student_name),
 
-        "start" => $request->start,
-          // 'end' => $request->end,
-          "term" => $request->term,
-          "year" => $request->year,
-          "appointment_time" => $request->appointment_time,
-          "executive_name" => $request->executive_name,
-          "contact_person" => $request->contact_person,
-          "establishment_name" => $request->establishment_name,
-        "Status_events" => $request->Status_events,
-
-           "student_name" => implode(",",$request->student_name),
-           //$request->student_name,
-           "teacher_name" => implode(",",$request->teacher_name),
+    "start" => $request->start,
+    "namefiles" => $request->namefiles,
+    // 'end' => $request->end,
+  //   "term" => $request->term,
+  //   "year" => $request->year,
+    "appointment_time" => $request->appointment_time,
+  //   "executive_name" => $request->executive_name,
+  //   "contact_person" => $request->contact_person,
+    "em_id" => $request->em_id,
+  "Status_events" => $request->Status_events,
+     "student_name" => implode(",",$request->student_name),
+     //$request->student_name,
+   "filess"=>$post->filess,
+     "teacher_name" => implode(",",$request->teacher_name),
         //    "teacher_name" => $request->teacher_name,
     ]);
 
 
-    return redirect('/teacher/supervision')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
- }
+    return redirect('/teacher/supervision')->with('error','success', 'ยืนยันข้อมูลสำเร็จ.');
 
+ }
  public function editschedule1($id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')
