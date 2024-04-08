@@ -11,7 +11,7 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">ลงทะเบียน</h5>
-        <form action="{{ route('searchregister1') }}" method="GET" class="form-inline">
+        <form action="{{ route('searchregister3') }}" method="GET" class="form-inline">
 
             <div class="form-row">
               <div class="form-group col-auto">

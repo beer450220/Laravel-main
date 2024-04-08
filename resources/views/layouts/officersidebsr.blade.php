@@ -66,7 +66,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
                 aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fa fa-file"></i>
-                <span>ข้อมูลสถานประกอบการ</span>
+                <span>ข้อมูลนักศึกษา</span>
             </a>
             <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -74,7 +74,7 @@
 
                     {{-- <a class="collapse-item "href="/officer/schedule">ตารางกำหนดการปฏิทินสหกิจ</a> --}}
                     {{-- <a class="collapse-item "href="/officer/calendar6">กำหนดการปฏิทินสหกิจ</a> --}}
-                    <a class="collapse-item "href="/officer/establishmentuser1">สถานประกอบการ</a>
+                    <a class="collapse-item "href="/officer/establishmentuser1">ข้อมูลสถานประกอบการ</a>
                     <a class="collapse-item "href="/officer/student">ข้อมูลนักศึกษา</a>
                     {{-- <a class="collapse-item "href="/officer/category">หนวดหมู่</a> --}}
                     <a class="collapse-item "href="/officer/major">หลักสูตรสาขา</a>

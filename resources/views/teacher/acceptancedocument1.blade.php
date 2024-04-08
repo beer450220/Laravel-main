@@ -11,7 +11,7 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">เอกสารตอบรับนักศึกษา</h5>
-        <form action="{{ route('searchacceptancedocument') }}" method="GET" class="form-inline">
+        <form action="{{ route('searchacceptancedocument2') }}" method="GET" class="form-inline">
 
             <div class="form-row">
               <div class="form-group col-auto">

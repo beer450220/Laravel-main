@@ -754,6 +754,70 @@ $users=DB::table('users')
            // return view('student.establishmentuser',compact('establishments','search'));
 
     }
+
+
+    public function searchestablishment1(Request $request){
+        //dd($request);
+
+                //$search = $request->input('search');
+
+                // $establishments =establishment::where(function($query) use ($search){
+
+                //     $query->where('name','like',"%$search%")
+                //     ->orWhere('address','like',"%$search%");
+
+                //     })
+
+                //     ->get();
+
+
+                        // $establishments =establishment::where('name','like',"%$search%")
+                        // ->orWhere('address','like',"%$search%")->get();
+
+
+                        $keyword = $request->input('keyword');
+        //dd($request);
+                        // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                        $establishments = establishment::query()
+                            // ->where('em_name', 'LIKE', '%' . $keyword . '%')
+                            // ->join('users', 'establishment.user_id', '=', 'users.id')
+                            ->join('users', 'establishment.user_id', '=', 'users.id')
+                            ->where(function ($query) use ($keyword) {
+                                $query->where('establishment.em_name', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                    //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
+                                    //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
+                            })
+                            ->select('establishment.*', 'users.fname', 'users.surname')
+                            ->paginate(5);
+                            // $registers=DB::table('establishment')
+
+
+                            //  ->join('category','establishment.id','category.category_id')
+                            //  ->select('establishment.*','category.name')
+                            //  ->paginate(5);
+
+
+
+                            //  $registers1=DB::table('category')
+                            //  ->paginate(5);
+
+                             $searchTerm = $request->input('search');
+
+                // ค้นหาผู้ใช้โดยใช้ Eloquent ORM
+                $users = establishment::where('em_name', 'LIKE', "%{$searchTerm}%")
+                             ->orWhere('em_name', 'LIKE', "%{$searchTerm}%")
+                             ->get();
+
+
+                        return view('teacher.establishmentuser1', compact('establishments','users'), ['establishments' => $establishments,]);
+
+                   // return view('student.establishmentuser',compact('establishments','search'));
+
+            }
+
+
     public function searchstudent1(Request $request){
         //dd($request);
 
@@ -814,7 +878,66 @@ $users=DB::table('users')
                    // return view('student.establishmentuser',compact('establishments','search'));
 
             }
+            public function searchstudent2(Request $request){
+                //dd($request);
 
+                        //$search = $request->input('search');
+
+                        // $establishments =establishment::where(function($query) use ($search){
+
+                        //     $query->where('name','like',"%$search%")
+                        //     ->orWhere('address','like',"%$search%");
+
+                        //     })
+
+                        //     ->get();
+
+
+                                // $establishments =establishment::where('name','like',"%$search%")
+                                // ->orWhere('address','like',"%$search%")->get();
+
+
+                                $keyword = $request->input('keyword');
+                //dd($request);
+                                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                $establishments = student::query()
+                                    // ->where('em_name', 'LIKE', '%' . $keyword . '%')
+                                    // ->join('users', 'establishment.user_id', '=', 'users.id')
+                                    ->join('users', 'student.user_id', '=', 'users.id')
+                                    ->where(function ($query) use ($keyword) {
+                                        $query->where('student.student_id', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                            //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
+                                            //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
+                                    })
+                                    ->select('student.*', 'users.fname', 'users.surname')
+                                    ->paginate(5);
+                                    // $registers=DB::table('establishment')
+
+
+                                    //  ->join('category','establishment.id','category.category_id')
+                                    //  ->select('establishment.*','category.name')
+                                    //  ->paginate(5);
+
+
+
+                                    //  $registers1=DB::table('category')
+                                    //  ->paginate(5);
+
+                                     $searchTerm = $request->input('search');
+
+                        // ค้นหาผู้ใช้โดยใช้ Eloquent ORM
+                        $users = establishment::where('em_name', 'LIKE', "%{$searchTerm}%")
+                                     ->orWhere('em_name', 'LIKE', "%{$searchTerm}%")
+                                     ->get();
+
+
+                                return view('teacher.student', compact('establishments','users'), ['establishments' => $establishments,]);
+
+                           // return view('student.establishmentuser',compact('establishments','search'));
+
+                    }
     public function searchregister1(Request $request){
         //dd($request);
 
@@ -865,7 +988,56 @@ $users=DB::table('users')
                    // return view('student.establishmentuser',compact('establishments','search'));
 
             }
+            public function searchregister3(Request $request){
+                //dd($request);
 
+                        //$search = $request->input('search');
+
+                        // $establishments =establishment::where(function($query) use ($search){
+
+                        //     $query->where('name','like',"%$search%")
+                        //     ->orWhere('address','like',"%$search%");
+
+                        //     })
+
+                        //     ->get();
+
+
+                                // $establishments =establishment::where('name','like',"%$search%")
+                                // ->orWhere('address','like',"%$search%")->get();
+
+
+                                $keyword = $request->input('keyword');
+                //dd($request);
+                                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                // $registers = registers::query()
+                                //     // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                //     ->where(function($query) use ($keyword) {
+                                //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                //               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                //     })
+                                //     ->join('users','registers.user_id','users.id')
+                                //      ->select('registers.*','users.fname')
+                                //    // ->get();
+                                //     ->paginate(10);
+
+                                    $registers = registers::query()
+                                    ->join('users', 'registers.user_id', '=', 'users.id')
+                                    ->where(function ($query) use ($keyword) {
+                                        $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                            //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
+                                            //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
+                                    })
+                                    ->select('registers.*', 'users.fname', 'users.surname')
+                                    ->paginate(10);
+                                return view('teacher.register1',  ['registers' => $registers,]);
+        // compact('registers'),
+                           // return view('student.establishmentuser',compact('establishments','search'));
+
+                    }
             public function searchEvaluate(Request $request){
                 //dd($request);
                                 $keyword = $request->input('keyword');
@@ -936,6 +1108,42 @@ $users=DB::table('users')
 
 
                             }
+
+
+                            public function searchacceptancedocument2(Request $request){
+                                //dd($request);
+                                                $keyword = $request->input('keyword');
+                                //dd($request);
+                                                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                                // $acceptances = acceptance::query()
+                                                //     // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                //     ->where(function($query) use ($keyword) {
+                                                //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                //               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                //     })
+                                                //     ->join('users','acceptance.user_id','users.id')
+                                                //      ->select('acceptance.*','users.fname')
+                                                   // ->get();
+                                                    // ->paginate(10);
+                                                    $acceptances = acceptance::query()
+                                                    ->join('users', 'acceptance.user_id', '=', 'users.id')
+                                                    ->where(function ($query) use ($keyword) {
+                                                        $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
+                                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                                            //   ->orWhere('acceptance.term', 'LIKE', '%' . $keyword . '%')
+                                                            //   ->orWhere('acceptance.year', 'LIKE', '%' . $keyword . '%');
+                                                    })
+                                                    ->select('acceptance.*', 'users.fname', 'users.surname')
+                                                    ->paginate(10);
+
+                                                return view('teacher.acceptancedocument1',  ['acceptances' => $acceptances,]);
+
+
+                                    }
+
+
                             public function searchinformdetails(Request $request){
                                 //dd($request);
                                                 $keyword = $request->input('keyword');
@@ -1037,7 +1245,7 @@ $users=DB::table('users')
    return view('officer.schedule',  ['schedules' => $schedules,]);
  }
 
- public function searchinformdetails0(Request $request){
+ public function searchinformdetails1(Request $request){
     //dd($request);
     $keyword = $request->input('keyword');
                                             //dd($request);
@@ -1125,11 +1333,13 @@ public function searchsupervision0(Request $request){
 $events = Event::query()
 ->join('users', 'events.student_name', '=', 'users.id')
 ->where(function ($query) use ($keyword) {
-    $query->Where('events.term', 'LIKE', '%' . $keyword . '%')
+    $query
+    // ->Where('events.term', 'LIKE', '%' . $keyword . '%')
           ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+        //   ->orWhere('events.namefiles', 'LIKE', '%' . $keyword . '%');
 
-          ->orWhere('events.year', 'LIKE', '%' . $keyword . '%');
+        //   ->orWhere('events.year', 'LIKE', '%' . $keyword . '%');
 })
 ->select('events.*', 'users.fname', 'users.surname')
 ->paginate(10);
@@ -1179,9 +1389,9 @@ $supervision = supervision::query()
 ->where(function ($query) use ($keyword) {
     $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
           ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
+          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+        //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+        //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
 })
 ->select('supervision.*', 'users.fname', 'users.surname')
 ->paginate(10);
@@ -1947,7 +2157,7 @@ public function category()
         //  ->select('events.*', 'users.fname', 'users.surname')
          ->join('users','events.student_name','users.id')
          ->select('events.*','users.fname','users.surname')
-        ->paginate(5);
+        ->paginate(10);
     //     $users=DB::table('users')
     //   ->where('role',"student")->paginate(5);
         // $major=DB::table('users')->paginate(5);

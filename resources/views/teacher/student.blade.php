@@ -27,7 +27,7 @@
                     {{-- <div class="toolbar row mb-3"> --}}
                       <div class="col">
                            <h2 class="h4 mb-1">ข้อมูนักศึกษา</h2><br>
-                        <form action="{{ route('searchstudent1') }}" method="GET" class="form-inline">
+                        <form action="{{ route('searchstudent2') }}" method="GET" class="form-inline">
 
                           <div class="form-row">
                             <div class="form-group col-auto">

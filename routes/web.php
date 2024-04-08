@@ -503,7 +503,7 @@ Route::get('/teacher/search8',[HomeController::class,'searchrequest'])->name('se
     // Route::get("/teacher/timeline1",[HomeController::class,'timeline1'])->name('teacher.documents1');
     // Route::get("/teacher/viwetimeline/{timeline_id}",[EditController::class,'viwetimeline'])->name('viwetimeline');
 //ค้นหา
-Route::get('/teacher/search',[HomeController::class,'searchinformdetails0'])->name('searchinformdetails0');
+Route::get('/teacher/search05',[HomeController::class,'searchinformdetails1'])->name('searchinformdetails1');
     Route::get("/teacher/informdetails1",[HomeController::class,'informdetails1'])->name('teacher.informdetails1');
     Route::get("/teacher/viewinformdetails1/{informdetails_id}",[EditController::class,'viewinformdetails1'])->name('viewinformdetails1');
 
@@ -569,7 +569,7 @@ Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('de
 
 //ลงทะเบียน
 //ค้นหา
-Route::get('/officer/search1',[HomeController::class,'searchregister1'])->name('searchregister1');
+Route::get('/teacher/search1',[HomeController::class,'searchregister3'])->name('searchregister3');
 Route::get("/teacher/register1",[HomeController::class,'register3'])->name('register3');
 
 Route::get("/officer/editregister1/{id}",[EditController::class,'editregister1'])->name('editregister1');
@@ -580,7 +580,7 @@ Route::get("/officer/confirm2/{id}",[EditController::class,'confirm2'])->name('c
 
   //ตอบรับนักศึกษา
     //ค้นหา
-    Route::get('/officer/search3',[HomeController::class,'searchacceptancedocument'])->name('searchacceptancedocument');
+    Route::get('/teacher/search3',[HomeController::class,'searchacceptancedocument2'])->name('searchacceptancedocument2');
     Route::get("/teacher/acceptancedocument1",[HomeController::class,'acceptancedocument4']);
     // Route::get("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument1'])->name('addacceptancedocument1');
     // Route::post("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument'])->name('addacceptancedocument');
@@ -591,7 +591,7 @@ Route::get("/officer/confirm2/{id}",[EditController::class,'confirm2'])->name('c
 
    //สถานประกอบการ
 //ค้นหา
-Route::get('/officer/search',[HomeController::class,'searchestablishment'])->name('searchestablishment');
+Route::get('/teacher/search',[HomeController::class,'searchestablishment1'])->name('searchestablishment1');
 Route::get("/teacher/establishmentuser1",[HomeController::class,'establishmentuser7'])->name('establishmentuser7');
 //เพิ่ม
 // Route::get("/officer/addestablishmentuser1",[addController::class,'addestablishmentuser1'])->name('addestablishmentuser1');
@@ -608,7 +608,7 @@ Route::get("/teacher/establishmentuser1",[HomeController::class,'establishmentus
 Route::get('/teacher/view/{id}', [HomeController::class,'viewestablishment1'])->name('viewestablishment1');
 
 //ข้อมูลนักศึกษา
-Route::get('/officer/search9',[HomeController::class,'searchstudent1'])->name('searchstudent1');
+Route::get('/teacher/search9',[HomeController::class,'searchstudent2'])->name('searchstudent2');
 Route::get("/teacher/student",[HomeController::class,'student2'])->name('student2');
 Route::get('/teacher/viewstudent/{id}', [HomeController::class,'viewstudent1'])->name('viewstudent1');
 

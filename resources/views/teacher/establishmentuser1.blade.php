@@ -27,7 +27,7 @@
                     {{-- <div class="toolbar row mb-3"> --}}
                       <div class="col">
                            <h2 class="h4 mb-1">สถานประกอบการ</h2><br>
-                        <form action="{{ route('searchestablishment') }}" method="GET" class="form-inline">
+                        <form action="{{ route('searchestablishment1') }}" method="GET" class="form-inline">
 
                           <div class="form-row">
                             <div class="form-group col-auto">
@@ -52,7 +52,7 @@
                           </div>
 
                           <div class="">
-                            <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+                            {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
 
