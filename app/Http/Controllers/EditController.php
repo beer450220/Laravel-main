@@ -668,7 +668,23 @@ $post->update
      return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
  }
 
+ public function deletuser($id) {
+    //ตรวจสอบข้อมูล
+    //dd();
+    // $establishments=establishment::find($id);
+    // DB::table('establishment')->where('id',$id)->delete();
 
+    $posts=Users::findOrFail($id);
+
+     if (File::exists("รูปโปรไฟล์/".$posts->images)) {
+         File::delete("รูปโปรไฟล์/".$posts->images);
+     }
+
+    //  dd($posts);
+     $posts->delete();
+    //  return view('officer.editestablishmentuser1',compact('establishments'));
+     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+ }
 
  public function   updateuser4(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -886,7 +902,9 @@ $post->update
     // $users=DB::table('users')
     // ->where('role',"student")
     // ->get();
+    $major1=DB::table('major')
 
+    ->paginate(5);
     // $major=DB::table('major')
 
     // ->paginate(5);
@@ -898,7 +916,7 @@ $post->update
     // ->get();
     //dd($establishment);
      //dd($supervisions);
-     return view('teacher.edit.editteacher1', compact('major'));
+     return view('teacher.edit.editteacher1', compact('major','major1'));
 
  }
  public function view1($id) {
@@ -1235,8 +1253,13 @@ $post->update
 
     $post->update
     ([
-        "name" =>$request->name,
-
+        // "name" =>$request->name,
+        'fname' => $request->fname,
+        'surname' => $request->surname,
+        'email' => $request->email,
+        'major_id' => $request->major_id,
+        'telephonenumber' => $request->telephonenumber,
+        'address' => $request->address,
     ]);
 
 
@@ -2403,7 +2426,71 @@ $post->update
     return redirect('/user')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
+ public function   updateuser8(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+    //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+   if($request->hasFile("images")){
+       if (File::exists("รูปโปรไฟล์/".$post->images)) {
+           File::delete("รูปโปรไฟล์/".$post->images);
+       }
+       $file=$request->file("images");
+        $post->images=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $request['images']=$post->images;
+     // dd($post);
+   }
+    $post->update
+    ([
+       "username" =>$request->username,
+
+
+    //    "code_id" =>$request->code_id,
+    //    "major_id" =>$request->major_id,
+    //    "establishment_id" =>$request->establishment_id,
+       "fname" =>$request->fname,
+       "surname" =>$request->surname,
+    //    "telephonenumber" =>$request->telephonenumber,
+    //    "address" =>$request->address,
+    //    "GPA" =>$request->GPA,
+    //    "em_name" =>$request->em_name,
+    //    "year" =>$request->year,
+    //    "term" =>$request->term,
+
+    //    "email" =>$request->email,
+
+       "password" => Hash::make($request->password),
+         "images"=>$post->images,
+       "role" =>$request->role,
+    //    "status" =>$request->status,
+    //    "username" =>$request->username,
+        // $user->establishment_id = "ยังไม่มีสถานประกอบการ";
+
+        // $user->username = $request->username;
+
+        // $user->password = Hash::make($request->password);
+
+        //  $user-> status = "ยังไม่ได้ยืนยันตัวตน";
+    ]);
+
+
+    return redirect('/teacher/user')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
  public function edituser1($id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')

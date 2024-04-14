@@ -519,7 +519,7 @@ Route::get('/teacher/search3',[HomeController::class,'searchestimate1'])->name('
     Route::get("/teacher/editestimate1/{supervision_id}",[EditController::class,'editestimate1'])->name('editestimate1');
     Route::post("/studenthome/updateestimate1/{supervision_id}",[EditController::class,'updateestimate1'])->name('updateestimate1');
 
-//รายชื่ออาจารย์
+//ข้อมูลอาจารย์
     Route::get("/teacher/teacher01",[HomeController::class,'teacher01'])->name('teacher01');
     Route::get("/teacher/addteacher1",[addController::class,'addteacher1'])->name('addteacher1');
     Route::post("/teacher/addteacher",[addController::class,'addteacher'])->name('addteacher');
@@ -612,6 +612,19 @@ Route::get('/teacher/search9',[HomeController::class,'searchstudent2'])->name('s
 Route::get("/teacher/student",[HomeController::class,'student2'])->name('student2');
 Route::get('/teacher/viewstudent/{id}', [HomeController::class,'viewstudent1'])->name('viewstudent1');
 
+
+//ข้อมูลผู้ใช้งาน
+Route::get('/teacher/searchuser',[HomeController::class,'searchuser'])->name('searchuser');
+
+Route::get("/teacher/user",[HomeController::class,'user2'])->name('user2');
+Route::get("/teacher/adduser",[registerController::class,'adduser3'])->name('adduser3');
+Route::post("/teacher/add5",[registerController::class,'add5'])->name('add5');
+
+Route::get("/teacher/edituser/{id}",[HomeController::class,'edituser3'])->name('edituser3');
+Route::post("/teacher/updateuser/{id}",[EditController::class,'updateuser8'])->name('updateuser8');
+Route::get('/teacher/deletuser/{id}', [EditController::class,'deletuser'])->name('deletuser');
+
+Route::get("/user2",[HomeController::class,'changeStatus3'])->name('changeStatus3');
 });
 
 

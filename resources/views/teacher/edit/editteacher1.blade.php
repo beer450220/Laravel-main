@@ -101,14 +101,14 @@
 <main role="main" class="main-content">
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-12">
+      <div class="col-6">
 
 
 <div class="row">
   <div class="col-md-12">
     <div class="card shadow mb-4">
       <div class="card-header">
-        <strong class="card-title">เพิ่มข้อมูล</strong>
+        <strong class="card-title">แก้ไข้ข้อมูล</strong>
       </div>
       <div class="card-body">
         <form method="POST" action="{{url('/teacher/updateteacher1/'.$major->id)}}"enctype="multipart/form-data">
@@ -135,18 +135,58 @@
           </div>
 
 
-        <div class="col-md-2">
+        <div class="col-md-4">
           <label for="inputAddress"class="col-form-label ">ชื่ออาจารย์</label>
-          <input type="text" class="form-control" @error('score') is-invalid @enderror name="name" value="{{ $major->name }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"required>
+          <input type="text" class="form-control" @error('score') is-invalid @enderror name="fname" value="{{ $major->fname }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
       </div>
 
+      <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">นามสกุล</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="surname" value="{{ $major->surname}}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">อีเมล์</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="email" value="{{ $major->email }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">หลักสูตร</label>
+        <select class="form-select" id="validationSelect1" name="major_id" >
+            <option value="">กรุณาเลือกหลักสูตร</option>
+            @foreach ($major1 as $row)
+            {{-- <optgroup label="Mountain Time Zone"> --}}
+                 <option value="{{$row->major_id}}"{{$row->major_id==$major->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
+              {{-- <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option> --}}
+              {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+          </optgroup>
+
+            @endforeach
+          </select>
+
+    </div>
+
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">เบอร์โทรศัพท์</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="telephonenumber" value="{{ $major->telephonenumber}}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+
+    </div>
+
+
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">ที่อยู่</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="address" value="{{ $major->address }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+
+    </div>
       </div>
       <br>
           <div class="modal-footer">
             <a href="/teacher/teacher01" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <button type="submit" onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');" class="btn mb-2 btn-primary">อัพเดทข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->

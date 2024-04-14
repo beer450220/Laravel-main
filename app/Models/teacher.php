@@ -11,7 +11,10 @@ class teacher extends Model
     public $table="teacher";
     public $primarykey="teacher_id";
     protected $fillable=[
-        'name',
+        // 'name',
+        'fname',
+        'surname',
+        'email', 'major_id', 'telephonenumber', 'address',
 
 
     ];

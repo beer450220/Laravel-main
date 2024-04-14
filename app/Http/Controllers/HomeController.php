@@ -620,6 +620,45 @@ $users=DB::table('users')
            // return view('student.establishmentuser',compact('establishments','search'));
 
     }
+    public function searchuser(Request $request){
+
+        // dd($request);
+                //$search = $request->input('search');
+
+                // $establishments =establishment::where(function($query) use ($search){
+
+                //     $query->where('name','like',"%$search%")
+                //     ->orWhere('address','like',"%$search%");
+
+                //     })
+
+                //     ->get();
+
+
+                        // $establishments =establishment::where('name','like',"%$search%")
+                        // ->orWhere('address','like',"%$search%")->get();
+
+
+                        $keyword = $request->input('keyword');
+        //dd($request);
+        $users=DB::table('users')
+
+
+
+                            ->paginate(5);
+                        // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                        $users = users::query()
+                            ->where('username', 'LIKE', '%' . $keyword . '%')
+                            //->get();
+                            ->paginate(5);
+
+
+                            // return view('admin.user',compact('users'),["msg"=>"I am Admin role"]);
+                        return view('teacher.user', ['users' => $users]);
+
+                   // return view('student.establishmentuser',compact('establishments','search'));
+
+            }
     public function search1(Request $request){
 
 
@@ -2629,6 +2668,25 @@ public function category()
         return view('admin.user',compact('users'),["msg"=>"I am Admin role"]);
 
     }
+    public function user2()
+    {
+        $users=DB::table('users')
+
+        //  -> where('role','student')
+// ->orWhere('role', '=', '0')
+
+        // ->orWhere('role', '=', 'test')
+        //-> where('role','1',)
+
+
+        ->paginate(5);
+        //->get();
+        #แสดงข้อมูลเฉพาะ
+        // $users = DB::table('users')->where('role', 'student')->get();
+        // $users=Users::get();
+        return view('teacher.user',compact('users'),["msg"=>"I am Admin role"]);
+
+    }
 
     public function changeStatus(Request $request)
     {
@@ -2638,6 +2696,16 @@ public function category()
 
         return response()->json(['success'=>'Status change successfully.']);
     }
+
+    public function changeStatus3(Request $request)
+    {
+        $user = Users::find($request->id);
+        $user->role = $request->role;
+        $user->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+    }
+
     public function updateStatus(Request $request)
     {
         dd($request);
@@ -2659,7 +2727,17 @@ public function category()
         return view('admin.edituser',compact('users','major'),["msg"=>"I am Admin role"]);
 
     }
+    public function edituser3($id)
+    {
+        $users=Users::find($id);
+        $major=DB::table('major')
+        // ->join('users','acceptance.user_id','users.id')
+        // ->join('establishment','acceptance.establishment_id','establishment.id')
+        // ->select('acceptance.*','users.name','establishment.address')
+        ->paginate(5);
+        return view('teacher.edit.edituser',compact('users','major'),["msg"=>"I am Admin role"]);
 
+    }
     public function test(Request $request)
     {
         // $users=DB::table('users')->get();

@@ -104,7 +104,7 @@
 
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="card shadow mb-4">
       <div class="card-header">
         <strong class="card-title">เพิ่มข้อมูล</strong>
@@ -134,12 +134,44 @@
           </div>
 
 
-        <div class="col-md-2">
+        <div class="col-md-4">
           <label for="inputAddress"class="col-form-label ">ชื่ออาจารย์</label>
-          <input type="text" class="form-control" @error('score') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+          <input type="text" class="form-control" @error('score') is-invalid @enderror name="fname" value="{{ old('fname') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
       </div>
+      <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">นามสกุล</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="surname" value="{{ old('surname') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
+    </div>
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">อีเมล์</label>
+        <input type="email" class="form-control" @error('score') is-invalid @enderror name="email" value="{{ old('email') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+
+    </div>   <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">หลักสูตร</label>
+        {{-- <input type="text" class="form-control" @error('score') is-invalid @enderror name="major_id" value="{{ old('major_id') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required> --}}
+<select class="form-control" id="validationSelect1" name="major_id" >
+                                    <option value="">กรุณาเลือกหลักสูตร</option>
+                                    @foreach ($major as $row)
+                                    {{-- <optgroup label="Mountain Time Zone"> --}}
+                                      <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option>
+                                      {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                                  </optgroup>
+
+                                    @endforeach
+                                  </select>
+    </div>
+   <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">เบอร์โทรศัพท์</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="telephonenumber" value="{{ old('telephonenumber') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+
+    </div>
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">ที่อยู่</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="address" value="{{ old('address') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+
+    </div>
       </div>
       <br>
           <div class="modal-footer">

@@ -833,9 +833,12 @@ public function addestimate1()
       $establishment=DB::table('establishment')
       //->where('role',"student")
       ->get();
+      $major=DB::table('major')
+      //->where('role',"student")
+      ->get();
      // dd($users);
      // ->paginate(5);
-        return view('teacher.add.addteacher1',compact('users'),compact('establishment'));
+        return view('teacher.add.addteacher1',compact('users'),compact('establishment','major'));
     }
 
     public function addestimate(Request $request) {
@@ -991,12 +994,12 @@ public function addteacher(Request $request) {
 
 
      $request->validate([
-          'name' => 'required|unique:teacher',
+          'fname' => 'required|unique:teacher',
       //  'name' => 'required|unique:name',
       //  'test' => 'required|unique:test',
   ]
 ,[
- 'name.unique' => "ขื่อซ้ำ",
+ 'fname.unique' => "ขื่อซ้ำ",
   // 'name.required'=>"กรุณากรอกชื่อ",
   // 'test.required'=>"กรุณาเทส",
 ]
@@ -1008,9 +1011,14 @@ public function addteacher(Request $request) {
   $post =new teacher
   ([
 
-      'name' => $request->name,
+    //   'name' => $request->name,
 
-
+      'fname' => $request->fname,
+      'surname' => $request->surname,
+      'email' => $request->email,
+      'major_id' => $request->major_id,
+      'telephonenumber' => $request->telephonenumber,
+      'address' => $request->address,
 
   ]);
 

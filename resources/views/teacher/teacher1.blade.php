@@ -10,7 +10,7 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">รายชื่ออาจารย์ </h5>
+        <h5 class="card-title">ข้อมูลอาจารย์ </h5>
         <div class="container">
             <div class="row">
               <div class="col-10">
@@ -51,7 +51,7 @@
             @foreach ($supervision as $row)
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
-              <td>{{$row->name}}</td>
+              <td>{{$row->fname}} {{$row->surname}}</td>
 
               {{-- <td>{{$row->name_major}}</td> --}}
 
