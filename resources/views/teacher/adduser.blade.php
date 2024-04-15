@@ -235,7 +235,7 @@
                         </div> --}}
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <a href="/user" type="submit" class="btn btn-primary">
+                                <a href="/teacher/user" type="submit" class="btn btn-primary">
                                     {{ __('ย้อมกลับ') }}
                                 </a>
                                 <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">

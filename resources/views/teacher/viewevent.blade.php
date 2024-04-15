@@ -143,8 +143,19 @@
                       </div>
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่ออาจารย์นิเทศ</label><br>
-                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->teacher_name}}"disabled required>
+                        {{-- <input type="text" class="form-control" name="annotation" value=" {{$establishments->teacher_name}}"disabled required> --}}
 
+                        <select class="form-control" id="validationSelect1" name="student_name" disabled>
+                            <option value="">กรุณาเลือกหลักสูตร</option>
+                            {{-- <option value="-"@if($users->major_id=="-") selected @endif required>-</option> --}}
+                            @foreach ($teacher as $row)
+                            {{-- <optgroup label="Mountain Time Zone"> --}}
+                              <option value="{{$row->id}}"{{$row->id==$establishments->teacher_name ?'selected':''}}> {{$row->fname}} {{$row->surname}}</option>
+                              {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                            </optgroup>
+
+                            @endforeach
+                          </select>
                       </div>
                     </div>
                     <br>

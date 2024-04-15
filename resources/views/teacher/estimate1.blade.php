@@ -11,7 +11,7 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">รายงานผลการประเมิน </h5>
-        <form action="{{ route('searchestimate1') }}" method="GET" class="form-inline">
+        <form action="{{ route('searchestimate2') }}" method="GET" class="form-inline">
 
             <div class="form-row">
               <div class="form-group col-auto">
@@ -70,7 +70,7 @@
               <td>{{$row->score}}</td>
               <td><a href="/ไฟล์เอกสารประเมิน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td><a href="/teacher/editestimate1/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-              <td><a href="/teacher/viewinformdetails1/{{$row->supervision_id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              <td><a href="/teacher/deletes7/{{$row->supervision_id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
             </tr>
 
             @endforeach

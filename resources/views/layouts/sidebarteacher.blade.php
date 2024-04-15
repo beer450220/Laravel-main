@@ -205,10 +205,10 @@
         </li>
 
 
-        {{-- <li class="nav-item">
-          <a class="nav-link pl-3" href="/teacher/listofteachers1"><span class="ml-1 item-text"> จัดอาจารย์นิเทศงาน</span>
+        <li class="nav-item">
+          <a class="nav-link pl-3" href="/teacher/major"><span class="ml-1 item-text"> หลักสูตร</span>
           </a>
-        </li> --}}
+        </li>
     </li>
      {{-- <li class="nav-item">
       <a class="nav-link pl-3" href="/teacher/es1"><span class="ml-1 item-text">เอกสารขออนุญาตนิเทศงาน

@@ -170,7 +170,7 @@
           <div class="form-group col-md-4">
             <label for="inputAddress">ชื่อสถานประกอบการ</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-            <select class="form-select select2" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing" name="em_id" >
+            <select class="form-control select2" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing" name="em_id" >
               <option value="">Select state</option>
               @foreach ($establishment as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -204,7 +204,7 @@
                 $selectedIds = explode(',', $supervisions->student_name);
             @endphp
             <option value="{{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }}>
-                {{ $row->fname }}
+                {{ $row->fname }}  {{ $row->surname }}
             </option>
 
 
@@ -224,8 +224,8 @@
                   @php
          $selectedIds = explode(',', $supervisions->teacher_name);
               @endphp
-              <option value="{{ $row->name }}" {{ in_array($row->name, $selectedIds) ? 'selected' : '' }}>
-                  {{ $row->name }}
+              <option value="{{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }}>
+                {{ $row->fname }}  {{ $row->surname }}
               </option>
 
 

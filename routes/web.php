@@ -512,12 +512,13 @@ Route::get('/teacher/search05',[HomeController::class,'searchinformdetails1'])->
 
 //เอกสารประเมิน
 //ค้นหา
-Route::get('/teacher/search3',[HomeController::class,'searchestimate1'])->name('searchestimate1');
+Route::get('/teacher/search09',[HomeController::class,'searchestimate2'])->name('searchestimate2');
     Route::get("/teacher/estimate1",[HomeController::class,'estimate1'])->name('teacher.estimate1');
     Route::get("/teacher/addestimate1",[addController::class,'addestimate1'])->name('addestimate1');
     Route::post("/teacher/addestimate",[addController::class,'addestimate'])->name('addestimate');
     Route::get("/teacher/editestimate1/{supervision_id}",[EditController::class,'editestimate1'])->name('editestimate1');
     Route::post("/studenthome/updateestimate1/{supervision_id}",[EditController::class,'updateestimate1'])->name('updateestimate1');
+    Route::get('/teacher/deletes7/{supervision_id}', [EditController::class,'deles7'])->name('deles7');
 
 //ข้อมูลอาจารย์
     Route::get("/teacher/teacher01",[HomeController::class,'teacher01'])->name('teacher01');
@@ -544,7 +545,7 @@ Route::get('/teacher/search3',[HomeController::class,'searchestimate1'])->name('
 
 //นิเทศงาน
 //ค้นหา
-Route::get('/teacher/search1',[HomeController::class,'searchsupervision0'])->name('searchsupervision0');
+Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->name('searchsupervision0');
     Route::get("/teacher/supervision",[HomeController::class,'supervision1']);
     // Route::get('/officer/pdf', [FileController::class, 'createPDF'])->name('createPDF');
      //Route::get('/teacher/Excel', [FileController::class, 'export1'])->name('export1');
@@ -572,10 +573,10 @@ Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('de
 Route::get('/teacher/search1',[HomeController::class,'searchregister3'])->name('searchregister3');
 Route::get("/teacher/register1",[HomeController::class,'register3'])->name('register3');
 
-Route::get("/officer/editregister1/{id}",[EditController::class,'editregister1'])->name('editregister1');
-Route::post("/officer/updateregister1/{id}",[EditController::class,'updateregister1'])->name('updateregister1');
+Route::get("/teacher/editregister2/{id}",[EditController::class,'editregister2'])->name('editregister2');
+Route::post("/teacher/updateregister2/{id}",[EditController::class,'updateregister2'])->name('updateregister2');
 
-Route::get("/officer/confirm2/{id}",[EditController::class,'confirm2'])->name('confirm2');
+Route::get("/teacher/confirm02/{id}",[EditController::class,'confirm02'])->name('confirm02');
 
 
   //ตอบรับนักศึกษา
@@ -625,6 +626,16 @@ Route::post("/teacher/updateuser/{id}",[EditController::class,'updateuser8'])->n
 Route::get('/teacher/deletuser/{id}', [EditController::class,'deletuser'])->name('deletuser');
 
 Route::get("/user2",[HomeController::class,'changeStatus3'])->name('changeStatus3');
+
+
+
+ //หลักสูตรสาขา
+ Route::get("/teacher/major",[HomeController::class,'major2'])->name('major2');
+ Route::get("/teacher/addmajor",[addController::class,'addmajor2'])->name('addmajor2');
+ Route::post("/teacher/addmajor1",[addController::class,'addmajor3'])->name('addmajor3');
+ Route::get("/teacher/editmajor/{major_id}",[EditController::class,'editmajor2'])->name('editmajor2');
+ Route::post("/teacher/updatmajor/{major_id}",[EditController::class,'updatmajor2'])->name('updatmajor2');
+ Route::get('/teacher/deletmajor/{major_id}', [EditController::class,'delmajor2'])->name('delmajor2');
 });
 
 

@@ -267,7 +267,7 @@ $( '#multiple-select-field1' ).select2( {
               <option value="">Select state</option>
               @foreach ($users2 as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                <option value="{{$row->name}}">{{$row->name}}</option>
+                <option value="{{$row->id}}">{{$row->fname}} {{$row->surname}}</option>
 
               </optgroup>
 

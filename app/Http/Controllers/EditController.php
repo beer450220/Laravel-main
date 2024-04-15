@@ -658,9 +658,9 @@ $post->update
 
     $posts=Event::findOrFail($id);
 
-    //  if (File::exists("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$posts->filess)) {
-    //      File::delete("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$posts->filess);
-    //  }
+     if (File::exists("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$posts->filess)) {
+         File::delete("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$posts->filess);
+     }
 
     //  dd($posts);
      $posts->delete();
@@ -1334,7 +1334,16 @@ $post->update
      return view('officer.edit.editmajor',compact('major'));
 
  }
+//หลักสูตรสาขา
+public function editmajor2($major_id) {
 
+    $major=major::find($major_id);
+
+   //dd($acceptances);
+    // dd($supervisions);
+    return view('teacher.edit.editmajor',compact('major'));
+
+}
 //หลักสูตรสาขา
 public function editcategory($category_id) {
 
@@ -1385,6 +1394,47 @@ public function editcategory($category_id) {
 
     return redirect('/officer/major')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
+
+ public function   updatmajor2(Request $request,$major_id) {
+    //ตรวจสอบข้อมูล
+
+    ///dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    // $post=Event::findOrFail($id);
+    // $post->user_id = Auth::user()->id;
+    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รอตรวจสอบ";
+   //dd($request->Status);
+   $post=major::findOrFail($major_id);
+  // $post->user_id = Auth::user()->id;
+  // $post->Status ="รอตรวจสอบ";
+
+     // dd($post);
+
+    $post->update
+    ([
+       "name_major" =>$request->name_major,
+
+
+        "faculty"=>$request->faculty,
+
+    ]);
+
+
+    return redirect('/teacher/major')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
+
+
 
  public function   updatcategory(Request $request,$category_id) {
     //ตรวจสอบข้อมูล
@@ -1450,6 +1500,20 @@ public function editcategory($category_id) {
      return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
  }
 
+ public function delmajor2($major_id) {
+    //ตรวจสอบข้อมูล
+    //dd();
+    // $establishments=establishment::find($id);
+    // DB::table('establishment')->where('id',$id)->delete();
+
+    $posts=major::findOrFail($major_id);
+    //  dd($posts);
+     $posts->delete();
+    //  return view('officer.editestablishmentuser1',compact('establishments'));
+     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+ }
+
+
  public function delcategory($category_id) {
     //ตรวจสอบข้อมูล
     //dd();
@@ -1496,7 +1560,25 @@ public function editcategory($category_id) {
     //  return view('officer.editestablishmentuser1',compact('establishments'));
      return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
  }
+ public function deles7($id) {
+    //ตรวจสอบข้อมูล
+   // dd($id);
+    // $establishments=establishment::find($id);
+    // DB::table('establishment')->where('id',$id)->delete();
 
+
+
+
+
+    $posts=supervision::findOrFail($id);
+    //  dd($posts);
+    if (File::exists("ไฟล์เอกสารประเมิน/".$posts->filess)) {
+         File::delete("ไฟล์เอกสารประเมิน/".$posts->filess);
+     }
+     $posts->delete();
+    //  return view('officer.editestablishmentuser1',compact('establishments'));
+     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+ }
 
  public function editexperiencereport2($report_id) {
     //ตรวจสอบข้อมูล
@@ -1733,6 +1815,28 @@ public function editcategory($category_id) {
      return view('officer.edit.editregister1',compact('registers'));
 
  }
+ public function editregister2($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+   // $registers=DB::table('registers')->first();
+
+    $registers=registers::find($id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($reports);
+     // dd($supervisions);
+     return view('teacher.edit.editregister1',compact('registers'));
+
+ }
  public function   updateregister1(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -1789,7 +1893,62 @@ $post->update
 
     return redirect('/officer/register1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
+ public function   updateregister2(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    if($request->hasFile("filess")){
+        // if (File::exists(public_path("file/".$post->filess))) {
+        //     File::delete(public_path("file/".$post->filess));
+        // }
+        if (File::exists("file/".$post->filess)) {
+            File::delete("file/".$post->filess);
+        }
+        $file=$request->file("filess");
+        $post->filess=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/file"),$post->filess);
+        $request['filess']=$post->filess;
+        // $file = $request->file("filess");
+        // $post->filess = time() . "_" . $file->getClientOriginalName();
+        // $file->move(public_path("/file"), $post->filess);
+    }
+//     $post=[
+//             "annotation" =>$request->annotation,
+
+//          "Status_registers"=>$request->Status_registers,
+//     ] ;
+// DB::table('registers')->where('id',$id)->update($post);
+   $post=registers::findOrFail($id);
+
+
+$post->update
+([
+    // "name" =>$request->name,
+    // "establishment"=>$request->establishment,
+
+    // "filess"=>$request->filess,
+    "filess"=>$post->filess,
+    //"namefile" => $request->namefile,
+    "annotation" =>$request->annotation,
+
+        "Status_registers"=>$request->Status_registers,
+    // "filess" => $post->filess
+]);
+
+
+    return redirect('/teacher/register1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
  public function viwetimeline2($timeline_id) {
     //ตรวจสอบข้อมูล
 
@@ -2870,6 +3029,51 @@ $post->update
 
     return redirect('/officer/register1')->with('success', 'ยืนยันตัวตนสำเร็จ.');
  }
+
+
+ public function   confirm02(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=registers::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status_registers ="ตรวจสอบเอกสารแล้ว";
+    // $post->role ="student";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+
+    ]);
+
+
+    return redirect('/teacher/register1')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+ }
+
+
+
  public function   confirm3(Request $request,$id) {
     //ตรวจสอบข้อมูล
 

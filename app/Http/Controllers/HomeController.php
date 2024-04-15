@@ -1405,7 +1405,7 @@ public function searches1(Request $request){
 //dd($events);
 return view('teacher.es1',  ['supervision' => $supervision,]);
 }
-public function searchestimate1(Request $request){
+public function searchestimate2(Request $request){
     //dd($request);
     $keyword = $request->input('keyword');
                                             //dd($request);
@@ -1986,7 +1986,11 @@ return view('teacher.reportresults1',  ['report' => $report,]);
       ->where('role',"student")
 
       ->get();
-         return view('teacher.viewevent',compact('establishments','users','establishments1'));
+      $teacher=DB::table('teacher')
+    //   ->where('role',"student")
+
+      ->get();
+         return view('teacher.viewevent',compact('establishments','users','establishments1','teacher'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
      public function viewstudent($id) {
@@ -2066,6 +2070,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname','users.surname')
+        ->orderBy('registers.id', 'DESC')
         ->paginate(10);
 //dd($registers);
         return view('teacher.register1',compact('registers'));
@@ -2079,6 +2084,17 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         ->paginate(5);
 
         return view('officer.major',compact('major'));
+    }
+
+    //หลักสูตรสาขา
+    public function major2()
+    {
+        $major=DB::table('major')
+        // ->join('users','registers.user_id','users.id')
+        // ->select('registers.*','users.fname')
+        ->paginate(5);
+
+        return view('teacher.major',compact('major'));
     }
 //หมวด
 public function category()

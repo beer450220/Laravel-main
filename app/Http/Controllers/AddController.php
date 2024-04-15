@@ -1070,6 +1070,25 @@ public function addacceptancedocument1()
      // ->paginate(5);
         return view('officer.add.addmajor');
     }
+
+//หลักสูตรสาขา
+public function addmajor2()
+{
+ // $users=users::all()->where('role',"student");
+  //$users=users::all()->where('role',"student");
+ // $users=DB::table('users')
+//  ->where('role',"student")
+  //->join('establishment','establishment.id',"=",'users.id')
+  //->select('users.*','establishment.*')
+  //->get();
+  //$establishment=DB::table('establishment')
+  //->where('role',"student")
+ // ->get();
+ // dd($users);
+ // ->paginate(5);
+    return view('teacher.add.addmajor');
+}
+
 //หลักสูตรสาขา
 public function addcategory()
 {
@@ -1120,6 +1139,41 @@ public function addcategory()
          return redirect('/officer/major')->with('success', 'สมัครสำเร็จ.');
 
       }
+
+
+      public function addmajor3(Request $request) {
+        //ตรวจสอบข้อมูล
+        // dd($request);
+
+         $request->validate([
+          //  'name' => 'required|unique:name',
+          //  'test' => 'required|unique:test',
+      ]
+    ,[
+
+      // 'name.required'=>"กรุณากรอกชื่อ",
+      // 'test.required'=>"กรุณาเทส",
+    ]
+
+  );
+      $post =new major
+      ([
+          "name_major" => $request->name_major,
+          "faculty" => $request->faculty,
+
+
+
+      ]);
+     // $post->Status ="รอตรวจสอบ";
+      $post->save();
+        //  $data =array();
+        //  $data["test"]= $request->test;
+      //    $data["test"]= $request->test;
+      // DB::table('test')->insert($data);
+         return redirect('/teacher/major')->with('success', 'สมัครสำเร็จ.');
+
+      }
+
       public function addcategory1(Request $request) {
         //ตรวจสอบข้อมูล
         // dd($request);

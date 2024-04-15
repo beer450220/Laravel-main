@@ -153,7 +153,7 @@
                                                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน') }}</label>
 
                                                                 <div class="col-md-6">
-                                                                    <input id="password" value="{{ $users->password }}" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                                                    <input id="password" value="{{ md5($users->password) }}" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                                                     @error('password')
                                                                         <span class="invalid-feedback" role="alert">
