@@ -2883,7 +2883,24 @@ public function category()
 
     public function cooperative()
     {
-        return view('cooperative.cooperative',["msg"=>"I am Admin role"]);
+        $download=DB::table('download')
+            -> where('status','1')
+        // ->orderBy('em_name','desc')
+        //->pluck('name')
+   // ->implode(', ');
+        //->select('name')
+        // ->join('major','establishment.id','major.major_id')
+        // ->select('establishment.*','major.name_major')
+        ->paginate(6);
+        $download1=DB::table('download')
+            -> where('status','2')
+
+        ->paginate(6);
+        $download2=DB::table('download')
+        -> where('status','3')
+
+    ->paginate(6);
+        return view('cooperative.cooperative',["msg"=>"I am Admin role"],compact('download','download1','download2'));
 
     }
 

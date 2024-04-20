@@ -158,6 +158,7 @@
             <div class="table-responsive ">
                 <table class="table table table-striped table-hover    ">
                     <thead>
+
                         <tr class="">
                             <th>#</th>
                             <th>ชื่อฟอร์ม</th>
@@ -165,13 +166,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                                                                                                                                <tr>
-                                <th scope="row">1</th>
-                                    <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td>
-                                    <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                           @foreach ($download as $row)                                                                                                     <tr>
+                                {{-- <th scope="row">1</th> --}}
+                                <td class="col-1 text center">{{$download->firstItem()+$loop->index}}</td>
+                                <td>{{$row->namefile}}</td>
+                                    {{-- <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td> --}}
+                                    {{-- <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a>
+                                    </td> --}}
+                                    <td class="text-center"><a href="../ไฟล์เอกสารดาวน์โหลด/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
                                 </tr>
                                                                                     <tr>
-                                <th scope="row">2</th>
+                                {{-- <th scope="row">2</th>
                                     <td>สก.03 ใบสมัครงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
                                     <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.03.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                                 </tr>
@@ -194,8 +199,10 @@
                                 <th scope="row">6</th>
                                     <td>สก 09 แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
                                     <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                </tr>
-                                                                            </tbody>
+                                </tr> --}}
+
+
+                                @endforeach                                     </tbody>
                 </table>
 
             </div>
@@ -212,8 +219,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                                                                                                                                <tr>
-                                <th scope="row">1</th>
+                        @foreach ($download1 as $row)                                                                                                     <tr>
+                            {{-- <th scope="row">1</th> --}}
+                            <td class="col-1 text center">{{$download->firstItem()+$loop->index}}</td>
+                            <td>{{$row->namefile}}</td>
+                                {{-- <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td> --}}
+                                {{-- <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a>
+                                </td> --}}
+                                <td class="text-center"><a href="../ไฟล์เอกสารดาวน์โหลด/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            </tr>                                                                                                     <tr>
+                                {{-- <th scope="row">1</th>
                                     <td>สก.10 แบบขออนุญาตการออกนิเทศนักศึกษาสหกิจศึกษา (สำหรับอาจารย์นิเทศสหกิจศึกษา)</td>
                                     <td class="text-center"> <a href="/uOibt17LFm.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                                 </tr>
@@ -221,8 +236,8 @@
                                 <th scope="row">2</th>
                                     <td>สก 15 แบบประเมินรายงานนักศึกษาสหกิจศึกษา (สำหรับอาจารย์นิเทศสหกิจศึกษา)</td>
                                     <td class="text-center"> <a href="/9HUj9WzjfU.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                </tr>
-                                                                            </tbody>
+                                </tr> --}}
+                                @endforeach                                              </tbody>
                 </table>
 
             </div>
@@ -243,8 +258,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                                                                                                                                <tr>
-                                <th scope="row">1</th>
+                        @foreach ($download2 as $row)                                                                                                     <tr>
+                            {{-- <th scope="row">1</th> --}}
+                            <td class="col-1 text center">{{$download->firstItem()+$loop->index}}</td>
+                            <td>{{$row->namefile}}</td>
+                                {{-- <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td> --}}
+                                {{-- <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a>
+                                </td> --}}
+                                <td class="text-center"><a href="../ไฟล์เอกสารดาวน์โหลด/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            </tr>                                                                                                      <tr>
+                                {{-- <th scope="row">1</th>
                                     <td>สก.13 แบบประเมินผลการปฏิบัติงานนักศึกษาสหกิจศึกษา สำหรับผู้นิเทศงาน (พี่เลี้ยง)</td>
                                     <td class="text-center"> <a href="/8FNAYHjoTd.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                                 </tr>
@@ -252,7 +275,7 @@
                                 <th scope="row">2</th>
                                     <td>สก 14 แบบประเมินรายงานนักศึกษาสหกิจศึกษา สำหรับผู้นิเทศงาน (พี่เลี้ยง)</td>
                                     <td class="text-center"> <a href="/Ko7lpKXs9C.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                                </tr>
+                                </tr> --}}  @endforeach
                                                                             </tbody>
                 </table>
 
