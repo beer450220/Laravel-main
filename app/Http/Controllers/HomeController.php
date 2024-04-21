@@ -1800,9 +1800,13 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         $events=DB::table('events')
         // ->join('users','events.user_id','users.id')
         // ->select('events.*','users.fname')
+        ->join('teacher','events.teacher_name','teacher.id')
+        ->select('events.*','teacher.fname','teacher.surname')
         ->where('student_name', auth()->id())
         ->paginate(5);
-        return view('student.calendar2confirm',compact('events'));
+        $users2=DB::table('teacher')
+        ->get();
+        return view('student.calendar2confirm',compact('events','users2'));
     }
 
       public function calendar2(Request $request)

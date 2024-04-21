@@ -145,17 +145,100 @@
                         <label for="recipient-name" class="col-form-label">ชื่ออาจารย์นิเทศ</label><br>
                         {{-- <input type="text" class="form-control" name="annotation" value=" {{$establishments->teacher_name}}"disabled required> --}}
 
-                        <select class="form-control" id="validationSelect1" name="student_name" disabled>
+                        <select class="form-control select2"data-placeholder="Choose anything" id="small-select2-options-multiple-field1" multiple name="teacher_name[]"disabled >
                             <option value="">กรุณาเลือกหลักสูตร</option>
                             {{-- <option value="-"@if($users->major_id=="-") selected @endif required>-</option> --}}
                             @foreach ($teacher as $row)
+
+                            @php
+         $selectedIds = explode(',', $establishments->teacher_name);
+              @endphp
                             {{-- <optgroup label="Mountain Time Zone"> --}}
-                              <option value="{{$row->id}}"{{$row->id==$establishments->teacher_name ?'selected':''}}> {{$row->fname}} {{$row->surname}}</option>
+                              {{-- <option value="{{$row->id}}"{{$row->id==$establishments->teacher_name ?'selected':''}}> --}}
+                                <option value="{{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }}>
+                                {{$row->fname}} {{$row->surname}}</option>
                               {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
                             </optgroup>
 
                             @endforeach
                           </select>
+                          <script > $( '#small-select2-options-multiple-field' ).select2( {
+                            theme: "bootstrap-5",
+                            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+                            placeholder: $( this ).data( 'placeholder' ),
+                            closeOnSelect: false,
+                            selectionCssClass: 'select2--small',
+                            dropdownCssClass: 'select2--small',
+                        } );
+                        $( '#small-select2-options-multiple-field1' ).select2( {
+                            theme: "bootstrap-5",
+                            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+                            placeholder: $( this ).data( 'placeholder' ),
+                            closeOnSelect: false,
+                            selectionCssClass: 'select2--small',
+                            dropdownCssClass: 'select2--small',
+                        } );
+
+
+
+                $( '#small-bootstrap-class-single-field' ).select2( {
+                    theme: "bootstrap-5",
+                    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+                    placeholder: $( this ).data( 'placeholder' ),
+                    dropdownParent: $( '#small-bootstrap-class-single-field' ).parent(),
+                } );
+
+                $( '#multiple-select-field' ).select2( {
+                    theme: "bootstrap-5",
+                    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+                    placeholder: $( this ).data( 'placeholder' ),
+                    closeOnSelect: false,
+                } );
+
+                $( '#multiple-select-clear-field' ).select2( {
+                    theme: "bootstrap-5",
+                    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+                    placeholder: $( this ).data( 'placeholder' ),
+                    closeOnSelect: false,
+                    allowClear: true,
+                } );
+
+                            </script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<!-- Or for RTL support -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+<script>
+    new MultiSelectTag('countries', {
+       rounded: true,    // default true
+       shadow: true,      // default false
+       placeholder: 'Search',  // default Search...
+       tagColor: {
+           textColor: '#327b2c',
+           borderColor: '#92e681',
+           bgColor: '#eaffe6',
+       }
+       onChange: function(values) {
+           console.log(values)
+       }
+   })
+
+   </script>
+
                       </div>
                     </div>
                     <br>

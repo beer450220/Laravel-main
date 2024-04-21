@@ -19,7 +19,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
-class test extends Model implements Authenticatable
+class test extends Model
+// implements Authenticatable
 {
     use HasFactory;
     public $table="test";

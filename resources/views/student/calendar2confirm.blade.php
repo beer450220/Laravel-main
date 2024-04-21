@@ -378,14 +378,107 @@
                                       {{-- <a href="">
                                         <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
                                       </a> --}}
-                                      <h4 class="card-title text-center">สถานประกอบการ::  {{ $row->establishment_name }}</h4>  <p class="text-center"></p>
+                                      <h4 class="card-title text-center">สถานประกอบการ::  {{ $row->em_id }}</h4>  <p class="text-center"></p>
                                       <hr>
                                       <div class="caption card-body">
                                     <div class="card-text my-2">
 
                                       <p class=" text mb-0 ">วันเวลาการนิเทศ: {{ $row->start}}</p>
-                                      <p class=""><span class=" text-muted">อาจารย์นิเทศ: {{ $row->teacher_name }}</span></p>
-                                      <p class=""><span class=" text-muted">ไฟล์เอกสาร:  <a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
+                                      <p class=""><span class=" text-muted">อาจารย์นิเทศ:
+
+                                    @foreach ($users2 as $teacherId)
+                                       {{-- @php
+                                        $selectedIds = explode(',', $events->teacher_name);
+                                    @endphp --}}
+                                        {{-- {{ $teacherId }} แสดง id ของอาจารย์ --}}
+                                        {{-- หรือสามารถใช้วิธีดึงข้อมูลจากฐานข้อมูลได้ --}}
+                                        {{-- @php
+                                            $teacher = App\Models\Teacher::find($teacherId);
+                                        @endphp --}}
+                                        {{ $teacherId->fname }} {{ $teacherId->surname }}
+                                    @endforeach
+
+
+
+                                        {{-- @php
+                                        $selectedIds = explode(',', $events->teacher_name);
+                                             @endphp {{ $row->fname}} {{ $row->surname}} --}}
+                                        {{-- <select class="form-control select2"data-placeholder="Choose anything" id="small-select2-options-multiple-field1" multiple name="teacher_name[]" >
+                                            <option value="">Select state</option>
+                                        @foreach ($users2 as $row) --}}
+                                            {{-- @php
+                                        $selectedIds = explode(',', $events->teacher_name);
+                                             @endphp --}}
+  {{-- <option value="{{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }}>
+    {{ $row->fname }}  {{ $row->surname }}
+  </option> --}}
+{{-- </select>
+  @endforeach --}}
+
+  {{-- <script > $( '#small-select2-options-multiple-field' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+    selectionCssClass: 'select2--small',
+    dropdownCssClass: 'select2--small',
+} );
+$( '#small-select2-options-multiple-field1' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+    selectionCssClass: 'select2--small',
+    dropdownCssClass: 'select2--small',
+} );
+
+
+
+$( '#small-bootstrap-class-single-field' ).select2( {
+theme: "bootstrap-5",
+width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+placeholder: $( this ).data( 'placeholder' ),
+dropdownParent: $( '#small-bootstrap-class-single-field' ).parent(),
+} );
+
+$( '#multiple-select-field' ).select2( {
+theme: "bootstrap-5",
+width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+placeholder: $( this ).data( 'placeholder' ),
+closeOnSelect: false,
+} );
+
+$( '#multiple-select-clear-field' ).select2( {
+theme: "bootstrap-5",
+width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+placeholder: $( this ).data( 'placeholder' ),
+closeOnSelect: false,
+allowClear: true,
+} );
+
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <!-- Or for RTL support -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script> --}}
+
+
+
+                                        {{-- {{ $row->fname}} {{ $row->surname}} --}}
+                                    </span></p>
+                                      <p class=""><span class=" text-muted">ไฟล์เอกสาร:  <a href="/ไฟล์เอกสารขออนุญาตนิเทศงาน/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
 
                                       <hr>
                                       <p class=" text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')

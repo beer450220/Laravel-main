@@ -200,7 +200,7 @@
                 {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
                 @foreach ($users as $row)
                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="{{$row->id}} ">{{$row->fname}} </option>
+                  <option value="{{$row->user_id}} ">{{$row->student_id}}( {{$row->fname}}  {{$row->surname}})</option>
                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
 
 
@@ -263,7 +263,7 @@ $( '#multiple-select-field1' ).select2( {
           <div class="col-md-4">
             <label for="inputAddress" >ชื่ออาจารย์นิเทศ</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-optgroup-field1"data-placeholder="เลือกรายชื่อ" multiple name="teacher_name" required>
+            <select class="form-control select2" id="multiple-select-optgroup-field1"data-placeholder="เลือกรายชื่อ" multiple name="teacher_name[]" required>
               <option value="">Select state</option>
               @foreach ($users2 as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}

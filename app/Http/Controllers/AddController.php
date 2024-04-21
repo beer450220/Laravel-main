@@ -1291,10 +1291,15 @@ public function addsupervision()
     {
      // $users=users::all()->where('role',"student");
       //$users=users::all()->where('role',"student");
-      $users=DB::table('users')
-      ->where('role',"student")
-      //->join('establishment','establishment.id',"=",'users.id')
-      //->select('users.*','establishment.*')
+    //   $users=DB::table('users')
+    //   ->where('role',"student")
+    //   //->join('establishment','establishment.id',"=",'users.id')
+    //   //->select('users.*','establishment.*')
+    //   ->get();
+
+      $users=DB::table('student')
+    //   ->where('role',"student")
+    //
       ->get();
       $users2=DB::table('teacher')
     //   ->where('role',"student")
@@ -1394,7 +1399,7 @@ public function addsupervision()
            "student_name" => implode(",",$request->student_name),
            //$request->student_name,
            "filess" =>$imageName,
-           "teacher_name" => $request->teacher_name,
+           "teacher_name" => implode(",",$request->teacher_name),
 
       ]);
     //    $post->user_id = "0";  // $post->Status ="รอตรวจสอบ";
