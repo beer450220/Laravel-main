@@ -318,28 +318,28 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <form method="POST" action="{{url('/studenthome/updateuser1/'.$users->id)}}" enctype="multipart/form-data">
+                                                      <form method="POST" action="{{url('/studenthome/updateuser001/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                       <label for="simpleinput">ชื่อผู้ใช้งาน</label>
-                                                      <input type="text"value="{{ Auth::user()->username }}" disabled="" id="simpleinput" class="form-control">
+                                                      <input type="text"value="{{ Auth::user()->username }}" name="username" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง </label>
-                                                      <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control"required placeholder="">
+                                                      <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="example-email">นามสกุล</label>
-                                                        <input type="text" id="example-email"value="{{ Auth::user()->surname}}"  name="surname" class="form-control"required placeholder="">
+                                                        <input type="text" id="example-email"value="{{ Auth::user()->surname}}"  name="surname" class="form-control" placeholder="">
                                                       </div>
                                                     {{-- <div class="form-group mb-3">
                                                       <label for="example-password">Password</label>
                                                       <input type="password" id="example-password" class="form-control" value="password">
                                                     </div> --}}
                                                     <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">อีเมล์</label>
-                                                      <input type="email" id="example-palaceholder"value="{{ Auth::user()->email}}"name="email"  class="form-control"required placeholder="">
+                                                      <label for="example-palaceholder">รหัสผ่าน</label>
+                                                      <input type="password" id="example-palaceholder"value=""name="password"  class="form-control" placeholder="">
                                                     </div>
-                                                    <div class="form-group mb-3">
+                                                    {{-- <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
                                                       <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" name="GPA"  class="form-control"required placeholder="">
 
@@ -347,10 +347,10 @@
                                                     <div class="form-group mb-3">
                                                         <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
                                                         <input type="text" id="example-palaceholder"value="{{ Auth::user()->telephonenumber}}"name="telephonenumber"  class="form-control" placeholder=""required>
-                                                      </div>
+                                                      </div> --}}
 
-                                                  </div> <!-- /.col -->
-                                                  <div class="col-md-6">
+                                                  {{-- </div> <!-- /.col --> --}}
+                                                  {{-- <div class="col-md-6">
                                                     <div class="form-group mb-3">
                                                       <label for="example-helping">ที่อยู่</label>
                                                       <input type="text" id="example-helping"value="{{ Auth::user()->address}}" name="address" class="form-control"required placeholder="">
@@ -366,11 +366,11 @@
                                                       <select class="form-control" id="validationSelect1" name="major_id" required>
                                                         <option value="">กรุณาเลือกหลักสูตร</option>
                                                         <option value="-"@if($users->major_id=="-") selected @endif required>-</option>
-                                                        @foreach ($major as $row)
+                                                        @foreach ($major as $row) --}}
                                                         {{-- <optgroup label="Mountain Time Zone"> --}}
-                                                          <option value="{{$row->major_id}}"{{$row->major_id==$users->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
+                                                          {{-- <option value="{{$row->major_id}}"{{$row->major_id==$users->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option> --}}
                                                           {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                                        </optgroup>
+                                                        {{-- </optgroup>
 
                                                         @endforeach
                                                       </select>
@@ -378,11 +378,11 @@
 
                                                     <div class="form-group mb-3">
                                                         <label for="example-static">ปีการศึกษา</label>
-                                                        <select class="form-control "  name="year"required >
+                                                        <select class="form-control "  name="year"required > --}}
                                                             {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
                                                             <option value="{{ $year }}">{{ $year }}</option>
                                                         @endforeach --}}
-                                                        <option value="">กรุณาเลือกปีการศึกษา</option>
+                                                        {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
                                                         @php
                                                         $currentYear = date('Y') + 543; // ปีปัจจุบัน
                                                         $startYear = 2566; // ปีเริ่มต้น
@@ -395,9 +395,9 @@
                                                         @endfor
                                                     @endfor
                                                     </select>
-                                                      </div>
+                                                      </div> --}}
 
-                                                      <div class="form-group mb-3">
+                                                      {{-- <div class="form-group mb-3">
                                                         <label for="example-static">ภาคเรียน</label>
                                                         <select class="form-control"  name="term" required>
                                                             <option value="">กรุณาเลือกภาคเรียน</option>
@@ -405,10 +405,10 @@
                                                           <option value="ภาคเรียนที่1"@if( $users->term=="ภาคเรียนที่1") selected @endif>ภาคเรียนที่:1 </option>
                                                             <option value="ภาคเรียนที่2"@if( $users->term=="ภาคเรียนที่2") selected @endif>ภาคเรียนที่:2 </option>
                                                           </select>
-                                                      </div>
+                                                      </div> --}}
                                                       <div class="form-group mb-3">
                                                         <label for="example-static">รูปโปรไฟล์</label>
-                                                        <input type="file" readonly=""value="{{ Auth::user()->images}}" name="images" class="form-control" id="example-static" >
+                                                        <input type="file" value="{{ Auth::user()->images}}" name="images" class="form-control" id="example-static" >
                                                       </div>
 
                                                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">

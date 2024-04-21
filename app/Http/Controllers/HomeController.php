@@ -421,6 +421,15 @@ class HomeController extends Controller
         return view('student.personal',["msg"=>"I am Editor role"]);
     }
 
+    public function personal01()
+    {
+        return view('teacher.personal',["msg"=>"I am Editor role"]);
+    }
+    public function personal02()
+    {
+        return view('officer.personal',["msg"=>"I am Editor role"]);
+    }
+
     public function personal2($student_id)
     {
 // dd($student_id);
@@ -1220,17 +1229,31 @@ $users=DB::table('users')
                                                         $keyword = $request->input('keyword');
                                         //dd($request);
                                                         // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-                                                        $supervision = permission::query()
-                                                            // ->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                                            ->where(function($query) use ($keyword) {
-                                                                $query->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                                                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                                                      ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                        // $supervision = events::query()
+                                                        //     // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                        //     ->where(function($query) use ($keyword) {
+                                                        //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                        //             //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                        //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                        //     })
+                                                        //     // ->join('users','informdetails.user_id','users.id')
+                                                        //     //  ->select('informdetails.*','users.fname')
+                                                        //    // ->get();
+                                                        //     ->paginate(10);
+
+                                                            $supervision = event::query()
+                                                            ->join('establishment', 'events.em_id', '=', 'establishment.id')
+                                                            ->where(function ($query) use ($keyword) {
+                                                                $query->where('events.namefiles', 'LIKE', '%' . $keyword . '%')
+                                                                      ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+                                                                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                                                    //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+                                                                    //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
                                                             })
-                                                            // ->join('users','informdetails.user_id','users.id')
-                                                            //  ->select('informdetails.*','users.fname')
-                                                           // ->get();
-                                                            ->paginate(10);
+                                                            ->select('events.*', 'establishment.em_name')
+                                                            ->paginate(5);
+
+
                                                         return view('officer.es1',  ['supervision' => $supervision,]);
                                             }
                                             public function searchreport2(Request $request){
@@ -1861,6 +1884,16 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
     ->groupBy(DB::raw("YEAR(created_at)"))
     ->pluck('count', 'year_name');
+
+    $users2 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+    ->get();
+    $users3 =  acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+    ->get();
+
+    $users4 =  event::select(DB::raw("COUNT(DISTINCT student_name) as count"))
+    ->get();
+    $users5 =  informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+    ->get();
     $users1 = registers::select(DB::raw("COUNT(DISTINCT id) as count"))
     ->get();
     // $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at ) AS year_name "))
@@ -1883,7 +1916,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         //$data = $users->values();
         $data = $users->values();
 
-        return view('officer.officerhome',compact('users','users1'), compact('labels','data'),["msg"=>"I am Editor role"]);
+        return view('officer.officerhome',compact('users','users1','users2','users3','users4','users5'), compact('labels','data'),["msg"=>"I am Editor role"]);
     }
 
     public function user1()
@@ -2321,8 +2354,18 @@ public function category()
 // teacherHome
     public function teacherHome()
     {
+        $users5 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+        $users6 = acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+        $users7 = informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+        $users9 = supervision::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+
+
         //นิเทศงาน
-        $users1 = Event::select(DB::raw("COUNT(DISTINCT id) as count"))
+        $users1 = Event::select(DB::raw("COUNT(DISTINCT student_name) as count"))
     ->get();
     $users2 = Event::select(DB::raw("COUNT(*) as count"))
     ->where('Status_events', 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
@@ -2345,12 +2388,16 @@ public function category()
 //  ->where('status', 'อนุมัติแล้ว')
 //  ->get();
  $users8 = users::select(DB::raw("COUNT(*) as count"))
- ->where('role', '0')
+//  ->where('role', '0')
  ->get();
 //  $users9 = users::select(DB::raw("COUNT(*) as count"))
 //  ->where('status', 'ไม่อนุมัติ')
 //  ->get();
-        return view('teacher.teacherhome',compact('users1','users2','users3','users4','users8'),["msg"=>"I am teacher role"]);
+        return view('teacher.teacherhome',compact('users1','users2','users3','users4','users8'
+        ,'users6','users7','users9'
+
+
+        ,'users5'),["msg"=>"I am teacher role"]);
     }
     public function documents1()
     {
@@ -2421,7 +2468,10 @@ public function category()
 
     public function es2()
     {
-        $supervision=DB::table('permission')
+        $supervision=DB::table('events')
+        ->join('establishment','events.em_id','establishment.id')
+        ->select('events.*','establishment.em_name')
+
        // ->join('users','users.id','=','users.id')
         // ->join('users','supervision.user_id','users.id')
         // ->join('establishment','establishment.id','=','establishment_id')

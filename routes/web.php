@@ -87,7 +87,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome3",[HomeController::class,'studentHome3'])->name('studenthome3');
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
 
-    Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
+    Route::post("/studenthome/updateuser001/{id}",[EditController::class,'updateuser001'])->name('updateuser001');
 
     //ยืยยันตัวตน
     Route::get("/studenthome/updateuser2/{id}",[EditController::class,'updateuser2'])->name('updateuser2');
@@ -290,6 +290,12 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/home",[HomeController::class,'officerHome'])->name('officer.officerhome');
     Route::get("/officer/user1",[HomeController::class,'user1'])->name('officer.user1');
 
+ //ข้อมูลส่วนตัว
+ Route::get("/officer/personal/{id}",[HomeController::class,'personal02'])->name('personal02');
+ Route::get("/officer/edituser02/{id}",[EditController::class,'edituser02'])->name('edituser02');
+Route::post("/officer/updateuser04/{id}",[EditController::class,'updateuser04'])->name('updateuser04');
+
+
     //สถานประกอบการ
 //ค้นหา
     Route::get('/officer/search',[HomeController::class,'searchestablishment'])->name('searchestablishment');
@@ -459,6 +465,12 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 {
     Route::get("/teacher/home",[HomeController::class,'teacherHome'])->name('teacher.teacherhome');
 
+    //ข้อมูลส่วนตัว
+    Route::get("/teacher/personal/{id}",[HomeController::class,'personal01'])->name('personal01');
+    Route::get("/teacher/edituser1/{id}",[EditController::class,'edituser01'])->name('edituser01');
+ Route::post("/teacher/updateuser4/{id}",[EditController::class,'updateuser4'])->name('updateuser4');
+
+    Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
 
     //ยื่นประสงค์ฝึกประสบการณ์
     //ค้นหา
@@ -636,6 +648,9 @@ Route::get("/user2",[HomeController::class,'changeStatus3'])->name('changeStatus
  Route::get("/teacher/editmajor/{major_id}",[EditController::class,'editmajor2'])->name('editmajor2');
  Route::post("/teacher/updatmajor/{major_id}",[EditController::class,'updatmajor2'])->name('updatmajor2');
  Route::get('/teacher/deletmajor/{major_id}', [EditController::class,'delmajor2'])->name('delmajor2');
+
+
+
 });
 
 

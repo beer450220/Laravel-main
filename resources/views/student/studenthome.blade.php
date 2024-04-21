@@ -617,10 +617,10 @@ s
          {{-- {{$row->Status_acceptance}} --}}
 
                     {{-- @endif --}}
-                    @endforeach
+
                     {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
                     </span> <br><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
-
+ @endforeach
 
                 </div>
                 <div id="collapse1" class="collapse" aria-labelledby="heading2" data-parent="#accordion1" style="">

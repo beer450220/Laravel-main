@@ -327,11 +327,11 @@ class AddController extends Controller
                   // 'filess' => 'mimes:jpeg,jpg,png',
 
                   // 'namefile' => 'required|unique:namefile',
-                  // 'user_id' => 'required|unique:user_id',
+                   'student_id' => 'required|unique:student',
                 ],[
                       // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
                   //    'namefile.required' => "กรุณาชื่อไฟล์",
-                  //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+                     'student_id.unique' => "ข้อมูลรหัสนักศึกษาซ้ำ",
                   ]
               );
 
@@ -359,7 +359,7 @@ class AddController extends Controller
                 $post->save();
 
 
-                return redirect('/personal3')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+                return redirect('/personal3')->with('error','success5', 'เพิ่มข้อมูลสำเร็จ.');
 
               // return redirect('/studenthome/register')
               //     ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');

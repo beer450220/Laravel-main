@@ -120,7 +120,7 @@
                 <span>เอกสารแจ้งรายละเอียด</span></a>
         </li> --}}
 
-{{--
+
         <li class="nav-item">
             <a class="nav-link"href="/officer/es1">
 
@@ -128,7 +128,7 @@
 
 
                 <span>เอกสารขออนุญาตนิเทศงาน</span></a>
-        </li> --}}
+        </li>
 
         {{-- <li class="nav-item">
             <a class="nav-link"href="/officer/record2">

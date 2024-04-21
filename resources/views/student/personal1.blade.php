@@ -301,7 +301,16 @@
                                               @if(session("success"))
                                           <div class="alert alert-success col-4">{{session('success')}}
                               @endif
-
+                              @if ($errors->any())
+    <div class="alert alert-danger col-3">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul></div>@endif
+@if(session("error"))
+<div class="alert alert-danger col-3">{{session('error')}}</div>
+@endif
                                       </h2>
 
                                   </div>
@@ -347,40 +356,40 @@
                                               <form method="POST" action="{{ route('addpersonal1') }}" enctype="multipart/form-data">
                                                 @csrf
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <input type="text"value=""  id="simpleinput" name="student_id" class="form-control">
+                                                      <input type="text"value=""  id="simpleinput" name="student_id" required class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง นามสกุล</label>
-                                                      <input type="text" id="example-email"value=""  name="fname" class="form-control" placeholder="">
+                                                      <input type="text" id="example-email"value=""  name="fname" class="form-control"required placeholder="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="example-email">นามสกุล</label>
-                                                        <input type="text" id="example-email"value=""  name="surname" class="form-control" placeholder="">
+                                                        <input type="text" id="example-email"value=""  name="surname" class="form-control"required placeholder="">
                                                       </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-password">อีเมล์</label>
-                                                      <input type="email" id="example-password" class="form-control"name="email" value="">
+                                                      <input type="email" id="example-password" class="form-control"name="email"required value="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)</label>
-                                                      <input type="text" id="example-palaceholder"value=""name="GPA"  class="form-control" placeholder="placeholder">
+                                                      <input type="text" id="example-palaceholder"value=""name="GPA"  class="form-control"required placeholder="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                      <input type="text" id="example-palaceholder"value="" name="telephonenumber" class="form-control" placeholder="placeholder">
+                                                      <input type="text" id="example-palaceholder"value="" name="telephonenumber" class="form-control"required placeholder="">
                                                     </div>
 
                                                 </div> <!-- /.col -->
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
                                                       <label for="example-helping">ที่อยู่</label>
-                                                      <input type="text" id="example-helping"value="" name="address" class="form-control" placeholder="Input with helping text">
+                                                      <input type="text" id="example-helping"value="" name="address" class="form-control"required placeholder="">
 
                                                     </div>
 
                                                     <div class="form-group mb-3">
                                                       <label for="example-static">หลักสูตร</label>
-                                                      <select class="form-control" id="validationSelect1" name="major_id" >
+                                                      <select class="form-control" id="validationSelect1" name="major_id" required>
                                                         <option value="">กรุณาเลือกหลักสูตร</option>
                                                         @foreach ($major as $row)
                                                         {{-- <optgroup label="Mountain Time Zone"> --}}

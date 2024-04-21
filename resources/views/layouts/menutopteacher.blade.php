@@ -31,7 +31,7 @@
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">ข้อมูลผู้ใช้งาน</a>
+            <a class="dropdown-item" href="/teacher/personal/{{ Auth::user()->id }}">ข้อมูลผู้ใช้งาน</a>
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}

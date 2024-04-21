@@ -170,7 +170,7 @@
                       </div>
                       <div class="col pr-0">
                         <p class=" text-muted mb-0">สมัครสหกิจ</p>
-                        <span class="h3 mb-0"> @foreach ($users1 as $row)
+                        <span class="h3 mb-0"> @foreach ($users5 as $row)
                             {{$row->count}} @endforeach</span>
 
                         {{-- <span class="small text-success">+16.5%</span> --}}
@@ -242,7 +242,7 @@
                           </div>
                           <div class="col pr-0">
                             <p class=" text-muted mb-0">เอกสารตอบรับ</p>
-                            <span class="h3 mb-0">@foreach ($users1 as $row)
+                            <span class="h3 mb-0">@foreach ($users6 as $row)
                               {{$row->count}} @endforeach</span>
                             {{-- <span class="small text-success">+16.5%</span> --}}
                           </div>
@@ -262,7 +262,7 @@
                           <div class="col pr-0">
                             <a href="/teacher/informdetails1">
                             <p class="small text-muted mb-0">เอกสารแจ้งรายละเอียด</p> </a>
-                            <span class="h3 mb-0"> @foreach ($users2 as $row)
+                            <span class="h3 mb-0"> @foreach ($users7 as $row)
                               {{$row->count}} @endforeach</span>
                             {{-- <span class="small text-success">+16.5%</span> --}}
                           </div>
@@ -409,7 +409,7 @@
                                                   </div>
                                                   <div class="col pr-0">
                                                     <p class=" text-muted mb-0">รายงานผลประเมิน</p>
-                                                    <span class="h3 mb-0">@foreach ($users4 as $row)
+                                                    <span class="h3 mb-0">@foreach ($users9 as $row)
                                                       {{$row->count}} @endforeach</span>
                                                     {{-- <span class="small text-success">+16.5%</span> --}}
                                                   </div>

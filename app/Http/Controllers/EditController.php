@@ -692,6 +692,58 @@ $post->update
    // dd($request);
 
     $request->validate([
+        'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+   if($request->hasFile("images")){
+       if (File::exists("รูปโปรไฟล์/".$post->images)) {
+           File::delete("รูปโปรไฟล์/".$post->images);
+       }
+       $file=$request->file("images");
+        $post->images=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $request['images']=$post->images;
+     // dd($post);
+   }
+    $post->update
+    ([
+       "username" =>$request->username,
+       "fname" =>$request->fname,
+       "surname" =>$request->surname,
+       "password" => Hash::make($request->password),
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+         "images"=>$post->images
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+       // "Status_acceptance"=>$request->Status_acceptance,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+
+
+    return redirect('/teacher/home')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+
+ public function   updateuser04(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   // dd($request);
+
+    $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
@@ -717,7 +769,10 @@ $post->update
    }
     $post->update
     ([
-       "GPA" =>$request->GPA,
+       "username" =>$request->username,
+       "fname" =>$request->fname,
+       "surname" =>$request->surname,
+       "password" => Hash::make($request->password),
         //"establishment"=>$request->establishment,
        //  "term"=>$request->term,
        // "annotation"=>$request->annotation,
@@ -732,8 +787,9 @@ $post->update
     ]);
 
 
-    return redirect('/teacher/home')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/officer/home')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
+
 
  public function   updateuser3(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -2672,6 +2728,51 @@ $post->update
      return view('student.Edit.edituser1',compact('users','major'));
 
  }
+ public function edituser01($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+     $users=users::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+     // dd($Evaluationdocuments);
+     $major=DB::table('major')
+
+     ->paginate(5);
+     return view('teacher.Edit.edituser1',compact('users','major'));
+
+ }
+
+ public function edituser02($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+     $users=users::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+     // dd($Evaluationdocuments);
+     $major=DB::table('major')
+
+     ->paginate(5);
+     return view('officer.Edit.edituser1',compact('users','major'));
+
+ }
 
  public function editpersonal2($id) {
     //ตรวจสอบข้อมูล
@@ -2723,7 +2824,7 @@ $post->update
      return view('student.Edit.edituser3',compact('users','major',"student"));
 
  }
- public function   updateuser1(Request $request,$id) {
+ public function   updateuser001(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
    // dd($request);
@@ -2754,7 +2855,10 @@ $post->update
    }
     $post->update
     ([
-       "GPA" =>$request->GPA,
+        "username" =>$request->username,
+        "fname" =>$request->fname,
+        "surname" =>$request->surname,
+        "password" => Hash::make($request->password),
         //"establishment"=>$request->establishment,
        //  "term"=>$request->term,
        // "annotation"=>$request->annotation,
@@ -2764,18 +2868,18 @@ $post->update
 
 
     //    "code_id" =>$request->code_id,
-       "major_id" =>$request->major_id,
+    //    "major_id" =>$request->major_id,
     //    "establishment_id" =>$request->establishment_id,
-       "fname" =>$request->fname,
-       "surname" =>$request->surname,
-       "telephonenumber" =>$request->telephonenumber,
-       "address" =>$request->address,
+    //    "fname" =>$request->fname,
+    //    "surname" =>$request->surname,
+    //    "telephonenumber" =>$request->telephonenumber,
+    //    "address" =>$request->address,
 
-       "em_name" =>$request->em_name,
-       "year" =>$request->year,
-       "term" =>$request->term,
+    //    "em_name" =>$request->em_name,
+    //    "year" =>$request->year,
+    //    "term" =>$request->term,
 
-       "email" =>$request->email,
+    //    "email" =>$request->email,
 
     //    "password" => Hash::make($request->password),
 

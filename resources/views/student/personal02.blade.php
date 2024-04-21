@@ -347,7 +347,7 @@
                                                         <form method="POST" action="{{ route('addpersonal3') }}" enctype="multipart/form-data">
                                                             @csrf
                                                 <label for="simpleinput">รหัสนักศึกษา</label>
-                                                <select class="form-control" id="validationSelect1" name="Student_id" >
+                                                <select class="form-control" id="validationSelect1" name="Student_id"required >
                                                     <option value="">กรุณาเลือก</option>
                                                     @foreach ($student as $row)
                                                     {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -360,20 +360,20 @@
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-email">ชื่อสถานประกอบการ</label>
-                                                <input type="text" id="example-email"value="" name="em_name" name="" class="form-control" placeholder="">
+                                                <input type="text" id="example-email"value="" name="em_name" required class="form-control" placeholder="">
 
                                             </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-password">ที่อยู่</label>
-                                                <input type="text" id="example-password" class="form-control" name="em_address"value="">
+                                                <input type="text" id="example-password" class="form-control"required name="em_address"value="">
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-palaceholder">เบอร์โทร</label>
-                                                <input type="text" id="example-palaceholder"value=""name="em_telephone"  class="form-control" placeholder="">
+                                                <input type="text" id="example-palaceholder"value=""name="em_telephone"required  class="form-control" placeholder="">
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-palaceholder">อีเมล์	</label>
-                                                <input type="email" id="example-palaceholder"value="" name="em_email" class="form-control" placeholder="">
+                                                <input type="email" id="example-palaceholder"value="" name="em_email"required class="form-control" placeholder="">
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-palaceholder">รูปภาพสถานประกอบการ</label>
@@ -385,26 +385,26 @@
                                             <div class="col-md-6">
                                               <div class="form-group mb-3">
                                                 <label for="example-helping">ชื่อผู้ติดต่อ</label>
-                                                <input type="text" id="example-helping"value=""name="em_contact_name"  class="form-control" placeholder="">
+                                                <input type="text" id="example-helping"value=""name="em_contact_name"required  class="form-control" placeholder="">
 
                                               </div>
 
                                               <div class="form-group mb-3">
                                                 <label for="example-static">อีเมล์ผู้ติดต่อ</label>
-                                                <input type="email" value=""name="em_Contact_email"  class="form-control" id="example-static" >
+                                                <input type="email" value=""name="em_Contact_email" required class="form-control" id="example-static" >
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-disable">ตำแหน่งผู้ติดต่อ</label>
-                                                <input type="text" class="form-control"value="" name="em_contactposition" id="example-disable"  value="">
+                                                <input type="text" class="form-control"value="" name="em_contactposition"required id="example-disable"  value="">
                                               </div>
 
                                               <div class="form-group mb-3">
                                                 <label for="example-static">รายละเอียดงาน</label>
-                                                <input type="text" value="" name="em_job" class="form-control" >
+                                                <input type="text" value="" name="em_job" class="form-control"required >
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-palaceholder">เว็บไซต์บริษัท</label>
-                                                <input type="text" id="example-palaceholder"value=""name="website"  class="form-control" placeholder="">
+                                                <input type="text" id="example-palaceholder"value=""name="website"required  class="form-control" placeholder="">
 
                                             </div>
 
