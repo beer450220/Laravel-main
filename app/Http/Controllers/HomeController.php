@@ -1838,7 +1838,10 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     }
     public function documents()
     {
-        return view('student.documents',["msg"=>"I am student role"]);
+        $registers=DB::table('download')
+        ->where('status',"1")
+        ->paginate(5);
+        return view('student.documents',["msg"=>"I am student role"],compact('registers'));
     }
     public function Announcement()
     {

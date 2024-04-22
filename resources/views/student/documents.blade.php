@@ -285,55 +285,10 @@
                 <form id="msform">
                     <!-- progressbar -->
 
-                    <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
-                        <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
-                          <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                            <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                              <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
-                    </ul>
-                    <div class="progress">
-                        {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
-                    </div> <br> <!-- fieldsets -->
+
+
                     <fieldset>
-                        <div class="form-card">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h2 class="fs-title col">ลงทะเบียน:</h2>
 
-                                </div>
-                                <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 3 - 6</h2>
-                                </div>
-                            </div><div class="col-6">
-                              <div class=" alert alert-primary  " role="alert">
-                                  <b>ขั้นตอนที่ 3 ลงทะเบียน:</b> ดาวน์โหลดเอกสาร
-                                  <br> แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)
-                                        <br> ใบสมัครงานสหกิจศึกษา(สก03)
-                                        <br> แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)
-                                      <br>
-                                      <br>  <a href="/studenthome/register"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อย้อนกลับ
-                                                              </div>   <br>   <br>
-                          </div>
-                          {{-- <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                              <h2 class="accordion-header" id="headingOne">
-                                <div class="col-7">
-                                      <h1 class="steps">ให้กรอกข้อมูลนักศึกษา<br><h2 class="steps text-success">{{ Auth::user()->status}}</h2></h1>
-
-
-                      </h2> --}}
-
-
-
-{{--
-                              <br>
-                              <br> --}}
-
-
-                                <br>
-                                <br>
 
 
 
@@ -360,38 +315,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
+                    <tr>@foreach ($registers as $row)
+                        <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
 
-                      <td>แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สก.01)</td>
+                      <td> {{ $row->namefile}}</td>
                      <td></td>
                      <td></td>
-                     <td><a href="/ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_BLANK"><i class="fe fe-arrow-down-circle fe-24"></i></a></td>
+                     <td><a href="/ไฟล์เอกสารดาวน์โหลด/{{ $row->filess}}" target="_BLANK"><i class="fe fe-arrow-down-circle fe-24"></i></a></td>
 {{-- download --}}
                     </tr>
-                    <tr>
 
-                        <tr>
-                            <td>2</td>
-
-                            <td>ใบสมัครงานสหกิจศึกษา (สก.03)</td>
-                           <td></td>
-                           <td></td>
-                           <td><a href="/ไฟล์เอกสารดาวน์โหลด/สก.03.pdf" target="_BLANK"><i class="fe fe-arrow-down-circle fe-24"></i></a></td>
-
-                          </tr>
-                          <tr>
-
-                            <tr>
-                                <td>3</td>
-
-                                <td>ใบสมัครงานสหกิจศึกษา (สก.04)</td>
-                               <td></td>
-                               <td></td>
-                               <td><a href="/ไฟล์เอกสารดาวน์โหลด/สก.04.pdf" target="_BLANK"><i class="fe fe-arrow-down-circle fe-24"></i></a></td>
-
-                              </tr>
-
+                              @endforeach
                   </tbody>
                 </table>
               </div>
