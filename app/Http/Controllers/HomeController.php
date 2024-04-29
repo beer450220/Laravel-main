@@ -1801,7 +1801,8 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         // ->join('users','events.user_id','users.id')
         // ->select('events.*','users.fname')
         ->join('teacher','events.teacher_name','teacher.id')
-        ->select('events.*','teacher.fname','teacher.surname')
+        ->join('establishment','events.em_id','establishment.id')
+        ->select('events.*','teacher.fname','teacher.surname','establishment.em_name')
         ->where('student_name', auth()->id())
         ->paginate(5);
         $users2=DB::table('teacher')

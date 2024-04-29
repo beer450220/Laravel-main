@@ -143,7 +143,7 @@
                                 {{-- <form method="POST" action="{{ route('register') }}"> --}}
                                     <form method="POST" action="{{ route('addcooperative1') }}" enctype="multipart/form-data">
                                     @csrf
-            <h4 class="text-">ข้อมูลสมัครสหกิจ</h4>
+            <h4 class="text-">ข้อมูลสมัครเข้าใช้งานระบบ</h4>
             @foreach ($errors->all() as $error)
             <li class="alert alert-danger col-6">{{ $error }}</li>
             @endforeach

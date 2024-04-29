@@ -412,7 +412,7 @@
                                                 </div><div class="modal-footer">
                                                     <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
-                                                    <a href="/studenthome" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
+                                                    <a href="/studenthome1" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
                                                   </div></form>
                                                 <div class="form-group mb-3">
 

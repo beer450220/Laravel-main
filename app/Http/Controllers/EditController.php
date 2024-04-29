@@ -195,16 +195,18 @@ public function   updateregisteruser(Request $request,$id) {
     $request->validate([
 
         // 'filess' => 'mimes:jpeg,jpg,png',
+        'filess' => 'mimes:pdf|max:1024',
         //'filess' => 'sometimes|required|mimes:jpeg,jpg,png',
         // 'name' => ['required'],
-        'namefile' => 'required',
+        // 'namefile' => 'required',
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
     ],
     [
-        'namefile.required' => "กรุณาชื่อไฟล์",
+        // 'namefile.required' => "กรุณาชื่อไฟล์",
             // 'establishment.required' => "กรุณา",
-           // 'filess.required' => "กรุณาใส่รูปภาพ",
+            'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
             // 'name.required' => "กรุณากรอกชื่อไฟล์",
         ]
     );
@@ -217,12 +219,12 @@ public function   updateregisteruser(Request $request,$id) {
         // if (File::exists(public_path("file/".$post->filess))) {
         //     File::delete(public_path("file/".$post->filess));
         // }
-        if (File::exists("file/".$post->filess)) {
-            File::delete("file/".$post->filess);
+        if (File::exists("ลงทะเบียน/".$post->filess)) {
+            File::delete("ลงทะเบียน/".$post->filess);
         }
         $file=$request->file("filess");
         $post->filess=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/file"),$post->filess);
+        $file->move(\public_path("/ลงทะเบียน"),$post->filess);
         $request['filess']=$post->filess;
         // $file = $request->file("filess");
         // $post->filess = time() . "_" . $file->getClientOriginalName();
@@ -238,12 +240,12 @@ public function   updateregisteruser(Request $request,$id) {
         // "filess"=>$request->filess,
         "filess"=>$post->filess,
         "namefile" => $request->namefile,
-        "year" => $request->year,
-        "term" => $request->term,
+        // "year" => $request->year,
+        // "term" => $request->term,
         // "filess" => $post->filess
     ]);
 
-    return redirect('/studenthome')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome1')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
@@ -300,24 +302,25 @@ public function   updateregisteruser(Request $request,$id) {
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
-        'files' => 'mimes:jpg,jpeg,png',
+        'files' => 'mimes:pdf|max:1024',
     ],[
             'establishment.required' => "กรุณา",
-
+            'files.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'files.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
     $post=informdetails::findOrFail($informdetails_id);
     $post->user_id = Auth::user()->id;
-    $post->Status_informdetails ="รอตรวจสอบ";
+    // $post->Status_informdetails ="รอตรวจสอบ";
     // $post->establishment ="-";
     $post->annotation ="-";
     if($request->hasFile("files")){
-        if (File::exists("fileinformdetails/".$post->files)) {
-            File::delete("fileinformdetails/".$post->files);
+        if (File::exists("เอกสารปฏิบัติงานนักศึกษา/".$post->files)) {
+            File::delete("เอกสารปฏิบัติงานนักศึกษา/".$post->files);
         }
         $file=$request->file("files");
         $post->files=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/fileinformdetails"),$post->files);
+        $file->move(\public_path("/เอกสารปฏิบัติงานนักศึกษา"),$post->files);
         $request['files']=$post->files;
     }
     // dd($request);
@@ -334,7 +337,7 @@ public function   updateregisteruser(Request $request,$id) {
     ]);
 
 
-    return redirect('/studenthome/informdetails')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome/informdetails')->with('error','success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 

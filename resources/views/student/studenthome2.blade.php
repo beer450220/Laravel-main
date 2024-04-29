@@ -569,7 +569,7 @@ div.second {
 
                     @endif
             @endforeach</H2>
-            <a href="../ลงทะเบียน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+            <a href="../../ลงทะเบียน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
             {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
             </span>
@@ -620,7 +620,8 @@ div.second {
 
                     @endif
             @endforeach</H2>
-            <a href="/studenthome/addregister"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
+            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+            <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไข</a>
             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
             </span>
 
@@ -630,14 +631,14 @@ div.second {
           <div class="card-body">
             {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
         </div>
-        <br>
+
 
 
           </div>
 
         </div>
 
-        @else ()
+
 
 
 
@@ -865,8 +866,8 @@ div.second {
                                                     @endif
                                                 @endforeach</h2></span>
                                                 {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
-                                    <a href="/studenthome/addregister2"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
-
+                                    {{-- <a href="/studenthome/addregister2"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+                                    <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไข</a>
                                                 </div>
                                       @endif
                                       @endforeach
@@ -1018,8 +1019,9 @@ div.second {
                                                     </span>
                                               @endif
                                           @endforeach </h2>
-                                    <a href="/studenthome/addregister3"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
-                                            </div>
+                                    {{-- <a href="/studenthome/addregister3"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+                                    <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                                </div>
                                       @endif
                                       @endforeach
                                       @endif
@@ -1186,7 +1188,8 @@ div.second {
           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
       @endif
   @endforeach</h2>
-  <a href="/studenthome/addregister4"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
+  {{-- <a href="/studenthome/addregister4"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
     </div>
     <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion1">
       <div class="card-body"><a href="/studenthome/addregister4"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
@@ -1404,7 +1407,8 @@ div.second {
           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
       @endif
   @endforeach </h2>
-  <a href="/studenthome/addregister5"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
+  {{-- <a href="/studenthome/addregister5"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
     </div>
     <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion1">
       <div class="card-body"> <a href="/studenthome/addregister5"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
@@ -1620,8 +1624,9 @@ div.second {
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach </h2>
-                                      <a href="/studenthome/addregister6"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
-                                        </div>
+                                      {{-- <a href="/studenthome/addregister6"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+                                      <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                                    </div>
                                         <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addregister6"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
                                           <br>
@@ -1810,8 +1815,9 @@ div.second {
                                       @endif
                                   @endforeach </H2>
                                   {{-- <a href="/studenthome/addregister7"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-                                  <a href="../ลงทะเบียน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
-                                    </div>
+                                  {{-- <a href="../ลงทะเบียน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a> --}}
+                                  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                                </div>
                                     <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion1">
 
                                               </div>

@@ -378,25 +378,55 @@
                                       {{-- <a href="">
                                         <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
                                       </a> --}}
-                                      <h4 class="card-title text-center">สถานประกอบการ::  {{ $row->em_id }}</h4>  <p class="text-center"></p>
+                                      <h4 class="card-title text-center">สถานประกอบการ::  {{ $row->em_name }}</h4>  <p class="text-center"></p>
                                       <hr>
                                       <div class="caption card-body">
                                     <div class="card-text my-2">
 
                                       <p class=" text mb-0 ">วันเวลาการนิเทศ: {{ $row->start}}</p>
                                       <p class=""><span class=" text-muted">อาจารย์นิเทศ:
-
+                                    {{-- {{ $row->fname }}  {{ $row->surname }} --}}
                                     @foreach ($users2 as $teacherId)
-                                       {{-- @php
-                                        $selectedIds = explode(',', $events->teacher_name);
-                                    @endphp --}}
+
+                                    @php
+
+                                    $teacherIds = explode(',', $row->teacher_name);
+                                @endphp
+                            @endforeach
+                                     @foreach ($teacherIds as $teacherId)
+                                     @php
+                                         // ค้นหาข้อมูลของอาจารย์จากฐานข้อมูลตาม teacher_id ที่แยกไว้
+                                         $teacher = App\Models\Teacher::find($teacherId);
+                                     @endphp
+
+                                     {{-- ทำสิ่งที่ต้องการกับข้อมูลของอาจารย์ที่พบ --}}
+                                     {{ $teacher->fname }} {{ $teacher->surname }}
+                                 @endforeach
+
+                                    {{-- @foreach ($users2 as $teacherId)
+                                       @php
+                                        $selectedIds = explode(',', $row->teacher_name);
+                                    @endphp
+ @php
+ $teacher = App\Models\teacher::find($selectedIds);
+@endphp --}}
+
+{{-- แสดงข้อมูลของอาจารย์ --}}
+{{-- {{ $teacher->fname }} {{ $teacher->surname }} --}}
                                         {{-- {{ $teacherId }} แสดง id ของอาจารย์ --}}
                                         {{-- หรือสามารถใช้วิธีดึงข้อมูลจากฐานข้อมูลได้ --}}
                                         {{-- @php
-                                            $teacher = App\Models\Teacher::find($teacherId);
+                                            $teacher = App\Models\teacher::find($teacherId);
                                         @endphp --}}
-                                        {{ $teacherId->fname }} {{ $teacherId->surname }}
-                                    @endforeach
+                                        {{-- {{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }} --}}
+                                        {{-- {{ in_array($row->id, $selectedIds) ? 'selected' : '' }} --}}
+                                        {{-- {{ $row->fname }}  {{ $row->surname }} --}}
+                                        {{-- @foreach ($selectedIds as $selectedId)
+
+                                        {{ $selectedId}}
+                                    @endforeach --}}
+                                        {{-- {{ $teacherId->fname }} {{ $teacherId->surname }} --}}
+                                    {{-- @endforeach --}}
 
 
 
