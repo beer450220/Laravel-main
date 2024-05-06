@@ -1030,6 +1030,7 @@ $users=DB::table('users')
                                     //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                             })
                             ->select('registers.*', 'users.fname', 'users.surname')
+                            ->orderBy('id', 'desc')
                             ->paginate(10);
                         return view('officer.register1',  ['registers' => $registers,]);
 // compact('registers'),
@@ -1219,6 +1220,7 @@ $users=DB::table('users')
                                                     //   ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
                                             })
                                             ->select('informdetails.*', 'users.fname', 'users.surname')
+                                            ->orderBy('informdetails_id', 'desc')
                                             ->paginate(10);
 
 
@@ -1251,6 +1253,8 @@ $users=DB::table('users')
                                                                     //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
                                                             })
                                                             ->select('events.*', 'establishment.em_name')
+                                                            ->orderBy('id', 'desc')
+
                                                             ->paginate(5);
 
 
@@ -2100,6 +2104,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname','users.surname')
+        ->orderBy('id', 'desc')
         ->paginate(10);
 //dd($registers);
         return view('officer.register1',compact('registers'));
@@ -2181,6 +2186,7 @@ public function category()
         $informdetails=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
         ->select('informdetails.*','users.fname','users.surname')
+        ->orderBy('informdetails_id', 'desc')
         ->paginate(5);
         return view('officer.informdetails2',compact('informdetails'));
     }
@@ -2364,6 +2370,13 @@ public function category()
     {
         $users5 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
         ->get();
+        $users10 = registers::select(DB::raw("COUNT(*) as count"))
+        ->where('Status_registers', 'รอตรวจสอบ')
+        ->get();
+        $users11 = registers::select(DB::raw("COUNT(*) as count"))
+        ->where('Status_registers', 'ตรวจสอบเอกสารแล้ว')
+        ->get();
+
         $users6 = acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
         ->get();
         $users7 = informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
@@ -2376,10 +2389,10 @@ public function category()
         $users1 = Event::select(DB::raw("COUNT(DISTINCT student_name) as count"))
     ->get();
     $users2 = Event::select(DB::raw("COUNT(*) as count"))
-    ->where('Status_events', 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+    ->where('Status_events', 'รอรับทราบและยืนยันเวลานัดนิเทศ')
     ->get();
     $users3 = Event::select(DB::raw("COUNT(*) as count"))
-    ->where('Status_events', 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+    ->where('Status_events', 'รับทราบและยืนยันเวลานัดแล้ว')
     ->get();
 //เอกสารแจ้งรายละเอียด
     $users4 = informdetails::select(DB::raw("COUNT(DISTINCT informdetails_id) as count"))
@@ -2402,7 +2415,7 @@ public function category()
 //  ->where('status', 'ไม่อนุมัติ')
 //  ->get();
         return view('teacher.teacherhome',compact('users1','users2','users3','users4','users8'
-        ,'users6','users7','users9'
+        ,'users6','users7','users9','users10','users11'
 
 
         ,'users5'),["msg"=>"I am teacher role"]);
@@ -2479,7 +2492,7 @@ public function category()
         $supervision=DB::table('events')
         ->join('establishment','events.em_id','establishment.id')
         ->select('events.*','establishment.em_name')
-
+        ->orderBy('id', 'desc')
        // ->join('users','users.id','=','users.id')
         // ->join('users','supervision.user_id','users.id')
         // ->join('establishment','establishment.id','=','establishment_id')

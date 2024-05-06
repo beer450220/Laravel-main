@@ -331,10 +331,7 @@
                                                       <label for="example-password">นามสกุล</label>
                                                       <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->surname }}"name="surname">
                                                     </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">รหัสผ่าน</label>
-                                                      <input type="password" id="example-palaceholder"value="" class="form-control"name="password" placeholder="">
-                                                    </div>
+
                                                     <div class="form-group mb-3">
                                                         <label for="example-static">รูปโปรไฟล์</label>
                                                         <input type="file" value="{{ Auth::user()->images}}" name="images" class="form-control" id="example-static" >

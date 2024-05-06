@@ -190,7 +190,7 @@
                     </div>
                     <div class="col pr-0">
                       <p class="small text-muted mb-0">ยังไม่ได้ยืนยัน</p>
-                      <span class="h3 mb-0"> @foreach ($users2 as $row)
+                      <span class="h3 mb-0"> @foreach ($users10 as $row)
                         {{$row->count}} @endforeach</span>
                       {{-- <span class="small text-success">+16.5%</span> --}}
                     </div>
@@ -211,7 +211,7 @@
                       <p class="small text-muted mb-0">ยืนยันแล้ว</p>
                       <div class="row align-items-center no-gutters">
                         <div class="col-auto">
-                          <span class="h3 mr-2 mb-0"> @foreach ($users3 as $row)
+                          <span class="h3 mr-2 mb-0"> @foreach ($users11 as $row)
                             {{$row->count}} @endforeach </span>
                         </div>
                         <div class="col-md-12 col-lg">

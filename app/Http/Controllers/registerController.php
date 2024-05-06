@@ -225,7 +225,7 @@ class registerController extends Controller
         //  $user-> annotation = "-";
 
          $user->save();
-         return redirect('/login')->with('error','success', 'สมัครสำเร็จ.');
+         return redirect('/login')->with('error','success', 'สมัครสำเร็จ');
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 

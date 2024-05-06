@@ -417,7 +417,9 @@
                                                       {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
 
                                                     {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
-                                                      <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div>
+                                                    <a href="/studenthome/edituser002/{{Auth::user()->id}}"  class="btn btn-outline-primary fe-16" type="button">เปลี่ยนรหัสผ่าน</a>
+                                                    &nbsp;&nbsp;
+                                                    <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div>
                                                 </div>
                                                     </div>
                                             </div> <!-- / .card -->

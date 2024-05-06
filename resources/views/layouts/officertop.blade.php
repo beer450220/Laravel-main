@@ -262,7 +262,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
 
-
+                            {{ Auth::user()->username }}
 
                             <h4 class="mt-4"   ></h4>
 

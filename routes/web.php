@@ -86,9 +86,10 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
     Route::get("/studenthome3",[HomeController::class,'studentHome3'])->name('studenthome3');
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
+    Route::get("/studenthome/edituser002/{id}",[EditController::class,'edituser002'])->name('edituser002');
 
     Route::post("/studenthome/updateuser001/{id}",[EditController::class,'updateuser001'])->name('updateuser001');
-
+    Route::post("/studenthome/updateuser002/{id}",[EditController::class,'updateuser002'])->name('updateuser002');
     //ยืยยันตัวตน
     Route::get("/studenthome/updateuser2/{id}",[EditController::class,'updateuser2'])->name('updateuser2');
 
@@ -293,8 +294,9 @@ Route::middleware(['auth','user-role:officer'])->group(function()
  //ข้อมูลส่วนตัว
  Route::get("/officer/personal/{id}",[HomeController::class,'personal02'])->name('personal02');
  Route::get("/officer/edituser02/{id}",[EditController::class,'edituser02'])->name('edituser02');
+ Route::get("/officer/edituser0002/{id}",[EditController::class,'edituser0002'])->name('edituser0002');
 Route::post("/officer/updateuser04/{id}",[EditController::class,'updateuser04'])->name('updateuser04');
-
+Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'])->name('updateuser004');
 
     //สถานประกอบการ
 //ค้นหา
@@ -468,9 +470,12 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     //ข้อมูลส่วนตัว
     Route::get("/teacher/personal/{id}",[HomeController::class,'personal01'])->name('personal01');
     Route::get("/teacher/edituser1/{id}",[EditController::class,'edituser01'])->name('edituser01');
+    Route::get("/teacher/edituser0001/{id}",[EditController::class,'edituser0001'])->name('edituser0001');
  Route::post("/teacher/updateuser4/{id}",[EditController::class,'updateuser4'])->name('updateuser4');
+ Route::post("/teacher/updateuser00004/{id}",[EditController::class,'updateuser00004'])->name('updateuser00004');
 
-    Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
+
+ Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
 
     //ยื่นประสงค์ฝึกประสบการณ์
     //ค้นหา

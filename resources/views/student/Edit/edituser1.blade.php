@@ -335,10 +335,7 @@
                                                       <label for="example-password">Password</label>
                                                       <input type="password" id="example-password" class="form-control" value="password">
                                                     </div> --}}
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">รหัสผ่าน</label>
-                                                      <input type="password" id="example-palaceholder"value=""name="password"  class="form-control" placeholder="">
-                                                    </div>
+
                                                     {{-- <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
                                                       <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" name="GPA"  class="form-control"required placeholder="">

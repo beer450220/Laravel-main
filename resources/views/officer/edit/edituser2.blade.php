@@ -318,27 +318,16 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <form method="POST" action="{{url('/teacher/updateuser4/'.$users->id)}}" enctype="multipart/form-data">
+                                                      <form method="POST" action="{{url('/officer/updateuser004/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
-                                                      <label for="simpleinput">ชื่อผู้ใช้งาน</label>
-                                                      <input type="text"value="{{ Auth::user()->username}}"name="username"  id="simpleinput" class="form-control">
-                                                    </div>
+
+
+
                                                     <div class="form-group mb-3">
-                                                      <label for="example-email">ชื่อจริง</label>
-                                                      <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-password">นามสกุล</label>
-                                                      <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->surname }}"name="surname">
-                                                    </div>
-                                                    {{-- <div class="form-group mb-3">
                                                       <label for="example-palaceholder">รหัสผ่าน</label>
                                                       <input type="password" id="example-palaceholder"value="" class="form-control"name="password" placeholder="">
-                                                    </div> --}}
-                                                    <div class="form-group mb-3">
-                                                        <label for="example-static">รูปโปรไฟล์</label>
-                                                        <input type="file" readonly=""value="{{ Auth::user()->images}}" name="images" class="form-control" id="example-static" >
-                                                      </div>
+                                                    </div>
+
 
 
 
@@ -347,7 +336,7 @@
 
 
                                                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                      <a href="/teacher/home" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
+                                                      <a href="/officer/home" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
                                                       &nbsp;&nbsp;
                                                       <button  class="btn btn-outline-success me-md-2 delete-btn"  type="reset">ยกเลิก</button>&nbsp;
                                                       <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">อัพเดทข้อมูล</button>
