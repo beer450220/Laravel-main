@@ -236,6 +236,148 @@ class HomeController extends Controller
         ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8'));
     }
 
+    public function in2()
+    {
+        $registers=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $student=DB::table('student')
+        ->join('users','student.user_id','users.id')
+        ->select('student.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $establishment=DB::table('establishment')
+        ->join('users','establishment.user_id','users.id')
+        ->select('establishment.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $acceptance=DB::table('acceptance')
+        ->join('users','acceptance.user_id','users.id')
+        ->select('acceptance.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+    //     $establishment = DB::table('establishment')
+    // ->join('student', 'establishment.student_id', '=', 'student.student_id')
+    // ->get();
+        // dd( $student);
+//   dd( $establishment);
+        $registers1=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers2=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers3=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+
+
+        $registers4=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรประชาชน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers5=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรนักศึกษา')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers6=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ผลการเรียน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers7=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+
+        $registers8=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.fname')
+        ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers9=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.fname')
+        ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers10=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.fname')
+        ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+
+        $registers12=DB::table('events')
+        ->join('users','events.student_name','users.id')
+        ->select('events.*','users.fname')
+        ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
+        ->where('student_name', auth()->id())
+        ->paginate(5);
+
+        $registers13=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers14=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers15=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers16=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        // $activity=DB::table('schedule')
+        // // ->join('users','registers.user_id','users.id')
+        // // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        // ->paginate(5);
+
+        // return view('student.register',compact('registers','registers1'
+
+
+        // ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
+        return view('student.in2',compact('registers','registers1','student','establishment','acceptance','registers2'
+        ,'registers3','registers4','registers5','registers6','registers7','registers8','registers9','registers10'
+        ,'registers12' ,'registers13','registers14','registers15','registers16'
+       ));
+    }
     public function studentHome3()
     {
         $registers=DB::table('registers')

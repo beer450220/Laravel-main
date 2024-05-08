@@ -84,6 +84,10 @@ Route::middleware(['auth','user-role:student'])->group(function()
     //ข้อมูลส่วนตัว
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
 
+
+     //ข้อมูลตรวจสอบเอกสาร
+     Route::get("/studenthome/in2",[HomeController::class,'in2'])->name('in2');
+
     Route::get("/studenthome3",[HomeController::class,'studentHome3'])->name('studenthome3');
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
     Route::get("/studenthome/edituser002/{id}",[EditController::class,'edituser002'])->name('edituser002');
