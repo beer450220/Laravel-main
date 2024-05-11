@@ -481,6 +481,10 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 
  Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
 
+ //ข้อมูลตรวจสอบเอกสาร
+ Route::get("/teacher/in2",[HomeController::class,'in3'])->name('in3');
+ Route::get('/teacher/search001',[HomeController::class,'searchin3'])->name('searchin3');
+
     //ยื่นประสงค์ฝึกประสบการณ์
     //ค้นหา
 Route::get('/teacher/search8',[HomeController::class,'searchrequest'])->name('searchrequest');
