@@ -671,9 +671,9 @@
 
                                               </div>
                                             </div>
-                                        </div>
 
-                                    </div>
+
+
 
 
 
@@ -930,7 +930,7 @@
                                       <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                         {{-- </div> --}}
                                         @endforeach
-
+                                    </div>      </div>      </div>
                                         {{-- </div>
                                       </div> --}}
                                       {{-- @else --}}
@@ -1179,7 +1179,7 @@
     <div class="col-md-12 my-4 " >
    </div>
 
-  </div></div></div></div>
+  </div></div></div>
 <div class="d-grid gap-2 text-center" >
 
     <h4></h4><a href="/studenthome"   class="btn btn-outline-warning " type="button">>ย้อนกลับ<</a>

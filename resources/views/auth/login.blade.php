@@ -26,8 +26,9 @@
 
     <body class="antialiased">
         <header class="bg-dark text-white d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+              ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์
             </a>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -275,11 +276,15 @@
                                                     {{ __('Remember Me') }}
                                                 </label> --}}
                                               </div>
+                                              <div class=" text-end">
+                                                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;
+                                                <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a>
 
-
-                                              <button type="submit"  class="btn btn-primary ms-auto text-white bg-dark">
-                                                                เข้าสู่ระบบ
-                                              </button>
+                                                <button type="submit"  class="btn btn-primary ms-auto text-white bg-dark">
+                                                                  เข้าสู่ระบบ
+                                                </button>
+                                              </div>
                                               {{-- name="submit" --}}
                                             </div>
                                                             {{-- <div class="d-flex align-items-center">
@@ -315,6 +320,17 @@
                                       @endif
               </div> --}}
 
-
+              <br><br><br><br>
+              <br>
+                            <footer class="py-3 my-4">
+                              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                                <li class="nav-item"><a  class="nav-link px-2 text-muted">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
+                                {{-- <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li> --}}
+                              </ul>
+                              <p class="text-center text-muted">© 2024 Company, Inc</p>
+                            </footer>
     </body>
 </html>
