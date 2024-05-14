@@ -1798,6 +1798,7 @@ public function searchin3(Request $request){
            // ->where('user_id', auth()->id())
            ->paginate(5);
             $users = users::query()
+            // ->join('users','registers.user_id','users.id')
             ->where(function($query) use ($keyword) {
                 $query->where('role', 'student')
                     ->orWhere('role', '0');

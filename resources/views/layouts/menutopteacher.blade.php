@@ -9,7 +9,8 @@
       </button>
       <form class="">
         {{-- <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search"> --}}
-      </form>
+        <h3> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</h3>
+    </form>
       <ul class="nav">
         {{-- <li class="nav-item">
           <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
