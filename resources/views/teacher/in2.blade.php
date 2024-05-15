@@ -53,7 +53,7 @@
                 <th>ภาคเรียน</th> --}}
                <th>สถานะ</th>
                {{-- <th>หมายเหตุ</th> --}}
-                <th style="width:10%">ดูไฟล์เอกสาร</th>
+                {{-- <th style="width:10%">ดูไฟล์เอกสาร</th> --}}
 
                 {{-- <th style="width:10%">ยืนยันข้อมูล</th> --}}
               {{-- <th style="width:10%">ลบ</th> --}}
@@ -63,7 +63,7 @@
             @foreach ($registers1 as $row)
             <td ></td>
 
-            <td >{{ $row->fname   }}</td>
+            <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
             <td >แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</td>
             <td >  @if ($registers1->isEmpty())
             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -81,7 +81,7 @@
                                                                        @endif
             </td>
               {{-- <td>{{ $row->annotation }}</td> --}}
-              <td></td>
+
 {{-- download --}}
               {{-- <td>
                 @if ($row->Status_registers === 'รอตรวจสอบ')
@@ -102,7 +102,7 @@
             <tr>
                 @foreach ($registers2 as $row)
                 <td ></td>
-                <td >{{ $row->fname   }}</td>
+                <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
             {{-- <th scope="row">2</th> --}}
             <th >ใบสมัครงานสหกิจศึกษา(สก03)</th>
             <td >  @if ($registers2->isEmpty())
@@ -125,7 +125,7 @@
                     <tr>
                         @foreach ($registers3 as $row)
                         <td ></td>
-                        <td >{{ $row->fname   }}</td>
+                        <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
                     {{-- <th scope="row">2</th> --}}
                     <th >แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</th>
                     <td >  @if ($registers3->isEmpty())
@@ -148,7 +148,7 @@
                             <tr>
                                 @foreach ($registers17 as $row)
                                 <td ></td>
-                                <td >{{ $row->fname   }}</td>
+                                <td >{{ $row->fname   }} {{ $row->surname   }}</td>
                             {{-- <th scope="row">2</th> --}}
                             <th >แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)</th>
                             <td >  @if ($registers17->isEmpty())
@@ -170,8 +170,8 @@
                             <tr>
                                 @foreach ($registers8 as $row)
                                 <td ></td>
-                                <td >{{ $row->fname   }}</td>
-                            {{-- <th scope="row">2</th> --}}
+                                <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
+
                             <th >แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</th>
                             <td >  @if ($registers8->isEmpty())
                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -192,8 +192,8 @@
                                     <tr>
                                         @foreach ($registers9 as $row)
                                         <td ></td>
-                                        <td >{{ $row->fname   }}</td>
-                                    {{-- <th scope="row">2</th> --}}
+                                        <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
+
                                     <th >แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</th>
                                     <td >  @if ($registers9->isEmpty())
                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -214,8 +214,8 @@
                                             <tr>
                                                 @foreach ($registers10 as $row)
                                                 <td ></td>
-                                                <td >{{ $row->fname   }}</td>
-                                            {{-- <th scope="row">2</th> --}}
+                                                <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
+
                                             <th >แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</th>
                                             <td >  @if ($registers10->isEmpty())
                                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -236,8 +236,8 @@
                                                     <tr>
                                                         @foreach ($registers12 as $row)
                                                         <td ></td>
-                                                        <td >{{ $row->fname   }}</td>
-                                                    {{-- <th scope="row">2</th> --}}
+                                                        <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
+
                                                     <th >แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา(สก.10)</th>
                                                     <td >  @if ($registers12->isEmpty())
                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -258,8 +258,8 @@
                                                             <tr>
                                                                 @foreach ($registers13 as $row)
                                                                 <td ></td>
-                                                                <td >{{ $row->fname   }}</td>
-                                                            {{-- <th scope="row">2</th> --}}
+                                                                <td >{{ $row->fname   }}   {{ $row->surname   }}</td>
+
                                                             <th >แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</th>
                                                             <td >  @if ($registers13->isEmpty())
                                                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -281,8 +281,8 @@
                                                                     <tr>
                                                                         @foreach ($registers14 as $row)
                                                                         <td ></td>
-                                                                        <td >{{ $row->fname   }}</td>
-                                                                    {{-- <th scope="row">2</th> --}}
+                                                                        <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
+
                                                                     <th >แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</th>
                                                                     <td >  @if ($registers14->isEmpty())
                                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -304,8 +304,8 @@
                                                                             <tr>
                                                                                 @foreach ($registers15 as $row)
                                                                                 <td ></td>
-                                                                                <td >{{ $row->fname   }}</td>
-                                                                            {{-- <th scope="row">2</th> --}}
+                                                                                <td >{{ $row->fname   }}   {{ $row->surname   }}</td>
+
                                                                             <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</th>
                                                                             <td >  @if ($registers15->isEmpty())
                                                                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -326,8 +326,8 @@
                                                                                     <tr>
                                                                                         @foreach ($registers16 as $row)
                                                                                         <td ></td>
-                                                                                        <td >{{ $row->fname   }}</td>
-                                                                                    {{-- <th scope="row">2</th> --}}
+                                                                                        <td >{{ $row->fname   }}  {{ $row->surname   }}</td>
+
                                                                                     <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</th>
                                                                                     <td >  @if ($registers16->isEmpty())
                                                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -367,13 +367,80 @@
         @endforeach --}}
           </tbody>
         </table>
-        {{-- {!!$registers->links('pagination::bootstrap-5')!!}
-        {!! $registers2->links('pagination::bootstrap-5') !!} --}}
+         {!!$registers1->links('pagination::bootstrap-5')!!}
+       {{-- {!! $registers2->links('pagination::bootstrap-5') !!}--}}
       </div>
     </div>
   </div> <!-- Bordered table -->
 </div> <!-- end section -->
 
+
+
+
+
+
+
+{{--
+<table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+          <th>ลำดับ</th>
+          <th>ชื่อนักศึกษา</th>
+          <th>สมัครสหกิจศึกษา</th>
+          <th>ตอบรับ</th>
+
+         <th>สถานะ</th>
+
+          <th style="width:10%">ดูไฟล์เอกสาร</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($registers as $row)
+      <td ></td>
+
+      <td >{{ $row->fname   }}</td>
+      <td >{{ $row->namefile   }}    {{ $row->acceptance_namefile  }}</td>
+      <td >
+      </td>
+
+        <td></td>
+
+      </tr>@endforeach --}}
+
+
+
+                      <tr>
+
+      {{-- @endforeach --}}
+      {{-- @foreach ($registers1 as $row) --}}
+      {{-- @foreach ($registers as $row)
+  <tr class="">
+      <td></td>
+      <td>{{ $row->fname }} {{ $row->surname }}</td>
+      <td>
+
+          </td>
+      <td></td>
+      <td></td>
+  </tr>
+  <tr class="">
+      <td></td>
+      <td></td>
+      {{-- <td>{{ $row->informdetails_namefile }}</td> --}}
+      {{-- <td></td>
+      <td></td>
+  </tr>
+  @endforeach --}}
+    </tbody>
+  </table>
+  {{-- {!!$registers->links('pagination::bootstrap-5')!!}
+  {!! $registers2->links('pagination::bootstrap-5') !!} --}}
+</div>
+</div>
+</div> <!-- Bordered table -->
+</div> <!-- end section -->
 
 {{-- @foreach ($registers as $row)
 {{ $row->namefile }}

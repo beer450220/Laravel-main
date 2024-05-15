@@ -4,14 +4,14 @@
     <ul class=" navbar-nav bg-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Admin/">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class=" fas fa-laugh-wink"src="/icons/1.png "></i>
-
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/officer/home">
+            <div class="sidebar-brand-icon rotate">
+                {{-- <i class=" fas fa-laugh-wink"src="../icons/1.png"></i> --}}
+                <img src="{{ asset('icons/1.png') }}" sizes="16x16"alt="Girl in a jacket" width="50" height="50">
             </div>
             {{-- <span class="avatar avatar-sm mt-2">
                     <img src="/icons/1.png " sizes="16x16" alt="..." class="avatar-img rounded-circle"></span> --}}
-            <div class="sidebar-brand-text mx-3">officer </div>
+            <div class="sidebar-brand-text mx-3"></div>
         </a>
 
         <!-- Divider -->
@@ -57,7 +57,7 @@
         <li class="nav-item">
             <a class="nav-link"href="/officer/schedule">
 
-           <i class="fa fa-user" aria-hidden="true"></i>
+                <i class="fa-solid fa-download"></i>
 
 
                 <span>ดาวน์โหลดเอกสาร</span></a>
@@ -65,7 +65,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
                 aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fa fa-file"></i>
+                <i class="fa-solid fa-id-card"></i>
                 <span>ข้อมูลนักศึกษา</span>
             </a>
             <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionSidebar">
@@ -85,7 +85,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                 aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fa fa-file"></i>
+                <i class="fa-solid fa-address-book"></i>
                 <span>ลงทะเบียนสหกิจ</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -124,7 +124,7 @@
         <li class="nav-item">
             <a class="nav-link"href="/officer/es1">
 
-           <i class="fa fa-user" aria-hidden="true"></i>
+                <i class="fa-solid fa-calendar-days"></i>
 
 
                 <span>เอกสารขออนุญาตนิเทศงาน</span></a>

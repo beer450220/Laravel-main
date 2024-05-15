@@ -320,9 +320,9 @@
                                                     <div class="form-group mb-3">
                                                       <form method="POST" action="{{url('/studenthome/updateuser001/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
-                                                      <label for="simpleinput">ชื่อผู้ใช้งาน</label>
-                                                      <input type="text"value="{{ Auth::user()->username }}" name="username" id="simpleinput" class="form-control">
-                                                    </div>
+                                                      {{-- <label for="simpleinput">ชื่อผู้ใช้งาน</label>
+                                                      <input type="text"value="{{ Auth::user()->username }}"  name="username" id="simpleinput" class="form-control"disabled>
+                                                    </div> --}}
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง </label>
                                                       <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
@@ -411,7 +411,7 @@
                                                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                                       <a href="/studenthome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
                                                       &nbsp;&nbsp;
-                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">อัพเดทข้อมูล</button>
+                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
                                                    </div>  </div></form>
                                                 </div>
                                               </div>

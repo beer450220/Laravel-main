@@ -695,13 +695,15 @@ $post->update
    // dd($request);
 
     $request->validate([
-        'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        'images' => 'mimes:jpg,jpeg,png|max:1024',
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
+            'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
 
@@ -720,10 +722,10 @@ $post->update
    }
     $post->update
     ([
-       "username" =>$request->username,
+    //    "username" =>$request->username,
        "fname" =>$request->fname,
        "surname" =>$request->surname,
-       "password" => Hash::make($request->password),
+    //    "password" => Hash::make($request->password),
         //"establishment"=>$request->establishment,
        //  "term"=>$request->term,
        // "annotation"=>$request->annotation,
@@ -801,9 +803,12 @@ $post->update
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        'images' => 'mimes:jpg,jpeg,png|max:1024',
     ],[
             //'establishment.required' => "กรุณา",
 
+            'images.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
 
@@ -822,7 +827,7 @@ $post->update
    }
     $post->update
     ([
-       "username" =>$request->username,
+    //    "username" =>$request->username,
        "fname" =>$request->fname,
        "surname" =>$request->surname,
     //    "password" => Hash::make($request->password),
@@ -2988,12 +2993,14 @@ $post->update
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
+        'images' => 'mimes:jpg,jpeg,png|max:1024',
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
+            'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
 
@@ -3012,7 +3019,7 @@ $post->update
    }
     $post->update
     ([
-        "username" =>$request->username,
+        // "username" =>$request->username,
         "fname" =>$request->fname,
         "surname" =>$request->surname,
         // "password" => Hash::make($request->password),

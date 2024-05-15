@@ -104,7 +104,7 @@
             <li class="nav-item dropdown ">
               <a href="/studenthome/documents"  class=" nav-link">
                 <i class="fa-solid fa-download fe-16"></i>
-                <span class="ml-3 item-text">ดาวน์โหลดเอกสาร</span><span class="sr-only">(current)</span>
+                <span class="ml-3 item-text">เอกสารสหกิจศึกษา</span><span class="sr-only">(current)</span>
               </a>
 
           {{-- <ul class="navbar-nav flex-fill w-100 mb-2">

@@ -142,7 +142,7 @@
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item ">
               <a href="/teacher/in2"  class=" nav-link">
-                <i class="fe fe-box fe-16"></i>
+                <i class="fa-solid fa-inbox"></i>
                 <span class="ml-3 item-text">ข้อมูลตรวจสอบเอกสาร</span>
               </a>
 
@@ -153,7 +153,8 @@
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item ">
               <a href="/teacher/user"  class=" nav-link">
-                <i class="fe fe-box fe-16"></i>
+                {{-- <i class="fe fa-users fe-16"></i> --}}
+                <i class="fa-solid fa-users"></i>
                 <span class="ml-3 item-text">ข้อมูลผู้ใช้งาน</span>
               </a>
 
@@ -166,7 +167,8 @@
     </p> --}}<ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
         <a href="#ui-elementss7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-          <i class="fe fe-box fe-16"></i>
+          {{-- <i class="fe fe-box fe-16"></i> --}}
+          <i class="fa-solid fa-id-card"></i>
           <span class="ml-3 item-text">ลงทะเบียน</span>
         </a>
         <ul class="collapse list-unstyled pl-4 w-100" id="ui-elementss7">
@@ -206,7 +208,7 @@
 <ul class="navbar-nav flex-fill w-100 mb-2">
     <li class="nav-item dropdown">
       <a href="#ui-elementss8" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-        <i class="fe fe-box fe-16"></i>
+        <i class="fa-regular fa-address-card"></i>
         <span class="ml-3 item-text">ข้อมูลนักศึกษา</span>
       </a>
       <ul class="collapse list-unstyled pl-4 w-100" id="ui-elementss8">
@@ -243,7 +245,7 @@
    <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
         <a href="#ui-elementss3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-          <i class="fe fe-box fe-16"></i>
+            <i class="fa-solid fa-calendar-days"></i>
           <span class="ml-3 item-text">นิเทศงาน</span>
         </a>
         <ul class="collapse list-unstyled pl-4 w-100" id="ui-elementss3">
@@ -283,7 +285,7 @@
     <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item ">
           <a href="/teacher/estimate1"  class=" nav-link">
-            <i class="fe fe-box fe-16"></i>
+            <i class="fa-solid fa-clipboard"></i>
             <span class="ml-3 item-text">เอกสารรายงานผลประเมิน</span>
           </a>
 

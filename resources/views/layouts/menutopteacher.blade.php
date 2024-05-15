@@ -19,11 +19,12 @@
         </li> --}}
 
      <li class="nav-item nav-notif">
-             {{-- <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-            <span class="fe fe-bell fe-16"></span>
-            <span class="dot dot-md bg-success"></span>
-          </a> --}}
-          {{ Auth::user()->username }}
+             <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
+            <span class=""></span>
+            {{ Auth::user()->username }}
+            {{-- <span class="dot dot-md bg-success"></span> --}}
+          </a>
+
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,6 +33,8 @@
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">{{ Auth::user()->fname }} {{ Auth::user()->surname}}</a>
+
             <a class="dropdown-item" href="/teacher/personal/{{ Auth::user()->id }}">ข้อมูลผู้ใช้งาน</a>
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -46,9 +49,9 @@
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
 
-             <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i> {{ __('ออกจากระบบ') }}</a>
+             <i class="dropdown-item-icon mdi mdi-power text-primary me-2" ></i> {{ __('ออกจากระบบ') }}</a>
 
-         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"onclick="return confirm('ยืนยันอัพเดทข้อมูล !!');">
              @csrf
          </form>
           </div>

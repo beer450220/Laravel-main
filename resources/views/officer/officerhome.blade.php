@@ -39,7 +39,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">รายงาน</h1>
+        {{-- <h1 class="h3 mb-0 text-gray-800">รายงาน</h1> --}}
         {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report
@@ -57,7 +57,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      <a href="/officer/register1">     <h5 class="text-center"> จำนวนผู้ลงทะเบียน</h5></div></a>
+                      <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะเอกสารลงทะเบียน</h5></div></a>
 
 
 
@@ -212,7 +212,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                       <a href="/officer/Evaluate">
-                        <h4 class="text-center text-gray-800">เอกสารประเมิน</h4>
+                        <h4 class="text-center text-gray-800">รายงานสถานะเอกสารผลการประเมิน</h4>
                         <h5 class="text-center"> จำนวนเอกสาร</h5></div></a>
 
 
