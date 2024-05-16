@@ -401,7 +401,7 @@ class HomeController extends Controller
         ->paginate(10);
         $registers1=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
@@ -409,7 +409,7 @@ class HomeController extends Controller
 
         $registers2=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)','')
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
@@ -434,7 +434,7 @@ class HomeController extends Controller
 
         $registers3=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)','')
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
@@ -444,34 +444,34 @@ class HomeController extends Controller
 
         $registers4=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->where('registers.namefile', 'บัตรประชาชน')
-        ->where('user_id', auth()->id())
+        // ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers5=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->where('registers.namefile', 'บัตรนักศึกษา')
-        ->where('user_id', auth()->id())
+        // ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers6=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->where('registers.namefile', 'ผลการเรียน')
-        ->where('user_id', auth()->id())
+        // ->where('user_id', auth()->id())
         ->paginate(5);
         $registers7=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
-        ->where('user_id', auth()->id())
+        // ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers17=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
-        ->select('acceptance.*','users.fname')
+        ->select('acceptance.*','users.fname','users.surname')
         ->where('acceptance.namefile', 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
         // ->where('user_id', auth()->id())
         ->orderBy('acceptance.acceptance_id', 'DESC')
@@ -479,7 +479,7 @@ class HomeController extends Controller
 
         $registers8=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname')
+        ->select('informdetails.*','users.fname','users.surname')
         ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
         // ->where('user_id', auth()->id())
         ->orderBy('informdetails.informdetails_id', 'DESC')
@@ -487,14 +487,14 @@ class HomeController extends Controller
 
         $registers9=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname')
+        ->select('informdetails.*','users.fname','users.surname')
         ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
         // ->where('user_id', auth()->id())
         ->orderBy('informdetails.informdetails_id', 'DESC')
         ->paginate(5);
         $registers10=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname')
+        ->select('informdetails.*','users.fname','users.surname')
         ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
         // ->where('user_id', auth()->id())
         ->orderBy('informdetails.informdetails_id', 'DESC')
@@ -503,7 +503,7 @@ class HomeController extends Controller
 
         $registers12=DB::table('events')
         ->join('users','events.student_name','users.id')
-        ->select('events.*','users.fname')
+        ->select('events.*','users.fname','users.surname')
         ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
         // ->where('student_name', auth()->id())
         ->orderBy('events.id', 'DESC')
@@ -511,28 +511,28 @@ class HomeController extends Controller
 
         $registers13=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname')
+        ->select('supervision.*','users.fname','users.surname')
         ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers14=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname')
+        ->select('supervision.*','users.fname','users.surname')
         ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers15=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname')
+        ->select('supervision.*','users.fname','users.surname')
         ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers16=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname')
+        ->select('supervision.*','users.fname','users.surname')
         ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
