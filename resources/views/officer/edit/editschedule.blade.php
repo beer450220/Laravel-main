@@ -151,7 +151,10 @@
             </div>
           <div class="form-group col-md-3">
             <label for="inputAddress">ไฟล์เอกสาร</label>
-            <input type="file" class="form-control" @error('filess') is-invalid @enderror name="filess" value="{{$schedules->filess}}"  autofocus placeholder="">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input"id="inputGroupFile01" @error('filess') is-invalid @enderror name="filess" value="{{$schedules->filess}}"  autofocus placeholder="">
+                <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
+              </div>
 
 
             @error('filess')
@@ -172,7 +175,7 @@
       <div class="row">
       <div class="col-md-3">
         <label for="inputAddress"class="col-form-label ">สถานนะ</label>
-        <select class="form-select "  name="status"required>
+        <select class="form-control "  name="status"required>
           <option value="">กรุณาเลือก</option>
 
         <option value="1"@if($schedules->status=="1") selected @endif required>สำหรับนักศึกษา </option>

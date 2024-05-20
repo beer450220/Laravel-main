@@ -146,9 +146,12 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputAddress">ไฟล์เอกสาร</label>
-         <input type="file" class="form-control" @error('files') is-invalid @enderror name="filess" value=""  autofocus placeholder=""required>
 
 
+         <div class="custom-file">
+            <input type="file" class="form-control" @error('files') is-invalid @enderror name="filess" value=""  autofocus placeholder=""required>
+            <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
+          </div>
                 @error('start')
                 <span class="invalid-feedback" >
                     {{ $message }}

@@ -200,7 +200,7 @@
                 {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
                 @foreach ($users as $row)
                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="{{$row->user_id}} ">{{$row->student_id}}( {{$row->fname}}  {{$row->surname}})</option>
+                  <option value="{{$row->user_id}} ">{{$row->student_id}}( {{$row->fname}} )</option>
                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
 
 
@@ -267,7 +267,7 @@ $( '#multiple-select-field1' ).select2( {
               <option value="">Select state</option>
               @foreach ($users2 as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                <option value="{{$row->id}}">{{$row->fname}} {{$row->surname}}</option>
+                <option value="{{$row->id}}">{{$row->fname}} </option>
 
               </optgroup>
 

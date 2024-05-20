@@ -1,4 +1,4 @@
-@extends('layouts.adminmin1')
+@extends('layouts.officermin1')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}

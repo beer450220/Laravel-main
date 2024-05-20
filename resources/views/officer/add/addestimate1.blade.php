@@ -6,7 +6,7 @@
 
 
 {{-- @extends('layouts.appteacher') --}}
-@extends('layouts.officermin')
+@extends('layouts.officermin1')
 @section('content')
 @yield('content')
 
@@ -160,7 +160,7 @@
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="user_id" required>
+            <select class="form-select" id="single-select-field" data-placeholder="เลือกรายชื่อ" id="validationSelect2" name="user_id" required>
               <option value="">Select state</option>
               @foreach ($users as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}

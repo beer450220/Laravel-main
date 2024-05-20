@@ -1,23 +1,23 @@
 
 
 
-   
-    
+
+
 
 
 @extends('layouts.officermin')
 
 @section('content')
-@yield('content') 
+@yield('content')
 
 
-     
+
      {{-- เพิ่มข้อมูล --}}
 {{-- <div class="col-md-4 mb-4">
- 
-   
-      
-     
+
+
+
+
   <div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content ">
@@ -26,17 +26,17 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div> 
-      
-          
+        </div>
+
+
         <div class="modal-body">
-          
-         
+
+
           <form method="POST" action="{{ route('addregisteruser') }}"enctype="multipart/form-data">
             @csrf
             @if ($errors->any())
             <div class="alert alert-danger">
-               
+
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -48,7 +48,7 @@
               <div class="col-md-4">
                 <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label>
                 <input type="text" class="form-control" name="name" >
-              </div> 
+              </div>
               @error('name')
               <span class="invalid-feedback" >
                   {{ $message }}
@@ -69,10 +69,10 @@
                 <label for="recipient-name" class="col-form-label">เบอร์โทร</label>
                 <input type="text" class="form-control" placeholder="First name" aria-label="First name">
               </div>
-             
-             
-              </div> 
-           
+
+
+              </div>
+
             <div class="row">
               <div class="col-md-4">
                 <label for="recipient-name" class="col-form-label">ไฟล์เอกสาร</label>
@@ -82,10 +82,10 @@
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
               </div>
-            
+
             </div>
         </div>
-        
+
         <div class="modal-footer">
           <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
           <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
@@ -111,10 +111,10 @@
       </div>
       <div class="card-body">
         <form method="POST" action="{{ route('addEvaluationdocument') }}"enctype="multipart/form-data">
-          @csrf 
+          @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
-             
+
               <ul>
                   @foreach ($errors->all() as $error)
                       <li>{{ $error }}</li>
@@ -141,13 +141,13 @@
               @foreach ($establishment as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 <option value="{{$row->id}}">{{$row->address}}</option>
-               
+
               </optgroup>
-           
+
               @endforeach
             </select>
-            
-           
+
+
             @error('name')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -163,12 +163,12 @@
               @foreach ($users as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 <option value="{{$row->id}}">{{$row->name}}</option>
-               
+
               </optgroup>
-           
+
               @endforeach
             </select>
-            
+
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -179,15 +179,15 @@
             <label for="inputAddress">ภาคเรียน</label>
             <select class="form-control  "  name="term" >
               <option value="">กรุณาเลือกภาคเรียน</option>
-          
+
             <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
               <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
-               
-              
-           
-            
+
+
+
+
             </select>
-            
+
         </div>
           <div class="col-md-2">
             <label for="inputAddress" >ปีการศึกษา</label>
@@ -201,16 +201,16 @@
           $startYear = 2500; // ปีเริ่มต้น
           $endYear = $currentYear + 100; // ปีสิ้นสุด
       @endphp
-      
+
       @for ($i = $endYear; $i >= $startYear; $i--)
           @for ($j = 1; $j <= 1; $j++)
               <option value="{{ $i }}-{{ $j }}">{{ $i }}</option>
           @endfor
       @endfor
       </select>
-              
-           
-            
+
+
+
             </select>
         </div>
           <div class=" col-md-4">
@@ -219,52 +219,52 @@
                   <input type="file" class="custom-file-input" name="files1" id="validatedCustomFile" >
                   <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
-                  
+
           </div>
-          
+
         </div>
-         
+
           <div class=" col-md-4">
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารประเมิน (สก.14)</label>
                 <div class="custom-file mb-6">
                   <input type="file" class="custom-file-input" name="files2" id="validatedCustomFile" >
                   <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
-                  
+
           </div>
-          
+
         </div>
-        
+
         {{-- <div class="col-md-2">
           <label for="inputAddress"class="col-form-label ">สถานะ</label>
           <select class="form-control select2" id="validationSelect2" name="Status_acceptance" required>
             <option value="">กรุณาเลือก</option>
-           
+
               <option value="ตอบรับนักศึกษาแล้ว">ตอบรับนักศึกษาแล้ว</option>
               <option value="ยังไม่ได้ตอบรับนักศึกษาแล้ว">ยังไม่ได้ตอบรับนักศึกษา</option>
             </optgroup>
-         
-            
+
+
           </select>
-          
+
       </div> --}}
-      
-    
-  
+
+
+
   <div class="col-md-2">
     <label for="inputAddress"class="col-form-label ">คะแนน (สก.13)</label>
-     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name"> 
+     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name">
 </div>
-     
-    
-    
+
+
+
       <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">คะแนน (สก.14)</label>
-         <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name"> 
+         <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name">
     </div>
           </div>
     </div>
-      <br> 
+      <br>
           <div class="modal-footer"><br>
             <a href="/officer/Evaluationdocuments" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
@@ -278,8 +278,8 @@
 
 
 
-    
 
-   
-  
+
+
+
 @endsection

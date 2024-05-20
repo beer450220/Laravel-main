@@ -178,7 +178,7 @@
 
                           </div>
                         <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-6">
                           <label for="recipient-name" class="col-form-label">ภาคเรียนที่</label><br>
 
                           {{-- <textarea  rows="4" cols="50" name="em_job" disabled readonly >
@@ -186,7 +186,7 @@
                          <input type="text" class="form-control" name="annotation" value=" {{$establishments->term}}"disabled required>
 
                         </div>
-                      </div>
+                      </div>  </div>
                 </div>
                 <div class="modal-footer">
 
@@ -196,9 +196,7 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div>
+
 
 
 

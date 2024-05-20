@@ -1,4 +1,4 @@
-@extends('layouts.appstudent1')
+@extends('layouts.appteacher3')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -282,7 +282,7 @@
                               <div class="accordion" id="accordionExample">
                                   <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                      <div class="col-8">
+                                      <div class="col-4">
                                         <h2 class="steps">แก้ไขข้อมูล</h2>
                                     </div>
                                     </h2>
@@ -325,10 +325,10 @@
                                                       <label for="example-email">ชื่อจริง</label>
                                                       <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
                                                     </div>
-                                                    <div class="form-group mb-3">
+                                                    {{-- <div class="form-group mb-3">
                                                       <label for="example-password">นามสกุล</label>
                                                       <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->surname }}"name="surname">
-                                                    </div>
+                                                    </div> --}}
                                                     {{-- <div class="form-group mb-3">
                                                       <label for="example-palaceholder">รหัสผ่าน</label>
                                                       <input type="password" id="example-palaceholder"value="" class="form-control"name="password" placeholder="">

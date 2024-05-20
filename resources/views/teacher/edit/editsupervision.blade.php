@@ -5,40 +5,13 @@
 
 
 
-@extends('layouts.officermin1')
+@extends('layouts.appteacher3')
 {{-- @extends('layouts.appteacher3') --}}
 {{-- @include('layouts.menutopteacher0') --}}
         {{-- @include('layouts.sidebarteacher1') --}}
 @section('content')
 @yield('content')
-<header class="bg-dark text-white d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-    <a  class="d-flex align-items-center col-md-3 mb-2 mb-md-0  text-decoration-none">
-      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-
-    </a>
-{{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
-    <ul class="nav col-8 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="/cooperative" class="nav-link px-2 text-white"> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
-      {{-- <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li> --}}
-      {{-- <li><div class="dropdown">
-        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            สมัครสหกิจ
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลสมัครสหกิจ</a></li>
-          <li><a class="dropdown-item" href="/cooperative2">รายการสถานะสมัครสหกิจ</a></li>
-        </ul>
-      </div></li> --}}
-      {{-- <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">About</a></li> --}}
-    </ul>
-
-    <div class="col-2 text-end">
-      {{-- <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2"> {{ Auth::user()->username }}</a>
-      <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
-    </div>
-  </header>
 
 
 
@@ -135,7 +108,7 @@
 
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content ">
-      <div class="modal-header bg-dark text-white ">
+      <div class="modal-header  text-white ">
         <h5 class="modal-title text center " id="varyModalLabel">แก้ไขข้อมูลนิเทศงาน</h5>
         {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -255,7 +228,7 @@
          $selectedIds = explode(',', $supervisions->teacher_name);
               @endphp
               <option value="{{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }}>
-                {{ $row->fname }}  {{ $row->surname }}
+                {{ $row->fname }}
               </option>
 
 
@@ -314,40 +287,8 @@ $( '#multiple-select-clear-field' ).select2( {
 
           </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
-<!-- Or for RTL support -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
-<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
-</div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<script>
- new MultiSelectTag('countries', {
-    rounded: true,    // default true
-    shadow: true,      // default false
-    placeholder: 'Search',  // default Search...
-    tagColor: {
-        textColor: '#327b2c',
-        borderColor: '#92e681',
-        bgColor: '#eaffe6',
-    }
-    onChange: function(values) {
-        console.log(values)
-    }
-})
-
-</script>
 
 
 
@@ -472,13 +413,7 @@ $( '#multiple-select-clear-field' ).select2( {
 
 
 
-<footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a  class="nav-link px-2 text-muted">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
 
-    </ul>
-    <p class="text-center text-muted">© 2024 Company, Inc</p>
-  </footer>
 
 
 

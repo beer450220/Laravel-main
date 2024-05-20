@@ -1,4 +1,4 @@
-@extends('layouts.appstudent1')
+@extends('layouts.officermin1')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -272,7 +272,7 @@
                       <fieldset>
                           <div class="form-card">
                               <div class="row">
-                                  <div class="col-7">
+                                  <div class="col-8">
 
                                   </div>
                                   <div class="col-4">
@@ -282,7 +282,7 @@
                               <div class="accordion" id="accordionExample">
                                   <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                      <div class="col-8">
+                                      <div class="col-4">
                                         <h2 class="steps">แก้ไขข้อมูล</h2>
                                     </div>
                                     </h2>
@@ -307,7 +307,7 @@
                                     <main role="main" class="">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">
-                                          <div class="col-7">
+                                          <div class="col-12">
                                             {{-- <h2 class="page-title">Form elements</h2> --}}
 
                                             <div class="card shadow mb-4">
@@ -327,10 +327,10 @@
                                                       <label for="example-email">ชื่อจริง</label>
                                                       <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
                                                     </div>
-                                                    <div class="form-group mb-3">
+                                                    {{-- <div class="form-group mb-3">
                                                       <label for="example-password">นามสกุล</label>
                                                       <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->surname }}"name="surname">
-                                                    </div>
+                                                    </div> --}}
 
                                                     <div class="form-group mb-3">
                                                         <label for="example-static">รูปโปรไฟล์</label>
@@ -356,7 +356,7 @@
                                         </div>
 
                                       </div>
-                                      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                      {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                               <script>
  $(".delete-btn").click(function(e) {
             var userId = $(this).data('id');
@@ -398,7 +398,7 @@
             });
           }
 
-                              </script>
+                              </script> --}}
                                   </div>
 
 

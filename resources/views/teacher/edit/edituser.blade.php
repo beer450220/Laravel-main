@@ -1,4 +1,4 @@
-@extends('layouts.adminmin1')
+@extends('layouts.appteacher3')
 <title>admin</title>
 @section('content')
 
@@ -27,34 +27,7 @@
         </div>
     </div>
 </div>  --}}
-<header class="bg-dark text-white d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-    <a  class="d-flex align-items-center col-md-3 mb-2 mb-md-0  text-decoration-none">
-      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-
-    </a>
-{{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
-    <ul class="nav col-8 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="/cooperative" class="nav-link px-2 text-white"> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
-      {{-- <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li> --}}
-      {{-- <li><div class="dropdown">
-        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            สมัครสหกิจ
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลสมัครสหกิจ</a></li>
-          <li><a class="dropdown-item" href="/cooperative2">รายการสถานะสมัครสหกิจ</a></li>
-        </ul>
-      </div></li> --}}
-      {{-- <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">About</a></li> --}}
-    </ul>
-
-    <div class="col-2 text-end">
-      {{-- <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2"> {{ Auth::user()->username }}</a>
-      <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
-    </div>
-  </header>
    <div class="container-fluid">
 <div class="card   ">
     <div class="card-body p-2 ">
@@ -325,20 +298,18 @@
                                                                 </div>
                                                             </div> --}}
                                                             <div class="row mb-0">
-                                                                <div class="col-md-6 offset-md-4">
-                                                                    {{-- <a href="/user" type="submit" class="btn btn-primary">
-                                                                        {{ __('ย้อมกลับ') }}
-                                                                    </a>
-                                                                    <button type="submit" class="btn btn-primary">
-                                                                        {{ __('ตกลง') }}
-                                                                    </button> --}}
+                                                                <div class="col-md-6 ">
+
 
                                                                 </div>
-                                                            </div>  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                                <button class="btn btn-outline-success me-md-2 delete-btn" onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');" type="submit">อัพเดทข้อมูล</button>
+                                                            </div>
+                                                             <div class="d-grid gap-2 d-md-flex ">
+<a href="/teacher/user" class="btn btn-outline-primary fe-16">ย้อนกลับ</a>
                                                                 &nbsp;&nbsp;
                                                                 <button  class="btn btn-outline-warning fe fe-edit fe-16" type="reset">ยกเลิก</button>
-                                                                <a href="/teacher/user" class="btn btn-primary  btn-block">ย้อนกลับ</a>
+                                                                &nbsp;&nbsp;
+
+                                                                                                                            <button class="btn btn-outline-success me-md-2 delete-btn" onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');" type="submit">อัพเดทข้อมูล</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -348,12 +319,6 @@
                                     </div>
 
                                 </div></div></div>
-                                    <footer class="py-3 my-4">
-                                        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                                          <li class="nav-item"><a  class="nav-link px-2 text-muted">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
 
-                                        </ul>
-                                        <p class="text-center text-muted">© 2024 Company, Inc</p>
-                                      </footer>
 
                     @endsection

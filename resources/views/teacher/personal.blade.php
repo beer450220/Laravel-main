@@ -1,4 +1,4 @@
-@extends('layouts.adminmin1')
+@extends('layouts.appteacher3')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -350,7 +350,7 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง นามสกุล</label>
-                                                      <input type="email" id="example-email"value="{{ Auth::user()->fname }}  {{ Auth::user()->surname }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                      <input type="email" id="example-email"value="{{ Auth::user()->fname }}  " disabled="" name="example-email" class="form-control" placeholder="Email">
                                                     </div>
 
 

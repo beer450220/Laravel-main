@@ -53,7 +53,7 @@
             <div class="form-group col-md-4">
               <label for="inputAddress">ชื่อเอกสาร</label>
               {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-              <select class="form-select" id="validationSelect1" name="namefile" required>
+              <select class="form-control" id="validationSelect1" name="namefile" required>
                 <option value="">เลือกชื่อเอกสาร</option>
                 {{-- @foreach ($establishment as $row) --}}
                 {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -76,12 +76,12 @@
             <div class="col-md-4">
                 <label for="inputAddress" >ชื่อนักศึกษา</label>
                 {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-                <select class="form-select" id="validationSelect2" name="user_id" required>
+                <select class="form-select" id="single-select-field" data-placeholder="Choose one thing" required name="user_id" required>
                   <option value="">Select state</option>
                   @foreach ($users as $row)
                   {{-- <optgroup label="Mountain Time Zone"> --}}
                     {{-- <option value="{{$row->id}}">{{$row->fname}}</option> --}}
-                    <option value="{{$row->id}}"{{$row->id==$supervisions->user_id ?'selected':''}}>{{$row->fname}}{{$row->surname}}</option>
+                    <option value="{{$row->id}}"{{$row->id==$supervisions->user_id ?'selected':''}}>{{$row->fname}}</option>
                   </optgroup>
 
                   @endforeach
@@ -133,9 +133,16 @@
                     <div class="row">
                         <div class=" col-md-4">
                           <label for="recipient-name" class="col-form-label">ไฟล์เอกสารประเมิน </label>
-                              <div class="custom-file mb-6">
-                                <input class="form-control" type="file" id="formFile" name="filess">
-                            </div>     </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input"id="inputGroupFile01" @error('filess') is-invalid @enderror name="filess" value="{{$supervisions->filess}}"  autofocus placeholder="">
+                            <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
+                          </div>
+                        </div>
+
+
+
+
+
                                 <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">คะแนน</label>
 
@@ -188,9 +195,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div>
+
+
 
 
 

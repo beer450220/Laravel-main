@@ -327,10 +327,10 @@
                                                       <label for="example-email">ชื่อจริง </label>
                                                       <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
                                                     </div>
-                                                    <div class="form-group mb-3">
+                                                    {{-- <div class="form-group mb-3">
                                                         <label for="example-email">นามสกุล</label>
                                                         <input type="text" id="example-email"value="{{ Auth::user()->surname}}"  name="surname" class="form-control" placeholder="">
-                                                      </div>
+                                                      </div> --}}
                                                     {{-- <div class="form-group mb-3">
                                                       <label for="example-password">Password</label>
                                                       <input type="password" id="example-password" class="form-control" value="password">

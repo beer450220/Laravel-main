@@ -10,7 +10,8 @@
 <body>
 
 
-@include('layouts.admincss') @include('layouts.officersidebsr')
+@include('layouts.admincss')
+@include('layouts.officersidebsr')
  @include('layouts.officertop')
 
 

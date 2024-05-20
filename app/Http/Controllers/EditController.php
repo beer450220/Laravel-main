@@ -724,7 +724,7 @@ $post->update
     ([
     //    "username" =>$request->username,
        "fname" =>$request->fname,
-       "surname" =>$request->surname,
+    //    "surname" =>$request->surname,
     //    "password" => Hash::make($request->password),
         //"establishment"=>$request->establishment,
        //  "term"=>$request->term,
@@ -829,7 +829,7 @@ $post->update
     ([
     //    "username" =>$request->username,
        "fname" =>$request->fname,
-       "surname" =>$request->surname,
+    //    "surname" =>$request->surname,
     //    "password" => Hash::make($request->password),
         //"establishment"=>$request->establishment,
        //  "term"=>$request->term,
@@ -3021,7 +3021,7 @@ $post->update
     ([
         // "username" =>$request->username,
         "fname" =>$request->fname,
-        "surname" =>$request->surname,
+        // "surname" =>$request->surname,
         // "password" => Hash::make($request->password),
         //"establishment"=>$request->establishment,
        //  "term"=>$request->term,

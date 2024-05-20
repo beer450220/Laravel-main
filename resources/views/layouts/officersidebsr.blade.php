@@ -68,7 +68,7 @@
                 <i class="fa-solid fa-download"></i>
 
 
-                <span>ดาวน์โหลดเอกสาร</span></a>
+                <span>เอกสารสหกิจศึกษา</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"

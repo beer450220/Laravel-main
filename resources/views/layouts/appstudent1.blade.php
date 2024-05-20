@@ -56,11 +56,11 @@
 
 
 
-    {{-- <script src="../../student/js/jquery.min.js"></script>
-    <script src="../../student/js/popper.min.js"></script>
-    <script src="../../student/js/moment.min.js"></script>
+     <script src="../../student/js/jquery.min.js"></script>
+   {{-- <script src="../../student/js/popper.min.js"></script>
+     <script src="../../student/js/moment.min.js"></script> --}}
     <script src="../../student/js/bootstrap.min.js"></script>
-    <script src="../../student/js/simplebar.min.js"></script>
+    {{--<script src="../../student/js/simplebar.min.js"></script>
     <script src='../../student/js/daterangepicker.js'></script>
     <script src='../../student/js/jquery.stickOnScroll.js'></script>
     <script src="../../student/js/tinycolor-min.js"></script>

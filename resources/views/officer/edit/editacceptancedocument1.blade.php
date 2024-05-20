@@ -50,7 +50,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label>
 
-                        <select class="form-select select2" id="validationSelect1" name="user_id"  required>
+                        <select class="form-control select2" id="validationSelect1" name="user_id"  required>
                             <option value="">กรุณาเลือกชื่อ</option>
                             <option value="-"@if($acceptances->user_id=="-") selected @endif required>-</option>
                             @foreach ($user as $row)
@@ -113,12 +113,11 @@
                          <div class="row">
           <div class=" col-md-4">
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารตอบรับ (สก.02)</label>
-                <div class="custom-file mb-6">
 
-
-
-                  <input class="form-control" type="file" name="filess"value="{{$acceptances->filess}} "id="formFile">
-          </div>
+            <div class="custom-file">
+                <input class="form-control" type="file" name="filess"value="{{$acceptances->filess}} "id="formFile">
+                <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
+              </div>
 
         </div>
                       <div class="col-md-4">
@@ -135,7 +134,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
-                        <select class="form-select " aria-label=".form-select-sm example" name="Status_acceptance" required>
+                        <select class="form-control " aria-label=".form-select-sm example" name="Status_acceptance" required>
                           <option selected>กรุณาเลือก</option>
 
                           <option value="ตอบรับนักศึกษาแล้ว"@if($acceptances->Status_acceptance=="ตอบรับนักศึกษาแล้ว") selected @endif required>ตอบรับนักศึกษาแล้ว</option>
@@ -165,8 +164,7 @@
           </div>
         </div>
       </div>
-    </div>
-    </div>
+
 
 
 
