@@ -25,7 +25,7 @@ class users extends Authenticatable
 
         // 'major_id',
         'fname',
-        'surname',
+        // 'surname',
         // 'telephonenumber',
         // 'address',
         // 'em_name',

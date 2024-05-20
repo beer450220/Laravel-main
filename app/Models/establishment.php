@@ -21,7 +21,7 @@ class establishment extends Model
         "em_Contact_email",
         'em_contactposition',
         "em_job",
-        'Student_id',
+        'student_id',
        'website',
 
     ];

@@ -22,7 +22,7 @@ class student extends Model
 
         'major_id',
         'fname',
-        'surname',
+        // 'surname',
         'telephonenumber',
         'address',
         // 'em_name',

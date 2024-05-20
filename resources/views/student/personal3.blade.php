@@ -348,6 +348,7 @@
                                                 @csrf --}}
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
                                                       <input type="text" id="example-email"value="{{ $users->student_id }} " disabled="" required name="example-email" class="form-control" placeholder="Email">
+
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อสถานประกอบการ</label>

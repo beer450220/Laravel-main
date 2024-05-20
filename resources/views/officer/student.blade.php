@@ -102,7 +102,7 @@
                         <tr>
 
                           <td >{{$establishments->firstItem()+$loop->index}}</td>
-                          <td>{{$row->fname}}  {{$row->surname}}</td>
+                          <td>{{$row->fname}}  </td>
 
                           {{-- <td>{{$row->student_id}}</td> --}}
                          {{--  <td>{{$row->address}}</td>

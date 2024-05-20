@@ -55,6 +55,14 @@
                 <span>สถานประกอบการ</span></a>
         </li> --}}
         <li class="nav-item">
+            <a class="nav-link"href="/officer/in2">
+
+                <i class="fa-solid fa-download"></i>
+
+
+                <span>ข้อมูลตรวจสอบเอกสาร</span></a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link"href="/officer/schedule">
 
                 <i class="fa-solid fa-download"></i>

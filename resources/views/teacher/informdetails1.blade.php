@@ -63,7 +63,7 @@
             @foreach ($informdetails as $row)
             <tr>
               <td>{{$informdetails->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}} {{$row->surname}}</td>
+              <td>{{$row->fname}} </td>
               <td>{{$row->namefile}}</td>
               {{-- <td>{{$row->year}}</td>
                <td>{{$row->term}}</td> --}}

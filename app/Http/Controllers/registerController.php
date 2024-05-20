@@ -121,11 +121,12 @@ class registerController extends Controller
             //   'email' => 'required',
             //  'username' => 'required',
             //  'password' => 'required'
-
+            'images' => 'mimes:jpeg,jpg,png|max:1024',
              //'password' => Hash::make($request->password),
              ] ,[
                 'username.unique' => "ผู้ใช้งานซ้ำ",
-
+                'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
+                'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
             ]
         );
         if($request->hasFile("images")){
@@ -148,7 +149,7 @@ class registerController extends Controller
 
 
          $user->fname = $request->fname;
-         $user->surname = $request->surname;
+        //  $user->surname = $request->surname;
         //  $user->telephonenumber = $request->telephonenumber;
         //  $user->address = $request->address;
         //  $user->GPA = $request->GPA;
@@ -179,11 +180,16 @@ class registerController extends Controller
             //   'email' => 'required',
              'username' => 'required|unique:users',
             //  'password' => 'required'
-
+            'password' => 'required|confirmed|min:8',
              //'password' => Hash::make($request->password),
+             'images' => 'mimes:jpeg,jpg,png|max:1024',
              ] ,[
                 // 'code_id.unique' => "รหัสประจำตัวซ้ำ",
                 'username.unique' => "รหัสประจำตัวซ้ำ",
+                'password.confirmed' => "รหัสผ่านไม่ตรงกัน",
+                'password.min' => "รหัสผ่านมากว่า8ตัว",
+                'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
+                 'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
             ]
         );
         if($request->hasFile("images")){
@@ -207,7 +213,7 @@ class registerController extends Controller
         //  $user->establishment_id = "ยังไม่มีสถานประกอบการ";
 
          $user->fname = $request->fname;
-         $user->surname = $request->surname;
+        //  $user->surname = $request->surname;
         //  $user->telephonenumber = $request->telephonenumber;
         //  $user->address = $request->address;
         //  $user->GPA = $request->GPA;

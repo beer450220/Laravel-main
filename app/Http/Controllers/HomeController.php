@@ -388,7 +388,7 @@ class HomeController extends Controller
         ->select(
             'registers.*',
         'users.fname',
-        'users.surname',
+        // 'users.surname',
         'acceptance.namefile AS acceptance_namefile',
         'acceptance.user_id AS acceptance_user_id',
         // 'acceptance.user_id AS acceptance_user_id',
@@ -401,7 +401,7 @@ class HomeController extends Controller
         ->paginate(10);
         $registers1=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
@@ -409,7 +409,7 @@ class HomeController extends Controller
 
         $registers2=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)','')
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
@@ -434,7 +434,7 @@ class HomeController extends Controller
 
         $registers3=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)','')
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
@@ -444,34 +444,34 @@ class HomeController extends Controller
 
         $registers4=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'บัตรประชาชน')
         // ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers5=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'บัตรนักศึกษา')
         // ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers6=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ผลการเรียน')
         // ->where('user_id', auth()->id())
         ->paginate(5);
         $registers7=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
         // ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers17=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
-        ->select('acceptance.*','users.fname','users.surname')
+        ->select('acceptance.*','users.fname')
         ->where('acceptance.namefile', 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
         // ->where('user_id', auth()->id())
         ->orderBy('acceptance.acceptance_id', 'DESC')
@@ -479,7 +479,7 @@ class HomeController extends Controller
 
         $registers8=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname','users.surname')
+        ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
         // ->where('user_id', auth()->id())
         ->orderBy('informdetails.informdetails_id', 'DESC')
@@ -487,14 +487,14 @@ class HomeController extends Controller
 
         $registers9=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname','users.surname')
+        ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
         // ->where('user_id', auth()->id())
         ->orderBy('informdetails.informdetails_id', 'DESC')
         ->paginate(5);
         $registers10=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname','users.surname')
+        ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
         // ->where('user_id', auth()->id())
         ->orderBy('informdetails.informdetails_id', 'DESC')
@@ -503,7 +503,7 @@ class HomeController extends Controller
 
         $registers12=DB::table('events')
         ->join('users','events.student_name','users.id')
-        ->select('events.*','users.fname','users.surname')
+        ->select('events.*','users.fname')
         ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
         // ->where('student_name', auth()->id())
         ->orderBy('events.id', 'DESC')
@@ -511,28 +511,28 @@ class HomeController extends Controller
 
         $registers13=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname','users.surname')
+        ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers14=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname','users.surname')
+        ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers15=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname','users.surname')
+        ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers16=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->select('supervision.*','users.fname','users.surname')
+        ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
@@ -547,6 +547,180 @@ class HomeController extends Controller
 
         // ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
         return view('teacher.in2',compact('registers','registers1','student','establishment','acceptance','registers2'
+        ,'registers3','registers4','registers5','registers6','registers7','registers8','registers9','registers10'
+        ,'registers12' ,'registers13','registers14','registers15','registers16','registers17'
+       ));
+    }
+
+
+    public function in4()
+    {
+        $registers=DB::table('registers')
+        ->join('users', 'registers.user_id', '=', 'users.id')
+        ->join('acceptance', 'registers.user_id', '=', 'acceptance.user_id')
+        // ->join('informdetails', 'registers.user_id', '=', 'informdetails.user_id')
+        ->select(
+            'registers.*',
+        'users.fname',
+
+        'acceptance.namefile AS acceptance_namefile',
+        'acceptance.user_id AS acceptance_user_id',
+        // 'acceptance.user_id AS acceptance_user_id',
+        // 'informdetails.user_id AS informdetails_user_id',
+        // 'informdetails.namefile AS informdetails_namefile'
+        )
+
+
+        // ->where('user_id', auth()->id())
+        ->paginate(10);
+        $registers1=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+        // ->where('user_id', auth()->id())
+        ->orderBy('registers.id', 'DESC')
+        ->paginate(5);
+
+        $registers2=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)','')
+        // ->where('user_id', auth()->id())
+        ->orderBy('registers.id', 'DESC')
+        ->paginate(5);
+
+
+        $student=DB::table('student')
+        ->join('users','student.user_id','users.id')
+        ->select('student.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $establishment=DB::table('establishment')
+        ->join('users','establishment.user_id','users.id')
+        ->select('establishment.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $acceptance=DB::table('acceptance')
+        ->join('users','acceptance.user_id','users.id')
+        ->select('acceptance.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
+
+
+        $registers3=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)','')
+        // ->where('user_id', auth()->id())
+        ->orderBy('registers.id', 'DESC')
+        ->paginate(5);
+
+
+
+        $registers4=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรประชาชน')
+        // ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers5=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรนักศึกษา')
+        // ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers6=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ผลการเรียน')
+        // ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers7=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
+        // ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers17=DB::table('acceptance')
+        ->join('users','acceptance.user_id','users.id')
+        ->select('acceptance.*','users.fname')
+        ->where('acceptance.namefile', 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('acceptance.acceptance_id', 'DESC')
+        ->paginate(5);
+
+        $registers8=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.fname')
+        ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('informdetails.informdetails_id', 'DESC')
+        ->paginate(5);
+
+        $registers9=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.fname')
+        ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('informdetails.informdetails_id', 'DESC')
+        ->paginate(5);
+        $registers10=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.fname')
+        ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('informdetails.informdetails_id', 'DESC')
+        ->paginate(5);
+
+
+        $registers12=DB::table('events')
+        ->join('users','events.student_name','users.id')
+        ->select('events.*','users.fname')
+        ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
+        // ->where('student_name', auth()->id())
+        ->orderBy('events.id', 'DESC')
+        ->paginate(5);
+
+        $registers13=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('supervision.supervision_id', 'DESC')
+        ->paginate(5);
+        $registers14=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('supervision.supervision_id', 'DESC')
+        ->paginate(5);
+        $registers15=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('supervision.supervision_id', 'DESC')
+        ->paginate(5);
+        $registers16=DB::table('supervision')
+        ->join('users','supervision.user_id','users.id')
+        ->select('supervision.*','users.fname')
+        ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+        // ->where('user_id', auth()->id())
+        ->orderBy('supervision.supervision_id', 'DESC')
+        ->paginate(5);
+        // $activity=DB::table('schedule')
+        // // ->join('users','registers.user_id','users.id')
+        // // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        // ->paginate(5);
+
+        // return view('student.register',compact('registers','registers1'
+
+
+        // ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
+        return view('officer.in2',compact('registers','registers1','student','establishment','acceptance','registers2'
         ,'registers3','registers4','registers5','registers6','registers7','registers8','registers9','registers10'
         ,'registers12' ,'registers13','registers14','registers15','registers16','registers17'
        ));
@@ -1085,12 +1259,12 @@ $users=DB::table('users')
                     ->join('users', 'establishment.user_id', '=', 'users.id')
                     ->where(function ($query) use ($keyword) {
                         $query->where('establishment.em_name', 'LIKE', '%' . $keyword . '%')
-                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                            //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                             //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
                             //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                     })
-                    ->select('establishment.*', 'users.fname', 'users.surname')
+                    ->select('establishment.*', 'users.fname')
                     ->paginate(5);
                     // $registers=DB::table('establishment')
 
@@ -1147,12 +1321,12 @@ $users=DB::table('users')
                             ->join('users', 'establishment.user_id', '=', 'users.id')
                             ->where(function ($query) use ($keyword) {
                                 $query->where('establishment.em_name', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                                     //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                             })
-                            ->select('establishment.*', 'users.fname', 'users.surname')
+                            ->select('establishment.*', 'users.fname')
                             ->paginate(5);
                             // $registers=DB::table('establishment')
 
@@ -1209,12 +1383,12 @@ $users=DB::table('users')
                             ->join('users', 'student.user_id', '=', 'users.id')
                             ->where(function ($query) use ($keyword) {
                                 $query->where('student.student_id', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                             })
-                            ->select('student.*', 'users.fname', 'users.surname')
+                            ->select('student.*', 'users.fname')
                             ->paginate(5);
                             // $registers=DB::table('establishment')
 
@@ -1269,12 +1443,12 @@ $users=DB::table('users')
                                     ->join('users', 'student.user_id', '=', 'users.id')
                                     ->where(function ($query) use ($keyword) {
                                         $query->where('student.student_id', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                            //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                                             //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
                                             //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                                     })
-                                    ->select('student.*', 'users.fname', 'users.surname')
+                                    ->select('student.*', 'users.fname')
                                     ->paginate(5);
                                     // $registers=DB::table('establishment')
 
@@ -1339,12 +1513,12 @@ $users=DB::table('users')
                             ->join('users', 'registers.user_id', '=', 'users.id')
                             ->where(function ($query) use ($keyword) {
                                 $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                             })
-                            ->select('registers.*', 'users.fname', 'users.surname')
+                            ->select('registers.*', 'users.fname')
                             ->orderBy('id', 'desc')
                             ->paginate(10);
                         return view('officer.register1',  ['registers' => $registers,]);
@@ -1390,12 +1564,12 @@ $users=DB::table('users')
                                     ->join('users', 'registers.user_id', '=', 'users.id')
                                     ->where(function ($query) use ($keyword) {
                                         $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                            //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                                             //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
                                             //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                                     })
-                                    ->select('registers.*', 'users.fname', 'users.surname')
+                                    ->select('registers.*', 'users.fname')
                                     ->paginate(10);
                                 return view('teacher.register1',  ['registers' => $registers,]);
         // compact('registers'),
@@ -1426,12 +1600,12 @@ $users=DB::table('users')
                                     ->join('users', 'supervision.user_id', '=', 'users.id')
                                     ->where(function ($query) use ($keyword) {
                                         $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                            //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                             //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
                                             //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
                                     })
-                                    ->select('supervision.*', 'users.fname', 'users.surname')
+                                    ->select('supervision.*', 'users.fname')
                                     ->paginate(10);
 
                                        // dd($request,$establishments,$supervision);
@@ -1460,12 +1634,12 @@ $users=DB::table('users')
                                             ->join('users', 'acceptance.user_id', '=', 'users.id')
                                             ->where(function ($query) use ($keyword) {
                                                 $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                                     //   ->orWhere('acceptance.term', 'LIKE', '%' . $keyword . '%')
                                                     //   ->orWhere('acceptance.year', 'LIKE', '%' . $keyword . '%');
                                             })
-                                            ->select('acceptance.*', 'users.fname', 'users.surname')
+                                            ->select('acceptance.*', 'users.fname')
                                             ->paginate(10);
 
                                         return view('officer.acceptancedocument1',  ['acceptances' => $acceptances,]);
@@ -1494,12 +1668,12 @@ $users=DB::table('users')
                                                     ->join('users', 'acceptance.user_id', '=', 'users.id')
                                                     ->where(function ($query) use ($keyword) {
                                                         $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
-                                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                                            //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                                                             //   ->orWhere('acceptance.term', 'LIKE', '%' . $keyword . '%')
                                                             //   ->orWhere('acceptance.year', 'LIKE', '%' . $keyword . '%');
                                                     })
-                                                    ->select('acceptance.*', 'users.fname', 'users.surname')
+                                                    ->select('acceptance.*', 'users.fname')
                                                     ->paginate(10);
 
                                                 return view('teacher.acceptancedocument1',  ['acceptances' => $acceptances,]);
@@ -1529,12 +1703,12 @@ $users=DB::table('users')
                                             ->join('users', 'informdetails.user_id', '=', 'users.id')
                                             ->where(function ($query) use ($keyword) {
                                                 $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                                     //   ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
                                                     //   ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
                                             })
-                                            ->select('informdetails.*', 'users.fname', 'users.surname')
+                                            ->select('informdetails.*', 'users.fname')
                                             ->orderBy('informdetails_id', 'desc')
                                             ->paginate(10);
 
@@ -1635,12 +1809,12 @@ $users=DB::table('users')
             ->join('users', 'informdetails.user_id', '=', 'users.id')
             ->where(function ($query) use ($keyword) {
                 $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
-                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                     //   ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
                     //   ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
             })
-            ->select('informdetails.*', 'users.fname', 'users.surname')
+            ->select('informdetails.*', 'users.fname')
             ->paginate(10);
 
 // $users=DB::table('users')
@@ -1815,8 +1989,8 @@ public function searchin3(Request $request){
            ->join('users', 'registers.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                    //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
                    //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
            })
@@ -1824,15 +1998,15 @@ public function searchin3(Request $request){
 
            // ->where('user_id', auth()->id())
            ->orderBy('registers.id', 'DESC')
-           ->select('registers.*', 'users.fname', 'users.surname')
+           ->select('registers.*', 'users.fname')
            ->paginate(10);
 
            $registers2 = registers::query()
            ->join('users', 'registers.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                    //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
                    //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
            })
@@ -1840,14 +2014,14 @@ public function searchin3(Request $request){
 
            // ->where('user_id', auth()->id())
            ->orderBy('registers.id', 'DESC')
-           ->select('registers.*', 'users.fname', 'users.surname')
+           ->select('registers.*', 'users.fname')
            ->paginate(10);
            $registers3 = registers::query()
            ->join('users', 'registers.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                    //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
                    //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
            })
@@ -1855,7 +2029,7 @@ public function searchin3(Request $request){
 
            // ->where('user_id', auth()->id())
            ->orderBy('registers.id', 'DESC')
-           ->select('registers.*', 'users.fname', 'users.surname')
+           ->select('registers.*', 'users.fname')
            ->paginate(10);
 
 
@@ -1865,8 +2039,8 @@ public function searchin3(Request $request){
            ->join('users', 'acceptance.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                    //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
                    //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
            })
@@ -1874,7 +2048,7 @@ public function searchin3(Request $request){
 
            // ->where('user_id', auth()->id())
            ->orderBy('acceptance.acceptance_id', 'DESC')
-           ->select('acceptance.*', 'users.fname', 'users.surname')
+           ->select('acceptance.*', 'users.fname')
            ->paginate(10);
 
 
@@ -1882,15 +2056,15 @@ public function searchin3(Request $request){
            ->join('users', 'informdetails.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
 
 
            ->orderBy('informdetails.informdetails_id', 'DESC')
-           ->select('informdetails.*', 'users.fname', 'users.surname')
+           ->select('informdetails.*', 'users.fname')
            ->paginate(10);
 
 
@@ -1898,104 +2072,104 @@ public function searchin3(Request $request){
            ->join('users', 'informdetails.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
 
 
            ->orderBy('informdetails.informdetails_id', 'DESC')
-           ->select('informdetails.*', 'users.fname', 'users.surname')
+           ->select('informdetails.*', 'users.fname')
            ->paginate(10);
 
            $registers10 = informdetails::query()
            ->join('users', 'informdetails.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
 
 
            ->orderBy('informdetails.informdetails_id', 'DESC')
-           ->select('informdetails.*', 'users.fname', 'users.surname')
+           ->select('informdetails.*', 'users.fname')
            ->paginate(10);
 
            $registers12 = Event::query()
            ->join('users', 'events.student_name', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('events.namefiles', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
 
 
            ->orderBy('events.id', 'DESC')
-           ->select('events.*', 'users.fname', 'users.surname')
+           ->select('events.*', 'users.fname')
            ->paginate(10);
 
            $registers13 = supervision::query()
            ->join('users', 'supervision.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
 
 
            ->orderBy('supervision.supervision_id', 'DESC')
-           ->select('supervision.*', 'users.fname', 'users.surname')
+           ->select('supervision.*', 'users.fname')
            ->paginate(10);
 
            $registers14 = supervision::query()
            ->join('users', 'supervision.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
 
 
            ->orderBy('supervision.supervision_id', 'DESC')
-           ->select('supervision.*', 'users.fname', 'users.surname')
+           ->select('supervision.*', 'users.fname')
            ->paginate(10);
            $registers15 = supervision::query()
            ->join('users', 'supervision.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
 
 
            ->orderBy('supervision.supervision_id', 'DESC')
-           ->select('supervision.*', 'users.fname', 'users.surname')
+           ->select('supervision.*', 'users.fname')
            ->paginate(10);
 
            $registers16 = supervision::query()
            ->join('users', 'supervision.user_id', '=', 'users.id')
            ->where(function ($query) use ($keyword) {
                $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                     ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
 
            })
            ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
 
 
            ->orderBy('supervision.supervision_id', 'DESC')
-           ->select('supervision.*', 'users.fname', 'users.surname')
+           ->select('supervision.*', 'users.fname')
            ->paginate(10);
 
 
@@ -2007,6 +2181,318 @@ return view('teacher.in2',  ['registers1' => $registers1,'registers2' => $regist
 ]);
 }
 
+public function searchin03(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+
+
+           $registers1=DB::table('registers')
+           ->join('users','registers.user_id','users.id')
+           ->select('registers.*','users.fname')
+           ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers2=DB::table('registers')
+           ->join('users','registers.user_id','users.id')
+           ->select('registers.*','users.fname')
+           ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)','')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers3=DB::table('registers')
+           ->join('users','registers.user_id','users.id')
+           ->select('registers.*','users.fname')
+           ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)','')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+
+
+
+           $registers4=DB::table('registers')
+           ->join('users','registers.user_id','users.id')
+           ->select('registers.*','users.fname')
+           ->where('registers.namefile', 'บัตรประชาชน')
+           ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers5=DB::table('registers')
+           ->join('users','registers.user_id','users.id')
+           ->select('registers.*','users.fname')
+           ->where('registers.namefile', 'บัตรนักศึกษา')
+           ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers6=DB::table('registers')
+           ->join('users','registers.user_id','users.id')
+           ->select('registers.*','users.fname')
+           ->where('registers.namefile', 'ผลการเรียน')
+           ->where('user_id', auth()->id())
+           ->paginate(5);
+           $registers7=DB::table('registers')
+           ->join('users','registers.user_id','users.id')
+           ->select('registers.*','users.fname')
+           ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
+           ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers17=DB::table('acceptance')
+           ->join('users','acceptance.user_id','users.id')
+           ->select('acceptance.*','users.fname')
+           ->where('acceptance.namefile', 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers8=DB::table('informdetails')
+           ->join('users','informdetails.user_id','users.id')
+           ->select('informdetails.*','users.fname')
+           ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers9=DB::table('informdetails')
+           ->join('users','informdetails.user_id','users.id')
+           ->select('informdetails.*','users.fname')
+           ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+           $registers10=DB::table('informdetails')
+           ->join('users','informdetails.user_id','users.id')
+           ->select('informdetails.*','users.fname')
+           ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+
+
+           $registers12=DB::table('events')
+           ->join('users','events.student_name','users.id')
+           ->select('events.*','users.fname')
+           ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
+           // ->where('student_name', auth()->id())
+           ->paginate(5);
+
+           $registers13=DB::table('supervision')
+           ->join('users','supervision.user_id','users.id')
+           ->select('supervision.*','users.fname')
+           ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+           $registers14=DB::table('supervision')
+           ->join('users','supervision.user_id','users.id')
+           ->select('supervision.*','users.fname')
+           ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+           $registers15=DB::table('supervision')
+           ->join('users','supervision.user_id','users.id')
+           ->select('supervision.*','users.fname')
+           ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+           $registers16=DB::table('supervision')
+           ->join('users','supervision.user_id','users.id')
+           ->select('supervision.*','users.fname')
+           ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+           // ->where('user_id', auth()->id())
+           ->paginate(5);
+
+           $registers1 = registers::query()
+           ->join('users', 'registers.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
+           })
+           ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+
+           // ->where('user_id', auth()->id())
+           ->orderBy('registers.id', 'DESC')
+           ->select('registers.*', 'users.fname')
+           ->paginate(10);
+
+           $registers2 = registers::query()
+           ->join('users', 'registers.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
+           })
+           ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)','')
+
+           // ->where('user_id', auth()->id())
+           ->orderBy('registers.id', 'DESC')
+           ->select('registers.*', 'users.fname')
+           ->paginate(10);
+           $registers3 = registers::query()
+           ->join('users', 'registers.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
+           })
+           ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)','')
+
+           // ->where('user_id', auth()->id())
+           ->orderBy('registers.id', 'DESC')
+           ->select('registers.*', 'users.fname')
+           ->paginate(10);
+
+
+
+
+           $registers17 = acceptance::query()
+           ->join('users', 'acceptance.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+                   //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
+           })
+           ->where('acceptance.namefile', 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
+
+           // ->where('user_id', auth()->id())
+           ->orderBy('acceptance.acceptance_id', 'DESC')
+           ->select('acceptance.*', 'users.fname')
+           ->paginate(10);
+
+
+           $registers8 = informdetails::query()
+           ->join('users', 'informdetails.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
+
+
+           ->orderBy('informdetails.informdetails_id', 'DESC')
+           ->select('informdetails.*', 'users.fname')
+           ->paginate(10);
+
+
+           $registers9 = informdetails::query()
+           ->join('users', 'informdetails.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
+
+
+           ->orderBy('informdetails.informdetails_id', 'DESC')
+           ->select('informdetails.*', 'users.fname')
+           ->paginate(10);
+
+           $registers10 = informdetails::query()
+           ->join('users', 'informdetails.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
+
+
+           ->orderBy('informdetails.informdetails_id', 'DESC')
+           ->select('informdetails.*', 'users.fname')
+           ->paginate(10);
+
+           $registers12 = Event::query()
+           ->join('users', 'events.student_name', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('events.namefiles', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
+
+
+           ->orderBy('events.id', 'DESC')
+           ->select('events.*', 'users.fname')
+           ->paginate(10);
+
+           $registers13 = supervision::query()
+           ->join('users', 'supervision.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+
+
+           ->orderBy('supervision.supervision_id', 'DESC')
+           ->select('supervision.*', 'users.fname')
+           ->paginate(10);
+
+           $registers14 = supervision::query()
+           ->join('users', 'supervision.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+
+
+           ->orderBy('supervision.supervision_id', 'DESC')
+           ->select('supervision.*', 'users.fname' )
+           ->paginate(10);
+           $registers15 = supervision::query()
+           ->join('users', 'supervision.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
+
+
+           ->orderBy('supervision.supervision_id', 'DESC')
+           ->select('supervision.*', 'users.fname')
+           ->paginate(10);
+
+           $registers16 = supervision::query()
+           ->join('users', 'supervision.user_id', '=', 'users.id')
+           ->where(function ($query) use ($keyword) {
+               $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
+                     ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //  ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+           })
+           ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+
+
+           ->orderBy('supervision.supervision_id', 'DESC')
+           ->select('supervision.*', 'users.fname')
+           ->paginate(10);
+
+
+return view('officer.in2',  ['registers1' => $registers1,'registers2' => $registers2,'registers3' => $registers3,
+'registers4' => $registers4,'registers5' => $registers5,'registers6' => $registers6,'registers7' => $registers7
+,'registers8' => $registers8,'registers9' => $registers9,'registers10' => $registers10,'registers12' => $registers12
+,'registers13' => $registers13,'registers14' => $registers14,'registers15' => $registers15,'registers16' => $registers16,
+'registers17' => $registers17,
+]);
+}
 
 public function searchsupervision0(Request $request){
     //dd($request);
@@ -2031,13 +2517,13 @@ $events = Event::query()
 ->where(function ($query) use ($keyword) {
     $query
     // ->Where('events.term', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+        //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
         //   ->orWhere('events.namefiles', 'LIKE', '%' . $keyword . '%');
 
         //   ->orWhere('events.year', 'LIKE', '%' . $keyword . '%');
 })
-->select('events.*', 'users.fname', 'users.surname')
+->select('events.*', 'users.fname')
 ->paginate(10);
 
 return view('teacher.supervision',  ['events' => $events,]);
@@ -2084,12 +2570,12 @@ $supervision = supervision::query()
 ->join('users', 'supervision.user_id', '=', 'users.id')
 ->where(function ($query) use ($keyword) {
     $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+        //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
         //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
         //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
 })
-->select('supervision.*', 'users.fname', 'users.surname')
+->select('supervision.*', 'users.fname')
 ->paginate(10);
 
 
@@ -2570,7 +3056,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     {
         $establishments=DB::table('establishment')
         ->join('users','establishment.user_id','users.id')
-        ->select('establishment.*','users.fname','users.surname')
+        ->select('establishment.*','users.fname')
         ->paginate(5);
         $major=DB::table('major')->paginate(5);
         return view('officer.establishmentuser1',compact('establishments','major'),["msg"=>"I am Editor role"]);
@@ -2579,7 +3065,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     {
         $establishments=DB::table('establishment')
         ->join('users','establishment.user_id','users.id')
-        ->select('establishment.*','users.fname','users.surname')
+        ->select('establishment.*','users.fname')
         ->paginate(5);
         $major=DB::table('major')->paginate(5);
         return view('teacher.establishmentuser1',compact('establishments','major'),["msg"=>"I am Editor role"]);
@@ -2589,7 +3075,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     {
         $establishments=DB::table('student')
         ->join('users','student.user_id','users.id')
-        ->select('student.*','users.fname','users.surname')
+        ->select('student.*','users.fname')
         ->paginate(5);
         $major=DB::table('major')->paginate(5);
         return view('officer.student',compact('establishments','major'),["msg"=>"I am Editor role"]);
@@ -2599,7 +3085,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     {
         $establishments=DB::table('student')
         ->join('users','student.user_id','users.id')
-        ->select('student.*','users.fname','users.surname')
+        ->select('student.*','users.fname')
         ->paginate(5);
         $major=DB::table('major')->paginate(5);
         return view('teacher.student',compact('establishments','major'),["msg"=>"I am Editor role"]);
@@ -2617,7 +3103,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         //  dd($establishments);
         $establishments1=DB::table('establishment')
         ->join('users','establishment.user_id','users.id')
-        ->select('establishment.*','users.fname','users.surname')
+        ->select('establishment.*','users.fname')
         ->paginate(5);
         $users=DB::table('users')
       ->where('role',"student")
@@ -2636,7 +3122,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         //  dd($establishments);
         $establishments1=DB::table('establishment')
         ->join('users','establishment.user_id','users.id')
-        ->select('establishment.*','users.fname','users.surname')
+        ->select('establishment.*','users.fname')
         ->paginate(5);
         $users=DB::table('users')
       ->where('role',"student")
@@ -2655,7 +3141,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         //  dd($establishments);
         $establishments1=DB::table('establishment')
         ->join('users','establishment.user_id','users.id')
-        ->select('establishment.*','users.fname','users.surname')
+        ->select('establishment.*','users.fname')
         ->paginate(5);
         $users=DB::table('users')
       ->where('role',"student")
@@ -2678,7 +3164,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         //  dd($establishments);
         $establishments1=DB::table('student')
         ->join('users','student.user_id','users.id')
-        ->select('student.*','users.fname','users.surname')
+        ->select('student.*','users.fname')
         ->paginate(5);
     //     $users=DB::table('users')
     //   ->where('role',"student")
@@ -2702,7 +3188,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         //  dd($establishments);
         $establishments1=DB::table('student')
         ->join('users','student.user_id','users.id')
-        ->select('student.*','users.fname','users.surname')
+        ->select('student.*','users.fname')
         ->paginate(5);
     //     $users=DB::table('users')
     //   ->where('role',"student")
@@ -2733,7 +3219,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         $registers=DB::table('registers')
 
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->orderBy('id', 'desc')
         ->paginate(10);
 //dd($registers);
@@ -2745,7 +3231,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         $registers=DB::table('registers')
 
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname','users.surname')
+        ->select('registers.*','users.fname')
         ->orderBy('registers.id', 'DESC')
         ->paginate(10);
 //dd($registers);
@@ -2796,7 +3282,7 @@ public function category()
         $acceptances=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
        // ->join('establishment','acceptance.establishment_id','establishment.id')
-        ->select('acceptance.*','users.fname','users.surname')
+        ->select('acceptance.*','users.fname')
         ->paginate(5);
         return view('officer.acceptancedocument1',compact('acceptances'));
     }
@@ -2806,7 +3292,7 @@ public function category()
         $acceptances=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
        // ->join('establishment','acceptance.establishment_id','establishment.id')
-        ->select('acceptance.*','users.fname','users.surname')
+        ->select('acceptance.*','users.fname')
         ->paginate(5);
         return view('teacher.acceptancedocument1',compact('acceptances'));
     }
@@ -2815,7 +3301,7 @@ public function category()
     {
         $informdetails=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname','users.surname')
+        ->select('informdetails.*','users.fname')
         ->orderBy('informdetails_id', 'desc')
         ->paginate(5);
         return view('officer.informdetails2',compact('informdetails'));
@@ -2859,7 +3345,7 @@ public function category()
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
        ->join('users','supervision.user_id','users.id')
-                        ->select('supervision.*','users.fname','users.surname')
+                        ->select('supervision.*','users.fname')
         ->paginate(5);
         return view('officer.Evaluate',compact('supervision'));
     }
@@ -2888,7 +3374,7 @@ public function category()
         // ->join('users', 'events.student_name', 'users.id')
         //  ->select('events.*', 'users.fname', 'users.surname')
          ->join('users','events.student_name','users.id')
-         ->select('events.*','users.fname','users.surname')
+         ->select('events.*','users.fname')
         ->paginate(10);
     //     $users=DB::table('users')
     //   ->where('role',"student")->paginate(5);
@@ -3077,7 +3563,7 @@ public function category()
         $informdetails=DB::table('informdetails')
 
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname','users.surname')
+        ->select('informdetails.*','users.fname')
         ->paginate(10);
 
         //return view('student.informdetails',compact('informdetails'));
@@ -3098,7 +3584,7 @@ public function category()
        // ->join('users','users.id','=','users.id')
         ->join('users','supervision.user_id','users.id')
         // ->join('establishment','establishment.id','=','establishment_id')
-        ->select('supervision.*','users.fname','users.surname')
+        ->select('supervision.*','users.fname')
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
         ->paginate(10);

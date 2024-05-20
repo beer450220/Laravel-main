@@ -295,6 +295,12 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/home",[HomeController::class,'officerHome'])->name('officer.officerhome');
     Route::get("/officer/user1",[HomeController::class,'user1'])->name('officer.user1');
 
+
+//ข้อมูลตรวจสอบเอกสาร
+Route::get("/officer/in2",[HomeController::class,'in4'])->name('in4');
+Route::get('/officer/search0001',[HomeController::class,'searchin03'])->name('searchin03');
+
+
  //ข้อมูลส่วนตัว
  Route::get("/officer/personal/{id}",[HomeController::class,'personal02'])->name('personal02');
  Route::get("/officer/edituser02/{id}",[EditController::class,'edituser02'])->name('edituser02');

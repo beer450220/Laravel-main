@@ -144,7 +144,7 @@
                                 {{-- <form method="POST" action="{{ route('register') }}"> --}}
                                     <form method="POST" action="{{ route('addcooperative1') }}" enctype="multipart/form-data">
                                     @csrf
-            <h4 class="text-">ข้อมูลสมัครเข้าใช้งานระบบ</h4>
+            <h4 class="text-">ข้อมูลสมัครเข้าใช้งานระบบ (สำหรับนักศึกษา)</h4>
             @foreach ($errors->all() as $error)
             <li class="alert alert-danger col-6">{{ $error }}</li>
             @endforeach
@@ -156,7 +156,7 @@
 
 
                                     <div class="row mb-3">
-                                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('รหัสประจำตัว') }}</label>
+                                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('รหัสนักศึกษา') }}</label>
 
                                         <div class="col-md-3">
                                             <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"maxlength="11" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
@@ -169,7 +169,7 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
+                                        <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ-นามสกุล') }}</label>
 
                                         <div class="col-md-3">
                                             <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname">
@@ -181,25 +181,13 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
 
-                                        <div class="col-md-3">
-                                            <input id="surname" type="surname" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname">
-
-                                            @error('surname')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
 
                                     <div class="row mb-3">
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน') }}</label>
 
                                         <div class="col-md-3">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="••••••••" required autocomplete="new-password">
 
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -213,7 +201,12 @@
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('ยืนยันรหัสผ่าน') }}</label>
 
                                         <div class="col-md-3">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                            <input id="password" type="confirm-password" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" name="password_confirmation" required autocomplete="new-password">
+                                            @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         </div>
                                     </div>
 
@@ -230,7 +223,7 @@
 
                                         <div class="col-md-4">
                                             {{-- <input id="inputGroupFile02" type="file" class="form-control" name="images" required autocomplete="images"> --}}
-                                            <input class="form-control" type="file" id="formFile"name="images" required>
+                                            <input class="form-control" type="file" id="formFile"name="images" required placeholder="••••••••">
 
                                         </div>
                                     </div>

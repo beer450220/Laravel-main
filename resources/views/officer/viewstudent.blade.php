@@ -128,7 +128,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label><br>
 
-                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->fname}}{{$establishments->surname}}"disabled required>
+                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->fname}}"disabled required>
                       </div>
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">เบอร์โทร</label><br>

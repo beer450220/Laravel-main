@@ -341,7 +341,7 @@ class AddController extends Controller
                     "student_id" => $request->student_id,
                     "fname" => $request->fname,
 
-                      "surname" => $request->surname,
+                    //   "surname" => $request->surname,
                       "email" => $request->email,
                       "year" => $request->year,
                       "GPA" => $request->GPA,
@@ -404,7 +404,7 @@ class AddController extends Controller
                   "em_contact_name" => $request->em_contact_name,
                   "em_Contact_email" => $request->em_Contact_email,
                   "em_contactposition" => $request->em_contactposition,
-                  "Student_id" => $request->Student_id,
+                  "student_id" => $request->student_id,
                   "em_job" => $request->em_job,
                   "website" => $request->website,
 

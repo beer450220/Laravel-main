@@ -347,16 +347,17 @@
                                                         <form method="POST" action="{{ route('addpersonal3') }}" enctype="multipart/form-data">
                                                             @csrf
                                                 <label for="simpleinput">รหัสนักศึกษา</label>
-                                                <select class="form-control" id="validationSelect1" name="Student_id"required >
-                                                    <option value="">กรุณาเลือก</option>
-                                                    @foreach ($student as $row)
+                                                {{-- <select class="form-control" id="validationSelect1" name="Student_id"required >
+                                                    <option value="">กรุณาเลือก</option> --}}
+                                                    {{-- @foreach ($student as $row) --}}
                                                     {{-- <optgroup label="Mountain Time Zone"> --}}
-                                                      <option value="{{$row->student_id}}">{{$row->student_id}}  ({{$row->fname}} {{$row->surname}})</option>
+                                                      {{-- <option value="{{$row->student_id}}">{{$row->student_id}}  ({{$row->fname}} )</option> --}}
                                                       {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                                    </optgroup>
+                                                    {{-- </optgroup> --}}
 
-                                                    @endforeach
-                                                  </select>
+                                                    {{-- @endforeach --}}
+                                                  {{-- </select> --}}
+                                                  <input type="hidden" id="student_id" name="student_id" value="{{ Auth::user()->username }}">
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-email">ชื่อสถานประกอบการ</label>

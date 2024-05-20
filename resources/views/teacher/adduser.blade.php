@@ -20,14 +20,16 @@
                     {{-- <form method="POST" action="{{ route('register') }}"> --}}
                         <form method="POST" action="{{ route('add5') }}" enctype="multipart/form-data">
                         @csrf
-<h4 class="text-primary">ข้อมูลผู่ใช้งาน</h4>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-
+<h4 class="text-primary">ข้อมูลผู้ใช้งาน</h4>
+@if ($errors->any())
+<div class="alert alert-danger col-6">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul></div>@endif
 @if(session("error"))
-<div class="alert alert-danger col-6">{{session('error')}}
+<div class="alert alert-danger col-6">{{session('error')}}</div>
 @endif
 
 
@@ -45,7 +47,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
+                            <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ-นามสกุล') }}</label>
 
                             <div class="col-md-6">
                                 <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname">
@@ -57,19 +59,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="surname" type="surname" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname">
-
-                                @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน') }}</label>
@@ -184,7 +174,11 @@
                             <div class="col-md-6">
                                 <input id="inputGroupFile02" type="file" class="form-control" name="images" required autocomplete="images">
 
-
+                                @error('images')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                         <div class="row mb-3">

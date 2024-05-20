@@ -302,7 +302,7 @@
                                           <div class="alert alert-success col-4">{{session('success')}}
                               @endif
                               @if ($errors->any())
-    <div class="alert alert-danger col-3">
+    <div class="alert alert-danger col-6">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -356,16 +356,15 @@
                                               <form method="POST" action="{{ route('addpersonal1') }}" enctype="multipart/form-data">
                                                 @csrf
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <input type="text"value=""  id="simpleinput" name="student_id" required class="form-control">
+                                                      {{-- <input type="text"value=" {{ Auth::user()->username }}"disabled  id="simpleinput" name="student_id" required class="form-control"> --}}
+                                                      <input type="hidden" id="student_id" name="student_id"   value="{{ Auth::user()->username }}">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง นามสกุล</label>
-                                                      <input type="text" id="example-email"value=""  name="fname" class="form-control"required placeholder="">
+                                                      {{-- <input type="text" id="example-email"value="" name="fname" class="form-control"required placeholder=""> --}}
+                                                      <input type="hidden" id="fname" name="fname"   value="{{ Auth::user()->fname }}">
                                                     </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="example-email">นามสกุล</label>
-                                                        <input type="text" id="example-email"value=""  name="surname" class="form-control"required placeholder="">
-                                                      </div>
+
                                                     <div class="form-group mb-3">
                                                       <label for="example-password">อีเมล์</label>
                                                       <input type="email" id="example-password" class="form-control"name="email"required value="">

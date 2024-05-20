@@ -1,4 +1,4 @@
-@extends('layouts.appteacher')
+@extends('layouts.officermin')
 
 @section('content')
 <title>user</title>
@@ -11,7 +11,7 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">ข้อมูลตรวจสอบเอกสาร</h5>
-        <form action="{{ route('searchin3') }}" method="GET" class="form-inline">
+        <form action="{{ route('searchin03') }}" method="GET" class="form-inline">
 
             <div class="form-row">
               <div class="form-group col-auto">
@@ -44,7 +44,7 @@
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
-                <th></th>
+                <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
                 <th>สมัครสหกิจศึกษา</th>
 
@@ -236,7 +236,7 @@
                                                     <tr>
                                                         @foreach ($registers12 as $row)
                                                         <td ></td>
-                                                        <td >{{ $row->fname   }}  </td>
+                                                        <td >{{ $row->fname   }} </td>
 
                                                     <th >แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา(สก.10)</th>
                                                     <td >  @if ($registers12->isEmpty())
@@ -304,7 +304,7 @@
                                                                             <tr>
                                                                                 @foreach ($registers15 as $row)
                                                                                 <td ></td>
-                                                                                <td >{{ $row->fname   }}  </td>
+                                                                                <td >{{ $row->fname   }}   </td>
 
                                                                             <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</th>
                                                                             <td >  @if ($registers15->isEmpty())
@@ -326,7 +326,7 @@
                                                                                     <tr>
                                                                                         @foreach ($registers16 as $row)
                                                                                         <td ></td>
-                                                                                        <td >{{ $row->fname   }} </td>
+                                                                                        <td >{{ $row->fname   }}  </td>
 
                                                                                     <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</th>
                                                                                     <td >  @if ($registers16->isEmpty())
@@ -367,7 +367,7 @@
         @endforeach --}}
           </tbody>
         </table>
-         {{-- {!!$registers1->links('pagination::bootstrap-5')!!} --}}
+         {!!$registers1->links('pagination::bootstrap-5')!!}
        {{-- {!! $registers2->links('pagination::bootstrap-5') !!}--}}
       </div>
     </div>
@@ -411,7 +411,7 @@
 
 
 
-                      <tr>
+                      {{-- <tr> --}}
 
       {{-- @endforeach --}}
       {{-- @foreach ($registers1 as $row) --}}
@@ -433,14 +433,14 @@
       <td></td>
   </tr>
   @endforeach --}}
-    </tbody>
-  </table>
+    {{-- </tbody>
+  </table> --}}
   {{-- {!!$registers->links('pagination::bootstrap-5')!!}
   {!! $registers2->links('pagination::bootstrap-5') !!} --}}
-</div>
-</div>
-</div> <!-- Bordered table -->
-</div> <!-- end section -->
+{{-- </div>
+</div> --}}
+{{-- </div> <!-- Bordered table -->
+</div> <!-- end section --> --}}
 
 {{-- @foreach ($registers as $row)
 {{ $row->namefile }}

@@ -72,7 +72,7 @@
             <tr>
               <td>{{$events->firstItem()+$loop->index}}</td>
               <td>{{$row->start}}</td>
-              <td>{{$row->fname}}  {{$row->surname}}
+              <td>{{$row->fname}}
 
 
 

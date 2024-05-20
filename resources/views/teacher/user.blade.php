@@ -141,7 +141,7 @@
                                             <th><i class="" aria-hidden="true"></i>บทบาทหน้าที่</th>
                                              {{-- <th ><i class="" aria-hidden="true"></i>จังหวัด</th> --}}
                                              <th><i class="" aria-hidden="true"></i>เริ่มใช้งานระบบ</th>
-                                            <th>ระงับการใช้งาน</th>
+                                            {{-- <th>ระงับการใช้งาน</th> --}}
                                             <th>แก้ไขข้อมูล</th>
                                             <th>ลบข้อมูล</th>
                                         </tr>
@@ -160,7 +160,7 @@
 
 
                                             <td>{{$row->username}}</td>
-                                            <td>{{$row->fname}} {{$row->surname}}</td>
+                                            <td>{{$row->fname}} </td>
                                             {{-- <td></td> --}}
 
                                             {{-- <td></td> --}}
@@ -171,12 +171,12 @@
                                             {{-- {{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}
                                             {{$row['created_at']->diffForHumans()}} --}}
                                             {{-- <td></td> --}}
-                                            <td>
+                                            {{-- <td>
                                                 <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="ON" data-off="OFF" {{ $row->role ? 'checked' : '' }}>
-                                                {{-- <div class="form-check form-switch text-center">
+                                                {{-- <div class="form-check form-switch text-center"></div>
                                                 <input class="form-check-input "for="flexSwitchCheckChecked" type="checkbox" role="switch" id="flexSwitchCheckChecked"id="switchOne"wire:model="isActive" checked></div> </td> --}}
 
-
+{{-- </td> --}}
                                             <td> <a href="/teacher/edituser/{{$row->id}}" class="fa fa-pencil btn btn-warning text-center " aria-hidden="true"></a></td>
                                             {{-- <td> <a href="/edituser/{{$row->id}}" class="fa fa-pencil btn btn-warning text-center " aria-hidden="true"></a></td> --}}
                                             <!-- <php echo isset($_GET['pasge']) && $_GET['page'] =='user'?'active':''?>"href="?page=edit?update_id=" -->
@@ -192,7 +192,7 @@
                     </div>
 
                 </div>
-
+            </div>
 
                 {{-- @livewire('toggle-switch', [
                     'model' => $users,

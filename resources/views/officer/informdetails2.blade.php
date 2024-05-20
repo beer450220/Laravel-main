@@ -83,7 +83,7 @@
                 )
             }}"> --}}
                 <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
-                <td>{{ $row->fname }}  {{ $row->surname}}</td>
+                <td>{{ $row->fname }}  </td>
                 {{-- <td></td> --}}
                 <td>{{ $row->namefile }}</td>
                 {{-- <td>{{ $row->year }}</td>

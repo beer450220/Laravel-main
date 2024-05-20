@@ -80,7 +80,7 @@
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
               <td>
-                {{$row->fname}}  {{$row->surname}}</td>
+                {{$row->fname}} </td>
                 <td>{{$row->namefile}}</td>
               {{-- <td>{{$row->term}}</td>
               <td>{{$row->year}}</td> --}}
