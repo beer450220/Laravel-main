@@ -172,7 +172,7 @@
             {{-- <input class="form-control" id="example-date" type="text" name="establishment_name"  autofocus placeholder=""required> --}}
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" > --}}
-                <select class="form-control select2" data-placeholder="เลือกสถานประกอบการ"  multiple name="em_id[]"required >
+                <select class="form-control select2" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required >
                 <option value="">Select state</option>
               @foreach ($establishment as $row)
 
@@ -193,7 +193,7 @@
             {{-- id="multiple-select-field" --}}
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ" multiple name="student_name[]"required >
+            <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
               <option value="">เลือกรายชื่อ</option>
               {{-- @foreach ($users as $row) --}}
               {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -315,6 +315,10 @@ $( '#multiple-select-field1' ).select2( {
       <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">ไฟล์เอกสาร</label>
         <input class="form-control" id="example-date" type="file" name="filess"  autofocus placeholder=""required>
+        {{-- <div class="custom-file">
+            <input type="file" class="custom-file-input"name="filess" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"required>
+            <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
+          </div> --}}
         {{-- <select class="form-control "  name="term"required>
           <option value="">กรุณาเลือกภาคเรียน</option>
 
@@ -325,19 +329,24 @@ $( '#multiple-select-field1' ).select2( {
 
 
         </select> --}}
+
+
+
     </div>
-    <div class="col-md-2">
+
+    <div class="col-md-4">
       <label for="inputAddress"class="col-form-label ">ชื่อไฟล์เอกสาร</label>
-      <select class="form-control select" id="validationSelect2" name="namefiles" required>
-        <option value="">กรุณาเลือก</option>
+      <input class="form-control" id="example-date" type="text" name="namefiles" value="สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา" readonly  placeholder="">
+      {{-- <select class="form-control select" id="validationSelect2" name="namefiles" required>
+        <option value="">กรุณาเลือก</option> --}}
         {{-- @foreach ($users as $row) --}}
         {{-- <optgroup label="Mountain Time Zone"> --}}
-          <option value="สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา">สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา</option>
+          {{-- <option value="สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา">สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา</option>
 
         </optgroup>
 
 
-      </select>
+      </select> --}}
       {{-- <select class="form-control "  name="year"required > --}}
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>

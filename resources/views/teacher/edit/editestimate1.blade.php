@@ -4,19 +4,16 @@
 
 
 
-{{--
-@extends('layouts.appteacher')
+
+@extends('layouts.appteacher3')
 
 @section('content')
-@yield('content') --}}
+@yield('content')
 
 
 
 {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-<link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../student/css/simplebar.css">
 
 {{-- <br> --}}
 
@@ -28,7 +25,7 @@
 
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content ">
-      <div class="modal-header bg-dark text-white ">
+      <div class="modal-header text-white ">
         <h5 class="modal-title text center " id="varyModalLabel">แก้ไขข้อมูล</h5>
         {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -114,7 +111,7 @@
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="user_id" required>
+            <select class="form-control" id="single-select-field1" data-placeholder="เลือกรายชื่อ" name="user_id" required>
               <option value="">Select state</option>
               @foreach ($users as $row)
 
@@ -125,6 +122,23 @@
               @endforeach
             </select>
 
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+            <!-- Or for RTL support -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+            <!-- Scripts -->
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+            <script>
+                $( '#single-select-field1' ).select2( {
+                    theme: "bootstrap-5",
+                    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+                    placeholder: $( this ).data( 'placeholder' ),
+                } );
+
+                </script>
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -206,4 +220,4 @@
 
 
 
-{{-- @endsection --}}
+@endsection

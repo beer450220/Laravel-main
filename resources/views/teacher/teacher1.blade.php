@@ -51,7 +51,7 @@
             @foreach ($supervision as $row)
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}} {{$row->surname}}</td>
+              <td>{{$row->fname}} </td>
 
               {{-- <td>{{$row->name_major}}</td> --}}
 

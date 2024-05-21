@@ -50,7 +50,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label>
 
-                        <select class="form-control select2" id="validationSelect1" name="user_id"  required>
+                        <select class="form-select" id="single-select-field2" data-placeholder="เลือกรายชื่อ" name="user_id"  required>
                             <option value="">กรุณาเลือกชื่อ</option>
                             <option value="-"@if($acceptances->user_id=="-") selected @endif required>-</option>
                             @foreach ($user as $row)
@@ -58,10 +58,34 @@
                               <option value="{{$row->id}}"{{$row->id==$acceptances->user_id ?'selected':''}}>{{$row->fname}}  </option>
                               {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
 
-                            </optgroup>
+
 
                             @endforeach
                           </select>
+
+<!-- Styles -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<!-- Or for RTL support -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+
+
+<script>
+    $( '#single-select-field2' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+
+    </script>
+
+
                         @error('Status_report')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

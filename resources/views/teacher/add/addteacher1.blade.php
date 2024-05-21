@@ -98,13 +98,13 @@
 </div>
 </div> --}}
 <main role="main" class="main-content">
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-12">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-6">
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="card shadow mb-4">
       <div class="card-header">
         <strong class="card-title">เพิ่มข้อมูล</strong>
@@ -135,20 +135,16 @@
 
 
         <div class="col-md-4">
-          <label for="inputAddress"class="col-form-label ">ชื่ออาจารย์</label>
+          <label for="inputAddress"class="col-form-label ">ชื่ออาจารย์-นามสกุล</label>
           <input type="text" class="form-control" @error('score') is-invalid @enderror name="fname" value="{{ old('fname') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
       </div>
-      <div class="col-md-4">
-        <label for="inputAddress"class="col-form-label ">นามสกุล</label>
-        <input type="text" class="form-control" @error('score') is-invalid @enderror name="surname" value="{{ old('surname') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
-    </div>
     <div class="col-md-4">
         <label for="inputAddress"class="col-form-label ">อีเมล์</label>
         <input type="email" class="form-control" @error('score') is-invalid @enderror name="email" value="{{ old('email') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
-    </div>   <div class="col-md-4">
+    </div>   <div class="col-md-8">
         <label for="inputAddress"class="col-form-label ">หลักสูตร</label>
         {{-- <input type="text" class="form-control" @error('score') is-invalid @enderror name="major_id" value="{{ old('major_id') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required> --}}
 <select class="form-control" id="validationSelect1" name="major_id" >
@@ -183,7 +179,7 @@
       </div> <!-- /. card-body -->
     </div> <!-- /. card -->
   </div> <!-- /. col -->
-</div> <!-- /. end-section -->
+
 
 
 

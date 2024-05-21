@@ -61,7 +61,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
-                        <select class="form-select " aria-label=".form-select-sm example" name="Status_registers"required>
+                        <select class="form-control " aria-label=".form-select-sm example" name="Status_registers"required>
                           <option selected>กรุณาเลือก</option>
                           <option value="ตรวจสอบเอกสารแล้ว"@if($registers->Status_registers=="ตรวจสอบเอกสารแล้ว") selected @endif required>ตรวจสอบเอกสารแล้ว</option>
                           <option value="ไม่ผ่าน"@if($registers->Status_registers=="ไม่ผ่าน") selected @endif required>ไม่ผ่านตรวจสอบเอกสาร</option>

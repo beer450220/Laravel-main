@@ -1,4 +1,4 @@
-@extends('layouts.appstudent1')
+@extends('layouts.appteacher3')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -336,7 +336,7 @@
                                                       <a href="/teacher/home" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
                                                       &nbsp;&nbsp;
                                                       <button  class="btn btn-outline-success me-md-2 delete-btn"  type="reset">ยกเลิก</button>&nbsp;
-                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">อัพเดทข้อมูล</button>
+                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
                                                    </div>  </div></form>
                                                 </div>
                                               </div>

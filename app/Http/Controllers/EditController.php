@@ -2400,7 +2400,7 @@ $post->update
  public function   updatesupervision02(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-    //dd($request);
+    // dd($request);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
@@ -2470,7 +2470,7 @@ $post->update
     ]);
 
 
-    return redirect('/teacher/supervision')->with('error','success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/teacher/supervision')->with('error','success5', 'ยืนยันข้อมูลสำเร็จ.');
 
  }
  public function editschedule1($id) {

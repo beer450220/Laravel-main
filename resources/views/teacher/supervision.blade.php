@@ -26,10 +26,15 @@
             <div class="">
               {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
               <a href="/teacher/addsupervision" type="button" class=" btn btn-outline-primary">เพิ่มข้อมูล</a>
+              {{-- @if(session("success5"))
+              <div class="alert alert-success col-6">{{session('success5')}}</div>
+              @endif --}}
+
+            </div>
               {{-- <a href="/officer/pdf" target="_BLANK" type="button" class="btn btn-outline-danger">Pdf</a>
               <a href="/teacher/Excel" target="_BLANK" type="button" class="btn btn-outline-success">Export</a> --}}
             </form>
-            </div>
+
 
         <div class="container">
             <div class="row">
@@ -38,6 +43,8 @@
                 </p> --}}
               </div>
               <div class="col col-3">
+
+
                 {{-- <a href="/teacher/addsupervision" type="button" class=" btn btn-outline-primary">เพิ่มข้อมูล</a>
                 <a href="/officer/pdf" target="_BLANK" type="button" class="btn btn-outline-danger">Pdf</a>
                 <a href="/teacher/Excel" target="_BLANK" type="button" class="btn btn-outline-success">Export</a> --}}
@@ -47,7 +54,6 @@
         </div>
 
 <br>
-
 
 
         <table class="table table-hover text-center">

@@ -28,52 +28,12 @@
     </div>
 </div>  --}}
 
-   <div class="container-fluid">
-<div class="card   ">
-    <div class="card-body p-2 ">
-        <!-- Nested Row within Card Body -->
-        <div class="row  justify-content-md-center">
-
-            <div class="col-lg-8 ">
-                <div class="p-5">
-                    {{-- <div class="text-center">
-                        <h1 class="h4  text-gray-900 mb-4">แก้ไขข้อมูลผู้ใช้งาน</h1>
-                    </div> --}}
+<main role="main" class="main-content">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12">
 
 
-
-
-                    {{-- <form  method="post" class="user   "enctype="multipart/form-data"> --}}
-
-
-
-                    <div class="form-group row ">
-                        <div class="col-16  " >
-
-</div>
-<div class="col-sm-4">
-                                {{-- <input type="text" class="form-control  "
-                                name="txt_StudentID" value="{{$users->username}}" pattern="[0-9]{1,}" maxlength="11"  placeholder="รหัสนักศึกษา"> --}}
-
-<div class="form-group row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
-{{-- <input type="submit" name="btn_update" class="btn btn-primary  btn-block " value="แก้ไขข้อมูล"> --}}
-</div> <div class="col-sm-6">
-
-
-{{-- <a href="../index.php?page=user" class="btn btn-primary  btn-block">ยกเลิก</a> --}}
-
-                       </div><br>
-
-         </div>
-                    </form>
-                </div>
-            </div>
-
-                    <main role="main" class="">
-                        <div class="container-fluid">
-                          <div class="row justify-content-center">
-                            <div class="col-12">
                               {{-- <h2 class="page-title">Form elements</h2> --}}
 
                               <div class="card shadow mb-4">

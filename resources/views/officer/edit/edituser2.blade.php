@@ -1,4 +1,4 @@
-@extends('layouts.appstudent1')
+@extends('layouts.officermin1')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -302,8 +302,7 @@
 
                                     </div> --}}
 
-                                    <br>
-                                    <br>
+
                                     <main role="main" class="">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">
@@ -335,11 +334,11 @@
 
 
 
-                                                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                  <div class="d-grid gap-2 d-md-flex ">
                                                       <a href="/officer/home" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
                                                       &nbsp;&nbsp;
-                                                      <button  class="btn btn-outline-success me-md-2 delete-btn"  type="reset">ยกเลิก</button>&nbsp;
-                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">อัพเดทข้อมูล</button>
+                                                      <button  class="btn btn-outline-success me-md-2 delete-btn"  type="reset">ยกเลิก</button>&nbsp;&nbsp;
+                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
                                                    </div>  </div></form>
                                                 </div>
                                               </div>
@@ -347,137 +346,8 @@
                                           </div>
                                         </div>
 
-                                      </div>
+                                      </div>  </div>  </div>  </div>  </div>  </div>  </div>  </div>  </div>  </div>
                                       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                              <script>
- $(".delete-btn").click(function(e) {
-            var userId = $(this).data('id');
-            e.preventDefault();
-            deleteConfirm(userId);
-        })
 
-        function deleteConfirm(userId) {
-            Swal.fire({
-                title: 'ยืนยันข้อมูลส่วนตัว',
-                text: "แน่ใจจะยืนยันข้อมูลส่วนตัว?",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'ยืนยันข้อมูล',
-                showLoaderOnConfirm: true,
-                preConfirm: function() {
-                    return new Promise(function(resolve) {
-                        $.ajax({
-                                url: 'index.php',
-                                type: 'GET',
-                                data: 'delete=' + userId,
-                            })
-                            .done(function() {
-                                Swal.fire({
-                                    title: 'success',
-                                    text: 'ยืนยันข้อมูลส่วนตัวสำเร็จ',
-                                    icon: 'success',
-                                }).then(() => {
-                                    document.location.href = '/studenthome';
-                                })
-                            })
-                            .fail(function() {
-                                Swal.fire( 'เกิดความผิดพลาด')
-                                window.location.reload();
-                            });
-                    });
-                },
-            });
-          }
-
-                              </script>
-                                  </div>
-
-
-
-              </div>
-          </div>
-      </div>
-  </div>
-  <script>
-
-  $(document).ready(function(){
-
-  var current_fs, next_fs, previous_fs; //fieldsets
-  var opacity;
-  var current = 1;
-  var steps = $("fieldset").length;
-
-  setProgressBar(current);
-
-  $(".next").click(function(){
-
-  current_fs = $(this).parent();
-  next_fs = $(this).parent().next();
-
-  //Add Class Active
-  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-  //show the next fieldset
-  next_fs.show();
-  //hide the current fieldset with style
-  current_fs.animate({opacity: 0}, {
-  step: function(now) {
-  // for making fielset appear animation
-  opacity = 1 - now;
-
-  current_fs.css({
-  'display': 'none',
-  'position': 'relative'
-  });
-  next_fs.css({'opacity': opacity});
-  },
-  duration: 500
-  });
-  setProgressBar(++current);
-  });
-
-  $(".previous").click(function(){
-
-  current_fs = $(this).parent();
-  previous_fs = $(this).parent().prev();
-
-  //Remove class active
-  $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-  //show the previous fieldset
-  previous_fs.show();
-
-  //hide the current fieldset with style
-  current_fs.animate({opacity: 0}, {
-  step: function(now) {
-  // for making fielset appear animation
-  opacity = 1 - now;
-
-  current_fs.css({
-  'display': 'none',
-  'position': 'relative'
-  });
-  previous_fs.css({'opacity': opacity});
-  },
-  duration: 500
-  });
-  setProgressBar(--current);
-  });
-
-  function setProgressBar(curStep){
-  var percent = parseFloat(100 / steps) * curStep;
-  percent = percent.toFixed();
-  $(".progress-bar")
-  .css("width",percent+"%")
-  }
-
-  $(".submit").click(function(){
-  return false;
-  })
-
-  });
-
-  </script>
 
 @endsection

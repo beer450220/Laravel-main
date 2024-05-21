@@ -135,7 +135,7 @@
            <div class="row">
             <div class="form-group col-md-4">
               <label for="inputAddress">ชื่อสาขา</label>
-       <input type="text" class="form-control" @error('name_major') is-invalid @enderror name="name_major" value="{{ old('name_major') }}"  autofocus placeholder="สาขา">
+       <input type="text" class="form-control" @error('name_major') is-invalid @enderror name="name_major" value="{{ old('name_major') }}" required autofocus placeholder="สาขา">
 
 
               @error('name_major')
@@ -147,7 +147,7 @@
           <div class="form-group col-md-4">
             <label for="inputAddress">คณะ</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-            <select class="form-control select2" id="validationSelect1" name="faculty" >
+            <select class="form-control select2" id="validationSelect1" name="faculty"required >
                 <option value="">กรุณาเลือกคณะ</option>
                 <option value="-">-</option>
 
@@ -183,9 +183,9 @@
       <br>
       <br>
           <div class="modal-footer">
-            <a href="/officer/schedule" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
+            <a href="/officer/major" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">ตกลง</button>
           </div>
         </form>
       </div> <!-- /. card-body -->

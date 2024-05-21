@@ -13,7 +13,7 @@ class teacher extends Model
     protected $fillable=[
         // 'name',
         'fname',
-        'surname',
+        // 'surname',
         'email', 'major_id', 'telephonenumber', 'address',
 
 

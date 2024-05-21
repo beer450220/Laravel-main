@@ -3140,9 +3140,10 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         ->find($id);
         //  dd($establishments);
         $establishments1=DB::table('establishment')
-        ->join('users','establishment.user_id','users.id')
-        ->select('establishment.*','users.fname')
-        ->paginate(5);
+        // ->join('users','establishment.user_id','users.id')
+        // ->select('establishment.*','users.fname')
+        // ->paginate(5);
+        ->get();
         $users=DB::table('users')
       ->where('role',"student")
 

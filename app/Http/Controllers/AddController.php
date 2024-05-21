@@ -1014,7 +1014,7 @@ public function addteacher(Request $request) {
     //   'name' => $request->name,
 
       'fname' => $request->fname,
-      'surname' => $request->surname,
+    //   'surname' => $request->surname,
       'email' => $request->email,
       'major_id' => $request->major_id,
       'telephonenumber' => $request->telephonenumber,
@@ -1112,11 +1112,14 @@ public function addcategory()
         // dd($request);
 
          $request->validate([
+            'name_major' => 'required|unique:major',
+            // 'faculty' => 'required|unique:major',
           //  'name' => 'required|unique:name',
           //  'test' => 'required|unique:test',
       ]
     ,[
-
+        'name_major.unique' => "ชื่อสาขาซ้ำ",
+        // 'faculty.unique' => "คณะซ้ำ",
       // 'name.required'=>"กรุณากรอกชื่อ",
       // 'test.required'=>"กรุณาเทส",
     ]
@@ -1416,7 +1419,7 @@ public function addsupervision()
         //  $data["test"]= $request->test;
       //    $data["test"]= $request->test;
       // DB::table('test')->insert($data);
-         return redirect('/teacher/supervision')->with('success', 'สมัครสำเร็จ.');
+         return redirect('/teacher/supervision')->with('success5', 'สมัครสำเร็จ.');
 
       }
     }
