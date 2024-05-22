@@ -457,7 +457,8 @@
 </H2>
                                                   <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
                                                   <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
-                                                  </span>
+                                                  <a href="/studenthome/deleteinformdetails/{{ $row->informdetails_id }}" onclick="return confirm('ยืนยันการลบข้อมูล !!');" class=" btn btn-outline-danger">ลบข้อมูล</a>
+                                                </span>
 
 
                                               </div>
@@ -712,7 +713,8 @@
                                     {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                                     <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
                                     <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
-                                      </div>
+                                    <a href="/studenthome/deleteinformdetails/{{ $row->informdetails_id }}" onclick="return confirm('ยืนยันการลบข้อมูล !!');" class=" btn btn-outline-danger">ลบข้อมูล</a>
+                                </div>
                                       <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
                                         <div class="card-body"> <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
 
@@ -928,6 +930,7 @@
                                       {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                                       <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
                                       <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                                      <a href="/studenthome/deleteinformdetails/{{ $row->informdetails_id }}" onclick="return confirm('ยืนยันการลบข้อมูล !!');" class=" btn btn-outline-danger">ลบข้อมูล</a>
                                         {{-- </div> --}}
                                         @endforeach
                                     </div>      </div>      </div>

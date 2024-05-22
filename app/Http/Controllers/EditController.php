@@ -350,8 +350,8 @@ public function   updateregisteruser(Request $request,$id) {
 
     $posts=informdetails::findOrFail($informdetails_id);
 
-     if (File::exists("fileinformdetails/".$posts->files)) {
-         File::delete("fileinformdetails/".$posts->files);
+     if (File::exists("เอกสารปฏิบัติงานนักศึกษา/".$posts->files)) {
+         File::delete("เอกสารปฏิบัติงานนักศึกษา/".$posts->files);
      }
 
     //  dd($posts);
@@ -2956,7 +2956,8 @@ $post->update
      // dd($Evaluationdocuments);
      $major=DB::table('major')
 
-     ->paginate(5);
+     ->get();
+    //  dd($id);
      return view('student.Edit.edituser2',compact('users','major'));
 
  }
@@ -3052,7 +3053,7 @@ $post->update
     ]);
 
 
-    return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome')->with('error','success', 'แก้ไขข้อมูลสำเร็จ.');
  }
  public function   updateuser002(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -3156,7 +3157,7 @@ $post->update
        "major_id" =>$request->major_id,
     //    "establishment_id" =>$request->establishment_id,
        "fname" =>$request->fname,
-       "surname" =>$request->surname,
+    //    "surname" =>$request->surname,
        "telephonenumber" =>$request->telephonenumber,
        "address" =>$request->address,
 
@@ -3186,9 +3187,11 @@ $post->update
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        'images' => 'mimes:jpg,jpeg,png|max:1024',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'images.mimes' => 'ไฟล์ต้องเป็นรูปเท่านั้น',
+            'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
 
@@ -3196,12 +3199,12 @@ $post->update
    $post=establishment::findOrFail($id);
 
    if($request->hasFile("images")){
-    if (File::exists("รูปโปรไฟล์/".$post->images)) {
-        File::delete("รูปโปรไฟล์/".$post->images);
+    if (File::exists("รูปสถานประกอบการ/".$post->images)) {
+        File::delete("รูปสถานประกอบการ/".$post->images);
     }
     $file=$request->file("images");
      $post->images=time()."_".$file->getClientOriginalName();
-     $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+     $file->move(\public_path("/รูปสถานประกอบการ"),$post->images);
      $request['images']=$post->images;
   // dd($post);
 }

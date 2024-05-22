@@ -357,12 +357,12 @@
                                                 @csrf
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
                                                       {{-- <input type="text"value=" {{ Auth::user()->username }}"disabled  id="simpleinput" name="student_id" required class="form-control"> --}}
-                                                      <input type="hidden" id="student_id" name="student_id"   value="{{ Auth::user()->username }}">
+                                                      <input type="text" id="student_id" name="student_id" class="form-control"  value="{{ Auth::user()->username }}"readonly>
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง นามสกุล</label>
                                                       {{-- <input type="text" id="example-email"value="" name="fname" class="form-control"required placeholder=""> --}}
-                                                      <input type="hidden" id="fname" name="fname"   value="{{ Auth::user()->fname }}">
+                                                      <input type="text" id="fname" name="fname" class="form-control"  value="{{ Auth::user()->fname }}"readonly>
                                                     </div>
 
                                                     <div class="form-group mb-3">
@@ -375,7 +375,7 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                      <input type="text" id="example-palaceholder"value="" name="telephonenumber" class="form-control"required placeholder="">
+                                                      <input type="text" id="example-palaceholder"value="" name="telephonenumber" class="form-control"maxlength="10" required placeholder="">
                                                     </div>
 
                                                 </div> <!-- /.col -->

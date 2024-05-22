@@ -376,6 +376,8 @@ class AddController extends Controller
 
       {
           $request->validate([
+
+            'images' => 'mimes:jpeg,jpg,png|max:1024',
               // 'filess' => 'required|mimes:pdf',
               // 'filess' => 'required|mimes:jpeg,jpg,png',
               // 'filess' => 'mimes:jpeg,jpg,png',
@@ -386,12 +388,14 @@ class AddController extends Controller
                   // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
               //    'namefile.required' => "กรุณาชื่อไฟล์",
               //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+              'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
+                 'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
               ]
           );
           if($request->hasFile("images")){
             $file=$request->file("images");
              $imageName=time().'_'.$file->getClientOriginalName();
-            $file->move(\public_path("/รูปโปรไฟล์"),$imageName);
+            $file->move(\public_path("/รูปสถานประกอบการ"),$imageName);
 
 
               $post =new establishment([

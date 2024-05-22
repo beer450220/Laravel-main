@@ -321,16 +321,7 @@
                                                       <form method="POST" action="{{url('/studenthome/updatepersonal4/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <select class="form-control" id="validationSelect1" name="Student_id" >
-                                                        <option value="">กรุณาเลือก</option>
-                                                        @foreach ($student as $row)
-                                                        {{-- <optgroup label="Mountain Time Zone"> --}}
-                                                          <option value="{{$row->id}}"{{$row->id==$users->student_id ?'selected':''}}>{{$row->student_id}}  ({{$row->fname}} {{$row->surname}})</option>
-                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                                        </optgroup>
-
-                                                        @endforeach
-                                                      </select>
+                                                      <input type="text"readonly value="{{ $users->student_id }}" disabled="" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อสถานประกอบการ </label>
@@ -346,7 +337,7 @@
                                                     </div> --}}
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เบอร์โทร</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ $users->em_telephone}}"name="em_telephone"  class="form-control"required placeholder="">
+                                                      <input type="text" id="example-palaceholder"value="{{ $users->em_telephone}}"name="em_telephone"maxlength="10"  class="form-control"required placeholder="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">อีเมล์	</label>
@@ -387,12 +378,12 @@
                                                         <input type="text" id="example-palaceholder"value="{{ $users->website}}"name="website"  class="form-control" placeholder=""required>
                                                       </div>
                                                     </div>
-
+                                                </div>
                                                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                      <a href="/studenthome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
+                                                      <a href="/studenthome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>  &nbsp;&nbsp;
                                                       <button type="reset"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">ยกเลิก</button>
                                                       &nbsp;&nbsp;
-                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">อัพเดทข้อมูล</button>
+                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
                                                    </div>  </div></form>
                                                 </div>
                                               </div>

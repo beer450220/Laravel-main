@@ -36,239 +36,15 @@
 
 
 
-<style>
 
-
-  * {
-      margin: 0;
-      padding: 0
-  }
-
-  html {
-      height: 100%
-  }
-
-  p {
-      color: grey
-  }
-
-  #heading {
-      text-transform: uppercase;
-      color: #020508;
-      font-weight: normal
-  }
-
-  #msform {
-      text-align: center;
-      position: relative;
-      margin-top: 20px
-  }
-
-  #msform fieldset {
-      background: white;
-      border: 0 none;
-      border-radius: 0.5rem;
-      box-sizing: border-box;
-      width: 100%;
-      margin: 0;
-      padding-bottom: 20px;
-      position: relative
-  }
-
-  .form-card {
-      text-align: left
-  }
-
-  #msform fieldset:not(:first-of-type) {
-      display: none
-  }
-
-  #msform input,
-  #msform textarea {
-      padding: 8px 15px 8px 15px;
-      border: 1px solid #ccc;
-      border-radius: 0px;
-      margin-bottom: 25px;
-      margin-top: 2px;
-      width: 100%;
-      box-sizing: border-box;
-      font-family: montserrat;
-      color: #2C3E50;
-      background-color: #ECEFF1;
-      font-size: 16px;
-      letter-spacing: 1px
-  }
-
-  #msform input:focus,
-  #msform textarea:focus {
-      -moz-box-shadow: none !important;
-      -webkit-box-shadow: none !important;
-      box-shadow: none !important;
-      border: 1px solid #673AB7;
-      outline-width: 0
-  }
-
-  #msform .action-button {
-      width: 100px;
-      background: #673AB7;
-      font-weight: bold;
-      color: white;
-      border: 0 none;
-      border-radius: 0px;
-      cursor: pointer;
-      padding: 10px 5px;
-      margin: 10px 0px 10px 5px;
-      float: right
-  }
-
-  #msform .action-button:hover,
-  #msform .action-button:focus {
-      background-color: #311B92
-  }
-
-  #msform .action-button-previous {
-      width: 100px;
-      background: #616161;
-      font-weight: bold;
-      color: white;
-      border: 0 none;
-      border-radius: 0px;
-      cursor: pointer;
-      padding: 10px 5px;
-      margin: 10px 5px 10px 0px;
-      float: right
-  }
-
-  #msform .action-button-previous:hover,
-  #msform .action-button-previous:focus {
-      background-color: #000000
-  }
-
-  .card {
-      z-index: 0;
-      border: none;
-      position: relative
-  }
-
-  .fs-title {
-      font-size: 25px;
-      color: #673AB7;
-      margin-bottom: 15px;
-      font-weight: normal;
-      text-align: left
-  }
-
-  .purple-text {
-      color: #673AB7;
-      font-weight: normal
-  }
-
-  .steps {
-      font-size: 25px;
-      color: gray;
-      margin-bottom: 10px;
-      font-weight: normal;
-      text-align: right
-  }
-
-  .fieldlabels {
-      color: gray;
-      text-align: left
-  }
-
-  #progressbar {
-      margin-bottom: 30px;
-      overflow: hidden;
-      color: lightgrey
-  }
-
-  #progressbar .active {
-      color: #030303
-  }
-
-  #progressbar li {
-      list-style-type: none;
-      font-size: 16px;
-      width: 15%;
-      float: left;
-      position: relative;
-      font-weight: 400
-  }
-
-  #progressbar #account:before {
-      font-family: FontAwesome;
-      content: "\f007"
-  }
-
-  #progressbar #personal:before {
-      font-family: FontAwesome;
-      content: "\f124"
-  }
-
-  #progressbar #payment:before {
-      font-family: FontAwesome;
-      content: "\f2c3"
-  }
-
-  #progressbar #confirm:before {
-      font-family: FontAwesome;
-      content: "\f0f6"
-
-
-  }
-  /* content: "\f0f6" */
-
-  #progressbar li:before {
-      width: 50px;
-      height: 50px;
-      line-height: 45px;
-      display: block;
-      font-size: 20px;
-      color: #ffffff;
-      background: lightgray;
-      border-radius: 50%;
-      margin: 0 auto 10px auto;
-      padding: 2px
-  }
-
-  #progressbar li:after {
-      content: '';
-      width: 100%;
-      height: 2px;
-      background: lightgray;
-      position: absolute;
-      left: 0;
-      top: 25px;
-      z-index: -1
-  }
-
-  #progressbar li.active:before,
-  #progressbar li.active:after {
-      background: #123bf1
-  }
-
-  .progress {
-      height: 20px
-  }
-
-  .progress-bar {
-      background-color: #26cf89
-  }
-
-  .fit-image {
-      width: 100%;
-      object-fit: cover
-  }
-  </style>
-
-  <div class="container-fluid">
+  {{-- <div class="container-fluid">
       <div class="row justify-content-center">
-          <div class="col-16 col-lg-8 col-xl-7 text-center p-0 mt-3 mb-2">
+          <div class="col-16 col-lg-8 col-xl-7 text-center p-0 mt-3 mb-2"> --}}
           {{-- <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2"> --}}
-              <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+              {{-- <div class="card px-0 pt-4 pb-0 mt-3 mb-3"> --}}
                   {{-- <h2 id="heading">Sign Up Your User Account</h2>
                   <p>Fill all form field to go to next step</p> --}}
-                  <form id="msform">
+                  {{-- <form id="msform"> --}}
                       <!-- progressbar -->
 
                       {{-- <ul id="progressbar">
@@ -282,16 +58,16 @@
                       {{-- <div class="progress">
                           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                       </div> --}}
-                      <br> <!-- fieldsets -->
-                      <fieldset>
-                          <div class="form-card">
+                      <br><br> <br>  <!-- fieldsets -->
+                      {{-- <fieldset> --}}
+                          {{-- <div class="form-card">
                               <div class="row">
-                                  <div class="col-7">
-                                      <h2 class="fs-title col">ข้อมูลนักศึกษา:</h2>
-                                  </div>
-                                  <div class="col-4">
+                                  <div class="col-7"> --}}
+                                      {{-- <h2 class="fs-title col">ข้อมูลนักศึกษา:</h2> --}}
+                                  {{-- </div>
+                                  <div class="col-6"> --}}
                                       {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
-                                  </div>
+                                  {{-- </div>
                               </div>
                               <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
@@ -303,9 +79,9 @@
                               @endif
 
                                       </h2>
-
+   </h2>
                                   </div>
-                                  </h2>
+                                </div>   </div>   </div>   </div>   </div> --}}
 
                                     {{-- </div> --}}
 
@@ -319,30 +95,28 @@
                                       </div>
                                     </div> --}}
 
-                                    <br>
-                                    <br>
-                                    <div class="text-center">
+
+
                                       {{-- <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
 
-                                    </div>
 
-                                    <br>
-                                    <br>
-                                    <main role="main" class="">
+
+
+                                    <main role="main" class="col-18">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">
                                           <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-18">
                                             {{-- <h2 class="page-title">Form elements</h2> --}}
 
-                                            <div class="card shadow mb-4">
+                                            <div class="card shadow ">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียด</strong>
+                                                <strong class="card-title">ข้อมูลนักศึกษา</strong>
                                               </div>
 
                                               <div class="card-body">
                                                 <div class="row">
-                                                  <div class="col-md-6">
+                                                  <div class="col-md-4">
                                                     <div class="form-group mb-3">
                                               {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
                                                 @csrf --}}
@@ -355,7 +129,7 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-password">อีเมล์</label>
-                                                      <input type="text" id="example-password" class="form-control" value="{{ $users->email }}">
+                                                      <input type="text" id="example-password" class="form-control" value="{{ $users->email }}"disabled="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)</label>
@@ -367,24 +141,36 @@
                                                     </div>
 
                                                 </div> <!-- /.col -->
-                                                  <div class="col-md-6">
-                                                    <div class="form-group mb-3">
+                                                  <div class="col-md-8">
+                                                    <div class=" form-group col-12">
                                                       <label for="example-helping">ที่อยู่</label>
                                                       <input type="text" id="example-helping"value="{{ $users->address }}" disabled="" class="form-control" placeholder="Input with helping text">
 
                                                     </div>
 
-                                                    <div class="form-group mb-3">
+                                                    <div class="form-group col-12">
                                                       <label for="example-static">หลักสูตร</label>
-                                                      <input type="text" readonly=""value="{{ $users->major_id}}" disabled="" class="form-control" id="example-static" >
+                                                      <select class="form-control mb-6"  name="major_id"id="example-static" required  disabled="">
+                                                        <option value="">กรุณาเลือกหลักสูตร</option>
+                                                        <option value="-"@if($users->major_id=="-") selected @endif required>-</option>
+                                                        @foreach ($major as $row)
+
+                                                        {{-- <optgroup label="Mountain Time Zone"> --}}
+                                                          <option value="{{$row->major_id}}"{{$row->major_id==$users->major_id ?'selected':''}}>{{$row->name_major}}
+                                                            ({{$row->faculty}})</option>
+                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                                                        </optgroup>
+
+                                                        @endforeach
+                                                      </select>
                                                     </div>
-                                                    <div class="form-group mb-3">
+                                                    <div class="form-group col-4">
                                                       <label for="example-disable">ปีการศึกษา</label>
                                                       <input type="text" class="form-control"value="{{ $users->year}}" disabled="" id="example-disable" disabled="" value="Disabled value">
                                                     </div>
 
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-static">ภาคเรียน</label>
+                                                    <div class="form-group col-4 ">
+                                                      <label for="example-static">ภาคเรียนที่</label>
                                                       <input type="text" readonly=""value="{{ $users->term}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
 

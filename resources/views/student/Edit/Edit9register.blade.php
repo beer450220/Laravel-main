@@ -410,7 +410,7 @@
                                                   </div> --}}
                                                   <img src="/file/{{ $establishments->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
                                                 </div><div class="modal-footer">
-                                                    <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+                                                    <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
                                                     <a href="/studenthome1" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
                                                   </div></form>

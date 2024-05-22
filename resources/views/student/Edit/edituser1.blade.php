@@ -273,7 +273,15 @@
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-
+ @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                   </div>
                                   <div class="col-4">
 
@@ -324,7 +332,7 @@
                                                       <input type="text"value="{{ Auth::user()->username }}"  name="username" id="simpleinput" class="form-control"disabled>
                                                     </div> --}}
                                                     <div class="form-group mb-3">
-                                                      <label for="example-email">ชื่อจริง </label>
+                                                      <label for="example-email">ชื่อ-นามสกุล </label>
                                                       <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
                                                     </div>
                                                     {{-- <div class="form-group mb-3">
@@ -409,7 +417,8 @@
                                                       </div>
 
                                                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                      <a href="/studenthome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
+                                                      <a href="/studenthome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>       &nbsp;&nbsp;
+                                                      <button type="reset"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">ยกเลิก</button>
                                                       &nbsp;&nbsp;
                                                       <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
                                                    </div>  </div></form>

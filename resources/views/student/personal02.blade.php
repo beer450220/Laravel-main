@@ -357,7 +357,7 @@
 
                                                     {{-- @endforeach --}}
                                                   {{-- </select> --}}
-                                                  <input type="hidden" id="student_id" name="student_id" value="{{ Auth::user()->username }}">
+                                                  <input type="text" id="student_id" name="student_id"class="form-control" value="{{ Auth::user()->username }}"readonly>
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-email">ชื่อสถานประกอบการ</label>
@@ -370,7 +370,7 @@
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-palaceholder">เบอร์โทร</label>
-                                                <input type="text" id="example-palaceholder"value=""name="em_telephone"required  class="form-control" placeholder="">
+                                                <input type="text" id="example-palaceholder"value=""name="em_telephone"required maxlength="10"  class="form-control" placeholder="">
                                               </div>
                                               <div class="form-group mb-3">
                                                 <label for="example-palaceholder">อีเมล์	</label>
@@ -409,8 +409,6 @@
 
                                             </div>
 
-                                        </div>
-
 {{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
 
 
@@ -422,16 +420,18 @@
 
                                                       {{-- <script src="index.js"></script> --}}
 
+                                                    </div>
 
 
-                                            </div>
+
+                                                    </div>
 
                                                 </div>
                                                 <div class="col-6 text-center"></div>
 
                                                                 <div class="col text-center">
                                                 <div class="d-grid gap-2 d-md-flex   ">
-                                                    <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a>
+                                                    {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
                                                     &nbsp;&nbsp;
                                                     {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a> --}}
                                                       &nbsp;&nbsp;

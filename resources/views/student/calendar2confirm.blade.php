@@ -400,7 +400,7 @@
                                      @endphp
 
                                      {{-- ทำสิ่งที่ต้องการกับข้อมูลของอาจารย์ที่พบ --}}
-                                     {{ $teacher->fname }} {{ $teacher->surname }}
+                                     {{ $teacher->fname }}
                                  @endforeach
 
                                     {{-- @foreach ($users2 as $teacherId)

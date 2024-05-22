@@ -935,7 +935,7 @@ class HomeController extends Controller
        // dd($Evaluationdocuments);
        $major=DB::table('major')
 
-       ->paginate(5);
+       ->get();
 
         return view('student.personal2',["msg"=>"I am Editor role"],compact('users','major'));
     }
@@ -2922,7 +2922,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         // ->select('events.*','users.fname')
         ->join('teacher','events.teacher_name','teacher.id')
         ->join('establishment','events.em_id','establishment.id')
-        ->select('events.*','teacher.fname','teacher.surname','establishment.em_name')
+        ->select('events.*','teacher.fname','establishment.em_name')
         ->where('student_name', auth()->id())
         ->paginate(5);
         $users2=DB::table('teacher')

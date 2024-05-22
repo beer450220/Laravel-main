@@ -6,7 +6,7 @@
 
 
 
-@extends('layouts.officermin1')
+@extends('layouts.appstudent1')
 
 @section('content')
 @yield('content')
@@ -22,7 +22,7 @@
 
             <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content ">
-                <div class="modal-header bg-dark text-white ">
+                <div class="modal-header  text-white ">
                   <h5 class="modal-title text center " id="varyModalLabel">ขอเปลี่ยนเวลานัดนิเทศ</h5>
                   {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

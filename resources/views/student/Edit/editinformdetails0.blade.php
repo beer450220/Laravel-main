@@ -408,7 +408,7 @@
                                                   <img src="/fileinformdetails/{{ $informdetails->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
                                                   {{-- <img src="/file/{{ $informdetails->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""> --}}
                                                 </div><div class="modal-footer">
-                                                    <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+                                                    <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
                                                     <a href="/studenthome/informdetails" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
                                                   </div></form>

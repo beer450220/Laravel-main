@@ -457,6 +457,7 @@ div.second {
                                             @endforeach <span class="badge badge-pill badge-danger">(กรุณากรอกข้อมูลนักศึกษา)</span> </H2>
                                             {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
                                             <a href="/personal1"  class=" btn btn-outline-success">เพิ่มข้อมูลนักศึกษา</a>
+
                                             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
                                             </span>
 
@@ -1021,11 +1022,10 @@ $(document).ready(function () {
     {{-- @endif --}}
 
 
-    </div>
+
      {{-- @endforeach --}}
     {{-- id="show-alert" --}}
-  <br>
-<br>
+
 
 
 @endsection

@@ -39,6 +39,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        <a class="dropdown-item " href="">{{Auth::user()->fname}}</a>
                         <a class="dropdown-item " href="/personal/{{Auth::user()->id}}">ข้อมูลส่วนตัว</a>
                         <a class="dropdown-item " href=""></a>
             {{-- <a class="dropdown-item" href="#">Profile</a>
@@ -46,9 +47,9 @@
             <a class="dropdown-item" href="#">Activities</a> --}}
             <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
+                          document.getElementById('logout-form').submit(); confirm('ยืนยันการออกจากระบบ !!');">
 
-             <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i> {{ __('Logout') }}</a>
+             <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i> {{ __('ออกจากระบบ') }}</a>
 
          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
              @csrf
