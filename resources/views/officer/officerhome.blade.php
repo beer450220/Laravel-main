@@ -2,7 +2,7 @@
 @extends('layouts.officermin')
 
 {{-- @section('titlebar','home') --}}
-    <title>officer</title>
+
   @section('content')
 
 {{-- @include('layouts.adminsidebsr')

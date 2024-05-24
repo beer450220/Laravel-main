@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</title>
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -59,12 +59,12 @@
     <header class="bg-dark text-white d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0  text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-          ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์
+
         </a>
 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-          <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">   ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์
+          {{-- <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
+          <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li> --}}
           {{-- <li><div class="dropdown">
             <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 สมัครสหกิจ
@@ -74,14 +74,43 @@
               <li><a class="dropdown-item" href="/cooperative2">รายการสถานะสมัครสหกิจ</a></li>
             </ul>
           </div></li> --}}
-          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+          {{-- <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">About</a></li> --}}
         </ul>
 
         <div class="col-2 text-end">
           {{-- <button type="button" class="btn btn-outline-primary me-2">Login</button> --}}
           <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a>
           <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
+        </div>
+      </header>
+
+      <header class=" text-dark d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+        <a  class="d-flex align-items-center col-md-3 mb-2 mb-md-0  text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+
+        </a>
+{{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
+        <ul class="nav col-11 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/cooperative" class="nav-link px-2 text-dark">แบบฟอร์มสหกิจ</a></li>
+          <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></li>
+          {{-- <li><div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                สมัครสหกิจ
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลสมัครสหกิจ</a></li>
+              <li><a class="dropdown-item" href="/cooperative2">รายการสถานะสมัครสหกิจ</a></li>
+            </ul>
+          </div></li> --}}
+          {{-- <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">About</a></li> --}}
+        </ul>
+
+        <div class="col-2 text-end">
+          {{-- <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a>
+          <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
         </div>
       </header>
     {{-- <header class="p-3 bg-dark text-white">

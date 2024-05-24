@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- <title>@yield('titlebar')</title> --}}
+    <title>ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</title>
+     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
 </head>
 <body>
 

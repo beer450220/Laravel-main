@@ -577,6 +577,7 @@ class HomeController extends Controller
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
         ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+        ->where('role',"student")
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
         ->paginate(5);
@@ -585,6 +586,7 @@ class HomeController extends Controller
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)','')
+        ->where('role',"student")
         // ->where('user_id', auth()->id())
         ->orderBy('registers.id', 'DESC')
         ->paginate(5);
@@ -611,6 +613,7 @@ class HomeController extends Controller
         ->select('registers.*','users.fname')
         ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)','')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('registers.id', 'DESC')
         ->paginate(5);
 
@@ -620,6 +623,7 @@ class HomeController extends Controller
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
         ->where('registers.namefile', 'บัตรประชาชน')
+        ->where('role',"student")
         // ->where('user_id', auth()->id())
         ->paginate(5);
 
@@ -627,6 +631,7 @@ class HomeController extends Controller
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
         ->where('registers.namefile', 'บัตรนักศึกษา')
+        ->where('role',"student")
         // ->where('user_id', auth()->id())
         ->paginate(5);
 
@@ -634,12 +639,14 @@ class HomeController extends Controller
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ผลการเรียน')
+        ->where('role',"student")
         // ->where('user_id', auth()->id())
         ->paginate(5);
         $registers7=DB::table('registers')
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
+        ->where('role',"student")
         // ->where('user_id', auth()->id())
         ->paginate(5);
 
@@ -648,6 +655,7 @@ class HomeController extends Controller
         ->select('acceptance.*','users.fname')
         ->where('acceptance.namefile', 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('acceptance.acceptance_id', 'DESC')
         ->paginate(5);
 
@@ -656,6 +664,7 @@ class HomeController extends Controller
         ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('informdetails.informdetails_id', 'DESC')
         ->paginate(5);
 
@@ -664,6 +673,7 @@ class HomeController extends Controller
         ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('informdetails.informdetails_id', 'DESC')
         ->paginate(5);
         $registers10=DB::table('informdetails')
@@ -671,6 +681,7 @@ class HomeController extends Controller
         ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('informdetails.informdetails_id', 'DESC')
         ->paginate(5);
 
@@ -680,6 +691,7 @@ class HomeController extends Controller
         ->select('events.*','users.fname')
         ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
         // ->where('student_name', auth()->id())
+        ->where('role',"student")
         ->orderBy('events.id', 'DESC')
         ->paginate(5);
 
@@ -688,6 +700,7 @@ class HomeController extends Controller
         ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers14=DB::table('supervision')
@@ -695,6 +708,7 @@ class HomeController extends Controller
         ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers15=DB::table('supervision')
@@ -702,12 +716,14 @@ class HomeController extends Controller
         ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
         // ->where('user_id', auth()->id())
+        ->where('role',"student")
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);
         $registers16=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
         ->select('supervision.*','users.fname')
         ->where('supervision.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+        ->where('role',"student")
         // ->where('user_id', auth()->id())
         ->orderBy('supervision.supervision_id', 'DESC')
         ->paginate(5);

@@ -297,7 +297,7 @@
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title col">ตรวจสอบเอกสารทั้งหมด:</h2>
+                                    <h2 class="fs-title col">ตรวจสอบเอกสาร:{{ Auth::user()->username }} {{ Auth::user()->fname }}</h2>
 
                                 </div>
                                 <div class="col-4">
@@ -409,8 +409,7 @@
                                             <table class="table table-hover">
                                                 <thead class="thead-dark">
                                                   <tr>
-                                                    <th>รหัสนักศึกษา</th>
-                                                    <th>ชื่อ-นามสกุล</th>
+
                                                     {{-- <th>ชื่อเอกสาร</th> --}}
                                                     <th>ชื่อเอกสาร</th>
                                                     {{-- <th>แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</th>
@@ -430,8 +429,7 @@
                                                 {{-- <td >{{$row->fname}}</td> --}}
    {{-- <td >{{$row->namefile}} </td> --}}
    <tr>
-   <td >  {{ Auth::user()->username }}</td>
-   <td >  {{ Auth::user()->fname }} {{ Auth::user()->surname }}</td>
+
 
   {{-- @endforeach --}}
   <td >แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</td>
@@ -451,8 +449,7 @@
                                                         @endforeach    @endif
 </td>
 <tr>
-    <td ></td>
-    <td ></td>
+
 {{-- <th scope="row">2</th> --}}
 <th >ใบสมัครงานสหกิจศึกษา(สก03)</th>
 <td >  @if ($registers2->isEmpty())
@@ -471,8 +468,7 @@
                                                             @endforeach    @endif
     </td>
     <tr>
-        <td ></td>
-        <td ></td>
+
     <th >แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</th>
     <td >  @if ($registers3->isEmpty())
         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -490,8 +486,7 @@
                                                                 @endforeach    @endif
         </td>
         <tr>
-            <td ></td>
-            <td ></td>
+
         <th >บัตรประชาชน</th>
         <td >  @if ($registers4->isEmpty())
             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -512,8 +507,7 @@
 
 
             <tr>
-                <td ></td>
-                <td ></td>
+
             <th >บัตรนักศึกษา</th>
             <td >  @if ($registers5->isEmpty())
                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -531,8 +525,7 @@
                                                                         @endforeach    @endif
                 </td>
                 <tr>
-                    <td ></td>
-                    <td ></td>
+
                 <th >ผลการเรียน</th>
                 <td >  @if ($registers6->isEmpty())
                     <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -551,8 +544,7 @@
                     </td>
 
                     <tr>
-                        <td ></td>
-                        <td ></td>
+
                     <th >ประวัติส่วนตัว(resume)</th>
                     <td >  @if ($registers7->isEmpty())
                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -571,8 +563,7 @@
                         </td>
 
                         <tr>
-                            <td ></td>
-                            <td ></td>
+
                         <th >แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)</th>
                         <td >  @if ($registers8->isEmpty())
                             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -593,8 +584,7 @@
 
 
                         <tr>
-                            <td ></td>
-                            <td ></td>
+
                         <th >แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</th>
                         <td >  @if ($registers8->isEmpty())
                             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -615,8 +605,7 @@
 
 
                             <tr>
-                                <td ></td>
-                                <td ></td>
+
                             <th >แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</th>
                             <td >  @if ($registers9->isEmpty())
                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -634,8 +623,7 @@
                                                                                         @endforeach    @endif
                                 </td>
                                 <tr>
-                                    <td ></td>
-                                    <td ></td>
+
                                 <th >แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</th>
                                 <td >  @if ($registers10->isEmpty())
                                     <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -654,8 +642,7 @@
                                     </td>
 
                                     <tr>
-                                        <td ></td>
-                                        <td ></td>
+
                                     <th > แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา(สก.10)</th>
                                     <td >  @if ($registers12->isEmpty())
                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -674,8 +661,7 @@
                                         </td>
 
                                         <tr>
-                                            <td ></td>
-                                            <td ></td>
+
                                         <th > แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</th>
                                         <td >  @if ($registers13->isEmpty())
                                             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -693,8 +679,7 @@
                                                                                                     @endforeach    @endif
                                             </td>
                                             <tr>
-                                                <td ></td>
-                                                <td ></td>
+
                                             <th > แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</th>
                                             <td >  @if ($registers14->isEmpty())
                                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -712,8 +697,7 @@
                                                                                                         @endforeach    @endif
                                                 </td>
                                                 <tr>
-                                                    <td ></td>
-                                                    <td ></td>
+
                                                 <th > แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</th>
                                                 <td >  @if ($registers15->isEmpty())
                                                     <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
@@ -732,8 +716,7 @@
                                                     </td>
 
                                                     <tr>
-                                                        <td ></td>
-                                                        <td ></td>
+
                                                     <th > แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</th>
                                                     <td >  @if ($registers16->isEmpty())
                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>

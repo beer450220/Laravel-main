@@ -64,10 +64,10 @@
                 <th>ชื่อไฟล์</th>
                 {{-- <th>ปีการศึกษา</th>
                 <th>ภาคเรียน</th> --}}
-                {{-- <th>สถานะ</th> --}}
+                <th>สถานะ</th>
                 <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
-                {{-- <th>ยืนยันข้อมูล</th> --}}
+                <th>ยืนยันข้อมูล</th>
 
             </tr>
           </thead>
@@ -89,7 +89,7 @@
                 {{-- <td>{{ $row->year }}</td>
                 <td>{{ $row->term }}</td> --}}
 
-                {{-- <td>
+                <td>
                     @if ($row->Status_informdetails === 'รอตรวจสอบ')
                         <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
                     @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
@@ -97,22 +97,27 @@
                     @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
                         <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
                     @endif
-                </td> --}}
+                </td>
                 <td>{{ $row->annotation }}</td>
                 <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-              {{-- <td>
+              <td>
                 @if ($row->Status_informdetails=== 'รอตรวจสอบ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/officer/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
-                <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td> --}}
+                <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
                 {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
-            {{-- </td>
+</td>
             </div>
                 @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                <div class="d-grid gap-2 d-md-block">
+                    {{-- <a href="/officer/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br> --}}
+                    <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
+                    {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
 
+                </div>
             @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
-
-            @endif --}}
+           <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
+            @endif
 
 
             </tr>

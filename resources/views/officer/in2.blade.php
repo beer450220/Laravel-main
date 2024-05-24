@@ -44,7 +44,7 @@
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
-                <th>ลำดับ</th>
+                {{-- <th>ลำดับ</th> --}}
                 <th>ชื่อนักศึกษา</th>
                 <th>สมัครสหกิจศึกษา</th>
 
@@ -61,7 +61,7 @@
           </thead>
           <tbody>
             @foreach ($registers1 as $row)
-            <td ></td>
+            {{-- <td ></td> --}}
 
             <td >{{ $row->fname   }}  </td>
             <td >แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</td>
@@ -79,6 +79,14 @@
                                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                                     @endif
                                                                        @endif
+
+                                                                       @if ($row->Status_registers === 'รอตรวจสอบ')
+                                                                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                                                   @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                                                                       <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                                                                   @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                                                                       <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                                                                   @endif
             </td>
               {{-- <td>{{ $row->annotation }}</td> --}}
 
@@ -101,7 +109,7 @@
 
             <tr>
                 @foreach ($registers2 as $row)
-                <td ></td>
+                {{-- <td ></td> --}}
                 <td >{{ $row->fname   }}  </td>
             {{-- <th scope="row">2</th> --}}
             <th >ใบสมัครงานสหกิจศึกษา(สก03)</th>
@@ -124,7 +132,7 @@
 
                     <tr>
                         @foreach ($registers3 as $row)
-                        <td ></td>
+                        {{-- <td ></td> --}}
                         <td >{{ $row->fname   }}  </td>
                     {{-- <th scope="row">2</th> --}}
                     <th >แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</th>
@@ -147,7 +155,7 @@
 
                             <tr>
                                 @foreach ($registers17 as $row)
-                                <td ></td>
+                                {{-- <td ></td> --}}
                                 <td >{{ $row->fname   }} </td>
                             {{-- <th scope="row">2</th> --}}
                             <th >แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)</th>
@@ -169,7 +177,7 @@
                                 <tr>@endforeach
                             <tr>
                                 @foreach ($registers8 as $row)
-                                <td ></td>
+                                {{-- <td ></td> --}}
                                 <td >{{ $row->fname   }}  </td>
 
                             <th >แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</th>
@@ -191,7 +199,7 @@
                                 <tr>@endforeach
                                     <tr>
                                         @foreach ($registers9 as $row)
-                                        <td ></td>
+                                        {{-- <td ></td> --}}
                                         <td >{{ $row->fname   }}  </td>
 
                                     <th >แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</th>
@@ -213,7 +221,7 @@
                                         <tr>@endforeach
                                             <tr>
                                                 @foreach ($registers10 as $row)
-                                                <td ></td>
+                                                {{-- <td ></td> --}}
                                                 <td >{{ $row->fname   }}  </td>
 
                                             <th >แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</th>
@@ -235,7 +243,7 @@
                                                 <tr>@endforeach
                                                     <tr>
                                                         @foreach ($registers12 as $row)
-                                                        <td ></td>
+                                                        {{-- <td ></td> --}}
                                                         <td >{{ $row->fname   }} </td>
 
                                                     <th >แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา(สก.10)</th>
@@ -257,7 +265,7 @@
                                                         <tr>@endforeach
                                                             <tr>
                                                                 @foreach ($registers13 as $row)
-                                                                <td ></td>
+                                                                {{-- <td ></td> --}}
                                                                 <td >{{ $row->fname   }}   </td>
 
                                                             <th >แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</th>
@@ -280,7 +288,7 @@
 
                                                                     <tr>
                                                                         @foreach ($registers14 as $row)
-                                                                        <td ></td>
+                                                                        {{-- <td ></td> --}}
                                                                         <td >{{ $row->fname   }}  </td>
 
                                                                     <th >แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</th>
@@ -303,7 +311,7 @@
 
                                                                             <tr>
                                                                                 @foreach ($registers15 as $row)
-                                                                                <td ></td>
+                                                                                {{-- <td ></td> --}}
                                                                                 <td >{{ $row->fname   }}   </td>
 
                                                                             <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</th>
@@ -325,7 +333,7 @@
                                                                                 <tr>@endforeach
                                                                                     <tr>
                                                                                         @foreach ($registers16 as $row)
-                                                                                        <td ></td>
+                                                                                        {{-- <td ></td> --}}
                                                                                         <td >{{ $row->fname   }}  </td>
 
                                                                                     <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</th>
