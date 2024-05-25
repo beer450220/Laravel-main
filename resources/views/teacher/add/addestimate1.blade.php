@@ -196,19 +196,20 @@
           <input type="text" class="form-control" @error('score') is-invalid @enderror name="score"required value="{{ old('score') }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
 
       </div>
-      {{-- <div class="col-md-2">
-        <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-control "  name="term" required>
-          <option value="">กรุณาเลือกภาคเรียน</option>
+      <div class="col-md-2">
+        <label for="inputAddress"class="col-form-label ">สถานะ</label>
+        <select class="form-control "  name="Status_supervision" required>
+          <option value="">กรุณาเลือก</option>
 
-        <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
-          <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
+        <option value="ประเมินผลแล้ว">ประเมินผลแล้ว </option>
+          <option value="รอประเมินผล ">รอประเมินผล </option>
+          <option value="ไม่ผ่าน ">ไม่ผ่าน</option>
 
 
 
 
         </select>
-    </div> --}}
+    </div>
     {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
       <select class="form-control "  name="year" required>

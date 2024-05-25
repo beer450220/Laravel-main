@@ -92,9 +92,9 @@
                 <a href="/teacher/editregister2/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
             </div>
                 @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
-
+                <a href="/teacher/editregister2/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
             @elseif ($row->Status_registers === 'ไม่ผ่าน')
-
+            <a href="/teacher/editregister2/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
             @endif
 
 

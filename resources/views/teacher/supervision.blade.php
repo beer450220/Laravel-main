@@ -54,7 +54,25 @@
         </div>
 
 <br>
+@php
+    use Carbon\Carbon;
 
+    function formatThaiDate($date) {
+        $thaiMonths = [
+            1 => 'มกราคม', 2 => 'กุมภาพันธ์', 3 => 'มีนาคม', 4 => 'เมษายน',
+            5 => 'พฤษภาคม', 6 => 'มิถุนายน', 7 => 'กรกฎาคม', 8 => 'สิงหาคม',
+            9 => 'กันยายน', 10 => 'ตุลาคม', 11 => 'พฤศจิกายน', 12 => 'ธันวาคม'
+        ];
+
+        $carbonDate = Carbon::parse($date)->setTimezone('Asia/Bangkok');
+        $year = $carbonDate->year + 543;
+        $month = $thaiMonths[$carbonDate->month];
+        $day = $carbonDate->day;
+        $time = $carbonDate->format('เวลา H:i:s ');
+
+        return "$day $month $year $time";
+    }
+@endphp
 
         <table class="table table-hover text-center">
           <thead class="thead-dark ">
@@ -77,7 +95,19 @@
             @foreach ($events as $row)
             <tr>
               <td>{{$events->firstItem()+$loop->index}}</td>
-              <td>{{$row->start}}</td>
+              <td>{{ formatThaiDate($row->start) }}
+            {{-- @php
+                    $thaiTime = Carbon::parse($row->start)->setTimezone('Asia/Bangkok')->format('Y-F-d H:i:s');
+                    // แปลงปี ค.ศ. เป็น พ.ศ.
+                    $thaiTime = Carbon::createFromFormat('Y-F-d H:i:s', $thaiTime)
+                        ->addYears(543)
+                        ->format('Y-F-d H:i:s');
+                @endphp
+                {{ $thaiTime }} --}}
+
+
+
+        </td>
               <td>{{$row->fname}}
 
 

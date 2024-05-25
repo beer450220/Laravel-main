@@ -198,7 +198,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link pl-3" href="/teacher/informdetails1"><span class="ml-1 item-text">เอกสารแจ้งรายละเอียด
+          <a class="nav-link pl-3" href="/teacher/informdetails1"><span class="ml-1 item-text">เอกสารปฏิบัติงานนักศึกษา
               </span>
           </a>
         </li>
@@ -286,7 +286,7 @@
           <li class="nav-item ">
             <a href="/teacher/estimate1"  class=" nav-link">
               <i class="fa-solid fa-clipboard"></i>
-              <span class="ml-3 item-text">เอกสารรายงานผลประเมิน</span>
+              <span class="ml-3 item-text">เอกสารผลประเมินสหกิจศึกษา</span>
             </a>
 
 

@@ -204,7 +204,7 @@
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารประเมิน </label>
                 <div class="custom-file mb-6">
                   <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile" >
-                  <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                  <label class="custom-file-label" for="validatedCustomFile">เลือไฟล์PDF</label>
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
 
           </div>
@@ -216,19 +216,20 @@
           <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{ old('score') }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
 
       </div>
-      {{-- <div class="col-md-2">
-        <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-control "  name="term" required>
-          <option value="">กรุณาเลือกภาคเรียน</option>
+      <div class="col-md-2">
+        <label for="inputAddress"class="col-form-label ">สถานะ</label>
+        <select class="form-control "  name="Status_supervision" required>
+          <option value="">กรุณาเลือก</option>
 
-        <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
-          <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
+        <option value="ประเมินผลแล้ว">ประเมินผลแล้ว </option>
+          <option value="รอประเมินผล ">รอประเมินผล </option>
+          <option value="ไม่ผ่าน ">ไม่ผ่าน</option>
 
 
 
 
         </select>
-    </div> --}}
+    </div>
     {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
       <select class="form-control "  name="year" required>
@@ -258,7 +259,7 @@
           <div class="modal-footer">
             <a href="/officer/Evaluate" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->

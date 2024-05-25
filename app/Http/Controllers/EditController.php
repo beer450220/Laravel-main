@@ -1872,7 +1872,7 @@ public function editcategory($category_id) {
           // "projectsummary" =>$images1,
           "annotation" =>$request->annotation,
           //"establishment"=>$request->establishment,
-        //    "Status_supervision"=>$request->Status_supervision,
+           "Status_supervision"=>$request->Status_supervision,
        ]);
   // $post->user_id = Auth::user()->id;
    //$post->Status ="รอตรวจสอบ";
@@ -2145,7 +2145,8 @@ $post->update
    // ->get();
     //dd($acceptances);
      // dd($supervisions);
-     $user=DB::table('users') ->paginate(5);
+     $user=DB::table('users')
+     ->where('role',"student") ->paginate(5);
      return view('officer.edit.editacceptancedocument1',compact('acceptances','user'));
 
  }
@@ -2222,7 +2223,23 @@ $post->update
  }
 
 
+ public function delEvaluate($supervision_id) {
+    //ตรวจสอบข้อมูล
+    //dd();
+    // $establishments=establishment::find($id);
+    // DB::table('establishment')->where('id',$id)->delete();
 
+    $posts=supervision::findOrFail($supervision_id);
+
+     if (File::exists("ไฟล์เอกสารประเมิน/".$posts->filess)) {
+         File::delete("ไฟล์เอกสารประเมิน/".$posts->filess);
+     }
+
+    //  dd($posts);
+     $posts->delete();
+    //  return view('officer.editestablishmentuser1',compact('establishments'));
+     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+ }
 
 
 

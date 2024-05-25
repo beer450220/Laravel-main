@@ -104,7 +104,7 @@
                     {{-- <a class="collapse-item "href="/officer/calendar6">กำหนดการปฏิทินสหกิจ</a> --}}
                     <a class="collapse-item "href="/officer/register1">ลงทะเบียนสหกิจ</a>
                     <a class="collapse-item "href="/officer/acceptancedocument1">เอกสารตอบรับ/นักศึกษา</a>
-                    <a class="collapse-item "href="/officer/informdetails2">เอกสารแจ้งรายละเอียด</a>
+                    <a class="collapse-item "href="/officer/informdetails2">เอกสารปฏิบัติงานนักศึกษา</a>
                 </div>
             </div>
         </li>

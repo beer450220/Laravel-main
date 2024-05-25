@@ -405,7 +405,7 @@ Route::get('/officer/search2',[HomeController::class,'searchEvaluate'])->name('s
 
     Route::get("/officer/editEvaluate/{supervision_id}",[EditController::class,'editEvaluate'])->name('editEvaluate');
     Route::post("/officer/updateEvaluate/{supervision_id}",[EditController::class,'updateEvaluate'])->name('updateEvaluate');
-
+    Route::get('/officer/deletEvaluate/{supervision_id}', [EditController::class,'delEvaluate'])->name('delEvaluate');
 
 
     // Route::get("/officer/Supervise",[HomeController::class,'Supervise']);

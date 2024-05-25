@@ -46,11 +46,12 @@
             <tr>
                 {{-- <th>ลำดับ</th> --}}
                 <th>ชื่อนักศึกษา</th>
-                <th>สมัครสหกิจศึกษา</th>
+                <th>ขื่อเอกสาร</th>
 
                 {{-- <th>รูปภาพ</th> --}}
                 {{-- <th>ปีการศึกษา</th>
                 <th>ภาคเรียน</th> --}}
+                <th>หมายเหตุ</th>
                <th>สถานะ</th>
                {{-- <th>หมายเหตุ</th> --}}
                 {{-- <th style="width:10%">ดูไฟล์เอกสาร</th> --}}
@@ -65,7 +66,15 @@
 
             <td >{{ $row->fname   }}  </td>
             <td >แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</td>
-            <td >  @if ($registers1->isEmpty())
+            <td >{{ $row->annotation   }}  </td>
+
+            <td >@if ($row->Status_registers === 'รอตรวจสอบ')
+                <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+            @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+            @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+            @endif @if ($registers1->isEmpty())
             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
               @else
 
@@ -78,16 +87,8 @@
                                                                         @else()
                                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                                     @endif
-                                                                       @endif
+                                                                       @endif </td>
 
-                                                                       @if ($row->Status_registers === 'รอตรวจสอบ')
-                                                                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                                                                   @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
-                                                                       <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-                                                                   @elseif ($row->Status_registers === 'ไม่ผ่าน')
-                                                                       <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
-                                                                   @endif
-            </td>
               {{-- <td>{{ $row->annotation }}</td> --}}
 
 {{-- download --}}
@@ -111,9 +112,18 @@
                 @foreach ($registers2 as $row)
                 {{-- <td ></td> --}}
                 <td >{{ $row->fname   }}  </td>
-            {{-- <th scope="row">2</th> --}}
+
             <th >ใบสมัครงานสหกิจศึกษา(สก03)</th>
-            <td >  @if ($registers2->isEmpty())
+              <td >{{ $row->annotation   }}  </td>
+             <td>@if ($row->Status_registers === 'รอตรวจสอบ')
+                <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+            @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+            @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+            @endif
+
+ @if ($registers2->isEmpty())
                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                   @else
 
@@ -127,7 +137,8 @@
                                                                             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                                         @endif
                                                                            @endif
-                </td>
+        </td>
+
                 <tr>@endforeach
 
                     <tr>
@@ -136,7 +147,17 @@
                         <td >{{ $row->fname   }}  </td>
                     {{-- <th scope="row">2</th> --}}
                     <th >แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</th>
-                    <td >  @if ($registers3->isEmpty())
+                    <td >{{ $row->annotation   }}  </td>
+                    <td >@if ($row->Status_registers === 'รอตรวจสอบ')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                    @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                    @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                        <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                    @endif
+
+
+                        @if ($registers3->isEmpty())
                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                           @else
 
@@ -159,7 +180,18 @@
                                 <td >{{ $row->fname   }} </td>
                             {{-- <th scope="row">2</th> --}}
                             <th >แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)</th>
-                            <td >  @if ($registers17->isEmpty())
+                            <td >{{ $row->annotation   }}  </td>
+                            <td >
+                                @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+                    @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
+                    @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                        <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
+                    @endif
+
+
+                                @if ($registers17->isEmpty())
                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                   @else
 
@@ -181,7 +213,18 @@
                                 <td >{{ $row->fname   }}  </td>
 
                             <th >แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</th>
-                            <td >  @if ($registers8->isEmpty())
+                            <td >{{ $row->annotation   }}  </td>
+                            <td >
+                                @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                        <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                    @endif
+
+
+                                @if ($registers8->isEmpty())
                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                   @else
 
@@ -203,7 +246,17 @@
                                         <td >{{ $row->fname   }}  </td>
 
                                     <th >แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</th>
-                                    <td >  @if ($registers9->isEmpty())
+                                    <td >{{ $row->annotation   }}  </td>
+                                    <td >
+                                        @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                        <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                    @endif
+
+                                        @if ($registers9->isEmpty())
                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                           @else
 
@@ -225,7 +278,18 @@
                                                 <td >{{ $row->fname   }}  </td>
 
                                             <th >แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</th>
-                                            <td >  @if ($registers10->isEmpty())
+                                            <td >{{ $row->annotation   }}  </td>
+                                            <td >
+                                                @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                                <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span>
+                                            @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                                <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                                            @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                                <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                                            @endif
+
+
+                                                @if ($registers10->isEmpty())
                                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                   @else
 
@@ -247,7 +311,19 @@
                                                         <td >{{ $row->fname   }} </td>
 
                                                     <th >แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา(สก.10)</th>
-                                                    <td >  @if ($registers12->isEmpty())
+                                                    <td >{{ $row->appointment_time	   }}  </td>
+                                                    <td >
+                                                        @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+                                                        <span class="badge badge-pill badge-warning">{{ $row->Status_events}}</span>
+                                                    @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดแล้ว')
+                                                        <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
+                                                    @elseif ($row->Status_events === 'ไม่ผ่าน')
+                                                        <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                                    @endif
+
+
+
+                                                        @if ($registers12->isEmpty())
                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                           @else
 
@@ -269,7 +345,18 @@
                                                                 <td >{{ $row->fname   }}   </td>
 
                                                             <th >แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</th>
-                                                            <td >  @if ($registers13->isEmpty())
+                                                            <td >{{ $row->annotation   }}  </td>
+                                                            <td >
+
+                                                                @if ($row->Status_supervision === 'รอประเมินผล')
+                                                                <span class="badge badge-pill badge-warning">{{ $row->Status_supervision}}</span>
+                                                            @elseif ($row->Status_supervision === 'ประเมินผลแล้ว')
+                                                                <span class="badge badge-pill badge-success">{{ $row->Status_supervision}}</span>
+                                                            @elseif ($row->Status_supervision === 'ไม่ผ่าน')
+                                                                <span class="badge badge-pill badge-danger">{{ $row->Status_supervision}}</span>
+                                                            @endif
+
+                                                                @if ($registers13->isEmpty())
                                                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                                   @else
 
@@ -292,7 +379,17 @@
                                                                         <td >{{ $row->fname   }}  </td>
 
                                                                     <th >แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</th>
-                                                                    <td >  @if ($registers14->isEmpty())
+                                                                    <td >{{ $row->annotation   }}  </td>
+                                                                    <td >
+                                                                        @if ($row->Status_supervision === 'รอประเมินผล')
+                                                                        <span class="badge badge-pill badge-warning">{{ $row->Status_supervision}}</span>
+                                                                    @elseif ($row->Status_supervision === 'ประเมินผลแล้ว')
+                                                                        <span class="badge badge-pill badge-success">{{ $row->Status_supervision}}</span>
+                                                                    @elseif ($row->Status_supervision === 'ไม่ผ่าน')
+                                                                        <span class="badge badge-pill badge-danger">{{ $row->Status_supervision}}</span>
+                                                                    @endif
+
+                                                                        @if ($registers14->isEmpty())
                                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                                           @else
 
@@ -315,7 +412,18 @@
                                                                                 <td >{{ $row->fname   }}   </td>
 
                                                                             <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</th>
-                                                                            <td >  @if ($registers15->isEmpty())
+                                                                            <td >{{ $row->annotation   }}  </td>
+                                                                            <td >
+                                                                                @if ($row->Status_supervision === 'รอประเมินผล')
+                                                                                <span class="badge badge-pill badge-warning">{{ $row->Status_supervision}}</span>
+                                                                            @elseif ($row->Status_supervision === 'ประเมินผลแล้ว')
+                                                                                <span class="badge badge-pill badge-success">{{ $row->Status_supervision}}</span>
+                                                                            @elseif ($row->Status_supervision === 'ไม่ผ่าน')
+                                                                                <span class="badge badge-pill badge-danger">{{ $row->Status_supervision}}</span>
+                                                                            @endif
+
+
+                                                                                @if ($registers15->isEmpty())
                                                                                 <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                                                   @else
 
@@ -337,7 +445,18 @@
                                                                                         <td >{{ $row->fname   }}  </td>
 
                                                                                     <th >แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</th>
-                                                                                    <td >  @if ($registers16->isEmpty())
+                                                                                    <td >{{ $row->annotation   }}  </td>
+                                                                                    <td >
+                                                                                        @if ($row->Status_supervision === 'รอประเมินผล')
+                                                                                        <span class="badge badge-pill badge-warning">{{ $row->Status_supervision}}</span>
+                                                                                    @elseif ($row->Status_supervision === 'ประเมินผลแล้ว')
+                                                                                        <span class="badge badge-pill badge-success">{{ $row->Status_supervision}}</span>
+                                                                                    @elseif ($row->Status_supervision === 'ไม่ผ่าน')
+                                                                                        <span class="badge badge-pill badge-danger">{{ $row->Status_supervision}}</span>
+                                                                                    @endif
+
+
+                                                                                        @if ($registers16->isEmpty())
                                                                                         <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                                                           @else
 

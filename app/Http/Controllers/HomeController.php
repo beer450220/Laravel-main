@@ -1535,6 +1535,7 @@ $users=DB::table('users')
                                     //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                             })
                             ->select('registers.*', 'users.fname')
+                            ->where('role',"student")
                             ->orderBy('id', 'desc')
                             ->paginate(10);
                         return view('officer.register1',  ['registers' => $registers,]);
@@ -3237,6 +3238,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
+        ->where('role',"student")
         ->orderBy('id', 'desc')
         ->paginate(10);
 //dd($registers);
@@ -3384,7 +3386,6 @@ public function category()
         return view('officer.supervision',compact('events'));
     }
 
-
     public function supervision1()
     {
         $events=DB::table('events')
@@ -3392,6 +3393,7 @@ public function category()
         //  ->select('events.*', 'users.fname', 'users.surname')
          ->join('users','events.student_name','users.id')
          ->select('events.*','users.fname')
+         ->orderBy('id', 'desc')
         ->paginate(10);
     //     $users=DB::table('users')
     //   ->where('role',"student")->paginate(5);
@@ -3402,7 +3404,12 @@ public function category()
         // $phpArrayFromDatabase = json_decode($studentNameFromDatabase);
         return view('teacher.supervision',compact('events'));
     }
+
+
+
 // ,'major','phpArrayFromDatabase','users'
+
+
 
 
     public function calendar5(Request $request)

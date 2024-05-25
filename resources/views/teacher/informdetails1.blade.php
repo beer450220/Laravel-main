@@ -53,8 +53,9 @@
               <th>ชื่อเอกสาร</th>
               {{-- <th>ปีการศึกษา</th>
               <th>ภาคเรียนที่</th> --}}
-              <th>ดูเอกสารแจ้ง</th>
-              {{-- <th>สถานะ</th> --}}
+                <th>สถานะ</th>
+              <th>ดูเอกสาร</th>
+
               {{-- <th>ดูข้อมูล</th> --}}
               {{-- <th>ลบ</th> --}}
             </tr>
@@ -65,6 +66,14 @@
               <td>{{$informdetails->firstItem()+$loop->index}}</td>
               <td>{{$row->fname}} </td>
               <td>{{$row->namefile}}</td>
+
+              <td> @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
+            @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+            @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+            @endif</td>
               {{-- <td>{{$row->year}}</td>
                <td>{{$row->term}}</td> --}}
               <td><a href="/เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>

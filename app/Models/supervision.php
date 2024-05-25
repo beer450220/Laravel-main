@@ -20,6 +20,6 @@ class supervision extends Model
         'score',
         'filess',
         'annotation',
-
+        'Status_supervision'
     ];
 }

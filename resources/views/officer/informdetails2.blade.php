@@ -10,7 +10,7 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">เอกสารแจ้งรายละเอียดการปฎิบัติงาน</h5>
+        <h5 class="card-title">เอกสารปฏิบัติงานนักศึกษา</h5>
         <form action="{{ route('searchinformdetails') }}" method="GET" class="form-inline">
 
             <div class="form-row">
@@ -58,7 +58,7 @@
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
-                <th>#</th>
+                <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
                 {{-- <th>ชื่อสถานประกอบการ</th> --}}
                 <th>ชื่อไฟล์</th>

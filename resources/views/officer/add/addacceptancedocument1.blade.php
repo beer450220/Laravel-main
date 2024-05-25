@@ -200,7 +200,7 @@
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารตอบรับ (สก.02)</label>
                 <div class="custom-file mb-6">
                   <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile"required >
-                  <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                  <label class="custom-file-label" for="validatedCustomFile">เลือกไฟล์PDF</label>
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
 
           </div>
@@ -215,6 +215,7 @@
             {{-- <optgroup label="Mountain Time Zone"> --}}
               <option value="ตอบรับนักศึกษาแล้ว">ตอบรับนักศึกษาแล้ว</option>
               <option value="ยังไม่ได้ตอบรับนักศึกษาแล้ว">ยังไม่ได้ตอบรับนักศึกษา</option>
+              <option value="ไม่ผ่าน">ไม่ผ่าน</option>
             </optgroup>
 
 
@@ -267,7 +268,7 @@
           <div class="modal-footer">
             <a href="/officer/acceptancedocument1" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล </button>
           </div>
         </form>
       </div> <!-- /. card-body -->

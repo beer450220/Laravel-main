@@ -81,7 +81,13 @@
               <td>{{$row->namefile}}</td>
               {{-- <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td> --}}
-              <td>{{$row->Status_acceptance	}}</td>
+              <td> @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
+                <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+            @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
+            @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
+            @endif</td>
               <td>{{$row->annotation}}</td>
               <td><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 

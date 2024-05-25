@@ -169,19 +169,19 @@
                             <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"required>
 
                         </div>
-                        {{-- <div class="col-md-2">
-                            <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-                            <select class="form-select "  name="term" required>
-                              <option value="">กรุณาเลือกภาคเรียน</option>
+                        <div class="col-md-2">
+                            <label for="inputAddress"class="col-form-label ">สถานะ</label>
+                            <select class="form-control"  name="Status_supervision" required>
+                              <option value="">กรุณาเลือก</option>
 
-                            <option value="ภาคเรียนที่1"@if($supervisions->term=="ภาคเรียนที่1") selected @endif required>ภาคเรียนที่:1 </option>
-                              <option value="ภาคเรียนที่2"@if($supervisions->term=="ภาคเรียนที่2") selected @endif required>ภาคเรียนที่:2 </option>
-
+                            <option value="ประเมินผลแล้ว"@if($supervisions->Status_supervision=="ประเมินผลแล้ว") selected @endif required>ประเมินผลแล้ว</option>
+                              <option value="รอประเมินผล"@if($supervisions->Status_supervision=="รอประเมินผล") selected @endif required>รอประเมินผล</option>
+                              <option value="ไม่ผ่าน"@if($supervisions->Status_supervision=="ไม่ผ่าน") selected @endif required>ไม่ผ่าน</option>
 
 
 
                             </select>
-                        </div> --}}
+                        </div>
                         {{-- <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
                             <select class="form-control "  name="year" required> --}}

@@ -139,35 +139,15 @@ class registerController extends Controller
 
 
                 "images" =>$imageName,
-
-
+                "username" =>$request->username,
+                "fname" =>$request->fname,
+                "password" => Hash::make($request->password),
+                "role" =>$request->role,
             ]);
          }
-         $user = new Users;
-        //  $user->code_id = $request->code_id;
-        //  $user->major_id = $request->major_id;
 
 
-         $user->fname = $request->fname;
-        //  $user->surname = $request->surname;
-        //  $user->telephonenumber = $request->telephonenumber;
-        //  $user->address = $request->address;
-        //  $user->GPA = $request->GPA;
-        //  $user->em_name= $request->em_name;
-
-        //  $user->term = $request->term;
-        //  $user->year = $request->year;
-         $user->images = $request->	images;
-        $user->username = $request->username;
-        //  $user->email = $request->email;
-
-        //  $user->email = $request->email;
-         $user->password = Hash::make($request->password);
-         $user->role = $request->role;
-        //  $user-> status = $request->status;
-        //  $user-> annotation = $request->annotation;
-
-         $user->save();
+         $post->save();
          return redirect('/teacher/user')->with('error','success', 'สมัครสำเร็จ.');
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
@@ -185,7 +165,7 @@ class registerController extends Controller
              'images' => 'mimes:jpeg,jpg,png|max:1024',
              ] ,[
                 // 'code_id.unique' => "รหัสประจำตัวซ้ำ",
-                'username.unique' => "รหัสประจำตัวซ้ำ",
+                'username.unique' => "รหัสนักศึกษาตัวซ้ำ",
                 'password.confirmed' => "รหัสผ่านไม่ตรงกัน",
                 'password.min' => "รหัสผ่านมากว่า8ตัว",
                 'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
@@ -201,36 +181,40 @@ class registerController extends Controller
             $post =new Users([
 
 
-                "images" =>$imageName,
 
+                "images" =>$imageName,
+                "username" =>$request->username,
+                "fname" =>$request->fname,
+                "password" => Hash::make($request->password),
+                "role" =>"student",
 
             ]);
          }
 
-         $user = new Users;
+
         //  $user->code_id = $request->code_id;
         //  $user->major_id = $request->major_id;
-        //  $user->establishment_id = "ยังไม่มีสถานประกอบการ";
+        // //  $user->establishment_id = "ยังไม่มีสถานประกอบการ";
 
-         $user->fname = $request->fname;
-        //  $user->surname = $request->surname;
-        //  $user->telephonenumber = $request->telephonenumber;
-        //  $user->address = $request->address;
-        //  $user->GPA = $request->GPA;
-        //  $user->em_name= $request->em_name;
+        //  $user->fname = $request->fname;
+        // //  $user->surname = $request->surname;
+        // //  $user->telephonenumber = $request->telephonenumber;
+        // //  $user->address = $request->address;
+        // //  $user->GPA = $request->GPA;
+        // //  $user->em_name= $request->em_name;
 
-        //  $user->term = $request->term;
-        //  $user->year = $request->year;
-         $user->images = $request->	images;
-        $user->username = $request->username;
-        //  $user->email = $request->email;
-         $user->password = Hash::make($request->password);
-         $user->role = "student";
+        // //  $user->term = $request->term;
+        // //  $user->year = $request->year;
+        //  $user->images = $request->	images;
+        // $user->username = $request->username;
+        // //  $user->email = $request->email;
+        //  $user->password = Hash::make($request->password);
+        //  $user->role = "student";
         //  $user->code_id = "0";
         //  $user-> status = "รออนุมัติ";
         //  $user-> annotation = "-";
 
-         $user->save();
+         $post->save();
          return redirect('/login')->with('error','success', 'สมัครสำเร็จ');
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }

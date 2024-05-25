@@ -157,7 +157,7 @@
 
 
 
-
+                                            <td><img src="/รูปโปรไฟล์/{{ $row->images }}" class="rounded" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
 
                                             <td>{{$row->username}}</td>
                                             <td>{{$row->fname}} </td>

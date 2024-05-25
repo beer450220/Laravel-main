@@ -53,20 +53,23 @@
                <th>สถานะ</th>
                <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
-
+                <th style="width:10%">ยืนยันข้อมูล</th>
                 {{-- <th style="width:10%">ยืนยันข้อมูล</th> --}}
               {{-- <th style="width:10%">ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
             @foreach ($registers as $row)
-            <tr class="{{
+            <tr class="
+            {{-- {{
                 $row->Status_registers === 'รอตรวจสอบ' ? 'table-warning' : (
                     $row->Status_registers=== 'ตรวจสอบเอกสารแล้ว' ? 'table-success' : (
-                        $row->Status_registers === 'ไม่ผ่าน' ? 'table-danger' : ''
+                        // $row->Status_registers === 'ไม่ผ่าน' ? 'table-danger' : ''
                     )
                 )
-            }}">
+            }} --}}
+
+            ">
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
               <td>{{ $row->fname }} </td>
               <td>{{ $row->namefile }}</td>
@@ -85,20 +88,23 @@
               <td>{{ $row->annotation }}</td>
               <td><a href="../ลงทะเบียน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 {{-- download --}}
-              {{-- <td>
+              <td>
                 @if ($row->Status_registers === 'รอตรวจสอบ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/officer/confirm2/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
                 <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
             </div>
                 @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
-
+                <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
             @elseif ($row->Status_registers === 'ไม่ผ่าน')
-
-            @endif --}}
+            <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
+            @endif
 
 
              {{--  <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
+
+
+
             </tr>
 
             @endforeach

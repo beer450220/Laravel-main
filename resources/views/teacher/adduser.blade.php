@@ -172,7 +172,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('รูปภาพผู้ใช้งาน') }}</label>
 
                             <div class="col-md-6">
-                                <input id="inputGroupFile02" type="file" class="form-control" name="images" required autocomplete="images">
+                                <input id="inputGroupFile02" type="file" class="form-control" name="images" required autocomplete="">
 
                                 @error('images')
                                 <span class="invalid-feedback" role="alert">

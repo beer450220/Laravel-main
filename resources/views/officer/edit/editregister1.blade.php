@@ -48,32 +48,32 @@
         @endif
                     <div class="row">
                       <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
-                         <input type="text" class="form-control" name="annotation" value="{{$registers->annotation}}" required>
 
-                        @error('annotation')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
+
+                    <select class="form-control " aria-label=".form-select-sm example" name="Status_registers"required>
+                      <option selected>กรุณาเลือก</option>
+                      <option value="ตรวจสอบเอกสารแล้ว"@if($registers->Status_registers=="ตรวจสอบเอกสารแล้ว") selected @endif required>ตรวจสอบเอกสารแล้ว</option>
+                      <option value="ไม่ผ่าน"@if($registers->Status_registers=="ไม่ผ่าน") selected @endif required>ไม่ผ่านตรวจสอบเอกสาร</option>
+                      <option value="รอตรวจสอบ"@if($registers->Status_registers=="รอตรวจสอบ") selected @endif required >รอตรวจสอบเอกสาร</option>
+
+                    </select>
+                    @error('Status_registers')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
                       </div>
                       <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
+                        <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
+                        <input type="text" class="form-control" name="annotation" value="{{$registers->annotation}}" required>
 
-                        <select class="form-control " aria-label=".form-select-sm example" name="Status_registers"required>
-                          <option selected>กรุณาเลือก</option>
-                          <option value="ตรวจสอบเอกสารแล้ว"@if($registers->Status_registers=="ตรวจสอบเอกสารแล้ว") selected @endif required>ตรวจสอบเอกสารแล้ว</option>
-                          <option value="ไม่ผ่าน"@if($registers->Status_registers=="ไม่ผ่าน") selected @endif required>ไม่ผ่านตรวจสอบเอกสาร</option>
-                          <option value="รอตรวจสอบ"@if($registers->Status_registers=="รอตรวจสอบ") selected @endif required >รอตรวจสอบเอกสาร</option>
-
-                        </select>
-                        @error('Status_registers')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-
+                       @error('annotation')
+                       <span class="invalid-feedback" role="alert">
+                           <strong>{{ $message }}</strong>
+                       </span>
+                   @enderror
                       </div>
 
 
@@ -84,7 +84,7 @@
                 <div class="modal-footer">
 
                   <a href="/officer/register1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
-                  <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
+                  <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button>
                 </div></form>
               </div>
             </div>

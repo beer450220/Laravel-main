@@ -928,6 +928,7 @@ if($request->hasFile("filess"))
     //   "year" => $request->year,
       'score' => $request->score,
       "filess" =>$imageName,
+      'Status_supervision' => $request->Status_supervision,
 
 
   ]);

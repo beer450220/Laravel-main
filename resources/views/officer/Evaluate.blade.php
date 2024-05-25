@@ -68,10 +68,11 @@
               {{-- <th>ภาคเรียน</th>
                 <th>ปีการศึกษา</th> --}}
               <th>คะแนน</th>
+              <th>สถานนะ</th>
               <th>หมายเหตุ</th>
                  <th>ไฟล์เอกสาร</th>
-              <th>แก้ไข</th>
-
+              <th>แก้ไขข้อมูล</th>
+              <th>ลบข้อมูล</th>
 
             </tr>
           </thead>
@@ -85,11 +86,19 @@
               {{-- <td>{{$row->term}}</td>
               <td>{{$row->year}}</td> --}}
               <td>{{$row->score}}</td>
-
+              <td>
+                @if ($row->Status_supervision === 'รอประเมินผล')
+                    <span class="badge badge-pill badge-warning">{{ $row->Status_supervision }}</span>
+                @elseif ($row->Status_supervision === 'ประเมินผลแล้ว')
+                    <span class="badge badge-pill badge-success">{{ $row->Status_supervision}}</span>
+                @elseif ($row->Status_supervision === 'ไม่ผ่าน')
+                    <span class="badge badge-pill badge-danger">{{ $row->Status_supervision}}</span>
+                @endif
+            </td>
               <td>{{$row->annotation}}</td>
               <td><a href="../ไฟล์เอกสารประเมิน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td><a href="/officer/editEvaluate/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fa-solid  fa-pen-to-square fe-16"></a></td>
-
+              <td><a href="/officer/deletEvaluate/{{$row->supervision_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
 
             </tr>
 

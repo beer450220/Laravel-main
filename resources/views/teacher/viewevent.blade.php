@@ -123,11 +123,34 @@
 
 
                     <div class="row">
+                        @php
+                        use Carbon\Carbon;
 
+                        function formatThaiDate($date) {
+                            $thaiMonths = [
+                                1 => 'มกราคม', 2 => 'กุมภาพันธ์', 3 => 'มีนาคม', 4 => 'เมษายน',
+                                5 => 'พฤษภาคม', 6 => 'มิถุนายน', 7 => 'กรกฎาคม', 8 => 'สิงหาคม',
+                                9 => 'กันยายน', 10 => 'ตุลาคม', 11 => 'พฤศจิกายน', 12 => 'ธันวาคม'
+                            ];
+
+                            $carbonDate = Carbon::parse($date)->setTimezone('Asia/Bangkok');
+                            $year = $carbonDate->year + 543;
+                            $month = $thaiMonths[$carbonDate->month];
+                            $day = $carbonDate->day;
+                            $time = $carbonDate->format('เวลา H:i:s ');
+
+                            return "$day $month $year $time";
+                        }
+                    @endphp
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">วันเวลาการนิเทศงาน</label><br>
 
-                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->start}}"disabled required>
+                        <input type="text" class="form-control" name="annotation" value="
+
+                        {{ formatThaiDate($establishments->start) }}
+                        {{-- {{$establishments->start}} --}}
+
+                        "disabled required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputAddress">ชื่อสถานประกอบการ</label>

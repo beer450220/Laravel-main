@@ -150,6 +150,28 @@
             <div class="form-group col-md-4">
               {{-- <label for="inputAddress">หัวเรื่อง</label> --}}
        {{-- <input type="text" class="form-control" @error('title') is-invalid @enderror name="title"   autofocus placeholder="title"> --}}
+
+       @php
+       use Carbon\Carbon;
+
+       function formatThaiDate($date) {
+           $thaiMonths = [
+               1 => 'มกราคม', 2 => 'กุมภาพันธ์', 3 => 'มีนาคม', 4 => 'เมษายน',
+               5 => 'พฤษภาคม', 6 => 'มิถุนายน', 7 => 'กรกฎาคม', 8 => 'สิงหาคม',
+               9 => 'กันยายน', 10 => 'ตุลาคม', 11 => 'พฤศจิกายน', 12 => 'ธันวาคม'
+           ];
+
+           $carbonDate = Carbon::parse($date)->setTimezone('Asia/Bangkok');
+           $year = $carbonDate->year + 543;
+           $month = $thaiMonths[$carbonDate->month];
+           $day = $carbonDate->day;
+           $time = $carbonDate->format('เวลา H:i:s ');
+
+           return "$day $month $year $time";
+       }
+   @endphp
+
+
        <label for="inputAddress">วันเวลาการนิเทศงาน</label>
        <input class="form-control" id="example-date" type="datetime-local" name="start"value="{{ \Carbon\Carbon::parse($supervisions->start)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
        {{-- $startFormatted = Carbon::parse($supervisions->start)->format('Y-m-d\TH:i'); --}}
