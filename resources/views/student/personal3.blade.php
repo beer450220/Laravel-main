@@ -319,15 +319,13 @@
                                       </div>
                                     </div> --}}
 
-                                    <br>
-                                    <br>
+
                                     <div class="text-center">
-                                      <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
+                                      <img src="../รูปสถานประกอบการ/{{ $users->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
                                     </div>
 
-                                    <br>
-                                    <br>
+
                                     <main role="main" class="">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">

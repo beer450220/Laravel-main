@@ -1154,11 +1154,12 @@ public function addcategory()
         // dd($request);
 
          $request->validate([
+            'name_major' => 'required|unique:major',
           //  'name' => 'required|unique:name',
           //  'test' => 'required|unique:test',
       ]
     ,[
-
+        'name_major.unique' => "ชื่อสาขาซ้ำ",
       // 'name.required'=>"กรุณากรอกชื่อ",
       // 'test.required'=>"กรุณาเทส",
     ]

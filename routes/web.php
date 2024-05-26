@@ -536,6 +536,9 @@ Route::get('/teacher/search05',[HomeController::class,'searchinformdetails1'])->
     Route::get("/teacher/informdetails1",[HomeController::class,'informdetails1'])->name('teacher.informdetails1');
     Route::get("/teacher/viewinformdetails1/{informdetails_id}",[EditController::class,'viewinformdetails1'])->name('viewinformdetails1');
 
+    Route::get("/teacher/editinformdetails2/{informdetails_id}",[EditController::class,'editinformdetails02'])->name('editinformdetails02');
+    Route::post("/teacher/updateinformdetails02/{informdetails_id}",[EditController::class,'updateinformdetails02'])->name('updateinformdetails02');
+    Route::get("/teacher/confirm3/{id}",[EditController::class,'confirm03'])->name('confirm03');
     // Route::get("/teacher/record1",[HomeController::class,'record1'])->name('teacher.record1');
     // Route::get("/teacher/listofteachers1",[HomeController::class,'listofteachers1'])->name('teacher.listofteachers1');
 

@@ -1515,13 +1515,14 @@ public function editcategory($category_id) {
     ///dd($request);
 
     $request->validate([
+        'name_major' => 'required|unique:major',
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'name_major.unique' => "ชื่อสาขาซ้ำ",
         ]
     );
     // $post=Event::findOrFail($id);
@@ -1554,13 +1555,14 @@ public function editcategory($category_id) {
     ///dd($request);
 
     $request->validate([
+        'name_major' => 'required|unique:major',
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
     ],[
             //'establishment.required' => "กรุณา",
-
+            'name_major.unique' => "ชื่อสาขาซ้ำ",
         ]
     );
     // $post=Event::findOrFail($id);
@@ -1904,6 +1906,27 @@ public function editcategory($category_id) {
      return view('officer.edit.editinformdetails2',compact('informdetails'));
 
  }
+ public function editinformdetails02($informdetails_id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+    // $informdetails=DB::table('informdetails')->first();
+    $informdetails=informdetails::find($informdetails_id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($informdetails);
+     // dd($supervisions);
+     return view('teacher.edit.editinformdetails2',compact('informdetails'));
+
+ }
+
  public function   updateinformdetails2(Request $request,$informdetails_id) {
     //ตรวจสอบข้อมูล
 
@@ -1944,7 +1967,44 @@ public function editcategory($category_id) {
  }
 
 
+ public function   updateinformdetails02(Request $request,$informdetails_id) {
+    //ตรวจสอบข้อมูล
 
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    // $post=Event::findOrFail($id);
+    // $post->user_id = Auth::user()->id;
+    // $post->Status ="รอตรวจสอบ";
+
+   //dd($request->Status);
+   $post=informdetails::findOrFail($informdetails_id);
+  // $post->user_id = Auth::user()->id;
+   //$post->Status ="รอตรวจสอบ";
+
+    $post->update
+
+    ([
+
+       "annotation" =>$request->annotation,
+        //"establishment"=>$request->establishment,
+         "Status_informdetails"=>$request->Status_informdetails,
+
+    ]);
+     // dd($request);
+
+    return redirect('/teacher/informdetails1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
 
  public function editregister1($id) {
     //ตรวจสอบข้อมูล
@@ -3467,7 +3527,46 @@ $post->update
 
     return redirect('/officer/informdetails2')->with('success', 'ยืนยันตัวตนสำเร็จ.');
  }
+ public function   confirm03(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=informdetails::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status_informdetails ="ตรวจสอบเอกสารแล้ว";
+    // $post->role ="student";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+
+    ]);
+
+
+    return redirect('/teacher/informdetails1')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+ }
  public function   confirm4(Request $request,$id) {
     //ตรวจสอบข้อมูล
 

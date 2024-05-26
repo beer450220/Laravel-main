@@ -168,7 +168,7 @@
 
     <div class="col-md-4">
         <label for="inputAddress"class="col-form-label ">เบอร์โทรศัพท์</label>
-        <input type="text" class="form-control" @error('score') is-invalid @enderror name="telephonenumber" value="{{ $major->telephonenumber}}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="telephonenumber" value="{{ $major->telephonenumber}}"maxlength="10"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
     </div>
 

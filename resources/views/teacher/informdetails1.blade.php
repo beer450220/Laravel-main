@@ -55,7 +55,7 @@
               <th>ภาคเรียนที่</th> --}}
                 <th>สถานะ</th>
               <th>ดูเอกสาร</th>
-
+              <th>ยืนยันข้อมูล</th>
               {{-- <th>ดูข้อมูล</th> --}}
               {{-- <th>ลบ</th> --}}
             </tr>
@@ -81,6 +81,26 @@
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}
 
               {{-- <td><button type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"></td> --}}
+                <td>
+                @if ($row->Status_informdetails=== 'รอตรวจสอบ')
+                <div class="d-grid gap-2 d-md-block">
+                <a href="/teacher/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
+                <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
+                {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
+</td>
+            </div>
+                @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                <div class="d-grid gap-2 d-md-block">
+                    {{-- <a href="/officer/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br> --}}
+                    <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
+                    {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
+
+                </div>
+            @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+           <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
+            @endif
+
+
             </tr>
 
             @endforeach

@@ -60,7 +60,9 @@
           <thead class="thead-dark">
             <tr>
               <th>ลำดับ</th>
+              <th>ชื่อนักศึกษา</th>
               <th>ชื่อสถานประกอบการ</th>
+
                 <th>ชื่อเอกสาร</th>
                 {{-- <th>ปีการศึกษา</th>
                 <th>ภาคเรียน</th>
@@ -75,6 +77,7 @@
             @foreach ($supervision as $row)
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
+              <td>{{$row->fname}}</td>
               <td>{{$row->em_name}}</td>
               <td>{{$row->namefiles}}</td>
               {{-- <td>{{$row->year}}</td>

@@ -174,6 +174,138 @@
                         </td>
                         <tr>@endforeach
 
+
+                            <tr>
+                                @foreach ($registers4 as $row)
+                                {{-- <td ></td> --}}
+                                <td >{{ $row->fname   }}  </td>
+                            {{-- <th scope="row">2</th> --}}
+                            <th >บัตรประชาชน</th>
+                            <td >{{ $row->annotation   }}  </td>
+                            <td >@if ($row->Status_registers === 'รอตรวจสอบ')
+                                <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                            @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                                <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                            @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                                <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                            @endif
+
+
+                                @if ($registers4->isEmpty())
+                                <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                  @else
+
+
+
+                                                                                            @if ($row->namefile === 'บัตรประชาชน')
+                                                                                            <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
+
+
+                                                                                            @else()
+                                                                                            <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                                        @endif
+                                                                                           @endif
+                                </td>
+                                <tr>@endforeach
+
+                                    <tr>
+                                        @foreach ($registers5 as $row)
+                                        {{-- <td ></td> --}}
+                                        <td >{{ $row->fname   }}  </td>
+                                    {{-- <th scope="row">2</th> --}}
+                                    <th >บัตรนักศึกษา</th>
+                                    <td >{{ $row->annotation   }}  </td>
+                                    <td >@if ($row->Status_registers === 'รอตรวจสอบ')
+                                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                    @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                                        <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                                    @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                                        <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                                    @endif
+
+
+                                        @if ($registers5->isEmpty())
+                                        <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                          @else
+
+
+
+                                                                                                    @if ($row->namefile === 'บัตรนักศึกษา')
+                                                                                                    <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
+
+
+                                                                                                    @else()
+                                                                                                    <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                                                @endif
+                                                                                                   @endif
+                                        </td>
+                                        <tr>@endforeach
+
+                                            <tr>
+                                                @foreach ($registers6 as $row)
+                                                {{-- <td ></td> --}}
+                                                <td >{{ $row->fname   }}  </td>
+                                            {{-- <th scope="row">2</th> --}}
+                                            <th >ผลการเรียน</th>
+                                            <td >{{ $row->annotation   }}  </td>
+                                            <td >@if ($row->Status_registers === 'รอตรวจสอบ')
+                                                <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                            @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                                                <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                                            @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                                                <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                                            @endif
+
+
+                                                @if ($registers6->isEmpty())
+                                                <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                  @else
+
+
+
+                                                                                                            @if ($row->namefile === 'ผลการเรียน')
+                                                                                                            <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
+
+
+                                                                                                            @else()
+                                                                                                            <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                                                        @endif
+                                                                                                           @endif
+                                                </td>
+                                                <tr>@endforeach
+
+                                                    <tr>
+                                                        @foreach ($registers7 as $row)
+                                                        {{-- <td ></td> --}}
+                                                        <td >{{ $row->fname   }}  </td>
+                                                    {{-- <th scope="row">2</th> --}}
+                                                    <th >ประวัติส่วนตัว(resume)</th>
+                                                    <td >{{ $row->annotation   }}  </td>
+                                                    <td >@if ($row->Status_registers === 'รอตรวจสอบ')
+                                                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                                    @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                                                        <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                                                    @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                                                        <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                                                    @endif
+
+
+                                                        @if ($registers7->isEmpty())
+                                                        <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                          @else
+
+
+
+                                                                                                                    @if ($row->namefile === 'ประวัติส่วนตัว(resume)')
+                                                                                                                    <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
+
+
+                                                                                                                    @else()
+                                                                                                                    <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                                                                @endif
+                                                                                                                   @endif
+                                                        </td>
+                                                        <tr>@endforeach
                             <tr>
                                 @foreach ($registers17 as $row)
                                 {{-- <td ></td> --}}

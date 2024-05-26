@@ -6,7 +6,7 @@
 
 
 
-@extends('layouts.officermin1')
+@extends('layouts.appteacher3')
 
 @section('content')
 @yield('content')
@@ -22,7 +22,7 @@
 
             <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content ">
-                <div class="modal-header bg-dark text-white ">
+                <div class="modal-header  text-white ">
                   <h5 class="modal-title text center " id="varyModalLabel">ข้อมูลตรวจสอบเอกสาร</h5>
                   {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -33,7 +33,7 @@
                 <div class="modal-body">
 
 
-                  <form method="POST" action="{{url('/officer/updateinformdetails2/'.$informdetails->informdetails_id)}}" enctype="multipart/form-data">
+                  <form method="POST" action="{{url('/teacher/updateinformdetails02/'.$informdetails->informdetails_id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
@@ -84,7 +84,7 @@
               </div>
                 <div class="modal-footer">
 
-                  <a href="/officer/informdetails2"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+                  <a href="/teacher/informdetails1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
                   <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเทดข้อมูล !!');">อัพเดท</button>
                 </div></form>
               </div>
