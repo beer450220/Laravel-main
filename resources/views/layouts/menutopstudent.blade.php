@@ -27,7 +27,7 @@
            {{ Auth::user()->username }}
 
            <span class="avatar avatar-sm mt-2">
-              <img src="../รูปโปรไฟล์/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">
+              <img src="../../รูปโปรไฟล์/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">
               {{-- <img src="" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""> --}}
 
             </span>

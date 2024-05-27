@@ -369,6 +369,27 @@
                                  <!-- end section -->
                             </div> <!-- end section -->
                             <br>
+                            @php
+                            use Carbon\Carbon;
+
+                            function formatThaiDate($date) {
+                                $thaiMonths = [
+                                    1 => 'มกราคม', 2 => 'กุมภาพันธ์', 3 => 'มีนาคม', 4 => 'เมษายน',
+                                    5 => 'พฤษภาคม', 6 => 'มิถุนายน', 7 => 'กรกฎาคม', 8 => 'สิงหาคม',
+                                    9 => 'กันยายน', 10 => 'ตุลาคม', 11 => 'พฤศจิกายน', 12 => 'ธันวาคม'
+                                ];
+
+                                $carbonDate = Carbon::parse($date)->setTimezone('Asia/Bangkok');
+                                $year = $carbonDate->year + 543;
+                                $month = $thaiMonths[$carbonDate->month];
+                                $day = $carbonDate->day;
+                                $time = $carbonDate->format('เวลา H:i:s ');
+
+                                return "$day $month $year $time";
+                            }
+                        @endphp
+
+
                             <div class="container ">
                                 <div class="row ">
                             @foreach ($events as $row)
@@ -383,7 +404,7 @@
                                       <div class="caption card-body">
                                     <div class="card-text my-2">
 
-                                      <p class=" text mb-0 ">วันเวลาการนิเทศ: {{ $row->start}}</p>
+                                      <p class=" text mb-0 ">วันเวลาการนิเทศ: {{ formatThaiDate($row->start) }}</p>
                                       <p class=""><span class=" text-muted">อาจารย์นิเทศ:
                                     {{-- {{ $row->fname }}  {{ $row->surname }} --}}
                                     @foreach ($users2 as $teacherId)
