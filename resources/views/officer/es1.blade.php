@@ -63,12 +63,14 @@
               <th>ชื่อนักศึกษา</th>
               <th>ชื่อสถานประกอบการ</th>
 
-                <th>ชื่อเอกสาร</th>
+                {{-- <th>ชื่อเอกสาร</th> --}}
                 {{-- <th>ปีการศึกษา</th>
                 <th>ภาคเรียน</th>
 
                 <th>สถานะ</th> --}}
-              <th>ไฟล์เอกสาร</th>
+                <th>สถานะเวลานัดนิเทศ</th>
+                <th >ดูข้อมูล</th>
+              {{-- <th>ไฟล์เอกสาร</th> --}}
               {{-- <th>ยืนยันข้อมูล</th> --}}
               {{-- <th>ลบ</th> --}}
             </tr>
@@ -79,7 +81,7 @@
               <td>{{$supervision->firstItem()+$loop->index}}</td>
               <td>{{$row->fname}}</td>
               <td>{{$row->em_name}}</td>
-              <td>{{$row->namefiles}}</td>
+              {{-- <td>{{$row->namefiles}}</td> --}}
               {{-- <td>{{$row->year}}</td>
               <td>{{$row->term}}</td>
               <td>  @if ($row->status === 'รออนุมัติ')
@@ -89,9 +91,20 @@
             @elseif ($row->status === 'ไม่อนุมัติ')
                 <span class="badge badge-pill badge-danger">{{ $row->status}}</span>
             @endif</td> --}}
+            <td class="">
+                @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+               <span class="badge badge-pill badge-warning">{{ $row->Status_events}}</span>
+            @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดแล้ว')
+         <span class="badge badge-pill badge-success ">{{ $row->Status_events}}</span>
+            @elseif ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
+           <span class="badge badge-pill badge-danger ">{{ $row->Status_events}}</span>
+            @endif
 
 
-              <td><a href="/../ไฟล์เอกสารขออนุญาตนิเทศงาน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+               </td>
+ <td class=""><a href="/officer/view1/{{$row->id}}" class="btn mb btn-outline-primary fa-solid fa-eye  "></a></td>
+              {{-- <td><a href="/../ไฟล์เอกสารขออนุญาตนิเทศงาน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td> --}}
+
               {{-- <td>
                 @if ($row->status=== 'รออนุมัติ')
                 <div class="d-grid gap-2 d-md-block">

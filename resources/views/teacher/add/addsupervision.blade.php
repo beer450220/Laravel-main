@@ -298,7 +298,7 @@ $( '#multiple-select-field1' ).select2( {
 
 
         <div class="col-md-3">
-          <label for="inputAddress"class="col-form-label ">รับทราบและยืนยันเวลานัดนิเทศ</label>
+          <label for="inputAddress"class="col-form-label ">สถานะรับทราบและยืนยันเวลานัดนิเทศ</label>
           <select class="form-control select" id="validationSelect2" name="Status_events" required>
             <option value="">กรุณาเลือก</option>
             {{-- @foreach ($users as $row) --}}

@@ -466,6 +466,7 @@ Route::get("/officer/edites1/{id}",[EditController::class,'edites2'])->name('edi
 Route::post("officer/updatees2/{id}",[EditController::class,'updatees2'])->name('updatees2');
 Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
 
+Route::get('/officer/view1/{id}', [HomeController::class,'viewevents1'])->name('viewevents1');
 Route::get("/officer/confirm4/{id}",[EditController::class,'confirm4'])->name('confirm4');
 });
 

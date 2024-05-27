@@ -289,14 +289,14 @@ $( '#multiple-select-field' ).select2( {
 
     </div>
     <div class="col-md-4">
-        <label for="inputAddress"class="col-form-label ">รับทราบและยืนยันเวลานัดนิเทศ</label>
+        <label for="inputAddress"class="col-form-label ">สถานะรับทราบและยืนยันเวลานัดนิเทศ</label>
         <select class="form-control "  name="Status_events" >
           <option value="">กรุณาเลือก</option>
           {{-- @foreach ($users as $row) --}}
           {{-- <optgroup label="Mountain Time Zone"> --}}
             <option value="รอรับทราบและยืนยันเวลานัดนิเทศ"@if($supervisions->Status_events=="รอรับทราบและยืนยันเวลานัดนิเทศ") selected @endif required>รอรับทราบและยืนยันเวลานัดนิเทศ</option>
             <option value="รับทราบและยืนยันเวลานัดแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดแล้ว</option>
-            <option value="ขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>รับทราบและยืนยันเวลานัดแล้ว</option>
+            <option value="ขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ขอเปลี่ยนเวลานัดนิเทศ</option>
           </optgroup>
 
 
