@@ -219,12 +219,12 @@ public function   updateregisteruser(Request $request,$id) {
         // if (File::exists(public_path("file/".$post->filess))) {
         //     File::delete(public_path("file/".$post->filess));
         // }
-        if (File::exists("ลงทะเบียน/".$post->filess)) {
-            File::delete("ลงทะเบียน/".$post->filess);
+        if (File::exists("document/".$post->filess)) {
+            File::delete("document/".$post->filess);
         }
         $file=$request->file("filess");
         $post->filess=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/ลงทะเบียน"),$post->filess);
+        $file->move(\public_path("/document"),$post->filess);
         $request['filess']=$post->filess;
         // $file = $request->file("filess");
         // $post->filess = time() . "_" . $file->getClientOriginalName();
@@ -315,12 +315,12 @@ public function   updateregisteruser(Request $request,$id) {
     // $post->establishment ="-";
     $post->annotation ="-";
     if($request->hasFile("files")){
-        if (File::exists("เอกสารปฏิบัติงานนักศึกษา/".$post->files)) {
-            File::delete("เอกสารปฏิบัติงานนักศึกษา/".$post->files);
+        if (File::exists("document2/".$post->files)) {
+            File::delete("document2/".$post->files);
         }
         $file=$request->file("files");
         $post->files=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/เอกสารปฏิบัติงานนักศึกษา"),$post->files);
+        $file->move(\public_path("/document2"),$post->files);
         $request['files']=$post->files;
     }
     // dd($request);
@@ -711,12 +711,12 @@ $post->update
    $post=users::findOrFail($id);
 
    if($request->hasFile("images")){
-       if (File::exists("รูปโปรไฟล์/".$post->images)) {
-           File::delete("รูปโปรไฟล์/".$post->images);
+       if (File::exists("Profile/".$post->images)) {
+           File::delete("Profile/".$post->images);
        }
        $file=$request->file("images");
         $post->images=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $file->move(\public_path("/Profile"),$post->images);
         $request['images']=$post->images;
      // dd($post);
    }
@@ -1239,12 +1239,12 @@ $post->update
 //    $post->user_id = Auth::user()->id;
 //    $post->Status_supervision ="รอตรวจสอบ";
    if($request->hasFile("filess")){
-       if (File::exists("ไฟล์เอกสารประเมิน/".$post->filess)) {
-           File::delete("ไฟล์เอกสารประเมิน/".$post->filess);
+       if (File::exists("document4/".$post->filess)) {
+           File::delete("document4/".$post->filess);
        }
        $file=$request->file("filess");
         $post->filess=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$post->filess);
+        $file->move(\public_path("/document4"),$post->filess);
         $request['filess']=$post->filess;
      // dd($post);
    }
@@ -1847,12 +1847,12 @@ public function editcategory($category_id) {
    //    $post->user_id = Auth::user()->id;
     //   $post->Status_supervision ="รอตรวจสอบ";
       if($request->hasFile("filess")){
-          if (File::exists("ไฟล์เอกสารประเมิน/".$post->filess)) {
-              File::delete("ไฟล์เอกสารประเมิน/".$post->filess);
+          if (File::exists("document4/".$post->filess)) {
+              File::delete("document4/".$post->filess);
           }
           $file=$request->file("filess");
            $post->filess=time()."_".$file->getClientOriginalName();
-           $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$post->filess);
+           $file->move(\public_path("/document4"),$post->filess);
            $request['filess']=$post->filess;
         // dd($post);
       }
@@ -2235,12 +2235,12 @@ $post->update
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รอตรวจสอบ";
    if($request->hasFile("filess")){
-       if (File::exists("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$post->filess)) {
-           File::delete("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$post->filess);
+       if (File::exists("document1/".$post->filess)) {
+           File::delete("document1/".$post->filess);
        }
        $file=$request->file("filess");
         $post->filess=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)"),$post->filess);
+        $file->move(\public_path("/document1"),$post->filess);
         $request['filess']=$post->filess;
      // dd($post);
    }
@@ -2501,12 +2501,12 @@ $post->update
     // if (File::exists(public_path("file/".$post->filess))) {
     //     File::delete(public_path("file/".$post->filess));
     // }
-    if (File::exists("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess)) {
-        File::delete("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess);
+    if (File::exists("document3/".$post->filess)) {
+        File::delete("document3/".$post->filess);
     }
     $file=$request->file("filess");
     $post->filess=time()."_".$file->getClientOriginalName();
-    $file->move(\public_path("/ไฟล์เอกสารขออนุญาตนิเทศงาน"),$post->filess);
+    $file->move(\public_path("/document3"),$post->filess);
     $request['filess']=$post->filess;
     // $file = $request->file("filess");
     // $post->filess = time() . "_" . $file->getClientOriginalName();
@@ -2601,12 +2601,12 @@ $post->update
 
      // dd($post);
      if($request->hasFile("filess")){
-        if (File::exists("ไฟล์เอกสารดาวน์โหลด/".$post->filess)) {
-            File::delete("ไฟล์เอกสารดาวน์โหลด/".$post->filess);
+        if (File::exists("download/".$post->filess)) {
+            File::delete("download/".$post->filess);
         }
         $file=$request->file("filess");
          $post->filess=time()."_".$file->getClientOriginalName();
-         $file->move(\public_path("/ไฟล์เอกสารดาวน์โหลด"),$post->filess);
+         $file->move(\public_path("/download"),$post->filess);
          $request['filess']=$post->filess;
       // dd($post);
     }
@@ -2835,12 +2835,12 @@ $post->update
    $post=users::findOrFail($id);
 
    if($request->hasFile("images")){
-       if (File::exists("รูปโปรไฟล์/".$post->images)) {
-           File::delete("รูปโปรไฟล์/".$post->images);
+       if (File::exists("Profile/".$post->images)) {
+           File::delete("Profile/".$post->images);
        }
        $file=$request->file("images");
         $post->images=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $file->move(\public_path("/Profile"),$post->images);
         $request['images']=$post->images;
      // dd($post);
    }
@@ -3086,12 +3086,12 @@ $post->update
     $post=Users::findOrFail($id);
 
    if($request->hasFile("images")){
-       if (File::exists("รูปโปรไฟล์/".$post->images)) {
-           File::delete("รูปโปรไฟล์/".$post->images);
+       if (File::exists("Profile/".$post->images)) {
+           File::delete("Profile/".$post->images);
        }
        $file=$request->file("images");
         $post->images=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $file->move(\public_path("/Profile"),$post->images);
         $request['images']=$post->images;
      // dd($post);
    }
@@ -3276,12 +3276,12 @@ $post->update
    $post=establishment::findOrFail($id);
 
    if($request->hasFile("images")){
-    if (File::exists("รูปสถานประกอบการ/".$post->images)) {
-        File::delete("รูปสถานประกอบการ/".$post->images);
+    if (File::exists("Establishment/".$post->images)) {
+        File::delete("Establishment/".$post->images);
     }
     $file=$request->file("images");
      $post->images=time()."_".$file->getClientOriginalName();
-     $file->move(\public_path("/รูปสถานประกอบการ"),$post->images);
+     $file->move(\public_path("/Establishment"),$post->images);
      $request['images']=$post->images;
   // dd($post);
 }

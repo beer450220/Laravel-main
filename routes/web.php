@@ -122,42 +122,42 @@ Route::get("/studenthome1",[HomeController::class,'studentHome1'])->name('studen
 
 
     //สถานประกอบการ
-    Route::get("/studenthome/establishmentuser",[HomeController::class,'establishmentuser'])->name('student.establishmentuser');
+    // Route::get("/studenthome/establishmentuser",[HomeController::class,'establishmentuser'])->name('student.establishmentuser');
 
      //ดูสถานประกอบการ
-       Route::get("/studenthome/establishmentuser4",[HomeController::class,'establishmentuser4'])->name('establishmentuser4');
-       Route::get("/studenthome/establishmentuseredit/{id}",[EditController::class,'establishmentuseredit'])->name('establishmentuseredit');
+    //    Route::get("/studenthome/establishmentuser4",[HomeController::class,'establishmentuser4'])->name('establishmentuser4');
+    //    Route::get("/studenthome/establishmentuseredit/{id}",[EditController::class,'establishmentuseredit'])->name('establishmentuseredit');
 
        //ถูกใจ
-       Route::get('add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add_to_cart');
-         Route::get('cart', [HomeController::class, 'cart'])->name('cart');
-         Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove_from_cart');
-         Route::patch('update-cart', [HomeController::class, 'update'])->name('update_cart');
+    //    Route::get('add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add_to_cart');
+    //      Route::get('cart', [HomeController::class, 'cart'])->name('cart');
+    //      Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove_from_cart');
+    //      Route::patch('update-cart', [HomeController::class, 'update'])->name('update_cart');
          //ค้นหาข้อมูล
-         Route::get('/search',[HomeController::class,'search'])->name('search');
+        //  Route::get('/search',[HomeController::class,'search'])->name('search');
 
          //ยืนยันสถานประกอบการ
-         Route::get("/studenthome/establishmentstatus/{id}",[HomeController::class,'establishmentstatus'])->name('establishmentstatus');
+        //  Route::get("/studenthome/establishmentstatus/{id}",[HomeController::class,'establishmentstatus'])->name('establishmentstatus');
 
-         Route::get("/studenthome/editestablishmentstatus/{id}",[HomeController::class,'editestablishmentstatus'])->name('editestablishmentstatus');
+        //  Route::get("/studenthome/editestablishmentstatus/{id}",[HomeController::class,'editestablishmentstatus'])->name('editestablishmentstatus');
 
 
-         Route::post("/studenthome/establishmentstatusupdate/{id}",[EditController::class,'establishmentstatusupdate'])->name('establishmentstatusupdate');
+        //  Route::post("/studenthome/establishmentstatusupdate/{id}",[EditController::class,'establishmentstatusupdate'])->name('establishmentstatusupdate');
             // Route::get("/studenthome/establishmentstatusedit/{id}",[EditController::class,'statusedit'])->name('statusedit');
-            Route::get("/studenthome/test/{id}",[EditController::class,'test'])->name('test');
+            // Route::get("/studenthome/test/{id}",[EditController::class,'test'])->name('test');
     // Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
     // Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
     // Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
     // Route::get("/studenthome/calendar",[HหomeController::class,'calendar'])->name('student.calendar');
 
     //ปฏิทินสหกิจ
-    Route::get("/studenthome/Announcement",[HomeController::class,'Announcement'])->name('Announcement');
+    // Route::get("/studenthome/Announcement",[HomeController::class,'Announcement'])->name('Announcement');
 
-    //ลงทะเบียน
+
             //ประกาศตอบรับ
     //    Route::get("/studenthome/acceptancedocument",[HomeController::class,'acceptancedocument'])->name('student.acceptancedocument');
 
-
+ //ลงทะเบียน
     // Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
     Route::get("/studenthome/edit9register/{id}",[Register2Controller::class,'edit9register'])->name('edit9register');
 Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
@@ -203,15 +203,15 @@ Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruse
     Route::get('/studenthome/delete/{id}', [EditController::class,'delregister'])->name('delregister');
 
 
-    Route::post("/studenthome/register",[AddController::class,'sregister2'])->name('sregister2');
+    // Route::post("/studenthome/register",[AddController::class,'sregister2'])->name('sregister2');
 
-    Route::get("/studenthome/addstudent",[AddController::class,'addstudent'])->name('addstudent');
-    Route::post("/studenthome/addstudent1",[AddController::class,'addstudent1'])->name('addstudent1');
+    // Route::get("/studenthome/addstudent",[AddController::class,'addstudent'])->name('addstudent');
+    // Route::post("/studenthome/addstudent1",[AddController::class,'addstudent1'])->name('addstudent1');
 
 
 
-    Route::post('/register1/add', [AddController::class,'register2'])->name('register2');
-    Route::get("/studenthome/timeline",[HomeController::class,'timeline'])->name('student.timeline');
+    // Route::post('/register1/add', [AddController::class,'register2'])->name('register2');
+    // Route::get("/studenthome/timeline",[HomeController::class,'timeline'])->name('student.timeline');
 
     Route::get("/studenthome/documents",[HomeController::class,'documents'])->name('student.documents');
     Route::get("/studenthome/documents1",[HomeController::class,'documents3'])->name('documents3');
@@ -242,34 +242,34 @@ Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruse
     // Route::get("/studenthome/record",[HomeController::class,'record'])->name('student.record');
 
     //รายงานผลการปฏิบัติงาน
-    Route::get("/studenthome/report",[HomeController::class,'report'])->name('student.report');
-    Route::get("/studenthome/editreport6/{report_id}",[EditController::class,'editreport'])->name('editreport');
+    // Route::get("/studenthome/report",[HomeController::class,'report'])->name('student.report');
+    // Route::get("/studenthome/editreport6/{report_id}",[EditController::class,'editreport'])->name('editreport');
     //รายงานโครงการ
-    Route::get("/studenthome/addreport2",[AddController::class,'addreport2'])->name('addreport2');
-    Route::post("/studenthome/addreport",[AddController::class,'addreport'])->name('addreport');
-    Route::get("/studenthome/editreport/{report_id}",[EditController::class,'editreport'])->name('editreport');
-    Route::post("/studenthome/updatereport/{report_id}",[EditController::class,'updatereport'])->name('updatereport');
+    // Route::get("/studenthome/addreport2",[AddController::class,'addreport2'])->name('addreport2');
+    // Route::post("/studenthome/addreport",[AddController::class,'addreport'])->name('addreport');
+    // Route::get("/studenthome/editreport/{report_id}",[EditController::class,'editreport'])->name('editreport');
+    // Route::post("/studenthome/updatereport/{report_id}",[EditController::class,'updatereport'])->name('updatereport');
     // Route::get('/studenthome/deletereport/{report_id}', [EditController::class,'delreport'])->name('delreport');
 
    // PowerPoint การนำเสนอ
-    Route::get("/studenthome/addreport3",[reportController::class,'addreport3'])->name('addreport3');
-    Route::post("/studenthome/addreportuser3",[reportController::class,'addreportuser3'])->name('addreportuser3');
-    Route::get("/studenthome/editreport3/{report_id}",[reportController::class,'editreport3'])->name('editreport3');
+    // Route::get("/studenthome/addreport3",[reportController::class,'addreport3'])->name('addreport3');
+    // Route::post("/studenthome/addreportuser3",[reportController::class,'addreportuser3'])->name('addreportuser3');
+    // Route::get("/studenthome/editreport3/{report_id}",[reportController::class,'editreport3'])->name('editreport3');
 
  // Onepage ของโครงการ (โปสเตอร์)
- Route::get("/studenthome/addreport4",[reportController::class,'addreport4'])->name('addreport4');
- Route::post("/studenthome/addreportuser4",[reportController::class,'addreportuser4'])->name('addreportuser4');
- Route::get("/studenthome/editreport4/{report_id}",[reportController::class,'editreport4'])->name('editreport4');
+//  Route::get("/studenthome/addreport4",[reportController::class,'addreport4'])->name('addreport4');
+//  Route::post("/studenthome/addreportuser4",[reportController::class,'addreportuser4'])->name('addreportuser4');
+//  Route::get("/studenthome/editreport4/{report_id}",[reportController::class,'editreport4'])->name('editreport4');
 
  // รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)
- Route::get("/studenthome/addreport5",[reportController::class,'addreport5'])->name('addreport5');
- Route::post("/studenthome/addreportuser5",[reportController::class,'addreportuser5'])->name('addreportuser5');
- Route::get("/studenthome/editreport5/{report_id}",[reportController::class,'editreport5'])->name('editreport5');
+//  Route::get("/studenthome/addreport5",[reportController::class,'addreport5'])->name('addreport5');
+//  Route::post("/studenthome/addreportuser5",[reportController::class,'addreportuser5'])->name('addreportuser5');
+//  Route::get("/studenthome/editreport5/{report_id}",[reportController::class,'editreport5'])->name('editreport5');
 
 
-    Route::get("/studenthome/listofteachers",[HomeController::class,'listofteachers'])->name('student.listofteachers');
+    // Route::get("/studenthome/listofteachers",[HomeController::class,'listofteachers'])->name('student.listofteachers');
 
-    Route::get("/studenthome/calendar2",[HomeController::class,'calendar2'])->name('student.calendar2');
+    // Route::get("/studenthome/calendar2",[HomeController::class,'calendar2'])->name('student.calendar2');
 
     //นิเทศงาน
     Route::get("/studenthome/calendar2confirm",[HomeController::class,'calendar2confirm'])->name('calendar2confirm');
@@ -311,17 +311,17 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
     Route::get('/officer/search',[HomeController::class,'searchestablishment'])->name('searchestablishment');
     Route::get("/officer/establishmentuser1",[HomeController::class,'establishmentuser1'])->name('officer.establishmentuser1');
 //เพิ่ม
-    Route::get("/officer/addestablishmentuser1",[addController::class,'addestablishmentuser1'])->name('addestablishmentuser1');
-    Route::post('/officer/establishmentuser1', [AddController::class,'addestablishment'])->name('addestablishment');
+    // Route::get("/officer/addestablishmentuser1",[addController::class,'addestablishmentuser1'])->name('addestablishmentuser1');
+    // Route::post('/officer/establishmentuser1', [AddController::class,'addestablishment'])->name('addestablishment');
 
-    Route::get('/officer/establishmentuser1/{id}', [EditController::class,'editestablishment'])->name('editestablishment');
+    // Route::get('/officer/establishmentuser1/{id}', [EditController::class,'editestablishment'])->name('editestablishment');
  // Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
 
 
 
-    Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
-    Route::get('/officer/delete/{id}', [EditController::class,'delestablishment'])->name('delestablishment');
-    Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
+    // Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
+    // Route::get('/officer/delete/{id}', [EditController::class,'delestablishment'])->name('delestablishment');
+    // Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
     Route::get('/officer/view/{id}', [HomeController::class,'viewestablishment'])->name('viewestablishment');
 
 //ข้อมูลนักศึกษา
@@ -339,12 +339,12 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
 
 
      //หมวดหมู่
-     Route::get("/officer/category",[HomeController::class,'category'])->name('category');
-     Route::get("/officer/addcategory",[addController::class,'addcategory'])->name('addcategory');
-     Route::post("/officer/addcategory1",[addController::class,'addcategory1'])->name('addcategory1');
-     Route::get("/officer/editcategory/{category_id}",[EditController::class,'editcategory'])->name('editcategory');
-     Route::post("/officer/updatcategory/{category_id}",[EditController::class,'updatcategory'])->name('updatcategory');
-     Route::get('/officer/deletcategory/{category_id}', [EditController::class,'delcategory'])->name('delcategory');
+    //  Route::get("/officer/category",[HomeController::class,'category'])->name('category');
+    //  Route::get("/officer/addcategory",[addController::class,'addcategory'])->name('addcategory');
+    //  Route::post("/officer/addcategory1",[addController::class,'addcategory1'])->name('addcategory1');
+    //  Route::get("/officer/editcategory/{category_id}",[EditController::class,'editcategory'])->name('editcategory');
+    //  Route::post("/officer/updatcategory/{category_id}",[EditController::class,'updatcategory'])->name('updatcategory');
+    //  Route::get('/officer/deletcategory/{category_id}', [EditController::class,'delcategory'])->name('delcategory');
 
 
 
@@ -383,10 +383,10 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
 
 //เอกสารฝึกประสบการณ์
 //ค้นหา
-Route::get('/officer/search6',[HomeController::class,'searchreport2'])->name('searchreport2');
-    Route::get("/officer/experiencereport2",[HomeController::class,'experiencereport2']);
-    Route::get("/teacher/editexperiencereport2/{report_id}",[EditController::class,'editexperiencereport2'])->name('editexperiencereport2');
-    Route::post("/teacher/updateexperiencereport2/{report_id}",[EditController::class,'updateexperiencereport2'])->name('updateexperiencereport2');
+// Route::get('/officer/search6',[HomeController::class,'searchreport2'])->name('searchreport2');
+//     Route::get("/officer/experiencereport2",[HomeController::class,'experiencereport2']);
+//     Route::get("/teacher/editexperiencereport2/{report_id}",[EditController::class,'editexperiencereport2'])->name('editexperiencereport2');
+//     Route::post("/teacher/updateexperiencereport2/{report_id}",[EditController::class,'updateexperiencereport2'])->name('updateexperiencereport2');
 
 
     // Route::get("/officer/assessmentreport2",[HomeController::class,'assessmentreport2']);
@@ -462,9 +462,9 @@ Route::get('/officer/search5',[HomeController::class,'searches'])->name('searche
 Route::get("/officer/es1",[HomeController::class,'es2'])->name('es2');
 // Route::get("/teacher/addes1",[addController::class,'addes1'])->name('addes1');
 // Route::post("/teacher/addes2",[addController::class,'addes2'])->name('addes2');
-Route::get("/officer/edites1/{id}",[EditController::class,'edites2'])->name('edites2');
-Route::post("officer/updatees2/{id}",[EditController::class,'updatees2'])->name('updatees2');
-Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
+// Route::get("/officer/edites1/{id}",[EditController::class,'edites2'])->name('edites2');
+// Route::post("officer/updatees2/{id}",[EditController::class,'updatees2'])->name('updatees2');
+// Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
 
 Route::get('/officer/view1/{id}', [HomeController::class,'viewevents1'])->name('viewevents1');
 Route::get("/officer/confirm4/{id}",[EditController::class,'confirm4'])->name('confirm4');
@@ -563,17 +563,17 @@ Route::get('/teacher/search09',[HomeController::class,'searchestimate2'])->name(
 
 
 
-    Route::get("/teacher/calendar2",[HomeController::class,'calendar3'])->name('calendar3');
+    // Route::get("/teacher/calendar2",[HomeController::class,'calendar3'])->name('calendar3');
 
-    Route::get("/teacher/calendar",[HomeController::class,'calendar4'])->name('calendar4');
+    // Route::get("/teacher/calendar",[HomeController::class,'calendar4'])->name('calendar4');
 
-    Route::get("/teacher/register",[HomeController::class,'registeruser1'])->name('registeruser1');
-    Route::get("/teacher/viewregisters/{id}",[EditController::class,'viewregisters'])->name('viewregisters');
+    // Route::get("/teacher/register",[HomeController::class,'registeruser1'])->name('registeruser1');
+    // Route::get("/teacher/viewregisters/{id}",[EditController::class,'viewregisters'])->name('viewregisters');
 
-    Route::get("/teacher/advisor1",[HomeController::class,'advisor1'])->name('teacher.advisor1');
+    // Route::get("/teacher/advisor1",[HomeController::class,'advisor1'])->name('teacher.advisor1');
     //ค้นหา
-    Route::get('/teacher/search4',[HomeController::class,'searchreportresults'])->name('searchreportresults');
-    Route::get("/teacher/reportresults1",[HomeController::class,'reportresults1'])->name('teacher.reportresults1');
+    // Route::get('/teacher/search4',[HomeController::class,'searchreportresults'])->name('searchreportresults');
+    // Route::get("/teacher/reportresults1",[HomeController::class,'reportresults1'])->name('teacher.reportresults1');
 
 
 //นิเทศงาน
@@ -593,13 +593,13 @@ Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->na
 
 //เอกสารขออนุญาตนิเทศงาน(สก10)
 //ค้นหา
-Route::get('/teacher/search2',[HomeController::class,'searches1'])->name('searches1');
-Route::get("/teacher/es1",[HomeController::class,'es1'])->name('es1');
-Route::get("/teacher/addes1",[addController::class,'addes1'])->name('addes1');
-Route::post("/teacher/addes2",[addController::class,'addes2'])->name('addes2');
-Route::get("/teacher/edites1/{id}",[EditController::class,'edites1'])->name('edites1');
-Route::post("teacher/updatees1/{id}",[EditController::class,'updatees1'])->name('updatees1');
-Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
+// Route::get('/teacher/search2',[HomeController::class,'searches1'])->name('searches1');
+// Route::get("/teacher/es1",[HomeController::class,'es1'])->name('es1');
+// Route::get("/teacher/addes1",[addController::class,'addes1'])->name('addes1');
+// Route::post("/teacher/addes2",[addController::class,'addes2'])->name('addes2');
+// Route::get("/teacher/edites1/{id}",[EditController::class,'edites1'])->name('edites1');
+// Route::post("teacher/updatees1/{id}",[EditController::class,'updatees1'])->name('updatees1');
+// Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
 
 //ลงทะเบียน
 //ค้นหา

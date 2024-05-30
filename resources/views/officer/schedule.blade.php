@@ -77,7 +77,7 @@
               <td class="col-1 text center">{{$schedules->firstItem()+$loop->index}}</td>
 
               <td>{{$row->namefile}}</td>
-              <td><a href="../ไฟล์เอกสารดาวน์โหลด/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td><a href="../download/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td>
                 @if ($row->status === '1')
                     <span class="badge badge-pill badge-warning">สำหรับนักศึกษา</span>

@@ -83,7 +83,7 @@
                   @endif
               </td>
               <td>{{ $row->annotation }}</td>
-              <td><a href="../ลงทะเบียน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td><a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 {{-- download --}}
               <td>
                 @if ($row->Status_registers === 'รอตรวจสอบ')

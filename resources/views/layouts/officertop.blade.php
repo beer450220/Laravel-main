@@ -267,7 +267,7 @@
                             <h4 class="mt-4"   ></h4>
 
                             <img class="img-profile rounded-circle"
-                                src="/รูปโปรไฟล์/{{ Auth::user()->images }}">
+                                src="/Profile/{{ Auth::user()->images }}">
                         </a>
                         {{-- <img src="" alt="..." class="avatar-img rounded-circle"> --}}
                         <!-- Dropdown - User Information -->

@@ -132,7 +132,7 @@ class registerController extends Controller
         if($request->hasFile("images")){
             $file=$request->file("images");
              $imageName=time().'_'.$file->getClientOriginalName();
-            $file->move(\public_path("/รูปโปรไฟล์"),$imageName);
+            $file->move(\public_path("/Profile"),$imageName);
 
 
             $post =new Users([
@@ -175,7 +175,7 @@ class registerController extends Controller
         if($request->hasFile("images")){
             $file=$request->file("images");
              $imageName=time().'_'.$file->getClientOriginalName();
-            $file->move(\public_path("/รูปโปรไฟล์"),$imageName);
+            $file->move(\public_path("/Profile"),$imageName);
 
 
             $post =new Users([

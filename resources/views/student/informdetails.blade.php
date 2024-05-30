@@ -493,7 +493,7 @@
 
 {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-<a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+<a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
 </span>
 
 
@@ -544,7 +544,7 @@
 
                    {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                    <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-                   <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                   <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                    </span>
 
 
@@ -594,7 +594,7 @@
 
                    {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
                    <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-                   <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                   <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                    </span>
 
 
@@ -718,7 +718,7 @@
 @endforeach </h2>
 {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-<a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+<a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
 </div>
 <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
 <div class="card-body"> <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
@@ -759,7 +759,7 @@
              @endif
          @endforeach </h2>
          <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-<a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+<a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
          {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
            </div>
            <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
@@ -802,7 +802,7 @@
          @endforeach </h2>
          {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
          <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-         <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+         <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
            </div>
            <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
              <div class="card-body"> <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
@@ -923,7 +923,7 @@
 @endforeach</h2>
 {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-<a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+<a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
 </div>
 <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
 <div class="card-body"> <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
@@ -964,7 +964,7 @@
              @endif
          @endforeach</h2>
          <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-         <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+         <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
          {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
            </div>
            <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
@@ -1007,7 +1007,7 @@
          @endforeach</h2>
          {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
          <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
-         <a href="../เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+         <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
            </div>
            <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
              <div class="card-body"> <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>

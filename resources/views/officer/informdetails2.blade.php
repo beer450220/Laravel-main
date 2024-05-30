@@ -99,7 +99,7 @@
                     @endif
                 </td>
                 <td>{{ $row->annotation }}</td>
-                <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td><a href="/document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td>
                 @if ($row->Status_informdetails=== 'รอตรวจสอบ')
                 <div class="d-grid gap-2 d-md-block">

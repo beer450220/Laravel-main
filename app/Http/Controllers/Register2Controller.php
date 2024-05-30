@@ -95,7 +95,7 @@ class Register2Controller extends Controller
                 if($request->hasFile("filess")){
                   $file=$request->file("filess");
                    $imageName=time().'_'.$file->getClientOriginalName();
-                  $file->move(\public_path("/ลงทะเบียน"),$imageName);
+                  $file->move(\public_path("/document"),$imageName);
 
 
                   $post =new registers([
@@ -191,7 +191,7 @@ public function addregisteruser3(Request $request) {
             if($request->hasFile("filess")){
               $file=$request->file("filess");
                $imageName=time().'_'.$file->getClientOriginalName();
-              $file->move(\public_path("/ลงทะเบียน"),$imageName);
+              $file->move(\public_path("/document"),$imageName);
 
 
               $post =new registers([
@@ -279,7 +279,7 @@ public function addregisteruser3(Request $request) {
                 if($request->hasFile("filess")){
                   $file=$request->file("filess");
                    $imageName=time().'_'.$file->getClientOriginalName();
-                  $file->move(\public_path("/ลงทะเบียน"),$imageName);
+                  $file->move(\public_path("/document"),$imageName);
 
 
                   $post =new registers([
@@ -368,7 +368,7 @@ public function addregisteruser3(Request $request) {
                     if($request->hasFile("filess")){
                       $file=$request->file("filess");
                        $imageName=time().'_'.$file->getClientOriginalName();
-                      $file->move(\public_path("/ลงทะเบียน"),$imageName);
+                      $file->move(\public_path("/document"),$imageName);
 
 
                       $post =new registers([
@@ -456,7 +456,7 @@ public function addregisteruser3(Request $request) {
                         if($request->hasFile("filess")){
                           $file=$request->file("filess");
                            $imageName=time().'_'.$file->getClientOriginalName();
-                          $file->move(\public_path("/ลงทะเบียน"),$imageName);
+                          $file->move(\public_path("/document"),$imageName);
 
 
                           $post =new registers([
@@ -543,7 +543,7 @@ public function addregisteruser3(Request $request) {
                             if($request->hasFile("filess")){
                               $file=$request->file("filess");
                                $imageName=time().'_'.$file->getClientOriginalName();
-                              $file->move(\public_path("/ลงทะเบียน"),$imageName);
+                              $file->move(\public_path("/document"),$imageName);
 
 
                               $post =new registers([

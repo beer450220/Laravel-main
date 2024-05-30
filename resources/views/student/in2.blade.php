@@ -300,7 +300,8 @@
                                     <h2 class="fs-title col">ตรวจสอบเอกสาร:{{ Auth::user()->username }} {{ Auth::user()->fname }}</h2>
 
                                 </div>
-                                <div class="col-4">
+                                <div class="col-5">
+                                    <i class="fa-solid fa-check"></i>มีเอกสารแล้ว  <i class="fa-solid fa-xmark"></i>ไม่มีเอกสาร
                                     {{-- <h2 class="steps">ขั้นตอน 2 - 2</h2> --}}
                                 </div>
                             </div><div class="col-6">

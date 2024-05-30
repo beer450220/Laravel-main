@@ -321,7 +321,7 @@
                       <td> {{ $row->namefile}}</td>
                      <td></td>
                      <td></td>
-                     <td><a href="/ไฟล์เอกสารดาวน์โหลด/{{ $row->filess}}" target="_BLANK"><i class="fe fe-arrow-down-circle fe-24"></i></a></td>
+                     <td><a href="/download/{{ $row->filess}}" target="_BLANK"><i class="fe fe-arrow-down-circle fe-24"></i></a></td>
 {{-- download --}}
                     </tr>
 

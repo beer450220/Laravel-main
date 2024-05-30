@@ -76,7 +76,7 @@
             @endif</td>
               {{-- <td>{{$row->year}}</td>
                <td>{{$row->term}}</td> --}}
-              <td><a href="/เอกสารปฏิบัติงานนักศึกษา/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td><a href="/document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               {{-- <td class="text-danger">{{$row->Status_informdetails}}</td> --}}
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}
 

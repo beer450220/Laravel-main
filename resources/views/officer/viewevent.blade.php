@@ -260,7 +260,7 @@
                         {{-- <span>  <input type="text" class="form-control" name="annotation" value=" "disabled required></span> --}}
 
 
-                        <span> <a href="../../ไฟล์เอกสารขออนุญาตนิเทศงาน/{{ $establishments->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </span>  </div>
+                        <span> <a href="../../document3/{{ $establishments->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </span>  </div>
                       </div>
 
                 <div class="modal-footer">

@@ -89,7 +89,7 @@
                 <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
             @endif</td>
               <td>{{$row->annotation}}</td>
-              <td><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td><a href="/document1/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 
 
               <td><a href="/officer/editacceptancedocument1/{{$row->acceptance_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>

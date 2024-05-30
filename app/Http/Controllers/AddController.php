@@ -234,7 +234,7 @@ class AddController extends Controller
               if($request->hasFile("filess")){
                 $file=$request->file("filess");
                  $imageName=time().'_'.$file->getClientOriginalName();
-                $file->move(\public_path("/ลงทะเบียน"),$imageName);
+                $file->move(\public_path("/document"),$imageName);
 
 
                 $post =new registers([
@@ -395,7 +395,7 @@ class AddController extends Controller
           if($request->hasFile("images")){
             $file=$request->file("images");
              $imageName=time().'_'.$file->getClientOriginalName();
-            $file->move(\public_path("/รูปสถานประกอบการ"),$imageName);
+            $file->move(\public_path("/Establishment"),$imageName);
 
 
               $post =new establishment([
@@ -456,7 +456,7 @@ class AddController extends Controller
       if($request->hasFile("files")){
         $file=$request->file("files");
          $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/เอกสารปฏิบัติงานนักศึกษา"),$imageName);
+        $file->move(\public_path("/document2"),$imageName);
 {
 
         $post =new informdetails
@@ -867,7 +867,7 @@ if($request->hasFile("filess"))
       {
         $file=$request->file("filess");
          $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$imageName);
+        $file->move(\public_path("/document4"),$imageName);
     // $post=Event::findOrFail($id);
 
     $post =new supervision
@@ -917,7 +917,7 @@ if($request->hasFile("filess"))
     {
       $file=$request->file("filess");
        $imageName=time().'_'.$file->getClientOriginalName();
-      $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$imageName);
+      $file->move(\public_path("/document4"),$imageName);
   // $post=Event::findOrFail($id);
 
   $post =new supervision
@@ -1250,7 +1250,7 @@ if($request->hasFile("filess"))
       {
         $file=$request->file("filess");
          $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)"),$imageName);
+        $file->move(\public_path("/document1"),$imageName);
     // $post=Event::findOrFail($id);
 
     $post =new acceptance
@@ -1391,7 +1391,7 @@ public function addsupervision()
     {
       $file=$request->file("filess");
        $imageName=time().'_'.$file->getClientOriginalName();
-      $file->move(\public_path("/ไฟล์เอกสารขออนุญาตนิเทศงาน"),$imageName);
+      $file->move(\public_path("/document3"),$imageName);
       $post =new Event
       ([
           // "title" => $request->title,
@@ -1524,7 +1524,7 @@ if($request->hasFile("filess"))
       {
         $file=$request->file("filess");
          $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/ไฟล์เอกสารดาวน์โหลด"),$imageName);
+        $file->move(\public_path("/download"),$imageName);
     // $post=Event::findOrFail($id);
 
     $post =new  schedule

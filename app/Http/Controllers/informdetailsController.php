@@ -51,7 +51,7 @@ class informdetailsController extends Controller
         if($request->hasFile("files")){
           $file=$request->file("files");
            $imageName=time().'_'.$file->getClientOriginalName();
-          $file->move(\public_path("/เอกสารปฏิบัติงานนักศึกษา"),$imageName);
+          $file->move(\public_path("/document2"),$imageName);
   {
 
           $post =new informdetails
@@ -109,7 +109,7 @@ class informdetailsController extends Controller
     if($request->hasFile("files")){
       $file=$request->file("files");
        $imageName=time().'_'.$file->getClientOriginalName();
-      $file->move(\public_path("/เอกสารปฏิบัติงานนักศึกษา"),$imageName);
+      $file->move(\public_path("/document2"),$imageName);
 {
 
       $post =new informdetails

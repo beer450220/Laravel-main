@@ -529,7 +529,7 @@ allowClear: true,
 
                                         {{-- {{ $row->fname}} {{ $row->surname}} --}}
                                     </span></p>
-                                      <p class=""><span class=" text-muted">ไฟล์เอกสาร:  <a href="/ไฟล์เอกสารขออนุญาตนิเทศงาน/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
+                                      <p class=""><span class=" text-muted">ไฟล์เอกสาร:  <a href="/document3/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
 
                                       <hr>
                                       <p class=" text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
