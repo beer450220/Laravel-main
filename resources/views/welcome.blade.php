@@ -27,6 +27,30 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+
+
+
+            #background-video {
+   width: 100vw;
+   height: 100vh;
+   object-fit: cover;
+   position: fixed;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   z-index: -1;
+}
+@media (max-width: 750px) {
+   #background-video {
+      display: none;
+   }
+   body {
+      background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
+      background-size: cover;
+   }
+}
+
         </style>
     </head>
 
@@ -69,8 +93,8 @@
             </a>
   {{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
             <ul class="nav col-11 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="/cooperative" class="nav-link px-2 text-dark">แบบฟอร์มสหกิจ</a></li>
-              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></li>
+              <li><a href="/cooperative" class="nav-link px-2 text-light">แบบฟอร์มสหกิจ</a></li>
+              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-light">คู่มือการใช้งาน</a></li>
               {{-- <li><div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     สมัครสหกิจ
@@ -243,109 +267,52 @@
             {{-- <section class="h-100"> --}}
 
 
+                {{-- <video autoplay muted loop id="myVideo">
+                    <source src="{{ asset('video/1.mp4') }}" type="video/mp4">
+                  </video> --}}
+                  <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
+                    <source src="{{ asset('video/1.mp4') }}" type="video/mp4">
+                  </video>
 
-
-
-              <div class="container h-100 ">
-                <div class="row justify-content-sm-center h-100 ">
-                  <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-9">
-                    <div class="text-center my-5">
-
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-                    <div class="card shadow-lg">
-                              <div class="card-footer py-2 border-0 menu-bartop3">
-
-                                      </div>
-                                      <div class="card-body p-5 menu-bar2">
-
-                                        <h1 class="fs-4 card-title fw-bold mb-4 text-center">ระบบสารสนเทศสหกิจศึกษา</h1>
-                                        <br>
-                                         <form method="POST" action="{{ route('login') }}"> @csrf
-                                          <div class=" input-group mb-3">
-                                            @if ($message = Session::get('success'))
-                                            <div class="alert alert-success">
-                                                <p>{{ $message }}</p>
-                                            </div>
-                                            @endif
-                                            @if ($message = Session::get('error'))
-
-                                            <div class=" alert alert-danger alert-dismissible fade show "  role="alert">
-
-                                              <p>{{ $message }}</p>
-                                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            </div>
-                                            @endif
-                                            <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
-                                                              <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
-                                                              <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
-
-                                                              @error('username')
-                                                                  <span class="invalid-feedback" role="alert">
-                                                                      <strong>{{ $message }}</strong>
-                                                                  </span>
-                                                              @enderror
-                                            <!-- <div class="invalid-feedback">
-                                              Email is invalid
-                                            </div> -->
-                                          </div>
-
-
-
-
-
-                                                          <div class=" input-group mb-3">
-                                            <label class="mb-2 input-group" for="email">รหัสผ่าน</label> <br>
-                                                              <span class="input-group-text bg-warning"><i class=" bi bi-lock"></i></span>
-
-                                                              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="current-password">
-
-                                                              @error('password')
-                                                                  <span class="invalid-feedback" role="alert">
-                                                                      <strong>{{ $message }}</strong>
-                                                                  </span>
-                                                              @enderror
-
-                                              <div class="invalid-feedback">
-                                                Password is required
-                                              </div>
-                                          </div>
-                                          <div class="d-flex align-items-center">
-                                            <div class="form-check">
-                                              {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                              <label class="form-check-label" for="remember">
-                                                  {{ __('Remember Me') }}
-                                              </label> --}}
-                                            </div>
-                                          <div class=" text-end">
-                                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;
-                                            <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a>
-
-                                            <button type="submit"  class="btn btn-primary ms-auto text-white bg-dark">
-                                                              เข้าสู่ระบบ
-                                            </button>
-                                          </div>
-                                            {{-- name="submit" --}}
-                                          </div>
-                                                          {{-- <div class="d-flex align-items-center">
-
-                                                            @if (Route::has('password.request'))
-                                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                                {{ __('Forgot Your Password?') }}
-                                                            </a>
-                                                        @endif
-                                            </div> --}}
-
-
-
-                                        </form>
-                                      </div>
+                    {{-- <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}"> --}}
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">sss
+                        <img src="{{ asset('icons/1.png') }}" class="d-block w-10" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>ให้นักนักศึกษาลงทะเบียนเข้าสู่ระบบสารสนเทศสหกิจศึกษา</h5>
+                            <p>ประจำปีการศึกษา 25567</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">222
+                        <img src="{{ asset('icons/1.png') }}" class="d-block w-10" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>ให้นักนักศึกษาลงทะเบียนเข้าสู่ระบบสารสนเทศสหกิจศึกษา</h5>
+                          <p>ประจำปีการศึกษา 25567</p>
+                        </div>
+                      </div>
+                      {{-- <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Third slide label</h5>
+                          <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                      </div> --}}
                     </div>
-
-                  </div>
-                </div>
-              </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>  </div>  </div>  </div>  </div>  </div></div>  </div></div>  </div></div>  </div></div>  </div> </div> </div> </div>
               {{-- <div class=" row ">
               <div class=" col-sm-8 "> </div>
         <div class="text-end col-4 ">
@@ -360,17 +327,17 @@
                </div>
                                       @endif
               </div> --}}
-              <br><br><br><br>
+              <br><br><br><br><br><br><br><br><br><br>
 <br>
               <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                  <li class="nav-item"><a  class="nav-link px-2 text-muted">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
+                  <li class="nav-item"><a  class="nav-link px-2 text-light">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
                   {{-- <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
                   <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
                   <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                   <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li> --}}
                 </ul>
-                <p class="text-center text-muted">© 2024 Company, Inc</p>
+                <p class="text-center text-light">© 2024 Company, Inc</p>
               </footer>
     </body>
 </html>
