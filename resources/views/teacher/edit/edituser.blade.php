@@ -217,7 +217,7 @@
 
                                                                 <div class="col-md-6">
 
-                                                                <select class="form-select" aria-label="Default select example"@error('role') is-invalid @enderror name="role"value="{{ old('role') }}" required autocomplete="role">
+                                                                <select class="form-control" aria-label="Default select example"@error('role') is-invalid @enderror name="role"value="{{ old('role') }}" required autocomplete="role">
                                                                 <option selected>เลือกสถานะผู้ใช้งาน</option>
                                                                     <option value="student"@if($users->role=="student") selected @endif>นักศึกษา</option>
                                                                 <option value="teacher"@if($users->role=="teacher") selected @endif>อาจาร์ยนิเทศ</option>

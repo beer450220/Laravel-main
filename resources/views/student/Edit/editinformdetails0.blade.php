@@ -353,7 +353,7 @@
                                                     <div class="custom-file">
                                                         <div class="custom-file">
                                                             <input type="file" name="files" value="{{$informdetails->files}}" class="custom-file-input " id="customFile">
-                                                            <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
+                                                            <label class="custom-file-label" for="customFile">เลือกไฟล์PDF</label>
 
 
                                                         </div>

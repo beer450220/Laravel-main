@@ -3435,7 +3435,8 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
-        ->orderBy('registers.id', 'DESC')
+        ->where('role',"student")
+        ->orderBy('registers.updated_at', 'DESC')
         ->paginate(10);
 //dd($registers);
         return view('teacher.register1',compact('registers'));
@@ -3778,6 +3779,8 @@ public function category()
 
         ->join('users','informdetails.user_id','users.id')
         ->select('informdetails.*','users.fname')
+        -> where('role','student')
+        ->orderBy('informdetails.updated_at', 'DESC')
         ->paginate(10);
 
         //return view('student.informdetails',compact('informdetails'));

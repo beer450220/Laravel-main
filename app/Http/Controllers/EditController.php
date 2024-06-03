@@ -212,7 +212,7 @@ public function   updateregisteruser(Request $request,$id) {
     );
     $post=registers::findOrFail($id);
     $post->user_id = Auth::user()->id;
-    $post->Status_registers ="รอตรวจสอบ";
+    $post->Status_registers ="รออนุมัติ";
     $post->annotation ="-";
 
     if($request->hasFile("filess")){
@@ -311,7 +311,7 @@ public function   updateregisteruser(Request $request,$id) {
     );
     $post=informdetails::findOrFail($informdetails_id);
     $post->user_id = Auth::user()->id;
-    // $post->Status_informdetails ="รอตรวจสอบ";
+    // $post->Status_informdetails ="รออนุมัติ";
     // $post->establishment ="-";
     $post->annotation ="-";
     if($request->hasFile("files")){
@@ -407,7 +407,7 @@ public function editreport($report_id) {
     );
     $post=report::findOrFail($report_id);
     $post->user_id = Auth::user()->id;
-    $post->Status_report ="รอตรวจสอบ";
+    $post->Status_report ="รออนุมัติ";
     $post->annotation ="-";
 
     if($request->hasFile("filess")){
@@ -515,8 +515,8 @@ public function editreport($report_id) {
 
 
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
 
     $post->update
@@ -556,7 +556,7 @@ public function editreport($report_id) {
     $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
      $post->Status_events ="รับทราบและยืนยันเวลานัดนิเทศแล้ว";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
 
     $post->update
@@ -597,7 +597,7 @@ public function   calendar2confirmupdate(Request $request,$id) {
     $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
      //$post->Statustime ="รับทราบและยืนยันเวลานัดนิเทศ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post->Status_events ="ขอเปลี่ยนเวลานัดนิเทศ";
 $post->update
@@ -1117,7 +1117,7 @@ $post->update
     );
     $post=report_results::findOrFail($id);
     $post->user_id = Auth::user()->id;
-    $post->Status_results ="รอตรวจสอบ";
+    $post->Status_results ="รออนุมัติ";
     $post->annotation ="-";
 
     if($request->hasFile("filess")){
@@ -1175,7 +1175,7 @@ $post->update
     );
     $post=report_results::findOrFail($id);
     $post->user_id = Auth::user()->id;
-    $post->Status_results ="รอตรวจสอบ";
+    $post->Status_results ="รออนุมัติ";
     $post->annotation ="-";
 
     if($request->hasFile("filess")){
@@ -1232,12 +1232,12 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=supervision::findOrFail($supervision_id);
 //    $post->user_id = Auth::user()->id;
-//    $post->Status_supervision ="รอตรวจสอบ";
+//    $post->Status_supervision ="รออนุมัติ";
    if($request->hasFile("filess")){
        if (File::exists("document4/".$post->filess)) {
            File::delete("document4/".$post->filess);
@@ -1288,12 +1288,12 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=permission::findOrFail($id);
 //    $post->user_id = Auth::user()->id;
-//    $post->Status_supervision ="รอตรวจสอบ";
+//    $post->Status_supervision ="รออนุมัติ";
    if($request->hasFile("filess")){
        if (File::exists("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess)) {
            File::delete("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess);
@@ -1343,12 +1343,12 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=permission::findOrFail($id);
 //    $post->user_id = Auth::user()->id;
-//    $post->Status_supervision ="รอตรวจสอบ";
+//    $post->Status_supervision ="รออนุมัติ";
 //    if($request->hasFile("filess")){
 //        if (File::exists("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess)) {
 //            File::delete("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$post->filess);
@@ -1398,8 +1398,8 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=teacher::findOrFail($id);
 //    $post->user_id = Auth::user()->id;
@@ -1527,12 +1527,12 @@ public function editcategory($category_id) {
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=major::findOrFail($major_id);
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
 
      // dd($post);
 
@@ -1567,12 +1567,12 @@ public function editcategory($category_id) {
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=major::findOrFail($major_id);
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
 
      // dd($post);
 
@@ -1608,13 +1608,13 @@ public function editcategory($category_id) {
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=category::findOrFail($category_id);
 //    $post=acceptance::findOrFail($acceptance_id);
    // $post->user_id = Auth::user()->id;
-   // $post->Status ="รอตรวจสอบ";
+   // $post->Status ="รออนุมัติ";
     if($request->hasFile("images")){
         if (File::exists("หมวดหมู่/".$post->images)) {
             File::delete("หมวดหมู่/".$post->images);
@@ -1626,7 +1626,7 @@ public function editcategory($category_id) {
       // dd($post);
     }
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
 
      // dd($post);
 
@@ -1772,12 +1772,12 @@ public function editcategory($category_id) {
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
 
    //dd($request->Status);
    $post=report::findOrFail($report_id);
   // $post->user_id = Auth::user()->id;
-   //$post->Status ="รอตรวจสอบ";
+   //$post->Status ="รออนุมัติ";
 
     $post->update
 
@@ -1839,13 +1839,13 @@ public function editcategory($category_id) {
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
 
    //dd($request->Status);
 //    $post=supervision::findOrFail($supervision_id);
    $post=supervision::findOrFail($supervision_id);
    //    $post->user_id = Auth::user()->id;
-    //   $post->Status_supervision ="รอตรวจสอบ";
+    //   $post->Status_supervision ="รออนุมัติ";
       if($request->hasFile("filess")){
           if (File::exists("document4/".$post->filess)) {
               File::delete("document4/".$post->filess);
@@ -1877,7 +1877,7 @@ public function editcategory($category_id) {
            "Status_supervision"=>$request->Status_supervision,
        ]);
   // $post->user_id = Auth::user()->id;
-   //$post->Status ="รอตรวจสอบ";
+   //$post->Status ="รออนุมัติ";
 
 
      // dd($request);
@@ -1945,12 +1945,12 @@ public function editcategory($category_id) {
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
 
    //dd($request->Status);
    $post=informdetails::findOrFail($informdetails_id);
   // $post->user_id = Auth::user()->id;
-   //$post->Status ="รอตรวจสอบ";
+   //$post->Status ="รออนุมัติ";
 
     $post->update
 
@@ -1985,12 +1985,12 @@ public function editcategory($category_id) {
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
 
    //dd($request->Status);
    $post=informdetails::findOrFail($informdetails_id);
   // $post->user_id = Auth::user()->id;
-   //$post->Status ="รอตรวจสอบ";
+   //$post->Status ="รออนุมัติ";
 
     $post->update
 
@@ -2228,12 +2228,12 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=acceptance::findOrFail($acceptance_id);
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
    if($request->hasFile("filess")){
        if (File::exists("document1/".$post->filess)) {
            File::delete("document1/".$post->filess);
@@ -2340,12 +2340,12 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=advisor::findOrFail($advisor_id);
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
 
      // dd($post);
 
@@ -2451,12 +2451,12 @@ $post->update
       $file->move(\public_path("/ไฟล์เอกสารขออนุญาตนิเทศงาน"),$imageName);
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=Event::findOrFail($id);
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
 
      // dd($post);
 
@@ -2493,8 +2493,8 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
  $post=Event::findOrFail($id);
    if($request->hasFile("filess")){
@@ -2516,7 +2516,7 @@ $post->update
 
 
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
 
      // dd($post);
 
@@ -2592,12 +2592,12 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=schedule::findOrFail($id);
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
 
      // dd($post);
      if($request->hasFile("filess")){
@@ -2681,12 +2681,12 @@ $post->update
     );
     // $post=Event::findOrFail($id);
     // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
-    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รออนุมัติ";
+    // $post->Status ="รออนุมัติ";
    //dd($request->Status);
    $post=Evaluationdocument::findOrFail($Evaluationdocument_id);
   // $post->user_id = Auth::user()->id;
-  // $post->Status ="รอตรวจสอบ";
+  // $post->Status ="รออนุมัติ";
    if($request->hasFile("files1")){
        if (File::exists("ไฟล์เอกสารประเมิน(สก.13)/".$post->files1)) {
            File::delete("ไฟล์เอกสารประเมิน(สก.13)/".$post->files1);
@@ -3431,7 +3431,7 @@ $post->update
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
-    $post->Status_registers ="ตรวจสอบเอกสารแล้ว";
+    $post->Status_registers ="อนุมัติเอกสารแล้ว";
     // $post->role ="student";
     $post->update
     ([
@@ -3473,7 +3473,7 @@ $post->update
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
-    $post->Status_registers ="ตรวจสอบเอกสารแล้ว";
+    $post->Status_registers ="อนุมัติเอกสารแล้ว";
     // $post->role ="student";
     $post->update
     ([
@@ -3516,7 +3516,7 @@ $post->update
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
-    $post->Status_informdetails ="ตรวจสอบเอกสารแล้ว";
+    $post->Status_informdetails ="อนุมัติเอกสารแล้ว";
     // $post->role ="student";
     $post->update
     ([
@@ -3556,7 +3556,7 @@ $post->update
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
-    $post->Status_informdetails ="ตรวจสอบเอกสารแล้ว";
+    $post->Status_informdetails ="อนุมัติเอกสารแล้ว";
     // $post->role ="student";
     $post->update
     ([

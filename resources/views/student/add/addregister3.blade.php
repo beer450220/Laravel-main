@@ -350,7 +350,7 @@
                                                   <div class="form-group mb-3">
                                                     <div class="custom-file">
                                                         <input type="file" name="filess" class="custom-file-input" id="customFile"required>
-                                                        <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
+                                                        <label class="custom-file-label" for="customFile">เลือกไฟล์PDF</label>
 
                                                       </div>
                                                     {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}

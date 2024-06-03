@@ -383,11 +383,11 @@
                                           {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
                                   {{-- @foreach ($informdetails1 as $row)
 
-                                         @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                         @if ($row->Status_informdetails === 'รออนุมัติ')
                                          <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
                                      @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
                                          <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
-                                     @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                     @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
                                          <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
                                      @endif
                                       @endforeach --}}
@@ -397,12 +397,12 @@
                                            <H2>  <strong></strong> <span class=""></H2>
 
                                                {{-- @foreach ($informdetails1 as $row)
-                                                @if ($row->Status_informdetails === 'รอตรวจสอบ')
-                                                    <span class="text-warning">รอตรวจสอบเอกสาร</span>
+                                                @if ($row->Status_informdetails === 'รออนุมัติ')
+                                                    <span class="text-warning">รออนุมัติเอกสาร</span>
                                                 @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
                                                     <span class="text-Success ">ตรวจสอบแล้ว</span>
-                                                @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
-                                                    <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                                @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                                                    <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
                                                 @else
                                                     <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                                 @endif
@@ -445,11 +445,11 @@
   @else
 
   @foreach ($registers1 as $row)
-  @if ($row->Status_registers === 'รอตรวจสอบ')
+  @if ($row->Status_registers === 'รออนุมัติ')
                                                         <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                                                    @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                                                    @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                                                         <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-                                                    @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                                                    @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                                                         <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
                                                     @endif
 
@@ -461,7 +461,9 @@
                                                             <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                                                         @endif
                                                         @endforeach    @endif
-</td> <td >{{$row->annotation}} </td>
+</td> <td >
+    @foreach ($registers1 as $row)
+    {{$row->annotation}} </td>@endforeach
 <tr>
 
 {{-- <th scope="row">2</th> --}}
@@ -472,11 +474,11 @@
       @else
 
       @foreach ($registers2 as $row)
-      @if ($row->Status_registers === 'รอตรวจสอบ')
+      @if ($row->Status_registers === 'รออนุมัติ')
       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-  @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+  @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
       <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-  @elseif ($row->Status_registers === 'ไม่ผ่าน')
+  @elseif ($row->Status_registers === 'ไม่อนุมัติ')
       <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
   @endif
                                                                 @if ($row->namefile === 'ใบสมัครงานสหกิจศึกษา(สก03)')
@@ -497,11 +499,11 @@
           @else
 
           @foreach ($registers3 as $row)
-          @if ($row->Status_registers === 'รอตรวจสอบ')
+          @if ($row->Status_registers === 'รออนุมัติ')
           <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-      @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+      @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
           <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-      @elseif ($row->Status_registers === 'ไม่ผ่าน')
+      @elseif ($row->Status_registers === 'ไม่อนุมัติ')
           <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
       @endif
                                                                     @if ($row->namefile === 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)')
@@ -521,11 +523,11 @@
               @else
 
               @foreach ($registers4 as $row)
-              @if ($row->Status_registers === 'รอตรวจสอบ')
+              @if ($row->Status_registers === 'รออนุมัติ')
               <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-          @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+          @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
               <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-          @elseif ($row->Status_registers === 'ไม่ผ่าน')
+          @elseif ($row->Status_registers === 'ไม่อนุมัติ')
               <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
           @endif
                                                                         @if ($row->namefile === 'บัตรประชาชน')
@@ -548,11 +550,11 @@
                   @else
 
                   @foreach ($registers5 as $row)
-                  @if ($row->Status_registers === 'รอตรวจสอบ')
+                  @if ($row->Status_registers === 'รออนุมัติ')
                   <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-              @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+              @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                   <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-              @elseif ($row->Status_registers === 'ไม่ผ่าน')
+              @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                   <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
               @endif
                                                                             @if ($row->namefile === 'บัตรนักศึกษา')
@@ -572,11 +574,11 @@
                       @else
 
                       @foreach ($registers6 as $row)
-                      @if ($row->Status_registers === 'รอตรวจสอบ')
+                      @if ($row->Status_registers === 'รออนุมัติ')
                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                  @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                  @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                       <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-                  @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                  @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                       <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
                   @endif
                                                                                 @if ($row->namefile === 'ผลการเรียน')
@@ -597,11 +599,11 @@
                           @else
 
                           @foreach ($registers7 as $row)
-                          @if ($row->Status_registers === 'รอตรวจสอบ')
+                          @if ($row->Status_registers === 'รออนุมัติ')
                           <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                      @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                      @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                           <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
-                      @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                      @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                           <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
                       @endif
                                                                                     @if ($row->namefile === 'ประวัติส่วนตัว(resume)')
@@ -626,7 +628,7 @@
                               <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
                           @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                               <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
-                          @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                          @elseif ($row->Status_acceptance === 'ไม่อนุมัติ')
                               <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
                           @endif
                                                                                         @if ($row->namefile === 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
@@ -649,11 +651,11 @@
                               @else
 
                               @foreach ($registers8 as $row)
-                              @if ($row->Status_informdetails	 === 'รอตรวจสอบ')
+                              @if ($row->Status_informdetails	 === 'รออนุมัติ')
                               <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails	 }}</span>
-                          @elseif ($row->Status_informdetails	 === 'ตรวจสอบเอกสารแล้ว')
+                          @elseif ($row->Status_informdetails	 === 'อนุมัติเอกสารแล้ว')
                               <span class="badge badge-pill badge-success">{{ $row->Status_informdetails	}}</span>
-                          @elseif ($row->Status_informdetails	 === 'ไม่ผ่าน')
+                          @elseif ($row->Status_informdetails	 === 'ไม่อนุมัติ')
                               <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails	}}</span>
                           @endif
                                                                                         @if ($row->namefile === 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
@@ -676,11 +678,11 @@
                                   @else
 
                                   @foreach ($registers9 as $row)
-                                  @if ($row->Status_informdetails	 === 'รอตรวจสอบ')
+                                  @if ($row->Status_informdetails	 === 'รออนุมัติ')
                                   <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails	 }}</span>
-                              @elseif ($row->Status_informdetails	 === 'ตรวจสอบเอกสารแล้ว')
+                              @elseif ($row->Status_informdetails	 === 'อนุมัติเอกสารแล้ว')
                                   <span class="badge badge-pill badge-success">{{ $row->Status_informdetails	}}</span>
-                              @elseif ($row->Status_informdetails	 === 'ไม่ผ่าน')
+                              @elseif ($row->Status_informdetails	 === 'ไม่อนุมัติ')
                                   <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails	}}</span>
                               @endif
                                                                                             @if ($row->namefile === 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
@@ -700,11 +702,11 @@
                                       @else
 
                                       @foreach ($registers10 as $row)
-                                      @if ($row->Status_informdetails	 === 'รอตรวจสอบ')
+                                      @if ($row->Status_informdetails	 === 'รออนุมัติ')
                                       <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails	 }}</span>
-                                  @elseif ($row->Status_informdetails	 === 'ตรวจสอบเอกสารแล้ว')
+                                  @elseif ($row->Status_informdetails	 === 'อนุมัติเอกสารแล้ว')
                                       <span class="badge badge-pill badge-success">{{ $row->Status_informdetails	}}</span>
-                                  @elseif ($row->Status_informdetails	 === 'ไม่ผ่าน')
+                                  @elseif ($row->Status_informdetails	 === 'ไม่อนุมัติ')
                                       <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails	}}</span>
                                   @endif
                                                                                                 @if ($row->namefile === 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
@@ -729,7 +731,7 @@
                                           <span class="badge badge-pill badge-warning">{{ $row->Status_events	 }}</span>
                                       @elseif ($row->Status_events	 === 'รับทราบและยืนยันเวลานัดแล้ว')
                                           <span class="badge badge-pill badge-success">{{ $row->Status_events	}}</span>
-                                      @elseif ($row->Status_events	 === 'ไม่ผ่าน')
+                                      @elseif ($row->Status_events	 === 'ไม่อนุมัติ')
                                           <span class="badge badge-pill badge-danger">{{ $row->Status_events	}}</span>
                                       @endif
                                                                                                     @if ($row->namefiles === 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
@@ -754,7 +756,7 @@
                                               <span class="badge badge-pill badge-warning">{{ $row->Status_supervision	 }}</span>
                                           @elseif ($row->Status_supervision	 === 'ประเมินผลแล้ว')
                                               <span class="badge badge-pill badge-success">{{ $row->Status_supervision	}}</span>
-                                          @elseif ($row->Status_supervision	 === 'ไม่ผ่าน')
+                                          @elseif ($row->Status_supervision	 === 'ไม่อนุมัติ')
                                               <span class="badge badge-pill badge-danger">{{ $row->Status_supervision	}}</span>
                                           @endif
                                                                                                         @if ($row->namefile === 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
@@ -783,7 +785,7 @@
                                                   <span class="badge badge-pill badge-warning">{{ $row->Status_supervision	 }}</span>
                                               @elseif ($row->Status_supervision	 === 'ประเมินผลแล้ว')
                                                   <span class="badge badge-pill badge-success">{{ $row->Status_supervision	}}</span>
-                                              @elseif ($row->Status_supervision	 === 'ไม่ผ่าน')
+                                              @elseif ($row->Status_supervision	 === 'ไม่อนุมัติ')
                                                   <span class="badge badge-pill badge-danger">{{ $row->Status_supervision	}}</span>
                                               @endif
                                                                                                             @if ($row->namefile === 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
@@ -810,7 +812,7 @@
                                                       <span class="badge badge-pill badge-warning">{{ $row->Status_supervision	 }}</span>
                                                   @elseif ($row->Status_supervision	 === 'ประเมินผลแล้ว')
                                                       <span class="badge badge-pill badge-success">{{ $row->Status_supervision	}}</span>
-                                                  @elseif ($row->Status_supervision	 === 'ไม่ผ่าน')
+                                                  @elseif ($row->Status_supervision	 === 'ไม่อนุมัติ')
                                                       <span class="badge badge-pill badge-danger">{{ $row->Status_supervision	}}</span>
                                                   @endif
                                                                                                                 @if ($row->namefile === 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
@@ -838,7 +840,7 @@
                                                           <span class="badge badge-pill badge-warning">{{ $row->Status_supervision	 }}</span>
                                                       @elseif ($row->Status_supervision	 === 'ประเมินผลแล้ว')
                                                           <span class="badge badge-pill badge-success">{{ $row->Status_supervision	}}</span>
-                                                      @elseif ($row->Status_supervision	 === 'ไม่ผ่าน')
+                                                      @elseif ($row->Status_supervision	 === 'ไม่อนุมัติ')
                                                           <span class="badge badge-pill badge-danger">{{ $row->Status_supervision	}}</span>
                                                       @endif
                                                                                                                     @if ($row->namefile === 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')

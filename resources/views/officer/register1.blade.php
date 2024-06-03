@@ -62,9 +62,9 @@
             @foreach ($registers as $row)
             <tr class="
             {{-- {{
-                $row->Status_registers === 'รอตรวจสอบ' ? 'table-warning' : (
-                    $row->Status_registers=== 'ตรวจสอบเอกสารแล้ว' ? 'table-success' : (
-                        // $row->Status_registers === 'ไม่ผ่าน' ? 'table-danger' : ''
+                $row->Status_registers === 'รออนุมัติ' ? 'table-warning' : (
+                    $row->Status_registers=== 'อนุมัติเอกสารแล้ว' ? 'table-success' : (
+                        // $row->Status_registers === 'ไม่อนุมัติ' ? 'table-danger' : ''
                     )
                 )
             }} --}}
@@ -77,11 +77,11 @@
               {{-- <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td> --}}
               <td>
-                  @if ($row->Status_registers === 'รอตรวจสอบ')
+                  @if ($row->Status_registers === 'รออนุมัติ')
                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                  @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                  @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                       <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
-                  @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                  @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                       <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
                   @endif
               </td>
@@ -89,14 +89,14 @@
               <td><a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 {{-- download --}}
               <td>
-                @if ($row->Status_registers === 'รอตรวจสอบ')
+                @if ($row->Status_registers === 'รออนุมัติ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/officer/confirm2/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
                 <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
             </div>
-                @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+                @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                 <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
-            @elseif ($row->Status_registers === 'ไม่ผ่าน')
+            @elseif ($row->Status_registers === 'ไม่อนุมัติ')
             <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
             @endif
 

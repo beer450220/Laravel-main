@@ -533,6 +533,7 @@ Route::get('/teacher/search8',[HomeController::class,'searchrequest'])->name('se
     // Route::get("/teacher/timeline1",[HomeController::class,'timeline1'])->name('teacher.documents1');
     // Route::get("/teacher/viwetimeline/{timeline_id}",[EditController::class,'viwetimeline'])->name('viwetimeline');
 //ค้นหา
+//เอกสารแจ้งรายละเอียดการปฎิบัติงาน
 Route::get('/teacher/search05',[HomeController::class,'searchinformdetails1'])->name('searchinformdetails1');
     Route::get("/teacher/informdetails1",[HomeController::class,'informdetails1'])->name('teacher.informdetails1');
     Route::get("/teacher/viewinformdetails1/{informdetails_id}",[EditController::class,'viewinformdetails1'])->name('viewinformdetails1');

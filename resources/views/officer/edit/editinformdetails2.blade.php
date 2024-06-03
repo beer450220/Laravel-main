@@ -53,10 +53,10 @@
 
                         <select class="form-control " aria-label=".form-select-sm example" name="Status_informdetails">
                           <option selected>กรุณาเลือก</option>
-                          <option value="ตรวจสอบเอกสารแล้ว"@if($informdetails->Status_informdetails=="ตรวจสอบเอกสารแล้ว") selected @endif required>ตรวจสอบเอกสารแล้ว</option>
-                          <option value="ไม่ผ่าน"@if($informdetails->Status_informdetails=="ไม่ผ่าน") selected @endif required>ไม่ผ่าน</option>
-                          <option value="รอตรวจสอบ"@if($informdetails->Status_informdetails=="รอตรวจสอบ") selected @endif required >รอตรวจสอบ</option>
 
+                          <option value="อนุมัติเอกสารแล้ว"@if($informdetails->Status_informdetails=="อนุมัติเอกสารแล้ว") selected @endif required>อนุมัติเอกสารแล้ว</option>
+                          <option value="ไม่อนุมัติ"@if($informdetails->Status_informdetails=="ไม่ผ่าน") selected @endif required>ไม่อนุมัติ</option>
+                          <option value="รออนุมัติ"@if($informdetails->Status_informdetails=="รออนุมัติ") selected @endif required >รออนุมัติ</option>
                         </select>
                         @error('Status_report')
                         <span class="invalid-feedback" role="alert">
