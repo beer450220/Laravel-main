@@ -1377,6 +1377,7 @@ public function addsupervision()
           //  'name' => 'required|unique:name',
           //  'test' => 'required|unique:test',
           'filess' => 'mimes:pdf|max:1024',
+          'filess1' => 'mimes:pdf|max:1024',
       ]
     ,[
 
@@ -1384,6 +1385,8 @@ public function addsupervision()
       // 'test.required'=>"กรุณาเทส",
       'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
                  'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+                 'filess1.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+                 'filess1.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
     ]
 
   );
@@ -1392,11 +1395,18 @@ public function addsupervision()
       $file=$request->file("filess");
        $imageName=time().'_'.$file->getClientOriginalName();
       $file->move(\public_path("/document3"),$imageName);
+
+      if($request->hasFile("filess1"))
+      {
+        $file=$request->file("filess1");
+         $imageName1=time().'_'.$file->getClientOriginalName();
+        $file->move(\public_path("/document3"),$imageName1);
       $post =new Event
       ([
           // "title" => $request->title,
           "start" => $request->start,
           "namefiles" => $request->namefiles,
+          "namefiles1" => $request->namefiles1,
           // 'end' => $request->end,
         //   "term" => $request->term,
         //   "year" => $request->year,
@@ -1408,6 +1418,7 @@ public function addsupervision()
            "student_name" => implode(",",$request->student_name),
            //$request->student_name,
            "filess" =>$imageName,
+           "filess1" =>$imageName1,
            "teacher_name" => implode(",",$request->teacher_name),
 
       ]);
@@ -1428,6 +1439,7 @@ public function addsupervision()
          return redirect('/teacher/supervision')->with('success5', 'สมัครสำเร็จ.');
 
       }
+    }
     }
 
     public function addSupervise()

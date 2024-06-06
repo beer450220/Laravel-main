@@ -345,6 +345,70 @@
                                                                                              @endif
                                   </td>
                                   <tr>@endforeach
+                                    @foreach ($registers017 as $row)
+                                    {{-- <td ></td> --}}
+                                    <td >{{ $row->fname   }} </td>
+                                {{-- <th scope="row">2</th> --}}
+                                <th >แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)</th>
+                                <td >{{ $row->annotation   }}  </td>
+                                <td >
+                                    @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
+                            <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+                        @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                            <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
+                        @elseif ($row->Status_acceptance === 'ไม่อนุมัติ')
+                            <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
+                        @endif
+
+
+                                    @if ($registers017->isEmpty())
+                                    <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                      @else
+
+
+
+                                                                                                @if ($row->namefile === 'w')
+                                                                                                <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
+
+
+                                                                                                @else()
+                                                                                                <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                                            @endif
+                                                                                               @endif
+                                    </td>
+                                    <tr>@endforeach
+                                        @foreach ($registers0017 as $row)
+                                        {{-- <td ></td> --}}
+                                        <td >{{ $row->fname   }} </td>
+                                    {{-- <th scope="row">2</th> --}}
+                                    <th >หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)</th>
+                                    <td >{{ $row->annotation   }}  </td>
+                                    <td >
+                                        @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
+                                <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+                            @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                                <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
+                            @elseif ($row->Status_acceptance === 'ไม่อนุมัติ')
+                                <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
+                            @endif
+
+
+                                        @if ($registers0017->isEmpty())
+                                        <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                          @else
+
+
+
+                                                                                                    @if ($row->namefile === 'หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)')
+                                                                                                    <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
+
+
+                                                                                                    @else()
+                                                                                                    <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                                                @endif
+                                                                                                   @endif
+                                        </td>
+                                        <tr>@endforeach
                               <tr>
                                   @foreach ($registers8 as $row)
                                   {{-- <td ></td> --}}
@@ -477,6 +541,41 @@
                                                                                                                      @endif
                                                           </td>
                                                           <tr>@endforeach
+
+                                                            <tr>
+                                                                @foreach ($registers012 as $row)
+                                                                {{-- <td ></td> --}}
+                                                                <td >{{ $row->fname   }} </td>
+
+                                                            <th >แบบแจ้งยืนยันการนิเทศงานนักศึกษาสหกิจศึกษา(สก.11)</th>
+                                                            <td >{{ $row->appointment_time	   }}  </td>
+                                                            <td >
+                                                                @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+                                                                <span class="badge badge-pill badge-warning">{{ $row->Status_events}}</span>
+                                                            @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดแล้ว')
+                                                                <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
+                                                            @elseif ($row->Status_events === 'ไม่อนุมัติ')
+                                                                <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                                            @endif
+
+
+
+                                                                @if ($registers012->isEmpty())
+                                                                <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                  @else
+
+
+
+                                                                                                                            @if ($row->namefiles1 === 'สก.11 แบบแจ้งยืนยันการนิเทศงานนักศึกษาสหกิจศึกษา')
+                                                                                                                            <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
+
+
+                                                                                                                            @else()
+                                                                                                                            <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+                                                                                                                        @endif
+                                                                                                                           @endif
+                                                                </td>
+                                                                <tr>@endforeach
                                                               <tr>
                                                                   @foreach ($registers13 as $row)
                                                                   {{-- <td ></td> --}}

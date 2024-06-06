@@ -261,7 +261,16 @@
 
 
                         <span> <a href="../../document3/{{ $establishments->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </span>  </div>
-                      </div>
+
+                      <div class="col-md-4">
+                        <label for="recipient-name" class="col-form-label">{{$establishments->namefiles1}}</label><br>
+
+                        {{-- <textarea  rows="4" cols="50" name="em_job" disabled readonly >
+                      </textarea> --}}
+                      {{-- <span>  <input type="text" class="form-control" name="annotation" value=" "disabled required></span> --}}
+
+
+                      <span> <a href="../../document3/{{ $establishments->filess1 }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </span>  </div>
 
                 <div class="modal-footer">
 
@@ -272,8 +281,7 @@
           </div>
         </div>
       </div>
-    </div>
-    </div>
+
 
 
 @endsection

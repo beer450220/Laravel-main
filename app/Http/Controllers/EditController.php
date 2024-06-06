@@ -661,10 +661,12 @@ $post->update
 
     $posts=Event::findOrFail($id);
 
-     if (File::exists("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$posts->filess)) {
-         File::delete("ไฟล์เอกสารขออนุญาตนิเทศงาน/".$posts->filess);
+     if (File::exists("document3/".$posts->filess)) {
+         File::delete("document3/".$posts->filess);
      }
-
+     if (File::exists("document3/".$posts->filess1)) {
+        File::delete("document3/".$posts->filess1);
+    }
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
@@ -2218,12 +2220,15 @@ $post->update
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
+        'filess' => 'mimes:pdf|max:1024',
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
     ],[
             //'establishment.required' => "กรุณา",
 
+            'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
     // $post=Event::findOrFail($id);
@@ -2249,7 +2254,7 @@ $post->update
     //    "year" =>$request->year,
        "user_id" =>$request->user_id,
         //"establishment"=>$request->establishment,
-        //  "term"=>$request->term,
+         "namefile"=>$request->namefile,
         "annotation"=>$request->annotation,
          "filess"=>$post->filess,
         // "presentation"=>$post->presentation,
@@ -2485,10 +2490,13 @@ $post->update
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
         'filess' => 'mimes:pdf|max:1024',
+        'filess1' => 'mimes:pdf|max:1024',
     ],[
             //'establishment.required' => "กรุณา",
             'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
             'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+            'filess1.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'filess1.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
         ]
     );
     // $post=Event::findOrFail($id);
@@ -2513,7 +2521,21 @@ $post->update
     // $file->move(public_path("/file"), $post->filess);
 }
 
-
+if($request->hasFile("filess1")){
+    // if (File::exists(public_path("file/".$post->filess))) {
+    //     File::delete(public_path("file/".$post->filess));
+    // }
+    if (File::exists("document3/".$post->filess1)) {
+        File::delete("document3/".$post->filess1);
+    }
+    $file=$request->file("filess1");
+    $post->filess1=time()."_".$file->getClientOriginalName();
+    $file->move(\public_path("/document3"),$post->filess1);
+    $request['filess1']=$post->filess1;
+    // $file = $request->file("filess");
+    // $post->filess = time() . "_" . $file->getClientOriginalName();
+    // $file->move(public_path("/file"), $post->filess);
+}
 
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รออนุมัติ";
@@ -2531,6 +2553,7 @@ $post->update
 
     "start" => $request->start,
     "namefiles" => $request->namefiles,
+    "namefiles1" => $request->namefiles1,
     // 'end' => $request->end,
   //   "term" => $request->term,
   //   "year" => $request->year,
@@ -2542,6 +2565,7 @@ $post->update
      "student_name" => implode(",",$request->student_name),
      //$request->student_name,
    "filess"=>$post->filess,
+   "filess1"=>$post->filess1,
      "teacher_name" => implode(",",$request->teacher_name),
         //    "teacher_name" => $request->teacher_name,
     ]);

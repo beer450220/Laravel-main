@@ -600,11 +600,61 @@ s
                       {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
                     </H2>
                     {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
+
                     @foreach ($acceptance as $row)
                     {{-- @if (Auth::user()->id === $row->user_id) --}}
                     {{$row->namefile}}
+                    @if ($row->namefile === 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
+                    <a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
 
-                    @if ($row->Status_acceptance === 'รอตรวจสอบ')
+                 @if ($row->Status_acceptance === 'รอตรวจสอบ')
+                    <span class="text-warning">รอตรวจสอบเอกสาร</span>
+                @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                    <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
+                @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                    <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
+                @else (sss)
+                    {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
+
+                    @endif
+                @elseif ($row->namefile === 'แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)')
+                <a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
+                @if ($row->Status_acceptance === 'รอตรวจสอบ')
+                   <span class="text-warning">รอตรวจสอบเอกสาร</span>
+               @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                   <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
+               @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                   <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
+               @else (sss)
+                   {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
+
+                   @endif
+
+                @elseif ($row->namefile === 'หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)')
+                <a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
+                @if ($row->Status_acceptance === 'รอตรวจสอบ')
+                   <span class="text-warning">รอตรวจสอบเอกสาร</span>
+               @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                   <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
+               @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                   <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
+               @else (sss)
+                   {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
+
+                   @endif
+                @else (sss)
+                    {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
+
+                    @endif
+{{-- class="circle circle-sm bg-warning-light"> --}}
+{{-- {{$row->Status_acceptance}} --}}
+
+{{-- @endif --}}
+
+{{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+</span> <br>
+@endforeach
+                    {{-- @if ($row->Status_acceptance === 'รอตรวจสอบ')
                                                     <span class="text-warning">รอตรวจสอบเอกสาร</span>
                                                 @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                                                     <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
@@ -613,15 +663,15 @@ s
                                                 @else (sss)
                                                     <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
 
-                                                    @endif
+                                                    @endif --}}
                     {{-- class="circle circle-sm bg-warning-light"> --}}
          {{-- {{$row->Status_acceptance}} --}}
 
                     {{-- @endif --}}
 
                     {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
-                    </span> <br><a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
- @endforeach
+                    {{-- </span> <br><a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
+ @endforeach --}}
 
                 </div>
                 <div id="collapse1" class="collapse" aria-labelledby="heading2" data-parent="#accordion1" style="">

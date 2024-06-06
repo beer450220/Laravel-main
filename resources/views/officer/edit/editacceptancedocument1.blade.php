@@ -37,15 +37,15 @@
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
-
-
-                <ul>
-                    @foreach ($errors->all() as $error)
-
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+                    <div class="alert alert-danger col-3">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul></div>@endif
+                @if(session("error"))
+                <div class="alert alert-danger col-3">{{session('error')}}</div>
+                @endif
                     <div class="row">
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label>
@@ -95,20 +95,22 @@
                       </div>
 
 
-                      {{-- <div class="col-md-2">
-                        <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-                        <select class="form-select"  name="term" required>
-                          <option value="">กรุณาเลือกภาคเรียน</option>
+                      <div class="col-md-6">
+                        <label for="inputAddress"class="col-form-label ">ชื่อไฟล์เอกสาร</label>
+                        <select class="form-control"  name="namefile" required>
+                          <option value="">กรุณาเลือก</option>
 
 
-                          <option value="ภาคเรียนที่1"@if($acceptances->term=="ภาคเรียนที่1") selected @endif>ภาคเรียนที่:1 </option>
-                          <option value="ภาคเรียนที่2"@if($acceptances->term=="ภาคเรียนที่2") selected @endif>ภาคเรียนที่:2 </option>
+                          {{-- <option value="ภาคเรียนที่1"@if($acceptances->term=="ภาคเรียนที่1") selected @endif>ภาคเรียนที่:1 </option>
+                          <option value="ภาคเรียนที่2"@if($acceptances->term=="ภาคเรียนที่2") selected @endif>ภาคเรียนที่:2 </option> --}}
 
-
+                          <option value="แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)"@if($acceptances->namefile=="แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)") selected @endif>แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)</option>
+                          <option value="แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)"@if($acceptances->namefile=="แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)") selected @endif>แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)</option>
+                          <option value="หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)"@if($acceptances->namefile=="หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)") selected @endif>หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)</option>
 
                         </select>
 
-                    </div> --}}
+                    </div>
                     {{-- <div class="col-md-2">
                       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
                       <select class="form-select "  name="year" required> --}}
@@ -134,15 +136,18 @@
 
                       </select>
                   </div> --}}
+                </div>
                          <div class="row">
           <div class=" col-md-4">
-            <label for="recipient-name" class="col-form-label">ไฟล์เอกสารตอบรับ (สก.02)</label>
+            <label for="recipient-name" class="col-form-label">ไฟล์เอกสาร</label>
 
-            <div class="custom-file">
-                <input class="form-control" type="file" name="filess"value="{{$acceptances->filess}} "id="formFile">
-                <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
-              </div>
 
+              <div class="custom-file mb-6">
+                <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile" >
+                <label class="custom-file-label" for="validatedCustomFile">เลือกไฟล์PDF</label>
+                <div class="invalid-feedback">Example invalid custom file feedback</div>
+
+        </div>
         </div>
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
@@ -188,7 +193,7 @@
             </div>
           </div>
         </div>
-      </div>
+
 
 
 

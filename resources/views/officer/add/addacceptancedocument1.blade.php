@@ -192,12 +192,26 @@
             </span>
         @enderror
           </div>
+          <div class="col-md-4">
+            <label for="inputAddress"class="col-form-label ">ชื่อไฟล์เอกสาร</label>
+            <select class="form-control select2" id="validationSelect2" name="namefile" required>
+              <option value="">กรุณาเลือก</option>
+              {{-- @foreach ($users as $row) --}}
+              {{-- <optgroup label="Mountain Time Zone"> --}}
+                <option value="แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)">แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)</option>
+                <option value="แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)">แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)</option>
+                <option value="หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)">หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)</option>
+              </optgroup>
+
+
+            </select>
 
         </div>
-        <input type="hidden" id="custId" name="namefile" value="แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)">
+        </div>
+        {{-- <input type="hidden" id="custId" name="namefile" value="แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)"> --}}
           <div class="row">
           <div class=" col-md-4">
-            <label for="recipient-name" class="col-form-label">ไฟล์เอกสารตอบรับ (สก.02)</label>
+            <label for="recipient-name" class="col-form-label">ไฟล์เอกสาร</label>
                 <div class="custom-file mb-6">
                   <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile"required >
                   <label class="custom-file-label" for="validatedCustomFile">เลือกไฟล์PDF</label>

@@ -354,8 +354,35 @@ $( '#multiple-select-field' ).select2( {
       </select> --}}
 
 </div>
+</div>
+<div class="row">
 
 
+
+    <div class="col-md-4">
+      <label for="inputAddress"class="col-form-label ">ไฟล์เอกสาร1</label>
+      <div class="custom-file">
+          <input type="file" class="custom-file-input"name="filess1" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
+        </div>
+
+      {{-- <input class="form-control" id="example-date" type="file" name="filess"  autofocus placeholder=""> --}}
+  </div>
+  <div class="col-md-5">
+    <label for="inputAddress"class="col-form-label ">ชื่อไฟล์เอกสาร1</label>
+    {{-- <select class="form-control select" id="validationSelect2" name="namefiles" required> --}}
+      <input class="form-control" id="example-date" type="text" name="namefiles1" value="{{$supervisions->namefiles1}}" readonly  placeholder="">
+      {{-- <option value="">กรุณาเลือก</option> --}}
+      {{-- @foreach ($users as $row) --}}
+      {{-- <optgroup label="Mountain Time Zone"> --}}
+        {{-- <option value="สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา"@if($supervisions->namefiles=="สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา") selected @endif required>สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา</option>
+
+      </optgroup>
+
+
+    </select> --}}
+
+</div></div>
       {{-- <div class="row">
         <div class="col-md-2">
           <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label> --}}

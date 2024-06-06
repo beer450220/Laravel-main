@@ -378,6 +378,32 @@ $( '#multiple-select-field1' ).select2( {
 
 </div>
       </div>
+      <div class="row">
+      <div class="col-md-2">
+        <label for="inputAddress"class="col-form-label ">ไฟล์เอกสาร1</label>
+        <input class="form-control" id="example-date" type="file" name="filess1"  autofocus placeholder=""required>
+        {{-- <div class="custom-file">
+            <input type="file" class="custom-file-input"name="filess" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"required>
+            <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
+          </div> --}}
+        {{-- <select class="form-control "  name="term"required>
+          <option value="">กรุณาเลือกภาคเรียน</option>
+
+        <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
+          <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
+
+
+
+
+        </select> --}}
+
+
+
+    </div>
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">ชื่อไฟล์เอกสาร1</label>
+        <input class="form-control" id="example-date" type="text" name="namefiles1" value="สก.11 แบบแจ้งยืนยันการนิเทศงานนักศึกษาสหกิจศึกษา" readonly  placeholder="">
+</div></div>
       {{-- <div class="row-2">
       <div class="col-md-3">
         <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label> --}}
