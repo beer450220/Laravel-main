@@ -10,7 +10,20 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">ดาวน์โหลดเอกสาร</h5>
+        <h5 class="card-title">ดาวน์โหลดเอกสาร</h5>@if(session("success6"))
+        <div class="alert alert-success col-4">{{session('success6')}}
+@endif
+@if(session("success5"))
+      <div class="alert alert-danger col-4">{{session('success5')}}
+@endif
+@if(session("success7"))
+<div class="alert alert-warning col-4">{{session('success7')}}
+@endif
+ @if(session("error"))
+<div class="alert alert-danger col-4">{{session('error')}}
+@endif
+      </div>
+
         <form action="{{ route('searchschedule') }}" method="GET" class="form-inline">
 
             <div class="form-row">

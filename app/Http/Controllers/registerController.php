@@ -54,7 +54,10 @@ class registerController extends Controller
         $major=DB::table('major')
 
         ->paginate(5);
-        return view('teacher.adduser',compact('major'));
+        $rolegroup=DB::table('rolegroup')
+
+        ->paginate(5);
+        return view('teacher.adduser',compact('major','rolegroup'));
     }
     public function adduser(Request $request) {
         //ตรวจสอบข้อมูล
@@ -148,7 +151,7 @@ class registerController extends Controller
 
 
          $post->save();
-         return redirect('/teacher/user')->with('error','success', 'สมัครสำเร็จ.');
+         return redirect('/teacher/user')->with('success6', 'เพิ่มข้อมูลสำเร็จ.');
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 

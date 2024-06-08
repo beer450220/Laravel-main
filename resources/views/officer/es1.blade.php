@@ -61,7 +61,7 @@
             <tr>
               <th>ลำดับ</th>
               <th>ชื่อนักศึกษา</th>
-              <th>ชื่อสถานประกอบการ</th>
+              {{-- <th>ชื่อสถานประกอบการ</th> --}}
 
                 {{-- <th>ชื่อเอกสาร</th> --}}
                 {{-- <th>ปีการศึกษา</th>
@@ -80,7 +80,7 @@
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
               <td>{{$row->fname}}</td>
-              <td>{{$row->em_name}}</td>
+              {{-- <td>{{$row->em_name}}</td> --}}
               {{-- <td>{{$row->namefiles}}</td> --}}
               {{-- <td>{{$row->year}}</td>
               <td>{{$row->term}}</td>

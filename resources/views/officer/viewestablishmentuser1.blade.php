@@ -121,6 +121,12 @@
                     <div class="row">
 
                       <div class="col-md-4">
+                        <label for="recipient-name" class="col-form-label">รหัสนักศึกษา</label><br>
+
+                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->student_id}}"disabled required>
+
+                    </div>
+                    <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่อสถานประกอบการ</label><br>
 
                         <input type="text" class="form-control" name="annotation" value=" {{$establishments->em_name}}"disabled required>
@@ -135,9 +141,6 @@
                         <input type="text" class="form-control" name="annotation" value=" {{$establishments->em_telephone}}"disabled required>
 
                       </div>
-                    </div>
-                    <br>
-                    <div class="row">
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">อีเมล์</label><br>
                         <input type="text" class="form-control" name="annotation" value="{{$establishments->em_email}}"disabled required>
@@ -148,16 +151,18 @@
                         <input type="text" class="form-control" name="annotation" value="{{$establishments->em_contact_name}}"disabled required>
 
                       </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+
 
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">อีเมล์ผู้ติดต่อ</label><br>
                         <input type="text" class="form-control" name="annotation" value="{{$establishments->em_Contact_email}}"disabled required>
 
                       </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
+                       <div class="col-md-4">
                           <label for="recipient-name" class="col-form-label">ตำแหน่งผู้ติดต่อ</label><br>
                           <input type="text" class="form-control" name="annotation" value="{{$establishments->em_contactposition}}"disabled required>
 
@@ -167,6 +172,11 @@
                             <input type="text" class="form-control" name="annotation" value=" {{$establishments->website}}"disabled required>
 
                           </div>
+                    </div>
+
+
+
+
                         <div class="row">
                         <div class="col-md-4">
                           <label for="recipient-name" class="col-form-label">รายละเอียดงาน</label><br>
@@ -185,8 +195,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+
 
 
 

@@ -343,7 +343,10 @@
                              @if(session("success5"))
                                       <div class="alert alert-success col-4">{{session('success5')}}
                             @endif
-                                      </div>
+                            @if(session("success7"))
+                            <div class="alert alert-warning col-4">{{session('success7')}}
+                  @endif
+                                      </div>    </div>
                                       </div>
                             {{-- <div class="col-md-12 my-4">
                                 <div class="card shadow">

@@ -188,9 +188,12 @@
 
                             <select class="form-control" aria-label="Default select example"@error('role') is-invalid @enderror name="role"value="{{ old('role') }}" required autocomplete="role">
                             <option selected>เลือกสถานะผู้ใช้งาน</option>
-                                <option value="student">นักศึกษา</option>
+                            @foreach ($rolegroup as $row)
+  <option value="{{$row->group_name}}">{{$row->group_name}}</option>
+  @endforeach
+                            {{-- <option value="student">นักศึกษา</option>
                             <option value="teacher">อาจาร์ยนิเทศ</option>
-                            <option value="officer">เจ้าหน้าที่</option>
+                            <option value="officer">เจ้าหน้าที่</option> --}}
                             </select>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">

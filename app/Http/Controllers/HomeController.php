@@ -3435,11 +3435,15 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         ->join('users','establishment.user_id','users.id')
         ->select('establishment.*','users.fname')
         ->paginate(5);
+        $student=DB::table('student')
+        ->join('users','student.user_id','users.id')
+        ->select('student.*','users.fname')
+        ->paginate(5);
         $users=DB::table('users')
       ->where('role',"student")
 
       ->get();
-         return view('officer.viewestablishmentuser1',compact('establishments','users','establishments1'));
+         return view('officer.viewestablishmentuser1',compact('establishments','users','establishments1','student',));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
      public function viewestablishment1($id) {
@@ -3977,9 +3981,10 @@ public function category()
     {
         $supervision=DB::table('events')
         ->join('users','events.student_name','users.id')
-        ->join('establishment','events.em_id','establishment.id')
-        ->select('events.*','establishment.em_name','users.fname')
-        ->where('role',"student")
+        // ->join('establishment','events.em_id','establishment.id')
+        // ->select('events.*','establishment.em_name','users.fname')
+        ->select('events.*','users.fname')
+        // ->where('role',"student")
         ->orderBy('id', 'desc')
        // ->join('users','users.id','=','users.id')
         // ->join('users','supervision.user_id','users.id')

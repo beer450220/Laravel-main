@@ -359,7 +359,7 @@ class AddController extends Controller
                 $post->save();
 
 
-                return redirect('/personal3')->with('error','success5', 'เพิ่มข้อมูลสำเร็จ.');
+                return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
 
               // return redirect('/studenthome/register')
               //     ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
@@ -488,7 +488,7 @@ class AddController extends Controller
 
 
 
-         return redirect('/studenthome/informdetails')->with('success', 'เพิ่มข้อมูลสำเร็จ.');
+         return redirect('/studenthome/informdetails')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
 
 
 
@@ -889,7 +889,7 @@ if($request->hasFile("filess"))
       //  $data["test"]= $request->test;
     //    $data["test"]= $request->test;
     // DB::table('test')->insert($data);
-       return redirect('/teacher/estimate1')->with('success', 'สมัครสำเร็จ.');
+       return redirect('/teacher/estimate1')->with('success6', 'เพิ่มข้อมูลสำเร็จ.');
        // return redirect("/welcome")->with('success', 'Company has been created successfully.');
     }
 }
@@ -940,7 +940,7 @@ if($request->hasFile("filess"))
     //  $data["test"]= $request->test;
   //    $data["test"]= $request->test;
   // DB::table('test')->insert($data);
-     return redirect('/officer/Evaluate')->with('success', 'สมัครสำเร็จ.');
+     return redirect('/officer/Evaluate')->with('success6', 'เพิ่มข้อมูลสำเร็จ.');
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
   }
 }
@@ -1033,7 +1033,7 @@ public function addteacher(Request $request) {
     //  $data["test"]= $request->test;
   //    $data["test"]= $request->test;
   // DB::table('test')->insert($data);
-     return redirect('/teacher/teacher01')->with('success', 'สมัครสำเร็จ.','error');
+     return redirect('/teacher/teacher01')->with('success6', 'เพิ่มข้อมูลสำเร็จ.');
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
   }
 
@@ -1179,7 +1179,7 @@ public function addcategory()
         //  $data["test"]= $request->test;
       //    $data["test"]= $request->test;
       // DB::table('test')->insert($data);
-         return redirect('/teacher/major')->with('success', 'สมัครสำเร็จ.');
+         return redirect('/teacher/major')->with('success6', 'เพิ่มข้อมูลสำเร็จ.');
 
       }
 
@@ -1270,7 +1270,7 @@ if($request->hasFile("filess"))
       //  $data["test"]= $request->test;
     //    $data["test"]= $request->test;
     // DB::table('test')->insert($data);
-       return redirect('/officer/acceptancedocument1')->with('success', 'สมัครสำเร็จ.');
+       return redirect('/officer/acceptancedocument1')->with('success6', 'เพื่มข้อมูลสำเร็จ.');
        // return redirect("/welcome")->with('success', 'Company has been created successfully.');
     }
 }
@@ -1436,7 +1436,7 @@ public function addsupervision()
         //  $data["test"]= $request->test;
       //    $data["test"]= $request->test;
       // DB::table('test')->insert($data);
-         return redirect('/teacher/supervision')->with('success5', 'สมัครสำเร็จ.');
+         return redirect('/teacher/supervision')->with('success6', 'เพิ่มข้อมูลสำเร็จ.');
 
       }
     }
@@ -1556,7 +1556,7 @@ if($request->hasFile("filess"))
       //  $data["test"]= $request->test;
     //    $data["test"]= $request->test;
     // DB::table('test')->insert($data);
-    return redirect('/officer/schedule')->with('success', 'สมัครสำเร็จ.');
+    return redirect('/officer/schedule')->with('success6', 'สมัครสำเร็จ.');
        // return redirect("/welcome")->with('success', 'Company has been created successfully.');
     }
 }

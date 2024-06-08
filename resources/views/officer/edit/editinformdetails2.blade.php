@@ -55,7 +55,7 @@
                           <option selected>กรุณาเลือก</option>
 
                           <option value="อนุมัติเอกสารแล้ว"@if($informdetails->Status_informdetails=="อนุมัติเอกสารแล้ว") selected @endif required>อนุมัติเอกสารแล้ว</option>
-                          <option value="ไม่อนุมัติ"@if($informdetails->Status_informdetails=="ไม่ผ่าน") selected @endif required>ไม่อนุมัติ</option>
+                          <option value="ไม่อนุมัติ"@if($informdetails->Status_informdetails=="ไม่อนุมัติ") selected @endif required>ไม่อนุมัติ</option>
                           <option value="รออนุมัติ"@if($informdetails->Status_informdetails=="รออนุมัติ") selected @endif required >รออนุมัติ</option>
                         </select>
                         @error('Status_report')

@@ -693,7 +693,7 @@ public function edit3register($id) {
     $establishments=DB::table('registers')->find($id);
     //  dd($establishments);
 
-     return view('student.Edit.edit9register',compact('establishments'));
+     return view('student.Edit.Edit9register',compact('establishments'));
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
  }
 

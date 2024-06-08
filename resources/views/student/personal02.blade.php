@@ -265,7 +265,7 @@
       <div class="row justify-content-center">
           <div class="col-16 col-lg-8 col-xl-7 text-center p-0 mt-3 mb-2">
           {{-- <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2"> --}}
-              <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+              {{-- <div class="card px-0 pt-4 pb-0 mt-3 mb-3"> --}}
                   {{-- <h2 id="heading">Sign Up Your User Account</h2>
                   <p>Fill all form field to go to next step</p> --}}
                   <form id="msform">
@@ -287,7 +287,7 @@
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-                                      <h2 class="fs-title col">ข้อมูลสถานประกอบการ:</h2>
+                                      {{-- <h2 class="fs-title col">ข้อมูลสถานประกอบการ:</h2> --}}
                                   </div>
                                   <div class="col-4">
                                       {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
@@ -301,7 +301,16 @@
                                               @if(session("success"))
                                           <div class="alert alert-success col-4">{{session('success')}}
                               @endif
-
+                              @if ($errors->any())
+                              <div class="alert alert-danger col-7">
+                                  <ul>
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </ul></div>@endif
+                          @if(session("error"))
+                          <div class="alert alert-danger col-4">{{session('error')}}</div>
+                          @endif
                                       </h2>
 
                                   </div>
@@ -319,8 +328,6 @@
                                       </div>
                                     </div> --}}
 
-                                    <br>
-                                    <br>
                                     <div class="text-center">
                                       {{-- <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
 
@@ -337,7 +344,7 @@
 
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียด</strong>
+                                                <strong class="card-title">ข้อมูลสถานประกอบการ</strong>
                                               </div>
 
                                               <div class="card-body">
@@ -424,14 +431,13 @@
 
 
 
-                                                    </div>
 
-                                                </div>
+
                                                 <div class="col-6 text-center"></div>
 
                                                                 <div class="col text-center">
                                                 <div class="d-grid gap-2 d-md-flex   ">
-                                                    {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
+                                                    <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a>
                                                     &nbsp;&nbsp;
                                                     {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a> --}}
                                                       &nbsp;&nbsp;

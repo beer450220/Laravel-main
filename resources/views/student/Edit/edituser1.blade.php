@@ -306,7 +306,7 @@
                                     <br>
                                     <br>
                                     <div class="text-center">
-                                      <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
+                                      <img src="/Profile/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
                                     </div>
 

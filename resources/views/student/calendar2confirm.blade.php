@@ -340,7 +340,7 @@
                                         <div class="alert alert-success col-4">{{session('success6')}}
                               @endif
                              @if(session("success5"))
-                                      <div class="alert alert-success col-4">{{session('success5')}}
+                                      <div class="alert alert-warning col-4">{{session('success5')}}
                             @endif
                                       </div>
                                       </div>
@@ -421,7 +421,7 @@
                                      @endphp
 
                                      {{-- ทำสิ่งที่ต้องการกับข้อมูลของอาจารย์ที่พบ --}}
-                                     {{ $teacher->fname }}
+                                     {{ $teacher->fname }}<a href="/studenthome/editteacher1/{{$teacher->id}}"  class=" btn btn-outline-success">ดูข้อมูล</a>
                                  @endforeach
 
                                     {{-- @foreach ($users2 as $teacherId)
@@ -529,8 +529,8 @@ allowClear: true,
 
                                         {{-- {{ $row->fname}} {{ $row->surname}} --}}
                                     </span></p>
-                                      <p class=""><span class=" text-muted">ไฟล์เอกสาร:  <a href="/document3/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
-
+                                      <p class=""><span class=" text-muted">ไฟล์เอกสารสก.10:  <a href="/document3/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
+                                      <p class=""><span class=" text-muted">ไฟล์เอกสารสก.11:  <a href="/document3/{{ $row->filess1 }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
                                       <hr>
                                       <p class=" text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
                                         <span class="badge badge-pill badge-warning">{{ $row->Status_events }}</span>

@@ -219,9 +219,9 @@
 
                                                                 <select class="form-control" aria-label="Default select example"@error('role') is-invalid @enderror name="role"value="{{ old('role') }}" required autocomplete="role">
                                                                 <option selected>เลือกสถานะผู้ใช้งาน</option>
-                                                                    <option value="student"@if($users->role=="student") selected @endif>นักศึกษา</option>
-                                                                <option value="teacher"@if($users->role=="teacher") selected @endif>อาจาร์ยนิเทศ</option>
-                                                                <option value="officer"@if($users->role=="officer") selected @endif>เจ้าหน้าที่</option>
+                                                                    <option value="student"@if($users->role=="student") selected @endif>student</option>
+                                                                <option value="teacher"@if($users->role=="teacher") selected @endif>teacher</option>
+                                                                <option value="officer"@if($users->role=="officer") selected @endif>officer</option>
                                                                 </select>
                                                                     @error('name')
                                                                         <span class="invalid-feedback" role="alert">

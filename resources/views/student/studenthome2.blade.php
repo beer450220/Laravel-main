@@ -391,6 +391,9 @@ div.second {
                              @if(session("success5"))
                                       <div class="alert alert-success col-4">{{session('success5')}}
                             @endif
+                              @if(session("success7"))
+                            <div class="alert alert-warning col-4">{{session('success7')}}
+                  @endif
                                  @if(session("error"))
                             <div class="alert alert-danger col-4">{{session('error')}}
                                 @endif
@@ -515,7 +518,8 @@ div.second {
                     @endif
             @endforeach</H2>
             {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-            <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+            <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
             </span>
 
@@ -615,14 +619,14 @@ div.second {
                 @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                     <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
                 @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                    <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                    <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
 
 
                     @endif
             @endforeach</H2>
             {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
             <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
-
+                <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
 
             </a>
             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
@@ -788,7 +792,8 @@ div.second {
                                                 <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                             @endif
                                         @endforeach</h2>
-                                        <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a></span>
+                                        <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                            <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                         {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
                             {{-- <a href="/studenthome/addregister2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 
@@ -863,14 +868,15 @@ div.second {
                                                     @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                                                         <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
                                                     @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                                                        <span class="badge badge-pill badge-Danger ">{{ $row->Status_registers }}</span>
+                                                        <span class="badge badge-pill badge-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
                                                     @else ()
                                                         <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                                     @endif
                                                 @endforeach</h2></span>
                                                 {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
                                     {{-- <a href="/studenthome/addregister2"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
-                                    <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                                    <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                        <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                                 </div>
                                       @endif
                                       @endforeach
@@ -951,7 +957,8 @@ div.second {
                                                 </span>
                                           @endif
                                       @endforeach </h2>
-                                      <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                                      <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                        <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                 {{-- <a href="/studenthome/addregister3"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                                         </div>
                  @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
@@ -1023,7 +1030,8 @@ div.second {
                                               @endif
                                           @endforeach </h2>
                                     {{-- <a href="/studenthome/addregister3"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
-                                    <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                                    <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                        <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                 </div>
                                       @endif
                                       @endforeach
@@ -1109,7 +1117,8 @@ div.second {
                           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                       @endif
                   @endforeach</h2>
-                  <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                    <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                   {{-- <a href="/studenthome/addregister4"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                     </div>
                     <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion1">
@@ -1192,7 +1201,8 @@ div.second {
       @endif
   @endforeach</h2>
   {{-- <a href="/studenthome/addregister4"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
-  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+    <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
     </div>
     <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion1">
       <div class="card-body"><a href="/studenthome/addregister4"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
@@ -1324,7 +1334,8 @@ div.second {
           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
       @endif
   @endforeach </h2>
-  <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+    <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
   {{-- <a href="/studenthome/addregister5"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
     </div>
     <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion1">
@@ -1411,7 +1422,8 @@ div.second {
       @endif
   @endforeach </h2>
   {{-- <a href="/studenthome/addregister5"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
-  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+    <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
     </div>
     <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion1">
       <div class="card-body"> <a href="/studenthome/addregister5"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
@@ -1539,7 +1551,8 @@ div.second {
           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
       @endif
   @endforeach </h2>
-  <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+    <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
   {{-- <a href="/studenthome/addregister6"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
     </div>
     <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion1">
@@ -1628,7 +1641,8 @@ div.second {
                                           @endif
                                       @endforeach </h2>
                                       {{-- <a href="/studenthome/addregister6"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
-                                      <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                                      <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                        <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                     </div>
                                         <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addregister6"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
@@ -1733,7 +1747,8 @@ div.second {
   {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร) --}}
     </span></H2>
   {{-- <a href="/studenthome/addregister7"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-  <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+    <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
     </div>
     <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion1">
 
@@ -1819,7 +1834,8 @@ div.second {
                                   @endforeach </H2>
                                   {{-- <a href="/studenthome/addregister7"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                                   {{-- <a href="../ลงทะเบียน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a> --}}
-                                  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                                  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                    <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                 </div>
                                     <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion1">
 

@@ -81,6 +81,18 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title text-primary">จัดการผู้ใช้งาน</h5>
+        @if(session("success6"))
+        <div class="alert alert-success col-4">{{session('success6')}}</div>
+@endif
+@if(session("success5"))
+      <div class="alert alert-danger col-4">{{session('success5')}}</div>
+@endif
+@if(session("success7"))
+<div class="alert alert-warning col-4">{{session('success7')}} </div>
+@endif
+ @if(session("error"))
+<div class="alert alert-danger col-4">{{session('error')}} </div>
+@endif
   <div class="container-fluid">
 
 

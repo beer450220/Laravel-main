@@ -245,7 +245,7 @@ public function   updateregisteruser(Request $request,$id) {
         // "filess" => $post->filess
     ]);
 
-    return redirect('/studenthome1')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome1')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
@@ -337,7 +337,7 @@ public function   updateregisteruser(Request $request,$id) {
     ]);
 
 
-    return redirect('/studenthome/informdetails')->with('error','success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome/informdetails')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
@@ -576,7 +576,7 @@ public function editreport($report_id) {
     ]);
 
 
-    return redirect('/studenthome/calendar2confirm')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/studenthome/calendar2confirm')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
 public function   calendar2confirmupdate(Request $request,$id) {
@@ -618,7 +618,7 @@ $post->update
     ]);
 
 
-    return redirect('/studenthome/calendar2confirm')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/studenthome/calendar2confirm')->with('success5', 'ขอเปลี่ยนเวลานิเทศสำเร็จ.');
  }
 
 # teacher
@@ -670,7 +670,7 @@ $post->update
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
-     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+     return redirect()->back()->with('error', 'ลบข้อมูลสำเร็จ.');
  }
 
  public function deletuser($id) {
@@ -1074,6 +1074,44 @@ $post->update
      return view('teacher.edit.editteacher1', compact('major','major1'));
 
  }
+ public function editteacher2($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+// dd($teacher_id);
+    //$supervisions=DB::table('supervision')->first();
+    // $establishments=DB::table('teacher')->find($teacher_id);
+    //  $teacher=teacher::find($teacher_id);
+    // $major=major::find($major_id);
+    $major=teacher::find($id);
+    //  $teacher = DB::table('teacher')
+    //  //->get();
+    //  ->find($teacher_id);
+    //  $major=major::find($major_id);
+    // $users=DB::table('users')
+    // ->where('role',"student")
+    // ->get();
+    $major1=DB::table('major')
+
+    ->paginate(5);
+    // $major=DB::table('major')
+
+    // ->paginate(5);
+
+    // $establishment=DB::table('establishment')
+    // // ->join('supervision','supervision.supervision_id')
+    //  //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // // ->select('supervision.*','establishment.*')
+    // ->get();
+    //dd($establishment);
+     //dd($supervisions);
+     return view('student.editteacher1', compact('major','major1'));
+
+ }
  public function view1($id) {
     //ตรวจสอบข้อมูล
 
@@ -1269,7 +1307,7 @@ $post->update
     ]);
 
 
-    return redirect('/teacher/estimate1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/teacher/estimate1')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
@@ -1418,7 +1456,7 @@ $post->update
     ]);
 
 
-    return redirect('/teacher/teacher01')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/teacher/teacher01')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
  public function edit2Superviseteacheruser($id) {
@@ -1588,7 +1626,7 @@ public function editcategory($category_id) {
     ]);
 
 
-    return redirect('/teacher/major')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/teacher/major')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
@@ -1667,7 +1705,7 @@ public function editcategory($category_id) {
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
-     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+     return redirect()->back()->with('error', 'ลบข้อมูลสำเร็จ.');
  }
 
 
@@ -1695,7 +1733,7 @@ public function editcategory($category_id) {
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
-     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+     return redirect()->back()->with('error', 'ลบข้อมูลสำเร็จ.');
  }
 
  public function deles1($id) {
@@ -1729,12 +1767,12 @@ public function editcategory($category_id) {
 
     $posts=supervision::findOrFail($id);
     //  dd($posts);
-    if (File::exists("ไฟล์เอกสารประเมิน/".$posts->filess)) {
-         File::delete("ไฟล์เอกสารประเมิน/".$posts->filess);
+    if (File::exists("document4/".$posts->filess)) {
+         File::delete("document4/".$posts->filess);
      }
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
-     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+     return redirect()->back()->with('error', 'ลบข้อมูลสำเร็จ.');
  }
 
  public function editexperiencereport2($report_id) {
@@ -1884,7 +1922,7 @@ public function editcategory($category_id) {
 
      // dd($request);
 
-    return redirect('/officer/Evaluate')->with('error','success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/officer/Evaluate')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
@@ -1965,7 +2003,7 @@ public function editcategory($category_id) {
     ]);
      // dd($request);
 
-    return redirect('/officer/informdetails2')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/officer/informdetails2')->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
  }
 
 
@@ -2005,7 +2043,7 @@ public function editcategory($category_id) {
     ]);
      // dd($request);
 
-    return redirect('/teacher/informdetails1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/teacher/informdetails1')->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
  }
 
  public function editregister1($id) {
@@ -2106,7 +2144,7 @@ $post->update
 ]);
 
 
-    return redirect('/officer/register1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/officer/register1')->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
  }
  public function   updateregister2(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -2162,7 +2200,7 @@ $post->update
 ]);
 
 
-    return redirect('/teacher/register1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/teacher/register1')->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
  }
  public function viwetimeline2($timeline_id) {
     //ตรวจสอบข้อมูล
@@ -2267,7 +2305,7 @@ $post->update
     ]);
 
 
-    return redirect('/officer/acceptancedocument1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/officer/acceptancedocument1')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
  public function delacceptance($acceptance_id) {
     //ตรวจสอบข้อมูล
@@ -2284,7 +2322,7 @@ $post->update
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
-     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+     return redirect()->back()->with('error', 'ลบข้อมูลสำเร็จ.');
  }
 
 
@@ -2303,7 +2341,7 @@ $post->update
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
-     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+     return redirect()->back()->with('error', 'ลบข้อมูลสำเร็จ.');
  }
 
 
@@ -2571,7 +2609,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/teacher/supervision')->with('error','success5', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/teacher/supervision')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
 
  }
  public function editschedule1($id) {
@@ -2649,7 +2687,7 @@ if($request->hasFile("filess1")){
 
 
 
-    return redirect('/officer/schedule')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect('/officer/schedule')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
  public function delschedule1($id) {
@@ -2664,7 +2702,7 @@ if($request->hasFile("filess1")){
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
-     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+     return redirect()->back()->with('success5', 'ลบข้อมูลสำเร็จ.');
  }
 
 
@@ -2902,7 +2940,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/teacher/user')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/teacher/user')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
  public function edituser1($id) {
     //ตรวจสอบข้อมูล
@@ -3275,7 +3313,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
  public function   updatepersonal4(Request $request,$id) {
@@ -3342,7 +3380,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
  public function   updateuser2(Request $request,$id) {
@@ -3464,7 +3502,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/officer/register1')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+    return redirect('/officer/register1')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
 
@@ -3506,7 +3544,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/teacher/register1')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+    return redirect('/teacher/register1')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
 
@@ -3549,7 +3587,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/officer/informdetails2')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+    return redirect('/officer/informdetails2')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
  public function   confirm03(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -3589,7 +3627,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/teacher/informdetails1')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+    return redirect('/teacher/informdetails1')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
  public function   confirm4(Request $request,$id) {
     //ตรวจสอบข้อมูล

@@ -83,7 +83,7 @@ class informdetailsController extends Controller
 
 
 
-           return redirect('/studenthome/informdetails')->with('success', 'เพิ่มข้อมูลสำเร็จ.');
+           return redirect('/studenthome/informdetails')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
 
 
 
@@ -141,7 +141,7 @@ class informdetailsController extends Controller
 
 
 
-       return redirect('/studenthome/informdetails')->with('success', 'เพิ่มข้อมูลสำเร็จ.');
+       return redirect('/studenthome/informdetails')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
 
 
 

@@ -147,11 +147,17 @@
             <div class="form-group col-md-4">
                 <label for="inputAddress">ไฟล์เอกสาร</label>
 
+                <div class="custom-file mb-6">
+                    <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile" >
+                    <label class="custom-file-label" for="validatedCustomFile">เลือไฟล์PDF</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
 
-         <div class="custom-file">
+            </div>
+         {{-- <div class="custom-file">
             <input type="file" class="form-control" @error('files') is-invalid @enderror name="filess" value=""  autofocus placeholder=""required>
             <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
-          </div>
+
+        </div> --}}
                 @error('start')
                 <span class="invalid-feedback" >
                     {{ $message }}
@@ -215,7 +221,7 @@
           <div class="modal-footer">
             <a href="/officer/schedule" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->

@@ -282,7 +282,7 @@ Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruse
     Route::get("/studenthome/updateconfirm/{id}",[EditController::class,'updateconfirm'])->name('updateconfirm');
 
     Route::post("/studenthome/calendar2add/{id}",[AddController::class,'calendar2add'])->name('calendar2add');
-
+    Route::get("/studenthome/editteacher1/{id}",[EditController::class,'editteacher2'])->name('editteacher2');
 
 });
 
@@ -435,6 +435,7 @@ Route::get('/officer/search2',[HomeController::class,'searchEvaluate'])->name('s
 
 
 //กำหนดการปฏิทินสหกิจ
+//เอกสารสหกิจ
 //ค้นหา
 Route::get('/officer/search7',[HomeController::class,'searchschedule'])->name('searchschedule');
     Route::get("/officer/schedule",[HomeController::class,'schedule']);

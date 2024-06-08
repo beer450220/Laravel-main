@@ -391,6 +391,9 @@ div.second {
                              @if(session("success5"))
                                       <div class="alert alert-success col-4">{{session('success5')}}
                             @endif
+                            @if(session("success7"))
+                            <div class="alert alert-warning col-4">{{session('success7')}}
+                  @endif
                                  @if(session("error"))
                             <div class="alert alert-danger col-4">{{session('error')}}
                                 @endif
@@ -421,23 +424,23 @@ div.second {
 
 
 
-                                @if ($student->isEmpty())
+                                {{-- @if ($student->isEmpty()) --}}
                                 <div class="col-md-12 mb-4">
                                     {{-- <div class="accordion w-100" id="accordion1"> --}}
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
                                           {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
-                                 @foreach ($student as $row)
+                                 {{-- @foreach ($student as $row) --}}
 
-                                         @if ($row->id === $row->id)
+                                         {{-- @if ($row->id === $row->id)
                                          <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
                                      @elseif ($row->id === 'ตรวจสอบแล้ว')
                                          <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
                                      @elseif ($row->id === 'ไม่ผ่าน')
                                          <span class="badge badge-pill badge-danger">{{ $row->id}}</span>
-                                     @endif
+                                     @endif --}}
                                          {{-- class="circle circle-sm bg-warning-light"> --}}
-                                @endforeach
+                                {{-- @endforeach --}}
 
 
 
@@ -454,10 +457,36 @@ div.second {
 
 
                                                     @endif
-                                            @endforeach <span class="badge badge-pill badge-danger">(กรุณากรอกข้อมูลนักศึกษา)</span> </H2>
+                                            @endforeach
+                                            {{-- <span class="badge badge-pill badge-danger">(กรุณากรอกข้อมูลนักศึกษา)</span> --}}
+                                        </H2>
                                             {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
-                                            <a href="/personal1"  class=" btn btn-outline-success">เพิ่มข้อมูลนักศึกษา</a>
+                                            @if ($student->isEmpty())
+                                            <a href="/personal1" class="btn btn-outline-success">เพิ่มข้อมูลนักศึกษา</a>
+                                        @else
+                                            @foreach ($student as $row)
+                                                @if (Auth::user()->id === $row->user_id)
+                                                <a href="/personal2/{{$row->id}}" class="btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
+                                                @else
+                                                    <a href="/personal2/{{$row->id}}" class="btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
+                                                @endif
+                                            @endforeach
+                                        @endif
 
+                                        @if ($establishment->isEmpty())
+                                        <a href="/personal3" class="btn btn-outline-success">เพิ่มข้อมูลสถานประกอบการ</a>
+                                    @else
+                                        @foreach ($establishment as $row)
+                                            @if (Auth::user()->id === $row->user_id)
+                                            <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
+                                            @else
+                                            <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
+                                            @endif
+                                        @endforeach
+                                    @endif
+
+
+                                            {{-- <a href="/personal1"  class=" btn btn-outline-success">เพิ่มข้อมูลนักศึกษา</a> --}}
                                             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
                                             </span>
 
@@ -473,16 +502,16 @@ div.second {
                                           </div>
 
                                         </div>
-                                        @else
+                                        {{-- @else
 
                                         @foreach ($student as $row)
 
-                                        @if (Auth::user()->id === $row->user_id)
+                                        @if (Auth::user()->id === $row->user_id) --}}
 
-                                        <div class="col-md-12 mb-4">
+                                        {{-- <div class="col-md-12 mb-4"> --}}
                                             {{-- <div class="accordion w-100" id="accordion1"> --}}
-                                              <div class="card shadow">
-                                                <div class="card-header" id="heading1">
+                                              {{-- <div class="card shadow">
+                                                <div class="card-header" id="heading1"> --}}
                                                   {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
                                          {{-- @foreach ($student as $row)
 
@@ -499,7 +528,7 @@ div.second {
 
 
 
-                                                     <H2><strong>ข้อมูลนักศึกษา</strong> </a> <span class="">
+                                                     {{-- <H2><strong>ข้อมูลนักศึกษา</strong> </a> <span class=""> --}}
                                                         {{-- @foreach ($student as $row)
                                                         @if ($row->id === 'รอตรวจสอบ')
                                                             <span class="text-warning">รอตรวจสอบเอกสาร</span>
@@ -513,9 +542,9 @@ div.second {
                                                             @endif
                                                     @endforeach --}}
                                                      {{-- <span class="badge badge-pill badge-danger">(กรุณากรอกข้อมูลนักศึกษา)</span> --}}
-                                                     </H2>
+                                                     {{-- </H2> --}}
                                                     {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
-
+{{--
                                                     <a href="/personal2/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลนักศึกษา</a>
                                                   @foreach ($establishment as $row)
 
@@ -524,32 +553,32 @@ div.second {
                                                   <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
                                                   @endif
 
-                                              @endforeach
+                                              @endforeach --}}
                                                     {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
-                                                    </span>
+                                                    {{-- </span> --}}
 
-
+{{--
                                                 </div>
                                                 <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-                                                  <div class="card-body">
+                                                  <div class="card-body"> --}}
                                                     {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-                                                </div>
+                                                {{-- </div>
                                                 <br>
 
 
                                                   </div>
 
-                                                </div>
-                                        @elseif ($row->id === $row->id)
-s
-@else ()
+                                                </div> --}}
+                                        {{-- @elseif ($row->id === $row->id)
+
+@else () --}}
 
 
 
-@endif
+{{-- @endif --}}
 {{-- class="circle circle-sm bg-warning-light"> --}}
-@endforeach
-@endif
+{{-- @endforeach
+@endif --}}
 
 
 

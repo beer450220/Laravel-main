@@ -5,8 +5,9 @@
 
 
 
-@extends('layouts.officermin1')
+{{-- @extends('layouts.appteacher') --}}
 
+@extends('layouts.appstudent1')
 @section('content')
 @yield('content')
 
@@ -97,25 +98,21 @@
 </div>
 </div>
 </div> --}}
-<div class="col-md-12 mb-12">
+
+<main role="main" class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-6">
 
 
-
-
-
-  <div class="modal-dialog modal-xl" role="document">
-    <div class="modal-content ">
-      <div class="modal-header bg-dark text-white ">
-        <h5 class="modal-title text center " id="varyModalLabel">แก้ไขข้อมูล</h5>
-        {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> --}}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card shadow mb-4">
+      <div class="card-header">
+        <strong class="card-title">แก้ไข้ข้อมูล</strong>
       </div>
-
-
-      <div class="modal-body">
-
-        <form method="POST" action="{{url('/officer/updateschedule1/'.$schedules->id)}}"enctype="multipart/form-data">
+      <div class="card-body">
+        {{-- <form method="POST" action="{{url('/teacher/updateteacher1/'.$major->id)}}"enctype="multipart/form-data"> --}}
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -137,105 +134,62 @@
               <input type="password" class="form-control" id="inputPassword5"> --}}
             </div>
           </div>
-           <div class="row">
-            <div class="form-group col-md-6">
-              <label for="inputAddress">ชื่อเอกสาร</label>
-       <input type="text" class="form-control" @error('namefile') is-invalid @enderror name="namefile" value="{{$schedules->namefile}} "  autofocus placeholder=""required>
 
 
-              @error('namefile')
-              <span class="invalid-feedback" >
-                  {{ $message }}
-              </span>
-          @enderror
-            </div>
-          <div class="form-group col-md-3">
-            <label for="inputAddress">ไฟล์เอกสาร</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input"id="inputGroupFile01" @error('filess') is-invalid @enderror name="filess" value="{{$schedules->filess}}"  autofocus placeholder="">
-                <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์PDF</label>
-              </div>
-
-
-            @error('filess')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-
-
-        </div>
-          <div class="row">
-
-
-
+        <div class="col-md-4">
+          <label for="inputAddress"class="col-form-label ">ชื่ออาจารย์-นามสกุล</label>
+          <input type="text" class="form-control" @error('score') is-invalid @enderror name="fname" value="{{ $major->fname }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required disabled>
 
       </div>
-      <div class="row">
-      <div class="col-md-3">
-        <label for="inputAddress"class="col-form-label ">สถานนะ</label>
-        <select class="form-control "  name="status"required>
-          <option value="">กรุณาเลือก</option>
-
-        <option value="1"@if($schedules->status=="1") selected @endif required>สำหรับนักศึกษา </option>
-          <option value="2"@if($schedules->status=="2") selected @endif required>สำหรับอาจารย์</option>
-          <option value="3"@if($schedules->status=="3") selected @endif required>สำหรับสถานประกอบการ</option>
-        </select>
 
 
 
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">อีเมล์</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="email" value="{{ $major->email }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required disabled>
 
-
-
-
-        </select>
     </div>
-    {{-- <div class="col-md-2">
-      <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-select "  name="year" required> --}}
-        {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
-        <option value="{{ $year }}">{{ $year }}</option>
-    @endforeach --}}
-    {{-- <option value="">กรุณาเลือกปีการศึกษา</option>
-    @php
-    $currentYear = date('Y') + 543; // ปีปัจจุบัน
-    $startYear = 2566; // ปีเริ่มต้น
-    $endYear = $currentYear + 50; // ปีสิ้นสุด
-@endphp
 
-@for ($i = $endYear; $i >= $startYear; $i--)
-    @for ($j = 1; $j <= 1; $j++)
-        <option value="{{ $i }}"@if($schedules->year==$i ) selected @endif>{{ $i }}</option>
-    @endfor
-@endfor
+    <div class="col-md-8">
+        <label for="inputAddress"class="col-form-label ">หลักสูตร</label>
+        <select class="form-control" id="validationSelect1" name="major_id" disabled >
+            <option value="">กรุณาเลือกหลักสูตร</option>
+            @foreach ($major1 as $row)
+            {{-- <optgroup label="Mountain Time Zone"> --}}
+                 <option value="{{$row->major_id}}"{{$row->major_id==$major->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
+              {{-- <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option> --}}
+              {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+          </optgroup>
 
-</select> --}}
+            @endforeach
+          </select>
 
+    </div>
 
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">เบอร์โทรศัพท์</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="telephonenumber" value="{{ $major->telephonenumber}}"maxlength="10"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required disabled>
 
-      {{-- </select> --}}
-  {{-- </div> --}}
+    </div>
 
 
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">ที่อยู่</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="address" value="{{ $major->address }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required disabled>
 
-
-</div>
+    </div>
       </div>
-      <br>
       <br>
           <div class="modal-footer">
-            <a href="/officer/schedule" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
-            <button href="" type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
-
-
-            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
+            <a href="/studenthome/calendar2confirm" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
+            {{-- <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
+            <button type="submit" onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');" class="btn mb-2 btn-primary">อัพเดทข้อมูล</button> --}}
           </div>
         </form>
       </div> <!-- /. card-body -->
     </div> <!-- /. card -->
   </div> <!-- /. col -->
-</div> <!-- /. end-section -->
+
 
 
 
