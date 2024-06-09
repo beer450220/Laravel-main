@@ -62,6 +62,7 @@
             </a>
   {{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
             <ul class="nav col-11 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-dark">หน้าแรก</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-dark">แบบฟอร์มสหกิจ</a></li>
               <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></li>
               {{-- <li><div class="dropdown">
@@ -248,7 +249,7 @@
                                         <h1 class="fs-4 card-title fw-bold mb-4 text-center">ระบบสารสนเทศสหกิจศึกษา</h1>
                                         <br>
                                         <form method="POST" action="{{ route('login') }}"> @csrf
-                                            <div class=" input-group mb-3">
+                                            <div class=" input-group mb-4">
                                               @if ($message = Session::get('success'))
                                               <div class="alert alert-success">
                                                   <p>{{ $message }}</p>

@@ -127,6 +127,7 @@
             @endforeach
           </tbody>
         </table>
+        {!!$supervision->links('pagination::bootstrap-5')!!}
       </div>
     </div>
   </div> <!-- Bordered table -->

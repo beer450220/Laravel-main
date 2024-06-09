@@ -93,6 +93,7 @@
         </a>
 {{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
         <ul class="nav col-11 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/" class="nav-link px-2 text-dark">หน้าแรก</a></li>
           <li><a href="/cooperative" class="nav-link px-2 text-dark">แบบฟอร์มสหกิจ</a></li>
           <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></li>
           {{-- <li><div class="dropdown">
@@ -200,7 +201,7 @@
                                     <div class="row mb-3">
                                         <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ-นามสกุล') }}</label>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname">
 
                                             @error('fname')
@@ -250,7 +251,7 @@
                                     <div class="row mb-3">
                                         <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('รูปภาพผู้ใช้งาน') }}</label>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             {{-- <input id="inputGroupFile02" type="file" class="form-control" name="images" required autocomplete="images"> --}}
                                             <input class="form-control" type="file" id="formFile"name="images" required placeholder="••••••••">
 
@@ -259,10 +260,10 @@
 
                                     <div class="row mb-0">
                                         <div class="col-md-6 offset-md-4">
-                                            <a href="" type="reset" class="btn btn-primary">
+                                            <button type="reset" class="btn btn-primary">
                                                 {{ __('ยกเลิก') }}
-                                            </a>
-                                            <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล จะไม่สามารถแก้ไขได้ !!');">
+                                            </button>
+                                            <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล  !!');">
                                                 {{ __('ตกลง') }}
                                             </button>
 

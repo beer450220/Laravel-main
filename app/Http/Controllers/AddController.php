@@ -877,6 +877,7 @@ if($request->hasFile("filess"))
         'namefile' => $request->namefile,
         // "year" => $request->year,
         'score' => $request->score,
+        'Status_supervision' => $request->Status_supervision,
         "filess" =>$imageName,
 
 
@@ -1325,7 +1326,7 @@ public function addsupervision()
      // dd($users);
      // ->paginate(5);
      $major=DB::table('users')->paginate(5);
-        return view('teacher.add.addsupervision',compact('users','users2','establishment'),compact('major'));
+        return view('teacher.add.addsupervision',compact('users1','users','users2','establishment'),compact('major'));
     }
 
     public function addsupervision1(Request $request) {
@@ -1376,6 +1377,7 @@ public function addsupervision()
          $request->validate([
           //  'name' => 'required|unique:name',
           //  'test' => 'required|unique:test',
+          'student_name' => 'required|unique:events',
           'filess' => 'mimes:pdf|max:1024',
           'filess1' => 'mimes:pdf|max:1024',
       ]
@@ -1383,6 +1385,7 @@ public function addsupervision()
 
       // 'name.required'=>"กรุณากรอกชื่อ",
       // 'test.required'=>"กรุณาเทส",
+      'student_name.unique' => "ชื่อนักศึกษาซ้ำ",
       'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
                  'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
                  'filess1.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',

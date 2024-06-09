@@ -209,7 +209,7 @@
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             <select class="form-select" id="single-select-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]" >
-              <option value="">Select state</option>
+              <option value="">เลือกรายชื่อ</option>
 
               @foreach ($users1 as $row)
 
@@ -295,7 +295,7 @@ $( '#multiple-select-field' ).select2( {
           {{-- @foreach ($users as $row) --}}
           {{-- <optgroup label="Mountain Time Zone"> --}}
             <option value="รอรับทราบและยืนยันเวลานัดนิเทศ"@if($supervisions->Status_events=="รอรับทราบและยืนยันเวลานัดนิเทศ") selected @endif required>รอรับทราบและยืนยันเวลานัดนิเทศ</option>
-            <option value="รับทราบและยืนยันเวลานัดแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดแล้ว</option>
+            <option value="รับทราบและยืนยันเวลานัดนิเทศแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดนิเทศแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดนิเทศแล้ว</option>
             <option value="ขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ขอเปลี่ยนเวลานัดนิเทศ</option>
           </optgroup>
 

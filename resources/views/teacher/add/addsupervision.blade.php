@@ -198,9 +198,9 @@
               {{-- @foreach ($users as $row) --}}
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
-                @foreach ($users as $row)
+                @foreach ($users1 as $row)
                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="{{$row->user_id}} ">{{$row->student_id}}( {{$row->fname}} )</option>
+                  <option value="{{$row->id}} "> {{$row->fname}} </option>
                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
 
 
@@ -304,7 +304,7 @@ $( '#multiple-select-field1' ).select2( {
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
               <option value="รอรับทราบและยืนยันเวลานัดนิเทศ">รอรับทราบและยืนยันเวลานัดนิเทศ</option>
-              <option value="รับทราบและยืนยันเวลานัดแล้ว">รับทราบและยืนยันเวลานัดแล้ว</option>
+              <option value="รับทราบและยืนยันเวลานัดนิเทศแล้ว">รับทราบและยืนยันเวลานัดนิเทศแล้ว</option>
               <option value="ขอเปลี่ยนเวลานัดนิเทศ">ขอเปลี่ยนเวลานัดนิเทศ</option>
             </optgroup>
 

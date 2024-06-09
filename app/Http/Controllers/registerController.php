@@ -168,7 +168,7 @@ class registerController extends Controller
              'images' => 'mimes:jpeg,jpg,png|max:1024',
              ] ,[
                 // 'code_id.unique' => "รหัสประจำตัวซ้ำ",
-                'username.unique' => "รหัสนักศึกษาตัวซ้ำ",
+                'username.unique' => "รหัสนักศึกษาซ้ำ",
                 'password.confirmed' => "รหัสผ่านไม่ตรงกัน",
                 'password.min' => "รหัสผ่านมากว่า8ตัว",
                 'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
@@ -218,7 +218,7 @@ class registerController extends Controller
         //  $user-> annotation = "-";
 
          $post->save();
-         return redirect('/login')->with('error','success', 'สมัครสำเร็จ');
+         return redirect('/login')->with('success', 'สมัครสำเร็จ');
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
