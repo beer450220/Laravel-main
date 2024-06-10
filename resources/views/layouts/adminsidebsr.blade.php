@@ -182,8 +182,9 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Admin/">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon ">
+
+                    <img src="{{ asset('icons/1.png') }}" sizes="16x16"alt="Girl in a jacket" width="50" height="50">
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin </div>
             </a>

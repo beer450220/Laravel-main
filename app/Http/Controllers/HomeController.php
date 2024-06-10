@@ -321,7 +321,7 @@ class HomeController extends Controller
         $registers008=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
         ->select('acceptance.*','users.fname')
-        ->where('acceptance.namefile', ' แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)')
+        ->where('acceptance.namefile', 'แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)')
         ->where('user_id', auth()->id())
         ->paginate(5);
         $registers0008=DB::table('acceptance')
@@ -927,6 +927,13 @@ class HomeController extends Controller
         ->select('registers.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
 
+        $registers01=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.Status_registers', 'รออนุมัติ','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
         $student=DB::table('student')
         ->join('users','student.user_id','users.id')
         ->select('student.*','users.fname')->where('user_id', auth()->id())
@@ -1010,7 +1017,7 @@ class HomeController extends Controller
         // ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
         return view('student.studenthome2',compact('registers','registers1','student','establishment'
 
-
+        ,'registers01'
         ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8'));
     }
 
@@ -4452,6 +4459,7 @@ public function category()
     {
         $download=DB::table('download')
             -> where('status','1')
+            ->orderBy('namefile', 'asc')
         // ->orderBy('em_name','desc')
         //->pluck('name')
    // ->implode(', ');
@@ -4461,11 +4469,12 @@ public function category()
         ->paginate(6);
         $download1=DB::table('download')
             -> where('status','2')
-
+            ->orderBy('namefile', 'asc')
         ->paginate(6);
         $download2=DB::table('download')
-        -> where('status','3')
 
+        -> where('status','3')
+->orderBy('namefile', 'asc')
     ->paginate(6);
         return view('cooperative.cooperative',["msg"=>"I am Admin role"],compact('download','download1','download2'));
 

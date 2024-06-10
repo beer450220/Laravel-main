@@ -850,15 +850,20 @@ public function addestimate1()
        //dd($request);
 
        $request->validate([
+        'user_id' => 'required|unique:supervision',
+        'namefile' => 'required|unique:supervision',
         //  'name' => 'required|unique:name',
         //  'test' => 'required|unique:test',
         'filess' => 'mimes:pdf|max:1024',
+
     ]
   ,[
     'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
     'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
     // 'name.required'=>"กรุณากรอกชื่อ",
     // 'test.required'=>"กรุณาเทส",
+    'user_id.unique' => "ชื่อนักศึกษาซ้ำ",
+    'namefile.unique' => "ชื่อไฟล์เอกสารซ้ำ",
   ]
 
 );
@@ -1413,7 +1418,7 @@ public function addsupervision()
           // 'end' => $request->end,
         //   "term" => $request->term,
         //   "year" => $request->year,
-          "appointment_time" => $request->appointment_time,
+        //   "appointment_time" => $request->"0000-00-00 00:00:00",
         //   "executive_name" => $request->executive_name,
         //   "contact_person" => $request->contact_person,
           "em_id" => implode(",",$request->em_id),
@@ -1425,8 +1430,9 @@ public function addsupervision()
            "teacher_name" => implode(",",$request->teacher_name),
 
       ]);
+
     //    $post->user_id = "0";  // $post->Status ="รออนุมัติ";
-    //   $post-> Statusevents = "student";
+    //   $post-> appointment_time =  null;
       //$post-> List_teacher = "List_teacher";
     //   $post-> Statustime = "List_teacher";
       //$post['student_name'] = json_encode($request->student_name);

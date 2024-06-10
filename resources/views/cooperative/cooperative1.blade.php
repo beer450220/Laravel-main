@@ -231,7 +231,7 @@
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('ยืนยันรหัสผ่าน') }}</label>
 
                                         <div class="col-md-3">
-                                            <input id="password" type="confirm-password" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" name="password_confirmation" required autocomplete="new-password">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" name="password_confirmation" required autocomplete="new-password">
                                             @error('password_confirmation')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

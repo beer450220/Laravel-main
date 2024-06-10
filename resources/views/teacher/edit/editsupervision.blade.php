@@ -181,7 +181,48 @@
                   {{ $message }}
               </span>
           @enderror
+          <script>
+            // document.addEventListener('DOMContentLoaded', function() {
+            //     var input = document.getElementById('example-date');
+            //     var now = new Date();
 
+            //     // Adjust the date format to "YYYY-MM-DDTHH:MM"
+            //     var year = now.getFullYear();
+            //     var month = (now.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+            //     var day = now.getDate().toString().padStart(2, '0');
+            //     var hours = now.getHours().toString().padStart(2, '0');
+            //     var minutes = now.getMinutes().toString().padStart(2, '0');
+
+            //     var minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+            //     input.setAttribute('min', minDateTime);
+            // });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const input = document.getElementById('example-date');
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+
+                const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+                input.setAttribute('min', minDateTime);
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                const input = document.getElementById('example-date1');
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+
+                const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+                input.setAttribute('min', minDateTime);
+            });
+        </script>
             </div>
           <div class="form-group col-md-4">
             <label for="inputAddress">ชื่อสถานประกอบการ</label>
@@ -310,8 +351,8 @@ $( '#multiple-select-field' ).select2( {
         {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
 
         {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title"> --}}
-        <input class="form-control" id="example-date" type="text" name="appointment_time"value="{{$supervisions->appointment_time}}"  autofocus placeholder="">
-
+        {{-- <input class="form-control" id="example-date" type="text" name="appointment_time"value="{{$supervisions->appointment_time}}"  autofocus placeholder=""> --}}
+        <input class="form-control" id="example-date1" type="datetime-local" name="start"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
         @error('test')
         <span class="invalid-feedback" >
             {{ $message }}

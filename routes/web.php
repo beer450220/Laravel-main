@@ -159,6 +159,7 @@ Route::get("/studenthome1",[HomeController::class,'studentHome1'])->name('studen
 
  //ลงทะเบียน
     // Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
+    Route::post("/studenthome/updateconfirm1",[EditController::class,'updateconfirm1'])->name('updateconfirm1');
     Route::get("/studenthome/edit9register/{id}",[Register2Controller::class,'edit9register'])->name('edit9register');
 Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
     // แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)

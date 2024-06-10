@@ -150,17 +150,17 @@
             </li>
           </ul>
 
-        <ul class="navbar-nav flex-fill w-100 mb-2">
+        {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item ">
               <a href="/teacher/user"  class=" nav-link">
-                {{-- <i class="fe fa-users fe-16"></i> --}}
+
                 <i class="fa-solid fa-users"></i>
                 <span class="ml-3 item-text">ข้อมูลผู้ใช้งาน</span>
               </a>
 
 
             </li>
-          </ul>
+          </ul> --}}
 
     {{-- <p class="text-muted nav-heading mt-4 mb-1">
       <span>นิเทศงาน</span>

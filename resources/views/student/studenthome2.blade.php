@@ -5,7 +5,7 @@
 {{--@include('layouts.sidebarstudent') --}}
 {{-- @include('layouts.scriptsstudent') --}}
 @section('content')
-<title>ระบบสารสนเทศสหกิจศึกษา</title>
+{{-- <title>ระบบสารสนเทศสหกิจศึกษา</title> --}}
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
@@ -366,6 +366,51 @@ div.second {
                                       {{-- <br>  <a href="/studenthome/informdetails"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป --}}
                                                               </div>   <br>   <br>
                           </div>
+                          <div class="col-12">
+                            <h2 class="steps">
+                                {{-- <form method="POST" action="{{ route('updateconfirm1') }}" >
+                                    @csrf --}}
+                                    {{-- @if ($registers01->isEmpty()) --}}
+                                    {{-- @foreach ($registers01 as $row) --}}
+                                    {{-- @if ($row->user_id === Auth::user()->id) --}}
+                                    {{-- Auth::user()->id --}}
+                                {{-- <a href="/studenthome/updateconfirm1/{{$row->id}}"  class=" btn btn-outline-success"onclick="return confirm('ยืนยันการส่งเอกสาร !!');">ยืนยันการส่งเอกสาร</a></h2> --}}
+                                {{-- @elseif ($row->Status_registers === 'ไม่อนุมัติ') --}}
+
+                                {{-- @endif --}}
+                                {{-- @endforeach --}}
+                                {{-- <button type="submit" class="btn btn-outline-success"onclick="return confirm('ยืนยันการส่งเอกสาร !!');">ยืนยันการส่งเอกสารทั้งหมด</button> --}}
+                                <button id="update-status-btn" class="btn btn-outline-success"onclick="return confirm('ยืนยันการส่งเอกสาร !!');">ยืนยันการส่งเอกสารทั้งหมด</button>
+                                {{-- @endif --}}
+                                {{-- </form> --}}
+                            </div>
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                                 $(document).ready(function() {
+        $('#update-status-btn').click(function(event) {
+            // ป้องกันการคลิกปุ่มหลายครั้งโดยไม่ได้ตั้งใจ
+            event.preventDefault();
+
+            if (confirm('ยืนยันการส่งเอกสาร !!')) {
+                $.ajax({
+                    url: '{{ route("updateconfirm1") }}', // URL สำหรับเรียกใช้ route
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}', // ส่งค่า CSRF token เพื่อป้องกัน CSRF
+                    },
+                    success: function(response) {
+                        alert('สถานะถูกอัปเดตเรียบร้อยแล้ว');
+                        location.reload(); // รีเฟรชหน้าเว็บเพื่อดูการเปลี่ยนแปลง
+                    },
+                    error: function(xhr) {
+                        alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ');
+                    }
+                });
+            }
+        });
+    });
+                            </script>
+                        <br>
                           {{-- <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                               <h2 class="accordion-header" id="headingOne">
@@ -590,7 +635,62 @@ div.second {
           </div>
 
         </div>
+        @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+        <div class="col-md-12 mb-4">
+            {{-- <div class="accordion w-100" id="accordion1"> --}}
+              <div class="card shadow">
+                <div class="card-header" id="heading1">
+                  {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+         @foreach ($registers1 as $row)
 
+                 @if ($row->Status_registers === 'รออนุมัติ')
+                 <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+             @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                 <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                 @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                 <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                 <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+             @endif
+                 {{-- class="circle circle-sm bg-warning-light"> --}}
+        @endforeach
+
+
+
+
+                     <H2><strong>แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</strong> </a> <span class="">
+                        @foreach ($registers1 as $row)
+                        @if ($row->Status_registers === 'รออนุมัติ')
+                            <span class="text-warning">รออนุมัติเอกสาร</span>
+                        @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                            <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                            @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                            <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                        @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                            <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                        @else (sss)
+
+
+                            @endif
+                    @endforeach</H2>
+                    {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                    <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                        <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                    {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                    </span>
+
+
+                </div>
+                <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                  <div class="card-body">
+                    {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                </div>
+                <br>
+
+
+                  </div>
+
+                </div>
 @elseif ($row->Status_registers === 'ไม่อนุมัติ')
 <div class="col-md-12 mb-4">
     {{-- <div class="accordion w-100" id="accordion1"> --}}

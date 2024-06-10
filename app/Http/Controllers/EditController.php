@@ -578,7 +578,21 @@ public function editreport($report_id) {
 
     return redirect('/studenthome/calendar2confirm')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
+ public function   updateconfirm1(Request $request) {
+    //ตรวจสอบข้อมูล
 
+    //  dd($request);
+
+    $userId = auth()->id();
+
+    // อัปเดตทุกเรคคอร์ดที่มี user_id ตรงกับผู้ใช้ที่เข้าสู่ระบบและ Status_registers เป็น 'รออนุมัติ'
+    DB::table('registers')
+        ->where('user_id', $userId)
+        ->where('Status_registers', 'รอยืนยันเอกสารทั้งหมด')
+        ->update(['Status_registers' => 'รออนุมัติ']);
+
+    return redirect('/studenthome1')->with('success6', 'ยืนยันการส่งเอกสารสำเร็จ.');
+ }
 public function   calendar2confirmupdate(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -2817,13 +2831,19 @@ if($request->hasFile("filess1")){
     //dd($request);
 
     $request->validate([
-        // 'images' => ['required','mimes:jpg,jpeg,png'],
-        // 'name' => ['required','min:5'],
-        // 'filess' => 'required|mimes:pdf',
-        // 'establishment' => 'required',
+        // 'username' => 'required|unique:users',
+        //   'email' => 'required',
+        //  'username' => 'required',
+        //  'password' => 'required'
+        'images' => 'mimes:jpeg,jpg,png|max:1024',
+'password' => 'required|confirmed|min:8',
     ],[
             //'establishment.required' => "กรุณา",
-
+// 'username.unique' => "ผู้ใช้งานซ้ำ",
+                'images.mimes' => 'ไฟล์ต้องเป็นรูปภาพเท่านั้น',
+                'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+                'password.confirmed' => "รหัสผ่านไม่ตรงกัน",
+                'password.min' => "รหัสผ่านมากว่า8ตัว",
         ]
     );
 
@@ -2831,38 +2851,38 @@ if($request->hasFile("filess1")){
    $post=users::findOrFail($id);
 
    if($request->hasFile("images")){
-       if (File::exists("รูปโปรไฟล์/".$post->images)) {
-           File::delete("รูปโปรไฟล์/".$post->images);
+       if (File::exists("Profile/".$post->images)) {
+           File::delete("Profile/".$post->images);
        }
        $file=$request->file("images");
         $post->images=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $file->move(\public_path("/Profile"),$post->images);
         $request['images']=$post->images;
      // dd($post);
    }
     $post->update
     ([
-       "username" =>$request->username,
+    //    "username" =>$request->username,
 
 
     //    "code_id" =>$request->code_id,
        "major_id" =>$request->major_id,
     //    "establishment_id" =>$request->establishment_id,
        "fname" =>$request->fname,
-       "surname" =>$request->surname,
-       "telephonenumber" =>$request->telephonenumber,
-       "address" =>$request->address,
-       "GPA" =>$request->GPA,
-       "em_name" =>$request->em_name,
-       "year" =>$request->year,
-       "term" =>$request->term,
+    //    "surname" =>$request->surname,
+    //    "telephonenumber" =>$request->telephonenumber,
+    //    "address" =>$request->address,
+    //    "GPA" =>$request->GPA,
+    //    "em_name" =>$request->em_name,
+    //    "year" =>$request->year,
+    //    "term" =>$request->term,
 
-       "email" =>$request->email,
+    //    "email" =>$request->email,
 
        "password" => Hash::make($request->password),
          "images"=>$post->images,
        "role" =>$request->role,
-       "status" =>$request->status,
+    //    "status" =>$request->status,
     //    "username" =>$request->username,
         // $user->establishment_id = "ยังไม่มีสถานประกอบการ";
 
@@ -2874,7 +2894,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/user')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/user')->with('success7', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
  public function   updateuser8(Request $request,$id) {

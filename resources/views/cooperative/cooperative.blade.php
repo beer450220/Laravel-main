@@ -204,7 +204,7 @@
                                     {{-- <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td> --}}
                                     {{-- <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a>
                                     </td> --}}
-                                    <td class="text-center"><a href="../ไฟล์เอกสารดาวน์โหลด/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                    <td class="text-center"><a href="../download/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
                                 </tr>
                                                                                     <tr>
                                 {{-- <th scope="row">2</th>
@@ -257,7 +257,7 @@
                                 {{-- <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td> --}}
                                 {{-- <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a>
                                 </td> --}}
-                                <td class="text-center"><a href="../ไฟล์เอกสารดาวน์โหลด/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                <td class="text-center"><a href="../download/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
                             </tr>                                                                                                     <tr>
                                 {{-- <th scope="row">1</th>
                                     <td>สก.10 แบบขออนุญาตการออกนิเทศนักศึกษาสหกิจศึกษา (สำหรับอาจารย์นิเทศสหกิจศึกษา)</td>
@@ -296,7 +296,7 @@
                                 {{-- <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td> --}}
                                 {{-- <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a>
                                 </td> --}}
-                                <td class="text-center"><a href="../ไฟล์เอกสารดาวน์โหลด/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                <td class="text-center"><a href="../download/{{$row->filess }}" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
                             </tr>                                                                                                      <tr>
                                 {{-- <th scope="row">1</th>
                                     <td>สก.13 แบบประเมินผลการปฏิบัติงานนักศึกษาสหกิจศึกษา สำหรับผู้นิเทศงาน (พี่เลี้ยง)</td>

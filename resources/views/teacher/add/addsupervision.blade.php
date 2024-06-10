@@ -137,7 +137,36 @@
               <label for="inputAddress">วันเวลาการนิเทศงาน</label>
        <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title"required>
 
+       <script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var input = document.getElementById('example-date');
+        //     var now = new Date();
 
+        //     // Adjust the date format to "YYYY-MM-DDTHH:MM"
+        //     var year = now.getFullYear();
+        //     var month = (now.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+        //     var day = now.getDate().toString().padStart(2, '0');
+        //     var hours = now.getHours().toString().padStart(2, '0');
+        //     var minutes = now.getMinutes().toString().padStart(2, '0');
+
+        //     var minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+        //     input.setAttribute('min', minDateTime);
+        // });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('example-date');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            input.setAttribute('min', minDateTime);
+        });
+    </script>
               @error('name')
               <span class="invalid-feedback" >
                   {{ $message }}
@@ -280,17 +309,17 @@ $( '#multiple-select-field1' ).select2( {
             </span>
         @enderror
           </div>
-          <div class="col-md-4">
-            <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
+          {{-- <div class="col-md-4">
+            <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label> --}}
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"  autofocus placeholder="title"> --}}
-            <input class="form-control" id="example-date" type="text" name="appointment_time"  autofocus placeholder=""required>
+            {{-- <input class="form-control" id="example-date" type="text" name="appointment_time"  autofocus placeholder=""required>
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}
             </span>
         @enderror
-          </div>
+          </div> --}}
 
 
         </div>

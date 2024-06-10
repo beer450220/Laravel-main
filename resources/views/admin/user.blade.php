@@ -2,7 +2,7 @@
 @extends('layouts.adminmin')
 
 {{-- @section('titlebar','home') --}}
-    <title>admin</title>
+    {{-- <title>admin</title> --}}
   @section('content')
 
 {{-- @include('layouts.adminsidebsr')
@@ -81,7 +81,18 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">จัดการผู้ใช้งาน</h6>
-
+                            @if(session("success6"))
+                            <div class="alert alert-success col-4">{{session('success6')}}</div>
+                    @endif
+                    @if(session("success5"))
+                          <div class="alert alert-danger col-4">{{session('success5')}}</div>
+                    @endif
+                    @if(session("success7"))
+                    <div class="alert alert-warning col-4">{{session('success7')}} </div>
+                    @endif
+                     @if(session("error"))
+                    <div class="alert alert-danger col-4">{{session('error')}} </div>
+                    @endif
 <br>
 
 
@@ -119,21 +130,21 @@
                                     <thead>
                                                         <tr>
 
-  <th><i class="" aria-hidden="true"></i>รหัสประจำตัว</th>
+  <th><i class="" aria-hidden="true"></i>ชื่อผู้ใช้งาน</th>
                                             <th><i class=""></i>ชื่อ</th>
 
-                                             <th><i class="" aria-hidden="true"></i>อีเมล </th>
+
 
 
                                             {{-- <th ><i class="" aria-hidden="true"></i>เบอร์โทร</th> --}}
 
-                                            <th><i class="" aria-hidden="true"></i>โปรไฟล์ </th>
+                                            {{-- <th><i class="" aria-hidden="true"></i>โปรไฟล์ </th> --}}
                                             <th><i class="" aria-hidden="true"></i>บทบาทหน้าที่</th>
                                              {{-- <th ><i class="" aria-hidden="true"></i>จังหวัด</th> --}}
                                              <th><i class="" aria-hidden="true"></i>เริ่มใช้งานระบบ</th>
-                                            <th>ระงับการใช้งาน</th>
+                                            {{-- <th>ระงับการใช้งาน</th> --}}
                                             <th>แก้ไขข้อมูล</th>
-                                            <th>ลบข้อมูล</th>
+                                            {{-- <th>ลบข้อมูล</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -151,18 +162,18 @@
 
                                             <td>{{$row->username}}</td>
                                             <td>{{$row->fname}}</td>
-                                            <td>{{$row->email}}</td>
+
 
                                             {{-- <td></td> --}}
-                                            <td><img src="/รูปโปรไฟล์/{{ $row->images }}" class="rounded" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+                                            {{-- <td><img src="/Profile/{{ $row->images }}" class="rounded" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
                                             <td>{{$row->role}}</td>
 
                                             <td>{{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}</td>
                                             {{-- {{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}
                                             {{$row['created_at']->diffForHumans()}} --}}
                                             {{-- <td></td> --}}
-                                            <td>
-                                                <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="ON" data-off="OFF" {{ $row->role ? 'checked' : '' }}>
+                                            {{-- <td>
+                                                <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="ON" data-off="OFF" {{ $row->role ? 'checked' : '' }}> --}}
                                                 {{-- <div class="form-check form-switch text-center">
                                                 <input class="form-check-input "for="flexSwitchCheckChecked" type="checkbox" role="switch" id="flexSwitchCheckChecked"id="switchOne"wire:model="isActive" checked></div> </td> --}}
 
@@ -170,7 +181,7 @@
                                             <td> <a href="/user/edituser/{{$row->id}}" class="fa fa-pencil btn btn-warning text-center " aria-hidden="true"></a></td>
                                             {{-- <td> <a href="/edituser/{{$row->id}}" class="fa fa-pencil btn btn-warning text-center " aria-hidden="true"></a></td> --}}
                                             <!-- <php echo isset($_GET['pasge']) && $_GET['page'] =='user'?'active':''?>"href="?page=edit?update_id=" -->
-                                            <td> <a href="../Admin/Del.php?delete1_id=" class="fa fa-window-close btn btn-danger text-center"onclick="return confirm('ยืนยันการลบข้อมูล !!');" aria-hidden="true"></a></td>
+                                            {{-- <td> <a href="../Admin/Del.php?delete1_id=" class="fa fa-window-close btn btn-danger text-center"onclick="return confirm('ยืนยันการลบข้อมูล !!');" aria-hidden="true"></a></td> --}}
                                         </tr>
 
                                      @endforeach
