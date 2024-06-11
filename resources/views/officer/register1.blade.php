@@ -57,6 +57,7 @@
             <tr>
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
+                <th>ปี</th>
                 <th>ชื่อไฟล์</th>
                 {{-- <th>รูปภาพ</th> --}}
                 {{-- <th>ปีการศึกษา</th>
@@ -83,11 +84,13 @@
             ">
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
               <td>{{ $row->fname }} </td>
-              <td>{{ $row->namefile }}</td>
+             <td>{{ $row->year }}</td>
+              {{-- <td>{{ $row->namefile }}</td> --}}
+
               {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
               {{-- <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td> --}}
-              <td>
+              {{-- <td>
                   @if ($row->Status_registers === 'รออนุมัติ')
                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
                   @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
@@ -95,11 +98,11 @@
                   @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                       <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
                   @endif
-              </td>
-              <td>{{ $row->annotation }}</td>
-              <td><a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              </td> --}}
+              {{-- <td>{{ $row->annotation }}</td> --}}
+              {{-- <td><a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td> --}}
 {{-- download --}}
-              <td>
+              {{-- <td>
                 @if ($row->Status_registers === 'รออนุมัติ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/officer/confirm2/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
@@ -109,13 +112,13 @@
                 <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
             <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
-            @endif
+            @endif --}}
 
 
              {{--  <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
 
 
-
+             <td>  <a href="/officer/editregister01/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ดูเอกสารทั้งหมด</a></td></td>
             </tr>
 
             @endforeach

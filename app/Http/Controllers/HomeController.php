@@ -3582,12 +3582,14 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     public function register1()
     {
 
-        $registers=DB::table('registers')
+        $registers=DB::table('student')
 
-        ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        // ->join('student','registers.user_id','student.user_id')
+        ->join('users','student.user_id','users.id')
+        // ->select('registers.*','users.fname','student.year')
+        ->select('student.*','users.fname')
         ->where('role',"student")
-        ->orderBy('registers.updated_at', 'desc')
+        ->orderBy('student.updated_at', 'desc')
         ->paginate(10);
 //dd($registers);
         return view('officer.register1',compact('registers'));

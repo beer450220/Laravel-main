@@ -2082,6 +2082,45 @@ public function editcategory($category_id) {
      return view('officer.edit.editregister1',compact('registers'));
 
  }
+ public function editregister01($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+   // $registers=DB::table('registers')->first();
+
+    $registers=student::find($id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($reports);
+     // dd($supervisions);
+     $registers1=DB::table('student')
+
+     ->join('registers','student.user_id','registers.id')
+    //  ->join('users','student.user_id','users.id')
+    //  ->select('registers.*','users.fname','student.year')
+     ->select('student.*','registers.fname')
+    //  ->where('role',"student")
+    //  ->orderBy('student.updated_at', 'desc')
+     ->paginate(10);
+
+     $registers2 = DB::table('registers')
+  ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+
+        ->where('role',"student")
+        ->orderBy('registers.updated_at', 'desc')
+        ->paginate(10);
+     return view('officer.edit.editregister01',compact('registers','registers1','registers2'));
+
+ }
  public function editregister2($id) {
     //ตรวจสอบข้อมูล
  // dd($id);
