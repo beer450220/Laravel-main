@@ -23,7 +23,7 @@
             <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content ">
                 <div class="modal-header bg-dark text-white ">
-                  <h5 class="modal-title text center " id="varyModalLabel">ข้อมูลตรวจสอบเอกสาร</h5>
+                  <h5 class="modal-title text center " id="varyModalLabel">ไม่อุมัติเอกสาร</h5>
                   {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button> --}}
@@ -33,7 +33,7 @@
                 <div class="modal-body">
 
 
-                  <form method="POST" action="{{url('/officer/updateregister1/'.$registers->id)}}" enctype="multipart/form-data">
+                  <form method="POST" action="{{url('/officer/updateregister01/'.$registers->id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
@@ -47,14 +47,14 @@
             </div>
         @endif
                     <div class="row">
-                      <div class="col-md-4">
+                      {{-- <div class="col-md-4">
 
                     <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
                     <select class="form-control " aria-label=".form-select-sm example" name="Status_registers"required>
                       <option selected>กรุณาเลือก</option>
                       <option value="อนุมัติเอกสารแล้ว"@if($registers->Status_registers=="อนุมัติเอกสารแล้ว") selected @endif required>อนุมัติเอกสารแล้ว</option>
-                      <option value="ไม่อนุมัติ"@if($registers->Status_registers=="ไม่ผ่าน") selected @endif required>ไม่อนุมัติ</option>
+                      <option value="ไม่อนุมัติ"@if($registers->Status_registers=="ไม่อนุมัติ") selected @endif required>ไม่อนุมัติ</option>
                       <option value="รออนุมัติ"@if($registers->Status_registers=="รออนุมัติ") selected @endif required >รออนุมัติ</option>
 
                     </select>
@@ -64,7 +64,7 @@
                     </span>
                 @enderror
 
-                      </div>
+                      </div> --}}
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
                         <input type="text" class="form-control" name="annotation" value="{{$registers->annotation}}" required>

@@ -20,7 +20,7 @@
 
 
 
-            <div class="modal-dialog modal-xl" role="document">
+            <div class=" " role="document">
               <div class="modal-content ">
                 <div class="modal-header bg-dark text-white ">
                   <h5 class="modal-title text center " id="varyModalLabel">ข้อมูลตรวจสอบเอกสาร</h5>
@@ -46,54 +46,83 @@
                 </ul>
             </div>
         @endif
-                    <div class="row">
-                      <div class="col-md-4">
-
-                    <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
-
-                    <select class="form-control " aria-label=".form-select-sm example" name="Status_registers"required>
-                      <option selected>กรุณาเลือก</option>
-                      <option value="อนุมัติเอกสารแล้ว"@if($registers->Status_registers=="อนุมัติเอกสารแล้ว") selected @endif required>อนุมัติเอกสารแล้ว</option>
-                      <option value="ไม่อนุมัติ"@if($registers->Status_registers=="ไม่ผ่าน") selected @endif required>ไม่อนุมัติ</option>
-                      <option value="รออนุมัติ"@if($registers->Status_registers=="รออนุมัติ") selected @endif required >รออนุมัติ</option>
-
-                    </select>
-                    @error('Status_registers')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-
-                      </div>
-                      <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
-                        <input type="text" class="form-control" name="annotation" value="{{$registers->annotation}}" required>
-
-                       @error('annotation')
-                       <span class="invalid-feedback" role="alert">
-                           <strong>{{ $message }}</strong>
-                       </span>
-                   @enderror
-                      </div>
+        @if ($registers)
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ $registers->fname }} </h5>
+                {{-- <p class="card-text">User ID: {{ $registers->user_id }}</p> --}}
+                <!-- แสดงข้อมูลเพิ่มเติมที่ต้องการ -->
+            </div>
+        </div>
+    @endif
 
 
                       {{$registers->namefile}}
+                      @if ($registers2->isEmpty())
+                      @else
+                      <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>ชื่อไฟล์</th>
+                                <th>สถานะ</th>
+                                <th>ดูไฟล์เอกสาร</th>
+                                <th>หมายเหตุ</th>
+                                <th style="width:10%">ยืนยันข้อมูล</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
                       @foreach ($registers2 as $row)
-                      {{$row->namefile}}
-                      @if ($row->id === 'รออนุมัติ')
-                      <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                      <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $row->namefile }}</td>
+                        <td>  @if ($row->Status_registers === 'รออนุมัติ')
+                            <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                        @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                            <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
+                        @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                            <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                        @endif</td>
+                        <td>
+                            <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>
+                        </td>
+                            <td>{{ $row->annotation }}</td>
+                        <td>
+                            @if ($row->Status_registers === 'รออนุมัติ')
+                            <div class="d-grid gap-2 d-md-block">
+                            <a href="/officer/confirm2/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
+
+                            <a href="/officer/editregister02/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-circle-xmark fe-16">ไม่อนุมัติ</a></td>
+                        </div>
+                            @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                            <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
+                        @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                        <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
+                        @endif
+                    </td>
+                    </tr>
+ @endforeach
+                      @endif
+                      {!! $registers2->links('pagination::bootstrap-5') !!}
+            </tbody>
+        </table>
+
+
+                      {{-- @if ($row->user_id === $registers->id)
+                      <span class="badge badge-pill badge-warning">ss</span>
                   @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                      <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
+                    ss1
                   @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                      <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
-                  @endif
-                      @endforeach
-                    </div>
-              </div>
+                  2
+                  @endif --}}
+
+
+
                 <div class="modal-footer">
 
                   <a href="/officer/register1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
-                  <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button>
+                  {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button> --}}
                 </div></form>
               </div>
             </div>

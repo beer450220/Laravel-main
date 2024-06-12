@@ -1627,16 +1627,16 @@ $users=DB::table('users')
                         //    // ->get();
                         //     ->paginate(10);
 
-                            $registers = registers::query()
-                            ->join('users', 'registers.user_id', '=', 'users.id')
+                            $registers = student::query()
+                            ->join('users', 'student.user_id', '=', 'users.id')
                             ->where(function ($query) use ($keyword) {
-                                $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                $query->where('student.fname', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
-                                    //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
                             })
-                            ->select('registers.*', 'users.fname')
+                            ->select('student.*', 'users.fname')
                             ->where('role',"student")
                             ->orderBy('id', 'desc')
                             ->paginate(10);

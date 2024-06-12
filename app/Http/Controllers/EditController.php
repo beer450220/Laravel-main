@@ -2079,7 +2079,29 @@ public function editcategory($category_id) {
    // ->get();
    // dd($reports);
      // dd($supervisions);
-     return view('officer.edit.editregister1',compact('registers'));
+     return view('officer.edit.editregister1',compact('registers','id'));
+
+ }
+ public function editregister02($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+   // $registers=DB::table('registers')->first();
+
+    $registers=registers::find($id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($reports);
+     // dd($supervisions);
+     return view('officer.edit.editregister02',compact('registers','id'));
 
  }
  public function editregister01($id) {
@@ -2112,12 +2134,20 @@ public function editcategory($category_id) {
      ->paginate(10);
 
      $registers2 = DB::table('registers')
-  ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
-
-        ->where('role',"student")
+        ->join('users', 'registers.user_id', '=', 'users.id')
+        ->select('registers.*', 'users.fname')
+        ->where('registers.user_id', $registers->user_id)
+        // ->orderBy('namefile', 'asc')
         ->orderBy('registers.updated_at', 'desc')
         ->paginate(10);
+// dd($registers2);
+//      $registers2 = DB::table('registers')
+//   ->join('users','registers.user_id','users.id')
+//         ->select('registers.*','users.fname')
+
+//         ->where('role',"student")
+//         ->orderBy('registers.updated_at', 'desc')
+//         ->paginate(10);
      return view('officer.edit.editregister01',compact('registers','registers1','registers2'));
 
  }
@@ -2158,21 +2188,21 @@ public function editcategory($category_id) {
 
         ]
     );
-    if($request->hasFile("filess")){
-        // if (File::exists(public_path("file/".$post->filess))) {
-        //     File::delete(public_path("file/".$post->filess));
-        // }
-        if (File::exists("file/".$post->filess)) {
-            File::delete("file/".$post->filess);
-        }
-        $file=$request->file("filess");
-        $post->filess=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/file"),$post->filess);
-        $request['filess']=$post->filess;
+    // if($request->hasFile("filess")){
+    //     // if (File::exists(public_path("file/".$post->filess))) {
+    //     //     File::delete(public_path("file/".$post->filess));
+    //     // }
+    //     if (File::exists("file/".$post->filess)) {
+    //         File::delete("file/".$post->filess);
+    //     }
+    //     $file=$request->file("filess");
+    //     $post->filess=time()."_".$file->getClientOriginalName();
+    //     $file->move(\public_path("/file"),$post->filess);
+    //     $request['filess']=$post->filess;
         // $file = $request->file("filess");
         // $post->filess = time() . "_" . $file->getClientOriginalName();
         // $file->move(public_path("/file"), $post->filess);
-    }
+    // }
 //     $post=[
 //             "annotation" =>$request->annotation,
 
@@ -2188,7 +2218,7 @@ $post->update
     // "establishment"=>$request->establishment,
 
     // "filess"=>$request->filess,
-    "filess"=>$post->filess,
+    // "filess"=>$post->filess,
     //"namefile" => $request->namefile,
     "annotation" =>$request->annotation,
 
@@ -2196,9 +2226,70 @@ $post->update
     // "filess" => $post->filess
 ]);
 
-
-    return redirect('/officer/register1')->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
+// return redirect()->back()->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
+return redirect('/officer/register1')->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
  }
+
+
+ public function   updateregister01(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    // if($request->hasFile("filess")){
+    //     // if (File::exists(public_path("file/".$post->filess))) {
+    //     //     File::delete(public_path("file/".$post->filess));
+    //     // }
+    //     if (File::exists("file/".$post->filess)) {
+    //         File::delete("file/".$post->filess);
+    //     }
+    //     $file=$request->file("filess");
+    //     $post->filess=time()."_".$file->getClientOriginalName();
+    //     $file->move(\public_path("/file"),$post->filess);
+    //     $request['filess']=$post->filess;
+        // $file = $request->file("filess");
+        // $post->filess = time() . "_" . $file->getClientOriginalName();
+        // $file->move(public_path("/file"), $post->filess);
+    // }
+//     $post=[
+//             "annotation" =>$request->annotation,
+
+//          "Status_registers"=>$request->Status_registers,
+//     ] ;
+// DB::table('registers')->where('id',$id)->update($post);
+   $post=registers::findOrFail($id);
+
+$post->Status_registers ="ไม่อนุมัติ";
+$post->update
+([
+    // "name" =>$request->name,
+    // "establishment"=>$request->establishment,
+
+    // "filess"=>$request->filess,
+    // "filess"=>$post->filess,
+    //"namefile" => $request->namefile,
+    "annotation" =>$request->annotation,
+
+        // "Status_registers"=>$request->'sss',
+    // "filess" => $post->filess
+]);
+
+// return redirect()->back()->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
+return redirect('/officer/register1')->with('success7', 'อัพเดทข้อมูลสำเร็จ.');
+ }
+
+
+
  public function   updateregister2(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -3561,7 +3652,9 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/officer/register1')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
+    // return redirect('/officer/editregister01')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect()->back()->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
+    // return redirect()->route('editregister01', ['id' => $post->user_id])->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
 

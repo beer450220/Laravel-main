@@ -58,14 +58,14 @@
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
                 <th>ปี</th>
-                <th>ชื่อไฟล์</th>
+                <th>ดูเอกสาร</th>
                 {{-- <th>รูปภาพ</th> --}}
                 {{-- <th>ปีการศึกษา</th>
                 <th>ภาคเรียน</th> --}}
-               <th>สถานะ</th>
+               {{-- <th>สถานะ</th>
                <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
-                <th style="width:10%">ยืนยันข้อมูล</th>
+                <th style="width:10%">ยืนยันข้อมูล</th> --}}
                 {{-- <th style="width:10%">ยืนยันข้อมูล</th> --}}
               {{-- <th style="width:10%">ลบ</th> --}}
             </tr>
@@ -118,7 +118,7 @@
              {{--  <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
 
 
-             <td>  <a href="/officer/editregister01/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ดูเอกสารทั้งหมด</a></td></td>
+             <td>  <a href="/officer/editregister01/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a></td></td>
             </tr>
 
             @endforeach
