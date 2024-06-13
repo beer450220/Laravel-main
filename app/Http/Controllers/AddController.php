@@ -1364,6 +1364,21 @@ public function addsupervision()
         return view('teacher.add.addsupervision',compact('users1','users','users2','establishment'),compact('major'));
     }
 
+
+
+    public function getSubcategories(Request $request)
+    {
+        $id = $request->id;
+        $subcategories = establishment::where('id', $id)->get();
+
+        $output = '<option value="">-- เลือกหมวดหมู่ย่อย --</option>';
+        foreach ($subcategories as $subcategory) {
+            $output .= '<option value="'.$subcategory->id.'">'.$subcategory->em_name.'</option>';
+        }
+        return $output;
+    }
+
+
     public function addsupervision1(Request $request) {
       //ตรวจสอบข้อมูล
       // dd($request);

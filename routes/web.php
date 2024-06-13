@@ -597,6 +597,10 @@ Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->na
     Route::get('/teacher/deletsupervision/{id}', [EditController::class,'deletsupervision'])->name('deletsupervision');
     Route::get('/teacher/view1/{id}', [HomeController::class,'viewevents'])->name('viewevents');
 
+    Route::post('/get-subcategories',[addController::class,'getSubcategories'])->name('getSubcategories');
+
+
+
 //เอกสารขออนุญาตนิเทศงาน(สก10)
 //ค้นหา
 // Route::get('/teacher/search2',[HomeController::class,'searches1'])->name('searches1');

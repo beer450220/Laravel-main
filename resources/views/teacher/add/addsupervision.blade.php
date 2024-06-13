@@ -201,15 +201,16 @@
             {{-- <input class="form-control" id="example-date" type="text" name="establishment_name"  autofocus placeholder=""required> --}}
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" > --}}
-                <select class="form-control select2" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required >
-                <option value="">Select state</option>
+                <select class="form-control select2"id="subcategory" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required >
+                    <option value="">-- เลือกหมวดหมู่ย่อย --</option>
+                    {{-- <option value="">Select state</option>
               @foreach ($establishment as $row)
 
                 <option value="{{$row->id}}">{{$row->em_name}}</option>
 
               </optgroup>
 
-              @endforeach
+              @endforeach --}}
             </select>
 
             @error('test')
@@ -222,7 +223,7 @@
             {{-- id="multiple-select-field" --}}
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
+            <select class="form-control select2" id="multiple-select-optgroup-field"id="category" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
               <option value="">เลือกรายชื่อ</option>
               {{-- @foreach ($users as $row) --}}
               {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -282,6 +283,34 @@ $( '#multiple-select-field1' ).select2( {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#category').on('change', function(){
+            var category_id = $(this).val();
+            if(category_id){
+                $.ajax({
+                    url: '{{ route('getSubcategories') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        category_id: category_id
+                    },
+                    success: function(data){
+                        $('#subcategory').html(data);
+                    }
+                });
+            } else {
+                $('#subcategory').html('<option value="">-- เลือกหมวดหมู่ย่อย --</option>');
+            }
+        });
+    });
+</script>
+
+
 
             @error('test')
             <span class="invalid-feedback" >
