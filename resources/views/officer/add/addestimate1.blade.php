@@ -134,30 +134,6 @@
           </div>
            <div class="row">
           <div class="form-group col-md-4">
-            <label for="inputAddress">ชื่อเอกสาร</label>
-            {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-            <select class="form-control select" id="validationSelect1" name="namefile" >
-              <option value="">เลือกชื่อเอกสาร</option>
-              {{-- @foreach ($establishment as $row) --}}
-              {{-- <optgroup label="Mountain Time Zone"> --}}
-                <option value="แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)">แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</option>
-                <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)">แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</option>
-                <option value="แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)">แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</option>
-                <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)">แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</option>
-              </optgroup>
-
-              {{-- @endforeach --}}
-            </select>
-
-
-            @error('name')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-
-          <div class="col-md-4">
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             <select class="form-select" id="single-select-field3" data-placeholder="เลือกรายชื่อ" id="validationSelect2" name="user_id" required>
@@ -169,6 +145,31 @@
               </optgroup>
 
               @endforeach
+            </select>
+
+
+            @error('name')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+          </div>
+
+          <div class="col-md-4">
+
+            <label for="inputAddress">ชื่อเอกสาร</label>
+            {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
+            <select class="form-control select" id="validationSelect1" name="namefile"required >
+              <option value="">เลือกชื่อเอกสาร</option>
+              {{-- @foreach ($establishment as $row) --}}
+              {{-- <optgroup label="Mountain Time Zone"> --}}
+                <option value="แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)">แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</option>
+                <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)">แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</option>
+                <option value="แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)">แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</option>
+                <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)">แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</option>
+              </optgroup>
+
+              {{-- @endforeach --}}
             </select>
 <!-- Styles -->
 
@@ -203,20 +204,55 @@
           <div class=" col-md-4">
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารประเมิน </label>
                 <div class="custom-file mb-6">
-                  <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile" >
+                  <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile" required>
                   <label class="custom-file-label" for="validatedCustomFile">เลือไฟล์PDF</label>
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
 
           </div>
 
         </div>
-
+        @if(session('status'))
+        <div class="alert alert-info mt-3">
+            {{ session('status') }}
+        </div>
+    @endif
         <div class="col-md-2">
           <label for="inputAddress"class="col-form-label ">คะแนน</label>
-          <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{ old('score') }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
+          {{-- <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{ old('score') }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"> --}}
+          <input type="text" class="form-control" id="scoreInput" name="score" value="{{ old('score') }}" autofocus placeholder="score"required>
+          <div id="scoreFeedback" class="mt-2"></div>
+        </div>
 
-      </div>
-      <div class="col-md-2">
+      <script>
+        document.getElementById('scoreInput').addEventListener('input', function() {
+            const score = parseFloat(this.value);
+            const feedback = document.getElementById('scoreFeedback');
+
+            if (isNaN(score)) {
+                feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
+                feedback.style.color = 'red';
+            } else if (score > 100) {
+                feedback.textContent = 'ผ่าน';
+                feedback.style.color = 'green';
+            } else if (score >= 80) {
+                feedback.textContent = 'ผ่าน';
+                feedback.style.color = 'green';
+            } else if (score >= 60) {
+                feedback.textContent = 'กลาง';
+                feedback.style.color = 'orange';
+            } else if (score < 50) {
+                feedback.textContent = 'ไม่ผ่าน';
+                feedback.style.color = 'red';
+            } else if (score < 40) {
+                feedback.textContent = 'ไม่ผ่าน';
+                feedback.style.color = 'red';
+            } else {
+                feedback.textContent = '';
+            }
+        });
+    </script>
+
+      {{-- <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">สถานะ</label>
         <select class="form-control "  name="Status_supervision" required>
           <option value="">กรุณาเลือก</option>
@@ -229,7 +265,7 @@
 
 
         </select>
-    </div>
+    </div> --}}
     {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
       <select class="form-control "  name="year" required>

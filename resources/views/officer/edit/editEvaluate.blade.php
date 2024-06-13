@@ -51,20 +51,6 @@
 
         <div class="row">
             <div class="form-group col-md-4">
-              <label for="inputAddress">ชื่อเอกสาร</label>
-              {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-              <select class="form-control" id="validationSelect1" name="namefile" required>
-                <option value="">เลือกชื่อเอกสาร</option>
-                {{-- @foreach ($establishment as $row) --}}
-                {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)"@if($supervisions->namefile=="แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)") selected @endif required>แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</option>
-                  <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)"@if($supervisions->namefile=="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)") selected @endif required>แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</option>
-                  <option value="แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)"@if($supervisions->namefile=="แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)") selected @endif required>แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</option>
-                  <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)"@if($supervisions->namefile=="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)") selected @endif required>แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</option>
-                </optgroup>
-
-                {{-- @endforeach --}}
-              </select>
 
 
               @error('name')
@@ -86,6 +72,21 @@
 
                   @endforeach
                 </select>
+                <label for="inputAddress">ชื่อเอกสาร</label>
+              {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
+              <select class="form-control" id="validationSelect1" name="namefile" required>
+                <option value="">เลือกชื่อเอกสาร</option>
+                {{-- @foreach ($establishment as $row) --}}
+                {{-- <optgroup label="Mountain Time Zone"> --}}
+                  <option value="แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)"@if($supervisions->namefile=="แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)") selected @endif required>แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)</option>
+                  <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)"@if($supervisions->namefile=="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)") selected @endif required>แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)</option>
+                  <option value="แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)"@if($supervisions->namefile=="แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)") selected @endif required>แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)</option>
+                  <option value="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)"@if($supervisions->namefile=="แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)") selected @endif required>แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)</option>
+                </optgroup>
+
+                {{-- @endforeach --}}
+              </select>
+
 <!-- Styles -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />

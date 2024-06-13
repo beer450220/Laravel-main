@@ -1627,17 +1627,18 @@ $users=DB::table('users')
                         //    // ->get();
                         //     ->paginate(10);
 
-                            $registers = student::query()
-                            ->join('users', 'student.user_id', '=', 'users.id')
+                            $registers = users::query()
+                            ->join('registers', 'users.id', '=', 'users.id')
                             ->where(function ($query) use ($keyword) {
-                                $query->where('student.fname', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('users.created_at', 'LIKE', '%' . $keyword . '%');
                             })
-                            ->select('student.*', 'users.fname')
+                            ->select('users.*', 'users.fname')
                             ->where('role',"student")
+                            ->distinct()
                             ->orderBy('id', 'desc')
                             ->paginate(10);
                         return view('officer.register1',  ['registers' => $registers,]);
@@ -3379,8 +3380,77 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         //$data = $users->values();
         $data = $users->values();
 
-        return view('officer.officerhome',compact('users','users1','users2','users3','users4','users5'), compact('labels','data'),["msg"=>"I am Editor role"]);
+
+
+        // $data1 = registers::paginate(5);
+        $data1=DB::table('users')
+
+        // ->join('student','registers.user_id','student.user_id')
+         ->join('registers','users.id','registers.user_id')
+        // ->join('student','users.id','student.user_id')
+        // ->select('registers.*','users.fname','student.year')
+        // ->select('users.*','users.fname','student.year')
+        ->select('users.*','users.fname','registers.Status_registers')
+        ->where('role',"student")
+        ->distinct()
+        ->orderBy('users.updated_at', 'desc')
+        ->paginate(10);
+
+
+        return view('officer.officerhome',compact('users','users1','users2','users3','users4','users5'), compact('labels','data','data1'),["msg"=>"I am Editor role"]);
     }
+
+
+    public function search01(Request $request)
+    {
+
+        $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+
+        $users2 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+        $users3 =  acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+
+        $users4 =  event::select(DB::raw("COUNT(DISTINCT student_name) as count"))
+        ->get();
+        $users5 =  informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+        $users1 = registers::select(DB::raw("COUNT(DISTINCT id) as count"))
+        ->get();
+
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        // ตรวจสอบว่ามีการเลือกเดือนและปีหรือไม่
+        if ($month && $year) {
+            // ดึงข้อมูลจากฐานข้อมูลตามเงื่อนไข
+            $data1 = registers::whereYear('created_at', $year)
+                             ->whereMonth('created_at', $month)
+                             ->get();
+        } else {
+            // ถ้าไม่มีการเลือกเดือนหรือปี ดึงข้อมูลทั้งหมด
+            $data1=DB::table('users')
+
+            // ->join('student','registers.user_id','student.user_id')
+             ->join('registers','users.id','registers.user_id')
+            // ->join('student','users.id','student.user_id')
+            // ->select('registers.*','users.fname','student.year')
+            // ->select('users.*','users.fname','student.year')
+            ->select('users.*','users.fname','registers.Status_registers')
+            ->where('role',"student")
+            ->distinct()
+            ->orderBy('users.updated_at', 'desc')
+            ->paginate(10);
+        }
+        $labels = $users->keys();
+        //$data = $users->values();
+        $data = $users->values();
+        return view('officer.officerhome', compact('data1','users','users1','users2','users3','users4','users5'), compact('labels','data'),["msg"=>"I am Editor role"]);
+    }
+
 
     public function user1()
     {
@@ -3582,14 +3652,17 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     public function register1()
     {
 
-        $registers=DB::table('student')
+        $registers=DB::table('users')
 
         // ->join('student','registers.user_id','student.user_id')
-        ->join('users','student.user_id','users.id')
+         ->join('registers','users.id','registers.user_id')
+        // ->join('student','users.id','student.user_id')
         // ->select('registers.*','users.fname','student.year')
-        ->select('student.*','users.fname')
+        // ->select('users.*','users.fname','student.year')
+        ->select('users.*','users.fname')
         ->where('role',"student")
-        ->orderBy('student.updated_at', 'desc')
+        ->distinct()
+        ->orderBy('users.updated_at', 'desc')
         ->paginate(10);
 //dd($registers);
         return view('officer.register1',compact('registers'));

@@ -293,7 +293,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
 {
     Route::get("/officer/home",[HomeController::class,'officerHome'])->name('officer.officerhome');
     Route::get("/officer/user1",[HomeController::class,'user1'])->name('officer.user1');
-
+    Route::get('/officer/search01', [HomeController::class, 'search01'])->name('search01');
 
 //ข้อมูลตรวจสอบเอกสาร
 Route::get("/officer/in2",[HomeController::class,'in4'])->name('in4');
@@ -359,7 +359,7 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
     Route::get("/officer/confirm2/{id}",[EditController::class,'confirm2'])->name('confirm2');
 
     Route::get("/officer/editregister01/{id}",[EditController::class,'editregister01'])->name('editregister01');
-    
+
     Route::get("/officer/editregister02/{id}",[EditController::class,'editregister02'])->name('editregister02');
     Route::post("/officer/updateregister01/{id}",[EditController::class,'updateregister01'])->name('updateregister01');
     // Route::get("/officer/timeline2",[HomeController::class,'timeline2']);

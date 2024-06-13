@@ -2115,7 +2115,7 @@ public function editcategory($category_id) {
     // $establishments=establishment::find($id);
    // $registers=DB::table('registers')->first();
 
-    $registers=student::find($id);
+    $registers=users::find($id);
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
      //->join('supervision', 'establishments.id', '=', 'supervision.id')
@@ -2123,12 +2123,13 @@ public function editcategory($category_id) {
    // ->get();
    // dd($reports);
      // dd($supervisions);
-     $registers1=DB::table('student')
+     $registers1=DB::table('users')
 
-     ->join('registers','student.user_id','registers.id')
+     ->join('registers','users.id','registers.id')
+    //  ->join('student','users.id','student.user_id')
     //  ->join('users','student.user_id','users.id')
     //  ->select('registers.*','users.fname','student.year')
-     ->select('student.*','registers.fname')
+     ->select('users.*','registers.user_id')
     //  ->where('role',"student")
     //  ->orderBy('student.updated_at', 'desc')
      ->paginate(10);
@@ -2136,7 +2137,7 @@ public function editcategory($category_id) {
      $registers2 = DB::table('registers')
         ->join('users', 'registers.user_id', '=', 'users.id')
         ->select('registers.*', 'users.fname')
-        ->where('registers.user_id', $registers->user_id)
+        ->where('registers.user_id', $registers->id)
         // ->orderBy('namefile', 'asc')
         ->orderBy('registers.updated_at', 'desc')
         ->paginate(10);

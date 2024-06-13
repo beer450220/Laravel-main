@@ -98,7 +98,7 @@
               {{-- <td>{{$row->term}}</td>
               <td>{{$row->year}}</td> --}}
               <td>{{$row->score}}</td>
-              <td>
+              {{-- <td>
                 @if ($row->Status_supervision === 'รอประเมินผล')
                     <span class="badge badge-pill badge-warning">{{ $row->Status_supervision }}</span>
                 @elseif ($row->Status_supervision === 'ประเมินผลแล้ว')
@@ -106,7 +106,7 @@
                 @elseif ($row->Status_supervision === 'ไม่ผ่าน')
                     <span class="badge badge-pill badge-danger">{{ $row->Status_supervision}}</span>
                 @endif
-            </td>
+            </td> --}}
               <td>{{$row->annotation}}</td>
               <td><a href="../document4/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td><a href="/officer/editEvaluate/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fa-solid  fa-pen-to-square fe-16"></a></td>

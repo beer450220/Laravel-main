@@ -83,8 +83,9 @@
 
             ">
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
+              {{-- <td>{{ $row->id }} </td> --}}
               <td>{{ $row->fname }} </td>
-             <td>{{ $row->year }}</td>
+             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('lที่ j F Y ') }}</td>
               {{-- <td>{{ $row->namefile }}</td> --}}
 
               {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}

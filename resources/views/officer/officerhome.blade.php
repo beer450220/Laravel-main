@@ -51,7 +51,7 @@
  <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-8 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -66,6 +66,77 @@
 
                             @foreach ($users2 as $row)
                             {{$row->count}} @endforeach
+                            <form action="{{ url('/officer/search01') }}" method="GET">
+                                <div class="row mb-3">
+                                    <div class="col-md-2">
+                                        <label for="month">เลือกเดือน:</label>
+                                        <select class="form-control" name="month" id="month">
+                                            <option value="">เลือกเดือน</option>
+                                            <option value="01">มกราคม</option>
+                                            <option value="02">กุมภาพันธ์</option>
+                                            <option value="03">มีนาคม</option>
+                                            <option value="04">เมษายน</option>
+                                            <option value="05">พฤษภาคม</option>
+                                            <option value="06">มิถุนายน</option>
+                                            <option value="07">กรกฎาคม</option>
+                                            <option value="08">สิงหาคม</option>
+                                            <option value="09">กันยายน</option>
+                                            <option value="10">ตุลาคม</option>
+                                            <option value="11">พฤศจิกายน</option>
+                                            <option value="12">ธันวาคม</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="year">เลือกปี:</label>
+                                        <select class="form-control" name="year" id="year">
+                                            <option value="">เลือกปี</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <!-- เพิ่มตามความเหมาะสม -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mt-4">
+                                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+
+                              <div class="col-md-11 my-4">
+                                <div class="card shadow">
+                                  <div class="card-body">
+                                    {{-- <h5 class="card-title">Simple Table</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                    <table class="table table table-striped table-hover  ">
+                                      <thead>
+                                        <tr>
+                                          <th>ชื่อนักศึกษา</th>
+                                          <th>สถานะ</th>
+                                          <th>วัน เดือน ปี</th>
+
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        @foreach($data1 as $item)
+                                        <tr style="height:20px">
+                                            <td  style="height:40%"> {{ $item->fname}} </td>
+                                            <td> {{ $item->Status_registers}} </td>
+                                            <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td>
+
+
+                                        </tr>
+
+                                        @endforeach
+                                      </tbody>
+
+                                    </table>  {!!$data1->links('pagination::bootstrap-5')!!}
+                                  </div>
+                                </div>
+                              </div>  </div>  </div>
+
                         </div>
                     </div>
                     <div class="col-auto">
