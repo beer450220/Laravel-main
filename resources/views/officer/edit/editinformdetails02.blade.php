@@ -33,7 +33,7 @@
                 <div class="modal-body">
 
 
-                  <form method="POST" action="{{url('/officer/updateregister1/'.$registers->id)}}" enctype="multipart/form-data">
+                  <form method="POST" action="{{url('/officer/updateinformdetails2/'.$registers->informdetails_id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
@@ -80,10 +80,10 @@
 
                       @foreach ($registers2 as $row)
                       <tr>
-                        <td> @if ($row->Status_registers === 'รออนุมัติ')
+                        <td> @if ($row->Status_informdetails === 'รออนุมัติ')
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="checkbox1" name="Status_registers">
+                                <input class="form-check-input" type="checkbox" id="checkbox1" name="Status_informdetails">
                                 <label class="form-check-label" for="checkbox1">อนุมัติเอกสาร</label>
                             </div>@endif</td>
 
@@ -92,30 +92,30 @@
                         <td>{{ $row->namefile }}</td>
 
 
-                        <td>  @if ($row->Status_registers === 'รออนุมัติ')
-                            <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                        @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                            <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
-                        @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                            <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                        <td>  @if ($row->Status_informdetails === 'รออนุมัติ')
+                            <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
+                        @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                            <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                        @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                            <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
                         @endif</td>
                         <td>
-                            <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>
+                            <a href="../document/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>
                         </td>
                             <td>{{ $row->annotation }}</td>
                         <td>
-                            @if ($row->Status_registers === 'รออนุมัติ')
+                            @if ($row->Status_informdetails === 'รออนุมัติ')
 
 
                             {{-- <a href="/officer/confirm2/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br> --}}
 
-                            <a href="/officer/editregister02/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-circle-xmark fe-16">ไม่อนุมัติ</a>
+                            <a href="/officer/editregister02/{{$row->informdetails_id}}"type="button"  class="btn btn-outline-danger fa-solid fa-circle-xmark fe-16">ไม่อนุมัติ</a>
                             {{-- <button type="button" class="btn btn-primary" onclick="showConfirmDialog()">ยืนยันข้อมูล</button></td> --}}
                         </div>
-                            @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                            <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
-                        @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                        <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
+                            @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                            <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
+                        @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                        <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
 
                         @endif
                     </td>
@@ -128,7 +128,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
             function toggleSelectAll(source) {
-                checkboxes = document.getElementsByName('Status_registers');
+                checkboxes = document.getElementsByName('Status_informdetails');
                 for(var i=0, n=checkboxes.length;i<n;i++) {
                     checkboxes[i].checked = source.checked;
                 }
@@ -145,8 +145,8 @@
 
 
                 <div class="modal-footer">
-                    <a href="/officer/confirm2/{{$row->id}}"  onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-pen-to-square fe-16">อนุมัติข้อมูล</a>
-                  <a href="/officer/register1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+                    <a href="/officer/confirm003/{{$row->informdetails_id}}"  onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-pen-to-square fe-16">อนุมัติข้อมูล</a>
+                  <a href="/officer/informdetails2"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
                   {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button> --}}
                 </div></form>
               </div>

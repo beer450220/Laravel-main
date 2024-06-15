@@ -35,7 +35,33 @@
             </div>
 
             <div class="">
-              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
+                <div class="col-md-2">
+                    {{-- <label for="year">เลือกปี:</label> --}}
+                    <select class="form-control" name="keyword" id="year">
+                        <option value="">เลือกปี</option>
+                        @php
+                        // ตั้งค่าโซนเวลาของกรุงเทพฯ
+                        date_default_timezone_set('Asia/Bangkok');
+
+                        // หาค่าปีปัจจุบัน
+                        $currentYear = date('Y');
+
+                        // ลูปเพื่อแสดง option ใน dropdown
+                        for ($year = $currentYear; $year >= $currentYear - 5; $year--) {
+                            // แปลงปี ค.ศ. เป็น พ.ศ. (พุทธศักราช)
+                            $thaiYear = $year + 543;
+                            echo "<option value=\"$year\">$thaiYear</option>";
+                        }
+
+
+                        // เพิ่มต่อที่นี่เพื่อเพิ่มปีอนาคต
+                        for ($year = $currentYear + 1; $year <= $currentYear + 5; $year++) {
+                            $thaiYear = $year + 543;
+                            echo "<option value=\"$year\">$thaiYear</option>";
+                        } @endphp
+                    </select>
+                </div>
+                {{-- <button type="submit" name="keyword"     class=" btn btn-outline-warning">ค้นหาข้อมูล</button> --}}
             </form>
             </div>
 
@@ -85,7 +111,9 @@
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
               {{-- <td>{{ $row->id }} </td> --}}
               <td>{{ $row->fname }} </td>
-             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('lที่ j F Y ') }}</td>
+              <td>{{ \Carbon\Carbon::parse($row->created_at)->addYears(543)->translatedFormat(' Y ') }}</td>
+
+
               {{-- <td>{{ $row->namefile }}</td> --}}
 
               {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}

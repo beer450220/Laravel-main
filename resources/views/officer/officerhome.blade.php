@@ -51,21 +51,21 @@
  <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-8 col-md-6 mb-4">
+    <div class="col-xl-6 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะเอกสารลงทะเบียน</h5></div></a>
+                      <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะสรุปนักศึกษาสมัครสหกิจ</h5></div></a>
 
 
 
 
                         <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">
 
-                            @foreach ($users2 as $row)
-                            {{$row->count}} @endforeach
+                            {{-- @foreach ($users2 as $row)
+                            {{$row->count}} @endforeach --}}
                             <form action="{{ url('/officer/search01') }}" method="GET">
                                 <div class="row mb-3">
                                     <div class="col-md-2">
@@ -89,11 +89,26 @@
                                     <div class="col-md-2">
                                         <label for="year">เลือกปี:</label>
                                         <select class="form-control" name="year" id="year">
-                                            <option value="">เลือกปี</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2022">2022</option>
-                                            <!-- เพิ่มตามความเหมาะสม -->
+                                            @php
+                                            // ตั้งค่าโซนเวลาของกรุงเทพฯ
+                                            date_default_timezone_set('Asia/Bangkok');
+
+                                            // หาค่าปีปัจจุบัน
+                                            $currentYear = date('Y');
+
+                                            // ลูปเพื่อแสดง option ใน dropdown
+                                            for ($year = $currentYear; $year >= $currentYear - 5; $year--) {
+                                                // แปลงปี ค.ศ. เป็น พ.ศ. (พุทธศักราช)
+                                                $thaiYear = $year + 543;
+                                                echo "<option value=\"$year\">$thaiYear</option>";
+                                            }
+
+                                            // เพิ่มต่อที่นี่เพื่อเพิ่มปีอนาคต
+                                            for ($year = $currentYear + 1; $year <= $currentYear + 5; $year++) {
+                                                $thaiYear = $year + 543;
+                                                echo "<option value=\"$year\">$thaiYear</option>";
+                                            }
+                                            @endphp
                                         </select>
                                     </div>
                                     <div class="col-md-2 mt-4">
@@ -113,26 +128,32 @@
                                     <table class="table table table-striped table-hover  ">
                                       <thead>
                                         <tr>
-                                          <th>ชื่อนักศึกษา</th>
-                                          <th>สถานะ</th>
-                                          <th>วัน เดือน ปี</th>
+                                          <th>ปี</th>
+                                          {{-- <th>เดือน</th> --}}
+                                          <th>จำนวนสมัครสหกิจ</th>
+                                          {{-- <th>วัน เดือน ปี</th> --}}
 
                                         </tr>
                                       </thead>
                                       <tbody>
                                         @foreach($data1 as $item)
                                         <tr style="height:20px">
-                                            <td  style="height:40%"> {{ $item->fname}} </td>
-                                            <td> {{ $item->Status_registers}} </td>
-                                            <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td>
+                                            {{-- <td  style="height:40%"> {{ $item->fname}} </td>
+                                            <td> {{ $item->Status_registers}} </td> --}}
+                                            {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
 
+                                            <td>{{ ($item->year + 543) }}</td>
+                                            {{-- <td>{{ ($item->month ) }}</td> --}}
 
+                                            {{-- <td>{{$item->user_count}}</td> --}}
+                                              <td>{{$item->count}}</td>
                                         </tr>
 
                                         @endforeach
                                       </tbody>
 
-                                    </table>  {!!$data1->links('pagination::bootstrap-5')!!}
+                                    </table>
+                                    {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
                                   </div>
                                 </div>
                               </div>  </div>  </div>
@@ -143,9 +164,390 @@
                         {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
                     </div>
                 </div>
+
+    </div>
+
+
+
+
+    <div class="col-md-6 ">
+        <div class="card shadow">
+          {{-- <div class="card-body"> --}}
+
+
+ <!-- Earnings (Monthly) Card Example -->
+ <div class="">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะเอกสารลงทะเบียน</h5></div></a>
+
+
+
+
+                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">
+
+                        {{-- @foreach ($users2 as $row)
+                        {{$row->count}} @endforeach --}}
+                        <form action="{{ url('/officer/search001') }}" method="GET">
+                            <div class="row mb-3">
+                                <div class="col-md-2">
+                                    <label for="month">เลือกเดือน:</label>
+                                    <select class="form-control" name="month2" id="month2">
+                                        <option value="">เลือกเดือน</option>
+                                        <option value="01">มกราคม</option>
+                                        <option value="02">กุมภาพันธ์</option>
+                                        <option value="03">มีนาคม</option>
+                                        <option value="04">เมษายน</option>
+                                        <option value="05">พฤษภาคม</option>
+                                        <option value="06">มิถุนายน</option>
+                                        <option value="07">กรกฎาคม</option>
+                                        <option value="08">สิงหาคม</option>
+                                        <option value="09">กันยายน</option>
+                                        <option value="10">ตุลาคม</option>
+                                        <option value="11">พฤศจิกายน</option>
+                                        <option value="12">ธันวาคม</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="year">เลือกปี:</label>
+                                    <select class="form-control" name="year2" id="year2">
+                                        @php
+                                        // ตั้งค่าโซนเวลาของกรุงเทพฯ
+                                        date_default_timezone_set('Asia/Bangkok');
+
+                                        // หาค่าปีปัจจุบัน
+                                        $currentYear = date('Y');
+
+                                        // ลูปเพื่อแสดง option ใน dropdown
+                                        for ($year2 = $currentYear; $year2 >= $currentYear - 5; $year2--) {
+                                            // แปลงปี ค.ศ. เป็น พ.ศ. (พุทธศักราช)
+                                            $thaiYear = $year2 + 543;
+                                            echo "<option value=\"$year2\">$thaiYear</option>";
+                                        }
+
+                                        // เพิ่มต่อที่นี่เพื่อเพิ่มปีอนาคต
+                                        for ($year2 = $currentYear + 1; $year2 <= $currentYear + 5; $year2++) {
+                                            $thaiYear = $year2 + 543;
+                                            echo "<option value=\"$year2\">$thaiYear</option>";
+                                        }
+                                        @endphp
+                                    </select>
+                                </div>
+                                <div class="col-md-2 mt-4">
+                                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+
+                          <div class="col-md-11 my-4">
+                            <div class="card shadow">
+                              <div class="card-body">
+                                {{-- <h5 class="card-title">Simple Table</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                <table class="table table table-striped table-hover  ">
+                                  <thead>
+                                    <tr>
+                                      <th>ปี</th>
+                                      {{-- <th>เดือน</th> --}}
+                                      <th>จำนวนสมัครสหกิจ</th>
+                                      {{-- <th>วัน เดือน ปี</th> --}}
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($data2 as $item)
+                                    <tr style="height:20px">
+                                        {{-- <td  style="height:40%"> {{ $item->fname}} </td>
+                                        <td> {{ $item->Status_registers}} </td> --}}
+                                        {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
+
+                                        <td>{{ ($item->year + 543) }}</td>
+                                        {{-- <td>{{ ($item->month ) }}</td> --}}
+
+                                        {{-- <td>{{$item->user_count}}</td> --}}
+                                          <td>{{$item->count}}</td>
+                                    </tr>
+
+                                    @endforeach
+                                  </tbody>
+
+                                </table>
+                                {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
+                              </div>
+                            </div>
+                          </div>  </div>  </div>
+
+                    </div>
+                </div>
+                <div class="col-auto">
+                    {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-6 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                      <a href="/officer/register1">     <h5 class="text-center"> รายงานแจ้งสถานะการตอบรับ/นิเทศ</h5></div></a>
+
+
+
+
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">
+
+                            {{-- @foreach ($users2 as $row)
+                            {{$row->count}} @endforeach --}}
+                            <form action="{{ url('/officer/search01') }}" method="GET">
+                                <div class="row mb-3">
+                                    <div class="col-md-2">
+                                        <label for="month">เลือกเดือน:</label>
+                                        <select class="form-control" name="month3" id="month3">
+                                            <option value="">เลือกเดือน</option>
+                                            <option value="01">มกราคม</option>
+                                            <option value="02">กุมภาพันธ์</option>
+                                            <option value="03">มีนาคม</option>
+                                            <option value="04">เมษายน</option>
+                                            <option value="05">พฤษภาคม</option>
+                                            <option value="06">มิถุนายน</option>
+                                            <option value="07">กรกฎาคม</option>
+                                            <option value="08">สิงหาคม</option>
+                                            <option value="09">กันยายน</option>
+                                            <option value="10">ตุลาคม</option>
+                                            <option value="11">พฤศจิกายน</option>
+                                            <option value="12">ธันวาคม</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="year">เลือกปี:</label>
+                                        <select class="form-control" name="year3" id="year3">
+                                            @php
+                                            // ตั้งค่าโซนเวลาของกรุงเทพฯ
+                                            date_default_timezone_set('Asia/Bangkok');
+
+                                            // หาค่าปีปัจจุบัน
+                                            $currentYear = date('Y');
+
+                                            // ลูปเพื่อแสดง option ใน dropdown
+                                            for ($year3 = $currentYear; $year3 >= $currentYear - 5; $year3--) {
+                                                // แปลงปี ค.ศ. เป็น พ.ศ. (พุทธศักราช)
+                                                $thaiYear = $year3 + 543;
+                                                echo "<option value=\"$year\">$thaiYear</option>";
+                                            }
+
+                                            // เพิ่มต่อที่นี่เพื่อเพิ่มปีอนาคต
+                                            for ($year = $currentYear + 1; $year3 <= $currentYear + 5; $year3++) {
+                                                $thaiYear = $year3 + 543;
+                                                echo "<option value=\"$year3\">$thaiYear</option>";
+                                            }
+                                            @endphp
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mt-4">
+                                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+
+                              <div class="col-md-11 my-4">
+                                <div class="card shadow">
+                                  <div class="card-body">
+                                    {{-- <h5 class="card-title">Simple Table</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                    <table class="table table table-striped table-hover  ">
+                                      <thead>
+                                        <tr>
+                                          <th>ปี</th>
+                                          {{-- <th>เดือน</th> --}}
+                                          <th>จำนวนสมัครสหกิจ</th>
+                                          {{-- <th>วัน เดือน ปี</th> --}}
+
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        @foreach($data3 as $item)
+                                        <tr style="height:20px">
+                                            {{-- <td  style="height:40%"> {{ $item->fname}} </td>
+                                            <td> {{ $item->Status_registers}} </td> --}}
+                                            {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
+
+                                            <td>{{ ($item->year + 543) }}</td>
+                                            {{-- <td>{{ ($item->month ) }}</td> --}}
+
+                                            {{-- <td>{{$item->user_count}}</td> --}}
+                                              <td>{{$item->count}}</td>
+                                        </tr>
+
+                                        @endforeach
+                                      </tbody>
+
+                                    </table>
+                                    {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
+                                  </div>
+                                </div>
+                              </div>  </div>  </div>
+
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
+                    </div>
+                </div>
+
+    </div>
+
+
+
+
+    <div class="col-md-6 ">
+        <div class="card shadow">
+          {{-- <div class="card-body"> --}}
+
+
+ <!-- Earnings (Monthly) Card Example -->
+ <div class="">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะเอกสารผลการประเมิน</h5></div></a>
+
+
+
+
+                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">
+
+                        @foreach ($users2 as $row)
+                        {{$row->count}} @endforeach
+                        <form action="{{ url('/officer/search001') }}" method="GET">
+                            <div class="row mb-3">
+                                <div class="col-md-2">
+                                    <label for="month">เลือกเดือน:</label>
+                                    <select class="form-control" name="month2" id="month2">
+                                        <option value="">เลือกเดือน</option>
+                                        <option value="01">มกราคม</option>
+                                        <option value="02">กุมภาพันธ์</option>
+                                        <option value="03">มีนาคม</option>
+                                        <option value="04">เมษายน</option>
+                                        <option value="05">พฤษภาคม</option>
+                                        <option value="06">มิถุนายน</option>
+                                        <option value="07">กรกฎาคม</option>
+                                        <option value="08">สิงหาคม</option>
+                                        <option value="09">กันยายน</option>
+                                        <option value="10">ตุลาคม</option>
+                                        <option value="11">พฤศจิกายน</option>
+                                        <option value="12">ธันวาคม</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="year">เลือกปี:</label>
+                                    <select class="form-control" name="year2" id="year2">
+                                        @php
+                                        // ตั้งค่าโซนเวลาของกรุงเทพฯ
+                                        date_default_timezone_set('Asia/Bangkok');
+
+                                        // หาค่าปีปัจจุบัน
+                                        $currentYear = date('Y');
+
+                                        // ลูปเพื่อแสดง option ใน dropdown
+                                        for ($year2 = $currentYear; $year2 >= $currentYear - 5; $year2--) {
+                                            // แปลงปี ค.ศ. เป็น พ.ศ. (พุทธศักราช)
+                                            $thaiYear = $year2 + 543;
+                                            echo "<option value=\"$year2\">$thaiYear</option>";
+                                        }
+
+                                        // เพิ่มต่อที่นี่เพื่อเพิ่มปีอนาคต
+                                        for ($year2 = $currentYear + 1; $year2 <= $currentYear + 5; $year2++) {
+                                            $thaiYear = $year2 + 543;
+                                            echo "<option value=\"$year2\">$thaiYear</option>";
+                                        }
+                                        @endphp
+                                    </select>
+                                </div>
+                                <div class="col-md-2 mt-4">
+                                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+
+                          <div class="col-md-11 my-4">
+                            <div class="card shadow">
+                              <div class="card-body">
+                                {{-- <h5 class="card-title">Simple Table</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                <table class="table table table-striped table-hover  ">
+                                  <thead>
+                                    <tr>
+                                      <th>ปี</th>
+                                      {{-- <th>เดือน</th> --}}
+                                      <th>จำนวนสมัครสหกิจ</th>
+                                      {{-- <th>วัน เดือน ปี</th> --}}
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($data4 as $item)
+                                    <tr style="height:20px">
+                                        {{-- <td  style="height:40%"> {{ $item->fname}} </td>
+                                        <td> {{ $item->Status_registers}} </td> --}}
+                                        {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
+
+                                        <td>{{ ($item->year + 543) }}</td>
+                                        {{-- <td>{{ ($item->month ) }}</td> --}}
+
+                                        {{-- <td>{{$item->user_count}}</td> --}}
+                                          <td>{{$item->count}}</td>
+                                    </tr>
+
+                                    @endforeach
+                                  </tbody>
+
+                                </table>
+                                {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
+                              </div>
+                            </div>
+                          </div>  </div>  </div>
+
+                    </div>
+                </div>
+                <div class="col-auto">
+                    {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
 
     <!-- Earnings (Monthly) Card Example -->
     {{-- <div class="col-xl-3 col-md-6 mb-4">
@@ -197,10 +599,10 @@
 
     </div>
 </div> --}}
-<div class="row">
+{{-- <div class="row"> --}}
 
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    {{-- <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -217,12 +619,12 @@
                             {{$row->count}} @endforeach</div>
                     </div>
                     <div class="col-auto">
-                        {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Earnings (Monthly) Card Example -->
     {{-- <div class="col-xl-3 col-md-6 mb-4">
@@ -242,17 +644,17 @@
             </div>
         </div>
     </div>--}}
-</div>
+{{-- </div>
 
-<div class="container-fluid">
+<div class="container-fluid"> --}}
 
     <!-- Page Heading -->
 
-</div>
-<div class="row">
+{{-- </div>
+<div class="row"> --}}
 
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    {{-- <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -269,14 +671,14 @@
                             {{$row->count}} @endforeach</div>
                     </div>
                     <div class="col-auto">
-                        {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="col-xl-3 col-md-6 mb-4">
+    {{-- <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -292,14 +694,14 @@
                         <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">@foreach ($users5 as $row)
                             {{$row->count}} @endforeach</div>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-auto"> --}}
                         {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
-                    </div>
+                    {{-- </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 {{-- <div class="container-fluid">

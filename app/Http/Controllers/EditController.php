@@ -1960,6 +1960,35 @@ public function editcategory($category_id) {
      return view('officer.edit.editinformdetails2',compact('informdetails'));
 
  }
+ public function editinformdetails03($id) {
+
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+    // $informdetails=DB::table('informdetails')->first();
+    // $registers=informdetails::find($informdetails_id);
+    $registers=users::find($id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($informdetails);
+     // dd($supervisions);
+     $registers2 = DB::table('informdetails')
+        ->join('users', 'informdetails.user_id', '=', 'users.id')
+        ->select('informdetails.*', 'users.fname')
+        ->where('informdetails.user_id', $registers->id)
+        // ->orderBy('namefile', 'asc')
+        ->orderBy('informdetails.updated_at', 'desc')
+        ->paginate(10);
+     return view('officer.edit.editinformdetails02',compact('registers','registers2'));
+
+ }
  public function editinformdetails02($informdetails_id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')
@@ -3702,10 +3731,10 @@ if($request->hasFile("filess1")){
 
 
 
- public function   confirm3(Request $request,$id) {
+ public function   confirm003(Request $request,$informdetails_id) {
     //ตรวจสอบข้อมูล
 
-   //dd($request);
+//    dd($request);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
@@ -3719,7 +3748,7 @@ if($request->hasFile("filess1")){
     );
 
    //dd($request->Status);
-   $post=informdetails::findOrFail($id);
+   $post=informdetails::findOrFail($informdetails_id);
 
 //    if($request->hasFile("images")){
 //        if (File::exists("รูปโปรไฟล์/".$post->images)) {
@@ -3740,7 +3769,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/officer/informdetails2')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
+    return redirect()->back()->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
  public function   confirm03(Request $request,$id) {
     //ตรวจสอบข้อมูล

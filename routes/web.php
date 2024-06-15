@@ -294,7 +294,9 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/home",[HomeController::class,'officerHome'])->name('officer.officerhome');
     Route::get("/officer/user1",[HomeController::class,'user1'])->name('officer.user1');
     Route::get('/officer/search01', [HomeController::class, 'search01'])->name('search01');
+    Route::get('/officer/search001', [HomeController::class, 'search001'])->name('search001');
 
+    Route::get('/officer/search02', [HomeController::class, 'search02'])->name('search02');
 //ข้อมูลตรวจสอบเอกสาร
 Route::get("/officer/in2",[HomeController::class,'in4'])->name('in4');
 Route::get('/officer/search0001',[HomeController::class,'searchin03'])->name('searchin03');
@@ -382,7 +384,10 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
     Route::get("/officer/editinformdetails2/{informdetails_id}",[EditController::class,'editinformdetails2'])->name('editinformdetails2');
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
 
-    Route::get("/officer/confirm3/{id}",[EditController::class,'confirm3'])->name('confirm3');
+    Route::get("/officer/confirm003/{informdetails_id}",[EditController::class,'confirm003'])->name('confirm003');
+
+    Route::get("/officer/editinformdetails03/{informdetails_id}",[EditController::class,'editinformdetails03'])->name('editinformdetails03');
+    Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
     // Route::get("/officer/record2",[HomeController::class,'record2']);
 
 //เอกสารฝึกประสบการณ์

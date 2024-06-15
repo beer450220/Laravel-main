@@ -72,14 +72,8 @@
             <tr>
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
-                {{-- <th>ชื่อสถานประกอบการ</th> --}}
-                <th>ชื่อไฟล์</th>
-                {{-- <th>ปีการศึกษา</th>
-                <th>ภาคเรียน</th> --}}
-                <th>สถานะ</th>
-                <th>หมายเหตุ</th>
-                <th style="width:10%">ดูไฟล์เอกสาร</th>
-                <th>ยืนยันข้อมูล</th>
+                <th>ปี</th>
+                <th>ดูเอกสาร</th>
 
             </tr>
           </thead>
@@ -94,14 +88,12 @@
                     )
                 )
             }}"> --}}
-                <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
-                <td>{{ $row->fname }}  </td>
-                {{-- <td></td> --}}
-                <td>{{ $row->namefile }}</td>
-                {{-- <td>{{ $row->year }}</td>
-                <td>{{ $row->term }}</td> --}}
+            <td class="col-1 text center">{{$informdetails->firstItem()+$loop->index}}</td>
+            {{-- <td>{{ $row->id }} </td> --}}
+            <td>{{ $row->fname }} </td>
+            <td>{{ \Carbon\Carbon::parse($row->created_at)->addYears(543)->translatedFormat(' Y ') }}</td>
 
-                <td>
+                {{-- <td>
                     @if ($row->Status_informdetails === 'รออนุมัติ')
                         <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
                     @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
@@ -112,35 +104,36 @@
                 </td>
                 <td>{{ $row->annotation }}</td>
                 <td><a href="/document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-              <td>
-                @if ($row->Status_informdetails=== 'รออนุมัติ')
+              <td> --}}
+                {{-- @if ($row->Status_informdetails=== 'รออนุมัติ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/officer/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
-                <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
+                <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td> --}}
                 {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
-</td>
+{{-- </td>
             </div>
                 @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
-                <div class="d-grid gap-2 d-md-block">
+                <div class="d-grid gap-2 d-md-block"> --}}
                     {{-- <a href="/officer/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br> --}}
-                    <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
+                    {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td> --}}
                     {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
 
-                </div>
+                {{-- </div>
             @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
            <a href="/officer/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
             @endif
 
 
-            </tr>
-
+            </tr> --}}
+            <td>  <a href="/officer/editinformdetails03/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a></td>
+        </tr>
             @endforeach
 
           </tbody>
         </table>
         {!!$informdetails->links('pagination::bootstrap-5')!!}
       </div>
-    </div>
+    </div> </div> </div>
   </div> <!-- Bordered table -->
 </div> <!-- end section -->
 @endsection

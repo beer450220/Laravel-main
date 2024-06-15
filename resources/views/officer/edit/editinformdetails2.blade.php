@@ -84,7 +84,7 @@
               </div>
                 <div class="modal-footer">
 
-                  <a href="/officer/informdetails2"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+                  <a href="{{ url()->previous() }}"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
                   <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเทดข้อมูล !!');">อัพเดท</button>
                 </div></form>
               </div>

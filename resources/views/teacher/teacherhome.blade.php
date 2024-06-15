@@ -55,6 +55,162 @@
 
 </div>  --}}
 
+<main role="main" class="main-content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+<div class="row">
+    <!-- simple table -->
+    <div class="col-md-6 my-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title">รายงานสรุปนักศึกษาสมัครสหกิจศึกษา</h5>
+          {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>3224</td>
+                <td>Keith Baird</td>
+                <td>Enim Limited</td>
+                <td>901-6206 Cras Av.</td>
+                <td>Apr 24, 2019</td>
+                <td><span class="badge badge-pill badge-warning">Hold</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- simple table -->
+    <!-- Bordered table -->
+    <div class="col-md-6 my-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title">รายงานสถานะเอกสารลงทะเบียน</h5>
+          {{-- <p class="card-text">Add .table-bordered for borders on all sides of the table and cells.</p> --}}
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Activate</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>2651</td>
+                <td>Reuben Orr</td>
+                <td>Nisi Aenean Eget Limited</td>
+                <td>7425 Malesuada Rd.</td>
+                <td>Nov 4, 2019</td>
+                <td>
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="c3" checked="">
+                    <label class="custom-control-label" for="c3"></label>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- Bordered table -->
+  </div>
+</div> <!-- Bordered table -->
+</div>  <!-- Bordered table -->
+</div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+<div class="row">
+    <!-- simple table -->
+    <div class="col-md-6 my-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title">รายงานแจ้งสถานะการตอบรับ/การนิเทศ</h5>
+          {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>3224</td>
+                <td>Keith Baird</td>
+                <td>Enim Limited</td>
+                <td>901-6206 Cras Av.</td>
+                <td>Apr 24, 2019</td>
+                <td><span class="badge badge-pill badge-warning">Hold</span></td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- simple table -->
+    <!-- Bordered table -->
+    <div class="col-md-6 my-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title">รายงานสถานะเอกสารผลการประเมิน</h5>
+          {{-- <p class="card-text">Add .table-bordered for borders on all sides of the table and cells.</p> --}}
+          <table class="table table-bordered table-hover mb-0">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Activate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>3224</td>
+                <td>Keith Baird</td>
+                <td>Enim Limited</td>
+                <td>901-6206 Cras Av.</td>
+                <td>Apr 24, 2019</td>
+                <td>
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="c1" checked="">
+                    <label class="custom-control-label" for="c1"></label>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- Bordered table -->
+  </div>
+
 
 
 <main role="main" class="main-content">

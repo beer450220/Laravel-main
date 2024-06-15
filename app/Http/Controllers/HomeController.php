@@ -1628,19 +1628,23 @@ $users=DB::table('users')
                         //     ->paginate(10);
 
                             $registers = users::query()
-                            ->join('registers', 'users.id', '=', 'users.id')
+                            ->join('registers', 'users.id', '=', 'registers.user_id')
                             ->where(function ($query) use ($keyword) {
+
                                 $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
                                       ->orWhere('users.created_at', 'LIKE', '%' . $keyword . '%');
+                                    //   $query = \Carbon\Carbon::parse($keyword)->addYears(543)->format('Y');
                             })
                             ->select('users.*', 'users.fname')
                             ->where('role',"student")
                             ->distinct()
                             ->orderBy('id', 'desc')
                             ->paginate(10);
+
+
                         return view('officer.register1',  ['registers' => $registers,]);
 // compact('registers'),
                    // return view('student.establishmentuser',compact('establishments','search'));
@@ -3383,21 +3387,92 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
 
         // $data1 = registers::paginate(5);
-        $data1=DB::table('users')
+        $data1=
+        // =DB::registers
+        // table('users')
+        users::select(
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('COUNT(DISTINCT id) as count')
+        )
+        ->where('role', "student")
+        ->groupBy(DB::raw('YEAR(created_at)'))
+        ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+        ->get();
+        // DB::table('users')
+        // ->select(
+        //     DB::raw('YEAR(created_at) as year'),
+        //     DB::raw('COUNT(id) as user_count')
+        // )
+        // ->groupBy(DB::raw('YEAR(created_at)'))
+        // ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+        // ->where('role',"student")
+        // ->get();
 
+        // ->paginate(10);
         // ->join('student','registers.user_id','student.user_id')
-         ->join('registers','users.id','registers.user_id')
+
         // ->join('student','users.id','student.user_id')
         // ->select('registers.*','users.fname','student.year')
         // ->select('users.*','users.fname','student.year')
-        ->select('users.*','users.fname','registers.Status_registers')
-        ->where('role',"student")
-        ->distinct()
-        ->orderBy('users.updated_at', 'desc')
-        ->paginate(10);
 
 
-        return view('officer.officerhome',compact('users','users1','users2','users3','users4','users5'), compact('labels','data','data1'),["msg"=>"I am Editor role"]);
+        // ->join('registers','users.id','registers.user_id')
+        // ->select('users.*','users.fname','registers.Status_registers')
+        // ->where('role',"student")
+        // ->distinct()
+        // ->orderBy('users.updated_at', 'desc')
+        // ->paginate(10);
+
+
+
+    //     ->join('registers', 'users.id', '=', 'registers.user_id')
+    // ->select(
+    //     'users.*',
+    //     'users.fname',
+    //     'registers.Status_registers',
+    //     DB::raw("COUNT(DISTINCT registers.user_id) as user_count"),
+    //     DB::raw("YEAR(registers.created_at) as year_name")
+    // )
+    // ->where('role', "student")
+    // ->groupBy(DB::raw("YEAR(registers.created_at)"), 'users.id', 'users.fname', 'registers.Status_registers', 'users.updated_at')
+    // ->orderBy('users.updated_at', 'desc')
+    // ->paginate(10);
+
+    $data2=
+    // =DB::registers
+    // table('users')
+    registers::select(
+        DB::raw('YEAR(created_at) as year'),
+        DB::raw('COUNT(DISTINCT user_id) as count')
+    )
+    // ->where('role', "student")
+    ->groupBy(DB::raw('YEAR(created_at)'))
+    ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+    ->get();
+
+    $data3 = DB::table('acceptance')
+    ->join('events', 'acceptance.user_id', '=', 'events.student_name')
+    ->select(
+        DB::raw('YEAR(acceptance.created_at) as year'),
+        DB::raw('COUNT(DISTINCT acceptance.user_id) as count')
+    )
+    ->groupBy(DB::raw('YEAR(acceptance.created_at)'))
+    ->orderBy(DB::raw('YEAR(acceptance.created_at)'), 'desc')
+    ->get();
+
+
+    $data4=
+    // =DB::registers
+    // table('users')
+    supervision::select(
+        DB::raw('YEAR(created_at) as year'),
+        DB::raw('COUNT(DISTINCT user_id) as count')
+    )
+    // ->where('role', "student")
+    ->groupBy(DB::raw('YEAR(created_at)'))
+    ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+    ->get();
+        return view('officer.officerhome',compact('users','users1','users2','users3','users4','users5'), compact('labels','data','data1','data2','data3','data4'),["msg"=>"I am Editor role"]);
     }
 
 
@@ -3427,30 +3502,227 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         // ตรวจสอบว่ามีการเลือกเดือนและปีหรือไม่
         if ($month && $year) {
             // ดึงข้อมูลจากฐานข้อมูลตามเงื่อนไข
-            $data1 = registers::whereYear('created_at', $year)
+            $data1 = users::whereYear('created_at', $year)
                              ->whereMonth('created_at', $month)
+                             ->where('role', 'student')
                              ->get();
         } else {
             // ถ้าไม่มีการเลือกเดือนหรือปี ดึงข้อมูลทั้งหมด
-            $data1=DB::table('users')
+            $data1=
+            // DB::table('users')
 
             // ->join('student','registers.user_id','student.user_id')
-             ->join('registers','users.id','registers.user_id')
+
             // ->join('student','users.id','student.user_id')
             // ->select('registers.*','users.fname','student.year')
             // ->select('users.*','users.fname','student.year')
-            ->select('users.*','users.fname','registers.Status_registers')
-            ->where('role',"student")
-            ->distinct()
-            ->orderBy('users.updated_at', 'desc')
-            ->paginate(10);
+
+            // ->join('registers','users.id','registers.user_id')
+            // ->select('users.*','users.fname','registers.Status_registers')
+            // ->where('role',"student")
+            // ->distinct()
+            // ->orderBy('users.updated_at', 'desc')
+            // ->paginate(10);
+
+            users::select(
+                DB::raw('YEAR(created_at) as year'),
+                DB::raw('COUNT(DISTINCT id) as count')
+            )
+            ->where('role', "student")
+            ->groupBy(DB::raw('YEAR(created_at)'))
+            ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+            ->get();
+
+
+        }
+        $month2 = $request->input('month2');
+        $year2 = $request->input('year2');
+
+        // ตรวจสอบว่ามีการเลือกเดือนและปีหรือไม่
+        if ($month2 && $year2) {
+            // ดึงข้อมูลจากฐานข้อมูลตามเงื่อนไข
+            $data2 = registers::whereYear('created_at', $year2)
+                             ->whereMonth('created_at', $month2)
+                            //  ->where('role', 'student')
+                             ->get();
+        } else {
+            // ถ้าไม่มีการเลือกเดือนหรือปี ดึงข้อมูลทั้งหมด
+            $data2=
+
+
+            registers::select(
+                DB::raw('YEAR(created_at) as year'),
+                DB::raw('COUNT(DISTINCT user_id) as count')
+            )
+            // ->where('role', "student")
+            ->groupBy(DB::raw('YEAR(created_at)'))
+            ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+            ->get();
+
+
+        }
+        $month3 = $request->input('month3');
+        $year3 = $request->input('year3');
+
+        // ตรวจสอบว่ามีการเลือกเดือนและปีหรือไม่
+        if ($month3 && $year3) {
+            // ดึงข้อมูลจากฐานข้อมูลตามเงื่อนไข
+            $data3 = acceptance::whereYear('acceptance.created_at', $year3)
+                             ->whereMonth('acceptance.created_at', $month3)
+                            //  ->join('events', 'acceptance.user_id', '=', 'events.student_name')
+                            //  ->select('acceptance.*', 'events.*')
+                             ->get();
+        } else {
+            // ถ้าไม่มีการเลือกเดือนหรือปี ดึงข้อมูลทั้งหมด
+            // $data3=
+            // DB::table('users')
+
+            // ->join('student','registers.user_id','student.user_id')
+
+            // ->join('student','users.id','student.user_id')
+            // ->select('registers.*','users.fname','student.year')
+            // ->select('users.*','users.fname','student.year')
+
+            // ->join('registers','users.id','registers.user_id')
+            // ->select('users.*','users.fname','registers.Status_registers')
+            // ->where('role',"student")
+            // ->distinct()
+            // ->orderBy('users.updated_at', 'desc')
+            // ->paginate(10);
+
+            $data3 = DB::table('acceptance')
+    ->join('events', 'acceptance.user_id', '=', 'events.student_name')
+    ->select(
+        DB::raw('YEAR(acceptance.created_at) as year'),
+        DB::raw('COUNT(DISTINCT acceptance.user_id) as count')
+    )
+    ->groupBy(DB::raw('YEAR(acceptance.created_at)'))
+    ->orderBy(DB::raw('YEAR(acceptance.created_at)'), 'desc')
+    ->get();
+
+
+        }
+
+        $data4=
+        // =DB::registers
+        // table('users')
+        supervision::select(
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('COUNT(DISTINCT user_id) as count')
+        )
+        // ->where('role', "student")
+        ->groupBy(DB::raw('YEAR(created_at)'))
+        ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+        ->get();
+        $labels = $users->keys();
+        //$data = $users->values();
+        $data = $users->values();
+        return view('officer.officerhome', compact('data1','users','users1','users2','users3','users4','users5'), compact('labels','data','data1','data2','data3','data4'),["msg"=>"I am Editor role"]);
+    }
+
+    public function search001(Request $request)
+    {
+
+        $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+
+        $users2 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+        $users3 =  acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+
+        $users4 =  event::select(DB::raw("COUNT(DISTINCT student_name) as count"))
+        ->get();
+        $users5 =  informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        ->get();
+        $users1 = registers::select(DB::raw("COUNT(DISTINCT id) as count"))
+        ->get();
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        // ตรวจสอบว่ามีการเลือกเดือนและปีหรือไม่
+        if ($month && $year) {
+            // ดึงข้อมูลจากฐานข้อมูลตามเงื่อนไข
+            $data1 = users::whereYear('created_at', $year)
+                             ->whereMonth('created_at', $month)
+                             ->where('role', 'student')
+                             ->get();
+        } else {
+            // ถ้าไม่มีการเลือกเดือนหรือปี ดึงข้อมูลทั้งหมด
+            $data1=
+            // DB::table('users')
+
+            // ->join('student','registers.user_id','student.user_id')
+
+            // ->join('student','users.id','student.user_id')
+            // ->select('registers.*','users.fname','student.year')
+            // ->select('users.*','users.fname','student.year')
+
+            // ->join('registers','users.id','registers.user_id')
+            // ->select('users.*','users.fname','registers.Status_registers')
+            // ->where('role',"student")
+            // ->distinct()
+            // ->orderBy('users.updated_at', 'desc')
+            // ->paginate(10);
+
+            users::select(
+                DB::raw('YEAR(created_at) as year'),
+                DB::raw('COUNT(DISTINCT id) as count')
+            )
+            ->where('role', "student")
+            ->groupBy(DB::raw('YEAR(created_at)'))
+            ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+            ->get();
+
+
+        }
+
+        $month2 = $request->input('month2');
+        $year2 = $request->input('year2');
+
+        // ตรวจสอบว่ามีการเลือกเดือนและปีหรือไม่
+        if ($month2 && $year2) {
+            // ดึงข้อมูลจากฐานข้อมูลตามเงื่อนไข
+            $data2 = registers::whereYear('created_at', $year2)
+                             ->whereMonth('created_at', $month2)
+                            //  ->where('role', 'student')
+                             ->get();
+        } else {
+            // ถ้าไม่มีการเลือกเดือนหรือปี ดึงข้อมูลทั้งหมด
+            $data2=
+            // DB::table('users')
+
+            // ->join('student','registers.user_id','student.user_id')
+
+            // ->join('student','users.id','student.user_id')
+            // ->select('registers.*','users.fname','student.year')
+            // ->select('users.*','users.fname','student.year')
+
+            // ->join('registers','users.id','registers.user_id')
+            // ->select('users.*','users.fname','registers.Status_registers')
+            // ->where('role',"student")
+            // ->distinct()
+            // ->orderBy('users.updated_at', 'desc')
+            // ->paginate(10);
+
+            registers::select(
+                DB::raw('YEAR(created_at) as year'),
+                DB::raw('COUNT(DISTINCT user_id) as count')
+            )
+            // ->where('role', "student")
+            ->groupBy(DB::raw('YEAR(created_at)'))
+            ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+            ->get();
+
+
         }
         $labels = $users->keys();
         //$data = $users->values();
         $data = $users->values();
-        return view('officer.officerhome', compact('data1','users','users1','users2','users3','users4','users5'), compact('labels','data'),["msg"=>"I am Editor role"]);
+        return view('officer.officerhome', compact('data1','users','users1','users2','users3','users4','users5'), compact('labels','data','data1','data2'),["msg"=>"I am Editor role"]);
     }
-
 
     public function user1()
     {
@@ -3744,13 +4016,28 @@ public function category()
 
     public function informdetails2()
     {
-        $informdetails=DB::table('informdetails')
-        ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname')
-        ->orderBy('informdetails.updated_at', 'desc')
-        ->where('role',"student")
+        // $informdetails=DB::table('informdetails')
+        // ->join('users','informdetails.user_id','users.id')
+        // ->select('informdetails.*','users.fname')
+        // ->orderBy('informdetails.updated_at', 'desc')
+        // ->where('role',"student")
+        // ->distinct()
+        // ->orderBy('users.updated_at', 'desc')
+        // ->paginate(5);
 
-        ->paginate(5);
+        $informdetails=DB::table('users')
+
+
+         ->join('informdetails','users.id','informdetails.user_id')
+
+        ->select('users.*','users.fname')
+        ->where('role',"student")
+        ->distinct()
+        ->orderBy('users.updated_at', 'desc')
+        ->paginate(10);
+
+
+
         return view('officer.informdetails2',compact('informdetails'));
     }
     public function record2()
