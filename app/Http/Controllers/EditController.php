@@ -311,7 +311,7 @@ public function   updateregisteruser(Request $request,$id) {
     );
     $post=informdetails::findOrFail($informdetails_id);
     $post->user_id = Auth::user()->id;
-    // $post->Status_informdetails ="รออนุมัติ";
+    $post->Status_informdetails ="รออนุมัติ";
     // $post->establishment ="-";
     $post->annotation ="-";
     if($request->hasFile("files")){
@@ -590,6 +590,22 @@ public function editreport($report_id) {
         ->where('user_id', $userId)
         ->where('Status_registers', 'รอยืนยันเอกสารทั้งหมด')
         ->update(['Status_registers' => 'รออนุมัติ']);
+
+    return redirect('/studenthome1')->with('success6', 'ยืนยันการส่งเอกสารสำเร็จ.');
+ }
+
+ public function   updateconfirm2(Request $request) {
+    //ตรวจสอบข้อมูล
+
+    //  dd($request);
+
+    $userId = auth()->id();
+
+    // อัปเดตทุกเรคคอร์ดที่มี user_id ตรงกับผู้ใช้ที่เข้าสู่ระบบและ Status_registers เป็น 'รออนุมัติ'
+    DB::table('informdetails')
+        ->where('user_id', $userId)
+        ->where('Status_informdetails', 'รอยืนยันเอกสารทั้งหมด')
+        ->update(['Status_informdetails' => 'รออนุมัติ']);
 
     return redirect('/studenthome1')->with('success6', 'ยืนยันการส่งเอกสารสำเร็จ.');
  }
@@ -3384,9 +3400,11 @@ if($request->hasFile("filess1")){
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        'password' => 'required|confirmed|min:8',
     ],[
             //'establishment.required' => "กรุณา",
-
+'password.confirmed' => "รหัสผ่านไม่ตรงกัน",
+                'password.min' => "รหัสผ่านมากว่า8ตัว",
         ]
     );
 

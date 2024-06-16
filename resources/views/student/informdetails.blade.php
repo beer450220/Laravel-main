@@ -317,6 +317,13 @@
 
                                     </div>   <br>   <br>
                           </div>
+                          <div class="col-12">
+                            <h2 class="steps">
+
+                                <button id="update-status-btn" class="btn btn-outline-success"onclick="return confirm('ยืนยันการส่งเอกสาร !!');">ยืนยันการส่งเอกสารทั้งหมด</button>
+                                {{-- @endif --}}
+                                {{-- </form> --}}
+                            </div>
                           {{-- <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                               <h2 class="accordion-header" id="headingOne">
@@ -331,7 +338,32 @@
 {{--
                               <br>
                               <br> --}}
+                              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                              <script>
+                                   $(document).ready(function() {
+          $('#update-status-btn').click(function(event) {
+              // ป้องกันการคลิกปุ่มหลายครั้งโดยไม่ได้ตั้งใจ
+              event.preventDefault();
 
+              if (confirm('ยืนยันการส่งเอกสาร !!')) {
+                  $.ajax({
+                      url: '{{ route("updateconfirm2") }}', // URL สำหรับเรียกใช้ route
+                      type: 'POST',
+                      data: {
+                          _token: '{{ csrf_token() }}', // ส่งค่า CSRF token เพื่อป้องกัน CSRF
+                      },
+                      success: function(response) {
+                          alert('สถานะถูกอัปเดตเรียบร้อยแล้ว');
+                          location.reload(); // รีเฟรชหน้าเว็บเพื่อดูการเปลี่ยนแปลง
+                      },
+                      error: function(xhr) {
+                          alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ');
+                      }
+                  });
+              }
+          });
+      });
+                              </script>
 
                               <main role="main" class="">
                                 <div class="container-fluid">
@@ -573,6 +605,59 @@
                 <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
             @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
                 <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+            @endif
+                {{--  class="circle circle-sm bg-warning-light">
+
+       --}}@endforeach
+
+
+
+                  <H2>  <strong>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</strong> <span class="">
+                      </a> @foreach ($informdetails1 as $row)
+                       @if ($row->Status_informdetails === 'รออนุมัติ')
+                           <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
+                       @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                           <span class="badge badge-pill badge-success ">อนุมัติเอกสารแล้ว</span>
+                       @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                           <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
+                       @else
+                           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                       @endif
+                   @endforeach</H2>
+
+                   {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+                   <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                   <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                   </span>
+
+
+               </div>
+               <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                 <div class="card-body">  <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                 <br>
+
+                 </div>
+
+               </div>
+             </div>
+
+
+             @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+         {{-- <div class="col-md-12 mb-4"> --}}
+           <div class="accordion w-100" id="accordion1">
+             <div class="card shadow">
+               <div class="card-header" id="heading1">
+                 {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+         @foreach ($informdetails1 as $row)
+
+                @if ($row->Status_informdetails === 'รออนุมัติ')
+                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+            @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
             @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
                 <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
             @endif
@@ -588,6 +673,8 @@
                            <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
                        @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
                            <span class="badge badge-pill badge-success ">อนุมัติเอกสารแล้ว</span>
+                           @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+                           <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
                        @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
                            <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
                        @else
@@ -814,7 +901,59 @@
            </div>
 
        </div>
+       @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+       {{-- <div class="col-md-12 mb-4"> --}}
+         <div class="accordion w-100" id="accordion1">
+           <div class="card shadow">
+             <div class="card-header" id="heading1">
+               {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+       @foreach ($informdetails2 as $row)
 
+              @if ($row->Status_informdetails === 'รออนุมัติ')
+              <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+          @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+              <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+              @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+              <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+          @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+              <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
+          @endif
+              {{--  class="circle circle-sm bg-warning-light">
+
+     --}}@endforeach
+
+
+
+                <H2>  <strong>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</strong> <span class="">
+                    </a> @foreach ($informdetails2 as $row)
+                     @if ($row->Status_informdetails === 'รออนุมัติ')
+                         <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
+                     @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                         <span class="badge badge-pill badge-success ">อนุมัติเอกสารแล้ว</span>
+                         @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+                         <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                     @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                         <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
+                     @else
+                         <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                     @endif
+                 @endforeach</H2>
+
+                 {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+                 <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                 <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                 </span>
+
+
+             </div>
+             <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+               <div class="card-body">  <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+               <br>
+
+               </div>
+
+             </div>
+           </div>
        @endif
        @endforeach
        @endif
@@ -1017,6 +1156,62 @@
 
            </div>
          </div>
+
+         @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+         {{-- <div class="col-md-12 mb-4"> --}}
+           <div class="accordion w-100" id="accordion1">
+             <div class="card shadow">
+               <div class="card-header" id="heading1">
+                 {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+         @foreach ($informdetails3 as $row)
+
+                @if ($row->Status_informdetails === 'รออนุมัติ')
+                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+            @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+            @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
+            @endif
+                {{--  class="circle circle-sm bg-warning-light">
+
+       --}}@endforeach
+
+
+
+                  <H2>  <strong>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</strong> <span class="">
+                      </a> @foreach ($informdetails3 as $row)
+                       @if ($row->Status_informdetails === 'รออนุมัติ')
+                           <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
+                       @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                           <span class="badge badge-pill badge-success ">อนุมัติเอกสารแล้ว</span>
+                           @elseif ($row->Status_informdetails === 'รอยืนยันเอกสารทั้งหมด')
+                           <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                       @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                           <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
+                       @else
+                           <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                       @endif
+                   @endforeach</H2>
+
+                   {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a> --}}
+                   <a href="/studenthome/editinformdetails0/{{ $row->informdetails_id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล</a>
+                   <a href="../document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                   </span>
+
+
+               </div>
+               <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                 <div class="card-body">  <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                 <br>
+
+                 </div>
+
+               </div>
+             </div>
+
+
          @endif
          @endforeach
          @endif
@@ -1034,84 +1229,12 @@
 <div class="d-grid gap-2 text-center" >
 
     <h4></h4><a href="/studenthome"   class="btn btn-outline-warning " type="button">>ย้อนกลับ<</a>
-    </div>  </div>
-    {{-- id="show-alert" --}}
+    </div>  </div> </div> </div>
+    {{-- id="show-alert" --}}</div>
   <br>
 <br>
-{{-- เพิ่มข้อมูล --}}
-<div class="col-md-4 mb-4">
 
 
-
-
-  <div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content ">
-        <div class="modal-header ">
-          <h5 class="modal-title text center" id="varyModalLabel">เพิ่มข้อมูล</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-
-        <div class="modal-body">
-
-
-          <form method="POST" action="{{ route('addinformdetails') }}"enctype="multipart/form-data">
-            @csrf
-            @if ($errors->any())
-
-
-                <ul>
-                    @foreach ($errors->all() as $error)
-
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-            <div class="row">
-              <div class="col-md-4">
-                <label for="recipient-name" class="col-form-label">ชื่อสถานประกอบการ</label>
-                <input type="text" class="form-control" name="establishment" >
-              </div>
-              @error('establishment')
-              <span class="invalid-feedback" >
-                  {{ $message }}
-              </span>
-          @enderror
-
-              <div class="col-md-4">
-                <label for="recipient-name" class="col-form-label">ไฟล์เอกสาร</label>
-                <div class="custom-file mb-6">
-                  <input type="file" class="custom-file-input" name="files" id="validatedCustomFile" >
-                  <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                  <div class="invalid-feedback">Example invalid custom file feedback</div>
-              </div>
-            </div>
-            <br>
-
-
-            <div class="row">
-              <div class="col-md-4">
-
-                </div>
-              </div>
-
-            </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
-          <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
-        </div></form>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
 
 
 

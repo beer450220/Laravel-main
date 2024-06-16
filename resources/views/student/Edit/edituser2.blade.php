@@ -312,7 +312,7 @@
 
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียด</strong>
+                                                <strong class="card-title">แก้ไขข้อมูลนักศึกษา</strong>
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">

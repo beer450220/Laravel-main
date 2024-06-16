@@ -298,7 +298,7 @@
                                     <br>
                                     <br>
                                     <div class="text-center">
-                                      <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
+                                      <img src="/Profile/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
                                     </div>
 
@@ -320,7 +320,14 @@
                                                     <div class="form-group mb-3">
                                                       <form method="POST" action="{{url('/studenthome/updateuser002/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
+                                                        @foreach ($errors->all() as $error)
+                                                        <li class="alert alert-danger col-6">{{ $error }}</li>
+                                                        @endforeach
+                                                        </ul>
 
+                                                        @if(session("error"))
+                                                        <div class="alert alert-danger col-6">{{session('error')}}
+                                                        @endif
                                                     </div>
 
 
@@ -331,6 +338,11 @@
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">รหัสผ่าน</label>
                                                       <input type="password" id="example-palaceholder"value=""name="password"  class="form-control" placeholder="">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-palaceholder">ยืนยันรหัสผ่าน</label>
+                                                        {{-- <input type="password" id="example-palaceholder"value=""name="password"  class="form-control" placeholder=""> --}}
+                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" name="password_confirmation" required autocomplete="new-password">
                                                     </div>
                                                     {{-- <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>

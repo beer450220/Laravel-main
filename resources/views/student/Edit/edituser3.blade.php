@@ -298,7 +298,7 @@
                                     <br>
                                     <br>
                                     <div class="text-center">
-                                      {{-- <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
+                                      <img src="/Establishment/{{ $users->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
                                     </div>
 
@@ -312,7 +312,7 @@
 
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียด</strong>
+                                                <strong class="card-title">แก้ไขข้อมูลสถานประกอบการ</strong>
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">

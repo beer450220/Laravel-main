@@ -220,6 +220,7 @@ Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruse
 
 
     //เอกสารแจ้งรายละเอียดการปฎิบัติงาน
+    Route::post("/studenthome/updateconfirm2",[EditController::class,'updateconfirm2'])->name('updateconfirm2');
     Route::get("/studenthome/informdetails",[HomeController::class,'informdetails'])->name('student.informdetails');
     Route::get("/studenthome/editinformdetails0/{informdetails_id}",[EditController::class,'editinformdetails0'])->name('editinformdetails0');
     //แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)
@@ -359,7 +360,7 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
     Route::post("/officer/updateregister1/{id}",[EditController::class,'updateregister1'])->name('updateregister1');
 
     Route::get("/officer/confirm2/{id}",[EditController::class,'confirm2'])->name('confirm2');
-
+//ดูเอกสาร
     Route::get("/officer/editregister01/{id}",[EditController::class,'editregister01'])->name('editregister01');
 
     Route::get("/officer/editregister02/{id}",[EditController::class,'editregister02'])->name('editregister02');

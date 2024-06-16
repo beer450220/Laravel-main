@@ -3301,7 +3301,8 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     {
         $registers=DB::table('download')
         ->where('status',"1")
-        ->paginate(5);
+        // ->paginate(5);
+        ->get();
         return view('student.documents',["msg"=>"I am student role"],compact('registers'));
     }
     public function Announcement()

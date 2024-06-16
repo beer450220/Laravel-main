@@ -103,12 +103,12 @@ class Register2Controller extends Controller
                        "namefile" => $request->namefile,
                       "filess" =>$imageName,
                       "annotation" => "-",
-                      "Status_registers" => "รออนุมัติ",
+                      "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                     //   "year" => $request->year,
                     //   "term" => $request->term,
                   ]);
               //   $post->annotation ="-";
-              //   $post->Status_registers ="รออนุมัติ";
+              //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
                 $post->user_id = Auth::user()->id;
                 $post->save();
               }
@@ -137,7 +137,7 @@ class Register2Controller extends Controller
               //             "namefile" => $request->namefile,
               //             "filess" => $imageName,
               //             "annotation" => "-",
-              //             "Status_registers" => "รออนุมัติ",
+              //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
               //         ]);
 
               //         $post->user_id = Auth::user()->id;
@@ -199,12 +199,12 @@ public function addregisteruser3(Request $request) {
                    "namefile" => $request->namefile,
                   "filess" =>$imageName,
                   "annotation" => "-",
-                  "Status_registers" => "รออนุมัติ",
+                  "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                 //   "year" => $request->year,
                 //   "term" => $request->term,
               ]);
           //   $post->annotation ="-";
-          //   $post->Status_registers ="รออนุมัติ";
+          //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
             $post->user_id = Auth::user()->id;
             $post->save();
           }
@@ -233,7 +233,7 @@ public function addregisteruser3(Request $request) {
           //             "namefile" => $request->namefile,
           //             "filess" => $imageName,
           //             "annotation" => "-",
-          //             "Status_registers" => "รออนุมัติ",
+          //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
           //         ]);
 
           //         $post->user_id = Auth::user()->id;
@@ -287,12 +287,12 @@ public function addregisteruser3(Request $request) {
                        "namefile" => $request->namefile,
                       "filess" =>$imageName,
                       "annotation" => "-",
-                      "Status_registers" => "รออนุมัติ",
+                      "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                     //   "year" => $request->year,
                     //   "term" => $request->term,
                   ]);
               //   $post->annotation ="-";
-              //   $post->Status_registers ="รออนุมัติ";
+              //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
                 $post->user_id = Auth::user()->id;
                 $post->save();
               }
@@ -321,7 +321,7 @@ public function addregisteruser3(Request $request) {
               //             "namefile" => $request->namefile,
               //             "filess" => $imageName,
               //             "annotation" => "-",
-              //             "Status_registers" => "รออนุมัติ",
+              //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
               //         ]);
 
               //         $post->user_id = Auth::user()->id;
@@ -376,12 +376,12 @@ public function addregisteruser3(Request $request) {
                            "namefile" => $request->namefile,
                           "filess" =>$imageName,
                           "annotation" => "-",
-                          "Status_registers" => "รออนุมัติ",
+                          "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                     //       "year" => $request->year,
                     //   "term" => $request->term,
                       ]);
                   //   $post->annotation ="-";
-                  //   $post->Status_registers ="รออนุมัติ";
+                  //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
                     $post->user_id = Auth::user()->id;
                     $post->save();
                   }
@@ -410,7 +410,7 @@ public function addregisteruser3(Request $request) {
                   //             "namefile" => $request->namefile,
                   //             "filess" => $imageName,
                   //             "annotation" => "-",
-                  //             "Status_registers" => "รออนุมัติ",
+                  //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                   //         ]);
 
                   //         $post->user_id = Auth::user()->id;
@@ -464,12 +464,12 @@ public function addregisteruser3(Request $request) {
                                "namefile" => $request->namefile,
                               "filess" =>$imageName,
                               "annotation" => "-",
-                              "Status_registers" => "รออนุมัติ",
+                              "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                             //   "year" => $request->year,
                             //   "term" => $request->term,
                           ]);
                       //   $post->annotation ="-";
-                      //   $post->Status_registers ="รออนุมัติ";
+                      //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
                         $post->user_id = Auth::user()->id;
                         $post->save();
                       }
@@ -498,7 +498,7 @@ public function addregisteruser3(Request $request) {
                       //             "namefile" => $request->namefile,
                       //             "filess" => $imageName,
                       //             "annotation" => "-",
-                      //             "Status_registers" => "รออนุมัติ",
+                      //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                       //         ]);
 
                       //         $post->user_id = Auth::user()->id;
@@ -551,10 +551,10 @@ public function addregisteruser3(Request $request) {
                                    "namefile" => $request->namefile,
                                   "filess" =>$imageName,
                                   "annotation" => "-",
-                                  "Status_registers" => "รออนุมัติ",
+                                  "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                               ]);
                           //   $post->annotation ="-";
-                          //   $post->Status_registers ="รออนุมัติ";
+                          //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
                             $post->user_id = Auth::user()->id;
                             $post->save();
                           }
@@ -583,7 +583,7 @@ public function addregisteruser3(Request $request) {
                           //             "namefile" => $request->namefile,
                           //             "filess" => $imageName,
                           //             "annotation" => "-",
-                          //             "Status_registers" => "รออนุมัติ",
+                          //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                           //         ]);
 
                           //         $post->user_id = Auth::user()->id;
@@ -634,10 +634,10 @@ public function addregisteruser3(Request $request) {
                                        "namefile" => $request->namefile,
                                       "filess" =>$imageName,
                                       "annotation" => "-",
-                                      "Status_registers" => "รออนุมัติ",
+                                      "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                                   ]);
                               //   $post->annotation ="-";
-                              //   $post->Status_registers ="รออนุมัติ";
+                              //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
                                 $post->user_id = Auth::user()->id;
                                 $post->save();
                               }
@@ -666,7 +666,7 @@ public function addregisteruser3(Request $request) {
                               //             "namefile" => $request->namefile,
                               //             "filess" => $imageName,
                               //             "annotation" => "-",
-                              //             "Status_registers" => "รออนุมัติ",
+                              //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                               //         ]);
 
                               //         $post->user_id = Auth::user()->id;

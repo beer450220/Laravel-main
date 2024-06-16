@@ -247,10 +247,10 @@ class AddController extends Controller
                     // "year" => $request->year,
                     // "term" => $request->term,
 
-                    "Status_registers" => "รออนุมัติ",
+                    "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
                 ]);
             //   $post->annotation ="-";
-            //   $post->Status_registers ="รออนุมัติ";
+            //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
               $post->user_id = Auth::user()->id;
               $post->save();
             }
@@ -279,7 +279,7 @@ class AddController extends Controller
             //             "namefile" => $request->namefile,
             //             "filess" => $imageName,
             //             "annotation" => "-",
-            //             "Status_registers" => "รออนุมัติ",
+            //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
             //         ]);
 
             //         $post->user_id = Auth::user()->id;
@@ -356,7 +356,7 @@ class AddController extends Controller
 
                   ]);
               //   $post->annotation ="-";
-              //   $post->Status_registers ="รออนุมัติ";
+              //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
                 $post->user_id = Auth::user()->id;
                 $post->save();
 
@@ -421,7 +421,7 @@ class AddController extends Controller
               ]);
               $post->user_id = Auth::user()->id;
           //   $post->annotation ="-";
-          //   $post->Status_registers ="รออนุมัติ";
+          //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
             // $post->user_id = Auth::user()->id;
             $post->save();
  }
@@ -480,7 +480,7 @@ class AddController extends Controller
 
         ]);// dd($request);dd($request->Status);
 
-      $post->Status_informdetails ="รออนุมัติ";
+      $post->Status_informdetails ="รอยืนยันเอกสารทั้งหมด";
       $post->annotation ="-";
     //   $post->establishment ="-";
       $post->user_id = Auth::user()->id;
@@ -539,7 +539,7 @@ class AddController extends Controller
 
         ]);// dd($request);dd($request->Status);
 
-      $post->Status_report ="รออนุมัติ";
+      $post->Status_report ="รอยืนยันเอกสารทั้งหมด";
       $post->annotation ="-";
     //   $post->establishment ="-";
       $post->user_id = Auth::user()->id;
@@ -635,10 +635,10 @@ public function addSuperviseteacheruser(Request $request) {
                    "namefile" => $request->namefile,
                   "filess" =>$imageName,
                   "annotation" => "-",
-                  "Status_results" => "รออนุมัติ",
+                  "Status_results" => "รอยืนยันเอกสารทั้งหมด",
               ]);
           //   $post->annotation ="-";
-          //   $post->Status_registers ="รออนุมัติ";
+          //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
             $post->user_id = Auth::user()->id;
             $post->save();
           }
@@ -667,7 +667,7 @@ public function addSuperviseteacheruser(Request $request) {
           //             "namefile" => $request->namefile,
           //             "filess" => $imageName,
           //             "annotation" => "-",
-          //             "Status_registers" => "รออนุมัติ",
+          //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
           //         ]);
 
           //         $post->user_id = Auth::user()->id;
@@ -728,10 +728,10 @@ public function addSuperviseteacheruser1(Request $request) {
                    "namefile" => $request->namefile,
                   "filess" =>$imageName,
                   "annotation" => "-",
-                  "Status_results" => "รออนุมัติ",
+                  "Status_results" => "รอยืนยันเอกสารทั้งหมด",
               ]);
           //   $post->annotation ="-";
-          //   $post->Status_registers ="รออนุมัติ";
+          //   $post->Status_registers ="รอยืนยันเอกสารทั้งหมด";
             $post->user_id = Auth::user()->id;
             $post->save();
           }
@@ -760,7 +760,7 @@ public function addSuperviseteacheruser1(Request $request) {
           //             "namefile" => $request->namefile,
           //             "filess" => $imageName,
           //             "annotation" => "-",
-          //             "Status_registers" => "รออนุมัติ",
+          //             "Status_registers" => "รอยืนยันเอกสารทั้งหมด",
           //         ]);
 
           //         $post->user_id = Auth::user()->id;
@@ -891,7 +891,7 @@ if($request->hasFile("filess"))
     ]);
 
     $post->annotation ="-";
-    // $post->Status_supervision ="รออนุมัติ";
+    // $post->Status_supervision ="รอยืนยันเอกสารทั้งหมด";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;
@@ -956,7 +956,7 @@ if($request->hasFile("filess"))
   ]);
 
   $post->annotation ="-";
-//   $post->Status_supervision ="รออนุมัติ";
+//   $post->Status_supervision ="รอยืนยันเอกสารทั้งหมด";
   $post->save();
     //  $data =array();
     //  $data["test"]= $request->test;
@@ -1017,7 +1017,7 @@ if($request->hasFile("filess"))
   ]);
 
   $post->annotation ="-";
-  $post->status ="รออนุมัติ";
+  $post->status ="รอยืนยันเอกสารทั้งหมด";
   $post->save();
     //  $data =array();
     //  $data["test"]= $request->test;
@@ -1174,7 +1174,7 @@ public function addcategory()
 
 
       ]);
-     // $post->Status ="รออนุมัติ";
+     // $post->Status ="รอยืนยันเอกสารทั้งหมด";
       $post->save();
         //  $data =array();
         //  $data["test"]= $request->test;
@@ -1209,7 +1209,7 @@ public function addcategory()
 
 
       ]);
-     // $post->Status ="รออนุมัติ";
+     // $post->Status ="รอยืนยันเอกสารทั้งหมด";
       $post->save();
         //  $data =array();
         //  $data["test"]= $request->test;
@@ -1254,7 +1254,7 @@ $post =new category
     //    $user = new Users;
     // $post = new category;
     //    $post->name = $request->name;
-     // $post->Status ="รออนุมัติ";
+     // $post->Status ="รอยืนยันเอกสารทั้งหมด";
       $post->save();
 
         //  $data =array();
@@ -1300,7 +1300,7 @@ if($request->hasFile("filess"))
         'Status_acceptance'=>$request->Status_acceptance,
         'namefile' => $request->namefile ,
     ]);
-   // $post->Status ="รออนุมัติ";
+   // $post->Status ="รอยืนยันเอกสารทั้งหมด";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;
@@ -1410,7 +1410,7 @@ public function addsupervision()
     $post-> List_teacher = "List_teacher";
     $post-> Statustime = "List_teacher";
     $post['student_name'] = json_encode($request->student_name);
-   // $post->Status ="รออนุมัติ";
+   // $post->Status ="รอยืนยันเอกสารทั้งหมด";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;
@@ -1476,7 +1476,7 @@ public function addsupervision()
 
       ]);
 
-    //    $post->user_id = "0";  // $post->Status ="รออนุมัติ";
+    //    $post->user_id = "0";  // $post->Status ="รอยืนยันเอกสารทั้งหมด";
     //   $post-> appointment_time =  null;
       //$post-> List_teacher = "List_teacher";
     //   $post-> Statustime = "List_teacher";
@@ -1538,7 +1538,7 @@ public function addsupervision()
 
 
     ]);
-   // $post->Status ="รออนุมัติ";
+   // $post->Status ="รอยืนยันเอกสารทั้งหมด";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;
@@ -1604,7 +1604,7 @@ if($request->hasFile("filess"))
 
 
     ]);
-   // $post->Status ="รออนุมัติ";
+   // $post->Status ="รอยืนยันเอกสารทั้งหมด";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;
@@ -1685,7 +1685,7 @@ if($request->hasFile("files1"))
         // 'Status_acceptance'=>$request->Status_acceptance,
 
     ]);
-   // $post->Status ="รออนุมัติ";
+   // $post->Status ="รอยืนยันเอกสารทั้งหมด";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;

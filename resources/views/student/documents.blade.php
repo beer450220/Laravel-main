@@ -316,7 +316,7 @@
                   </thead>
                   <tbody>
                     <tr>@foreach ($registers as $row)
-                        <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
+                        <td class="col-1 text center">{{$loop->index}}</td>
 
                       <td> {{ $row->namefile}}</td>
                      <td></td>

@@ -73,7 +73,7 @@ class informdetailsController extends Controller
 
           ]);// dd($request);dd($request->Status);
 
-        $post->Status_informdetails ="รออนุมัติ";
+        $post->Status_informdetails ="รอยืนยันเอกสารทั้งหมด";
         $post->annotation ="-";
         // $post->establishment ="-";
         $post->user_id = Auth::user()->id;
@@ -131,7 +131,7 @@ class informdetailsController extends Controller
 
       ]);// dd($request);dd($request->Status);
 
-    $post->Status_informdetails ="รออนุมัติ";
+    $post->Status_informdetails ="รอยืนยันเอกสารทั้งหมด";
     $post->annotation ="-";
     // $post->establishment ="-";
     $post->user_id = Auth::user()->id;

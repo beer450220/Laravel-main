@@ -515,16 +515,7 @@ div.second {
 
 
                                         </div>
-                                        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-                                          <div class="card-body">
-                                            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-                                        </div>
-                                        <br>
 
-
-                                          </div>
-
-                                        </div>
                             @else
 @foreach ($registers1 as $row)
 
@@ -570,16 +561,7 @@ div.second {
 
 
         </div>
-        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-          <div class="card-body">
-            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-        </div>
-        <br>
 
-
-          </div>
-
-        </div>
 
 
 
@@ -609,7 +591,7 @@ div.second {
                 @if ($row->Status_registers === 'รออนุมัติ')
                     <span class="text-warning">รออนุมัติเอกสาร</span>
                 @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                    <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
+                       <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
 
                 @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                     <span class="text-Danger ">{{ $row->Status_registers }}</span>
@@ -625,16 +607,7 @@ div.second {
 
 
         </div>
-        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-          <div class="card-body">
-            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-        </div>
-        <br>
 
-
-          </div>
-
-        </div>
         @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
         <div class="col-md-12 mb-4">
             {{-- <div class="accordion w-100" id="accordion1"> --}}
@@ -679,18 +652,11 @@ div.second {
                     {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
                     </span>
 
-
                 </div>
-                <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-                  <div class="card-body">
-                    {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-                </div>
-                <br>
 
 
-                  </div>
 
-                </div>
+
 @elseif ($row->Status_registers === 'ไม่อนุมัติ')
 <div class="col-md-12 mb-4">
     {{-- <div class="accordion w-100" id="accordion1"> --}}
@@ -732,19 +698,7 @@ div.second {
             {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
             </span>
 
-
         </div>
-        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-          <div class="card-body">
-            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-        </div>
-
-
-
-          </div>
-
-        </div>
-
 
 
 
@@ -844,15 +798,9 @@ div.second {
                                         @endforeach <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span></h2></span>
                             <a href="/studenthome/addregister2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
 
-                                        </div>
-                                        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
-                                          <div class="card-body"> <a href="/studenthome/addregister2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
-
-                                          <br>
+                                        </div></div>
 
 
-                                        </div>
-                                      </div>
 
                                       @else
                                       @foreach ($registers2 as $row)
@@ -883,11 +831,11 @@ div.second {
                                           </a><span>
                                             @foreach ($registers2 as $row)
                                             @if ($row->Status_registers === 'รออนุมัติ')
-                                                <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
+                                            <span class="text-warning">รออนุมัติเอกสาร</span>
                                             @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                                <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
+                                                   <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
                                             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                                                <span class="badge badge-pill badge-Danger ">{{ $row->Status_registers }}</span>
+                                            <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
                                             @else ()
                                                 <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                             @endif
@@ -897,7 +845,7 @@ div.second {
                                         {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
                             {{-- <a href="/studenthome/addregister2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 
-                                        </div>
+                                        </div>     </div>
 
                                         @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                                         <div class="card shadow">
@@ -926,7 +874,7 @@ div.second {
                                                 @if ($row->Status_registers === 'รออนุมัติ')
                                                     <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
                                                 @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                                    <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
+                                                       <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
                                                 @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                                                     <span class="badge badge-pill badge-Danger ">{{ $row->Status_registers }}</span>
                                                 @else ()
@@ -938,7 +886,62 @@ div.second {
                                             {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
                                 {{-- <a href="/studenthome/addregister2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
 
-                                            </div>
+                                            </div>   </div>
+
+
+
+                                                @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+
+                                                    {{-- <div class="accordion w-100" id="accordion1"> --}}
+                                                      <div class="card shadow">
+                                                        <div class="card-header" id="heading1">
+                                                          {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+                                                 @foreach ($registers2 as $row)
+
+                                                         @if ($row->Status_registers === 'รออนุมัติ')
+                                                         <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                                     @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                         <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                                         @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                         <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                                     @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                         <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                                                     @endif
+                                                         {{-- class="circle circle-sm bg-warning-light"> --}}
+                                                @endforeach
+
+
+
+
+                                                             <H2><strong>ใบสมัครงานสหกิจศึกษา(สก03)</strong> </a> <span class="">
+                                                                @foreach ($registers2 as $row)
+                                                                @if ($row->Status_registers === 'รออนุมัติ')
+                                                                    <span class="text-warning">รออนุมัติเอกสาร</span>
+                                                                @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                                    <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                                                                    @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                                    <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                                                                @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                                    <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                                                                @else (sss)
+
+
+                                                                    @endif
+                                                            @endforeach</H2>
+                                                            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                            <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                                                <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                                                            {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                                                            </span>
+
+                                                        </div>
+
+
+
+
+
+
+
                                             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                                             <div class="card shadow">
                                                 <div class="card-header" id="heading1">
@@ -966,9 +969,9 @@ div.second {
                                                     @if ($row->Status_registers === 'รออนุมัติ')
                                                         <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
                                                     @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                                        <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
-                                                    @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                                                        <span class="badge badge-pill badge-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
+                                                           <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                                                        @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                        <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
                                                     @else ()
                                                         <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                                     @endif
@@ -978,6 +981,8 @@ div.second {
                                     <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
                                         <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
                                                 </div>
+
+
                                       @endif
                                       @endforeach
                                       @endif
@@ -1097,6 +1102,68 @@ div.second {
                                   {{-- <a href="/studenthome/addregister3"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
                                           </div>
 
+
+
+
+                                          @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                          {{-- <div class="col-md-12 mb-4"> --}}
+                                              {{-- <div class="accordion w-100" id="accordion1"> --}}
+                                                <div class="card shadow">
+                                                  <div class="card-header" id="heading1">
+                                                    {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+                                           @foreach ($registers3 as $row)
+
+                                                   @if ($row->Status_registers === 'รออนุมัติ')
+                                                   <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                               @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                   <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                                   @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                   <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                               @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                   <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                                               @endif
+                                                   {{-- class="circle circle-sm bg-warning-light"> --}}
+                                          @endforeach
+
+
+
+
+                                                       <H2><strong>แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</strong> </a> <span class="">
+                                                          @foreach ($registers3 as $row)
+                                                          @if ($row->Status_registers === 'รออนุมัติ')
+                                                              <span class="text-warning">รออนุมัติเอกสาร</span>
+                                                          @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                              <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                                                              @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                              <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                                                          @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                              <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                                                          @else (sss)
+
+
+                                                              @endif
+                                                      @endforeach</H2>
+                                                      {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                      <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                                          <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                                                      {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                                                      </span>
+
+
+                                                  </div>
+                                                  <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                                    <div class="card-body">
+                                                      {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                  </div>
+                                                  <br>
+
+
+                                                    </div>
+
+                                                  </div>
+
+
+
                                           @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                                           <div class="card shadow">
                                             <div class="card-header" id="heading1">
@@ -1208,7 +1275,7 @@ div.second {
                       </a>
                       @foreach ($registers4 as $row)
                       @if ($row->Status_registers === 'รออนุมัติ')
-                          <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
+                      <span class="text-warning">รออนุมัติเอกสาร</span>
                       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
                           <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
                       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
@@ -1252,7 +1319,7 @@ div.second {
       @if ($row->Status_registers === 'รออนุมัติ')
           <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-          <span class="badge badge-pill badge-success ">อนุมัติเอกสารแล้ว</span>
+             <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
           <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
       @else
@@ -1268,6 +1335,68 @@ div.second {
 
     </div>
   </div>
+
+
+  @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                     {{-- <div class="col-md-12 mb-4"> --}}
+                                              {{-- <div class="accordion w-100" id="accordion1"> --}}
+                                                <div class="card shadow">
+                                                  <div class="card-header" id="heading1">
+                                                    {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+                                           @foreach ($registers4 as $row)
+
+                                                   @if ($row->Status_registers === 'รออนุมัติ')
+                                                   <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                               @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                   <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                                   @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                   <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                               @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                   <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                                               @endif
+                                                   {{-- class="circle circle-sm bg-warning-light"> --}}
+                                          @endforeach
+
+
+
+
+                                                       <H2><strong>บัตรชาชน</strong> </a> <span class="">
+                                                          @foreach ($registers4 as $row)
+                                                          @if ($row->Status_registers === 'รออนุมัติ')
+                                                              <span class="text-warning">รออนุมัติเอกสาร</span>
+                                                          @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                              <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                                                              @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                              <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                                                          @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                              <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                                                          @else (sss)
+
+
+                                                              @endif
+                                                      @endforeach</H2>
+                                                      {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                      <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                                          <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                                                      {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                                                      </span>
+
+
+                                                  </div>
+                                                  <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                                    <div class="card-body">
+                                                      {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                  </div>
+                                                  <br>
+
+
+                                                    </div>
+
+                                                  </div>
+
+
+
+
   @elseif ($row->Status_registers === 'ไม่อนุมัติ')
   <div class="card shadow">
     <div class="card-header" id="heading1">
@@ -1293,7 +1422,7 @@ div.second {
       @if ($row->Status_registers === 'รออนุมัติ')
           <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-          <span class="badge badge-pill badge-success ">อนุมัติเอกสารแล้ว</span>
+             <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
           <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
       @else
@@ -1425,7 +1554,7 @@ div.second {
       </a>
       @foreach ($registers5 as $row)
       @if ($row->Status_registers === 'รออนุมัติ')
-          <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
+      <span class="text-warning">รออนุมัติเอกสาร</span>
       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
           <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
@@ -1471,7 +1600,7 @@ div.second {
       @if ($row->Status_registers === 'รออนุมัติ')
           <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-          <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
+             <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
           <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
       @else
@@ -1488,6 +1617,69 @@ div.second {
 
     </div>
   </div>
+
+
+
+  @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+  {{-- <div class="col-md-12 mb-4"> --}}
+      {{-- <div class="accordion w-100" id="accordion1"> --}}
+        <div class="card shadow">
+          <div class="card-header" id="heading1">
+            {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+   @foreach ($registers5 as $row)
+
+           @if ($row->Status_registers === 'รออนุมัติ')
+           <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+           <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+           @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+           <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+           <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+       @endif
+           {{-- class="circle circle-sm bg-warning-light"> --}}
+  @endforeach
+
+
+
+
+               <H2><strong>บัตรนักศึกษา</strong> </a> <span class="">
+                  @foreach ($registers5 as $row)
+                  @if ($row->Status_registers === 'รออนุมัติ')
+                      <span class="text-warning">รออนุมัติเอกสาร</span>
+                  @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                      <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                      @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                      <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                  @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                      <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                  @else (sss)
+
+
+                      @endif
+              @endforeach</H2>
+              {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+              <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                  <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+              {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+              </span>
+
+
+          </div>
+          <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+            <div class="card-body">
+              {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+          </div>
+          <br>
+
+
+            </div>
+
+          </div>
+
+
+
+
  @elseif ($row->Status_registers === 'ไม่อนุมัติ')
  <div class="card shadow">
     <div class="card-header" id="heading1">
@@ -1514,7 +1706,7 @@ div.second {
       @if ($row->Status_registers === 'รออนุมัติ')
           <span class="badge badge-pill badge-warning">รออนุมัติเอกสาร</span>
       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-          <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
+             <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
           <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
       @else
@@ -1689,7 +1881,7 @@ div.second {
                                           @if ($row->Status_registers === 'รออนุมัติ')
                                               <span class="text-warning">รออนุมัติเอกสาร</span>
                                           @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                              <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
+                                          <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
                                           @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                                               <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
                                           @else
@@ -1705,6 +1897,66 @@ div.second {
 
                                         </div>
                                       </div>
+
+
+                                      @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                      {{-- <div class="col-md-12 mb-4"> --}}
+                                          {{-- <div class="accordion w-100" id="accordion1"> --}}
+                                            <div class="card shadow">
+                                              <div class="card-header" id="heading1">
+                                                {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+                                       @foreach ($registers6 as $row)
+
+                                               @if ($row->Status_registers === 'รออนุมัติ')
+                                               <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                           @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                               <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                               @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                               <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                           @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                               <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                                           @endif
+                                               {{-- class="circle circle-sm bg-warning-light"> --}}
+                                      @endforeach
+
+
+
+
+                                                   <H2><strong>ผลการเรียน</strong> </a> <span class="">
+                                                      @foreach ($registers6 as $row)
+                                                      @if ($row->Status_registers === 'รออนุมัติ')
+                                                          <span class="text-warning">รออนุมัติเอกสาร</span>
+                                                      @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                          <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                                                          @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                          <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                                                      @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                          <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                                                      @else (sss)
+
+
+                                                          @endif
+                                                  @endforeach</H2>
+                                                  {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                  <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                                      <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                                                  {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                                                  </span>
+
+
+                                              </div>
+                                              <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                                <div class="card-body">
+                                                  {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                              </div>
+                                              <br>
+
+
+                                                </div>
+
+                                              </div>
+
+
 
                                       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
 
@@ -1733,7 +1985,7 @@ div.second {
                                           @if ($row->Status_registers === 'รออนุมัติ')
                                               <span class="text-warning">รออนุมัติเอกสาร</span>
                                           @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                              <span class="badge badge-pill badge-Success ">อนุมัติเอกสารแล้ว</span>
+                                                 <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
                                           @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                                               <span class="text-Danger ">ไม่อนุมัติ&nbsp;&nbsp;{{$row->annotation}}</span>
                                           @else
@@ -1897,6 +2149,67 @@ div.second {
                                               </div>
                                             </div> <!-- /.card-footer -->
 
+
+
+                                            @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                            {{-- <div class="col-md-12 mb-4"> --}}
+                                                {{-- <div class="accordion w-100" id="accordion1"> --}}
+                                                  <div class="card shadow">
+                                                    <div class="card-header" id="heading1">
+                                                      {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+                                             @foreach ($registers7 as $row)
+
+                                                     @if ($row->Status_registers === 'รออนุมัติ')
+                                                     <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                                 @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                     <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                                     @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                     <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                                 @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                     <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                                                 @endif
+                                                     {{-- class="circle circle-sm bg-warning-light"> --}}
+                                            @endforeach
+
+
+
+
+                                                         <H2><strong>ประวัติส่วนตัว(resume)</strong> </a> <span class="">
+                                                            @foreach ($registers7 as $row)
+                                                            @if ($row->Status_registers === 'รออนุมัติ')
+                                                                <span class="text-warning">รออนุมัติเอกสาร</span>
+                                                            @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
+                                                                <span class="text-Success ">อนุมัติเอกสารแล้ว</span>
+                                                                @elseif ($row->Status_registers === 'รอยืนยันเอกสารทั้งหมด')
+                                                                <span class="text-warning ">รอยืนยันเอกสารทั้งหมด</span>
+                                                            @elseif ($row->Status_registers === 'ไม่อนุมัติ')
+                                                                <span class="text-Danger ">{{ $row->Status_registers }}</span>
+                                                            @else (sss)
+
+
+                                                                @endif
+                                                        @endforeach</H2>
+                                                        {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                        <a href="/studenthome/edit9register/{{ $row->id }}"  class=" btn btn-outline-warning">แก้ไขข้อมูล
+                                                            <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular ">ดูไฟล์เอกสาร</a>
+                                                        {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
+                                                        </span>
+
+
+                                                    </div>
+                                                    <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                                      <div class="card-body">
+                                                        {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                                    </div>
+                                                    <br>
+
+
+                                                      </div>
+
+                                                    </div>
+
+
+
                                   @elseif ($row->Status_registers === 'ไม่อนุมัติ')
 
                                   <div class="card shadow">
@@ -2054,7 +2367,7 @@ div.second {
     </div>
     {{-- id="show-alert" --}}
 
-</div></div></div></div>
+
 
 @endsection
 {{-- <script src="../student/js/jquery.min.js"></script> --}}
