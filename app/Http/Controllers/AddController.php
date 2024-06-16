@@ -884,15 +884,29 @@ if($request->hasFile("filess"))
         'namefile' => $request->namefile,
         // "year" => $request->year,
         'score' => $request->score,
-        'Status_supervision' => $request->Status_supervision,
+        // 'Status_supervision' => $request->Status_supervision,
         "filess" =>$imageName,
-
+        'annotation' => $request->annotation,
 
     ]);
 
-    $post->annotation ="-";
+    // $post->annotation ="-";
     // $post->Status_supervision ="รอยืนยันเอกสารทั้งหมด";
     $post->save();
+    $score = $request->input('score');
+    $status = '';
+
+    if ($score > 100) {
+        $status = 'ผ่าน';
+    } else if ($score >= 80) {
+        $status = 'ผ่าน';
+    } else if ($score >= 60) {
+        $status = 'กลาง';
+    } else if ($score < 50) {
+        $status = 'ไม่ผ่าน';
+    } else if ($score < 40) {
+        $status = 'ไม่ผ่าน';
+    }
       //  $data =array();
       //  $data["test"]= $request->test;
     //    $data["test"]= $request->test;
@@ -1475,7 +1489,7 @@ public function addsupervision()
            "teacher_name" => implode(",",$request->teacher_name),
 
       ]);
-
+  $post-> annotation =  '-';
     //    $post->user_id = "0";  // $post->Status ="รอยืนยันเอกสารทั้งหมด";
     //   $post-> appointment_time =  null;
       //$post-> List_teacher = "List_teacher";

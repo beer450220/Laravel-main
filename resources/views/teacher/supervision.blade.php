@@ -147,6 +147,8 @@
             <h4> <span class="badge rounded-pill bg-success ">{{ $row->Status_events}}</span></h4>
             @elseif ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
             <h4> <span class="badge rounded-pill bg-danger ">{{ $row->Status_events}}</span></h4>
+            @elseif ($row->Status_events === 'รับทราบขอเปลี่ยนเวลานัดนิเทศ')
+            <h4> <span class="badge rounded-pill bg-success ">{{ $row->Status_events}}</span></h4>
             @endif
 
 
@@ -158,13 +160,13 @@
 <td>
                 @if ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
                 <div class="d-grid gap-2 d-md-block">
-                <a href="/officer/confirm2/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">ยืนยันขอเปลี่ยนเวลานัดนิเทศ</a><br>
-                <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
+                <a href="/teacher/confirm05/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">ยืนยันขอเปลี่ยนเวลานัดนิเทศ</a><br>
+                {{-- <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td> --}}
             </div>
-                @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+                {{-- @elseif ($row->Status_events === 'รับทราบขอเปลี่ยนเวลานัดนิเทศ')
                 <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
                 @elseif ($row->Status_events === 'ยืนยันขอเปลี่ยนเวลานัดนิเทศแล้ว')
-                <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
+                <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td> --}}
             @endif
 
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}

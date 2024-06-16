@@ -633,7 +633,8 @@ public function   calendar2confirmupdate(Request $request,$id) {
 $post->update
 
     ([
-     "appointment_time" =>$request->appointment_time
+     "appointment_time" =>$request->appointment_time,
+     "annotation" =>$request->annotation
         //"establishment"=>$request->establishment,
         // "phone"=>$request->phone,
        // "files"=>$request->files,
@@ -2785,7 +2786,7 @@ if($request->hasFile("filess1")){
     // 'end' => $request->end,
   //   "term" => $request->term,
   //   "year" => $request->year,
-    "appointment_time" => $request->appointment_time,
+    // "appointment_time" => $request->appointment_time,
   //   "executive_name" => $request->executive_name,
   //   "contact_person" => $request->contact_person,
     "em_id" => $request->em_id,
@@ -3747,7 +3748,46 @@ if($request->hasFile("filess1")){
     return redirect('/teacher/register1')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
+ public function   confirm05(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=Event::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status_events ="รับทราบขอเปลี่ยนเวลานัดนิเทศ";
+    // $post->role ="student";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+
+    ]);
+
+
+    return redirect('/teacher/supervision')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
+ }
 
  public function   confirm003(Request $request,$informdetails_id) {
     //ตรวจสอบข้อมูล

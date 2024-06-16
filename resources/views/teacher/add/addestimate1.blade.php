@@ -193,10 +193,44 @@
 
         <div class="col-md-2">
           <label for="inputAddress"class="col-form-label ">คะแนน</label>
-          <input type="text" class="form-control" @error('score') is-invalid @enderror name="score"required value="{{ old('score') }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
+          <input type="text" class="form-control" id="scoreInput" name="score" value="{{ old('score') }}" autofocus placeholder="score"required>
+          <div id="scoreFeedback" class="mt-2"></div>
+          <script>
+            document.getElementById('scoreInput').addEventListener('input', function() {
+                const score = parseFloat(this.value);
+                const feedback = document.getElementById('scoreFeedback');
 
+                if (isNaN(score)) {
+                    feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
+                    feedback.style.color = 'red';
+                } else if (score > 100) {
+                    feedback.textContent = 'ผ่าน';
+                    feedback.style.color = 'green';
+                } else if (score >= 80) {
+                    feedback.textContent = 'ผ่าน';
+                    feedback.style.color = 'green';
+                } else if (score >= 60) {
+                    feedback.textContent = 'กลาง';
+                    feedback.style.color = 'orange';
+                } else if (score < 50) {
+                    feedback.textContent = 'ไม่ผ่าน';
+                    feedback.style.color = 'red';
+                } else if (score < 40) {
+                    feedback.textContent = 'ไม่ผ่าน';
+                    feedback.style.color = 'red';
+                } else {
+                    feedback.textContent = '';
+                }
+            });
+        </script>
       </div>
+
       <div class="col-md-2">
+        <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
+        <input type="text" class="form-control" @error('score') is-invalid @enderror name="annotation"required value="{{ old('annotation') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name">
+
+    </div>
+      {{-- <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">สถานะ</label>
         <select class="form-control "  name="Status_supervision" required>
           <option value="">กรุณาเลือก</option>
@@ -209,7 +243,7 @@
 
 
         </select>
-    </div>
+    </div> --}}
     {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
       <select class="form-control "  name="year" required>

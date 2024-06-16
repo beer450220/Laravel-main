@@ -14,5 +14,5 @@ class Event extends Model
     // ,'executive_name','contact_person'
     ,'namefiles1' ,'filess1'
     ,'namefiles' ,'filess'
-    , 'student_name','em_id','appointment_time' ,'Status_events','teacher_name'];
+    , 'student_name','em_id','appointment_time' ,'Status_events','teacher_name','annotation'];
 }

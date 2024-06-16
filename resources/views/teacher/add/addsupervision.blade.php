@@ -203,14 +203,14 @@
             {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" > --}}
                 <select class="form-control select2"id="subcategory" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required >
                     <option value="">-- เลือกหมวดหมู่ย่อย --</option>
-                    {{-- <option value="">Select state</option>
+                    <option value="">Select state</option>
               @foreach ($establishment as $row)
 
                 <option value="{{$row->id}}">{{$row->em_name}}</option>
 
               </optgroup>
 
-              @endforeach --}}
+              @endforeach
             </select>
 
             @error('test')

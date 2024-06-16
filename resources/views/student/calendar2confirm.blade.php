@@ -540,8 +540,11 @@ allowClear: true,
                                         <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
                                         @elseif ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
                                         <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                        @elseif ($row->Status_events === 'รับทราบขอเปลี่ยนเวลานัดนิเทศ')
+                                        <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
                                     @endif</p>
                                       <p class=" text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->appointment_time}}</p>
+                                      <p class=" text-muted mb-0">หมายเหตุ:{{ $row->annotation}}</p>
 
                                     </div>
                                   </div> <!-- ./card-text -->

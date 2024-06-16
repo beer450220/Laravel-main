@@ -276,14 +276,17 @@ Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruse
     //นิเทศงาน
     Route::get("/studenthome/calendar2confirm",[HomeController::class,'calendar2confirm'])->name('calendar2confirm');
     Route::get("/studenthome/calendar2confirmedit/{id}",[EditController::class,'calendar2confirmedit'])->name('calendar2confirmedit');
-
+//ขอเปลี่ยน
     Route::post("/studenthome/calendar2confirmupdate/{id}",[EditController::class,'calendar2confirmupdate'])->name('calendar2confirmupdate');
+
+
 
     Route::get("/studenthome/calendar2confirmview/{id}",[EditController::class,'calendar2confirmview'])->name('calendar2confirmview');
     Route::post("/studenthome/updatecalendar2confirm/{id}",[EditController::class,'updatecalendar2confirm'])->name('updatecalendar2confirm');
+
     Route::get("/studenthome/updateconfirm/{id}",[EditController::class,'updateconfirm'])->name('updateconfirm');
 
-    Route::post("/studenthome/calendar2add/{id}",[AddController::class,'calendar2add'])->name('calendar2add');
+    // Route::post("/studenthome/calendar2add/{id}",[AddController::class,'calendar2add'])->name('calendar2add');
     Route::get("/studenthome/editteacher1/{id}",[EditController::class,'editteacher2'])->name('editteacher2');
 
 });
@@ -602,6 +605,10 @@ Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->na
     Route::post("/teacher/updatesupervision02/{id}",[EditController::class,'updatesupervision02'])->name('updatesupervision02');
     Route::get('/teacher/deletsupervision/{id}', [EditController::class,'deletsupervision'])->name('deletsupervision');
     Route::get('/teacher/view1/{id}', [HomeController::class,'viewevents'])->name('viewevents');
+
+    Route::get("/teacher/confirm05/{id}",[EditController::class,'confirm05'])->name('confirm05');
+
+
 
     Route::post('/get-subcategories',[addController::class,'getSubcategories'])->name('getSubcategories');
 

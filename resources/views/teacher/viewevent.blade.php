@@ -242,12 +242,16 @@
 
                         <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">ขอเปลี่ยนเวลานัดนิเทศ</label><br>
-                            <input type="text" class="form-control" name="annotation" value=" {{$establishments->appointment_time}}"disabled required>
+                            <input type="text" class="form-control" name="annotation" value="{{ formatThaiDate($establishments->appointment_time) }} "disabled required>
 
                           </div>
 
 
+                          <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">หมายเหตุ</label><br>
+                            <input type="text" class="form-control" name="annotation" value="{{$establishments->annotation}}"disabled required>
 
+                          </div>
                         </div>
 
 

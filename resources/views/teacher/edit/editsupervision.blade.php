@@ -338,7 +338,8 @@ $( '#multiple-select-field' ).select2( {
             <option value="รอรับทราบและยืนยันเวลานัดนิเทศ"@if($supervisions->Status_events=="รอรับทราบและยืนยันเวลานัดนิเทศ") selected @endif required>รอรับทราบและยืนยันเวลานัดนิเทศ</option>
             <option value="รับทราบและยืนยันเวลานัดนิเทศแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดนิเทศแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดนิเทศแล้ว</option>
             <option value="ขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ขอเปลี่ยนเวลานัดนิเทศ</option>
-          </optgroup>
+            <option value="รับทราบขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="รับทราบขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ขอเปลี่ยนเวลานัดนิเทศ</option>
+        </optgroup>
 
 
         </select>
@@ -346,22 +347,22 @@ $( '#multiple-select-field' ).select2( {
     </div>
 
 
-    <div class="col-md-4">
-        <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
+    {{-- <div class="col-md-4">
+        <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label> --}}
         {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
 
         {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title"> --}}
         {{-- <input class="form-control" id="example-date" type="text" name="appointment_time"value="{{$supervisions->appointment_time}}"  autofocus placeholder=""> --}}
-        <input class="form-control" id="example-date1" type="datetime-local" name="start"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
+        {{-- <input class="form-control" id="example-date1" type="datetime-local" name="start"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
         @error('test')
         <span class="invalid-feedback" >
             {{ $message }}
         </span>
-    @enderror
+    @enderror --}}
 
 
 
-    </div>
+    {{-- </div> --}}
 </div>
 
 
