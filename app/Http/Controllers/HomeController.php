@@ -4086,7 +4086,108 @@ public function category()
         ->paginate(5);
         return view('officer.Evaluate',compact('supervision'));
     }
+    public function report1()
+    {
+        $supervision=DB::table('users')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','supervision.user_id','establishment.id')
+        // ->select('supervision.*','users.fname','establishment.address')
+        //->select('supervision.*')
+       // ->where('establishment.establishment_id')
+      ->join('student','users.id','student.user_id')
+      ->join('establishment','users.id','establishment.user_id')
+                        ->select('users.*','student.student_id','student.term','student.year','establishment.em_name')
+                        // ->select('users.*','users.fname')
+                        ->where('role',"student")
+                                                            ->orderBy('id', 'desc')
+        ->paginate(5);
+        return view('officer.report1',compact('supervision'));
+    }
+    public function report2()
+    {
+    //     $supervision=DB::table('users')
+    //     // ->join('users','supervision.user_id','users.id')
+    //     // ->join('establishment','supervision.user_id','establishment.id')
+    //     // ->select('supervision.*','users.fname','establishment.address')
+    //     //->select('supervision.*')
+    //    // ->where('establishment.establishment_id')
+    //   ->join('registers','users.id','registers.user_id')
+    // //   ->join('student','users.id','student.user_id')
+    // //   ->join('establishment','users.id','establishment.user_id')
+    //                     // ->select('users.*')
+    //                      ->select('users.*','registers.namefile')
+    //                     // ->select('users.*','users.fname')
+    //                     ->where('role',"student")
+    //     ->distinct()
+    //                                                         ->orderBy('id', 'desc')
+    //     ->paginate(5);
+        // $supervision = DB::table('users')
+        // ->join('registers', 'users.id', '=', 'registers.user_id')
+        // ->select('users.id', 'users.username', 'users.fname', 'registers.namefile')
+        // ->where('users.role', 'student')
+        // ->orderBy('users.id', 'desc')->distinct()
+        // ->paginate(5);
+        $supervision = DB::table('users')
+        // ->join('registers', 'users.id', '=', 'registers.user_id')
+        // ->select('users.id', 'users.username', 'users.fname', 'registers.namefile')
+        // ->select( 'registers.namefile')
+        // ->where('users.role', "student")
+        // ->distinct()  // ทำให้ผลลัพธ์ไม่ซ้ำกัน
+        // ->orderBy('users.id', 'desc')
+        // ->paginate(5);
+        ->join('registers','users.id','registers.user_id')
 
+        ->select('users.*','users.fname')
+        ->where('role',"student")
+        ->distinct()
+        ->orderBy('users.updated_at', 'desc')
+        ->paginate(10);
+
+        $registers2 = DB::table('registers')
+        // ->join('users', 'registers.user_id', '=', 'users.id')
+         ->select('registers.*')
+        ->where('registers.user_id', $supervision)
+        // ->orderBy('namefile', 'asc')
+        ->orderBy('registers.updated_at', 'desc')
+        ->paginate(10);
+        return view('officer.report2',compact('supervision','registers2'));
+    }
+
+    public function report3()
+    {
+        $supervision=DB::table('events')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','supervision.user_id','establishment.id')
+        // ->select('supervision.*','users.fname','establishment.address')
+        //->select('supervision.*')events
+       // ->where('establishment.establishment_id')
+      ->join('student','events.student_name','student.user_id')
+    ->join('establishment','events.em_id','establishment.user_id')
+                        ->select('events.*','student.student_id','establishment.user_id')
+                        // ->select('users.*','users.fname')
+                        // ->where('role',"student")
+                                                            ->orderBy('id', 'desc')
+        ->paginate(5);
+        return view('officer.report3',compact('supervision'));
+    }
+
+    public function report4()
+    {
+        $supervision=DB::table('users')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','supervision.user_id','establishment.id')
+        // ->select('supervision.*','users.fname','establishment.address')
+        //->select('supervision.*')
+       // ->where('establishment.establishment_id')
+      ->join('supervision','users.id','supervision.user_id')
+    //   ->join('establishment','users.id','establishment.user_id')
+                        ->select('users.*','supervision.user_id')
+                        // ->select('users.*','users.fname')
+                        ->where('role',"student")
+                                                            ->orderBy('id', 'desc')
+        ->paginate(5);
+        return view('officer.report4',compact('supervision'));
+    }
     public function Supervise()
     {
         $advisors=DB::table('advisor')

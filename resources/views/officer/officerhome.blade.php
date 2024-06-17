@@ -57,7 +57,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะสรุปนักศึกษาสมัครสหกิจ</h5></div></a>
+                      <a href="/officer/report1">     <h5 class="text-center"> รายงานสถานะสรุปนักศึกษาสมัครสหกิจ</h5></div></a>
 
 
 
@@ -182,7 +182,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                  <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะเอกสารลงทะเบียน</h5></div></a>
+                  <a href="/officer/report2">     <h5 class="text-center"> รายงานสถานะเอกสารลงทะเบียน</h5></div></a>
 
 
 
@@ -310,7 +310,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      <a href="/officer/register1">     <h5 class="text-center"> รายงานแจ้งสถานะการตอบรับ/นิเทศ</h5></div></a>
+                      <a href="/officer/report3">     <h5 class="text-center"> รายงานแจ้งสถานะการตอบรับ/การนิเทศ</h5></div></a>
 
 
 
@@ -435,7 +435,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                  <a href="/officer/register1">     <h5 class="text-center"> รายงานสถานะเอกสารผลการประเมิน</h5></div></a>
+                  <a href="/officer/report4">     <h5 class="text-center"> รายงานสถานะเอกสารผลการประเมิน</h5></div></a>
 
 
 

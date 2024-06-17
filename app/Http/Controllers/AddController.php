@@ -921,18 +921,19 @@ public function addestimate3(Request $request) {
      //dd($request);
 
      $request->validate([
-'user_id' => [
-        'required',
-        Rule::unique('supervision')->where(function ($query) use ($request) {
-            return $query->where('user_id', $request->user_id)
-                         ->where('namefile', $request->namefile);
-        })
-    ],
+// 'user_id' => [
+//         'required',
+//         Rule::unique('supervision')->where(function ($query) use ($request) {
+//             return $query->where('user_id', $request->user_id)
+//                          ->where('namefile', $request->namefile);
+//         })
+//     ],
       //  'name' => 'required|unique:name',
       //  'test' => 'required|unique:test',
       'filess' => 'mimes:pdf|max:1024',
-    //   'user_id' => 'required|unique:supervision,user_id',
-      'namefile' => 'required|unique:supervision',
+//   'user_id' => 'required',
+  'user_id' => 'required|unique:supervision,user_id,NULL,id,namefile,' . $request->namefile,
+    'namefile' => 'required|unique:supervision,namefile,NULL,id,user_id,' . $request->user_id,
       'score' => 'required|numeric|min:0|max:100',
 
   ]
@@ -943,7 +944,7 @@ public function addestimate3(Request $request) {
   // 'test.required'=>"กรุณาเทส",
   'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
                  'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
-                //  'user_id.unique' => "ชื่อนักศึกษาซ้ำ",
+               'user_id.unique' => "ชื่อนักศึกษาซ้ำ",
                  'namefile.unique' => "ชื่อไฟล์เอกสารซ้ำ",
 ]
 
@@ -977,19 +978,26 @@ if($request->hasFile("filess"))
   //    $data["test"]= $request->test;
   // DB::table('test')->insert($data);
   $score = $request->input('score');
-    $status = '';
+  $status = '';
 
-    if ($score > 100) {
-        $status = 'ผ่าน';
-    } else if ($score >= 80) {
-        $status = 'ผ่าน';
-    } else if ($score >= 60) {
-        $status = 'กลาง';
-    } else if ($score < 50) {
-        $status = 'ไม่ผ่าน';
-    } else if ($score < 40) {
-        $status = 'ไม่ผ่าน';
-    }
+  if ($score > 201) {
+      $status = 'คะแนนเกิน';
+  } else if ($score >= 100) {
+      $status = 'ผ่าน';
+  } else if ($score >= 80) {
+      $status = 'ผ่าน';
+  } else if ($score >= 60) {
+      $status = 'กลาง';
+  } else if ($score < 50) {
+      $status = 'ไม่ผ่าน';
+  } else if ($score < 40) {
+      $status = 'ไม่ผ่าน';
+  }
+
+  if ($score > 200) {
+      $status = 'เกิน';
+      // สามารถทำการแจ้งเตือนหรือประมวลผลเพิ่มเติมตามที่ต้องการได้
+  }
      return redirect('/officer/Evaluate')->with('success6', 'เพิ่มข้อมูลสำเร็จ.');
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
   }

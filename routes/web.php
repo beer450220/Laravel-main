@@ -300,6 +300,12 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get('/officer/search01', [HomeController::class, 'search01'])->name('search01');
     Route::get('/officer/search001', [HomeController::class, 'search001'])->name('search001');
 
+
+    Route::get("/officer/report1",[HomeController::class,'report1']);
+    Route::get("/officer/report2",[HomeController::class,'report2']);
+    Route::get("/officer/report3",[HomeController::class,'report3']);
+    Route::get("/officer/report4",[HomeController::class,'report4']);
+
     Route::get('/officer/search02', [HomeController::class, 'search02'])->name('search02');
 //ข้อมูลตรวจสอบเอกสาร
 Route::get("/officer/in2",[HomeController::class,'in4'])->name('in4');
