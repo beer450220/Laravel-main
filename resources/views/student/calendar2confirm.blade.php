@@ -383,9 +383,9 @@
                                 $year = $carbonDate->year + 543;
                                 $month = $thaiMonths[$carbonDate->month];
                                 $day = $carbonDate->day;
-                                $time = $carbonDate->format('เวลา H:i:s ');
+                                // $time = $carbonDate->format('เวลา H:i:s ');
 
-                                return "$day $month $year $time";
+                                return "$day $month $year ";
                             }
                         @endphp
 
@@ -404,7 +404,7 @@
                                       <div class="caption card-body">
                                     <div class="card-text my-2">
 
-                                      <p class=" text mb-0 ">วันเวลาการนิเทศ: {{ formatThaiDate($row->start) }}</p>
+                                      <p class=" text mb-0 ">วันการนิเทศ: {{ formatThaiDate($row->start) }}เวลา: {{ $row->time }}-{{ $row->time1 }}</p>
                                       <p class=""><span class=" text-muted">อาจารย์นิเทศ:
                                     {{-- {{ $row->fname }}  {{ $row->surname }} --}}
                                     @foreach ($users2 as $teacherId)

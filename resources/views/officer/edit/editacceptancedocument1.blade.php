@@ -167,9 +167,12 @@
                           <option selected>กรุณาเลือก</option>
 
                           <option value="ตอบรับนักศึกษาแล้ว"@if($acceptances->Status_acceptance=="ตอบรับนักศึกษาแล้ว") selected @endif required>ตอบรับนักศึกษาแล้ว</option>
-                          <option value="ยังไม่ได้ตอบรับนักศึกษาแล้ว"@if($acceptances->Status_acceptance=="ยังไม่ได้ตอบรับนักศึกษาแล้ว") selected @endif required>ยังไม่ได้ตอบรับนักศึกษา</option>
-                          <option value="ไม่ผ่าน"@if($acceptances->Status_acceptance=="ไม่ผ่าน") selected @endif required>ไม่ผ่าน</option>
+                          <option value="รอการตอบรับนักศึกษา"@if($acceptances->Status_acceptance=="ยังไม่ได้ตอบรับนักศึกษาแล้ว") selected @endif required>รอตอบรับนักศึกษา</option>
+                          <option value="ไม่รับนักศึกษา"@if($acceptances->Status_acceptance=="ไม่รับนักศึกษา") selected @endif required>ไม่รับนักศึกษา</option>
                         </select>
+
+
+
                         @error('Status_report')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

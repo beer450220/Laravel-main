@@ -80,9 +80,9 @@
         $year = $carbonDate->year + 543;
         $month = $thaiMonths[$carbonDate->month];
         $day = $carbonDate->day;
-        $time = $carbonDate->format('เวลา H:i:s ');
+        // $time = $carbonDate->format('เวลา H:i:s ');
 
-        return "$day $month $year $time";
+        return "$day $month $year ";
     }
 @endphp
 
@@ -99,7 +99,7 @@
               <th>สถานะเวลานัดนิเทศ</th>
               {{-- <th>ขอเปลี่ยนเวลานัดนิเทศ</th> --}}
               <th >ดูข้อมูล</th>
-              <th >ยืนยันข้อมูล</th>
+              <th >เปลี่ยนแปลงวันนิเทศ</th>
               <th>แก้ไขข้อมูล</th>
               <th>ลบ</th>
             </tr>
@@ -149,6 +149,8 @@
             <h4> <span class="badge rounded-pill bg-danger ">{{ $row->Status_events}}</span></h4>
             @elseif ($row->Status_events === 'รับทราบขอเปลี่ยนเวลานัดนิเทศ')
             <h4> <span class="badge rounded-pill bg-success ">{{ $row->Status_events}}</span></h4>
+            @elseif ($row->Status_events === 'ไม่สาสามารถขอเปลี่ยนเวลานัดนิเทศ')
+            <h4> <span class="badge rounded-pill bg-danger ">{{ $row->Status_events}}</span></h4>
             @endif
 
 
@@ -161,7 +163,7 @@
                 @if ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/teacher/confirm05/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">ยืนยันขอเปลี่ยนเวลานัดนิเทศ</a><br>
-                {{-- <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td> --}}
+                <a href="/teacher/editsupervision002/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
             </div>
                 {{-- @elseif ($row->Status_events === 'รับทราบขอเปลี่ยนเวลานัดนิเทศ')
                 <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>

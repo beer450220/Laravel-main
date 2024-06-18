@@ -137,9 +137,9 @@
                             $year = $carbonDate->year + 543;
                             $month = $thaiMonths[$carbonDate->month];
                             $day = $carbonDate->day;
-                            $time = $carbonDate->format('เวลา H:i:s ');
+                            // $time = $carbonDate->format('เวลา H:i:s ');
 
-                            return "$day $month $year $time";
+                            return "$day $month $year ";
                         }
                     @endphp
                       <div class="col-md-4">
@@ -250,6 +250,11 @@
                           <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">หมายเหตุ</label><br>
                             <input type="text" class="form-control" name="annotation" value="{{$establishments->annotation}}"disabled required>
+
+                          </div>
+                          <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">เวลาการนิเทศ</label><br>
+                            <input type="text" class="form-control" name="annotation" value="{{$establishments->time}}-{{$establishments->time1}}"disabled required>
 
                           </div>
                         </div>

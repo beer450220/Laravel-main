@@ -2220,6 +2220,29 @@ public function editcategory($category_id) {
      return view('teacher.edit.editregister1',compact('registers'));
 
  }
+
+ public function editsupervision002($id) {
+    //ตรวจสอบข้อมูล
+//   dd($id);
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+   // $registers=DB::table('registers')->first();
+
+    $registers=Event::find($id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($reports);
+     // dd($supervisions);
+     return view('teacher.edit.editsupervision002',compact('registers'));
+
+ }
  public function   updateregister1(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -2453,11 +2476,15 @@ $post->update
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        'user_id' => 'required|unique:acceptance,user_id,NULL,id,namefile,' . $request->namefile,
+        'namefile' => 'required|unique:acceptance,namefile,NULL,id,user_id,' . $request->user_id,
     ],[
             //'establishment.required' => "กรุณา",
 
             'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
             'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+            'user_id.unique' => "ชื่อนักศึกษาซ้ำ",
+                 'namefile.unique' => "ชื่อไฟล์เอกสารซ้ำ",
         ]
     );
     // $post=Event::findOrFail($id);
@@ -2781,6 +2808,8 @@ if($request->hasFile("filess1")){
     //     "student_name" => implode(",",$request->student_name),
 
     "start" => $request->start,
+    "time" => $request->time,
+    "time1" => $request->time1,
     "namefiles" => $request->namefiles,
     "namefiles1" => $request->namefiles1,
     // 'end' => $request->end,
@@ -3783,6 +3812,46 @@ if($request->hasFile("filess1")){
     ([
     //    "status" =>$request->"",
 
+    ]);
+
+
+    return redirect('/teacher/supervision')->with('success6', 'ยืนยันข้อมูลสำเร็จ.');
+ }
+ public function   confirm005(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=Event::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    // $post->Status_events ="รับทราบขอเปลี่ยนเวลานัดนิเทศ";
+    // $post->role ="student";
+    $post->update
+    ([
+       "Status_events" =>$request->Status_events,
+       "annotation" =>$request->annotation,
     ]);
 
 

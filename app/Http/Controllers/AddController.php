@@ -1105,6 +1105,7 @@ public function addacceptancedocument1()
       //$users=users::all()->where('role',"student");
       $users=DB::table('users')
       ->where('role',"student")
+      ->ORDERBY('users.created_at' ,'DESC')
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       ->get();
@@ -1294,10 +1295,17 @@ $post =new category
         'filess' => 'mimes:pdf|max:1024', // ตรวจสอบไฟล์รูปภาพที่มีขนาดไม่เกิน 2 MB (2048 KB)
         //  'name' => 'required|unique:name',
         //  'test' => 'required|unique:test',
+        'user_id' => 'required|unique:acceptance,user_id,NULL,id,namefile,' . $request->namefile,
+    'namefile' => 'required|unique:acceptance,namefile,NULL,id,user_id,' . $request->user_id,
+
+    // 'Status_acceptance' => 'required|unique:acceptance,Status_acceptance,NULL,id,user_id,' . $request->user_id,
     ]
   ,[
     'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
     'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+    'user_id.unique' => "ชื่อนักศึกษาซ้ำ",
+                 'namefile.unique' => "ชื่อไฟล์เอกสารซ้ำ",
+                //  'Status_acceptance.unique' => "ชื่อซ้ำ",
     // 'name.required'=>"กรุณากรอกชื่อ",
     // 'test.required'=>"กรุณาเทส",
   ]
@@ -1480,6 +1488,9 @@ public function addsupervision()
       ([
           // "title" => $request->title,
           "start" => $request->start,
+"time" => $request->time,
+"time1" => $request->time1,
+
           "namefiles" => $request->namefiles,
           "namefiles1" => $request->namefiles1,
           // 'end' => $request->end,

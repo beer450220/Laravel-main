@@ -629,6 +629,9 @@ div.second {
                       {{-- <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span> --}}
                     </H2>
                     {{-- <td><span class="badge badge-pill badge-warning">Hold</span></td> --}}
+                    @if ($acceptance->isEmpty())
+                    <span class="badge badge-pill badge-warning">รอการตอบรับ</span>
+                    @else
 
                     @foreach ($acceptance as $row)
                     {{-- @if (Auth::user()->id === $row->user_id) --}}
@@ -636,45 +639,40 @@ div.second {
                     @if ($row->namefile === 'แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)')
                     <a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
 
-                 @if ($row->Status_acceptance === 'รอตรวจสอบ')
-                    <span class="text-warning">รอตรวจสอบเอกสาร</span>
-                @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                 @if ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                     <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
-                @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                @elseif ($row->Status_acceptance === 'ไม่รับนักศึกษา')
                     <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
-                @else (sss)
-                    {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
 
-                    @endif
+
+                    @endif<br>
                 @elseif ($row->namefile === 'แบบยืนยันการตอบรับนักศึกษาสหกิจศึกษา(สก.05)')
                 <a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
-                @if ($row->Status_acceptance === 'รอตรวจสอบ')
-                   <span class="text-warning">รอตรวจสอบเอกสาร</span>
-               @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+               @if ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                    <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
-               @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+               @elseif ($row->Status_acceptance === 'ไม่รับนักศึกษา')
                    <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
-               @else (sss)
                    {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
 
                    @endif
 
                 @elseif ($row->namefile === 'หนังสือการเข้ารับการปฏิบัติงานของนักศึกษาสหกิจศึกษา(สก.06)')
                 <a href="/document1/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a>
-                @if ($row->Status_acceptance === 'รอตรวจสอบ')
-                   <span class="text-warning">รอตรวจสอบเอกสาร</span>
-               @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                @if ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                    <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>
-               @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+               @elseif ($row->Status_acceptance === 'ไม่รับนักศึกษา')
                    <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
                @else (sss)
                    {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
 
                    @endif
-                @else (sss)
+
                     {{-- <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
 
-                    @endif
+
+
+                    {{-- @endforeach --}}
+                    {{-- @endif --}}
 {{-- class="circle circle-sm bg-warning-light"> --}}
 {{-- {{$row->Status_acceptance}} --}}
 
@@ -682,8 +680,9 @@ div.second {
 
 {{-- <h1    class=" btn btn-outline-success">เพิ่มเอกสารใหม่</h1> --}}
 </span> <br>
+@endif
 @endforeach
-                    {{-- @if ($row->Status_acceptance === 'รอตรวจสอบ')
+@endif                 {{-- @if ($row->Status_acceptance === 'รอตรวจสอบ')
                                                     <span class="text-warning">รอตรวจสอบเอกสาร</span>
                                                 @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                                                     <span class="badge badge-pill badge-Success ">ตอบรับนักศึกษาแล้ว</span>

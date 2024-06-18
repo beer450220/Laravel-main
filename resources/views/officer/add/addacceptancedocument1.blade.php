@@ -228,8 +228,8 @@
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
               <option value="ตอบรับนักศึกษาแล้ว">ตอบรับนักศึกษาแล้ว</option>
-              <option value="ยังไม่ได้ตอบรับนักศึกษาแล้ว">ยังไม่ได้ตอบรับนักศึกษา</option>
-              <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+              <option value="รอการตอบรับนักศึกษา">รอตอบรับนักศึกษา</option>
+              <option value="ไม่รับนักศึกษา">ไม่รับนักศึกษา</option>
             </optgroup>
 
 
@@ -275,7 +275,7 @@
   {{-- </div> --}}
   <div class="col-md-2">
     <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
-     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="annotation" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name"required>
+     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="annotation" value="-"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name"required>
 </div>
       </div>
       <br>

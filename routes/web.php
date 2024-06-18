@@ -614,6 +614,8 @@ Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->na
 
     Route::get("/teacher/confirm05/{id}",[EditController::class,'confirm05'])->name('confirm05');
 
+    Route::get("/teacher/editsupervision002/{id}",[EditController::class,'editsupervision002'])->name('editsupervision002');
+    Route::post("/teacher/confirm005/{id}",[EditController::class,'confirm005'])->name('confirm005');
 
 
     Route::post('/get-subcategories',[addController::class,'getSubcategories'])->name('getSubcategories');

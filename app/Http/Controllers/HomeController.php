@@ -158,6 +158,7 @@ class HomeController extends Controller
         $acceptance=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
         ->select('acceptance.*','users.fname')->where('user_id', auth()->id())
+        // ->orderBy('namefile', 'asc')
         ->paginate(5);
     //     $establishment = DB::table('establishment')
     // ->join('student', 'establishment.student_id', '=', 'student.student_id')

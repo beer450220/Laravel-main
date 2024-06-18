@@ -173,7 +173,7 @@
 
 
        <label for="inputAddress">วันเวลาการนิเทศงาน</label>
-       <input class="form-control" id="example-date" type="datetime-local" name="start"value="{{ \Carbon\Carbon::parse($supervisions->start)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
+       <input class="form-control" id="example-date" type="date" name="start"value="{{ \Carbon\Carbon::parse($supervisions->start)->format('Y-m-d') }}"  autofocus placeholder="title">
        {{-- $startFormatted = Carbon::parse($supervisions->start)->format('Y-m-d\TH:i'); --}}
        {{-- {{$supervisions->start}} --}}
               @error('name')
@@ -204,10 +204,10 @@
                 const year = now.getFullYear();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
                 const day = String(now.getDate()).padStart(2, '0');
-                const hours = String(now.getHours()).padStart(2, '0');
-                const minutes = String(now.getMinutes()).padStart(2, '0');
+                // const hours = String(now.getHours()).padStart(2, '0');
+                // const minutes = String(now.getMinutes()).padStart(2, '0');
 
-                const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+                const minDateTime = `${year}-${month}-${day}`;
                 input.setAttribute('min', minDateTime);
             });
             document.addEventListener('DOMContentLoaded', function () {
@@ -216,10 +216,10 @@
                 const year = now.getFullYear();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
                 const day = String(now.getDate()).padStart(2, '0');
-                const hours = String(now.getHours()).padStart(2, '0');
-                const minutes = String(now.getMinutes()).padStart(2, '0');
+                // const hours = String(now.getHours()).padStart(2, '0');
+                // const minutes = String(now.getMinutes()).padStart(2, '0');
 
-                const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+                const minDateTime = `${year}-${month}-${day}`;
                 input.setAttribute('min', minDateTime);
             });
         </script>
@@ -329,24 +329,42 @@ $( '#multiple-select-field' ).select2( {
 
 
     </div>
+
+
     <div class="col-md-4">
-        <label for="inputAddress"class="col-form-label ">สถานะรับทราบและยืนยันเวลานัดนิเทศ</label>
-        <select class="form-control "  name="Status_events" >
-          <option value="">กรุณาเลือก</option>
-          {{-- @foreach ($users as $row) --}}
-          {{-- <optgroup label="Mountain Time Zone"> --}}
-            <option value="รอรับทราบและยืนยันเวลานัดนิเทศ"@if($supervisions->Status_events=="รอรับทราบและยืนยันเวลานัดนิเทศ") selected @endif required>รอรับทราบและยืนยันเวลานัดนิเทศ</option>
-            <option value="รับทราบและยืนยันเวลานัดนิเทศแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดนิเทศแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดนิเทศแล้ว</option>
-            <option value="ขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ขอเปลี่ยนเวลานัดนิเทศ</option>
-            <option value="รับทราบขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="รับทราบขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ขอเปลี่ยนเวลานัดนิเทศ</option>
-        </optgroup>
-
-
-        </select>
+        <label for="inputAddress"class="col-form-label ">เวลาเริ่มการนัดนิเทศ</label>
+        <input class="form-control" id="example-time" type="time" name="time"value="{{ \Carbon\Carbon::parse($supervisions->time)->format('H:i') }}"  autofocus placeholder="title"required>
 
     </div>
 
+    <script>
 
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('example-time');
+            const now = new Date();
+            // const year = now.getFullYear();
+            // const month = String(now.getMonth() + 1).padStart(2, '0');
+            // const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const minDateTime = `${hours}:${minutes}`;
+            // input.setAttribute('min', minDateTime);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('example-time1');
+            const now = new Date();
+            // const year = now.getFullYear();
+            // const month = String(now.getMonth() + 1).padStart(2, '0');
+            // const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const minDateTime = `${hours}:${minutes}`;
+            // input.setAttribute('min', minDateTime);
+        });
+    </script>
     {{-- <div class="col-md-4">
         <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label> --}}
         {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
@@ -360,8 +378,29 @@ $( '#multiple-select-field' ).select2( {
         </span>
     @enderror --}}
 
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">เวลาสิ้นสุดการนัดนิเทศ</label>
+        <input class="form-control" id="example-time1" type="time" name="time1"value="{{ \Carbon\Carbon::parse($supervisions->time1)->format('H:i') }}"  autofocus placeholder="title"required>
+
+    </div>
+    <div class="col-md-4">
+        <label for="inputAddress"class="col-form-label ">สถานะรับทราบและยืนยันเวลานัดนิเทศ</label>
+        <select class="form-control "  name="Status_events" >
+          <option value="">กรุณาเลือก</option>
+          {{-- @foreach ($users as $row) --}}
+          {{-- <optgroup label="Mountain Time Zone"> --}}
+            <option value="รอรับทราบและยืนยันเวลานัดนิเทศ"@if($supervisions->Status_events=="รอรับทราบและยืนยันเวลานัดนิเทศ") selected @endif required>รอรับทราบและยืนยันเวลานัดนิเทศ</option>
+            <option value="รับทราบและยืนยันเวลานัดนิเทศแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดนิเทศแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดนิเทศแล้ว</option>
+            <option value="ขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ขอเปลี่ยนเวลานัดนิเทศ</option>
+            <option value="รับทราบขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="รับทราบขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>รับทราบขอเปลี่ยนเวลานัดนิเทศ</option>
+
+            <option value="ไม่สาสามารถขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ไม่สาสามารถขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>ไม่สาสามารถขอเปลี่ยนเวลานัดนิเทศ</option>
+        </optgroup>
 
 
+        </select>
+
+    </div>
     {{-- </div> --}}
 </div>
 

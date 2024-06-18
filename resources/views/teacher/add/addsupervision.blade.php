@@ -135,8 +135,8 @@
            <div class="row">
             <div class="form-group col-md-4">
               <label for="inputAddress">วันเวลาการนิเทศงาน</label>
-       <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title"required>
-
+       <input class="form-control" id="example-date" type="date" name="start"  autofocus placeholder="title"required>
+       {{-- <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title"required> --}}
        <script>
         // document.addEventListener('DOMContentLoaded', function() {
         //     var input = document.getElementById('example-date');
@@ -160,10 +160,10 @@
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
+            // const hours = String(now.getHours()).padStart(2, '0');
+            // const minutes = String(now.getMinutes()).padStart(2, '0');
 
-            const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            const minDateTime = `${year}-${month}-${day}`;
             input.setAttribute('min', minDateTime);
         });
     </script>
@@ -350,7 +350,64 @@ $( '#multiple-select-field1' ).select2( {
         @enderror
           </div> --}}
 
+          <div class=" col-md-4">
+            <label for="inputAddress">เวลาเริ่มการนิเทศงาน</label>
+     <input class="form-control" id="example-time" type="time" name="time"  autofocus placeholder="title"required>
+     {{-- <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title"required> --}}
+     <script>
 
+document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-time');
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        // const minTime = '08:00';
+        // const maxTime = '17:00';
+
+        input.setAttribute('min', minTime);
+        input.setAttribute('max', maxTime);});
+  </script>
+            @error('name')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+
+
+
+
+
+          </div>
+          <div class=" col-md-4">
+            <label for="inputAddress">เวลาสิ้นสุดการนิเทศงาน</label>
+     <input class="form-control" id="example-time1" type="time" name="time1"  autofocus placeholder="title"required>
+     {{-- <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title"required> --}}
+     <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-time1');
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        // const minTime = '08:00';
+        // const maxTime = '17:00';
+
+        input.setAttribute('min', minTime);
+        input.setAttribute('max', maxTime);});
+  </script>
+            @error('name')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+
+
+
+
+
+          </div>
         </div>
           <div class="row">
 
@@ -362,8 +419,10 @@ $( '#multiple-select-field1' ).select2( {
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
               <option value="รอรับทราบและยืนยันเวลานัดนิเทศ">รอรับทราบและยืนยันเวลานัดนิเทศ</option>
-              <option value="รับทราบและยืนยันเวลานัดนิเทศแล้ว">รับทราบและยืนยันเวลานัดนิเทศแล้ว</option>
+              {{-- <option value="รับทราบและยืนยันเวลานัดนิเทศแล้ว">รับทราบและยืนยันเวลานัดนิเทศแล้ว</option>
               <option value="ขอเปลี่ยนเวลานัดนิเทศ">ขอเปลี่ยนเวลานัดนิเทศ</option>
+              <option value="ไม่สาสามารถขอเปลี่ยนเวลานัดนิเทศ">ไม่สาสามารถขอเปลี่ยนเวลานัดนิเทศ</option>
+              รับทราบขอเปลี่ยนเวลานัดนิเทศ --}}
             </optgroup>
 
 
