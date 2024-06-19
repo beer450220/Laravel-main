@@ -302,9 +302,17 @@ Route::middleware(['auth','user-role:officer'])->group(function()
 
 
     Route::get("/officer/report1",[HomeController::class,'report1']);
+
     Route::get("/officer/report2",[HomeController::class,'report2']);
+    //ดูเอกสาร
+    Route::get("/officer/editreport2/{id}",[EditController::class,'editreport2'])->name('editreport2');
+    Route::get('/getUserData', [UserController::class, 'getUserData']);
+
+
     Route::get("/officer/report3",[HomeController::class,'report3']);
     Route::get("/officer/report4",[HomeController::class,'report4']);
+    //ดูเอกสาร
+    Route::get("/officer/editreport4/{id}",[EditController::class,'editreport4'])->name('editreport4');
 
     Route::get('/officer/search02', [HomeController::class, 'search02'])->name('search02');
 //ข้อมูลตรวจสอบเอกสาร
@@ -495,6 +503,20 @@ Route::get("/officer/confirm4/{id}",[EditController::class,'confirm4'])->name('c
 Route::middleware(['auth','user-role:teacher'])->group(function()
 {
     Route::get("/teacher/home",[HomeController::class,'teacherHome'])->name('teacher.teacherhome');
+
+    Route::get("/teacher/report01",[HomeController::class,'report1']);
+
+    Route::get("/teacher/report2",[HomeController::class,'report02']);
+    //ดูเอกสาร
+    Route::get("/officer/editreport2/{id}",[EditController::class,'editreport2'])->name('editreport2');
+    Route::get('/getUserData', [UserController::class, 'getUserData']);
+
+
+    Route::get("/teacher/report03",[HomeController::class,'report03']);
+    Route::get("/teacher/report04",[HomeController::class,'report04']);
+    //ดูเอกสาร
+    Route::get("/officer/editreport4/{id}",[EditController::class,'editreport4'])->name('editreport4');
+
 
     //ข้อมูลส่วนตัว
     Route::get("/teacher/personal/{id}",[HomeController::class,'personal01'])->name('personal01');

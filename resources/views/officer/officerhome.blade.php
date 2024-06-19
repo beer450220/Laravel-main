@@ -66,7 +66,7 @@
 
                             {{-- @foreach ($users2 as $row)
                             {{$row->count}} @endforeach --}}
-                            <form action="{{ url('/officer/search01') }}" method="GET">
+                            {{-- <form action="{{ url('/officer/search01') }}" method="GET">
                                 <div class="row mb-3">
                                     <div class="col-md-2">
                                         <label for="month">เลือกเดือน:</label>
@@ -88,8 +88,8 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label for="year">เลือกปี:</label>
-                                        <select class="form-control" name="year" id="year">
-                                            @php
+                                        <select class="form-control" name="year" id="year"> --}}
+                                            {{-- @php
                                             // ตั้งค่าโซนเวลาของกรุงเทพฯ
                                             date_default_timezone_set('Asia/Bangkok');
 
@@ -108,64 +108,59 @@
                                                 $thaiYear = $year + 543;
                                                 echo "<option value=\"$year\">$thaiYear</option>";
                                             }
-                                            @endphp
-                                        </select>
+                                            @endphp --}}
+                                        {{-- </select>
                                     </div>
                                     <div class="col-md-2 mt-4">
                                         <button type="submit" class="btn btn-primary">ค้นหา</button>
                                     </div>
                                 </div>
-                            </form>
+                            </form> --}}
 
 
 
 
-                              <div class="col-md-11 my-4">
+                              {{-- <div class="col-md-11 my-4">
                                 <div class="card shadow">
-                                  <div class="card-body">
+                                  <div class="card-body"> --}}
                                     {{-- <h5 class="card-title">Simple Table</h5>
                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
-                                    <table class="table table table-striped table-hover  ">
+                                    {{-- <table class="table table table-striped table-hover  ">
                                       <thead>
                                         <tr>
-                                          <th>ปี</th>
+                                          <th>ปี</th> --}}
                                           {{-- <th>เดือน</th> --}}
-                                          <th>จำนวนสมัครสหกิจ</th>
+                                          {{-- <th>จำนวนสมัครสหกิจ</th> --}}
                                           {{-- <th>วัน เดือน ปี</th> --}}
 
-                                        </tr>
+                                        {{-- </tr>
                                       </thead>
                                       <tbody>
                                         @foreach($data1 as $item)
-                                        <tr style="height:20px">
+                                        <tr style="height:20px"> --}}
                                             {{-- <td  style="height:40%"> {{ $item->fname}} </td>
                                             <td> {{ $item->Status_registers}} </td> --}}
                                             {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
 
-                                            <td>{{ ($item->year + 543) }}</td>
+                                            {{-- <td>{{ ($item->year + 543) }}</td> --}}
                                             {{-- <td>{{ ($item->month ) }}</td> --}}
 
                                             {{-- <td>{{$item->user_count}}</td> --}}
-                                              <td>{{$item->count}}</td>
+                                              {{-- <td>{{$item->count}}</td>
                                         </tr>
 
                                         @endforeach
                                       </tbody>
 
-                                    </table>
+                                    </table> --}}
                                     {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
-                                  </div>
-                                </div>
-                              </div>  </div>  </div>
 
-                        </div>
-                    </div>
+
+
                     <div class="col-auto">
                         {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
-                    </div>
-                </div>
+                    </div>    </div>    </div>    </div>    </div>    </div>    </div>
 
-    </div>
 
 
 
@@ -191,7 +186,7 @@
 
                         {{-- @foreach ($users2 as $row)
                         {{$row->count}} @endforeach --}}
-                        <form action="{{ url('/officer/search001') }}" method="GET">
+                        {{-- <form action="{{ url('/officer/search001') }}" method="GET">
                             <div class="row mb-3">
                                 <div class="col-md-2">
                                     <label for="month">เลือกเดือน:</label>
@@ -210,11 +205,11 @@
                                         <option value="11">พฤศจิกายน</option>
                                         <option value="12">ธันวาคม</option>
                                     </select>
-                                </div>
-                                <div class="col-md-2">
+                                </div> --}}
+                                {{-- <div class="col-md-2">
                                     <label for="year">เลือกปี:</label>
-                                    <select class="form-control" name="year2" id="year2">
-                                        @php
+                                    <select class="form-control" name="year2" id="year2"> --}}
+                                        {{-- @php
                                         // ตั้งค่าโซนเวลาของกรุงเทพฯ
                                         date_default_timezone_set('Asia/Bangkok');
 
@@ -233,51 +228,51 @@
                                             $thaiYear = $year2 + 543;
                                             echo "<option value=\"$year2\">$thaiYear</option>";
                                         }
-                                        @endphp
-                                    </select>
+                                        @endphp --}}
+                                    {{-- </select>
                                 </div>
                                 <div class="col-md-2 mt-4">
                                     <button type="submit" class="btn btn-primary">ค้นหา</button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
 
 
 
 
-                          <div class="col-md-11 my-4">
+                          {{-- <div class="col-md-11 my-4">
                             <div class="card shadow">
-                              <div class="card-body">
+                              <div class="card-body"> --}}
                                 {{-- <h5 class="card-title">Simple Table</h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
-                                <table class="table table table-striped table-hover  ">
+                                {{-- <table class="table table table-striped table-hover  ">
                                   <thead>
                                     <tr>
-                                      <th>ปี</th>
+                                      <th>ปี</th> --}}
                                       {{-- <th>เดือน</th> --}}
-                                      <th>จำนวนสมัครสหกิจ</th>
+                                      {{-- <th>จำนวนสมัครสหกิจ</th> --}}
                                       {{-- <th>วัน เดือน ปี</th> --}}
 
-                                    </tr>
+                                    {{-- </tr>
                                   </thead>
                                   <tbody>
                                     @foreach($data2 as $item)
-                                    <tr style="height:20px">
+                                    <tr style="height:20px"> --}}
                                         {{-- <td  style="height:40%"> {{ $item->fname}} </td>
                                         <td> {{ $item->Status_registers}} </td> --}}
                                         {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
 
-                                        <td>{{ ($item->year + 543) }}</td>
+                                        {{-- <td>{{ ($item->year + 543) }}</td> --}}
                                         {{-- <td>{{ ($item->month ) }}</td> --}}
 
                                         {{-- <td>{{$item->user_count}}</td> --}}
-                                          <td>{{$item->count}}</td>
+                                          {{-- <td>{{$item->count}}</td>
                                     </tr>
 
                                     @endforeach
                                   </tbody>
 
-                                </table>
+                                </table> --}}
                                 {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
                               </div>
                             </div>
@@ -290,10 +285,10 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-</div>
+
+
+
 
 
 
@@ -319,7 +314,7 @@
 
                             {{-- @foreach ($users2 as $row)
                             {{$row->count}} @endforeach --}}
-                            <form action="{{ url('/officer/search01') }}" method="GET">
+                            {{-- <form action="{{ url('/officer/search01') }}" method="GET">
                                 <div class="row mb-3">
                                     <div class="col-md-2">
                                         <label for="month">เลือกเดือน:</label>
@@ -341,8 +336,8 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label for="year">เลือกปี:</label>
-                                        <select class="form-control" name="year3" id="year3">
-                                            @php
+                                        <select class="form-control" name="year3" id="year3"> --}}
+                                            {{-- @php
                                             // ตั้งค่าโซนเวลาของกรุงเทพฯ
                                             date_default_timezone_set('Asia/Bangkok');
 
@@ -361,62 +356,58 @@
                                                 $thaiYear = $year3 + 543;
                                                 echo "<option value=\"$year3\">$thaiYear</option>";
                                             }
-                                            @endphp
-                                        </select>
+                                            @endphp --}}
+                                        {{-- </select>
                                     </div>
                                     <div class="col-md-2 mt-4">
                                         <button type="submit" class="btn btn-primary">ค้นหา</button>
                                     </div>
                                 </div>
-                            </form>
+                            </form> --}}
 
 
 
 
-                              <div class="col-md-11 my-4">
+                              {{-- <div class="col-md-11 my-4">
                                 <div class="card shadow">
-                                  <div class="card-body">
+                                  <div class="card-body"> --}}
                                     {{-- <h5 class="card-title">Simple Table</h5>
                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
-                                    <table class="table table table-striped table-hover  ">
+                                    {{-- <table class="table table table-striped table-hover  ">
                                       <thead>
                                         <tr>
-                                          <th>ปี</th>
+                                          <th>ปี</th> --}}
                                           {{-- <th>เดือน</th> --}}
-                                          <th>จำนวนสมัครสหกิจ</th>
+                                          {{-- <th>จำนวนสมัครสหกิจ</th> --}}
                                           {{-- <th>วัน เดือน ปี</th> --}}
 
-                                        </tr>
+                                        {{-- </tr>
                                       </thead>
                                       <tbody>
                                         @foreach($data3 as $item)
-                                        <tr style="height:20px">
+                                        <tr style="height:20px"> --}}
                                             {{-- <td  style="height:40%"> {{ $item->fname}} </td>
                                             <td> {{ $item->Status_registers}} </td> --}}
                                             {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
 
-                                            <td>{{ ($item->year + 543) }}</td>
+                                            {{-- <td>{{ ($item->year + 543) }}</td> --}}
                                             {{-- <td>{{ ($item->month ) }}</td> --}}
 
                                             {{-- <td>{{$item->user_count}}</td> --}}
-                                              <td>{{$item->count}}</td>
+                                              {{-- <td>{{$item->count}}</td>
                                         </tr>
 
                                         @endforeach
                                       </tbody>
 
-                                    </table>
+                                    </table> --}}
                                     {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
-                                  </div>
-                                </div>
-                              </div>  </div>  </div>
 
-                        </div>
                     </div>
                     <div class="col-auto">
                         {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
                     </div>
-                </div>
+                </div></div></div></div>
 
     </div>
 
@@ -442,7 +433,7 @@
 
                     <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">
 
-                        @foreach ($users2 as $row)
+                        {{-- @foreach ($users2 as $row)
                         {{$row->count}} @endforeach
                         <form action="{{ url('/officer/search001') }}" method="GET">
                             <div class="row mb-3">
@@ -466,8 +457,8 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="year">เลือกปี:</label>
-                                    <select class="form-control" name="year2" id="year2">
-                                        @php
+                                    <select class="form-control" name="year2" id="year2"> --}}
+                                        {{-- @php
                                         // ตั้งค่าโซนเวลาของกรุงเทพฯ
                                         date_default_timezone_set('Asia/Bangkok');
 
@@ -486,51 +477,51 @@
                                             $thaiYear = $year2 + 543;
                                             echo "<option value=\"$year2\">$thaiYear</option>";
                                         }
-                                        @endphp
-                                    </select>
+                                        @endphp --}}
+                                    {{-- </select>
                                 </div>
                                 <div class="col-md-2 mt-4">
                                     <button type="submit" class="btn btn-primary">ค้นหา</button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
 
 
 
 
-                          <div class="col-md-11 my-4">
+                          {{-- <div class="col-md-11 my-4">
                             <div class="card shadow">
-                              <div class="card-body">
+                              <div class="card-body"> --}}
                                 {{-- <h5 class="card-title">Simple Table</h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
-                                <table class="table table table-striped table-hover  ">
+                                {{-- <table class="table table table-striped table-hover  ">
                                   <thead>
                                     <tr>
-                                      <th>ปี</th>
+                                      <th>ปี</th> --}}
                                       {{-- <th>เดือน</th> --}}
-                                      <th>จำนวนสมัครสหกิจ</th>
+                                      {{-- <th>จำนวนสมัครสหกิจ</th> --}}
                                       {{-- <th>วัน เดือน ปี</th> --}}
 
-                                    </tr>
+                                    {{-- </tr>
                                   </thead>
                                   <tbody>
                                     @foreach($data4 as $item)
-                                    <tr style="height:20px">
+                                    <tr style="height:20px"> --}}
                                         {{-- <td  style="height:40%"> {{ $item->fname}} </td>
                                         <td> {{ $item->Status_registers}} </td> --}}
                                         {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('วันlที่ j F Y ') }}</td> --}}
 
-                                        <td>{{ ($item->year + 543) }}</td>
+                                        {{-- <td>{{ ($item->year + 543) }}</td> --}}
                                         {{-- <td>{{ ($item->month ) }}</td> --}}
 
                                         {{-- <td>{{$item->user_count}}</td> --}}
-                                          <td>{{$item->count}}</td>
+                                          {{-- <td>{{$item->count}}</td>
                                     </tr>
 
                                     @endforeach
                                   </tbody>
 
-                                </table>
+                                </table> --}}
                                 {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
                               </div>
                             </div>
@@ -544,10 +535,7 @@
             </div>
         </div>
     </div>
-</div>
 
-</div>
-</div>
 
     <!-- Earnings (Monthly) Card Example -->
     {{-- <div class="col-xl-3 col-md-6 mb-4">

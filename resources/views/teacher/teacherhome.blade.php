@@ -63,10 +63,10 @@
     <!-- simple table -->
     <div class="col-md-6 my-4">
       <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">รายงานสรุปนักศึกษาสมัครสหกิจศึกษา</h5>
+        <div class="card-body"><a href="/teacher/report01">
+          <h5 class="card-title" >รายงานสรุปนักศึกษาสมัครสหกิจศึกษา</h5></a>
           {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
-          <table class="table table-hover">
+          {{-- <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
                 <th>ID</th>
@@ -88,17 +88,17 @@
               </tr>
 
             </tbody>
-          </table>
+          </table> --}}
         </div>
       </div>
     </div> <!-- simple table -->
     <!-- Bordered table -->
     <div class="col-md-6 my-4">
       <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">รายงานสถานะเอกสารลงทะเบียน</h5>
+        <div class="card-body"><a href="/teacher/report02">
+          <h5 class="card-title">รายงานสถานะเอกสารลงทะเบียน</h5></a>
           {{-- <p class="card-text">Add .table-bordered for borders on all sides of the table and cells.</p> --}}
-          <table class="table table-hover">
+          {{-- <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
                 <th>ID</th>
@@ -126,7 +126,7 @@
               </tr>
 
             </tbody>
-          </table>
+          </table> --}}
         </div>
       </div>
     </div> <!-- Bordered table -->
@@ -142,10 +142,10 @@
     <!-- simple table -->
     <div class="col-md-6 my-4">
       <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">รายงานแจ้งสถานะการตอบรับ/การนิเทศ</h5>
+        <div class="card-body"><a href="/teacher/report03">
+          <h5 class="card-title">รายงานแจ้งสถานะการตอบรับ/การนิเทศ</h5></a>
           {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
-          <table class="table table-hover">
+          {{-- <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
                 <th>ID</th>
@@ -168,17 +168,17 @@
 
 
             </tbody>
-          </table>
+          </table> --}}
         </div>
       </div>
     </div> <!-- simple table -->
     <!-- Bordered table -->
     <div class="col-md-6 my-4">
       <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">รายงานสถานะเอกสารผลการประเมิน</h5>
+        <div class="card-body"><a href="/teacher/report03">
+          <h5 class="card-title">รายงานสถานะเอกสารผลการประเมิน</h5></a>
           {{-- <p class="card-text">Add .table-bordered for borders on all sides of the table and cells.</p> --}}
-          <table class="table table-bordered table-hover mb-0">
+          {{-- <table class="table table-bordered table-hover mb-0">
             <thead class="thead-dark">
               <tr>
                 <th>ID</th>
@@ -205,15 +205,15 @@
               </tr>
 
             </tbody>
-          </table>
+          </table> --}}
         </div>
       </div>
     </div> <!-- Bordered table -->
   </div>
 
 
-
-<main role="main" class="main-content">
+</div>  </div>  </div>  </div>
+{{-- <main role="main" class="main-content">
     <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
@@ -222,22 +222,22 @@
                  <a href="/teacher/user"><div class="card shadow border-0">
                     <div class="card-body">
                       <div class="row align-items-center">
-                        <div class="col-3 text-center">
+                        <div class="col-3 text-center"> --}}
                           {{-- <span class="circle circle-sm bg-primary">
                             <i class="fe fe-16 fe-shopping-cart text-white mb-0"></i>
                           </span> --}}
-                        </div>
+                        {{-- </div>
                         <div class="col pr-0">
                           <p class=" text-muted mb-0">รายงานสรุปนักศึกษาสมัครสหกิจศึกษา</p>
                           <span class="h3 mb-0"> @foreach ($users8 as $row)
-                              {{$row->count}} @endforeach</span>
+                              {{$row->count}} @endforeach</span> --}}
 
                           {{-- <span class="small text-success">+16.5%</span> --}}
-                        </div>
+                        {{-- </div>
                       </div>
                     </div>
                   </div>
-                </div></a>
+                </div></a> --}}
               {{-- <div class="col-md-6 col-xl-3 mb-4">
                 <div class="card shadow border-0">
                   <div class="card-body">
@@ -311,7 +311,7 @@
                   </div>
                 </div>
               </div> --}}
-    <div class="container-fluid">
+    {{-- <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
           <div class="row">
@@ -319,18 +319,18 @@
                <a href="/teacher/register1"><div class="card shadow border-0">
                   <div class="card-body">
                     <div class="row align-items-center">
-                      <div class="col-3 text-center">
+                      <div class="col-3 text-center"> --}}
                         {{-- <span class="circle circle-sm bg-primary">
                           <i class="fe fe-16 fe-shopping-cart text-white mb-0"></i>
                         </span> --}}
-                      </div>
+                      {{-- </div>
                       <div class="col pr-0">
                         <p class=" text-muted mb-0">รายงานสถานะเอกสารลงทะเบียน</p>
                         <span class="h3 mb-0"> @foreach ($users5 as $row)
-                            {{$row->count}} @endforeach</span>
+                            {{$row->count}} @endforeach</span> --}}
 
                         {{-- <span class="small text-success">+16.5%</span> --}}
-                      </div>
+                      {{-- </div>
                     </div>
                   </div>
                 </div>
@@ -339,17 +339,17 @@
               <div class="card shadow border-0">
                 <div class="card-body">
                   <div class="row align-items-center">
-                    <div class="col-3 text-center">
+                    <div class="col-3 text-center"> --}}
                       {{-- <span class="circle circle-sm bg-primary">
                         <i class="fe fe-16 fe-shopping-cart text-white mb-0"></i>
                       </span> --}}
-                    </div>
+                    {{-- </div>
                     <div class="col pr-0">
                       <p class="small text-muted mb-0">ยังไม่ได้ยืนยัน</p>
                       <span class="h3 mb-0"> @foreach ($users10 as $row)
-                        {{$row->count}} @endforeach</span>
+                        {{$row->count}} @endforeach</span> --}}
                       {{-- <span class="small text-success">+16.5%</span> --}}
-                    </div>
+                    {{-- </div>
                   </div>
                 </div>
               </div>
@@ -358,11 +358,11 @@
               <div class="card shadow border-0">
                 <div class="card-body">
                   <div class="row align-items-center">
-                    <div class="col-3 text-center">
+                    <div class="col-3 text-center"> --}}
                       {{-- <span class="circle circle-sm bg-primary">
                         <i class="fe fe-16 fe-filter text-white mb-0"></i>
                       </span> --}}
-                    </div>
+                    {{-- </div>
                     <div class="col">
                       <p class="small text-muted mb-0">ยืนยันแล้ว</p>
                       <div class="row align-items-center no-gutters">
@@ -370,42 +370,43 @@
                           <span class="h3 mr-2 mb-0"> @foreach ($users11 as $row)
                             {{$row->count}} @endforeach </span>
                         </div>
-                        <div class="col-md-12 col-lg">
+                        <div class="col-md-12 col-lg"> --}}
                           {{-- <div class="progress progress-sm mt-2" style="height:3px">
                             <div class="progress-bar bg-success" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
                           </div> --}}
-                        </div>
+                        {{-- </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
 
-          </div> <!-- end section -->
+          {{-- </div> --}}
+           <!-- end section -->
 
-          <div class="row justify-content-center">
+          {{-- <div class="row justify-content-center">
             <div class="col-12">
               <div class="row">
                 <div class="col-md-6 col-xl-3 mb-4">
                    <a href="/teacher/acceptancedocument1"><div class="card shadow border-0">
                       <div class="card-body">
                         <div class="row align-items-center">
-                          <div class="col-3 text-center">
+                          <div class="col-3 text-center"> --}}
                             {{-- <span class="circle circle-sm bg-primary">
                               <i class="fe fe-16 fe-shopping-cart text-white mb-0"></i>
                             </span> --}}
-                          </div>
+                          {{-- </div>
                           <div class="col pr-0">
                             <p class=" text-muted mb-0">เอกสารตอบรับ</p>
                             <span class="h3 mb-0">@foreach ($users6 as $row)
-                              {{$row->count}} @endforeach</span>
+                              {{$row->count}} @endforeach</span> --}}
                             {{-- <span class="small text-success">+16.5%</span> --}}
-                          </div>
+                          {{-- </div>
                         </div>
                       </div>
                     </div>
-                  </div></a>
+                  </div></a> --}}
                   {{-- <div class="col-md-6 col-xl-3 mb-4">
                     <div class="card shadow border-0">
                       <div class="card-body">
@@ -427,7 +428,7 @@
 
  --}}
 
-                  </div> <!-- end section -->
+                  {{-- </div> <!-- end section --> --}}
 
 
 
@@ -435,24 +436,24 @@
 
 
 
-          <div class="row justify-content-center">
+          {{-- <div class="row justify-content-center">
             <div class="col-12">
               <div class="row">
                 <div class="col-md-6 col-xl-3 mb-4">
                    <a href="/teacher/supervision"><div class="card shadow border-0">
                       <div class="card-body">
                         <div class="row align-items-center">
-                          <div class="col-3 text-center">
+                          <div class="col-3 text-center"> --}}
                             {{-- <span class="circle circle-sm bg-primary">
                               <i class="fe fe-16 fe-shopping-cart text-white mb-0"></i>
                             </span> --}}
-                          </div>
+                          {{-- </div>
                           <div class="col pr-0">
                             <p class=" text-muted mb-0">นิเทศงาน</p>
                             <span class="h3 mb-0">@foreach ($users1 as $row)
-                              {{$row->count}} @endforeach</span>
+                              {{$row->count}} @endforeach</span> --}}
                             {{-- <span class="small text-success">+16.5%</span> --}}
-                          </div>
+                          {{-- </div>
                         </div>
                       </div>
                     </div>
@@ -461,17 +462,17 @@
                     <div class="card shadow border-0">
                       <div class="card-body">
                         <div class="row align-items-center">
-                          <div class="col-3 text-center">
+                          <div class="col-3 text-center"> --}}
                             {{-- <span class="circle circle-sm bg-primary">
                               <i class="fe fe-16 fe-shopping-cart text-white mb-0"></i>
                             </span> --}}
-                          </div>
+                          {{-- </div>
                           <div class="col pr-0">
                             <p class="small text-muted mb-0">ยังไม่ได้ยืนยัน</p>
                             <span class="h3 mb-0"> @foreach ($users2 as $row)
-                              {{$row->count}} @endforeach</span>
+                              {{$row->count}} @endforeach</span> --}}
                             {{-- <span class="small text-success">+16.5%</span> --}}
-                          </div>
+                          {{-- </div>
                         </div>
                       </div>
                     </div>
@@ -480,11 +481,11 @@
                     <div class="card shadow border-0">
                       <div class="card-body">
                         <div class="row align-items-center">
-                          <div class="col-3 text-center">
+                          <div class="col-3 text-center"> --}}
                             {{-- <span class="circle circle-sm bg-primary">
                               <i class="fe fe-16 fe-filter text-white mb-0"></i>
                             </span> --}}
-                          </div>
+                          {{-- </div>
                           <div class="col">
                             <p class="small text-muted mb-0">ยืนยันแล้ว</p>
                             <div class="row align-items-center no-gutters">
@@ -492,17 +493,17 @@
                                 <span class="h3 mr-2 mb-0"> @foreach ($users3 as $row)
                                   {{$row->count}} @endforeach </span>
                               </div>
-                              <div class="col-md-12 col-lg">
+                              <div class="col-md-12 col-lg"> --}}
                                 {{-- <div class="progress progress-sm mt-2" style="height:3px">
                                   <div class="progress-bar bg-success" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div> --}}
-                              </div>
+                              {{-- </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div> <!-- end section -->
+                  </div> <!-- end section --> --}}
             {{-- <div class="row justify-content-center">
               <div class="col-12">
                 <div class="row">
@@ -550,29 +551,29 @@
 
 
 
-                                    <div class="col-12">
+                                    {{-- <div class="col-12">
                                       <div class="row">
                                         <div class="col-md-6 col-xl-3 mb-4">
                                            <a href="/teacher/estimate1"><div class="card shadow border-0">
                                               <div class="card-body">
                                                 <div class="row align-items-center">
-                                                  <div class="col-3 text-center">
+                                                  <div class="col-3 text-center"> --}}
                                                     {{-- <span class="circle circle-sm bg-primary">
                                                       <i class="fe fe-16 fe-shopping-cart text-white mb-0"></i>
                                                     </span> --}}
-                                                  </div>
+                                                  {{-- </div>
                                                   <div class="col pr-0">
                                                     <p class=" text-muted mb-0">รายงานสถานะเอกสารผลการประเมิน</p>
                                                     <span class="h3 mb-0">@foreach ($users9 as $row)
-                                                      {{$row->count}} @endforeach</span>
+                                                      {{$row->count}} @endforeach</span> --}}
                                                     {{-- <span class="small text-success">+16.5%</span> --}}
-                                                  </div>
+                                                  {{-- </div>
                                                 </div>
                                               </div>
                                             </div>
                                           </div></a>
 
 
-                                        </div>
+                                        </div> --}}
 
 @endsection

@@ -10,7 +10,7 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">รายงานสถานะเอกสารลงทะเบียน</h5>@if(session("success6"))
+        <h5 class="card-title">รายงานสถานะสรุปนักศึกษาสมัครสหกิจ</h5>@if(session("success6"))
         <div class="alert alert-success col-4">{{session('success6')}}</div>
 @endif
 @if(session("success5"))
@@ -73,29 +73,14 @@
  <br>
         <table class="table table-hover">
           <thead class="thead-dark">
-            {{-- <tr>
-                 <th></th>
-            <th></th>
-            <th></th> --}}
-            {{-- <th>เอกสารสหกิจ</th> --}}
-            {{-- <th>ภาคเรียน</th>
-              <th>ปีการศึกษา</th> --}}
-            {{-- <th></th>
-            <th></th>  <th></th> --}}
-
-        {{-- </tr> --}}
             <tr>
               <th>ลำดับ</th>
               <th>รหัสนักศึกษา</th>
               <th>ชื่อนักศึกษา</th>
-              <th>เอกสารสหกิจ</th>
-              {{-- <th>สก.01</th> --}}
+              <th>สถานประกอบการ</th>
               {{-- <th>ภาคเรียน</th>
                 <th>ปีการศึกษา</th> --}}
-              {{-- <th>สก.03</th>
-              <th>สก.04</th>
-              <th>สก.03</th>
-              <th>สก.03</th> --}}
+              <th>ภาคเรียน</th>
               {{-- <th>สถานนะ</th>
               <th>หมายเหตุ</th>
                  <th>ไฟล์เอกสาร</th>
@@ -108,59 +93,12 @@
             @foreach ($supervision as $row)
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
-               <td>{{$row->username}}</td>
+               <td>{{$row->student_id}}</td>
                <td>
                 {{$row->fname}} </td>
-                {{-- <td> {{$row->fname}} </td> --}}
-                <td><a href="/officer/editreport2/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a>
 
-                <!-- Button trigger modal -->
-                {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"data-id="{{ $row->id }}">
-                    Launch demo modal
-                  </button> --}}
-
-                </td>
-               {{-- <td>
-
-                @if ($row->namefile === 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
-                <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
-
-
-                @else()
-
-            @endif
-
-               </td>
-
-               <td> --}}
-
-                {{-- @if ($row->namefile === 'ใบสมัครงานสหกิจศึกษา(สก03)')
-                <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
-
-
-                @else()
-
-            @endif --}}
-
-               {{-- </td> --}}
-               {{-- <td>
-                @if ($row->namefile === 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)')
-                    <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
-                @endif
-            </td> --}}
-
-               {{-- <td>
-
-                @if ($row->namefile === 'ใบสมัครงานสหกิจศึกษา(สก03)')
-                <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
-
-
-                @else()
-
-            @endif
-
-               </td> --}}
-             {{-- <td>{{$row->year}}</td> --}}
+               <td>{{$row->em_name}}</td>
+             <td>{{$row->term}}/{{$row->year}}</td>
               {{-- <td>{{$row->score}}</td> --}}
               {{-- <td>
                 @if ($row->Status_supervision === 'รอประเมินผล')
@@ -177,20 +115,7 @@
               <td><a href="/officer/deletEvaluate/{{$row->supervision_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
 
             </tr>
-            {{-- <tr>
-                <td></td>   <td></td>   <td></td>
-                <td>
 
-                    @if ($row->namefile === 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
-                    <span class="badge badge-pill badge-success"><i class="fa-solid fa-check"></i></span>
-
-
-                    @else()
-
-                @endif
-
-                   </td>
-            </tr> --}}
             @endforeach
           </tbody>
         </table>
@@ -258,90 +183,7 @@
 
 
          </div> --}}
-<script>
-
-document.addEventListener('DOMContentLoaded', function () {
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var userId = button.data('id'); // Extract info from data-* attributes
-
-        var modal = $(this);
-
-        // AJAX request to get user data by ID
-        $.ajax({
-            url: '/getUserData', // Adjust the URL to your route
-            type: 'GET',
-            data: { id: userId },
-            success: function (data) {
-                // Populate the form fields with the data received
-                modal.find('#userId').val(data.id);
-                modal.find('#username').val(data.username);
-                modal.find('#fname').val(data.fname);
-                // Populate other fields as necessary
-            },
-            error: function (xhr, status, error) {
-                console.error('Error fetching user data:', error);
-            }
-        });
-    });
-
-    // Handle form submission
-    $('#editForm').on('submit', function (e) {
-        e.preventDefault();
-
-        var formData = $(this).serialize();
-
-        $.ajax({
-            url: '/updateUserData', // Adjust the URL to your update route
-            type: 'POST',
-            data: formData,
-            success: function (response) {
-                // Handle success response
-                console.log('User data updated successfully');
-                $('#exampleModal').modal('hide');
-                // Optionally, refresh the page or update the table data
-            },
-            error: function (xhr, status, error) {
-                console.error('Error updating user data:', error);
-            }
-        });
-    });
-});
 
 
-</script>
-         <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form id="editForm">
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" id="username" name="username">
-                </div>
-                <div class="form-group">
-                  <label for="fname">First Name</label>
-                  <input type="text" class="form-control" id="fname" name="fname">
-                </div>
-                <!-- Add other form fields as necessary -->
-                <input type="hidden" id="userId" name="userId">
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script> --}}
+
 @endsection

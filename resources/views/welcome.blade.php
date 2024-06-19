@@ -80,8 +80,8 @@
             </ul>
 
             <div class="col-2 text-end">
-              <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a>
-              <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
+              {{-- <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a> --}}
+              <a type="button" href="/login" class="btn btn-outline-warning me-2">ลงชื่อเข้าใช้งาน</a>
             </div>
           </header>
 
@@ -96,6 +96,7 @@
                 <li><a href="/" class="nav-link px-2 text-light">หน้าแรก</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-light">แบบฟอร์มสหกิจ</a></li>
               <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-light">คู่มือการใช้งาน</a></li>
+              <li><a type="button"href="/cooperative1" class="nav-link px-2 text-light">สมัครสหกิจ</a></li>
               {{-- <li><div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     สมัครสหกิจ

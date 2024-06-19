@@ -2198,6 +2198,64 @@ public function editcategory($category_id) {
      return view('officer.edit.editregister01',compact('registers','registers1','registers2'));
 
  }
+ public function editreport2($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+
+
+    $registers=users::find($id);
+
+     $registers1=DB::table('users')
+
+     ->join('registers','users.id','registers.id')
+    //  ->join('student','users.id','student.user_id')
+    //  ->join('users','student.user_id','users.id')
+    //  ->select('registers.*','users.fname','student.year')
+     ->select('users.*','registers.user_id')
+    //  ->where('role',"student")
+    //  ->orderBy('student.updated_at', 'desc')
+     ->paginate(10);
+
+     $registers2 = DB::table('registers')
+        ->join('users', 'registers.user_id', '=', 'users.id')
+        ->select('registers.*', 'users.fname')
+        ->where('registers.user_id', $registers->id)
+        // ->orderBy('namefile', 'asc')
+        ->orderBy('registers.updated_at', 'desc')
+        ->paginate(10);
+
+     return view('officer.edit.editreport2',compact('registers','registers1','registers2'));
+
+ }
+ public function editreport4($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+
+
+    $registers=users::find($id);
+
+     $registers1=DB::table('users')
+
+     ->join('supervision','users.id','supervision.supervision_id')
+    //  ->join('student','users.id','student.user_id')
+    //  ->join('users','student.user_id','users.id')
+    //  ->select('registers.*','users.fname','student.year')
+     ->select('users.*','supervision.user_id')
+    //  ->where('role',"student")
+    //  ->orderBy('student.updated_at', 'desc')
+     ->paginate(10);
+
+     $registers2 = DB::table('supervision')
+        ->join('users', 'supervision.user_id', '=', 'users.id')
+        ->select('supervision.*', 'users.fname')
+        ->where('supervision.user_id', $registers->id)
+        // ->orderBy('namefile', 'asc')
+        ->orderBy('supervision.updated_at', 'desc')
+        ->paginate(10);
+
+     return view('officer.edit.editreport4',compact('registers','registers1','registers2'));
+
+ }
  public function editregister2($id) {
     //ตรวจสอบข้อมูล
  // dd($id);
