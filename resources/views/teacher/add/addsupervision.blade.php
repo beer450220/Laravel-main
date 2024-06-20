@@ -201,16 +201,16 @@
             {{-- <input class="form-control" id="example-date" type="text" name="establishment_name"  autofocus placeholder=""required> --}}
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" > --}}
-                <select class="form-control select2"id="subcategory" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required >
-                    <option value="">-- เลือกหมวดหมู่ย่อย --</option>
+                <select class="form-control"id="state-dd" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required >
+                    {{-- <option value="">-- เลือกหมวดหมู่ย่อย --</option> --}}
                     <option value="">Select state</option>
-              @foreach ($establishment as $row)
+              {{-- @foreach ($establishment as $row)
 
                 <option value="{{$row->id}}">{{$row->em_name}}</option>
 
               </optgroup>
 
-              @endforeach
+              @endforeach --}}
             </select>
 
             @error('test')
@@ -220,26 +220,86 @@
         @enderror
           </div>
           <div class="col-md-4">
-            {{-- id="multiple-select-field" --}}
+
             <label for="inputAddress" >ชื่อนักศึกษา</label>
-            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-optgroup-field"id="category" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
+{{-- id="multiple-select-optgroup-field" --}}
+{{-- id="country-dd" --}}
+            <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
               <option value="">เลือกรายชื่อ</option>
-              {{-- @foreach ($users as $row) --}}
-              {{-- <optgroup label="Mountain Time Zone"> --}}
-                {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
+
                 @foreach ($users1 as $row)
-                {{-- <optgroup label="Mountain Time Zone"> --}}
+
                   <option value="{{$row->id}} "> {{$row->fname}} </option>
-                  {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+
 
 
                 @endforeach
-              </optgroup>
+              {{-- </optgroup> --}}
 
-              {{-- @endforeach --}}
+
             </select>
-            <script>
+            {{--  <div class="form-group mb-3">
+                                <select id="state-dd" class="form-control"></select>
+                            </div> --}}
+            {{-- <div class="form-group mb-3">
+              <select id="country-dd" class="form-control">
+               <option value="">Select Country</option>
+                                @foreach($users1 as $data)
+                                    <option value="{{$data->id}}">{{$data->fname}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <select id="state-dd" class="form-control"></select>
+                            </div>
+
+                            </form>
+                       div --}}
+
+
+                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                        $('#multiple-select-optgroup-field').change(function(event) {
+                            var idCountry = this.value;
+                            $('#state-dd').html('');
+                 
+                            $.ajax({
+                            url: "/api/fetch-state",
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {user_id: idCountry,_token:"{{ csrf_token() }}"},
+                            success:function(response){
+                                $('#state-dd').html('<option value="">Select State</option>');
+                                $.each(response.states,function(index, val){
+                                $('#state-dd').append('<option value="'+val.id+'"> '+val.em_name+' </option>')
+                                });
+                                $('#city-dd').html('<option value="">Select City</option>');
+                            }
+                            })
+                        });
+                //         $('#state-dd').change(function(event) {
+                //             var idState = this.value;
+                //             $('#city-dd').html('');
+                //             $.ajax({
+                //             url: "/api/fetch-cities",
+                //             type: 'POST',
+                //             dataType: 'json',
+                //             data: {state_id: idState,_token:"{{ csrf_token() }}"},
+                //             success:function(response){
+                //                 $('#city-dd').html('<option value="">Select State</option>');
+                //                 $.each(response.cities,function(index, val){
+                //                 $('#city-dd').append('<option value="'+val.id+'"> '+val.name+' </option>')
+                //                 });
+                //             }
+                //             })
+                //         });
+                        });
+                    </script>
+
+
+
+         <script>
 				$(document).ready(function() {
 			$('.select2').select2({
 			closeOnSelect: false

@@ -23,7 +23,7 @@
 <div class="alert alert-danger col-4">{{session('error')}} </div>
 @endif
 
-        <form action="{{ route('searchEvaluate') }}" method="GET" class="form-inline">
+        <form action="{{ route('searchreport1') }}" method="GET" class="form-inline">
 
             <div class="form-row">
               <div class="form-group col-auto">

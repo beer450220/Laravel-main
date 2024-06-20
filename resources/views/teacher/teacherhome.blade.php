@@ -175,7 +175,7 @@
     <!-- Bordered table -->
     <div class="col-md-6 my-4">
       <div class="card shadow">
-        <div class="card-body"><a href="/teacher/report03">
+        <div class="card-body"><a href="/teacher/report04">
           <h5 class="card-title">รายงานสถานะเอกสารผลการประเมิน</h5></a>
           {{-- <p class="card-text">Add .table-bordered for borders on all sides of the table and cells.</p> --}}
           {{-- <table class="table table-bordered table-hover mb-0">

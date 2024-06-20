@@ -1,4 +1,4 @@
-@extends('layouts.officermin')
+@extends('layouts.appteacher')
 
 @section('content')
 <title>user</title>
@@ -23,7 +23,7 @@
 <div class="alert alert-danger col-4">{{session('error')}} </div>
 @endif
 
-        <form action="{{ route('searchEvaluate') }}" method="GET" class="form-inline">
+        <form action="{{ route('searchreport04') }}" method="GET" class="form-inline">
 
             <div class="form-row">
               <div class="form-group col-auto">
@@ -111,7 +111,7 @@
                <td>{{$row->username}}</td>
                <td>
                 {{$row->fname}} </td>
-                <td><a href="/officer/editreport4/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a> </td>
+                <td><a href="/teacher/editreport04/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a> </td>
                {{-- <td>{{$row->em_name}}</td>
              <td>{{$row->term}}/{{$row->year}}</td> --}}
               {{-- <td>{{$row->score}}</td> --}}

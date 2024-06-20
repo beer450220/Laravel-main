@@ -1,4 +1,4 @@
-@extends('layouts.officermin')
+@extends('layouts.appteacher')
 
 @section('content')
 <title>user</title>
@@ -23,7 +23,7 @@
 <div class="alert alert-danger col-4">{{session('error')}} </div>
 @endif
 
-        <form action="{{ route('searchEvaluate') }}" method="GET" class="form-inline">
+        <form action="{{ route('searchreport02') }}" method="GET" class="form-inline">
 
             <div class="form-row">
               <div class="form-group col-auto">
@@ -112,7 +112,7 @@
                <td>
                 {{$row->fname}} </td>
                 {{-- <td> {{$row->fname}} </td> --}}
-                <td><a href="/officer/editreport2/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a>
+                <td><a href="/teacher/editreport2/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a>
 
                 <!-- Button trigger modal -->
                 {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"data-id="{{ $row->id }}">

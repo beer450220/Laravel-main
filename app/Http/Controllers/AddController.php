@@ -1407,6 +1407,29 @@ public function addsupervision()
         }
         return $output;
     }
+    public function GetSubCatAgainstMainCatEdit($id){
+        echo json_encode(DB::table('sub_categories')->where('category_id', $id)->get());
+    }
+
+    public function fatchState(Request $request)
+    {
+        $data['states'] = establishment::where('user_id',$request->user_id)->get(['em_name','id']);
+
+        return response()->json($data);
+    }
+    // public function fatchCity(Request $request)
+    // {
+    //     $data['cities'] = City::where('state_id',$request->state_id)->get(['name','id']);
+
+    //     return response()->json($data);
+    // }
+
+    // public function fatchCity(Request $request)
+    // {
+    //     $data['cities'] = City::where('state_id',$request->state_id)->get(['name','id']);
+
+    //     return response()->json($data);
+    // }
 
 
     public function addsupervision1(Request $request) {

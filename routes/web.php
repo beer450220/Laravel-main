@@ -301,6 +301,11 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get('/officer/search001', [HomeController::class, 'search001'])->name('search001');
 
 
+    Route::get('/officer/searchreport1',[HomeController::class,'searchreport1'])->name('searchreport1');
+    Route::get('/officer/searchreport002',[HomeController::class,'searchreport002'])->name('searchreport002');
+   Route::get('/officer/searchreport3',[HomeController::class,'searchreport3'])->name('searchreport3');
+    Route::get('/officer/searchreport4',[HomeController::class,'searchreport4'])->name('searchreport4');
+
     Route::get("/officer/report1",[HomeController::class,'report1']);
 
     Route::get("/officer/report2",[HomeController::class,'report2']);
@@ -504,18 +509,22 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 {
     Route::get("/teacher/home",[HomeController::class,'teacherHome'])->name('teacher.teacherhome');
 
-    Route::get("/teacher/report01",[HomeController::class,'report1']);
+    Route::get('/teacher/searchreport01',[HomeController::class,'searchreport01'])->name('searchreport01');
+    Route::get("/teacher/report01",[HomeController::class,'report01']);
 
-    Route::get("/teacher/report2",[HomeController::class,'report02']);
+    Route::get('/teacher/searchreport02',[HomeController::class,'searchreport02'])->name('searchreport02');
+    Route::get("/teacher/report02",[HomeController::class,'report02']);
     //ดูเอกสาร
-    Route::get("/officer/editreport2/{id}",[EditController::class,'editreport2'])->name('editreport2');
+    Route::get("/teacher/editreport2/{id}",[EditController::class,'editreport02'])->name('editreport02');
     Route::get('/getUserData', [UserController::class, 'getUserData']);
 
-
+    Route::get('/teacher/searchreport03',[HomeController::class,'searchreport03'])->name('searchreport03');
     Route::get("/teacher/report03",[HomeController::class,'report03']);
+
+    Route::get('/teacher/searchreport04',[HomeController::class,'searchreport04'])->name('searchreport04');
     Route::get("/teacher/report04",[HomeController::class,'report04']);
     //ดูเอกสาร
-    Route::get("/officer/editreport4/{id}",[EditController::class,'editreport4'])->name('editreport4');
+    Route::get("/teacher/editreport04/{id}",[EditController::class,'editreport04'])->name('editreport04');
 
 
     //ข้อมูลส่วนตัว
@@ -642,7 +651,8 @@ Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->na
 
     Route::post('/get-subcategories',[addController::class,'getSubcategories'])->name('getSubcategories');
 
-
+    Route::post('api/fetch-state',[addController::class,'fatchState']);
+    // Route::post('api/fetch-cities',[addController::class,'fatchCity']);
 
 //เอกสารขออนุญาตนิเทศงาน(สก10)
 //ค้นหา

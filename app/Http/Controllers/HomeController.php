@@ -1937,7 +1937,7 @@ $users=DB::table('users')
     $keyword = $request->input('keyword');
                                             //dd($request);
             // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-            $informdetails = Informdetails::query()
+            $informdetails = informdetails::query()
             ->join('users', 'informdetails.user_id', '=', 'users.id')
             ->where(function ($query) use ($keyword) {
                 $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
@@ -1970,6 +1970,250 @@ $users=DB::table('users')
 // })
 //     ->paginate(5);
 return view('teacher.informdetails1',  ['informdetails' => $informdetails,]);
+}
+public function searchreport01(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = users::query()
+            ->join('student','users.id','student.user_id')
+            ->join('establishment','users.id','establishment.user_id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('users.*','student.student_id','student.term','student.year','establishment.em_name')
+            ->where('role',"student") ->distinct()
+                                                                ->orderBy('id', 'desc')
+            ->paginate(5);
+
+
+
+return view('teacher.report1',  ['supervision' => $supervision,]);
+}
+public function searchreport02(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = users::query()
+            ->join('registers','users.id','registers.user_id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                    //    ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('users.username', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('users.*','users.fname')
+            ->distinct()
+            ->orderBy('users.updated_at', 'desc')
+            ->paginate(10);
+
+
+            $registers2 = DB::table('registers')
+            // ->join('users', 'registers.user_id', '=', 'users.id')
+             ->select('registers.*')
+            ->where('registers.user_id', $supervision)
+            // ->orderBy('namefile', 'asc')
+            ->orderBy('registers.updated_at', 'desc')
+            ->paginate(10);
+
+return view('teacher.report2',  ['supervision' => $supervision,'registers2' => $registers2,]);
+}
+public function searchreport03(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = event::query()
+            ->join('student','events.student_name','student.user_id')
+            ->join('establishment','events.em_id','establishment.id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('student.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                      //->orWhere('student.fname', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('student.student_id', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('events.*'
+            ,'student.fname' ,'student.student_id'
+           ,'establishment.em_name'
+
+           )
+            ->distinct()
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
+
+
+
+
+
+
+
+
+             $users1=DB::table('users')
+             ->where('role',"student")
+
+             ->get();
+
+return view('teacher.report3',  ['supervision' => $supervision,'users1']);
+}
+public function searchreport04(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = users::query()
+            ->join('supervision','users.id','supervision.user_id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                       ->orWhere('users.username', 'LIKE', '%' . $keyword . '%');
+                      //->orWhere('student.fname', 'LIKE', '%' . $keyword . '%')
+                    //     ->orWhere('student.student_id', 'LIKE', '%' . $keyword . '%')
+                    //    ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('users.*','supervision.user_id')
+            ->where('role',"student") ->distinct()
+                                                                ->orderBy('id', 'desc')
+            ->paginate(5);
+return view('teacher.report4',  ['supervision' => $supervision]);
+}
+
+
+public function searchreport1(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = users::query()
+            ->join('student','users.id','student.user_id')
+            ->join('establishment','users.id','establishment.user_id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('users.*','student.student_id','student.term','student.year','establishment.em_name')
+            ->where('role',"student") ->distinct()
+                                                                ->orderBy('id', 'desc')
+            ->paginate(5);
+
+
+
+return view('officer.report1',  ['supervision' => $supervision,]);
+}
+public function searchreport002(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = users::query()
+            ->join('registers','users.id','registers.user_id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                    //    ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('users.username', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('users.*','users.fname')
+            ->distinct()
+            ->orderBy('users.updated_at', 'desc')
+            ->paginate(10);
+
+
+            $registers2 = DB::table('registers')
+            // ->join('users', 'registers.user_id', '=', 'users.id')
+             ->select('registers.*')
+            ->where('registers.user_id', $supervision)
+            // ->orderBy('namefile', 'asc')
+            ->orderBy('registers.updated_at', 'desc')
+            ->paginate(10);
+
+return view('officer.report2',  ['supervision' => $supervision,'registers2' => $registers2,]);
+}
+public function searchreport3(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = event::query()
+            ->join('student','events.student_name','student.user_id')
+            ->join('establishment','events.em_id','establishment.id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('student.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                      //->orWhere('student.fname', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('student.student_id', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('events.*'
+            ,'student.fname' ,'student.student_id'
+           ,'establishment.em_name'
+
+           )
+            ->distinct()
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
+
+
+
+
+
+
+
+
+             $users1=DB::table('users')
+             ->where('role',"student")
+
+             ->get();
+
+return view('officer.report3',  ['supervision' => $supervision,'users1']);
+}
+public function searchreport4(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $supervision = users::query()
+            ->join('supervision','users.id','supervision.user_id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                       ->orWhere('users.username', 'LIKE', '%' . $keyword . '%');
+                      //->orWhere('student.fname', 'LIKE', '%' . $keyword . '%')
+                    //     ->orWhere('student.student_id', 'LIKE', '%' . $keyword . '%')
+                    //    ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+
+            })
+            ->select('users.*','supervision.user_id')
+            ->where('role',"student") ->distinct()
+                                                                ->orderBy('id', 'desc')
+            ->paginate(5);
+return view('officer.report4',  ['supervision' => $supervision]);
 }
 public function searchrequest(Request $request){
     //dd($request);
@@ -4119,7 +4363,7 @@ public function category()
                         ->where('role',"student") ->distinct()
                                                             ->orderBy('id', 'desc')
         ->paginate(5);
-        return view('teacher.report01',compact('supervision'));
+        return view('teacher.report1',compact('supervision'));
     }
     public function report2()
     {
