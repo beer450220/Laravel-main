@@ -71,6 +71,28 @@
           </div>
            <div class="row">
           <div class="form-group col-md-4">
+            <label for="inputAddress" >ชื่อนักศึกษา</label>
+            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
+            <select class="form-control" id="single-select-field1" data-placeholder="เลือกรายชื่อ" name="user_id" required>
+              <option value="">Select state</option>
+              @foreach ($users as $row)
+
+                <option value="{{$row->id}}"{{$row->id==$supervisions->user_id ?'selected':''}}>{{$row->fname}}</option>
+
+              </optgroup>
+
+              @endforeach
+            </select>
+
+
+            @error('name')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+          </div>
+
+          <div class="col-md-4">
             <label for="inputAddress">ชื่อเอกสาร</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
             <select class="form-control select2" id="validationSelect1" name="namefile" required>
@@ -100,27 +122,6 @@
               {{-- @endforeach --}}
             </select>
 
-
-            @error('name')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-
-          <div class="col-md-4">
-            <label for="inputAddress" >ชื่อนักศึกษา</label>
-            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control" id="single-select-field1" data-placeholder="เลือกรายชื่อ" name="user_id" required>
-              <option value="">Select state</option>
-              @foreach ($users as $row)
-
-                <option value="{{$row->id}}"{{$row->id==$supervisions->user_id ?'selected':''}}>{{$row->fname}}</option>
-
-              </optgroup>
-
-              @endforeach
-            </select>
 
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
@@ -164,7 +165,7 @@
           <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
 
       </div>
-      <div class="col-md-2">
+      {{-- <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">สถานะ</label>
         <select class="form-control"  name="Status_supervision" required>
           <option value="">กรุณาเลือก</option>
@@ -176,7 +177,7 @@
 
 
         </select>
-    </div>
+    </div> --}}
     {{-- <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
       <select class="form-control "  name="year" required> --}}

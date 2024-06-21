@@ -134,6 +134,29 @@
           </div>
            <div class="row">
           <div class="form-group col-md-4">
+
+            <label for="inputAddress" >ชื่อนักศึกษา</label>
+            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
+            <select class="form-control select2" id="validationSelect2" name="user_id" required>
+              <option value="">เลือกรายชื่อ</option>
+              @foreach ($users as $row)
+              {{-- <optgroup label="Mountain Time Zone"> --}}
+                <option value="{{$row->id}}">{{$row->fname}}</option>
+
+              </optgroup>
+
+              @endforeach
+            </select>
+
+            @error('name')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+          </div>
+
+          <div class="col-md-4">
+
             <label for="inputAddress">ชื่อเอกสาร</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
             <select class="form-control select" id="validationSelect1" name="namefile"required >
@@ -148,29 +171,6 @@
 
               {{-- @endforeach --}}
             </select>
-
-
-            @error('name')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-
-          <div class="col-md-4">
-            <label for="inputAddress" >ชื่อนักศึกษา</label>
-            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="user_id" required>
-              <option value="">เลือกรายชื่อ</option>
-              @foreach ($users as $row)
-              {{-- <optgroup label="Mountain Time Zone"> --}}
-                <option value="{{$row->id}}">{{$row->fname}}</option>
-
-              </optgroup>
-
-              @endforeach
-            </select>
-
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}

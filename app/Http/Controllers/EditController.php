@@ -1295,10 +1295,14 @@ $post->update
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
         'filess' => 'mimes:pdf|max:1024',
+        'user_id' => 'required|unique:supervision,user_id,NULL,id,namefile,' . $request->namefile,
+    'namefile' => 'required|unique:supervision,namefile,NULL,id,user_id,' . $request->user_id,
     ],[
             //'establishment.required' => "กรุณา",
             'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
             'filess.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+            'user_id.unique' => "ชื่อนักศึกษาซ้ำ",
+                 'namefile.unique' => "ชื่อไฟล์เอกสารซ้ำ",
         ]
     );
     // $post=Event::findOrFail($id);
@@ -2792,7 +2796,10 @@ $post->update
       ->get();
       $establishment=DB::table('establishment')
       //->where('role',"student")
+    //    ->where('id','user_id')
       ->get();
+
+    //  $data['states'] = establishment::where('user_id',$request->user_id)->get(['em_name','id']);
    // $acceptances=DB::table('acceptance')->first();
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')

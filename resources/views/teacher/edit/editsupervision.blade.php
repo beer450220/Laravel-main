@@ -165,9 +165,9 @@
            $year = $carbonDate->year + 543;
            $month = $thaiMonths[$carbonDate->month];
            $day = $carbonDate->day;
-           $time = $carbonDate->format('เวลา H:i:s ');
+        //    $time = $carbonDate->format('เวลา H:i:s ');
 
-           return "$day $month $year $time";
+           return "$day $month $year";
        }
    @endphp
 
@@ -227,17 +227,23 @@
           <div class="form-group col-md-4">
             <label for="inputAddress">ชื่อสถานประกอบการ</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-            <select class="form-control select2" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing" name="em_id"required >
+            {{-- <select class="form-control " id="small-bootstrap-class-single-field" data-placeholder="Choose one thing" name="em_id"required >
               <option value="">Select state</option>
               @foreach ($establishment as $row)
-              {{-- <optgroup label="Mountain Time Zone"> --}}
+
                 <option value="{{$row->id}}"{{$row->id==$supervisions->em_id ?'selected':''}}>{{$row->em_name}}</option>
 
-              </optgroup>
 
               @endforeach
-            </select>
+            </select> --}}
 
+            <select class="form-control"id="state-dd" data-placeholder="เลือกสถานประกอบการ"   name="em_id"required >
+
+                <option value="">Select state</option>
+                @foreach ($establishment as $row)
+                <option value="{{$row->id}}"{{$row->id==$supervisions->em_id ?'selected':''}}>{{$row->em_name}}</option>
+              @endforeach
+            </select>
 
             @error('name')
             <span class="invalid-feedback" >
@@ -257,17 +263,47 @@
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 {{-- <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option> --}}
 
-                @php
+                {{-- @php
                 $selectedIds = explode(',', $supervisions->student_name);
             @endphp
             <option value="{{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }}>
                 {{ $row->fname }}
-            </option>
+            </option> --}}
 
-
+            <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option>
 
               @endforeach
             </select>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                        $('#multiple-select-optgroup-field').change(function(event) {
+                            var idCountry = this.value;
+                            $('#state-dd').html('');
+                 
+                            $.ajax({
+                            url: "/api/fetch-state",
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {user_id: idCountry,_token:"{{ csrf_token() }}"},
+                            success:function(response){
+                                   $('#state-dd').html('<option value="">Select State</option>');
+                $.each(response.states, function(index, val) {
+                    var selected = '';
+                    if (val.id == {{$supervisions->em_id}}) {
+                        selected = 'selected';
+                    }
+                    $('#state-dd').append('<option value="' + val.id + '" ' + selected + '>' + val.em_name + '</option>');
+                });
+                // $('#city-dd').html('<option value="">Select City</option>'); // ถ้าคุณต้องการรีเซ็ตเมือง
+            }
+        });
+    });
+});
+
+            </script>
 <!-- Styles -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />

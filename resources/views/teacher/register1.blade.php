@@ -66,7 +66,7 @@
                <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
 
-                <th style="width:10%">ยืนยันข้อมูล</th>
+                <th<th>ดูเอกสาร</th>
               {{-- <th style="width:10%">ลบ</th> --}}
             </tr>
           </thead>
@@ -95,9 +95,9 @@
                   @endif
               </td>
               <td>{{ $row->annotation }}</td>
-              <td><a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              {{-- <td><a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td> --}}
 {{-- download --}}
-              <td>
+              {{-- <td>
                 @if ($row->Status_registers === 'รออนุมัติ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/teacher/confirm02/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
@@ -107,8 +107,8 @@
                 <a href="/teacher/editregister2/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
             <a href="/teacher/editregister2/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
-            @endif
-
+            @endif --}}
+            <td>  <a href="/teacher/editregister01/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a></td></td>
 
              {{--  <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
             </tr>
