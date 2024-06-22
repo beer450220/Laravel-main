@@ -25,7 +25,7 @@
 
             <div class="">
               {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
-              <i class="fa-solid fa-check"></i>มีเอกสารแล้ว  <i class="fa-solid fa-xmark"></i>ไม่มีเอกสาร
+              {{-- <i class="fa-solid fa-check"></i>มีเอกสารแล้ว  <i class="fa-solid fa-xmark"></i>ไม่มีเอกสาร --}}
             </form>
             </div>
 

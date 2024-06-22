@@ -60,14 +60,10 @@
         <table class="table table-hover ">
           <thead class="thead-dark ">
             <tr>
-              <th>#</th>
-               <th>ชื่อนักศึกษา</th>
-              <th>ชื่อเอกสาร</th>
-              {{-- <th>ปีการศึกษา</th>
-              <th>ภาคเรียนที่</th> --}}
-                <th>สถานะ</th>
-              <th>ดูเอกสาร</th>
-              <th>ยืนยันข้อมูล</th>
+                <th>ลำดับ</th>
+                <th>ชื่อนักศึกษา</th>
+                <th>ปี</th>
+                <th>ดูเอกสาร</th>
               {{-- <th>ดูข้อมูล</th> --}}
               {{-- <th>ลบ</th> --}}
             </tr>
@@ -76,43 +72,43 @@
             @foreach ($informdetails as $row)
             <tr>
               <td>{{$informdetails->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}} </td>
-              <td>{{$row->namefile}}</td>
+              <td>{{ $row->fname }} </td>
+              <td>{{($row->term) }}/{{($row->year) }}</td>
 
-              <td> @if ($row->Status_informdetails === 'รออนุมัติ')
+              {{-- <td> @if ($row->Status_informdetails === 'รออนุมัติ')
                 <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
             @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
                 <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
             @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
                 <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
-            @endif</td>
+            @endif</td> --}}
               {{-- <td>{{$row->year}}</td>
                <td>{{$row->term}}</td> --}}
-              <td><a href="/document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              {{-- <td><a href="/document2/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td> --}}
               {{-- <td class="text-danger">{{$row->Status_informdetails}}</td> --}}
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}
 
               {{-- <td><button type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"></td> --}}
-                <td>
+                {{-- <td>
                 @if ($row->Status_informdetails=== 'รออนุมัติ')
                 <div class="d-grid gap-2 d-md-block">
                 <a href="/teacher/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
-                <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
+                <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td> --}}
                 {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
-</td>
+{{-- </td>
             </div>
                 @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
-                <div class="d-grid gap-2 d-md-block">
+                <div class="d-grid gap-2 d-md-block"> --}}
                     {{-- <a href="/officer/confirm3/{{$row->informdetails_id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br> --}}
-                    <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
+                    {{-- <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td> --}}
                     {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
 
-                </div>
+                {{-- </div>
             @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
-           <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td>
-            @endif
+           <a href="/teacher/editinformdetails2/{{$row->informdetails_id}}"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขการอนุมัติ</a></td> --}}
+            {{-- @endif --}}
 
-
+            <td>  <a href="/teacher/editinformdetails01/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a></td>
             </tr>
 
             @endforeach

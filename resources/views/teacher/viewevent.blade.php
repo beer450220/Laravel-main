@@ -142,6 +142,37 @@
                             return "$day $month $year ";
                         }
                     @endphp
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-date');
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        // const hours = String(now.getHours()).padStart(2, '0');
+        // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const minDateTime = `${year}-${month}-${day}`;
+        input.setAttribute('min', minDateTime);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-date1');
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        // const hours = String(now.getHours()).padStart(2, '0');
+        // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const minDateTime = `${year}-${month}-${day}`;
+        input.setAttribute('min', minDateTime);
+    });
+</script>
+
+
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">วันเวลาการนิเทศงาน</label><br>
 

@@ -472,15 +472,15 @@ div.second {
                                                 @endif
                                             @endforeach
                                         @endif
-
+<a href="/personal3" class="btn btn-outline-success">เพิ่มข้อมูลสถานประกอบการ</a><br><br>
                                         @if ($establishment->isEmpty())
-                                        <a href="/personal3" class="btn btn-outline-success">เพิ่มข้อมูลสถานประกอบการ</a>
+
                                     @else
                                         @foreach ($establishment as $row)
                                             @if (Auth::user()->id === $row->user_id)
                                             <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
-                                            @else
-                                            <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a>
+                                            {{-- @else
+                                            <a href="/personal4/{{$row->id}}"  class=" btn btn-outline-success">ดูข้อมูลสถานประกอบการ</a> --}}
                                             @endif
                                         @endforeach
                                     @endif

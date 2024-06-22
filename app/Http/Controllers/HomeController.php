@@ -1630,16 +1630,19 @@ $users=DB::table('users')
 
                             $registers = users::query()
                             ->join('registers', 'users.id', '=', 'registers.user_id')
+                            ->join('student','users.id','student.user_id')
                             ->where(function ($query) use ($keyword) {
+
+
 
                                 $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
-                                    //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('users.created_at', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
                                     //   $query = \Carbon\Carbon::parse($keyword)->addYears(543)->format('Y');
                             })
-                            ->select('users.*', 'users.fname')
+                        ->select('users.*','users.fname','student.year','student.term')
                             ->where('role',"student")
                             ->distinct()
                             ->orderBy('id', 'desc')
@@ -1685,17 +1688,25 @@ $users=DB::table('users')
                                 //    // ->get();
                                 //     ->paginate(10);
 
-                                    $registers = registers::query()
-                                    ->join('users', 'registers.user_id', '=', 'users.id')
-                                    ->where(function ($query) use ($keyword) {
-                                        $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
-                                            //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
-                                            //   ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
-                                            //   ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
-                                    })
-                                    ->select('registers.*', 'users.fname')
-                                    ->paginate(10);
+                                $registers = users::query()
+                                ->join('registers', 'users.id', '=', 'registers.user_id')
+                                ->join('student','users.id','student.user_id')
+                                ->where(function ($query) use ($keyword) {
+
+
+
+                                    $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                                        //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                        //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                                          ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                                          ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
+                                        //   $query = \Carbon\Carbon::parse($keyword)->addYears(543)->format('Y');
+                                })
+                            ->select('users.*','users.fname','student.year','student.term')
+                                ->where('role',"student")
+                                ->distinct()
+                                ->orderBy('id', 'desc')
+                                ->paginate(10);
                                 return view('teacher.register1',  ['registers' => $registers,]);
         // compact('registers'),
                            // return view('student.establishmentuser',compact('establishments','search'));
@@ -1793,18 +1804,28 @@ $users=DB::table('users')
                                                 //      ->select('acceptance.*','users.fname')
                                                    // ->get();
                                                     // ->paginate(10);
-                                                    $acceptances = acceptance::query()
-                                                    ->join('users', 'acceptance.user_id', '=', 'users.id')
+                                                    $acceptances = users::query()
+                                                    ->join('acceptance','users.id','acceptance.user_id')
+                                                    ->join('student','users.id','student.user_id')
                                                     ->where(function ($query) use ($keyword) {
-                                                        $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
-                                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                                        $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                            //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                                             //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
-                                                            //   ->orWhere('acceptance.term', 'LIKE', '%' . $keyword . '%')
-                                                            //   ->orWhere('acceptance.year', 'LIKE', '%' . $keyword . '%');
+                                                               ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                                                              ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
                                                     })
-                                                    ->select('acceptance.*', 'users.fname')
-                                                    ->paginate(10);
+                                                    ->select('users.*','users.fname','student.year','student.term')
 
+
+
+
+
+
+
+                                                    ->where('role',"student")
+                                                    ->distinct()
+                                                    ->orderBy('users.updated_at', 'desc')
+                                                    ->paginate(10);
                                                 return view('teacher.acceptancedocument1',  ['acceptances' => $acceptances,]);
 
 
@@ -1828,18 +1849,21 @@ $users=DB::table('users')
                                                 //    // ->get();
                                                 //     ->paginate(10);
 
-                                                    $informdetails = informdetails::query()
-                                            ->join('users', 'informdetails.user_id', '=', 'users.id')
-                                            ->where(function ($query) use ($keyword) {
-                                                $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
-                                                    //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
-                                                    //   ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
-                                                    //   ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
-                                            })
-                                            ->select('informdetails.*', 'users.fname')
-                                            ->orderBy('informdetails_id', 'desc')
-                                            ->paginate(10);
+                                                    $informdetails = users::query()
+                                                    ->join('informdetails','users.id','informdetails.user_id')
+                                                    ->join('student','users.id','student.user_id')
+                                                    ->where(function ($query) use ($keyword) {
+                                                        $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                            //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                            //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
+                                                              ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                                                               ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
+                                                    })
+                                                    ->select('users.*','users.fname','student.year','student.term')
+                                                    ->where('role',"student")
+                                                    ->distinct()
+                                                    ->orderBy('users.updated_at', 'desc')
+                                                    ->paginate(10);
 
 
                                                 return view('officer.informdetails2',  ['informdetails' => $informdetails,]);
@@ -1937,17 +1961,25 @@ $users=DB::table('users')
     $keyword = $request->input('keyword');
                                             //dd($request);
             // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-            $informdetails = informdetails::query()
-            ->join('users', 'informdetails.user_id', '=', 'users.id')
+            $informdetails = users::query()
+            ->join('informdetails','users.id','informdetails.user_id')
+            ->join('student','users.id','student.user_id')
             ->where(function ($query) use ($keyword) {
-                $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
-                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
+                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
-                    //   ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
-                    //   ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
+                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                       ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
             })
-            ->select('informdetails.*', 'users.fname')
+            ->select('users.*','users.fname','student.year','student.term')
+            ->where('role',"student")
+            ->distinct()
+            ->orderBy('users.updated_at', 'desc')
             ->paginate(10);
+
+           // ->select('registers.*','users.fname','student.year')
+           // ->select('users.*','users.fname','student.year')
+
 
 // $users=DB::table('users')
 
@@ -4173,27 +4205,31 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         $registers=DB::table('users')
 
         // ->join('student','registers.user_id','student.user_id')
-         ->join('registers','users.id','registers.user_id')
-        // ->join('student','users.id','student.user_id')
-        // ->select('registers.*','users.fname','student.year')
-        // ->select('users.*','users.fname','student.year')
-        ->select('users.*','users.fname')
-        ->where('role',"student")
-        ->distinct()
-        ->orderBy('users.updated_at', 'desc')
-        ->paginate(10);
+        ->join('registers','users.id','registers.user_id')
+        ->join('student','users.id','student.user_id')
+       // ->select('registers.*','users.fname','student.year')
+       // ->select('users.*','users.fname','student.year')
+       ->select('users.*','users.fname','student.year','student.term')
+       ->where('role',"student")
+       ->distinct()
+       ->orderBy('users.updated_at', 'desc')
+       ->paginate(10);
 //dd($registers);
         return view('officer.register1',compact('registers'));
     }
     public function register3()
     {
+        $registers=DB::table('users')
 
-        $registers=DB::table('registers')
-
-        ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        // ->join('student','registers.user_id','student.user_id')
+         ->join('registers','users.id','registers.user_id')
+         ->join('student','users.id','student.user_id')
+        // ->select('registers.*','users.fname','student.year')
+        // ->select('users.*','users.fname','student.year')
+        ->select('users.*','users.fname','student.year','student.term')
         ->where('role',"student")
-        ->orderBy('registers.updated_at', 'DESC')
+        ->distinct()
+        ->orderBy('users.updated_at', 'desc')
         ->paginate(10);
 //dd($registers);
         return view('teacher.register1',compact('registers'));
@@ -4252,11 +4288,24 @@ public function category()
 
     public function acceptancedocument4()
     {
-        $acceptances=DB::table('acceptance')
-        ->join('users','acceptance.user_id','users.id')
-       // ->join('establishment','acceptance.establishment_id','establishment.id')
-        ->select('acceptance.*','users.fname')
-        ->paginate(5);
+    //     $acceptances=DB::table('acceptance')
+    //     ->join('users','acceptance.user_id','users.id')
+    //    // ->join('establishment','acceptance.establishment_id','establishment.id')
+    //     ->select('acceptance.*','users.fname')
+    //     ->paginate(5);
+
+        $acceptances=DB::table('users')
+
+        // ->join('student','registers.user_id','student.user_id')
+         ->join('acceptance','users.id','acceptance.user_id')
+         ->join('student','users.id','student.user_id')
+        // ->select('registers.*','users.fname','student.year')
+        // ->select('users.*','users.fname','student.year')
+        ->select('users.*','users.fname','student.year','student.term')
+        ->where('role',"student")
+        ->distinct()
+        ->orderBy('users.updated_at', 'desc')
+        ->paginate(10);
         return view('teacher.acceptancedocument1',compact('acceptances'));
     }
 
@@ -4274,13 +4323,15 @@ public function category()
         $informdetails=DB::table('users')
 
 
-         ->join('informdetails','users.id','informdetails.user_id')
-
-        ->select('users.*','users.fname')
-        ->where('role',"student")
-        ->distinct()
-        ->orderBy('users.updated_at', 'desc')
-        ->paginate(10);
+        ->join('informdetails','users.id','informdetails.user_id')
+        ->join('student','users.id','student.user_id')
+       // ->select('registers.*','users.fname','student.year')
+       // ->select('users.*','users.fname','student.year')
+       ->select('users.*','users.fname','student.year','student.term')
+       ->where('role',"student")
+       ->distinct()
+       ->orderBy('users.updated_at', 'desc')
+       ->paginate(10);
 
 
 
@@ -4737,18 +4788,25 @@ public function category()
     }
     public function informdetails1()
     {
-        // $users=DB::table('users')
+        $informdetails=DB::table('users')
 
-        // -> where('role','student')
-        // ->orWhere('role', '=', '0')
-        // ->paginate(10);
-        $informdetails=DB::table('informdetails')
-
-        ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname')
-        -> where('role','student')
-        ->orderBy('informdetails.updated_at', 'DESC')
+        // ->join('student','registers.user_id','student.user_id')
+         ->join('informdetails','users.id','informdetails.user_id')
+         ->join('student','users.id','student.user_id')
+        // ->select('registers.*','users.fname','student.year')
+        // ->select('users.*','users.fname','student.year')
+        ->select('users.*','users.fname','student.year','student.term')
+        ->where('role',"student")
+        ->distinct()
+        ->orderBy('users.updated_at', 'desc')
         ->paginate(10);
+        // $informdetails=DB::table('informdetails')
+
+        // ->join('users','informdetails.user_id','users.id')
+        // ->select('informdetails.*','users.fname')
+        // -> where('role','student')
+        // ->orderBy('informdetails.updated_at', 'DESC')
+        // ->paginate(10);
 
         //return view('student.informdetails',compact('informdetails'));
 

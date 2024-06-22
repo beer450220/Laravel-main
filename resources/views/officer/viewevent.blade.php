@@ -137,9 +137,9 @@
                             $year = $carbonDate->year + 543;
                             $month = $thaiMonths[$carbonDate->month];
                             $day = $carbonDate->day;
-                            $time = $carbonDate->format('เวลา H:i:s ');
+                            // $time = $carbonDate->format('เวลา H:i:s ');
 
-                            return "$day $month $year $time";
+                            return "$day $month $year ";
                         }
                     @endphp
                       <div class="col-md-4">
@@ -233,7 +233,7 @@
                             } );
                             </script>
                       </div>
-<div class="col-md-4">
+                      <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">สถานะรับทราบและยืนยันเวลานัด</label><br>
                         <input type="text" class="form-control" name="annotation" value="{{$establishments->Status_events}}"disabled required>
 
@@ -242,12 +242,21 @@
 
                         <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">ขอเปลี่ยนเวลานัดนิเทศ</label><br>
-                            <input type="text" class="form-control" name="annotation" value=" {{$establishments->appointment_time}}"disabled required>
+                            <input type="text" class="form-control" name="annotation" value="{{ formatThaiDate($establishments->appointment_time) }} "disabled required>
 
                           </div>
 
 
+                          <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">หมายเหตุ</label><br>
+                            <input type="text" class="form-control" name="annotation" value="{{$establishments->annotation}}"disabled required>
 
+                          </div>
+                          <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">เวลาการนิเทศ</label><br>
+                            <input type="text" class="form-control" name="annotation" value="{{$establishments->time}}-{{$establishments->time1}}"disabled required>
+
+                          </div>
                         </div>
 
 
@@ -271,6 +280,8 @@
 
 
                       <span> <a href="../../document3/{{ $establishments->filess1 }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </span>  </div>
+                    </div>
+
 
                 <div class="modal-footer">
 

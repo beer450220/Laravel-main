@@ -91,8 +91,8 @@
             <td class="col-1 text center">{{$informdetails->firstItem()+$loop->index}}</td>
             {{-- <td>{{ $row->id }} </td> --}}
             <td>{{ $row->fname }} </td>
-            <td>{{ \Carbon\Carbon::parse($row->created_at)->addYears(543)->translatedFormat(' Y ') }}</td>
-
+            {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->addYears(543)->translatedFormat(' Y ') }}</td> --}}
+            <td>{{($row->term) }}/{{($row->year) }}</td>
                 {{-- <td>
                     @if ($row->Status_informdetails === 'รออนุมัติ')
                         <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>

@@ -2202,6 +2202,107 @@ public function editcategory($category_id) {
      return view('officer.edit.editregister01',compact('registers','registers1','registers2'));
 
  }
+ public function editregister001($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+   // $registers=DB::table('registers')->first();
+
+    $registers=users::find($id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($reports);
+     // dd($supervisions);
+     $registers1=DB::table('users')
+
+     ->join('registers','users.id','registers.id')
+    //  ->join('student','users.id','student.user_id')
+    //  ->join('users','student.user_id','users.id')
+    //  ->select('registers.*','users.fname','student.year')
+     ->select('users.*','registers.user_id')
+    //  ->where('role',"student")
+    //  ->orderBy('student.updated_at', 'desc')
+     ->paginate(10);
+
+     $registers2 = DB::table('registers')
+        ->join('users', 'registers.user_id', '=', 'users.id')
+        ->select('registers.*', 'users.fname')
+        ->where('registers.user_id', $registers->id)
+        // ->orderBy('namefile', 'asc')
+        ->orderBy('registers.updated_at', 'desc')
+        ->paginate(10);
+// dd($registers2);
+//      $registers2 = DB::table('registers')
+//   ->join('users','registers.user_id','users.id')
+//         ->select('registers.*','users.fname')
+
+//         ->where('role',"student")
+//         ->orderBy('registers.updated_at', 'desc')
+//         ->paginate(10);
+     return view('teacher.edit.editregister01',compact('registers','registers1','registers2'));
+
+ }
+
+ public function editacceptancedocument1($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+
+
+    $registers=users::find($id);
+
+     $registers1=DB::table('users')
+
+     ->join('acceptance','users.id','acceptance.acceptance_id')
+
+     ->select('users.*','acceptance.user_id')
+
+     ->paginate(10);
+
+     $registers2 = DB::table('acceptance')
+        ->join('users', 'acceptance.user_id', '=', 'users.id')
+        ->select('acceptance.*', 'users.fname')
+        ->where('acceptance.user_id', $registers->id)
+        // ->orderBy('namefile', 'asc')
+        ->orderBy('acceptance.updated_at', 'desc')
+        ->paginate(10);
+
+     return view('teacher.edit.editacceptancedocument1',compact('registers','registers1','registers2'));
+
+ }
+ public function editinformdetails01($id) {
+    //ตรวจสอบข้อมูล
+ // dd($id);
+
+
+    $registers=users::find($id);
+
+     $registers1=DB::table('users')
+
+     ->join('informdetails','users.id','informdetails.informdetails_id')
+
+     ->select('users.*','informdetails.user_id')
+
+     ->paginate(10);
+
+     $registers2 = DB::table('informdetails')
+        ->join('users', 'informdetails.user_id', '=', 'users.id')
+        ->select('informdetails.*', 'users.fname')
+        ->where('informdetails.user_id', $registers->id)
+        // ->orderBy('namefile', 'asc')
+        ->orderBy('informdetails.updated_at', 'desc')
+        ->paginate(10);
+
+     return view('teacher.edit.editinformdetails1',compact('registers','registers1','registers2'));
+
+ }
  public function editreport2($id) {
     //ตรวจสอบข้อมูล
  // dd($id);

@@ -58,34 +58,29 @@
             <tr>
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
-                <th>ชื่อไฟล์</th>
-                {{-- <th>รูปภาพ</th> --}}
-                {{-- <th>ปีการศึกษา</th>
-                <th>ภาคเรียน</th> --}}
-               <th>สถานะ</th>
-               <th>หมายเหตุ</th>
-                <th style="width:10%">ดูไฟล์เอกสาร</th>
-
-                <th<th>ดูเอกสาร</th>
+                <th>ปี</th>
+                <th>ดูเอกสาร</th>
               {{-- <th style="width:10%">ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
             @foreach ($registers as $row)
-            <tr class="{{
-                $row->Status_registers === 'รออนุมัติ' ? 'table-warning' : (
+            <tr
+              {{-- class="{{  $row->Status_registers === 'รออนุมัติ' ? 'table-warning' : (
                     $row->Status_registers=== 'อนุมัติเอกสารแล้ว' ? 'table-success' : (
                         $row->Status_registers === 'ไม่อนุมัติ' ? 'table-danger' : ''
                     )
                 )
-            }}">
-              <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
-              <td>{{ $row->fname }}  </td>
-              <td>{{ $row->namefile }}</td>
+            }}"--}}
+            >
+            <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
+            {{-- <td>{{ $row->id }} </td> --}}
+            <td>{{ $row->fname }} </td>
+            <td>{{($row->term) }}/{{($row->year) }}</td>
               {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
               {{-- <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td> --}}
-              <td>
+              {{-- <td>
                   @if ($row->Status_registers === 'รออนุมัติ')
                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
                   @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
@@ -93,8 +88,8 @@
                   @elseif ($row->Status_registers === 'ไม่อนุมัติ')
                       <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
                   @endif
-              </td>
-              <td>{{ $row->annotation }}</td>
+              </td> --}}
+              {{-- <td>{{ $row->annotation }}</td> --}}
               {{-- <td><a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td> --}}
 {{-- download --}}
               {{-- <td>
@@ -108,7 +103,7 @@
             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
             <a href="/teacher/editregister2/{{$row->id}}"type="button"  class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">แก้ไขข้อมูล</a></td>
             @endif --}}
-            <td>  <a href="/teacher/editregister01/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a></td></td>
+            <td>  <a href="/teacher/editregister001/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a></td></td>
 
              {{--  <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
             </tr>

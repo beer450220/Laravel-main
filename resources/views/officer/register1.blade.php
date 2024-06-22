@@ -35,8 +35,8 @@
             </div>
 
             <div class="">
-                <div class="col-md-2">
-                    {{-- <label for="year">เลือกปี:</label> --}}
+                {{-- <div class="col-md-2">
+
                     <select class="form-control" name="keyword" id="year">
                         <option value="">เลือกปี</option>
                         @php
@@ -60,7 +60,7 @@
                             echo "<option value=\"$year\">$thaiYear</option>";
                         } @endphp
                     </select>
-                </div>
+                </div> --}}
                 {{-- <button type="submit" name="keyword"     class=" btn btn-outline-warning">ค้นหาข้อมูล</button> --}}
             </form>
             </div>
@@ -111,8 +111,8 @@
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
               {{-- <td>{{ $row->id }} </td> --}}
               <td>{{ $row->fname }} </td>
-              <td>{{ \Carbon\Carbon::parse($row->created_at)->addYears(543)->translatedFormat(' Y ') }}</td>
-
+              {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->addYears(543)->translatedFormat(' Y ') }}</td> --}}
+              <td>{{($row->term) }}/{{($row->year) }}</td>
 
               {{-- <td>{{ $row->namefile }}</td> --}}
 

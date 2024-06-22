@@ -60,13 +60,8 @@
             <tr>
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
-                <th>ชื่อไฟล์</th>
-                {{-- <th>ปีการศึกษา</th>
-                <th>ภาคเรียน</th> --}}
-                {{-- <th>รูปภาพ</th> --}}
-               <th>สถานะ</th>
-               <th>หมายเหตุ</th>
-                <th style="width:10%">ดูไฟล์เอกสาร</th>
+                <th>ปี</th>
+                <th>ดูเอกสาร</th>
 
                 {{-- <th style="width:10%">แก้ไข</th> --}}
 
@@ -77,24 +72,24 @@
             <tr>
               @foreach ($acceptances as $row)
               <td>{{$acceptances->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}}  </td>
-              <td>{{$row->namefile}}</td>
+              <td>{{ $row->fname }} </td>
+            <td>{{($row->term) }}/{{($row->year) }}</td>
               {{-- <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td> --}}
-              <td> @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
+              {{-- <td> @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
                 <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
             @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                 <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
             @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
                 <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
             @endif</td>
-              <td>{{$row->annotation}}</td>
-              <td><a href="/document1/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td>{{$row->annotation}}</td> --}}
+              {{-- <td><a href="/document1/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td> --}}
 
 
               {{-- <td><a href="/officer/editacceptancedocument1/{{$row->acceptance_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
               <td><a href="/officer/deletacceptance/{{$row->acceptance_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
-
+                <td>  <a href="/teacher/editacceptancedocument1/{{$row->id}}"type="button"  class="btn btn-outline-primary fa-solid  fe-16">ดูเอกสารทั้งหมด</a></td></td>
               </tr>
 
             @endforeach

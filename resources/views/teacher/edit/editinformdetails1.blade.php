@@ -96,15 +96,15 @@
                         <td>{{ $row->namefile }}</td>
 
 
-                        <td>  @if ($row->Status_registers === 'รออนุมัติ')
-                            <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                        @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                            <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
-                        @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                            <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                        <td>  @if ($row->Status_informdetails === 'รออนุมัติ')
+                            <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
+                        @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
+                            <span class="badge badge-pill badge-success">{{ $row->Status_informdetails }}</span>
+                        @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
+                            <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
                         @endif</td>
                         <td>
-                            <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>
+                            <a href="../document/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>
                         </td>
                             <td>{{ $row->annotation }}</td>
                         {{-- <td>
@@ -150,7 +150,7 @@
 
                 <div class="modal-footer">
                     {{-- <a href="/officer/confirm2/{{$row->id}}"  onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-pen-to-square fe-16">อนุมัติข้อมูล</a> --}}
-                  <a href="/teacher/register1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+                  <a href="/teacher/informdetails1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
                   {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button> --}}
                 </div></form>
               </div>
