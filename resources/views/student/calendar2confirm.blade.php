@@ -556,7 +556,12 @@ allowClear: true,
                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
                                          <td>
                                             @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
-                                            <a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16">ยืนยันวันนิเทศ</a></td>
+                                            {{-- <a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16">ยืนยันวันนิเทศ</a></td> --}}
+                                            <a href="/studenthome/updateconfirm/{{$row->id}}"id="confirmButton" type="button" class="btn btn-outline-success  fa-solid fa-check fe-16">ยืนยันวันนิเทศ</a></td>
+
+                                            {{-- <form method="POST"id="myForm" action="{{url('/studenthome/updateconfirm/'.$row->id)}}" enctype="multipart/form-data">
+                                            <button type="button" class="btn btn-outline-success"id="confirmButton">ยืนยันวันนิเทศ</button>
+                                        </form> --}}
                                             @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
 
 
@@ -577,7 +582,31 @@ allowClear: true,
 
 
 
+                              <script type="text/javascript">
+                                document.getElementById('confirmButton').addEventListener('click', function(event) {
+                                    event.preventDefault(); // ป้องกันการลิงก์ทันที
 
+                                    var link = this.href; // เก็บ URL จาก href ของลิงก์
+
+                                    Swal.fire({
+                                        title: 'ยืนยันข้อมูล?',
+                                        text: "คุณแน่ใจหรือไม่ว่าต้องการยืนยันข้อมูลนี้",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'ใช่, ยืนยันข้อมูล!',
+                                        cancelButtonText: 'ยกเลิก'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // ถ้าผู้ใช้กด 'ใช่, อนุมัติ!'
+                                            window.location.href = link; // เปลี่ยนหน้าไปยัง URL ใน href ของลิงก์
+                                        }
+                                    })
+                                });
+                            </script>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

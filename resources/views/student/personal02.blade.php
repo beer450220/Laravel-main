@@ -351,7 +351,7 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <form method="POST" action="{{ route('addpersonal3') }}" enctype="multipart/form-data">
+                                                        <form method="POST"id="myForm" action="{{ route('addpersonal3') }}" enctype="multipart/form-data">
                                                             @csrf
                                                 <label for="simpleinput">รหัสนักศึกษา</label>
                                                 {{-- <select class="form-control" id="validationSelect1" name="Student_id"required >
@@ -445,10 +445,11 @@
 
                                                     {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
                                                       {{-- <a href="/studenthome/editpersonal2/{{$users->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div> --}}
-                                                      <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">
+                                                      {{-- <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">
                                                         {{ __('บันทึกข้อมูล') }}
-                                                    </button>
-                                                    </div>
+                                                    </button> --}}
+                                                    <button type="button" class="btn  btn-primary"id="confirmButton">บันทึกข้อมูล</button></form>
+                                                </div>
                                                     </div>
                                             </div> <!-- / .card -->
                                           </div>
@@ -465,5 +466,32 @@
                                       <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
                                       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+                                      <script>
+                                        document.getElementById('confirmButton').addEventListener('click', function(event) {
+                                            // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+                                            let form = document.getElementById('myForm');
+                                            if (!form.checkValidity()) {
+                                                form.reportValidity();
+                                                return;
+                                            }
+
+                                            Swal.fire({
+                                                title: 'คุณแน่ใจหรือไม่?',
+                                                text: "คุณต้องการเพิ่มข้อมูลนี้หรือไม่?",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'ใช่, เพิ่มข้อมูล!',
+                                                cancelButtonText: 'ยกเลิก'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    form.submit();
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+                                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @endsection

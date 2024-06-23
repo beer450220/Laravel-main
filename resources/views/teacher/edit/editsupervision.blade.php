@@ -122,7 +122,7 @@
 
       <div class="modal-body">
 
-        <form method="POST" action="{{url('/teacher/updatesupervision02/'.$supervisions->id)}}"enctype="multipart/form-data">
+        <form method="POST"id="myForm" action="{{url('/teacher/updatesupervision02/'.$supervisions->id)}}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -569,7 +569,8 @@ $( '#multiple-select-field' ).select2( {
 
 
 
-            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
+            {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button> --}}
+            <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">แก้ไขข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->
@@ -578,7 +579,26 @@ $( '#multiple-select-field' ).select2( {
 </div> <!-- /. end-section -->
 
 
-
+<script>
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('myForm').submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

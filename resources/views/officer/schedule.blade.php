@@ -81,7 +81,7 @@
               <th>สถานะ</th>
 
               <th>แก้ไข</th>
-              <th>ลบ</th>
+              {{-- <th>ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -102,7 +102,7 @@
             </td>
               {{-- <td>{{$row->term}}</td> --}}
               <td><a href="/officer/editschedule1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              <td><a href="/officer/deleschedule1/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              {{-- <td><a href="/officer/deleschedule1/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
             </tr>
 
             @endforeach

@@ -337,7 +337,7 @@
                     </div>
                     <!-- <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div> -->
                     <div class="modal-footer text-center">
-                        <button class="btn btn-secondary " type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-secondary " type="button" data-dismiss="modal">ยกเลิก</button>
 
 
                         {{-- <a class="btn btn-primary " href="../Login/logout.php">Logout</a> --}}
@@ -345,7 +345,7 @@
                         <a class="btn btn-primary" href="{{ route('logout') }}"data-toggle="modal" data-target="#logoutModal"
                         onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
-                         {{ __('Logout') }}
+                         {{ __('ออกจากระบบ') }}
                       <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></a><form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form></li>

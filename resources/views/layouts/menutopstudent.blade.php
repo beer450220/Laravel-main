@@ -45,7 +45,7 @@
             {{-- <a class="dropdown-item" href="#">Profile</a>
             <a class="dropdown-item" href="#">Settings</a>
             <a class="dropdown-item" href="#">Activities</a> --}}
-            <a class="dropdown-item" href="{{ route('logout') }}"
+            {{-- <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit(); confirm('ยืนยันการออกจากระบบ !!');">
 
@@ -53,7 +53,12 @@
 
          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
              @csrf
-         </form>
+         </form> --}}
+         <form id="myForm1"  action="{{ route('logout') }}" method="POST" class="">
+            @csrf
+
+        <button type="button" class=" dropdown-item  btn mb-2 btn-primary"id="confirmButton1">ออกจากระบบ</button>
+</form>
           </div>
         </li>
       </ul>
@@ -61,3 +66,30 @@
 
   <!-- .wrapper -->  <!-- main -->
   {{-- </div>  </main> --}}
+  <script>
+    document.getElementById('confirmButton1').addEventListener('click', function(event) {
+        // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+        let form = document.getElementById('myForm1');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการออกจากระบบนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, ออกจากระบบ!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

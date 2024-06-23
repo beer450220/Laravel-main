@@ -411,6 +411,8 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
 
     Route::get("/officer/editinformdetails03/{informdetails_id}",[EditController::class,'editinformdetails03'])->name('editinformdetails03');
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
+
+    Route::get("/officer/editinformdetails002/{informdetails_id}",[EditController::class,'editinformdetails002'])->name('editinformdetails002');
     // Route::get("/officer/record2",[HomeController::class,'record2']);
 
 //เอกสารฝึกประสบการณ์

@@ -33,7 +33,7 @@
                 <div class="modal-body">
 
 
-                  <form method="POST" action="{{url('/officer/updateregister01/'.$registers->id)}}" enctype="multipart/form-data">
+                  <form method="POST"id="myForm" action="{{url('/officer/updateregister01/'.$registers->id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
@@ -84,7 +84,8 @@
                 <div class="modal-footer">
 
                   <a href="{{ url()->previous() }}"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
-                  <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button>
+                  {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันข้อมูล !!');">ยืนยันข้อมูล</button> --}}
+                  <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">ยืนยันข้อมูล</button>
                 </div></form>
               </div>
             </div>
@@ -96,7 +97,31 @@
 
 
 
+     <script type="text/javascript">
+        document.getElementById('confirmButton').addEventListener('click', function(event) {
+            event.preventDefault(); // ป้องกันการลิงก์ทันที
 
+            var link = this.href; // เก็บ URL จาก href ของลิงก์
+
+            Swal.fire({
+                title: 'ยืนยันการอนุมัติข้อมูล?',
+                text: "คุณแน่ใจหรือไม่ว่าต้องการอนุมัติข้อมูลนี้",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่, อนุมัติ!',
+                cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // ถ้าผู้ใช้กด 'ใช่, อนุมัติ!'
+                    window.location.href = link; // เปลี่ยนหน้าไปยัง URL ใน href ของลิงก์
+                }
+            })
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

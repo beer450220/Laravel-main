@@ -173,7 +173,7 @@
 
                             <div class="card-body">
                                 {{-- <form method="POST" action="{{ route('register') }}"> --}}
-                                    <form method="POST" action="{{ route('addcooperative1') }}" enctype="multipart/form-data">
+                                    <form method="POST"id="myForm" action="{{ route('addcooperative1') }}" enctype="multipart/form-data">
                                     @csrf
             <h4 class="text-">ข้อมูลสมัครเข้าใช้งานระบบ (สำหรับนักศึกษา)</h4>
             @foreach ($errors->all() as $error)
@@ -264,10 +264,10 @@
                                             <button type="reset" class="btn btn-primary">
                                                 {{ __('ยกเลิก') }}
                                             </button>
-                                            <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล  !!');">
+                                            {{-- <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล  !!');">
                                                 {{ __('ตกลง') }}
-                                            </button>
-
+                                            </button> --}}
+                                            <button type="button" class="btn  btn-primary"id="confirmButton">เพิ่มข้อมูล</button>
                                         </div>
                                     </div>
                                 </form>
@@ -276,7 +276,33 @@
                     </div>
                 </div>
             </div>          </div>          </div>
+            <script>
+                document.getElementById('confirmButton').addEventListener('click', function(event) {
+                    // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+                    let form = document.getElementById('myForm');
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
 
+                    Swal.fire({
+                        title: 'คุณแน่ใจหรือไม่?',
+                        text: "คุณต้องการเพิ่มข้อมูลนี้หรือไม่?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'ใช่, เพิ่มข้อมูล!',
+                        cancelButtonText: 'ยกเลิก'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            </script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <br><br><br><br>
             <br>
                           <footer class="py-3 my-4">

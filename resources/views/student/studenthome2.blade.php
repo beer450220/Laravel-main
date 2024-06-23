@@ -380,9 +380,45 @@ div.second {
                                 {{-- @endif --}}
                                 {{-- @endforeach --}}
                                 {{-- <button type="submit" class="btn btn-outline-success"onclick="return confirm('ยืนยันการส่งเอกสาร !!');">ยืนยันการส่งเอกสารทั้งหมด</button> --}}
-                                <button id="update-status-btn" class="btn btn-outline-success"onclick="return confirm('ยืนยันการส่งเอกสาร !!');">ยืนยันการส่งเอกสารทั้งหมด</button>
+                            </form>
+                                {{-- <button id="update-status-btn" class="btn btn-outline-success"onclick="return confirm('ยืนยันการส่งเอกสาร !!');">ยืนยันการส่งเอกสารทั้งหมด</button> --}}
+                                <form method="POST"id="myForm" action="{{ route('updateconfirm1') }}"enctype="multipart/form-data">
+                                    @csrf
+                                <button type="button" class="btn btn-outline-success"id="confirmButton">ยืนยันการส่งเอกสารทั้งหมด</button>
+                            </form>
                                 {{-- @endif --}}
+
                                 {{-- </form> --}}
+
+
+
+                                <script>
+                                    document.getElementById('confirmButton').addEventListener('click', function(event) {
+                                        // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+                                        let form = document.getElementById('myForm');
+                                        if (!form.checkValidity()) {
+                                            form.reportValidity();
+                                            return;
+                                        }
+
+                                        Swal.fire({
+                                            title: 'คุณแน่ใจหรือไม่?',
+                                            text: "คุณต้องการยืนยันการส่งเอกสารนี้หรือไม่?",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'ใช่, ยืนยันการส่งเอกสาร!',
+                                            cancelButtonText: 'ยกเลิก'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                form.submit();
+                                            }
+                                        });
+                                    });
+                                </script>
+                                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                             </div>
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                             <script>

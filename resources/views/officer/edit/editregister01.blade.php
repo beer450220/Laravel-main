@@ -142,20 +142,51 @@
                   2
                   @endif --}}
 
-
+{{-- onclick="return confirm('ยืนยันข้อมูล !!');" --}}
 
                 <div class="modal-footer">
-                    <a href="/officer/confirm2/{{$row->id}}"  onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-pen-to-square fe-16">อนุมัติข้อมูล</a>
-                  <a href="/officer/register1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+                    {{-- <a href="/officer/confirm2/{{$row->id}}"type="submit"onclick="confirmApproval(event, '{{$row->id}}')"   class="btn btn-outline-success fa-solid fa-pen-to-square fe-16">อนุมัติข้อมูล</a> --}}
+
+                    <a href="/officer/confirm2/{{$row->id}}" id="confirmButton" class="btn btn-outline-success fa-solid fa-pen-to-square fe-16">อนุมัติข้อมูล</a>
+                    <a href="/officer/register1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+
                   {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button> --}}
                 </div></form>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div>
+      </div>  <form id="myForm" method="POST" action="/submit">
+        @csrf
+        <!-- Your form fields here -->
+        {{-- <button type="submit">Submit</button> --}}
+    </form>
+    <script type="text/javascript">
+        document.getElementById('confirmButton').addEventListener('click', function(event) {
+            event.preventDefault(); // ป้องกันการลิงก์ทันที
+
+            var link = this.href; // เก็บ URL จาก href ของลิงก์
+
+            Swal.fire({
+                title: 'ยืนยันการอนุมัติข้อมูล?',
+                text: "คุณแน่ใจหรือไม่ว่าต้องการอนุมัติข้อมูลนี้",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่, อนุมัติ!',
+                cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // ถ้าผู้ใช้กด 'ใช่, อนุมัติ!'
+                    window.location.href = link; // เปลี่ยนหน้าไปยัง URL ใน href ของลิงก์
+                }
+            })
+        });
+    </script>
+<!-- Add SweetAlert2 CSS and JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 
 <!-- Button to trigger modal -->

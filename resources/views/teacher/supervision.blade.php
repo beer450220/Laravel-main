@@ -101,7 +101,7 @@
               <th >ดูข้อมูล</th>
               <th >เปลี่ยนแปลงวันนิเทศ</th>
               <th>แก้ไขข้อมูล</th>
-              <th>ลบ</th>
+              {{-- <th>ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -173,7 +173,7 @@
 
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}
               <td><a href="/teacher/editsupervision02/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              <td><a href="/teacher/deletsupervision/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              {{-- <td><a href="/teacher/deletsupervision/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
               {{-- <td><button type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"></td> --}}
             </tr>
 

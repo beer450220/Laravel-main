@@ -36,7 +36,7 @@
 
 
               <th>แก้ไข</th>
-              <th>ลบ</th>
+              {{-- <th>ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -47,7 +47,7 @@
               <td>{{$row->faculty}}</td>
 
               <td><a href="/officer/editmajor/{{$row->major_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              <td><a href="/officer/deletmajor/{{$row->major_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              {{-- <td><a href="/officer/deletmajor/{{$row->major_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
             </tr>
 
             @endforeach

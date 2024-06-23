@@ -110,7 +110,7 @@
         <strong class="card-title">เพิ่มข้อมูล</strong>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('addteacher') }}"enctype="multipart/form-data">
+        <form method="POST"id="myForm" action="{{ route('addteacher') }}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -173,13 +173,41 @@
           <div class="modal-footer">
             <a href="/teacher/teacher01" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล</button>
+            {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล</button> --}}
+            <button type="button" class="btn mb-2 btn-primary"id="confirmButton">เพิ่มข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->
     </div> <!-- /. card -->
   </div> <!-- /. col -->
 
+  <script>
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+        let form = document.getElementById('myForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการเพิ่มข้อมูลนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, เพิ่มข้อมูล!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

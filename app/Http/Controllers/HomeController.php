@@ -1770,18 +1770,26 @@ $users=DB::table('users')
                                             // ->paginate(10);
                                             $acceptances = acceptance::query()
                                             ->join('users', 'acceptance.user_id', '=', 'users.id')
+                                            ->join('student','users.id','student.user_id')
                                             ->where(function ($query) use ($keyword) {
                                                 $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
-                                                    //   ->orWhere('acceptance.term', 'LIKE', '%' . $keyword . '%')
-                                                    //   ->orWhere('acceptance.year', 'LIKE', '%' . $keyword . '%');
+                                                       ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
+                                                       ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
                                             })
-                                            ->select('acceptance.*', 'users.fname')
+                                            ->select('acceptance.*','users.fname','student.year','student.term')
                                             ->where('role',"student")
                                                             ->orderBy('acceptance_id', 'desc')
                                             ->paginate(10);
-
+                                        //     $acceptances=DB::table('acceptance')
+                                        //     ->join('users','acceptance.user_id','users.id')
+                                        //    // ->join('establishment','acceptance.establishment_id','establishment.id')
+                                        //    ->join('student','users.id','student.user_id')
+                                        //     ->select('acceptance.*','users.fname','student.year','student.term')
+                                        //     ->where('role',"student")
+                                        //                                                         ->orderBy('acceptance_id', 'desc')
+                                        //     ->paginate(5);
                                         return view('officer.acceptancedocument1',  ['acceptances' => $acceptances,]);
 
 
@@ -4279,10 +4287,26 @@ public function category()
         $acceptances=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
        // ->join('establishment','acceptance.establishment_id','establishment.id')
-        ->select('acceptance.*','users.fname')
+    //    ->join('student','users.id','student.user_id')
+        ->select('acceptance.*','users.fname'
+        // ,'student.year','student.term'
+        )
         ->where('role',"student")
                                                             ->orderBy('acceptance_id', 'desc')
         ->paginate(5);
+
+    //     $informdetails=DB::table('users')
+
+
+    //     ->join('informdetails','users.id','informdetails.user_id')
+    //     ->join('student','users.id','student.user_id')
+    //    // ->select('registers.*','users.fname','student.year')
+    //    // ->select('users.*','users.fname','student.year')
+    //    ->select('users.*','users.fname','student.year','student.term')
+    //    ->where('role',"student")
+    // //    ->distinct()
+    //    ->orderBy('users.updated_at', 'desc')
+    //    ->paginate(10);
         return view('officer.acceptancedocument1',compact('acceptances'));
     }
 

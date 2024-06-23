@@ -80,11 +80,11 @@
               {{-- <th>ภาคเรียน</th>
                 <th>ปีการศึกษา</th> --}}
               <th>คะแนน</th>
-              <th>สถานนะ</th>
+              {{-- <th>สถานนะ</th> --}}
               <th>หมายเหตุ</th>
                  <th>ไฟล์เอกสาร</th>
               <th>แก้ไขข้อมูล</th>
-              <th>ลบข้อมูล</th>
+              {{-- <th>ลบข้อมูล</th> --}}
 
             </tr>
           </thead>
@@ -110,7 +110,7 @@
               <td>{{$row->annotation}}</td>
               <td><a href="../document4/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td><a href="/officer/editEvaluate/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fa-solid  fa-pen-to-square fe-16"></a></td>
-              <td><a href="/officer/deletEvaluate/{{$row->supervision_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              {{-- <td><a href="/officer/deletEvaluate/{{$row->supervision_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
 
             </tr>
 

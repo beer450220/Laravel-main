@@ -52,11 +52,11 @@
                         <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
                         <select class="form-control " aria-label=".form-select-sm example" name="Status_informdetails">
-                          <option selected>กรุณาเลือก</option>
+                          {{-- <option selected>กรุณาเลือก</option> --}}
 
-                          <option value="อนุมัติเอกสารแล้ว"@if($informdetails->Status_informdetails=="อนุมัติเอกสารแล้ว") selected @endif required>อนุมัติเอกสารแล้ว</option>
+                          {{-- <option value="อนุมัติเอกสารแล้ว"@if($informdetails->Status_informdetails=="อนุมัติเอกสารแล้ว") selected @endif required>อนุมัติเอกสารแล้ว</option> --}}
                           <option value="ไม่อนุมัติ"@if($informdetails->Status_informdetails=="ไม่อนุมัติ") selected @endif required>ไม่อนุมัติ</option>
-                          <option value="รออนุมัติ"@if($informdetails->Status_informdetails=="รออนุมัติ") selected @endif required >รออนุมัติ</option>
+                          {{-- <option value="รออนุมัติ"@if($informdetails->Status_informdetails=="รออนุมัติ") selected @endif required >รออนุมัติ</option> --}}
                         </select>
                         @error('Status_report')
                         <span class="invalid-feedback" role="alert">

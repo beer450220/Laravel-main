@@ -56,7 +56,7 @@
 
 
               <th>แก้ไข</th>
-              <th>ลบ</th>
+              {{-- <th>ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -70,7 +70,7 @@
 
 
               <td><a href="/teacher/editteacher1/{{$row->id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-              <td><a href="/teacher/deletteacher/{{$row->id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td>
+              {{-- <td><a href="/teacher/deletteacher/{{$row->id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
             </tr>
 
             @endforeach

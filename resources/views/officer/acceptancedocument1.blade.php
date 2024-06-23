@@ -73,8 +73,8 @@
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
                 <th>ชื่อไฟล์</th>
-                {{-- <th>ปีการศึกษา</th>
-                <th>ภาคเรียน</th> --}}
+               {{-- <th>ปีการศึกษา</th> --}}
+               {{--   <th>ภาคเรียน</th> --}}
                 {{-- <th>รูปภาพ</th> --}}
                <th>สถานะ</th>
                <th>หมายเหตุ</th>
@@ -82,7 +82,7 @@
 
                 <th style="width:10%">แก้ไขข้อมูล</th>
 
-              <th>ลบข้อมูล</th>
+              {{-- <th>ลบข้อมูล</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -91,8 +91,8 @@
               <td>{{$acceptances->firstItem()+$loop->index}}</td>
               <td>{{$row->fname}}  </td>
               <td>{{$row->namefile}}</td>
-              {{-- <td>{{ $row->year}}</td>
-              <td>{{ $row->term}}</td> --}}
+              {{-- <td>{{ $row->term}}/{{ $row->year}}</td> --}}
+              {{-- <td>{{ $row->term}}</td> --}}
               <td>  @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
                 <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
             @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
@@ -105,7 +105,7 @@
 
 
               <td><a href="/officer/editacceptancedocument1/{{$row->acceptance_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              <td><a href="/officer/deletacceptance/{{$row->acceptance_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              {{-- <td><a href="/officer/deletacceptance/{{$row->acceptance_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
 
               </tr>
 

@@ -67,7 +67,7 @@
               <th>หมายเหตุ</th>
               <th>ไฟล์เอกสาร</th>
               <th>แก้ไข</th>
-              <th>ลบ</th>
+              {{-- <th>ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -93,7 +93,7 @@
               <td>{{$row->annotation}}</td>
               <td><a href="/document4/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td><a href="/teacher/editestimate1/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-              <td><a href="/teacher/deletes7/{{$row->supervision_id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              {{-- <td><a href="/teacher/deletes7/{{$row->supervision_id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
             </tr>
 
             @endforeach

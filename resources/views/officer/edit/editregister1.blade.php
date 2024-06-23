@@ -33,7 +33,7 @@
                 <div class="modal-body">
 
 
-                  <form method="POST" action="{{url('/officer/updateregister1/'.$registers->id)}}" enctype="multipart/form-data">
+                  <form method="POST"id="myForm" action="{{url('/officer/updateregister1/'.$registers->id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
@@ -84,7 +84,8 @@
                 <div class="modal-footer">
 
                   <a href="{{ url()->previous() }}"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
-                  <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดท</button>
+                  <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">ยืนยันข้อมูล</button>
+                  {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันข้อมูล !!');">ยืนยันข้อมูล</button> --}}
                 </div></form>
               </div>
             </div>
@@ -94,6 +95,28 @@
     </div>
     </div>
 
+
+    <script>
+        document.getElementById('confirmButton').addEventListener('click', function(event) {
+            Swal.fire({
+                title: 'คุณแน่ใจหรือไม่?',
+                text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+                cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('myForm').submit();
+                }
+            });
+        });
+    </script>
+<!-- Add SweetAlert2 CSS and JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 
 

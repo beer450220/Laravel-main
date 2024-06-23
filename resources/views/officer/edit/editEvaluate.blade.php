@@ -33,7 +33,7 @@
                 <div class="modal-body">
 
 
-                  <form method="POST" action="{{url('/officer/updateEvaluate/'.$supervisions->supervision_id)}}" enctype="multipart/form-data">
+                  <form method="POST"id="myForm" action="{{url('/officer/updateEvaluate/'.$supervisions->supervision_id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
@@ -51,16 +51,7 @@
 
         <div class="row">
             <div class="form-group col-md-4">
-
-
-              @error('name')
-              <span class="invalid-feedback" >
-                  {{ $message }}
-              </span>
-          @enderror
-            </div>
-            <div class="col-md-4">
-                <label for="inputAddress" >ชื่อนักศึกษา</label>
+  <label for="inputAddress" >ชื่อนักศึกษา</label>
                 {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
                 <select class="form-select" id="single-select-field4" data-placeholder="Choose one thing" required name="user_id" required>
                   <option value="">Select state</option>
@@ -72,6 +63,15 @@
 
                   @endforeach
                 </select>
+
+              @error('name')
+              <span class="invalid-feedback" >
+                  {{ $message }}
+              </span>
+          @enderror
+            </div>
+            <div class="col-md-4">
+
                 <label for="inputAddress">ชื่อเอกสาร</label>
               {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
               <select class="form-control" id="validationSelect1" name="namefile" required>
@@ -167,10 +167,46 @@
                                 <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">คะแนน</label>
 
-                            <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"required>
+                            {{-- <input type="text" class="form-control"id="scoreInput" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"maxlength="3"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"required> --}}
 
+                            <input type="text" class="form-control" id="scoreInput" name="score" value="{{$supervisions->score}}"maxlength="3" autofocus placeholder="score"required>
+          <div id="scoreFeedback" class="mt-2"></div>
+
+
+                            <script>
+
+                                document.getElementById('scoreInput').addEventListener('input', function() {
+                                    const score = parseFloat(this.value);
+                                    const feedback = document.getElementById('scoreFeedback');
+
+                                    if (isNaN(score)) {
+                            feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
+                            feedback.style.color = 'red';
+                        } else if (score > 200) {
+                            feedback.textContent = 'คะแนนเกินกำหนด (มากกว่า 200)';
+                            feedback.style.color = 'red';
+                        } else if (score >= 100) {
+                            feedback.textContent = 'ผ่าน';
+                            feedback.style.color = 'green';
+                        } else if (score >= 80) {
+                            feedback.textContent = 'ผ่าน';
+                            feedback.style.color = 'green';
+                        } else if (score >= 50) {
+                            feedback.textContent = 'ผ่าน';
+                            feedback.style.color = 'orange';
+                        } else if (score < 50) {
+                            feedback.textContent = 'ไม่ผ่าน';
+                            feedback.style.color = 'red';
+                        } else if (score < 40) {
+                            feedback.textContent = 'ไม่ผ่าน';
+                            feedback.style.color = 'red';
+                        } else {
+                            feedback.textContent = '';
+                        }
+                                });
+                            </script>
                         </div>
-                        <div class="col-md-2">
+                        {{-- <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">สถานะ</label>
                             <select class="form-control"  name="Status_supervision" required>
                               <option value="">กรุณาเลือก</option>
@@ -182,7 +218,7 @@
 
 
                             </select>
-                        </div>
+                        </div> --}}
                         {{-- <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
                             <select class="form-control "  name="year" required> --}}
@@ -210,7 +246,8 @@
 
                   <a href="/officer/Evaluate"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
                   <button type="reset" class="btn mb-2 btn-danger">ยกเลิก</button>
-                  <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
+                  {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button> --}}
+                  <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">แก้ไขข้อมูล</button>
                 </div></form>
               </div>
             </div>
@@ -218,8 +255,26 @@
         </div>
 
 
-
-
+        <script>
+            document.getElementById('confirmButton').addEventListener('click', function(event) {
+                Swal.fire({
+                    title: 'คุณแน่ใจหรือไม่?',
+                    text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+                    cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('myForm').submit();
+                    }
+                });
+            });
+        </script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

@@ -47,7 +47,7 @@
         <strong class="card-title">เพิ่มข้อมูล</strong> --}}
       </div>
       <div class="card-body">
-        <form method="POST" action="{{url('/studenthome/updateestimate1/'.$supervisions->supervision_id)}}"enctype="multipart/form-data">
+        <form method="POST" id="myForm" action="{{url('/studenthome/updateestimate1/'.$supervisions->supervision_id)}}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -162,8 +162,39 @@
 
         <div class="col-md-2">
           <label for="inputAddress"class="col-form-label ">คะแนน</label>
-          <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
+          <input type="text" class="form-control"id="scoreInput" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}" maxlength="3" autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
+          <div id="scoreFeedback" class="mt-2"></div>
+         <script>
+            document.getElementById('scoreInput').addEventListener('input', function() {
+                const score = parseFloat(this.value);
+                const feedback = document.getElementById('scoreFeedback');
 
+                if (isNaN(score)) {
+        feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
+        feedback.style.color = 'red';
+    } else if (score > 200) {
+        feedback.textContent = 'คะแนนเกินกำหนด (มากกว่า 200)';
+        feedback.style.color = 'red';
+    } else if (score >= 100) {
+        feedback.textContent = 'ผ่าน';
+        feedback.style.color = 'green';
+    } else if (score >= 80) {
+        feedback.textContent = 'ผ่าน';
+        feedback.style.color = 'green';
+    } else if (score >= 50) {
+        feedback.textContent = 'ผ่าน';
+        feedback.style.color = 'orange';
+    } else if (score < 50) {
+        feedback.textContent = 'ไม่ผ่าน';
+        feedback.style.color = 'red';
+    } else if (score < 40) {
+        feedback.textContent = 'ไม่ผ่าน';
+        feedback.style.color = 'red';
+    } else {
+        feedback.textContent = '';
+    }
+            });
+        </script>
       </div>
       {{-- <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">สถานะ</label>
@@ -207,7 +238,8 @@
           <div class="modal-footer">
             <a href="/teacher/estimate1" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันข้อมูล !!');">ตกลง</button>
+            {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันข้อมูล !!');">ตกลง</button> --}}
+            <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">แก้ไขข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->
@@ -217,7 +249,26 @@
 
 
 
-
+<script>
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('myForm').submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

@@ -322,7 +322,7 @@
                                             <div class="row">
                                               <div class="col-md-6">
                                                 <div class="form-group mb-3">
-                                          <form method="POST" action="{{url('/studenthome/update/'.$establishments->id)}}"enctype="multipart/form-data" >
+                                          <form method="POST"id="myForm" action="{{url('/studenthome/update/'.$establishments->id)}}"enctype="multipart/form-data" >
                                             @csrf
 
                                                   {{-- <label for="simpleinput">ชื่อไฟล์</label>
@@ -410,7 +410,8 @@
                                                   </div> --}}
                                                   <img src="/file/{{ $establishments->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
                                                 </div><div class="modal-footer">
-                                                    <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
+                                                    {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button> --}}
+                                                    <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">แก้ไขข้อมูล</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
                                                     <a href="/studenthome1" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
                                                   </div></form>
@@ -426,6 +427,26 @@
                                               </div>
 
 
+                                              <script>
+                                                document.getElementById('confirmButton').addEventListener('click', function(event) {
+                                                    Swal.fire({
+                                                        title: 'คุณแน่ใจหรือไม่?',
+                                                        text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+                                                        cancelButtonText: 'ยกเลิก'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('myForm').submit();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+                                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

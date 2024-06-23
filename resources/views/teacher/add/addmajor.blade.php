@@ -110,7 +110,7 @@
         <strong class="card-title">เพิ่มข้อมูล</strong>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('addmajor3') }}"enctype="multipart/form-data">
+        <form method="POST"id="myForm" action="{{ route('addmajor3') }}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -135,7 +135,7 @@
            <div class="row">
             <div class="form-group col-md-4">
               <label for="inputAddress">ชื่อสาขา</label>
-       <input type="text" class="form-control" @error('name_major') is-invalid @enderror name="name_major" value="{{ old('name_major') }}"  autofocus placeholder="สาขา">
+       <input type="text" class="form-control" @error('name_major') is-invalid @enderror name="name_major" value="{{ old('name_major') }}"  autofocus placeholder="สาขา"required>
 
 
               @error('name_major')
@@ -147,7 +147,7 @@
           <div class="form-group col-md-4">
             <label for="inputAddress">คณะ</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-            <select class="form-control select2" id="validationSelect1" name="faculty" >
+            <select class="form-control select2" id="validationSelect1" name="faculty" required>
                 <option value="">กรุณาเลือกคณะ</option>
                 <option value="-">-</option>
 
@@ -185,7 +185,8 @@
           <div class="modal-footer">
             <a href="/teacher/major" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล</button>
+            {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">เพิ่มข้อมูล</button> --}}
+            <button type="button" class="btn mb-2 btn-primary"id="confirmButton">เพิ่มข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->
@@ -193,8 +194,33 @@
   </div> <!-- /. col -->
 </div> <!-- /. end-section -->
 
+<script>
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+        let form = document.getElementById('myForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการเพิ่มข้อมูลนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, เพิ่มข้อมูล!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

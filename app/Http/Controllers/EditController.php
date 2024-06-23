@@ -607,7 +607,7 @@ public function editreport($report_id) {
         ->where('Status_informdetails', 'รอยืนยันเอกสารทั้งหมด')
         ->update(['Status_informdetails' => 'รออนุมัติ']);
 
-    return redirect('/studenthome1')->with('success6', 'ยืนยันการส่งเอกสารสำเร็จ.');
+    return redirect('/studenthome/informdetails')->with('success6', 'ยืนยันการส่งเอกสารสำเร็จ.');
  }
 public function   calendar2confirmupdate(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -634,7 +634,9 @@ $post->update
 
     ([
      "appointment_time" =>$request->appointment_time,
-     "annotation" =>$request->annotation
+     "annotation" =>$request->annotation,
+     "time" =>$request->time,
+     "time1" =>$request->time1
         //"establishment"=>$request->establishment,
         // "phone"=>$request->phone,
        // "files"=>$request->files,
@@ -1981,6 +1983,26 @@ public function editcategory($category_id) {
      return view('officer.edit.editinformdetails2',compact('informdetails'));
 
  }
+ public function editinformdetails002($informdetails_id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+    // $informdetails=DB::table('informdetails')->first();
+    $informdetails=informdetails::find($informdetails_id);
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+   // dd($informdetails);
+     // dd($supervisions);
+     return view('officer.edit.editinformdetails002',compact('informdetails'));
+
+ }
  public function editinformdetails03($id) {
 
     //ตรวจสอบข้อมูล
@@ -2681,7 +2703,9 @@ $post->update
     //dd($acceptances);
      // dd($supervisions);
      $user=DB::table('users')
-     ->where('role',"student") ->paginate(5);
+     ->where('role',"student")
+     ->ORDERBY('users.created_at' ,'DESC')
+      ->get();
      return view('officer.edit.editacceptancedocument1',compact('acceptances','user'));
 
  }
@@ -2697,7 +2721,7 @@ $post->update
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
-        'user_id' => 'required|unique:acceptance,user_id,NULL,id,namefile,' . $request->namefile,
+        // 'user_id' => 'required|unique:acceptance,user_id,NULL,id,namefile,' . $request->namefile,
         'namefile' => 'required|unique:acceptance,namefile,NULL,id,user_id,' . $request->user_id,
     ],[
             //'establishment.required' => "กรุณา",
@@ -3919,7 +3943,7 @@ if($request->hasFile("filess1")){
  public function   confirm2(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-   //dd($request);
+   //dd($request,$id);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],

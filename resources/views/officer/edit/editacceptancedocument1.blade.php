@@ -33,7 +33,7 @@
                 <div class="modal-body">
 
 
-                  <form method="POST" action="{{url('/officer/updateacceptance/'.$acceptances->acceptance_id)}}" enctype="multipart/form-data">
+                  <form method="POST"id="myForm" action="{{url('/officer/updateacceptance/'.$acceptances->acceptance_id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method("put") --}}
                     @if ($errors->any())
@@ -190,14 +190,34 @@
 
                   <a href="/officer/acceptancedocument1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
 
-                  <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
+                  {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">แก้ไขข้อมูล</button> --}}
+                  <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">แก้ไขข้อมูล</button>
                 </div></form>
               </div>
             </div>
           </div>
         </div>
 
-
+        <script>
+            document.getElementById('confirmButton').addEventListener('click', function(event) {
+                Swal.fire({
+                    title: 'คุณแน่ใจหรือไม่?',
+                    text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+                    cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('myForm').submit();
+                    }
+                });
+            });
+        </script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
