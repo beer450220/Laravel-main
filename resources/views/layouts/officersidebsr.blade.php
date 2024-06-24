@@ -53,11 +53,18 @@
 
 
                 <span>สถานประกอบการ</span></a>
-        </li> --}}
+        </li> --}}<li class="nav-item">
+            <a class="nav-link"href="/officer/category">
+                <i class="fa-solid fa-bell"></i>
+                {{-- <i class="fa-solid fa-download"></i> --}}
+
+
+                <span>จัดการแจ้งกำหนดการสหกิจ</span></a>
+        </li>
         <li class="nav-item">
             <a class="nav-link"href="/officer/in2">
-
-                <i class="fa-solid fa-download"></i>
+         <i class="fa-regular fa-address-book"></i>
+                {{-- <i class="fa-solid fa-download"></i> --}}
 
 
                 <span>ข้อมูลตรวจสอบเอกสาร</span></a>

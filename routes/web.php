@@ -24,10 +24,11 @@ use Illuminate\Support\Facades\DB;
 |
 */
 Route::resource('companies', CompanyCRUDController::class);
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [HomeController::class,'welcome'])->name('welcome');
 
 // Route::resource('auth.register1', registerController::class);
 Route::get('/register1', [registerController::class,'index'])->name('register1');
@@ -364,12 +365,12 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
     Route::get('/officer/deletmajor/{major_id}', [EditController::class,'delmajor'])->name('delmajor');
 
 
-     //หมวดหมู่
-    //  Route::get("/officer/category",[HomeController::class,'category'])->name('category');
-    //  Route::get("/officer/addcategory",[addController::class,'addcategory'])->name('addcategory');
-    //  Route::post("/officer/addcategory1",[addController::class,'addcategory1'])->name('addcategory1');
-    //  Route::get("/officer/editcategory/{category_id}",[EditController::class,'editcategory'])->name('editcategory');
-    //  Route::post("/officer/updatcategory/{category_id}",[EditController::class,'updatcategory'])->name('updatcategory');
+    // แจ้งกำหนดการสหกิจ
+     Route::get("/officer/category",[HomeController::class,'category'])->name('category');
+     Route::get("/officer/addcategory",[addController::class,'addcategory'])->name('addcategory');
+     Route::post("/officer/addcategory1",[addController::class,'addcategory1'])->name('addcategory1');
+     Route::get("/officer/editcategory/{notify_id}",[EditController::class,'editcategory'])->name('editcategory');
+     Route::post("/officer/updatcategory/{notify_id}",[EditController::class,'updatcategory'])->name('updatcategory');
     //  Route::get('/officer/deletcategory/{category_id}', [EditController::class,'delcategory'])->name('delcategory');
 
 
@@ -660,6 +661,7 @@ Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->na
     Route::post('/get-subcategories',[addController::class,'getSubcategories'])->name('getSubcategories');
 
     Route::post('api/fetch-state',[addController::class,'fatchState']);
+    Route::post('/api/get_student_ids',[addController::class,'get_student_ids']);
     // Route::post('api/fetch-cities',[addController::class,'fatchCity']);
 
 //เอกสารขออนุญาตนิเทศงาน(สก10)

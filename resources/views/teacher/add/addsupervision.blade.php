@@ -201,9 +201,11 @@
             {{-- <input class="form-control" id="example-date" type="text" name="establishment_name"  autofocus placeholder=""required> --}}
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" > --}}
-                <select class="form-control"id="state-dd" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required >
+
+                {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="student_name[]" value="{{$row->student_ids}}" > --}}
+                {{-- <select class="form-control"id="state-dd" data-placeholder="เลือกสถานประกอบการ"   name="em_id[]"required > --}}
                     {{-- <option value="">-- เลือกหมวดหมู่ย่อย --</option> --}}
-                    <option value="">Select state</option>
+                    {{-- <option value="">Select state</option> --}}
               {{-- @foreach ($establishment as $row)
 
                 <option value="{{$row->id}}">{{$row->em_name}}</option>
@@ -211,8 +213,21 @@
               </optgroup>
 
               @endforeach --}}
-            </select>
+            {{-- </select> --}}
+            <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ"  name="em_id[]"required >
+                <option value="">เลือกรายชื่อ</option>
 
+   @foreach ($establishment as $row)
+
+                    <option value="{{$row->student_ids}} "> {{$row->em_name}} </option>
+
+
+
+
+                {{-- </optgroup> --}}
+
+   @endforeach
+              </select>
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -224,20 +239,35 @@
             <label for="inputAddress" >ชื่อนักศึกษา</label>
 {{-- id="multiple-select-optgroup-field" --}}
 {{-- id="country-dd" --}}
-            <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
+            {{-- <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
               <option value="">เลือกรายชื่อ</option>
 
-                @foreach ($users1 as $row)
+ @foreach ($establishment as $row)
 
-                  <option value="{{$row->id}} "> {{$row->fname}} </option>
-
-
-
-                @endforeach
-              {{-- </optgroup> --}}
+                  <option value="{{$row->student_ids}} "> {{$row->em_name}} </option>
 
 
+
+
+
+
+ @endforeach --}}
             </select>
+            <input type="text" class="form-control" id="studentIdsInput" name="student_name[]" readonly>
+
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // เมื่อมีการเลือก option ใน select
+        $('#multiple-select-optgroup-field').change(function() {
+            // ดึงค่าของ option ที่ถูกเลือก
+            var selectedStudentIds = $(this).val();
+            // นำค่า student_ids ที่เลือกไปแสดงใน input text
+            $('#studentIdsInput').val(selectedStudentIds);
+        });
+    });
+</script>
+            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="student_name[]" value="{{$row->student_ids}}" > --}}
             {{--  <div class="form-group mb-3">
                                 <select id="state-dd" class="form-control"></select>
                             </div> --}}
@@ -270,9 +300,9 @@
                             dataType: 'json',
                             data: {user_id: idCountry,_token:"{{ csrf_token() }}"},
                             success:function(response){
-                                $('#state-dd').html('<option value="">Select State</option>');
+                //                 $('#state-dd').html('<option value="">Select State</option>');
                                 $.each(response.states,function(index, val){
-                                $('#state-dd').append('<option value="'+val.id+'"> '+val.em_name+' </option>')
+                                $('#state-dd').append('<option value="'+val.id+'"> '+val.fname+' </option>')
                                 });
                                 $('#city-dd').html('<option value="">Select City</option>');
                             }

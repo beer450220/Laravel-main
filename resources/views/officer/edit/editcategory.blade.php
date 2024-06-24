@@ -119,7 +119,7 @@
 
         <div class="modal-body">
 
-          <form method="POST" action="{{url('/officer/updatcategory/'.$major->category_id)}}"enctype="multipart/form-data">
+          <form method="POST"id="myForm" action="{{url('/officer/updatcategory/'.$major->notify_id)}}"enctype="multipart/form-data">
             @csrf
             @if ($errors->any())
             <div class="alert alert-danger col-md-4">
@@ -143,9 +143,10 @@
             </div>
              <div class="row">
               <div class="form-group col-md-4">
-                <label for="inputAddress">ประเภท</label>
-                <input type="text" class="form-control" @error('name') is-invalid @enderror value="{{$major->name}} " name="name" value="{{ old('name_major') }}"  autofocus placeholder="ประเภท">
-
+                {{-- <label for="inputAddress">ประเภท</label>
+                <input type="text" class="form-control" @error('name') is-invalid @enderror value="{{$major->name}} " name="name" value="{{ old('name_major') }}"  autofocus placeholder="ประเภท"> --}}
+                <label for="inputAddress">หัวเรื่อง</label>
+                <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{$major->name}}"  autofocus placeholder=""required >
 
                 @error('name')
                 <span class="invalid-feedback" >
@@ -153,10 +154,11 @@
                 </span>
             @enderror
               </div>
-              <div class="form-group col-md-4">
-                <label for="inputAddress">รูปภาพ</label>
-         <input type="file" class="form-control" @error('name') is-invalid @enderror name="images" value="{{$major->images}}"  autofocus placeholder="ประเภท">
-
+              <div class="form-group col-md-2">
+                {{-- <label for="inputAddress">รูปภาพ</label>
+         <input type="file" class="form-control" @error('name') is-invalid @enderror name="images" value="{{$major->images}}"  autofocus placeholder="ประเภท"> --}}
+         <label for="inputAddress">ภาคเรียนที่</label>
+         <input type="text" class="form-control" @error('name') is-invalid @enderror name="year"maxlength="6" value="{{$major->year}}"  autofocus placeholder="2/25xx"required>
 
                 @error('name_major')
                 <span class="invalid-feedback" >
@@ -164,49 +166,186 @@
                 </span>
             @enderror
               </div>
-            {{-- <div class="form-group col-md-4">
-              <label for="inputAddress">คณะ</label>
+              @php
+              use Carbon\Carbon;
 
-              <select class="form-select select2" id="validationSelect1" name="faculty" >
-                <option value="">กรุณาเลือกคณะ</option>
-                <option value="-">-</option>
+              function formatThaiDate($date) {
+                  $thaiMonths = [
+                      1 => 'มกราคม', 2 => 'กุมภาพันธ์', 3 => 'มีนาคม', 4 => 'เมษายน',
+                      5 => 'พฤษภาคม', 6 => 'มิถุนายน', 7 => 'กรกฎาคม', 8 => 'สิงหาคม',
+                      9 => 'กันยายน', 10 => 'ตุลาคม', 11 => 'พฤศจิกายน', 12 => 'ธันวาคม'
+                  ];
 
-                <option value="คณะเกษตรศาสตร์"@if($major->faculty=="คณะเกษตรศาสตร์") selected @endif required>คณะเกษตรศาสตร์</option>
-                <option value="คณะครุศาสตร์"@if($major->faculty=="คณะครุศาสตร์") selected @endif required>คณะครุศาสตร์</option>
-                <option value="คณะวิทยาศาสตร์และเทคโนโลยี"@if($major->faculty=="คณะวิทยาศาสตร์และเทคโนโลยี") selected @endif required>คณะวิทยาศาสตร์และเทคโนโลยี</option>
-                <option value="คณะมนุษยศาสตร์และสังคมศาสตร์"@if($major->faculty=="คณะมนุษยศาสตร์และสังคมศาสตร์") selected @endif required>คณะมนุษยศาสตร์และสังคมศาสตร์</option>
-                <option value="คณะเทคโนโลยีอุตสาหกรรม"@if($major->faculty=="คณะเทคโนโลยีอุตสาหกรรม") selected @endif required>คณะเทคโนโลยีอุตสาหกรรม</option>
-                <option value="คณะวิทยาการจัดการ"@if($major->faculty=="คณะวิทยาการจัดการ") selected @endif required>คณะวิทยาการจัดการ</option>
+                  $carbonDate = Carbon::parse($date)->setTimezone('Asia/Bangkok');
+                  $year = $carbonDate->year + 543;
+                  $month = $thaiMonths[$carbonDate->month];
+                  $day = $carbonDate->day;
+               //    $time = $carbonDate->format('เวลา H:i:s ');
 
-              </optgroup>
-
-
-            </select>
-
-              @error('name')
-              <span class="invalid-feedback" >
-                  {{ $message }}
-              </span>
-          @enderror
-            </div> --}}
-
+                  return "$day $month $year";
+              }
+          @endphp
+            <div class="form-group col-md-2">
+                <label for="inputAddress">วันเริ่มปฏิบัติสหกิจ</label>
+                <input type="date" class="form-control"id="example-date" @error('name') is-invalid @enderror name="start_date" value="{{ \Carbon\Carbon::parse($major->start_date)->format('Y-m-d') }}"  autofocus placeholder="2/25xx"required>
 
   </div>
+  <div class="form-group col-md-2">
+    <label for="inputAddress">วันสิ้นสุดปฏิบัติสหกิจ</label>
+    <input type="date" class="form-control"id="example-date1" @error('name') is-invalid @enderror name="end_date" value="{{ \Carbon\Carbon::parse($major->end_date)->format('Y-m-d') }}"  autofocus placeholder=""required>
+
+
+
+    @error('name')
+    <span class="invalid-feedback" >
+        {{ $message }}
+    </span>
+@enderror
+  </div>
+
+  <script>
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-date');
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        // const hours = String(now.getHours()).padStart(2, '0');
+        // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const minDateTime = `${year}-${month}-${day}`;
+        input.setAttribute('min', minDateTime);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-date1');
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        // const hours = String(now.getHours()).padStart(2, '0');
+        // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const minDateTime = `${year}-${month}-${day}`;
+        input.setAttribute('min', minDateTime);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-date2');
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        // const hours = String(now.getHours()).padStart(2, '0');
+        // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const minDateTime = `${year}-${month}-${day}`;
+        input.setAttribute('min', minDateTime);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('example-date3');
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        // const hours = String(now.getHours()).padStart(2, '0');
+        // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const minDateTime = `${year}-${month}-${day}`;
+        input.setAttribute('min', minDateTime);
+    });
+</script>
+
+
+
+
+
+</div>
+<div class="row">
+<div class="form-group col-md-4">
+  <label for="inputAddress">หัวเรื่อง1</label>
+<input type="text" class="form-control" @error('name') is-invalid @enderror name="name1" value="{{$major->name1}}"  autofocus placeholder=""required >
+
+
+  @error('name_major')
+  <span class="invalid-feedback" >
+      {{ $message }}
+  </span>
+@enderror
+</div>
+
+<div class="form-group col-md-2">
+<label for="inputAddress">วันเริ่มแจ้ง</label>
+<input type="date" class="form-control" @error('name') is-invalid @enderror name="start_notify"id="example-date2" value="{{ \Carbon\Carbon::parse($major->start_notify)->format('Y-m-d') }}"  autofocus placeholder="2/25xx"required>
+{{-- <select class="form-control select2" id="validationSelect1" name="faculty" >
+    <option value="">กรุณาเลือก</option>
+    <option value="-">-</option>
+
+    <option value="">คณะเกษตรศาสตร์</option>
+    <option value="คณะครุศาสตร์">คณะครุศาสตร์</option>
+    <option value="คณะวิทยาศาสตร์และเทคโนโลยี">คณะวิทยาศาสตร์และเทคโนโลยี</option>
+    <option value="คณะมนุษยศาสตร์และสังคมศาสตร์">คณะมนุษยศาสตร์และสังคมศาสตร์</option>
+    <option value="คณะเทคโนโลยีอุตสาหกรรม">คณะเทคโนโลยีอุตสาหกรรม</option>
+    <option value="คณะวิทยาการจัดการ">คณะวิทยาการจัดการ</option>
+
+  </optgroup>
+
+
+</select> --}}
+
+
+@error('name')
+<span class="invalid-feedback" >
+    {{ $message }}
+</span>
+@enderror
+</div>
+
+<div class="form-group col-md-2">
+<label for="inputAddress">วันสุดท้ายการแจ้ง</label>
+<input type="date" class="form-control" @error('name') is-invalid @enderror name="end_notify"id="example-date3" value="{{ \Carbon\Carbon::parse($major->end_notify)->format('Y-m-d') }}"  autofocus placeholder=""required>
+
+
+
+@error('name')
+<span class="invalid-feedback" >
+    {{ $message }}
+</span>
+@enderror
+</div>
         </div>
         <br>
         <br>
             <div class="modal-footer">
               <a href="/officer/category" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
-
-
-
-              <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
+              <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
+              <button  type="button" class="btn mb-2 btn-primary"id="confirmButton">แก้ไขข้อมูล</button>
+              {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button> --}}
             </div>
           </form>
         </div> <!-- /. card-body -->
       </div> <!-- /. card -->
     </div> <!-- /. col -->
   </div> <!-- /. end-section -->
-
+  <script>
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        Swal.fire({
+            // title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('myForm').submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @endsection

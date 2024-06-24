@@ -1575,9 +1575,9 @@ public function editmajor2($major_id) {
 
 }
 //หลักสูตรสาขา
-public function editcategory($category_id) {
+public function editcategory($notify_id) {
 
-    $major=category::find($category_id);
+    $major=category::find($notify_id);
 
    //dd($acceptances);
     // dd($supervisions);
@@ -1668,7 +1668,7 @@ public function editcategory($category_id) {
 
 
 
- public function   updatcategory(Request $request,$category_id) {
+ public function   updatcategory(Request $request,$notify_id) {
     //ตรวจสอบข้อมูล
 
     ///dd($request);
@@ -1688,20 +1688,20 @@ public function editcategory($category_id) {
     // $post->Status ="รออนุมัติ";
     // $post->Status ="รออนุมัติ";
    //dd($request->Status);
-   $post=category::findOrFail($category_id);
+   $post=category::findOrFail($notify_id);
 //    $post=acceptance::findOrFail($acceptance_id);
    // $post->user_id = Auth::user()->id;
    // $post->Status ="รออนุมัติ";
-    if($request->hasFile("images")){
-        if (File::exists("หมวดหมู่/".$post->images)) {
-            File::delete("หมวดหมู่/".$post->images);
-        }
-        $file=$request->file("images");
-         $post->images=time()."_".$file->getClientOriginalName();
-         $file->move(\public_path("/หมวดหมู่"),$post->images);
-         $request['images']=$post->images;
-      // dd($post);
-    }
+    // if($request->hasFile("images")){
+    //     if (File::exists("หมวดหมู่/".$post->images)) {
+    //         File::delete("หมวดหมู่/".$post->images);
+    //     }
+    //     $file=$request->file("images");
+    //      $post->images=time()."_".$file->getClientOriginalName();
+    //      $file->move(\public_path("/หมวดหมู่"),$post->images);
+    //      $request['images']=$post->images;
+    //   // dd($post);
+    // }
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รออนุมัติ";
 
@@ -1710,7 +1710,13 @@ public function editcategory($category_id) {
     $post->update
     ([
        "name" =>$request->name,
-       "images"=>$post->images,
+       "name1" =>$request->name1,
+       "year" =>$request->year,
+       "start_date" =>$request->start_date,
+       "end_date" =>$request->end_date,
+       "start_notify" =>$request->start_notify,
+       "end_notify" =>$request->end_notify,
+    //    "images"=>$post->images,
 
 
 

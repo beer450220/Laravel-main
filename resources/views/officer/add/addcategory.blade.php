@@ -107,10 +107,10 @@
   <div class="col-md-12">
     <div class="card shadow mb-4">
       <div class="card-header">
-        <strong class="card-title">เพิ่มข้อมูล</strong>
+        <strong class="card-title">เพิ่มข้อมูลจัดการแจ้งกำหนดการสหกิจ</strong>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('addcategory1') }}"enctype="multipart/form-data">
+        <form method="POST"id="myForm" action="{{ route('addcategory1') }}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -133,9 +133,9 @@
             </div>
           </div>
            <div class="row">
-            <div class="form-group col-md-4">
-              <label for="inputAddress">ชื่อประเภท</label>
-       <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="ประเภท">
+            <div class="form-group col-md-3">
+              <label for="inputAddress">หัวเรื่อง</label>
+       <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา" readonly autofocus placeholder="ประเภท">
 
 
               @error('name_major')
@@ -144,9 +144,11 @@
               </span>
           @enderror
             </div>
-            <div class="form-group col-md-4">
-                <label for="inputAddress">รูปภาพ</label>
-         <input type="file" class="form-control" @error('name') is-invalid @enderror name="images" value="{{ old('images') }}"  autofocus placeholder="ประเภท">
+            <div class="form-group col-md-1">
+                <label for="inputAddress">ภาคเรียนที่</label>
+                <input type="text" class="form-control" @error('name') is-invalid @enderror name="year"maxlength="6" value=""  autofocus placeholder="2/25xx"required>
+                {{-- <label for="inputAddress">รูปภาพ</label>
+         <input type="file" class="form-control" @error('name') is-invalid @enderror name="images" value="{{ old('images') }}"  autofocus placeholder="ประเภท"> --}}
 
 
                 @error('name_major')
@@ -155,14 +157,14 @@
                 </span>
             @enderror
               </div>
-          {{-- <div class="form-group col-md-4">
-            <label for="inputAddress">คณะ</label>
-
-            <select class="form-control select2" id="validationSelect1" name="faculty" >
-                <option value="">กรุณาเลือกคณะ</option>
+          <div class="form-group col-md-2">
+            <label for="inputAddress">วันเริ่มปฏิบัติสหกิจ</label>
+            <input type="date" class="form-control" @error('name') is-invalid @enderror name="start_date" value=""  autofocus placeholder="2/25xx"required>
+            {{-- <select class="form-control select2" id="validationSelect1" name="faculty" >
+                <option value="">กรุณาเลือก</option>
                 <option value="-">-</option>
 
-                <option value="คณะเกษตรศาสตร์">คณะเกษตรศาสตร์</option>
+                <option value="">คณะเกษตรศาสตร์</option>
                 <option value="คณะครุศาสตร์">คณะครุศาสตร์</option>
                 <option value="คณะวิทยาศาสตร์และเทคโนโลยี">คณะวิทยาศาสตร์และเทคโนโลยี</option>
                 <option value="คณะมนุษยศาสตร์และสังคมศาสตร์">คณะมนุษยศาสตร์และสังคมศาสตร์</option>
@@ -172,7 +174,7 @@
               </optgroup>
 
 
-            </select>
+            </select> --}}
 
 
             @error('name')
@@ -180,9 +182,80 @@
                 {{ $message }}
             </span>
         @enderror
-          </div> --}}
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="inputAddress">วันสิ้นสุดปฏิบัติสหกิจ</label>
+            <input type="date" class="form-control" @error('name') is-invalid @enderror name="end_date" value=""  autofocus placeholder=""required>
 
 
+
+            @error('name')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+          </div>
+
+
+
+
+
+
+
+      </div>
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label for="inputAddress">หัวเรื่อง1</label>
+   <input type="text" class="form-control" @error('name') is-invalid @enderror name="name1" value="ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ" readonly autofocus placeholder="ประเภท">
+
+
+          @error('name_major')
+          <span class="invalid-feedback" >
+              {{ $message }}
+          </span>
+      @enderror
+        </div>
+
+      <div class="form-group col-md-2">
+        <label for="inputAddress">วันเริ่มแจ้ง</label>
+        <input type="date" class="form-control" @error('name') is-invalid @enderror name="start_notify" value=""  autofocus placeholder="2/25xx"required>
+        {{-- <select class="form-control select2" id="validationSelect1" name="faculty" >
+            <option value="">กรุณาเลือก</option>
+            <option value="-">-</option>
+
+            <option value="">คณะเกษตรศาสตร์</option>
+            <option value="คณะครุศาสตร์">คณะครุศาสตร์</option>
+            <option value="คณะวิทยาศาสตร์และเทคโนโลยี">คณะวิทยาศาสตร์และเทคโนโลยี</option>
+            <option value="คณะมนุษยศาสตร์และสังคมศาสตร์">คณะมนุษยศาสตร์และสังคมศาสตร์</option>
+            <option value="คณะเทคโนโลยีอุตสาหกรรม">คณะเทคโนโลยีอุตสาหกรรม</option>
+            <option value="คณะวิทยาการจัดการ">คณะวิทยาการจัดการ</option>
+
+          </optgroup>
+
+
+        </select> --}}
+
+
+        @error('name')
+        <span class="invalid-feedback" >
+            {{ $message }}
+        </span>
+    @enderror
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="inputAddress">วันสุดท้ายการแจ้ง</label>
+        <input type="date" class="form-control" @error('name') is-invalid @enderror name="end_notify" value=""  autofocus placeholder=""required>
+
+
+
+        @error('name')
+        <span class="invalid-feedback" >
+            {{ $message }}
+        </span>
+    @enderror
+      </div>
 
 
 
@@ -190,13 +263,12 @@
 
 
 </div>
-      </div>
       <br>
       <br>
           <div class="modal-footer">
             <a href="/officer/category" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <button type="button" class="btn mb-2 btn-primary"id="confirmButton">เพิ่มข้อมูล</button>
           </div>
         </form>
       </div> <!-- /. card-body -->
@@ -205,7 +277,33 @@
 </div> <!-- /. end-section -->
 
 
+<script>
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+        let form = document.getElementById('myForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
+        Swal.fire({
+            // title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการเพิ่มข้อมูลนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, เพิ่มข้อมูล!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

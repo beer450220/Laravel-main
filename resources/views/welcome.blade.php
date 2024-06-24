@@ -26,6 +26,7 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                font-size: 16px; กำหนดขนาดตัวอักษรสำหรับทั้งหน้าเว็บ
             }
 
 
@@ -50,8 +51,36 @@
       background-size: cover;
    }
 }
+.nav-link.active {
+            color: #f00 !important; /* สีของลิงก์ที่ถูกเลือก */
+            font-weight: bold; /* เพิ่มความหนาของฟอนต์ */
+        }
 
+        .nav-link {
+            transition: color 0.3s, background-color 0.3s;
+        }
+        .nav-link:hover {
+            color: #000; /* เปลี่ยนสีข้อความเมื่อเมาส์ไปวาง */
+            background-color: #000000; /* เปลี่ยนสีพื้นหลังเมื่อเมาส์ไปวาง */
+        }
         </style>
+        <script>
+            // ฟังก์ชั่นสำหรับตั้งคลาส active ให้กับลิงก์ที่ถูกคลิก
+            document.addEventListener('DOMContentLoaded', function() {
+                var links = document.querySelectorAll('.nav-link');
+
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        // ลบคลาส active จากลิงก์ทั้งหมด
+                        links.forEach(function(link) {
+                            link.classList.remove('active');
+                        });
+                        // เพิ่มคลาส active ให้กับลิงก์ที่ถูกคลิก
+                        this.classList.add('active');
+                    });
+                });
+            });
+        </script>
     </head>
 
 
@@ -63,7 +92,7 @@
               {{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
             </a>
   {{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">  ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> <h4> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</h4>
               {{-- <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
               <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li> --}}
               {{-- <li><div class="dropdown">
@@ -81,7 +110,7 @@
 
             <div class="col-2 text-end">
               {{-- <a type="button"href="/cooperative1" class="btn btn-outline-primary me-2">สมัครสหกิจ</a> --}}
-              <a type="button" href="/login" class="btn btn-outline-warning me-2">ลงชื่อเข้าใช้งาน</a>
+              <h4>  <a type="button" href="/login" class="btn btn-outline-warning me-2">ลงชื่อเข้าใช้งาน</a></h4>
             </div>
           </header>
 
@@ -92,11 +121,11 @@
 
             </a>
   {{-- ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์ --}}
-            <ul class="nav col-11 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 text-light">หน้าแรก</a></li>
-              <li><a href="/cooperative" class="nav-link px-2 text-light">แบบฟอร์มสหกิจ</a></li>
-              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-light">คู่มือการใช้งาน</a></li>
-              <li><a type="button"href="/cooperative1" class="nav-link px-2 text-light">สมัครสหกิจ</a></li>
+            <ul class="nav col-9 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><h4><a href="/" class="nav-link  text-light">หน้าแรก</a></h4></li>
+              <li><h4><a href="/cooperative" class="nav-link px-2 text-light">แบบฟอร์มสหกิจ</a></h4></li>
+              <li><h4><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-light">คู่มือการใช้งาน</a></h4></li>
+              <li><h4><a type="button"href="/cooperative1" class="nav-link px-2 text-light">สมัครสหกิจ</a></h4></li>
               {{-- <li><div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     สมัครสหกิจ
@@ -263,7 +292,38 @@
             </div> --}}
 
 
-
+            <style>
+                .carousel-caption-center {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    /* width: 50; */
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    width: 100%; /* กำหนดความกว้างสูงสุดของข้อความ */
+            max-width: 900px; /* กำหนดความกว้างสูงสุดของข้อความ */
+                }
+                .carousel-indicators {
+            position: absolute;
+            bottom: -200px; /* ปรับตำแหน่งตามความต้องการ */
+            left: 35%;
+            /* right:50%; */
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .carousel-item {
+            height: 60vh; /* ปรับความสูงของคารูเซล */
+            /* min-height: 300px; กำหนดความสูงขั้นต่ำ */
+            /* background: #000; สีพื้นหลังสามารถปรับเปลี่ยนได้ตามความต้องการ */
+            /* color: white; สีของข้อความ */
+            /* display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center; */
+            /* width: 100%; */
+        }
+            </style>
 
 
             {{-- <section class="h-100"> --}}
@@ -276,44 +336,94 @@
                     <source src="{{ asset('video/1.mp4') }}" type="video/mp4">
                   </video>
 
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
                     {{-- <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}"> --}}
                     <div class="carousel-inner">
                       <div class="carousel-item active">sss
                         <img src="{{ asset('icons/1.png') }}" class="d-block w-10" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>ให้นักนักศึกษาลงทะเบียนเข้าสู่ระบบสารสนเทศสหกิจศึกษา</h5>
-                            <p>ประจำปีการศึกษา 25567</p>
+                        <div class="carousel-caption carousel-caption-center  ">
+                            @php
+                            use Carbon\Carbon;
+
+                            function formatThaiDate($date) {
+                                $thaiMonths = [
+                                    1 => 'มกราคม', 2 => 'กุมภาพันธ์', 3 => 'มีนาคม', 4 => 'เมษายน',
+                                    5 => 'พฤษภาคม', 6 => 'มิถุนายน', 7 => 'กรกฎาคม', 8 => 'สิงหาคม',
+                                    9 => 'กันยายน', 10 => 'ตุลาคม', 11 => 'พฤศจิกายน', 12 => 'ธันวาคม'
+                                ];
+
+                                $carbonDate = Carbon::parse($date)->setTimezone('Asia/Bangkok');
+                                $year = $carbonDate->year + 543;
+                                $month = $thaiMonths[$carbonDate->month];
+                                $day = $carbonDate->day;
+                                // $time = $carbonDate->format('เวลา H:i:s ');
+
+                                return "$day $month $year ";
+                            }
+                        @endphp
+
+<h3>ให้นักนักศึกษาลงทะเบียนเข้าสู่ระบบสารสนเทศสหกิจศึกษา</h3>
+@foreach ($major as $row)
+
+        <h4>ประจำปีการศึกษา {{$row->year}}</h4>
+        <h3> <p> {{$row->name}}</p> </h3>
+        <h4><p>วันเริ่มปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->start_date) }}</p>
+        <p>วันสิ้นสุดปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->end_date) }} </p></h4>
+        <h3> <p> {{$row->name1}}</p> </h3>
+        <h4> <p> วันเริ่มแจ้ง : วันที่ {{ formatThaiDate($row->start_notify) }}</p>
+        <p> วันสุดท้ายการแจ้ง : วันที่ {{ formatThaiDate($row->end_notify) }}</p> </h4>
+@endforeach
+
+
                         </div>
                       </div>
                       <div class="carousel-item">222
                         <img src="{{ asset('icons/1.png') }}" class="d-block w-10" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>ให้นักนักศึกษาลงทะเบียนเข้าสู่ระบบสารสนเทศสหกิจศึกษา</h5>
-                          <p>ประจำปีการศึกษา 25567</p>
+                        <div class="carousel-caption carousel-caption-center">
+                            <h3>ให้นักนักศึกษาลงทะเบียนเข้าสู่ระบบสารสนเทศสหกิจศึกษา</h3>
+                            @foreach ($major as $row)
+
+                                    <h4>ประจำปีการศึกษา {{$row->year}}</h4>
+                                    <h3> <p> {{$row->name}}</p> </h3>
+                                    <h4><p>วันเริ่มปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->start_date) }}</p>
+                                    <p>วันสิ้นสุดปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->end_date) }} </p></h4>
+                                    <h3> <p> {{$row->name1}}</p> </h3>
+                                    <h4> <p> วันเริ่มแจ้ง : วันที่ {{ formatThaiDate($row->start_notify) }}</p>
+                                    <p> วันสุดท้ายการแจ้ง : วันที่ {{ formatThaiDate($row->end_notify) }}</p> </h4>
+                            @endforeach
                         </div>
                       </div>
-                      {{-- <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Third slide label</h5>
-                          <p>Some representative placeholder content for the third slide.</p>
+                      <div class="carousel-item">
+                        <img src="{{ asset('icons/1.png') }}" class="d-block w-10" alt="...">
+                        <div class="carousel-caption carousel-caption-center">
+                            <h3>ให้นักนักศึกษาลงทะเบียนเข้าสู่ระบบสารสนเทศสหกิจศึกษา</h3>
+                            @foreach ($major as $row)
+
+                                    <h4>ประจำปีการศึกษา {{$row->year}}</h4>
+                                    <h3> <p> {{$row->name}}</p> </h3>
+                                    <h4><p>วันเริ่มปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->start_date) }}</p>
+                                    <p>วันสิ้นสุดปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->end_date) }} </p></h4>
+                                    <h3> <p> {{$row->name1}}</p> </h3>
+                                    <h4> <p> วันเริ่มแจ้ง : วันที่ {{ formatThaiDate($row->start_notify) }}</p>
+                                    <p> วันสุดท้ายการแจ้ง : วันที่ {{ formatThaiDate($row->end_notify) }}</p> </h4>
+                            @endforeach
                         </div>
-                      </div> --}}
+                      </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
                     </button>
+
                   </div>  </div>  </div>  </div>  </div>  </div></div>  </div></div>  </div></div>  </div></div>  </div> </div> </div> </div>
               {{-- <div class=" row ">
               <div class=" col-sm-8 "> </div>
@@ -333,13 +443,13 @@
 <br>
               <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                  <li class="nav-item"><a  class="nav-link px-2 text-light">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
+                  <li class="nav-item"><h4><a  class="nav-link px-2 text-light">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></h4></li>
                   {{-- <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
                   <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
                   <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                   <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li> --}}
                 </ul>
-                <p class="text-center text-light">© 2024 Company, Inc</p>
+            <h4><p class="text-center text-light">© 2024 Company, Inc</p></h4>
               </footer>
     </body>
 </html>

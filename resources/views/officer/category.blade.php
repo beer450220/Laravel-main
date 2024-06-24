@@ -10,7 +10,7 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">หมวดหมู่</h5>
+        <h5 class="card-title">แจ้งกำหนดการสหกิจ</h5>
         <div class="container">
             <div class="row">
               <div class="col-10">
@@ -28,15 +28,15 @@
           <thead class="thead-dark">
             <tr>
               <th>ลำดับ</th>
-              <th>ชื่อสาขา</th>
-
-
+              <th>หัวเรื่อง</th>
+              <th>หัวเรื่อง1</th>
+              <th>ภาคเรียนที่</th>
 
 
 
 
               <th>แก้ไข</th>
-              <th>ลบ</th>
+              {{-- <th>ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -44,9 +44,10 @@
             <tr>
               <td class="col-1 text center">{{$major->firstItem()+$loop->index}}</td>
               <td>{{$row->name}}</td>
-
-              <td><a href="/officer/editcategory/{{$row->category_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              <td><a href="/officer/deletcategory/{{$row->category_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
+              <td>{{$row->name1}}</td>
+              <td>{{$row->year}}</td>
+              <td><a href="/officer/editcategory/{{$row->notify_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
+              {{-- <td><a href="/officer/deletcategory/{{$row->category_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
             </tr>
 
             @endforeach

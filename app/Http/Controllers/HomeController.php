@@ -4266,7 +4266,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 //หมวด
 public function category()
 {
-    $major=DB::table('category')
+    $major=DB::table('notify')
     // ->join('users','registers.user_id','users.id')
     // ->select('registers.*','users.fname')
     ->paginate(5);
@@ -5364,7 +5364,30 @@ public function category()
         return view('cooperative.cooperative',["msg"=>"I am Admin role"],compact('download','download1','download2'));
 
     }
+    public function welcome()
+    {
+        $major=DB::table('notify')
+            // -> where('status','1')
+            // ->orderBy('namefile', 'asc')
+        // ->orderBy('em_name','desc')
+        //->pluck('name')
+   // ->implode(', ');
+        //->select('name')
+        // ->join('major','establishment.id','major.major_id')
+        // ->select('establishment.*','major.name_major')
+        ->get();
+        $download1=DB::table('download')
+            -> where('status','2')
+            ->orderBy('namefile', 'asc')
+        ->paginate(6);
+        $download2=DB::table('download')
 
+        -> where('status','3')
+->orderBy('namefile', 'asc')
+    ->paginate(6);
+        return view('welcome',["msg"=>"I am Admin role"],compact('major','download1','download2'));
+
+    }
     public function cooperative1()
     {
         // $major=DB::table('major')

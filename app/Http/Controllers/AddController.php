@@ -1247,32 +1247,37 @@ public function addcategory()
         // dd($request);
 
          $request->validate([
-          //  'name' => 'required|unique:name',
+           'name' => 'required|unique:notify',
           //  'test' => 'required|unique:test',
       ]
     ,[
-
-      // 'name.required'=>"กรุณากรอกชื่อ",
+        'name.unique' => "ชื่อเรื่องซ้ำ",
+    //    'name.required'=>"กรุณากรอกชื่อ",
       // 'test.required'=>"กรุณาเทส",
     ]
 
   );
 
-  if($request->hasFile("images"))
-  {
-    $file=$request->file("images");
-     $imageName=time().'_'.$file->getClientOriginalName();
-    $file->move(\public_path("/หมวดหมู่"),$imageName);
+//   if($request->hasFile("images"))
+//   {
+//     $file=$request->file("images");
+//      $imageName=time().'_'.$file->getClientOriginalName();
+//     $file->move(\public_path("/หมวดหมู่"),$imageName);
 // $post=Event::findOrFail($id);
 
 $post =new category
 ([
     "name" => $request->name,
-
-    "images" =>$imageName,
-
+"name1" => $request->name1,
+"year" => $request->year,
+"start_date" => $request->start_date,
+"end_date" => $request->end_date,
+"start_notify" => $request->start_notify,
+"end_notify" => $request->end_notify,
+    // "images" =>$imageName,
+    // 'name', 'name1', 'year', 'start_date', 'end_date', 'start_notify', 'end_notify',
 ]);
-}
+// }
 
     //    $user = new Users;
     // $post = new category;
@@ -1354,6 +1359,7 @@ public function addsupervision()
       ->get();
       $establishment=DB::table('establishment')
       //->where('role',"student")
+
       ->get();
      // dd($users);
      // ->paginate(5);
@@ -1387,7 +1393,20 @@ public function addsupervision()
       ->get();
       $establishment=DB::table('establishment')
       //->where('role',"student")
+      ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
+    ->groupBy('em_name')
+    ->havingRaw('COUNT(*) > 1')
+    ->orderBy('id', 'desc')
+
+    // ->select('id', 'em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
+    // ->groupBy('em_name')
+    // ->havingRaw('COUNT(*) > 1')
+    // ->orderByDesc('id')
+
       ->get();
+    //dd( $establishment);
+    //   $establishmen = establishment::select(DB::raw("COUNT(DISTINCT em_name) as count"))
+    //   ->get();
      // dd($users);
      // ->paginate(5);
      $major=DB::table('users')->paginate(5);
@@ -1413,8 +1432,10 @@ public function addsupervision()
 
     public function fatchState(Request $request)
     {
-        $data['states'] = establishment::where('user_id',$request->user_id)->get(['em_name','id']);
+        // $data['states'] = establishment::where('user_id',$request->user_id)->get(['em_name','id']);
 
+          $data['states'] = student::where('student_id',$request->student_id)->get(['fname','id']);
+        //  dd($request, $data);
         return response()->json($data);
     }
     // public function fatchCity(Request $request)
@@ -1475,7 +1496,7 @@ public function addsupervision()
 
     public function addsupervision02(Request $request) {
         //ตรวจสอบข้อมูล
-        //  dd($request);
+          dd($request);
 
          $request->validate([
           //  'name' => 'required|unique:name',
