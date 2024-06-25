@@ -97,11 +97,11 @@
 
 
                         <td>  @if ($row->Status_registers === 'รออนุมัติ')
-                            <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                            <h3> <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
                         @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                            <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
+                        <h3> <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span></h3>
                         @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                            <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                        <h3>  <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span></h3>
                         @endif</td>
                         <td>
                             <a href="../document/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>

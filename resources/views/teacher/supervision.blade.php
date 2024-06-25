@@ -142,15 +142,15 @@
             {{-- <td class="text-danger"><a href="/teacher/editsupervision02/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td> --}}
               <td class="">
                 @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
-                <h4><span class="badge rounded-pill bg-warning text-dark">{{ $row->Status_events}}</span></h4>
+                <h3><span class="badge rounded-pill bg-warning text-dark">{{ $row->Status_events}}</span></h3>
             @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
-            <h4> <span class="badge rounded-pill bg-success ">{{ $row->Status_events}}</span></h4>
+            <h3> <span class="badge rounded-pill bg-success ">{{ $row->Status_events}}</span></h3>
             @elseif ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
-            <h4> <span class="badge rounded-pill bg-danger ">{{ $row->Status_events}}</span></h4>
+            <h3> <span class="badge rounded-pill bg-danger ">{{ $row->Status_events}}</span></h3>
             @elseif ($row->Status_events === 'รับทราบขอเปลี่ยนเวลานัดนิเทศ')
-            <h4> <span class="badge rounded-pill bg-success ">{{ $row->Status_events}}</span></h4>
+            <h3> <span class="badge rounded-pill bg-success ">{{ $row->Status_events}}</span></h3>
             @elseif ($row->Status_events === 'ไม่สาสามารถขอเปลี่ยนเวลานัดนิเทศ')
-            <h4> <span class="badge rounded-pill bg-danger ">{{ $row->Status_events}}</span></h4>
+            <h3> <span class="badge rounded-pill bg-danger ">{{ $row->Status_events}}</span></h3>
             @endif
 
 

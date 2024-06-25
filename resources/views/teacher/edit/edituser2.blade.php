@@ -318,15 +318,18 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <form method="POST" action="{{url('/teacher/updateuser00004/'.$users->id)}}" enctype="multipart/form-data">
+                                                      <form method="POST"id="myForm" action="{{url('/teacher/updateuser00004/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
 
 
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">รหัสผ่าน</label>
-                                                      <input type="password" id="example-palaceholder"value="" class="form-control"name="password" placeholder="">
+                                                      <input type="password" id="example-palaceholder"value="" class="form-control"name="password" placeholder=""required>
                                                     </div>
-
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-palaceholder">ยืนยันรหัสผ่าน</label>
+                                                        <input id="password" type="password"value="" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" name="password_confirmation" required autocomplete="new-password">
+                                                      </div>
 
 
 
@@ -336,7 +339,8 @@
                                                       <a href="/teacher/home" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
                                                       &nbsp;&nbsp;
                                                       <button  class="btn btn-outline-success me-md-2 delete-btn"  type="reset">ยกเลิก</button>&nbsp;
-                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
+                                                      {{-- <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button> --}}
+                                                      <button  type="button" class="btn btn-outline-primary fe fe-edit fe-16"id="confirmButton">แก้ไขข้อมูล</button>
                                                    </div>  </div></form>
                                                 </div>
                                               </div>
@@ -388,6 +392,29 @@
           }
 
                               </script>
+
+
+<script>
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        Swal.fire({
+            // title: 'คุณแน่ใจหรือไม่?',',
+            text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('myForm').submit();
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
                                   </div>
 
 

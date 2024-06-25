@@ -196,7 +196,7 @@
   <script>
     document.getElementById('confirmButton').addEventListener('click', function(event) {
         Swal.fire({
-            title: 'คุณแน่ใจหรือไม่?',
+            // title: 'คุณแน่ใจหรือไม่?',',
             text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
             icon: 'warning',
             showCancelButton: true,

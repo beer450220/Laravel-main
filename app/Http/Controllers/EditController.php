@@ -784,6 +784,7 @@ $post->update
 
     $request->validate([
         'images' => ['required','mimes:jpg,jpeg,png'],
+        'password' => 'required|confirmed|min:8',
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
@@ -888,6 +889,7 @@ $post->update
    // dd($request);
 
     $request->validate([
+        'password' => 'required|confirmed|min:8',
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
@@ -1297,8 +1299,8 @@ $post->update
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
         'filess' => 'mimes:pdf|max:1024',
-        'user_id' => 'required|unique:supervision,user_id,NULL,id,namefile,' . $request->namefile,
-    'namefile' => 'required|unique:supervision,namefile,NULL,id,user_id,' . $request->user_id,
+        // 'user_id' => 'required|unique:supervision,user_id,NULL,id,namefile,' . $request->namefile,
+    // 'namefile' => 'required|unique:supervision,namefile,NULL,id,user_id,' . $request->user_id,
     ],[
             //'establishment.required' => "กรุณา",
             'filess.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',

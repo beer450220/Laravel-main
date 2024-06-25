@@ -53,6 +53,11 @@
 
         </div>
         <br>
+        {{-- <style>
+            tr {
+                color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+            }
+        </style> --}}
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>

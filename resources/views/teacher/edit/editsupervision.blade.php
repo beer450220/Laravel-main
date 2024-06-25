@@ -241,7 +241,7 @@
 
                 <option value="">Select state</option>
                 @foreach ($establishment as $row)
-                <option value="{{$row->id}}"{{$row->id==$supervisions->em_id ?'selected':''}}>{{$row->em_name}}</option>
+                <option value="{{$row->em_id}}"{{$row->em_id==$supervisions->em_id ?'selected':''}}>{{$row->em_name}}</option>
               @endforeach
             </select>
 
@@ -282,7 +282,7 @@
                         $('#multiple-select-optgroup-field').change(function(event) {
                             var idCountry = this.value;
                             $('#state-dd').html('');
-                 
+
                             $.ajax({
                             url: "/api/fetch-state",
                             type: 'POST',
@@ -582,7 +582,7 @@ $( '#multiple-select-field' ).select2( {
 <script>
     document.getElementById('confirmButton').addEventListener('click', function(event) {
         Swal.fire({
-            title: 'คุณแน่ใจหรือไม่?',
+            // title: 'คุณแน่ใจหรือไม่?',',
             text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
             icon: 'warning',
             showCancelButton: true,

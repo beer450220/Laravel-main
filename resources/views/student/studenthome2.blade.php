@@ -402,7 +402,7 @@ div.second {
                                         }
 
                                         Swal.fire({
-                                            title: 'คุณแน่ใจหรือไม่?',
+                                            // title: 'คุณแน่ใจหรือไม่?',',
                                             text: "คุณต้องการยืนยันการส่งเอกสารนี้หรือไม่?",
                                             icon: 'warning',
                                             showCancelButton: true,

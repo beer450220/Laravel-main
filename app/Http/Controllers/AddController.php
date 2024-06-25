@@ -1393,18 +1393,27 @@ public function addsupervision()
       ->get();
       $establishment=DB::table('establishment')
       //->where('role',"student")
-      ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
-    ->groupBy('em_name')
-    ->havingRaw('COUNT(*) > 1')
-    ->orderBy('id', 'desc')
-
-    // ->select('id', 'em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
+    //   ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
     // ->groupBy('em_name')
     // ->havingRaw('COUNT(*) > 1')
-    // ->orderByDesc('id')
+    // ->orderBy('id', 'desc')
 
+    // ->select( 'student_id','em_name')
+    // ->groupBy('em_name','student_id')
+    // ->havingRaw('COUNT(*) > 1')
+    // ->orderBy('em_id', 'desc')
+
+    ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
+    ->groupBy('em_name')
+    ->havingRaw('COUNT(*) > 1')
+    ->orderByDesc('em_id')
+
+    // ->select('em_name')
+    // ->groupBy('em_name')
+    // ->havingRaw('COUNT(*) > 1')
       ->get();
-    //dd( $establishment);
+
+      //  dd( $establishment);
     //   $establishmen = establishment::select(DB::raw("COUNT(DISTINCT em_name) as count"))
     //   ->get();
      // dd($users);
@@ -1429,6 +1438,32 @@ public function addsupervision()
     public function GetSubCatAgainstMainCatEdit($id){
         echo json_encode(DB::table('sub_categories')->where('category_id', $id)->get());
     }
+    public function getStudentCount(Request $request)
+    {
+        $emName = $request->input('em_name');
+
+    // ค้นหา establishment ที่มี em_name เท่ากับ $emName และ student_id ไม่ซ้ำกัน
+    $establishments = DB::table('establishment')
+        ->select('student_id')
+        ->selectRaw('GROUP_CONCAT(student_id) AS student_ids')
+        ->where('em_name', $emName)
+        ->groupBy('em_name')
+        ->havingRaw('COUNT(DISTINCT student_id) > 1')
+        ->get();
+
+    // นับจำนวน student_id ที่ซ้ำกัน
+    $duplicateStudentIds = [];
+    foreach ($establishments as $row) {
+        $duplicateStudentIds[] = $row->student_ids; // เปลี่ยนจาก $row->student_id เป็น $row->student_ids
+    }
+
+    // รวม student_id ที่ซ้ำกันเป็น string แยกด้วยเครื่องหมายคอมมา
+    $studentIds = implode(',', $duplicateStudentIds);
+
+    // ส่งกลับเป็น JSON response
+    return response()->json(['student_ids' => $studentIds]);
+}
+
 
     public function fatchState(Request $request)
     {
@@ -1563,6 +1598,8 @@ public function addsupervision()
     //  $post = Event::create($data);
 
       $post->save();
+
+
         //  $data =array();
         //  $data["test"]= $request->test;
       //    $data["test"]= $request->test;

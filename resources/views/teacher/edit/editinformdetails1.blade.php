@@ -97,11 +97,11 @@
 
 
                         <td>  @if ($row->Status_informdetails === 'รออนุมัติ')
-                            <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
+                            <h3><span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span></h3>
                         @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
-                            <span class="badge badge-pill badge-success">{{ $row->Status_informdetails }}</span>
+                        <h3> <span class="badge badge-pill badge-success">{{ $row->Status_informdetails }}</span></h3>
                         @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
-                            <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
+                        <h3> <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span></h3>
                         @endif</td>
                         <td>
                             <a href="../document/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>

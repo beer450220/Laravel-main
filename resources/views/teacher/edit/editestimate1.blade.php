@@ -160,40 +160,87 @@
 
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-1">
           <label for="inputAddress"class="col-form-label ">คะแนน</label>
           <input type="text" class="form-control"id="scoreInput" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}" maxlength="3" autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
           <div id="scoreFeedback" class="mt-2"></div>
          <script>
-            document.getElementById('scoreInput').addEventListener('input', function() {
-                const score = parseFloat(this.value);
-                const feedback = document.getElementById('scoreFeedback');
+    //         document.getElementById('scoreInput').addEventListener('input', function() {
+    //             const score = parseFloat(this.value);
+    //             const feedback = document.getElementById('scoreFeedback');
 
-                if (isNaN(score)) {
-        feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
-        feedback.style.color = 'red';
-    } else if (score > 200) {
-        feedback.textContent = 'คะแนนเกินกำหนด (มากกว่า 200)';
-        feedback.style.color = 'red';
-    } else if (score >= 100) {
-        feedback.textContent = 'ผ่าน';
-        feedback.style.color = 'green';
-    } else if (score >= 80) {
-        feedback.textContent = 'ผ่าน';
-        feedback.style.color = 'green';
-    } else if (score >= 50) {
-        feedback.textContent = 'ผ่าน';
-        feedback.style.color = 'orange';
-    } else if (score < 50) {
-        feedback.textContent = 'ไม่ผ่าน';
-        feedback.style.color = 'red';
-    } else if (score < 40) {
-        feedback.textContent = 'ไม่ผ่าน';
-        feedback.style.color = 'red';
-    } else {
-        feedback.textContent = '';
-    }
-            });
+    //             if (isNaN(score)) {
+    //     feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
+    //     feedback.style.color = 'red';
+    // } else if (score > 200) {
+    //     feedback.textContent = 'คะแนนเกินกำหนด (มากกว่า 200)';
+    //     feedback.style.color = 'red';
+    // } else if (score >= 100) {
+    //     feedback.textContent = 'ผ่าน';
+    //     feedback.style.color = 'green';
+    // } else if (score >= 80) {
+    //     feedback.textContent = 'ผ่าน';
+    //     feedback.style.color = 'green';
+    // } else if (score >= 50) {
+    //     feedback.textContent = 'ผ่าน';
+    //     feedback.style.color = 'orange';
+    // } else if (score < 50) {
+    //     feedback.textContent = 'ไม่ผ่าน';
+    //     feedback.style.color = 'red';
+    // } else if (score < 40) {
+    //     feedback.textContent = 'ไม่ผ่าน';
+    //     feedback.style.color = 'red';
+    // } else {
+    //     feedback.textContent = '';
+    // }
+    //         });
+    document.getElementById('validationSelect1').addEventListener('change', function() {
+    const selectedValue = this.value;
+    const scoreInput = document.getElementById('scoreInput');
+    const feedback = document.getElementById('scoreFeedback');
+
+    scoreInput.addEventListener('input', function() {
+        const score = parseFloat(this.value);
+
+        if (selectedValue === "แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)") {
+            if (isNaN(score)) {
+                feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
+                feedback.style.color = 'red';
+            } else if (score > 200) {
+                feedback.textContent = 'คะแนนเกินกำหนด (มากกว่า 200)';
+                feedback.style.color = 'red';
+            } else if (score > 100) {
+                feedback.textContent = 'ผ่าน';
+                feedback.style.color = 'green';
+            }else if (score >= 100) {
+                feedback.textContent = 'ไม่ผ่าน';
+                feedback.style.color = 'red';
+            }
+
+            else {
+                feedback.textContent = 'ไม่ผ่าน';
+                feedback.style.color = 'red';
+            }
+        } else {
+            if (isNaN(score)) {
+                feedback.textContent = 'โปรดใส่คะแนนที่ถูกต้อง';
+                feedback.style.color = 'red';
+            } else if (score > 100) {
+                feedback.textContent = 'คะแนนเกินกำหนด (มากกว่า 100)';
+                feedback.style.color = 'red';
+            } else if (score >= 80) {
+                feedback.textContent = 'ผ่าน';
+                feedback.style.color = 'green';
+            } else if (score >= 50) {
+                feedback.textContent = 'ผ่าน';
+                feedback.style.color = 'orange';
+            } else {
+                feedback.textContent = 'ไม่ผ่าน';
+                feedback.style.color = 'red';
+            }
+        }
+    });
+});
         </script>
       </div>
       {{-- <div class="col-md-2">
@@ -252,7 +299,7 @@
 <script>
     document.getElementById('confirmButton').addEventListener('click', function(event) {
         Swal.fire({
-            title: 'คุณแน่ใจหรือไม่?',
+            // title: 'คุณแน่ใจหรือไม่?',',
             text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
             icon: 'warning',
             showCancelButton: true,

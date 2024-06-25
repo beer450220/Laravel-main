@@ -76,7 +76,7 @@
         }
 
         Swal.fire({
-            title: 'คุณแน่ใจหรือไม่?',
+            // title: 'คุณแน่ใจหรือไม่?',',
             text: "คุณต้องการออกจากระบบนี้หรือไม่?",
             icon: 'warning',
             showCancelButton: true,

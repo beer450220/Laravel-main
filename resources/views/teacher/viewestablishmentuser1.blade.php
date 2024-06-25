@@ -168,7 +168,7 @@
 
                           </div>
                         <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                           <label for="recipient-name" class="col-form-label">รายละเอียดงาน</label><br>
 
                           <textarea  rows="4" cols="40" name="em_job" disabled readonly >{{$establishments->em_job}}

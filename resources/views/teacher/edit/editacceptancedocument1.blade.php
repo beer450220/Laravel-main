@@ -97,11 +97,11 @@
 
 
                         <td>  @if ($row->Status_acceptance === 'รอการตอบรับ')
-                            <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+                            <h3> <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span></h3>
                         @elseif ($row->Status_acceptance === 'ตอบรับแล้ว')
-                            <span class="badge badge-pill badge-success">{{ $row->Status_acceptance }}</span>
+                        <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_acceptance }}</span></h3>
                         @elseif ($row->Status_acceptance === 'ไม่รับนักศึกษา')
-                            <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance }}</span>
+                        <h3> <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance }}</span></h3>
                         @endif</td>
                         <td>
                             <a href="../document1/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a>

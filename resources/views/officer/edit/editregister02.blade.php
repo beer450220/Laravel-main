@@ -105,7 +105,7 @@
 
             Swal.fire({
                 title: 'ยืนยันการอนุมัติข้อมูล?',
-                text: "คุณแน่ใจหรือไม่ว่าต้องการอนุมัติข้อมูลนี้",
+                // text: "คุณแน่ใจหรือไม่ว่าต้องการอนุมัติข้อมูลนี้",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

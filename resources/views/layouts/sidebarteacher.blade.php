@@ -7,7 +7,7 @@
     <div class="w-100 mb-4 d-flex">
       <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/teacher/home">
         <span class="avatar avatar-sm mt-2">
-        <img src="/icons/1.png " sizes="16x16" alt="..." class="avatar-img rounded-circle"></span>
+        <img src="/icons/1.png " sizes="64x64" alt="..." class="avatar-img rounded-circle"></span>
       </a>
     </div>
     <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -234,7 +234,7 @@
     </li> --}}
 
     <li class="nav-item">
-      <a class="nav-link pl-3" href="/teacher/student"><span class="ml-1 item-text">ข้อมูลนักศึกษา
+      <a class="nav-link pl-3" href="/teacher/student"><span class="ml-1 item-text">นักศึกษา
           </span>
       </a>
     </li>
@@ -286,7 +286,7 @@
         <li class="nav-item ">
           <a href="/teacher/estimate1"  class=" nav-link">
             <i class="fa-solid fa-clipboard"></i>
-            <span class="ml-3 item-text">เอกสารผลประเมินสหกิจศึกษา</span>
+            <span class="ml-6 item-text">เอกสารผลประเมินสหกิจศึกษา</span>
           </a>
 
 

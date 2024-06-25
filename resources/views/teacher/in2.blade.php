@@ -70,11 +70,11 @@
               <td >{{ $row->annotation   }}  </td>
 
               <td >@if ($row->Status_registers === 'รออนุมัติ')
-                  <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                <h3>    <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
               @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+              <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span></h3>
               @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                  <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+              <h3>  <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span></h3>
               @endif @if ($registers1->isEmpty())
               <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
                 @else
@@ -117,11 +117,11 @@
               <th >ใบสมัครงานสหกิจศึกษา(สก03)</th>
                 <td >{{ $row->annotation   }}  </td>
                <td>@if ($row->Status_registers === 'รออนุมัติ')
-                  <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                <h3>  <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
               @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+              <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span></h3>
               @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                  <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+              <h3>   <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span></h3>
               @endif
 
    @if ($registers2->isEmpty())
@@ -155,11 +155,11 @@
                       <th >แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</th>
                       <td >{{ $row->annotation   }}  </td>
                       <td >@if ($row->Status_registers === 'รออนุมัติ')
-                          <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                        <h3>  <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
                       @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                          <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                      <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span></h3>
                       @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                          <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                      <h3>    <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span></h3>
                       @endif
 
 
@@ -194,11 +194,11 @@
                             <th >บัตรประชาชน</th>
                             <td >{{ $row->annotation   }}  </td>
                             <td >@if ($row->Status_registers === 'รออนุมัติ')
-                                <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                <h3>   <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
                             @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                            <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span></h3>
                             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                                <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                            <h3>  <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span></h3>
                             @endif
 
 
@@ -232,11 +232,11 @@
                                     <th >บัตรนักศึกษา</th>
                                     <td >{{ $row->annotation   }}  </td>
                                     <td >@if ($row->Status_registers === 'รออนุมัติ')
-                                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                        <h3>  <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
                                     @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                        <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                                    <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span></h3>
                                     @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                                        <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                                    <h3>  <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span></h3>
                                     @endif
 
 
@@ -270,11 +270,11 @@
                                             <th >ผลการเรียน</th>
                                             <td >{{ $row->annotation   }}  </td>
                                             <td >@if ($row->Status_registers === 'รออนุมัติ')
-                                                <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                                <h3>  <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
                                             @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                                <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                                            <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span></h3>
                                             @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                                                <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                                            <h3>   <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span></h3>
                                             @endif
 
 
@@ -308,11 +308,11 @@
                                                     <th >ประวัติส่วนตัว(resume)</th>
                                                     <td >{{ $row->annotation   }}  </td>
                                                     <td >@if ($row->Status_registers === 'รออนุมัติ')
-                                                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                                                        <h3>   <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span></h3>
                                                     @elseif ($row->Status_registers === 'อนุมัติเอกสารแล้ว')
-                                                        <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span>
+                                                    <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_registers}}</span></h3>
                                                     @elseif ($row->Status_registers === 'ไม่อนุมัติ')
-                                                        <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span>
+                                                    <h3>   <span class="badge badge-pill badge-danger">{{ $row->Status_registers}}</span></h3>
                                                     @endif
 
 
@@ -351,11 +351,11 @@
                               <td >{{ $row->annotation   }}  </td>
                               <td >
                                   @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
-                          <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+                                  <h3>   <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span></h3>
                       @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
-                          <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
+                      <h3> <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span></h3>
                       @elseif ($row->Status_acceptance === 'ไม่อนุมัติ')
-                          <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
+                      <h3> <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span></h3>
                       @endif
 
 
@@ -388,11 +388,11 @@
                                 <td >{{ $row->annotation   }}  </td>
                                 <td >
                                     @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
-                            <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+                                    <h3>  <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span></h3>
                         @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
-                            <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
+                        <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span></h3>
                         @elseif ($row->Status_acceptance === 'ไม่อนุมัติ')
-                            <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
+                        <h3>   <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span></h3>
                         @endif
 
 
@@ -425,11 +425,11 @@
                                     <td >{{ $row->annotation   }}  </td>
                                     <td >
                                         @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')
-                                <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span>
+                                        <h3>   <span class="badge badge-pill badge-warning">{{ $row->Status_acceptance }}</span></h3>
                             @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
-                                <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span>
+                            <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_acceptance}}</span></h3>
                             @elseif ($row->Status_acceptance === 'ไม่อนุมัติ')
-                                <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span>
+                            <h3>   <span class="badge badge-pill badge-danger">{{ $row->Status_acceptance}}</span></h3>
                             @endif
 
 
@@ -463,11 +463,11 @@
                               <td >{{ $row->annotation   }}  </td>
                               <td >
                                   @if ($row->Status_informdetails === 'รออนุมัติ')
-                          <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span>
+                                  <h3>  <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span></h3>
                       @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
-                          <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                      <h3> <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span></h3>
                       @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
-                          <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                      <h3>  <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span></h3>
                       @endif
 
 
@@ -501,11 +501,11 @@
                                       <td >{{ $row->annotation   }}  </td>
                                       <td >
                                           @if ($row->Status_informdetails === 'รออนุมัติ')
-                          <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span>
+                                          <h3>   <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span></h3>
                       @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
-                          <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                      <h3> <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span></h3>
                       @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
-                          <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                      <h3> <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span></h3>
                       @endif
 
                                           @if ($registers9->isEmpty())
@@ -538,11 +538,11 @@
                                               <td >{{ $row->annotation   }}  </td>
                                               <td >
                                                   @if ($row->Status_informdetails === 'รออนุมัติ')
-                                                  <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span>
+                                                  <h3>   <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails}}</span></h3>
                                               @elseif ($row->Status_informdetails === 'อนุมัติเอกสารแล้ว')
-                                                  <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                                              <h3> <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span></h3>
                                               @elseif ($row->Status_informdetails === 'ไม่อนุมัติ')
-                                                  <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                                              <h3><span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span></h3>
                                               @endif
 
 
@@ -576,11 +576,11 @@
                                                       <td >{{ $row->appointment_time	   }}  </td>
                                                       <td >
                                                           @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
-                                                          <span class="badge badge-pill badge-warning">{{ $row->Status_events}}</span>
+                                                          <h3>    <span class="badge badge-pill badge-warning">{{ $row->Status_events}}</span></h3>
                                                       @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดแล้ว')
-                                                          <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
+                                                      <h3>  <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span></h3>
                                                       @elseif ($row->Status_events === 'ไม่อนุมัติ')
-                                                          <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                                      <h3>    <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span></h3>
                                                       @endif
 
 
@@ -592,16 +592,16 @@
 
 
                                                                                                                       @if ($row->namefiles === 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
-                                                                                                                      <span class="badge badge-pill badge-success">
+                                                                                                                      <h3> <span class="badge badge-pill badge-success">
                                                                                                                         {{-- <i class="fa-solid fa-check"></i> --}}
-                                                                                                                        มีเอกสารแล้ว</span>
+                                                                                                                        มีเอกสารแล้ว</span></h3>
 
 
                                                                                                                     @else()
-                                                                                                                    <span class="badge badge-pill badge-danger">
+                                                                                                                    <h3> <span class="badge badge-pill badge-danger">
                                                                                                                         {{-- <i class="fa-solid fa-xmark"></i> --}}
                                                                                                                         ไม่มีเอกสาร
-                                                                                                                    </span>
+                                                                                                                    </span></h3>
                                                                                                                   @endif
                                                                                                                      @endif
                                                           </td>
@@ -616,11 +616,11 @@
                                                             <td >{{ $row->appointment_time	   }}  </td>
                                                             <td >
                                                                 @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
-                                                                <span class="badge badge-pill badge-warning">{{ $row->Status_events}}</span>
+                                                                <h3>   <span class="badge badge-pill badge-warning">{{ $row->Status_events}}</span></h3>
                                                             @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดแล้ว')
-                                                                <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
+                                                            <h3>   <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span></h3>
                                                             @elseif ($row->Status_events === 'ไม่อนุมัติ')
-                                                                <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                                            <h3>   <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span></h3>
                                                             @endif
 
 
@@ -632,16 +632,16 @@
 
 
                                                                                                                             @if ($row->namefiles1 === 'สก.11 แบบแจ้งยืนยันการนิเทศงานนักศึกษาสหกิจศึกษา')
-                                                                                                                            <span class="badge badge-pill badge-success">
+                                                                                                                            <h3>  <span class="badge badge-pill badge-success">
                                                                                                                                 {{-- <i class="fa-solid fa-check"></i> --}}
-                                                                                                                                มีเอกสารแล้ว</span>
+                                                                                                                                มีเอกสารแล้ว</span></h3>
 
 
                                                                                                                             @else()
-                                                                                                                            <span class="badge badge-pill badge-danger">
+                                                                                                                            <h3>  <span class="badge badge-pill badge-danger">
                                                                                                                                 {{-- <i class="fa-solid fa-xmark"></i> --}}
                                                                                                                                 ไม่มีเอกสาร
-                                                                                                                            </span>
+                                                                                                                            </span></h3>
                                                                                                                         @endif
                                                                                                                            @endif
                                                                 </td>
@@ -670,16 +670,16 @@
 
 
                                                                                                                               @if ($row->namefile === 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
-                                                                                                                              <span class="badge badge-pill badge-success">
+                                                                                                                              <h3> <span class="badge badge-pill badge-success">
                                                                                                                                 {{-- <i class="fa-solid fa-check"></i> --}}
-                                                                                                                                มีเอกสารแล้ว</span>
+                                                                                                                                มีเอกสารแล้ว</span></h3>
 
 
                                                                                                                             @else()
-                                                                                                                            <span class="badge badge-pill badge-danger">
+                                                                                                                            <h3> <span class="badge badge-pill badge-danger">
                                                                                                                                 {{-- <i class="fa-solid fa-xmark"></i> --}}
                                                                                                                                 ไม่มีเอกสาร
-                                                                                                                            </span>
+                                                                                                                            </span></h3>
                                                                                                                           @endif
                                                                                                                              @endif
                                                                   </td>
@@ -708,16 +708,16 @@
 
 
                                                                                                                                       @if ($row->namefile === 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
-                                                                                                                                      <span class="badge badge-pill badge-success">
+                                                                                                                                      <h3> <span class="badge badge-pill badge-success">
                                                                                                                                         {{-- <i class="fa-solid fa-check"></i> --}}
-                                                                                                                                        มีเอกสารแล้ว</span>
+                                                                                                                                        มีเอกสารแล้ว</span></h3>
 
 
                                                                                                                                     @else()
-                                                                                                                                    <span class="badge badge-pill badge-danger">
+                                                                                                                                    <h3><span class="badge badge-pill badge-danger">
                                                                                                                                         {{-- <i class="fa-solid fa-xmark"></i> --}}
                                                                                                                                         ไม่มีเอกสาร
-                                                                                                                                    </span>
+                                                                                                                                    </span></h3>
                                                                                                                                   @endif
                                                                                                                                      @endif
                                                                           </td>
@@ -747,16 +747,16 @@
 
 
                                                                                                                                               @if ($row->namefile === 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
-                                                                                                                                              <span class="badge badge-pill badge-success">
+                                                                                                                                              <h3><span class="badge badge-pill badge-success">
                                                                                                                                                 {{-- <i class="fa-solid fa-check"></i> --}}
-                                                                                                                                                มีเอกสารแล้ว</span>
+                                                                                                                                                มีเอกสารแล้ว</span></h3>
 
 
                                                                                                                                             @else()
-                                                                                                                                            <span class="badge badge-pill badge-danger">
+                                                                                                                                            <h3> <span class="badge badge-pill badge-danger">
                                                                                                                                                 {{-- <i class="fa-solid fa-xmark"></i> --}}
                                                                                                                                                 ไม่มีเอกสาร
-                                                                                                                                            </span>
+                                                                                                                                            </span></h3>
                                                                                                                                           @endif
                                                                                                                                              @endif
                                                                                   </td>
@@ -780,16 +780,16 @@
 
 
                                                                                                                                                       @if ($row->namefile === 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
-                                                                                                                                                      <span class="badge badge-pill badge-success">
+                                                                                                                                                      <h3>  <span class="badge badge-pill badge-success">
                                                                                                                                                         {{-- <i class="fa-solid fa-check"></i> --}}
-                                                                                                                                                        มีเอกสารแล้ว</span>
+                                                                                                                                                        มีเอกสารแล้ว</span></h3>
 
 
                                                                                                                                                     @else()
-                                                                                                                                                    <span class="badge badge-pill badge-danger">
+                                                                                                                                                        <h3>  <span class="badge badge-pill badge-danger">
                                                                                                                                                         {{-- <i class="fa-solid fa-xmark"></i> --}}
                                                                                                                                                         ไม่มีเอกสาร
-                                                                                                                                                    </span>
+                                                                                                                                                    </span></h3>
                                                                                                                                                   @endif
                                                                                                                                                      @endif
                                                                                           </td>

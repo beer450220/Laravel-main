@@ -21,7 +21,7 @@
      <li class="nav-item nav-notif">
              <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
             <span class=""></span>
-            {{ Auth::user()->username }}
+            {{ Auth::user()->fname }}
             {{-- <span class="dot dot-md bg-success"></span> --}}
           </a>
 
@@ -104,7 +104,7 @@
             }
 
             Swal.fire({
-                title: 'คุณแน่ใจหรือไม่?',
+                // title: 'คุณแน่ใจหรือไม่?',',
                 text: "คุณต้องการออกจากระบบนี้หรือไม่?",
                 icon: 'warning',
                 showCancelButton: true,
