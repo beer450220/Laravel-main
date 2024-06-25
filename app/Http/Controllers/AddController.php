@@ -1403,10 +1403,10 @@ public function addsupervision()
     // ->havingRaw('COUNT(*) > 1')
     // ->orderBy('em_id', 'desc')
 
-    ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
-    ->groupBy('em_name')
-    ->havingRaw('COUNT(*) > 1')
-    ->orderByDesc('em_id')
+    // ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
+    // ->groupBy('em_name')
+    // ->havingRaw('COUNT(*) > 1')
+    // ->orderByDesc('em_id')
 
     // ->select('em_name')
     // ->groupBy('em_name')
@@ -1442,24 +1442,21 @@ public function addsupervision()
     {
         $emName = $request->input('em_name');
 
-    // ค้นหา establishment ที่มี em_name เท่ากับ $emName และ student_id ไม่ซ้ำกัน
-    $establishments = DB::table('establishment')
-        ->select('student_id')
-        ->selectRaw('GROUP_CONCAT(student_id) AS student_ids')
-        ->where('em_name', $emName)
-        ->groupBy('em_name')
-        ->havingRaw('COUNT(DISTINCT student_id) > 1')
-        ->get();
+        // ค้นหา establishment ที่มี em_name เท่ากับ $emName และ student_id ไม่ซ้ำกัน
+        $establishments = DB::table('establishment')
+            ->selectRaw('GROUP_CONCAT(student_id) AS student_ids')
+            ->where('em_name', $emName)
+            ->groupBy('em_name')
+            ->havingRaw('COUNT(DISTINCT student_id) > 1')
+            ->get();
 
-    // นับจำนวน student_id ที่ซ้ำกัน
-    $duplicateStudentIds = [];
-    foreach ($establishments as $row) {
-        $duplicateStudentIds[] = $row->student_ids; // เปลี่ยนจาก $row->student_id เป็น $row->student_ids
-    }
+        // ตรวจสอบว่ามีข้อมูลหรือไม่
+        if ($establishments->isEmpty()) {
+            return response()->json(['student_ids' => 'ไม่มีข้อมูล']);
+        }
 
-    // รวม student_id ที่ซ้ำกันเป็น string แยกด้วยเครื่องหมายคอมมา
-    $studentIds = implode(',', $duplicateStudentIds);
-
+        // รวม student_id ที่ซ้ำกันเป็น string แยกด้วยเครื่องหมายคอมมา
+        $studentIds = $establishments->first()->student_ids;
     // ส่งกลับเป็น JSON response
     return response()->json(['student_ids' => $studentIds]);
 }

@@ -219,7 +219,7 @@
 
    @foreach ($establishment as $row)
 
-                    <option value="{{$row->student_ids}} "> {{$row->em_name}} </option>
+                    <option value="{{$row->em_name}} "> {{$row->em_name}} </option>
 
 
 
@@ -228,6 +228,35 @@
 
    @endforeach
               </select>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#multiple-select-optgroup-field').change(function() {
+            var emName = $(this).val();
+
+            // ตรวจสอบว่ามีการเลือก option หรือไม่
+            if (emName) {
+                $.ajax({
+                    url: '/getStudentIds',
+                    type: 'POST',
+                    data: {
+                        em_name: emName,
+                        _token: '{{ csrf_token() }}' // สำหรับ Laravel CSRF protection
+                    },
+                    success: function(response) {
+                        $('#studentIdsInput').val(response.student_ids);
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText); // แสดงข้อผิดพลาดใน console
+                    }
+                });
+            } else {
+                $('#studentIdsInput').val(''); // เคลียร์ input ถ้าไม่มีการเลือก option
+            }
+        });
+    });
+</script>
+              {{-- <input type="text" class="form-control" id="studentIdsInput" name="student_ids" placeholder="Student IDs" readonly> --}}
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -293,7 +322,7 @@
                         $('#multiple-select-optgroup-field').change(function(event) {
                             var idCountry = this.value;
                             $('#state-dd').html('');
-                 
+
                             $.ajax({
                             url: "/api/fetch-state",
                             type: 'POST',
