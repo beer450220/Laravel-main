@@ -121,8 +121,8 @@
         <div id="content">
 
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-dark bg-gradient topbar mb-4 static-top shadow">
-
+            <nav class="navbar navbar-expand navbar-light bg-darks bg-gradient topbar mb-4 static-top shadow">
+                <h4 class="text-dark"> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</h4>
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
@@ -304,7 +304,7 @@
 
 
 
-                            <h4 class="mt-4">{{ Auth::user()->fname }}{{ Auth::user()->surname }}</h4>
+                            <h4 class="mt-4 text-dark">{{ Auth::user()->username }}{{ Auth::user()->surname }}</h4>
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}

@@ -15,9 +15,25 @@
 @include('layouts.adminsidebsr')
  @include('layouts.admintop')
 
-
-
-
+ <title>ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</title>
+ <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
+ <style>
+    body {
+        font-size: 16px; /* ขนาดตัวอักษรที่ต้องการ */
+    }
+    .fa-clipboard {
+font-size: 16px; /* ปรับขนาดไอคอน */
+}
+tr {
+color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+}
+label{
+color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+}
+/* table.table-hover tbody tr:hover th:hover {
+    background-color: #ffffff7e;
+} */
+</style>
 
     @yield('content')
 {{-- <div class="be-content">
@@ -38,6 +54,12 @@
 
   </script> --}}
 
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><h4><a  class="nav-link px-2 text-dark">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></h4></li>
 
+    </ul>
+    <h4><p class="text-center text-dark">© 2024 Company, Inc</p></h4>
+  </footer>
 </body>
 </html>
