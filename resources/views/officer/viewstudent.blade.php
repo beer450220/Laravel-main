@@ -178,7 +178,7 @@
 
                           </div>
                         <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                           <label for="recipient-name" class="col-form-label">ภาคเรียนที่</label><br>
 
                           {{-- <textarea  rows="4" cols="50" name="em_job" disabled readonly >

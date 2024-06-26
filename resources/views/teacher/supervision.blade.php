@@ -121,7 +121,8 @@
 
 
         </td>
-              <td>{{$row->fname}}
+              <td>{{$row->student_name}}
+                {{-- {{$row->username}} --}}
 
 
 
@@ -186,4 +187,5 @@
     </div>
   </div> <!-- Bordered table -->
 </div> <!-- end section -->
+
 @endsection

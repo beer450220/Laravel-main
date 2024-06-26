@@ -237,14 +237,43 @@
               @endforeach
             </select> --}}
 
-            <select class="form-control"id="state-dd" data-placeholder="เลือกสถานประกอบการ"   name="em_id"required >
+            <select class="form-control "id="multiple-select-optgroup-field" data-placeholder="เลือกสถานประกอบการ"   name="em_id"required >
 
                 <option value="">Select state</option>
                 @foreach ($establishment as $row)
-                <option value="{{$row->em_id}}"{{$row->em_id==$supervisions->em_id ?'selected':''}}>{{$row->em_name}}</option>
+                {{-- <option value="{{$row->em_id}}"{{$row->em_id==$supervisions->em_id ?'selected':''}}>{{$row->em_name}}</option> --}}
+                <option value="{{$row->em_name}}"{{$row->em_name==$supervisions->em_id ?'selected':''}}>{{$row->em_name}}</option>
               @endforeach
             </select>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#multiple-select-optgroup-field').change(function() {
+                        var emName = $(this).val();
 
+                        // ตรวจสอบว่ามีการเลือก option หรือไม่
+                        if (emName) {
+                            $.ajax({
+                                url: '/getStudentIds',
+                                type: 'POST',
+                                data: {
+                                    em_name: emName,
+                                    _token: '{{ csrf_token() }}' // สำหรับ Laravel CSRF protection
+                                },
+                                success: function(response) {
+                                    $('#studentIdsInput').val(response.student_ids);
+                                },
+                                error: function(xhr) {
+                                    console.log(xhr.responseText); // แสดงข้อผิดพลาดใน console
+                                }
+                            });
+                        } else {
+                            $('#studentIdsInput').val(''); // เคลียร์ input ถ้าไม่มีการเลือก option
+                        }
+                    });
+                });
+
+            </script>
             @error('name')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -255,10 +284,11 @@
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-select" id="single-select-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]" >
+            <input type="text" class="form-control" id="studentIdsInput" name="student_name[]"value="{{ $supervisions->student_name }}" readonly>
+            {{-- <select class="form-select" id="single-select-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]" >
               <option value="">เลือกรายชื่อ</option>
 
-              @foreach ($users1 as $row)
+              @foreach ($users1 as $row) --}}
 
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 {{-- <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option> --}}
@@ -270,9 +300,9 @@
                 {{ $row->fname }}
             </option> --}}
 
-            <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option>
+            {{-- <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option>
 
-              @endforeach
+              @endforeach --}}
             </select>
 
 

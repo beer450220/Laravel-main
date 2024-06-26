@@ -7,7 +7,7 @@
       </button>
       <form class="">
         {{-- <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search"> --}}
-       <h3> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</h3>
+       <h4> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</h4>
     </form>
       <ul class="nav">
         <li class="nav-item">
@@ -23,8 +23,8 @@
           </a> --}}
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           {{ Auth::user()->username }}
+          <a class="nav-link dropdown-toggle text-dark pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           {{ Auth::user()->fname }}
 
            <span class="avatar avatar-sm mt-2">
               <img src="../../Profile/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">

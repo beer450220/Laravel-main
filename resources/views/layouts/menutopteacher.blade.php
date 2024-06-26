@@ -20,8 +20,8 @@
 
      <li class="nav-item nav-notif">
              <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-            <span class=""></span>
-            {{ Auth::user()->fname }}
+            <span class="text-dark"> {{ Auth::user()->fname }}</span>
+
             {{-- <span class="dot dot-md bg-success"></span> --}}
           </a>
 

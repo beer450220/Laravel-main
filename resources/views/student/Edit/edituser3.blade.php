@@ -318,7 +318,7 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <form method="POST" action="{{url('/studenthome/updatepersonal4/'.$users->id)}}" enctype="multipart/form-data">
+                                                      <form method="POST"id="myForm" action="{{url('/studenthome/updatepersonal4/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                       <label for="simpleinput">รหัสนักศึกษา</label>
                                                       <input type="text"readonly value="{{ $users->student_id }}" disabled="" id="simpleinput" class="form-control">
@@ -383,14 +383,41 @@
                                                       <a href="/studenthome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>  &nbsp;&nbsp;
                                                       <button type="reset"  class="btn btn-outline-primary fe fe-edit fe-16" type="button">ยกเลิก</button>
                                                       &nbsp;&nbsp;
-                                                      <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button>
-                                                   </div>  </div></form>
+                                                      {{-- <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันการอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button> --}}
+                                                      <button  type="button" class="btn btn-outline-primary fe fe-edit fe-16"id="confirmButton">แก้ไขข้อมูล</button>
+                                                    </div>  </div></form>
                                                 </div>
                                               </div>
                                             </div> <!-- / .card -->
                                           </div>
                                         </div>
+                                        <script>
+                                            document.getElementById('confirmButton').addEventListener('click', function(event) {
+                                                // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+                                                let form = document.getElementById('myForm');
+                                                if (!form.checkValidity()) {
+                                                    form.reportValidity();
+                                                    return;
+                                                }
 
+                                                Swal.fire({
+                                                    // title: 'คุณแน่ใจหรือไม่?',',
+                                                    text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    confirmButtonText: 'ใช่, แก้ไขข้อมูล!',
+                                                    cancelButtonText: 'ยกเลิก'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        form.submit();
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+                                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                       </div>
                                       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                               <script>

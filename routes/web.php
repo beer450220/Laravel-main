@@ -349,7 +349,7 @@ Route::post("/officer/updateuser004/{id}",[EditController::class,'updateuser004'
     // Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
     // Route::get('/officer/delete/{id}', [EditController::class,'delestablishment'])->name('delestablishment');
     // Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
-    Route::get('/officer/view/{id}', [HomeController::class,'viewestablishment'])->name('viewestablishment');
+    Route::get('/officer/view/{em_id}', [HomeController::class,'viewestablishment'])->name('viewestablishment');
 
 //ข้อมูลนักศึกษา
     Route::get('/officer/search9',[HomeController::class,'searchstudent1'])->name('searchstudent1');

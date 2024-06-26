@@ -81,7 +81,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-darks topbar mb-4 static-top shadow">
-                <h4> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</h4>
+                <h4 class="text-dark"> ระบบสารสนเทศสหกิจศึกษา คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</h4>
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
@@ -262,7 +262,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
 
-                            {{ Auth::user()->username }}
+                            {{ Auth::user()->fname }}
 
                             <h4 class="mt-4"   ></h4>
 

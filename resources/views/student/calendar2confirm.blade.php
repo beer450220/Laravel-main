@@ -393,19 +393,20 @@
                             <div class="container ">
                                 <div class="row ">
                             @foreach ($events as $row)
-                            <div  class="col-xs-20 col-sm-3 col-md-6 card  " style="margin-top:15px;  margin-left: 65px;">
+
+                            <div  class="col-xs-20 col-sm-3 col-md-8 card  " style="margin-top:15px;  margin-left: 65px;">
                                 <div class="card mb-4 shadow">
                                 <div class="img_thumbnail productlist"><br>
                                       {{-- <a href="">
                                         <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
                                       </a> --}}
-                                      <h4 class="card-title text-center">สถานประกอบการ::  {{ $row->em_name }}</h4>  <p class="text-center"></p>
+                                      <h4 class="card-title text-dark text-center">สถานประกอบการ::  {{ $row->em_id }}</h4>  <p class="text-center"></p>
                                       <hr>
                                       <div class="caption card-body">
                                     <div class="card-text my-2">
 
-                                      <p class=" text mb-0 ">วันการนิเทศ: {{ formatThaiDate($row->start) }}เวลา: {{ $row->time }}-{{ $row->time1 }}</p>
-                                      <p class=""><span class=" text-muted">อาจารย์นิเทศ:
+                                        <h4>  <p class=" text mb-0 text-dark ">วันการนิเทศ: {{ formatThaiDate($row->start) }}เวลา: {{ $row->time }}-{{ $row->time1 }}</p> </h4>
+                                     <h4>  <p class=""><span class=" text-dark">อาจารย์นิเทศ:
                                     {{-- {{ $row->fname }}  {{ $row->surname }} --}}
                                     @foreach ($users2 as $teacherId)
 
@@ -421,9 +422,9 @@
                                      @endphp
 
                                      {{-- ทำสิ่งที่ต้องการกับข้อมูลของอาจารย์ที่พบ --}}
-                                     {{ $teacher->fname }}<a href="/studenthome/editteacher1/{{$teacher->id}}"  class=" btn btn-outline-success">ดูข้อมูล</a>
+                                           {{ $teacher->fname }}  <a href="/studenthome/editteacher1/{{$teacher->id}}"  class=" btn btn-outline-success">ดูข้อมูล</a>
                                  @endforeach
-
+                                </span></p></h4>
                                     {{-- @foreach ($users2 as $teacherId)
                                        @php
                                         $selectedIds = explode(',', $row->teacher_name);
@@ -528,23 +529,24 @@ allowClear: true,
 
 
                                         {{-- {{ $row->fname}} {{ $row->surname}} --}}
-                                    </span></p>
-                                      <p class=""><span class=" text-muted">ไฟล์เอกสารสก.10:  <a href="/document3/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
-                                      <p class=""><span class=" text-muted">ไฟล์เอกสารสก.11:  <a href="/document3/{{ $row->filess1 }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p>
+
+                                    <h4>   <p class=""><span class=" text-dark">ไฟล์เอกสารสก.10:  <a href="/document3/{{ $row->filess }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p> </h4>
+                                      <h4>    <p class=""><span class=" text-dark">ไฟล์เอกสารสก.11:  <a href="/document3/{{ $row->filess1 }}"target="_BLANK"  class=" btn btn-outline-success">ดูเอกสาร</a></span></p> </h4>
                                       <hr>
-                                      <p class=" text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
-                                        <span class="badge badge-pill badge-warning">{{ $row->Status_events }}</span>
+                                      <h4>   <p class=" text-dark ">รับทราบและยืนยันเวลานัดนิเทศ:</p></h4>@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+                                    <h4>    <span class="badge badge-pill badge-warning">{{ $row->Status_events }}</span> </h4>
                                     @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
-                                        <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
+                                    <h4>   <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span> </h4>
                                     @elseif ($row->Status_events === 'ไม่ผ่าน')
-                                        <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                    <h4>    <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span> </h4>
                                         @elseif ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
-                                        <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                        <h4>    <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span> </h4>
                                         @elseif ($row->Status_events === 'รับทราบขอเปลี่ยนเวลานัดนิเทศ')
-                                        <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
-                                    @endif</p>
-                                      <p class=" text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->appointment_time}}</p>
-                                      <p class=" text-muted mb-0">หมายเหตุ:{{ $row->annotation}}</p>
+                                        <h4>    <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span> </h4>
+                                    @endif
+
+                                    <h4>    <p class=" text-dark mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->appointment_time}}</p> </h4>
+                                        <h4>    <p class=" text-dark mb-0">หมายเหตุ:{{ $row->annotation}}</p> </h4>
 
                                     </div>
                                   </div> <!-- ./card-text -->

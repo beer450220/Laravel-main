@@ -60,7 +60,7 @@
                               <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">ขอเปลี่ยนวันนัดนิเทศ</label>
                                 {{-- <input type="datetime-local" class="form-control" id="recipient-name" name="appointment_time" value="{{ \Carbon\Carbon::parse($events->appointment_time)->format('Y-m-d\TH:i') }}"> --}}
-                                <input type="date" class="form-control" id="example-date" name="appointment_time" value="{{$events->appointment_time}}">
+                                <input type="date" class="form-control" id="example-date" name="appointment_time" value="{{$events->appointment_time}}"required>
                                 {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($events->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title"> --}}
                                 <br>
 
@@ -107,7 +107,7 @@
 
                                 <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
                                 {{-- <input type="datetime-local" class="form-control" id="recipient-name" name="appointment_time" value="{{ \Carbon\Carbon::parse($events->appointment_time)->format('Y-m-d\TH:i') }}"> --}}
-                                <input type="text" class="form-control" id="recipient-name" name="annotation" value="{{$events->annotation}}">
+                                <input type="text" class="form-control" id="recipient-name" name="annotation" value="{{$events->annotation}}"required>
                               {{-- <div class="col-6"> <span>   <select class="form-control  required" name="Statustime3" > --}}
                                     {{-- <option selected>วัน</option>
                                     <option value="วันจันทร์"@if($events->Statusevents=="วันจันทร์") selected @endif required>วันจันทร์</option>
@@ -230,6 +230,13 @@
 
     <script>
         document.getElementById('confirmButton').addEventListener('click', function(event) {
+            // ตรวจสอบว่าฟอร์มถูกต้องหรือไม่
+            let form = document.getElementById('myForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
             Swal.fire({
                 // title: 'คุณแน่ใจหรือไม่?',',
                 text: "คุณต้องการแก้ไขข้อมูลนี้หรือไม่?",
@@ -241,13 +248,13 @@
                 cancelButtonText: 'ยกเลิก'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById('myForm').submit();
+                    form.submit();
                 }
             });
         });
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

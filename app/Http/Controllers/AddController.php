@@ -1528,7 +1528,7 @@ public function addsupervision()
 
     public function addsupervision02(Request $request) {
         //ตรวจสอบข้อมูล
-          dd($request);
+        //   dd($request);
 
          $request->validate([
           //  'name' => 'required|unique:name',

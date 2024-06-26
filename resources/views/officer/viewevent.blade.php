@@ -157,8 +157,8 @@
                           <option value="">Select state</option>
                           @foreach ($establishments1 as $row)
                           {{-- <optgroup label="Mountain Time Zone"> --}}
-                            <option value="{{$row->id}}"{{$row->id==$establishments->em_id ?'selected':''}}>{{$row->em_name}}</option>
-
+                            {{-- <option value="{{$row->id}}"{{$row->id==$establishments->em_id ?'selected':''}}>{{$row->em_name}}</option> --}}
+                            <option value="{{$row->em_name}}"{{$row->em_name==$establishments->em_id ?'selected':''}}>{{$row->em_name}}</option>
 
 
                           @endforeach
@@ -170,21 +170,49 @@
                             {{ $message }}
                         </span>
                     @enderror
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#multiple-select-optgroup-field').change(function() {
+                                var emName = $(this).val();
+
+                                // ตรวจสอบว่ามีการเลือก option หรือไม่
+                                if (emName) {
+                                    $.ajax({
+                                        url: '/getStudentIds',
+                                        type: 'POST',
+                                        data: {
+                                            em_name: emName,
+                                            _token: '{{ csrf_token() }}' // สำหรับ Laravel CSRF protection
+                                        },
+                                        success: function(response) {
+                                            $('#studentIdsInput').val(response.student_ids);
+                                        },
+                                        error: function(xhr) {
+                                            console.log(xhr.responseText); // แสดงข้อผิดพลาดใน console
+                                        }
+                                    });
+                                } else {
+                                    $('#studentIdsInput').val(''); // เคลียร์ input ถ้าไม่มีการเลือก option
+                                }
+                            });
+                        });
+                    </script>
                       </div>
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label><br>
+                        <input type="text" class="form-control" id="studentIdsInput" name="student_name[]"value="{{ $establishments->student_name }}" readonly>
 
-
-                            <select class="form-control" id="validationSelect1" name="student_name" disabled>
-                                <option value="">กรุณาเลือกหลักสูตร</option>
+                            {{-- <select class="form-control" id="validationSelect1" name="student_name" disabled>
+                                <option value="">กรุณาเลือกหลักสูตร</option> --}}
                                 {{-- <option value="-"@if($users->major_id=="-") selected @endif required>-</option> --}}
-                                @foreach ($users as $row)
+                                {{-- @foreach ($users as $row) --}}
                                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                                  <option value="{{$row->id}}"{{$row->id==$establishments->student_name ?'selected':''}}> {{$row->fname}}</option>
+                                  {{-- <option value="{{$row->id}}"{{$row->id==$establishments->student_name ?'selected':''}}> {{$row->fname}}</option> --}}
                                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-                                </optgroup>
+                                {{-- </optgroup>
 
-                                @endforeach
+                                @endforeach --}}
                               </select>
                       </div>
 

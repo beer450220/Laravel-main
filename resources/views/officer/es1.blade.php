@@ -79,7 +79,7 @@
             @foreach ($supervision as $row)
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}}</td>
+              <td>{{$row->student_name}}</td>
               {{-- <td>{{$row->em_name}}</td> --}}
               {{-- <td>{{$row->namefiles}}</td> --}}
               {{-- <td>{{$row->year}}</td>

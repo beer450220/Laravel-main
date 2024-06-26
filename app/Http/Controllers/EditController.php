@@ -890,6 +890,7 @@ $post->update
 
     $request->validate([
         'password' => 'required|confirmed|min:8',
+
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
@@ -2930,6 +2931,15 @@ $post->update
       $establishment=DB::table('establishment')
       //->where('role',"student")
     //    ->where('id','user_id')
+    // ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
+    // ->groupBy('em_name')
+    // ->havingRaw('COUNT(*) > 1')
+    // ->orderBy('id', 'desc')
+
+      ->get();
+      $users3=DB::table('student')
+      //->where('role',"student")
+    //    ->where('id','user_id')
       ->get();
 
     //  $data['states'] = establishment::where('user_id',$request->user_id)->get(['em_name','id']);
@@ -2941,7 +2951,7 @@ $post->update
    // ->get();
   //dd($supervisions);
      // dd($supervisions);
-     return view('teacher.edit.editsupervision',compact('supervisions','establishment','users1','users2'));
+     return view('teacher.edit.editsupervision',compact('supervisions','establishment','users1','users3','users2'));
 
  }
 

@@ -49,7 +49,7 @@
         @if ($registers)
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">ชื่อนักศึกษา  {{ $registers->fname }} </h5>
+                <h5 class="card-title text-dark">ชื่อนักศึกษา  :{{ $registers->fname }} </h5>
                 {{-- <p class="card-text">User ID: {{ $registers->user_id }}</p> --}}
                 <!-- แสดงข้อมูลเพิ่มเติมที่ต้องการ -->
 
@@ -65,7 +65,7 @@
                             <tr>
                                 <th> <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="selectAll" onclick="toggleSelectAll(this)">
-                                    <label class="form-check-label" for="selectAll">เลือกอนุมัติทั้งหมด</label> </div>
+                                    <label class="form-check-label text-white" for="selectAll">เลือกอนุมัติทั้งหมด</label> </div>
                             </div></th>
                                 <th>ลำดับ</th>
                                 <th>ชื่อไฟล์</th>

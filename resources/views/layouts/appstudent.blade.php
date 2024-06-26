@@ -49,7 +49,23 @@
 
      @include('layouts.menutopstudent')
         @include('layouts.sidebarstudent')
-
+        <style>
+            body {
+                font-size: 16px; /* ขนาดตัวอักษรที่ต้องการ */
+            }
+            .fa-clipboard {
+    font-size: 16px; /* ปรับขนาดไอคอน */
+    }
+    tr {
+    color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+    }
+    label{
+    color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+    }
+    /* table.table-hover tbody tr:hover th:hover {
+            background-color: #ffffff7e;
+        } */
+      </style>
     {{-- @include('layouts.cssstudent') --}}
 
 {{-- @include('layouts.scriptsstudent') --}}

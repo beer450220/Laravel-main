@@ -16,7 +16,26 @@
 @include('layouts.officersidebsr')
  @include('layouts.officertop')
 
-
+ <style>
+    body {
+        font-size: 24px; /* ขนาดตัวอักษรที่ต้องการ */
+    }
+    .fa-clipboard {
+font-size: 16px; /* ปรับขนาดไอคอน */
+}
+tr {
+color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+}
+label{
+color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+}
+table.table-hover tbody tr:hover th:hover {
+    background-color: #ffffff7e;
+}
+/* .nav-link {
+    color: #000 !important;
+} */
+</style>
 
 
 
@@ -24,10 +43,10 @@
         @yield('content')
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-              <li class="nav-item"><a  class="nav-link px-2 text-muted">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></li>
+              <li class="nav-item"><h4><a  class="nav-link px-2 text-dark">หลักสูตรวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏอุตรดิตถ์</a></h4></li>
 
             </ul>
-            <p class="text-center text-muted">© 2024 Company, Inc</p>
+        <h4> <p class="text-center text-dark">© 2024 Company, Inc</p></h4>
           </footer>
 
 </body>

@@ -1894,18 +1894,18 @@ $users=DB::table('users')
                                                         //     ->paginate(10);
 
                                                             $supervision = event::query()
-                                                            ->join('establishment', 'events.em_id', '=', 'establishment.id')
-                                                            ->join('users','events.student_name','users.id')
+                                                            // ->join('establishment', 'events.em_id', '=', 'establishment.id')
+                                                            // ->join('users','events.student_name','users.id')
                                                             ->where(function ($query) use ($keyword) {
-                                                                $query->where('events.namefiles', 'LIKE', '%' . $keyword . '%')
-                                                                      ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%')
-                                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+                                                                $query->where('events.student_name', 'LIKE', '%' . $keyword . '%');
+                                                                    //   ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%')
+                                                                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                                                     //   ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
                                                                     //   ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
                                                             })
-                                                            ->select('events.*', 'establishment.em_name','users.fname')
+                                                            // ->select('events.*', 'establishment.em_name','users.fname')
 
-                                                            ->where('role',"student")
+                                                            // ->where('role',"student")
                                                             ->orderBy('id', 'desc')
 
                                                             ->paginate(5);
@@ -3138,17 +3138,18 @@ public function searchsupervision0(Request $request){
 //dd($events);
 
 $events = Event::query()
-->join('users', 'events.student_name', '=', 'users.id')
+// ->join('users', 'events.student_name', '=', 'users.id')
 ->where(function ($query) use ($keyword) {
     $query
-    // ->Where('events.term', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
+     ->Where('events.student_name', 'LIKE', '%' . $keyword . '%');
+       //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
         //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
         //   ->orWhere('events.namefiles', 'LIKE', '%' . $keyword . '%');
 
         //   ->orWhere('events.year', 'LIKE', '%' . $keyword . '%');
 })
-->select('events.*', 'users.fname')
+// ->select('events.*', 'users.fname')
+->orderBy('id', 'desc')
 ->paginate(10);
 
 return view('teacher.supervision',  ['events' => $events,]);
@@ -3344,11 +3345,11 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
 
 
-    public function viewestablishmentuser($id) {
+    public function viewestablishmentuser($em_id) {
         //ตรวจสอบข้อมูล
 
         // $establishments=establishment::find($id);
-        $establishments=DB::table('establishment')->find($id);
+        $establishments=DB::table('establishment')->find($em_id);
         //  dd($establishments);
 
          return view('student.viewestablishmentuser1',compact('establishments'));
@@ -3542,14 +3543,35 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
     public function calendar2confirm()
     {
+        // $username = auth()->user()->username;
+        $userId = auth()->user()->username;
         $events=DB::table('events')
         // ->join('users','events.user_id','users.id')
         // ->select('events.*','users.fname')
+
         ->join('teacher','events.teacher_name','teacher.id')
-        ->join('establishment','events.em_id','establishment.id')
-        ->select('events.*','teacher.fname','establishment.em_name')
-        ->where('student_name', auth()->id())
-        ->paginate(5);
+        //  ->join('establishment','events.em_id','establishment.id')
+        // ->select('events.*','teacher.fname','establishment.em_name')
+        // ->where('student_name', auth()->id())
+        // ->paginate(5);
+
+//         ->join('users', 'events.student_name', 'users.id')
+//         ->select('events.*', 'users.fname')
+//         ->where('users.username', $username) // ตรวจสอบ username
+//         ->where(function ($query) {
+//             $query->where('events.student_name', 'LIKE', )
+//                   ->orWhere('events.student_name', 'LIKE', );
+//         })
+//         ->orderBy('events.id', 'desc')
+// ->get();
+// foreach ($events as $event) {
+//     $event->selectedIds = explode(',', $event->student_name);
+// }
+->select('events.*','teacher.fname')
+->whereRaw("FIND_IN_SET('$userId', student_name)")
+
+->get();
+//dd($events);
         $users2=DB::table('teacher')
         ->get();
         return view('student.calendar2confirm',compact('events','users2'));
@@ -4058,13 +4080,14 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 
 
 
-    public function viewestablishment($id) {
+    public function viewestablishment($em_id) {
         //ตรวจสอบข้อมูล
 
         // $establishments=establishment::find($id);
-        $establishments=DB::table('establishment')
+        // $establishments=DB::table('establishment')
 
-        ->find($id);
+        // ->find($em_id);
+        $establishments=establishment::find($em_id);
         //  dd($establishments);
         $establishments1=DB::table('establishment')
         ->join('users','establishment.user_id','users.id')
@@ -4081,13 +4104,13 @@ return view('teacher.reportresults1',  ['report' => $report,]);
          return view('officer.viewestablishmentuser1',compact('establishments','users','establishments1','student',));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
-     public function viewestablishment1($id) {
+     public function viewestablishment1($em_id) {
         //ตรวจสอบข้อมูล
 
         // $establishments=establishment::find($id);
         $establishments=DB::table('establishment')
 
-        ->find($id);
+        ->find($em_id);
         //  dd($establishments);
         $establishments1=DB::table('establishment')
         ->join('users','establishment.user_id','users.id')
@@ -4112,6 +4135,10 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         // ->join('users','establishment.user_id','users.id')
         // ->select('establishment.*','users.fname')
         // ->paginate(5);
+          ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
+    ->groupBy('em_name')
+    ->havingRaw('COUNT(*) > 1')
+    ->orderBy('id', 'desc')
         ->get();
         $users=DB::table('users')
       ->where('role',"student")
@@ -4121,7 +4148,11 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     //   ->where('role',"student")
 
       ->get();
-         return view('teacher.viewevent',compact('establishments','users','establishments1','teacher'));
+      $users3=DB::table('student')
+
+      ->get();
+     //dd($establishments1);
+         return view('teacher.viewevent',compact('establishments','users','users3','establishments1','teacher'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
      public function viewevents1($id) {
@@ -4624,10 +4655,11 @@ public function category()
         $events=DB::table('events')
         // ->join('users', 'events.student_name', 'users.id')
         //  ->select('events.*', 'users.fname', 'users.surname')
-         ->join('users','events.student_name','users.id')
-         ->select('events.*','users.fname')
+        //  ->join('users','events.student_name','users.id')
+        //  ->select('events.*','users.username')
          ->orderBy('id', 'desc')
         ->paginate(10);
+
     //     $users=DB::table('users')
     //   ->where('role',"student")->paginate(5);
         // $major=DB::table('users')->paginate(5);
@@ -4874,11 +4906,11 @@ public function category()
     public function es2()
     {
         $supervision=DB::table('events')
-        ->join('users','events.student_name','users.id')
+        // ->join('users','events.student_name','users.id')
         // ->join('establishment','events.em_id','establishment.id')
         // ->select('events.*','establishment.em_name','users.fname')
-        ->select('events.*','users.fname')
-         ->where('role',"student")
+        // ->select('events.*','users.fname')
+        //  ->where('role',"student")
         ->orderBy('id', 'desc')
        // ->join('users','users.id','=','users.id')
         // ->join('users','supervision.user_id','users.id')

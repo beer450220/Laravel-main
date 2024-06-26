@@ -77,7 +77,26 @@
         {{-- @include('layouts.admincss') --}}
         @include('layouts.officersidebsr')
          @include('layouts.officertop')
-
+         <style>
+            body {
+                font-size: 24px; /* ขนาดตัวอักษรที่ต้องการ */
+            }
+            .fa-clipboard {
+        font-size: 16px; /* ปรับขนาดไอคอน */
+        }
+        tr {
+        color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+        }
+        label{
+        color: black; /* เปลี่ยนสีข้อความของ th เป็นสีดำ */
+        }
+        table.table-hover tbody tr:hover th:hover {
+            background-color: #ffffff7e;
+        }
+        /* .nav-link {
+            color: #000 !important;
+        } */
+        </style>
         @yield('content')
 
         <footer class="py-3 my-4">
