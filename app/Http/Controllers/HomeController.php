@@ -351,19 +351,23 @@ class HomeController extends Controller
         ->where('user_id', auth()->id())
         ->paginate(5);
 
-
+$userId = auth()->user()->username;
         $registers12=DB::table('events')
-        ->join('users','events.student_name','users.id')
-        ->select('events.*','users.fname')
+        // ->join('users','events.student_name','users.id')
+        ->select('events.*')
         ->where('events.namefiles', 'สก.10 แบบฟอร์มขออนุญาตการออกนิเทศงานสหกิจศึกษา')
-        ->where('student_name', auth()->id())
-        ->paginate(5);
+        // ->where('student_name', auth()->id())
+
+->whereRaw("FIND_IN_SET('$userId', student_name)")
+        ->get();
+        // dd($registers12);
         $registers012=DB::table('events')
-        ->join('users','events.student_name','users.id')
-        ->select('events.*','users.fname')
+        // ->join('users','events.student_name','users.id')
+        ->select('events.*')
         ->where('events.namefiles1', 'สก.11 แบบแจ้งยืนยันการนิเทศงานนักศึกษาสหกิจศึกษา')
-        ->where('student_name', auth()->id())
-        ->paginate(5);
+        // ->where('student_name', auth()->id())
+        ->whereRaw("FIND_IN_SET('$userId', student_name)")
+        ->get();
         $registers13=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
         ->select('supervision.*','users.fname')
