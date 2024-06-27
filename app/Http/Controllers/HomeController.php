@@ -3692,99 +3692,170 @@ return view('teacher.reportresults1',  ['report' => $report,]);
   //dd($users);
  //year
  //YEAR
-       $labels = $users->keys();
-        //$data = $users->values();
+
+        $users02 = Users::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels = $users->keys();
+        $labels = $labels->map(function($year) {
+            return $year + 543;
+        });
         $data = $users->values();
 
+        $registers02 = registers::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels01 = $registers02->keys();
+        $labels01 = $labels01->map(function($year) {
+            return $year + 543;
+        });
+        $data01 = $registers02->values();
+
+//  dd($data);
+$supervision = Event::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels02 = $supervision->keys();
+        $labels02 = $labels02->map(function($year) {
+            return $year + 543;
+        });
+        $data02 = $supervision->values();
 
 
-        // $data1 = registers::paginate(5);
-        $data1=
-        // =DB::registers
-        // table('users')
-        users::select(
-            DB::raw('YEAR(created_at) as year'),
-            DB::raw('COUNT(DISTINCT id) as count')
-        )
-        ->where('role', "student")
-        ->groupBy(DB::raw('YEAR(created_at)'))
-        ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
-        ->get();
-        // DB::table('users')
-        // ->select(
+        $events1 = Event::where('Status_events', 'รับทราบและยืนยันเวลานัดแล้ว')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+
+$events2 = Event::where('Status_events', 'ขอเปลี่ยนเวลานัดนิเทศ')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+
+// Merge and sort years for labels
+$labels05 = $events1->keys()
+->merge($events2->keys())
+    ->merge($supervision->keys())
+    ->unique()
+    ->sort()
+->map(function($year) {
+return $year + 543;
+});
+    // dd($labels05);
+// Get counts for each year
+$data05 = $labels05->map(function($year) use ($events1) {
+return $events1->get($year - 543, 0);
+});
+
+$data06 = $labels05->map(function($year) use ($events2) {
+return $events2->get($year - 543, 0);
+});
+$data07 = $labels05->map(function($year) use ($supervision) {
+    return $supervision->get($year - 543, 0);
+    });
+
+
+        $supervision1 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels03 = $supervision1->keys();
+        $labels03 = $labels03->map(function($year) {
+            return $year + 543;
+        });
+        $data03 = $supervision1->values();
+
+
+
+
+
+// ข้อมูลแบบประเมินผลนักศึกษาสหกิจศึกษา (สก.13)
+$supervision13 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    ->where('namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+    ->groupBy(DB::raw("YEAR(created_at)"))
+    ->pluck('count', 'year_name');
+
+// ข้อมูลแบบบันทึกการนิเทศสหกิจศึกษา (สก.12)
+$supervision12 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    ->where('namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+    ->groupBy(DB::raw("YEAR(created_at)"))
+    ->pluck('count', 'year_name');
+
+// ปีที่ใช้ใน labels
+$labels04 = $supervision13->keys()->merge($supervision12->keys())->unique()->sort()->map(function($year) {
+    return $year + 543;
+});
+
+// เตรียมข้อมูลสำหรับ dataset
+$data13 = $labels04->map(function($year) use ($supervision13) {
+    return $supervision13->get($year - 543);
+});
+
+$data12 = $labels04->map(function($year) use ($supervision12) {
+    return $supervision12->get($year - 543);
+});
+
+
+
+        // $data1=
+
+        // users::select(
         //     DB::raw('YEAR(created_at) as year'),
-        //     DB::raw('COUNT(id) as user_count')
+        //     DB::raw('COUNT(DISTINCT id) as count')
         // )
+        // ->where('role', "student")
         // ->groupBy(DB::raw('YEAR(created_at)'))
         // ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
-        // ->where('role',"student")
         // ->get();
 
-        // ->paginate(10);
-        // ->join('student','registers.user_id','student.user_id')
-
-        // ->join('student','users.id','student.user_id')
-        // ->select('registers.*','users.fname','student.year')
-        // ->select('users.*','users.fname','student.year')
-
-
-        // ->join('registers','users.id','registers.user_id')
-        // ->select('users.*','users.fname','registers.Status_registers')
-        // ->where('role',"student")
-        // ->distinct()
-        // ->orderBy('users.updated_at', 'desc')
-        // ->paginate(10);
 
 
 
-    //     ->join('registers', 'users.id', '=', 'registers.user_id')
-    // ->select(
-    //     'users.*',
-    //     'users.fname',
-    //     'registers.Status_registers',
-    //     DB::raw("COUNT(DISTINCT registers.user_id) as user_count"),
-    //     DB::raw("YEAR(registers.created_at) as year_name")
+
+
+
+    // $data2=
+
+    // registers::select(
+    //     DB::raw('YEAR(created_at) as year'),
+    //     DB::raw('COUNT(DISTINCT user_id) as count')
     // )
-    // ->where('role', "student")
-    // ->groupBy(DB::raw("YEAR(registers.created_at)"), 'users.id', 'users.fname', 'registers.Status_registers', 'users.updated_at')
-    // ->orderBy('users.updated_at', 'desc')
-    // ->paginate(10);
+    // // ->where('role', "student")
+    // ->groupBy(DB::raw('YEAR(created_at)'))
+    // ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+    // ->get();
 
-    $data2=
-    // =DB::registers
-    // table('users')
-    registers::select(
-        DB::raw('YEAR(created_at) as year'),
-        DB::raw('COUNT(DISTINCT user_id) as count')
-    )
-    // ->where('role', "student")
-    ->groupBy(DB::raw('YEAR(created_at)'))
-    ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
-    ->get();
-
-    $data3 = DB::table('acceptance')
-    ->join('events', 'acceptance.user_id', '=', 'events.student_name')
-    ->select(
-        DB::raw('YEAR(acceptance.created_at) as year'),
-        DB::raw('COUNT(DISTINCT acceptance.user_id) as count')
-    )
-    ->groupBy(DB::raw('YEAR(acceptance.created_at)'))
-    ->orderBy(DB::raw('YEAR(acceptance.created_at)'), 'desc')
-    ->get();
+    // $data3 = DB::table('acceptance')
+    // ->join('events', 'acceptance.user_id', '=', 'events.student_name')
+    // ->select(
+    //     DB::raw('YEAR(acceptance.created_at) as year'),
+    //     DB::raw('COUNT(DISTINCT acceptance.user_id) as count')
+    // )
+    // ->groupBy(DB::raw('YEAR(acceptance.created_at)'))
+    // ->orderBy(DB::raw('YEAR(acceptance.created_at)'), 'desc')
+    // ->get();
 
 
-    $data4=
-    // =DB::registers
-    // table('users')
-    supervision::select(
-        DB::raw('YEAR(created_at) as year'),
-        DB::raw('COUNT(DISTINCT user_id) as count')
-    )
-    // ->where('role', "student")
-    ->groupBy(DB::raw('YEAR(created_at)'))
-    ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
-    ->get();
-        return view('officer.officerhome',compact('users','users1','users2','users3','users4','users5'), compact('labels','data','data1','data2','data3','data4'),["msg"=>"I am Editor role"]);
+    // $data4=
+
+    // supervision::select(
+    //     DB::raw('YEAR(created_at) as year'),
+    //     DB::raw('COUNT(DISTINCT user_id) as count')
+    // )
+
+    // ->groupBy(DB::raw('YEAR(created_at)'))
+    // ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+    // ->get();
+        return view('officer.officerhome',compact('users','users1','users2','users02','users3','users4','users5'
+
+        ,'labels01','data01','registers02'
+        ,'labels02','data02','supervision'
+        ,'labels03','data03','supervision1',
+        'labels04', 'data13', 'data12','supervision13','supervision12'
+        ,
+        'labels05', 'data05', 'data06','data07','events1','events2'
+        ), compact('labels','data'
+
+        ),["msg"=>"I am Editor role"]);
     }
 
 

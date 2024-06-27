@@ -156,7 +156,63 @@
                                     {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
 
 
+                                        <!-- Area Chart -->
+                                        <div class="col-xl-8 col-lg-7">
+                                            <div class="card shadow mb-4">
+                                                <!-- Card Header - Dropdown -->
+                                                <div
+                                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                    {{-- <h6 class="m-0 font-weight-bold text-primary">ผู้ใช้งานระบบ</h6> --}}
 
+                                                </div>
+                                    <div class="card-body">
+                                        <div class="chart-area">
+                                            <canvas id="myChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                    <script type="text/javascript">
+
+                                        var labels =  {{ Js::from($labels) }};
+                                        var users =  {{ Js::from($data) }};
+
+                                        const data = {
+                                          labels:labels,
+                                          //  ["5", "20","30", "40", "50", "60"],
+
+
+                                          datasets: [{
+                                            label: 'จำนวน',
+                                            backgroundColor: 'rgb(255, 125, 136)',
+                                            /// 'rgb(255, 99, 154)',
+                                            backgroundColor: 'rgb(244, 125, 136)',
+                                            borderColor: 'rgb(255, 125, 136)',
+                                            borderColor: 'rgb(244, 125, 136)',
+                                          //   'rgb(255, 159, 64)',
+                                          //'rgb(255, 99, 136)',
+                                            data:
+                                            users,
+                                            //[10, 20,30, 40, 50, 60],
+
+                                          },
+                                     ]
+                                        };
+
+                                        const config = {
+                                          type: 'bar',
+                                          data: data,
+                                          options: {}
+                                        };
+
+                                        const myChart = new Chart(
+                                          document.getElementById('myChart'),
+                                          config
+                                        );
+
+                                  </script>
                     <div class="col-auto">
                         {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
                     </div>    </div>    </div>    </div>    </div>    </div>    </div>
@@ -274,12 +330,61 @@
 
                                 </table> --}}
                                 {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
-                              </div>
-                            </div>
-                          </div>  </div>  </div>
 
-                    </div>
+                <!-- Area Chart -->
+                <div class="col-xl-8 col-lg-7">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div
+                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            {{-- <h6 class="m-0 font-weight-bold text-primary">ผู้ใช้งานระบบ</h6> --}}
+
+                        </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="myChart1"></canvas>
                 </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="chart-pie pt-4 pb-2">
+        <canvas id="myPieChart2"></canvas>
+    </div> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var labels =  {!! json_encode($labels01) !!};
+            var users =  {!! json_encode($data01) !!};
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'จำนวน',
+                    backgroundColor: 'rgb(244, 125, 136)',
+                    borderColor: 'rgb(244, 125, 136)',
+                    data: users,
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {}
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart1'),
+                config
+            );
+        });
+    </script>
+        </div>
+    </div>
+  </div>  </div>  </div>
+
+</div>
+</div>
                 <div class="col-auto">
                     {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
                 </div>
@@ -402,7 +507,114 @@
 
                                     </table> --}}
                                     {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
+ <!-- Area Chart -->
+ {{-- <div class="col-xl-8 col-lg-7">
+    <div class="card shadow mb-4">
 
+        <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+
+        </div>
+<div class="card-body">
+<div class="chart-area">
+    <canvas id="myChart3"></canvas>
+</div>
+</div>
+</div>
+</div> --}}
+<!-- Area Chart -->
+<div class="col-xl-8 col-lg-7">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            {{-- <h6 class="m-0 font-weight-bold text-primary">ผู้ใช้งานระบบ</h6> --}}
+
+        </div>
+<div class="card-body">
+<div class="chart-area">
+    <canvas id="myChart03"></canvas>
+</div>
+</div>
+</div>
+</div>
+{{-- <div class="chart-pie pt-4 pb-2">
+<canvas id="myPieChart2"></canvas>
+</div> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{{-- <script type="text/javascript">
+$(document).ready(function() {
+var labels =  {!! json_encode($labels02) !!};
+var users =  {!! json_encode($data02) !!};
+
+const data = {
+labels: labels,
+datasets: [{
+    label: 'จำนวน',
+    backgroundColor: 'rgb(244, 125, 136)',
+    borderColor: 'rgb(244, 125, 136)',
+    data: users,
+}]
+};
+
+const config = {
+type: 'bar',
+data: data,
+options: {}
+};
+
+const myChart = new Chart(
+document.getElementById('myChart3'),
+config
+);
+});
+</script> --}}
+{{-- <canvas id="myChart03" width="400" height="200"></canvas> --}}
+<script type="text/javascript">
+    $(document).ready(function() {
+        var labels = {!! json_encode($labels05) !!};
+        var data1 = {!! json_encode($data05) !!};
+        var data2 = {!! json_encode($data06) !!};
+        var data3 = {!! json_encode($data07) !!};
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'รับทราบและยืนยันเวลานัดแล้ว',
+                    backgroundColor: 'rgb(244, 125, 136)',
+                    borderColor: 'rgb(244, 125, 136)',
+                    data: data1,
+                },
+                {
+                    label: 'ขอเปลี่ยนเวลานัดนิเทศ',
+                    backgroundColor: 'rgb(75, 192, 192)',
+                    borderColor: 'rgb(75, 192, 192)',
+                    data: data2,
+                }
+                ,
+                {
+                    label: 'จำนวน',
+                    backgroundColor: 'rgb(255, 165, 0)',
+                    borderColor: 'rgb(255, 165, 0)',
+                    data: data3,
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart03'),
+            config
+        );
+    });
+</script>
                     </div>
                     <div class="col-auto">
                         {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
@@ -523,6 +735,96 @@
 
                                 </table> --}}
                                 {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
+                                 <!-- Area Chart -->
+                <div class="col-xl-8 col-lg-7">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div
+                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            {{-- <h6 class="m-0 font-weight-bold text-primary">ผู้ใช้งานระบบ</h6> --}}
+
+                        </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="myChart4"></canvas>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="myChart5"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="chart-pie pt-4 pb-2">
+        <canvas id="myPieChart2"></canvas>
+    </div> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var labels =  {!! json_encode($labels03) !!};
+            var users =  {!! json_encode($data03) !!};
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'จำนวน',
+                    backgroundColor: 'rgb(244, 125, 136)',
+                    borderColor: 'rgb(244, 125, 136)',
+                    data: users,
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {}
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart4'),
+                config
+            );
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var labels =  {!! json_encode($labels04) !!};
+            var data13 =  {!! json_encode($data13) !!};
+            var data12 =  {!! json_encode($data12) !!};
+
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)',
+                        backgroundColor: 'rgb(244, 125, 136)',
+                        borderColor: 'rgb(244, 125, 136)',
+                        data: data13,
+                    },
+                    {
+                        label: 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)',
+                        backgroundColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        data: data12,
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {}
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart05'),
+                config
+            );
+        });
+    </script>
                               </div>
                             </div>
                           </div>  </div>  </div>
