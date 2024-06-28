@@ -4894,9 +4894,119 @@ public function category()
 //  $users9 = users::select(DB::raw("COUNT(*) as count"))
 //  ->where('status', 'ไม่อนุมัติ')
 //  ->get();
+
+$users02 = Users::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels = $users02->keys();
+        $labels = $labels->map(function($year) {
+            return $year + 543;
+        });
+        $data = $users02->values();
+
+
+
+        $registers02 = registers::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels01 = $registers02->keys();
+        $labels01 = $labels01->map(function($year) {
+            return $year + 543;
+        });
+        $data01 = $registers02->values();
+
+//  dd($data);
+$supervision = Event::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels02 = $supervision->keys();
+        $labels02 = $labels02->map(function($year) {
+            return $year + 543;
+        });
+        $data02 = $supervision->values();
+
+
+        $events1 = Event::where('Status_events', 'รับทราบและยืนยันเวลานัดแล้ว')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+
+$events2 = Event::where('Status_events', 'ขอเปลี่ยนเวลานัดนิเทศ')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+
+// Merge and sort years for labels
+$labels05 = $events1->keys()
+->merge($events2->keys())
+    ->merge($supervision->keys())
+    ->unique()
+    ->sort()
+->map(function($year) {
+return $year + 543;
+});
+    // dd($labels05);
+// Get counts for each year
+$data05 = $labels05->map(function($year) use ($events1) {
+return $events1->get($year - 543, 0);
+});
+
+$data06 = $labels05->map(function($year) use ($events2) {
+return $events2->get($year - 543, 0);
+});
+$data07 = $labels05->map(function($year) use ($supervision) {
+    return $supervision->get($year - 543, 0);
+    });
+
+
+        $supervision1 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $labels03 = $supervision1->keys();
+        $labels03 = $labels03->map(function($year) {
+            return $year + 543;
+        });
+        $data03 = $supervision1->values();
+
+
+
+
+
+// ข้อมูลแบบประเมินผลนักศึกษาสหกิจศึกษา (สก.13)
+$supervision13 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    ->where('namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+    ->groupBy(DB::raw("YEAR(created_at)"))
+    ->pluck('count', 'year_name');
+
+// ข้อมูลแบบบันทึกการนิเทศสหกิจศึกษา (สก.12)
+$supervision12 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    ->where('namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+    ->groupBy(DB::raw("YEAR(created_at)"))
+    ->pluck('count', 'year_name');
+
+// ปีที่ใช้ใน labels
+$labels04 = $supervision13->keys()->merge($supervision12->keys())->unique()->sort()->map(function($year) {
+    return $year + 543;
+});
+
+// เตรียมข้อมูลสำหรับ dataset
+$data13 = $labels04->map(function($year) use ($supervision13) {
+    return $supervision13->get($year - 543);
+});
+
+$data12 = $labels04->map(function($year) use ($supervision12) {
+    return $supervision12->get($year - 543);
+});
         return view('teacher.teacherhome',compact('users1','users2','users3','users4','users8'
         ,'users6','users7','users9','users10','users11'
 
+        ,'labels','data','users02'
+        ,'labels01','data01','registers02'
+        ,'labels02','data02','supervision'
+        ,'labels03','data03','supervision1',
+        'labels04', 'data13', 'data12','supervision13','supervision12'
+        ,
+        'labels05', 'data05', 'data06','data07','events1','events2'
 
         ,'users5'),["msg"=>"I am teacher role"]);
     }
