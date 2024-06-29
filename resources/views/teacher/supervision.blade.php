@@ -91,7 +91,7 @@
             <tr>
               <th>#</th>
               <th>วันเวลาการนิเทศ</th>
-              <th>ชื่อนักศึกษา</th>
+              <th>รหัสนักศึกษา</th>
               {{-- <th>ชื่อสถานประกอบการ</th> --}}
               {{-- <th>ปีการศึกษา</th>
               <th>ภาคเรียนที่</th> --}}
@@ -121,7 +121,28 @@
 
 
         </td>
-              <td>{{$row->student_name}}
+              <td>
+                {{$row->student_name}}
+
+{{--
+                @foreach ($users2 as $teacherId)
+
+                                    @php
+
+                                    $teacherIds = explode(',', $row->student_name);
+                                @endphp
+                            @endforeach
+                                     @foreach ($teacherIds as $teacherId)
+                                     @php
+
+                                         $teacher = App\Models\Student::where('student_id', $teacherId)->first();
+
+                                        //  dd($teacher);
+                                     @endphp
+
+
+                                           {{ $teacher->fname }}
+                                 @endforeach --}}
                 {{-- {{$row->username}} --}}
 
 

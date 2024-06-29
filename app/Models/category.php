@@ -14,7 +14,8 @@ class category extends Model
     protected $fillable=[
         // 'images',
 
-        'name', 'name1', 'year', 'start_date', 'end_date', 'start_notify', 'end_notify',
+        // 'name', 'name1'
+        'year', 'start_date', 'end_date', 'start_notify', 'end_notify',
 
 
     ];

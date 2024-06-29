@@ -664,6 +664,7 @@ Route::get('/teacher/search01',[HomeController::class,'searchsupervision0'])->na
     Route::post('/api/get_student_ids',[addController::class,'get_student_ids']);
 
     Route::post('/getStudentIds', [addController::class, 'getStudentCount'])->name('getStudentCount');
+    Route::post('/getStudentIds1', [addController::class, 'getStudentNames'])->name('getStudentNames');
     // Route::post('api/fetch-cities',[addController::class,'fatchCity']);
 
 //เอกสารขออนุญาตนิเทศงาน(สก10)

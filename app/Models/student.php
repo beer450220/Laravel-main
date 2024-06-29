@@ -27,7 +27,7 @@ class student extends Model
         'address',
         // 'em_name',
 
-        'year',
+        // 'year',
         'term',
         'email', 'GPA',
         // 'password',

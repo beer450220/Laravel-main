@@ -24,10 +24,15 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           {{ Auth::user()->username }}
+            <div class="text-dark"> {{ Auth::user()->fname }}</div>
+
+            @if (Auth::user()->role === 'student')
+      <span class="badge badge-pill badge-dark">นักศึกษา</span>
+
+  @endif
 
            <span class="avatar avatar-sm mt-2">
-              <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">
+              <img src="../../Profile/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">
               {{-- <img src="" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""> --}}
 
             </span>

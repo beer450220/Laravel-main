@@ -282,7 +282,7 @@
           </div>
 
           <div class="col-md-4">
-            <label for="inputAddress" >ชื่อนักศึกษา</label>
+            <label for="inputAddress" >รหัสนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             <input type="text" class="form-control" id="studentIdsInput" name="student_name[]"value="{{ $supervisions->student_name }}" readonly>
             {{-- <select class="form-select" id="single-select-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]" >

@@ -736,7 +736,7 @@ config
                                 </table> --}}
                                 {{-- {!!$data1->links('pagination::bootstrap-5')!!} --}}
                                  <!-- Area Chart -->
-                <div class="col-xl-8 col-lg-7">
+                <div class="col-xl-12 col-lg-7">
                     <div class="card shadow mb-4">
                         <!-- Card Header - Dropdown -->
                         <div
@@ -744,14 +744,14 @@ config
                             {{-- <h6 class="m-0 font-weight-bold text-primary">ผู้ใช้งานระบบ</h6> --}}
 
                         </div>
-            <div class="card-body">
+            {{-- <div class="card-body">
                 <div class="chart-area">
                     <canvas id="myChart4"></canvas>
                 </div>
-            </div>
+            </div> --}}
             <div class="card-body">
                 <div class="chart-area">
-                    <canvas id="myChart5"></canvas>
+                    <canvas id="myChart05"></canvas>
                 </div>
             </div>
         </div>
@@ -794,21 +794,64 @@ config
             var labels =  {!! json_encode($labels04) !!};
             var data13 =  {!! json_encode($data13) !!};
             var data12 =  {!! json_encode($data12) !!};
-
+            var data14 =  {!! json_encode($data14) !!};
+            var data15 =  {!! json_encode($data15) !!};
+            var data16 =  {!! json_encode($data16) !!};
+            var data17 =  {!! json_encode($data17) !!};
+            var data18 =  {!! json_encode($data18) !!};
+            var data19 =  {!! json_encode($data19) !!};
             const data = {
                 labels: labels,
                 datasets: [
                     {
-                        label: 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)',
-                        backgroundColor: 'rgb(244, 125, 136)',
-                        borderColor: 'rgb(244, 125, 136)',
+                        label: 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13) (จำนวนผ่าน)',
+                        backgroundColor: 'rgb(122, 198, 72)',
+                        borderColor: 'rgb(122, 198, 72)',
                         data: data13,
                     },
                     {
-                        label: 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)',
-                        backgroundColor: 'rgb(75, 192, 192)',
-                        borderColor: 'rgb(75, 192, 192)',
+                        label: 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13) (จำนวนไม่ผ่าน)',
+                        backgroundColor: 'rgb(244, 125, 136)',
+                    borderColor: 'rgb(244, 125, 136)',
+                        data: data14,
+                    },
+                    {
+                        label: 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)(จำนวนผ่าน)',
+                        backgroundColor: 'rgb(122, 198, 72)',
+                        borderColor: 'rgb(122, 198, 72)',
                         data: data12,
+                    },
+                    {
+                        label: 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)(จำนวนไม่ผ่าน)',
+                        backgroundColor: 'rgb(244, 125, 136)',
+                    borderColor: 'rgb(244, 125, 136)',
+                        data: data15,
+                    }
+                    ,
+                    {
+                        label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)(จำนวนผ่าน)',
+                        backgroundColor: 'rgb(122, 198, 72)',
+                        borderColor: 'rgb(122, 198, 72)',
+                        data: data16,
+                    },
+                    {
+                        label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)(จำนวนไม่ผ่าน)',
+                        backgroundColor: 'rgb(244, 125, 136)',
+                    borderColor: 'rgb(244, 125, 136)',
+                        data: data17,
+                    }
+                    ,
+                    {
+                        label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)(จำนวนผ่าน)',
+                        backgroundColor: 'rgb(122, 198, 72)',
+                        borderColor: 'rgb(122, 198, 72)',
+                        data: data18,
+                    },
+                    {
+                        label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)(จำนวนไม่ผ่าน)',
+                        backgroundColor: 'rgb(244, 125, 136)',
+                    borderColor: 'rgb(244, 125, 136)',
+                        data: data19,
                     }
                 ]
             };

@@ -142,18 +142,18 @@
               </div>
             </div>
              <div class="row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-6">
                 {{-- <label for="inputAddress">ประเภท</label>
                 <input type="text" class="form-control" @error('name') is-invalid @enderror value="{{$major->name}} " name="name" value="{{ old('name_major') }}"  autofocus placeholder="ประเภท"> --}}
-                <label for="inputAddress">หัวเรื่อง</label>
-                <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{$major->name}}"  autofocus placeholder=""required >
+                <label for="inputAddress">ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา</label>
+                {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{$major->name}}"  autofocus placeholder=""required > --}}
 
                 @error('name')
                 <span class="invalid-feedback" >
                     {{ $message }}
                 </span>
             @enderror
-              </div>
+              </div> </div>  <div class="row">
               <div class="form-group col-md-2">
                 {{-- <label for="inputAddress">รูปภาพ</label>
          <input type="file" class="form-control" @error('name') is-invalid @enderror name="images" value="{{$major->images}}"  autofocus placeholder="ประเภท"> --}}
@@ -185,12 +185,12 @@
                   return "$day $month $year";
               }
           @endphp
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
                 <label for="inputAddress">วันเริ่มปฏิบัติสหกิจ</label>
                 <input type="date" class="form-control"id="example-date" @error('name') is-invalid @enderror name="start_date" value="{{ \Carbon\Carbon::parse($major->start_date)->format('Y-m-d') }}"  autofocus placeholder="2/25xx"required>
 
   </div>
-  <div class="form-group col-md-2">
+  <div class="form-group col-md-3">
     <label for="inputAddress">วันสิ้นสุดปฏิบัติสหกิจ</label>
     <input type="date" class="form-control"id="example-date1" @error('name') is-invalid @enderror name="end_date" value="{{ \Carbon\Carbon::parse($major->end_date)->format('Y-m-d') }}"  autofocus placeholder=""required>
 
@@ -262,9 +262,9 @@
 
 </div>
 <div class="row">
-<div class="form-group col-md-4">
-  <label for="inputAddress">หัวเรื่อง1</label>
-<input type="text" class="form-control" @error('name') is-invalid @enderror name="name1" value="{{$major->name1}}"  autofocus placeholder=""required >
+<div class="form-group col-md-6">
+  <label for="inputAddress">ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ</label>
+{{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name1" value="{{$major->name1}}"  autofocus placeholder=""required > --}}
 
 
   @error('name_major')
@@ -272,9 +272,9 @@
       {{ $message }}
   </span>
 @enderror
-</div>
-
-<div class="form-group col-md-2">
+</div></div>
+<div class="row">
+<div class="form-group col-md-3">
 <label for="inputAddress">วันเริ่มแจ้ง</label>
 <input type="date" class="form-control" @error('name') is-invalid @enderror name="start_notify"id="example-date2" value="{{ \Carbon\Carbon::parse($major->start_notify)->format('Y-m-d') }}"  autofocus placeholder="2/25xx"required>
 {{-- <select class="form-control select2" id="validationSelect1" name="faculty" >
@@ -301,7 +301,7 @@
 @enderror
 </div>
 
-<div class="form-group col-md-2">
+<div class="form-group col-md-3">
 <label for="inputAddress">วันสุดท้ายการแจ้ง</label>
 <input type="date" class="form-control" @error('name') is-invalid @enderror name="end_notify"id="example-date3" value="{{ \Carbon\Carbon::parse($major->end_notify)->format('Y-m-d') }}"  autofocus placeholder=""required>
 

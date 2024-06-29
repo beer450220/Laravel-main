@@ -262,7 +262,14 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
 
-                            {{ Auth::user()->fname }}
+                           <div class="text-dark"> {{ Auth::user()->fname }}</div>
+
+                            @if (Auth::user()->role === 'officer')
+                      <span class="badge badge-pill badge-dark">เจ้าหน้าที่</span>
+
+                  @endif
+
+
 
                             <h4 class="mt-4"   ></h4>
 

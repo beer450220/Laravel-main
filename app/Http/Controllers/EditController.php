@@ -1681,9 +1681,10 @@ public function editcategory($notify_id) {
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        // 'year' => 'required|unique:notify',
     ],[
             //'establishment.required' => "กรุณา",
-
+            // 'year.unique' => "ภาคเรียนซ้ำ",
         ]
     );
     // $post=Event::findOrFail($id);
@@ -1712,8 +1713,8 @@ public function editcategory($notify_id) {
 
     $post->update
     ([
-       "name" =>$request->name,
-       "name1" =>$request->name1,
+    //    "name" =>$request->name,
+    //    "name1" =>$request->name1,
        "year" =>$request->year,
        "start_date" =>$request->start_date,
        "end_date" =>$request->end_date,
@@ -3588,8 +3589,11 @@ if($request->hasFile("filess1")){
      $major=DB::table('major')
 
      ->get();
+     $major1=DB::table('notify')
+        ->orderBy('updated_at','desc')
+        ->get();
     //  dd($id);
-     return view('student.Edit.edituser2',compact('users','major'));
+     return view('student.Edit.edituser2',compact('users','major','major1'));
 
  }
  public function editpersonal4($id) {
@@ -3795,7 +3799,7 @@ if($request->hasFile("filess1")){
        "address" =>$request->address,
 
     //    "em_name" =>$request->em_name,
-       "year" =>$request->year,
+    //    "year" =>$request->year,
        "term" =>$request->term,
 
        "email" =>$request->email,

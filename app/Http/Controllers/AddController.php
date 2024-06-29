@@ -349,7 +349,7 @@ class AddController extends Controller
                       "GPA" => $request->GPA,
                       "major_id" => $request->major_id,
                       "telephonenumber" => $request->telephonenumber,
-                      "year" => $request->year,
+                    //   "year" => $request->year,
                       "term" => $request->term,
 
                       "address" => $request->address,
@@ -1247,11 +1247,11 @@ public function addcategory()
         // dd($request);
 
          $request->validate([
-           'name' => 'required|unique:notify',
+           'year' => 'required|unique:notify',
           //  'test' => 'required|unique:test',
       ]
     ,[
-        'name.unique' => "ชื่อเรื่องซ้ำ",
+        'year.unique' => "ภาคเรียนซ้ำ",
     //    'name.required'=>"กรุณากรอกชื่อ",
       // 'test.required'=>"กรุณาเทส",
     ]
@@ -1267,8 +1267,8 @@ public function addcategory()
 
 $post =new category
 ([
-    "name" => $request->name,
-"name1" => $request->name1,
+//     "name" => $request->name,
+// "name1" => $request->name1,
 "year" => $request->year,
 "start_date" => $request->start_date,
 "end_date" => $request->end_date,
@@ -1447,7 +1447,7 @@ public function addsupervision()
             ->selectRaw('GROUP_CONCAT(student_id) AS student_ids')
             ->where('em_name', $emName)
             ->groupBy('em_name')
-            ->havingRaw('COUNT(DISTINCT student_id) > 1')
+            ->havingRaw('COUNT(DISTINCT student_id) > 0')
             ->get();
 
         // ตรวจสอบว่ามีข้อมูลหรือไม่
@@ -1459,6 +1459,36 @@ public function addsupervision()
         $studentIds = $establishments->first()->student_ids;
     // ส่งกลับเป็น JSON response
     return response()->json(['student_ids' => $studentIds]);
+}
+
+public function getStudentNames(Request $request)
+{
+    $emName = $request->input('em_name');
+
+    // Query to retrieve establishment with student_ids
+    $establishments = DB::table('establishment')
+        ->selectRaw('GROUP_CONCAT(student_id) AS student_ids')
+        ->where('em_name', $emName)
+        ->groupBy('em_name')
+        ->havingRaw('COUNT(DISTINCT student_id) > 0')
+        ->first(); // Get first result
+
+    // Check if establishment exists
+    if (empty($establishments)) {
+        return response()->json(['error' => 'ไม่พบข้อมูลสถานประกอบการ']);
+    }
+
+    // Extract student_ids from string to array
+    $studentIds = explode(',', $establishments->student_ids);
+
+    // Query to retrieve student names based on student_ids
+    $students = DB::table('student')
+        ->where('student_id', $studentIds)
+        ->select('fname')
+        ->get();
+
+    // Return JSON response with student names
+    return response()->json(['students' => $students]);
 }
 
 

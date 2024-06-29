@@ -133,9 +133,9 @@
             </div>
           </div>
            <div class="row">
-            <div class="form-group col-md-3">
-              <label for="inputAddress">หัวเรื่อง</label>
-       <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา" readonly autofocus placeholder="ประเภท">
+            <div class="form-group col-md-4">
+              <label for="inputAddress">ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา</label>
+       {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา" readonly autofocus placeholder="ประเภท"> --}}
 
 
               @error('name_major')
@@ -143,7 +143,7 @@
                   {{ $message }}
               </span>
           @enderror
-            </div>
+            </div></div><div class="row">
             <div class="form-group col-md-1">
                 <label for="inputAddress">ภาคเรียนที่</label>
                 <input type="text" class="form-control" @error('name') is-invalid @enderror name="year"maxlength="6" value=""  autofocus placeholder="2/25xx"required>
@@ -159,7 +159,7 @@
               </div>
           <div class="form-group col-md-2">
             <label for="inputAddress">วันเริ่มปฏิบัติสหกิจ</label>
-            <input type="date" class="form-control" @error('name') is-invalid @enderror name="start_date" value=""  autofocus placeholder="2/25xx"required>
+            <input type="date" class="form-control"id="example-date1" @error('name') is-invalid @enderror name="start_date" value=""  autofocus placeholder="2/25xx"required>
             {{-- <select class="form-control select2" id="validationSelect1" name="faculty" >
                 <option value="">กรุณาเลือก</option>
                 <option value="-">-</option>
@@ -186,7 +186,7 @@
 
           <div class="form-group col-md-2">
             <label for="inputAddress">วันสิ้นสุดปฏิบัติสหกิจ</label>
-            <input type="date" class="form-control" @error('name') is-invalid @enderror name="end_date" value=""  autofocus placeholder=""required>
+            <input type="date" class="form-control"id="example-date2" @error('name') is-invalid @enderror name="end_date" value=""  autofocus placeholder=""required>
 
 
 
@@ -205,9 +205,9 @@
 
       </div>
       <div class="row">
-        <div class="form-group col-md-3">
-          <label for="inputAddress">หัวเรื่อง1</label>
-   <input type="text" class="form-control" @error('name') is-invalid @enderror name="name1" value="ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ" readonly autofocus placeholder="ประเภท">
+        <div class="form-group col-md-4">
+          <label for="inputAddress">ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ</label>
+   {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name1" value="ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ" readonly autofocus placeholder="ประเภท"> --}}
 
 
           @error('name_major')
@@ -215,11 +215,11 @@
               {{ $message }}
           </span>
       @enderror
-        </div>
-
+        </div> </div>
+        <div class="row">
       <div class="form-group col-md-2">
         <label for="inputAddress">วันเริ่มแจ้ง</label>
-        <input type="date" class="form-control" @error('name') is-invalid @enderror name="start_notify" value=""  autofocus placeholder="2/25xx"required>
+        <input type="date" class="form-control"id="example-date3" @error('name') is-invalid @enderror name="start_notify" value=""  autofocus placeholder="2/25xx"required>
         {{-- <select class="form-control select2" id="validationSelect1" name="faculty" >
             <option value="">กรุณาเลือก</option>
             <option value="-">-</option>
@@ -246,7 +246,7 @@
 
       <div class="form-group col-md-2">
         <label for="inputAddress">วันสุดท้ายการแจ้ง</label>
-        <input type="date" class="form-control" @error('name') is-invalid @enderror name="end_notify" value=""  autofocus placeholder=""required>
+        <input type="date" class="form-control"id="example-date" @error('name') is-invalid @enderror name="end_notify" value=""  autofocus placeholder=""required>
 
 
 
@@ -258,7 +258,58 @@
       </div>
 
 
+      <script>
 
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('example-date');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            // const hours = String(now.getHours()).padStart(2, '0');
+            // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const minDateTime = `${year}-${month}-${day}`;
+            input.setAttribute('min', minDateTime);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('example-date1');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            // const hours = String(now.getHours()).padStart(2, '0');
+            // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const minDateTime = `${year}-${month}-${day}`;
+            input.setAttribute('min', minDateTime);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('example-date2');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            // const hours = String(now.getHours()).padStart(2, '0');
+            // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const minDateTime = `${year}-${month}-${day}`;
+            input.setAttribute('min', minDateTime);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('example-date3');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            // const hours = String(now.getHours()).padStart(2, '0');
+            // const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const minDateTime = `${year}-${month}-${day}`;
+            input.setAttribute('min', minDateTime);
+        });
+    </script>
 
 
 

@@ -20,7 +20,7 @@
                     {{-- <form method="POST" action="{{ route('register') }}"> --}}
                         <form method="POST" action="{{ route('adduser') }}" enctype="multipart/form-data">
                         @csrf
-<h4 class="text-primary">ข้อมูลผู้ใช้งาน</h4>
+<h4 class="text-primary">เพิ่มข้อมูลผู้ใช้งาน</h4>
 @if ($errors->any())
 <div class="alert alert-danger col-6">
     <ul>

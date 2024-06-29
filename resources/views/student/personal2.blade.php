@@ -135,10 +135,7 @@
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)</label>
                                                       <input type="text" id="example-palaceholder"value="{{ $users->GPA }}" disabled="" class="form-control" placeholder="placeholder">
                                                     </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
-                                                    </div>
+
 
                                                 </div> <!-- /.col -->
                                                   <div class="col-md-8">
@@ -164,14 +161,30 @@
                                                         @endforeach
                                                       </select>
                                                     </div>
-                                                    <div class="form-group col-4">
+                                                    {{-- <div class="form-group col-4">
                                                       <label for="example-disable">ปีการศึกษา</label>
                                                       <input type="text" class="form-control"value="{{ $users->year}}" disabled="" id="example-disable" disabled="" value="Disabled value">
-                                                    </div>
-
+                                                    </div> --}}
+                                                    <div class="form-group col-4">
+                                                        <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
+                                                        <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
+                                                      </div>
                                                     <div class="form-group col-4 ">
                                                       <label for="example-static">ภาคเรียนที่</label>
-                                                      <input type="text" readonly=""value="{{ $users->term}}" disabled="" class="form-control" id="example-static" >
+                                                      <select class="form-control mb-6"  name="major_id"id="example-static" required  disabled="">
+                                                        <option value="">กรุณาเลือกภาคเรียน</option>
+                                                        <option value="-"@if($users->year=="-") selected @endif required>-</option>
+                                                        @foreach ($major1 as $row)
+
+                                                        {{-- <optgroup label="Mountain Time Zone"> --}}
+                                                          <option value="{{$row->year}}"{{$row->year==$users->term ?'selected':''}}>{{$row->year}}
+                                                            </option>
+                                                            {{-- <option value="{{$row->notify_id}}">{{$row->year}}</option> --}}
+                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                                                        </optgroup>
+
+                                                        @endforeach
+                                                      </select>
                                                     </div>
 
 {{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}

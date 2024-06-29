@@ -20,8 +20,13 @@
 
        <li class="nav-item nav-notif">
                <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-              <span class=""></span>
-              {{ Auth::user()->username }}
+                <span class="text-dark"> {{ Auth::user()->fname }}</span>
+                {{-- <div class="text-dark"> {{ Auth::user()->fname }}</div> --}}
+
+                @if (Auth::user()->role === 'teacher')
+          <span class="badge badge-pill badge-dark">อาจารย์</span>
+
+      @endif
               {{-- <span class="dot dot-md bg-success"></span> --}}
             </a>
 

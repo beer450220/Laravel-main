@@ -76,7 +76,32 @@
             <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
             {{-- <td>{{ $row->id }} </td> --}}
             <td>{{ $row->fname }} </td>
-            <td>{{($row->term) }}/{{($row->year) }}</td>
+            <td>{{($row->term) }}
+
+                {{-- @foreach ($major1 as $row)
+
+                <option value="{{$row->notify_id}}"{{$row->notify_id==$registers->year ?'selected':''}}>{{$row->year}}
+                    @endforeach --}}
+                    {{-- @foreach ($major1 as $teacherId)
+                    @php
+
+                    $teacherIds = explode(',', $row->term);
+                @endphp
+            @endforeach
+                     @foreach ($teacherIds as $teacherId)
+                     @php
+                         // ค้นหาข้อมูลของอาจารย์จากฐานข้อมูลตาม teacher_id ที่แยกไว้
+                         $teacher = App\Models\category::find($teacherId);
+                     @endphp
+
+
+                           {{ $teacher->year }}
+                 @endforeach --}}
+
+                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+
+
+            </td>
               {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
               {{-- <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td> --}}

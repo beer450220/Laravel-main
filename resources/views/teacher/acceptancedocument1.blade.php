@@ -73,7 +73,7 @@
               @foreach ($acceptances as $row)
               <td>{{$acceptances->firstItem()+$loop->index}}</td>
               <td>{{ $row->fname }} </td>
-            <td>{{($row->term) }}/{{($row->year) }}</td>
+            <td>{{($row->term) }}</td>
               {{-- <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td> --}}
               {{-- <td> @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษาแล้ว')

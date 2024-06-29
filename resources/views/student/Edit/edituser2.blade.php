@@ -341,10 +341,7 @@
                                                       <input type="text" id="example-palaceholder"value="{{ $users->GPA }}" name="GPA"  class="form-control"required placeholder="">
 
                                                     </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                        <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}"name="telephonenumber"maxlength="10"  class="form-control" placeholder=""required>
-                                                      </div>
+
 
 
                                                   </div> <!-- /.col -->
@@ -370,13 +367,14 @@
                                                         @endforeach
                                                       </select>
                                                     </div>
-
                                                     <div class="form-group col-4">
-                                                        <label for="example-static">ปีการศึกษา</label>
-                                                        <select class="form-control "  name="year"required >
-                                                            {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
-                                                            <option value="{{ $year }}">{{ $year }}</option>
-                                                        @endforeach --}}
+                                                        <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
+                                                        <input type="text" id="example-palaceholder"value="{{ $users->telephonenumber}}"name="telephonenumber"maxlength="10"  class="form-control" placeholder=""required>
+                                                      </div>
+                                                    {{-- <div class="form-group col-4">
+                                                        <label for="example-static">ปีการศึกษา</label> --}}
+                                                        {{-- <select class="form-control "  name="year"required >
+
                                                         <option value="">กรุณาเลือกปีการศึกษา</option>
                                                         @php
                                                         $currentYear = date('Y') + 543; // ปีปัจจุบัน
@@ -389,17 +387,21 @@
                                                             <option value="{{ $i }}"@if($users->year==$i ) selected @endif>{{ $i }}</option>
                                                         @endfor
                                                     @endfor
-                                                    </select>
-                                                      </div>
+                                                    </select> --}}
+                                                      {{-- </div> --}}
 
-                                                      <div class="form-group col-4">
+                                                      <div class="form-group col-6">
                                                         <label for="example-static">ภาคเรียน</label>
                                                         <select class="form-control"  name="term" required>
                                                             <option value="">กรุณาเลือกภาคเรียน</option>
+                                                        <option value="-"@if($users->major_id=="-") selected @endif required>-</option>
+                                                        @foreach ($major1 as $row)
+                                                        {{-- <optgroup label="Mountain Time Zone"> --}}
+                                                          <option value="{{$row->year}}"{{$row->year==$users->term ?'selected':''}}>{{$row->year}}  </option>
+                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+@endforeach
+                                                        </select>
 
-                                                          <option value="1"@if( $users->term=="1") selected @endif>1 </option>
-                                                            <option value="2"@if( $users->term=="2") selected @endif>2 </option>
-                                                          </select>
                                                       </div>
                                                     </div>      </div>
 

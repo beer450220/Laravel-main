@@ -399,12 +399,10 @@
                                                         @endforeach
                                                       </select>
                                                     </div>
-                                                    <div class="form-group mb-3">
+                                                    {{-- <div class="form-group mb-3">
                                                       <label for="example-disable">ปีการศึกษา</label>
                                                       <select class="form-control "  name="year"required >
-                                                        {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
-                                                        <option value="{{ $year }}">{{ $year }}</option>
-                                                    @endforeach --}}
+
                                                     <option value="">กรุณาเลือกปีการศึกษา</option>
                                                     @php
                                                     $currentYear = date('Y') + 543; // ปีปัจจุบัน
@@ -417,14 +415,20 @@
                                                         <option value="{{ $i }}">{{ $i }}</option>
                                                     @endfor
                                                 @endfor
-                                                </select>
+                                                </select> --}}
                                                     <div class="form-group mb-3">
                                                       <label for="example-static">ภาคเรียน</label>
                                                       <select class="form-control"  name="term" required>
                                                         <option value="">กรุณาเลือกภาคเรียน</option>
 
-                                                      <option value="1">1 </option>
-                                                        <option value="2">2 </option>
+
+                                                        @foreach ($major1 as $row)
+                                                        {{-- <optgroup label="Mountain Time Zone"> --}}
+                                                          <option value="{{$row->year}}">{{$row->year}}</option>
+                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                                                        </optgroup>
+
+                                                        @endforeach
                                                       </select>
                                                     </div>
 

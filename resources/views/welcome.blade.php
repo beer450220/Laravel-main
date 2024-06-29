@@ -371,10 +371,12 @@
 @foreach ($major as $row)
 
         <h4>ประจำปีการศึกษา {{$row->year}}</h4>
-        <h3> <p> {{$row->name}}</p> </h3>
+        <h3> <p> ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา
+
+        </p> </h3>
         <h4><p>วันเริ่มปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->start_date) }}</p>
         <p>วันสิ้นสุดปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->end_date) }} </p></h4>
-        <h3> <p> {{$row->name1}}</p> </h3>
+        <h3> <p> ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ</p> </h3>
         <h4> <p> วันเริ่มแจ้ง : วันที่ {{ formatThaiDate($row->start_notify) }}</p>
         <p> วันสุดท้ายการแจ้ง : วันที่ {{ formatThaiDate($row->end_notify) }}</p> </h4>
 @endforeach
@@ -389,10 +391,10 @@
                             @foreach ($major as $row)
 
                                     <h4>ประจำปีการศึกษา {{$row->year}}</h4>
-                                    <h3> <p> {{$row->name}}</p> </h3>
+                                    <h3> <p> ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา</p> </h3>
                                     <h4><p>วันเริ่มปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->start_date) }}</p>
                                     <p>วันสิ้นสุดปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->end_date) }} </p></h4>
-                                    <h3> <p> {{$row->name1}}</p> </h3>
+                                    <h3> <p>  ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ</p> </h3>
                                     <h4> <p> วันเริ่มแจ้ง : วันที่ {{ formatThaiDate($row->start_notify) }}</p>
                                     <p> วันสุดท้ายการแจ้ง : วันที่ {{ formatThaiDate($row->end_notify) }}</p> </h4>
                             @endforeach
@@ -405,10 +407,10 @@
                             @foreach ($major as $row)
 
                                     <h4>ประจำปีการศึกษา {{$row->year}}</h4>
-                                    <h3> <p> {{$row->name}}</p> </h3>
+                                    <h3> <p> ประกาศนักศึกษาออกปฏิบัติงานสหกิจศึกษา</p> </h3>
                                     <h4><p>วันเริ่มปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->start_date) }}</p>
                                     <p>วันสิ้นสุดปฏิบัติสหกิจ : วันที่ {{ formatThaiDate($row->end_date) }} </p></h4>
-                                    <h3> <p> {{$row->name1}}</p> </h3>
+                                    <h3> <p>  ประกาศกำหนดแจ้งข้อมูลสถานประกอบการ</p> </h3>
                                     <h4> <p> วันเริ่มแจ้ง : วันที่ {{ formatThaiDate($row->start_notify) }}</p>
                                     <p> วันสุดท้ายการแจ้ง : วันที่ {{ formatThaiDate($row->end_notify) }}</p> </h4>
                             @endforeach

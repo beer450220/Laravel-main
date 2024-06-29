@@ -265,7 +265,7 @@
           </div>
           <div class="col-md-4">
 
-            <label for="inputAddress" >ชื่อนักศึกษา</label>
+            <label for="inputAddress" >รหัสนักศึกษา</label>
 {{-- id="multiple-select-optgroup-field" --}}
 {{-- id="country-dd" --}}
             {{-- <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ"  name="student_name[]"required >
@@ -282,10 +282,10 @@
 
  @endforeach --}}
             </select>
-            <input type="text" class="form-control" id="studentIdsInput" name="student_name[]" readonly>
+            {{-- <input type="text" class="form-control" id="studentIdsInput1" name="student_name[]" readonly> --}}
 
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).ready(function() {
         // เมื่อมีการเลือก option ใน select
         $('#multiple-select-optgroup-field').change(function() {
@@ -295,7 +295,39 @@
             $('#studentIdsInput').val(selectedStudentIds);
         });
     });
+</script> --}}
+
+<input type="text" class="form-control" id="studentIdsInput" name="student_name[]" readonly>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // เมื่อมีการเลือก option ใน select
+        $('#multiple-select-optgroup-field').change(function() {
+            // ดึงค่าของ option ที่ถูกเลือก
+            var emName = $(this).val();
+
+            // AJAX request to fetch student names
+            $.ajax({
+                url: '{{ route('getStudentNames') }}',
+                type: 'GET',
+                data: { em_name: emName },
+                success: function(response) {
+                    var studentNames = response.students.map(function(student) {
+                        return student.fname ;
+                    }).join(', ');
+
+                    // นำชื่อนักเรียนที่เลือกไปแสดงใน input text
+                    $('#studentIdsInput').val(studentNames);
+                },
+                error: function() {
+                    // alert('เกิดข้อผิดพลาดในการดึงข้อมูลนักเรียน');
+                }
+            });
+        });
+    });
 </script>
+
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="student_name[]" value="{{$row->student_ids}}" > --}}
             {{--  <div class="form-group mb-3">
                                 <select id="state-dd" class="form-control"></select>

@@ -304,12 +304,13 @@
 
 
 
-                            <h4 class="mt-4 text-dark">{{ Auth::user()->username }}{{ Auth::user()->surname }}</h4>
-                            @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                            {{-- <h4 class="mt-4 text-dark">{{ Auth::user()->username }}{{ Auth::user()->surname }}</h4> --}}
+                            <span class="text-dark"> {{ Auth::user()->fname }}</span>
+
+                            @if (Auth::user()->role === 'admin')
+                      <span class="badge badge-pill badge-dark">ผู้ดูแลระบบ</span>
+
+                  @endif
 
                         <br>
 
