@@ -770,6 +770,15 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::post("/user/updateuser/{id}",[EditController::class,'updateuser'])->name('updateuser');
 
     Route::get("/user1",[HomeController::class,'changeStatus'])->name('changeStatus');
+
+//ข้อมูลส่วนตัว
+Route::get("/admin/personal/{id}",[HomeController::class,'personal04'])->name('personal04');
+Route::get("/admin/edituser04/{id}",[EditController::class,'edituser04'])->name('edituser04');
+Route::get("/admin/edituser0004/{id}",[EditController::class,'edituser0004'])->name('edituser0004');
+Route::post("/admin/updateuser05/{id}",[EditController::class,'updateuser05'])->name('updateuser05');
+Route::post("/admin/updateuser005/{id}",[EditController::class,'updateuser005'])->name('updateuser005');
+
+
    // Route::get('/status/update', [HomeController::class, 'updateStatus'])->name('update.status');
 });
 

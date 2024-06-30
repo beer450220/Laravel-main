@@ -356,15 +356,30 @@
         $(document).ready(function() {
             var labels =  {!! json_encode($labels01) !!};
             var users =  {!! json_encode($data01) !!};
-
+            var data2 =  {!! json_encode($data20) !!};
+            var data3 =  {!! json_encode($data21) !!};
             const data = {
                 labels: labels,
                 datasets: [{
-                    label: 'จำนวน',
+                    label: 'อนุมัติเอกสารแล้ว',
+                    backgroundColor: 'rgb(122, 198, 72)',
+                    borderColor: 'rgb(122, 198, 72)',
+                    data: users,
+                },
+                {
+                    label: 'รออนุมัติ',
+                    backgroundColor: 'rgb(75, 192, 192)',
+                    borderColor: 'rgb(75, 192, 192)',
+                    data: data2,
+                },
+                {
+                    label: 'ไม่อนุมัติ',
                     backgroundColor: 'rgb(244, 125, 136)',
                     borderColor: 'rgb(244, 125, 136)',
-                    data: users,
-                }]
+                    data: data3,
+                }
+
+            ]
             };
 
             const config = {
@@ -595,7 +610,7 @@ config
                 }
                 ,
                 {
-                    label: 'จำนวน',
+                    label: 'รอรับทราบและยืนยันเวลานัดนิเทศ',
                     backgroundColor: 'rgb(255, 165, 0)',
                     borderColor: 'rgb(255, 165, 0)',
                     data: data3,

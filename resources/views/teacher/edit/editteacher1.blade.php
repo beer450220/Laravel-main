@@ -109,7 +109,7 @@
   <div class="col-md-12">
     <div class="card shadow mb-4">
       <div class="card-header">
-        <strong class="card-title">แก้ไข้ข้อมูล</strong>
+        <strong class="card-title">แก้ไขข้อมูลอาจารย์</strong>
       </div>
       <div class="card-body">
         <form method="POST"id="myForm" action="{{url('/teacher/updateteacher1/'.$major->id)}}"enctype="multipart/form-data">

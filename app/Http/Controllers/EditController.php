@@ -714,8 +714,8 @@ $post->update
 
     $posts=Users::findOrFail($id);
 
-     if (File::exists("รูปโปรไฟล์/".$posts->images)) {
-         File::delete("รูปโปรไฟล์/".$posts->images);
+     if (File::exists("Profile/".$posts->images)) {
+         File::delete("Profile/".$posts->images);
      }
 
     //  dd($posts);
@@ -798,12 +798,12 @@ $post->update
    $post=users::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -852,12 +852,12 @@ $post->update
    $post=users::findOrFail($id);
 
    if($request->hasFile("images")){
-       if (File::exists("รูปโปรไฟล์/".$post->images)) {
-           File::delete("รูปโปรไฟล์/".$post->images);
+       if (File::exists("Profile/".$post->images)) {
+           File::delete("Profile/".$post->images);
        }
        $file=$request->file("images");
         $post->images=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $file->move(\public_path("/Profile"),$post->images);
         $request['images']=$post->images;
      // dd($post);
    }
@@ -882,6 +882,60 @@ $post->update
 
 
     return redirect('/officer/home')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+ public function   updateuser05(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+        'images' => 'mimes:jpg,jpeg,png|max:1024',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+            'images.mimes' => 'ไฟล์ต้องเป็นPDFเท่านั้น',
+            'images.max' => 'ขนาดไฟล์ต้องไม่เกิน 1 MB',
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+   if($request->hasFile("images")){
+       if (File::exists("Profile/".$post->images)) {
+           File::delete("Profile/".$post->images);
+       }
+       $file=$request->file("images");
+        $post->images=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/Profile"),$post->images);
+        $request['images']=$post->images;
+     // dd($post);
+   }
+    $post->update
+    ([
+    //    "username" =>$request->username,
+       "fname" =>$request->fname,
+    //    "surname" =>$request->surname,
+    //    "password" => Hash::make($request->password),
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+         "images"=>$post->images
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+       // "Status_acceptance"=>$request->Status_acceptance,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+
+
+    return redirect('/adminhome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
  public function   updateuser004(Request $request,$id) {
     //ตรวจสอบข้อมูล
@@ -925,7 +979,49 @@ $post->update
 
     return redirect('/officer/home')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
+ public function   updateuser005(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+   // dd($request);
+
+    $request->validate([
+        'password' => 'required|confirmed|min:8',
+
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            // 'establishment.required' => "กรุณา",
+            'password.confirmed' => "รหัสผ่านไม่ตรงกัน",
+            'password.min' => "รหัสผ่านมากว่า8ตัว",
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+
+    $post->update
+    ([
+
+       "password" => Hash::make($request->password),
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+       // "Status_acceptance"=>$request->Status_acceptance,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+
+
+    return redirect('/adminhome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
  public function   updateuser3(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -946,12 +1042,12 @@ $post->update
    $post=users::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -3545,7 +3641,21 @@ if($request->hasFile("filess1")){
      return view('officer.Edit.edituser1',compact('users','major'));
 
  }
+ public function edituser04($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+     $users=users::find($id);
 
+     $major=DB::table('major')
+
+     ->paginate(5);
+     return view('admin.edituser1',compact('users','major'));
+
+ }
  public function edituser0002($id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')
@@ -3566,6 +3676,28 @@ if($request->hasFile("filess1")){
 
      ->paginate(5);
      return view('officer.Edit.edituser2',compact('users','major'));
+
+ }
+ public function edituser0004($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+     $users=users::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+     // dd($Evaluationdocuments);
+     $major=DB::table('major')
+
+     ->paginate(5);
+     return view('admin.edituser2',compact('users','major'));
 
  }
  public function editpersonal2($id) {
@@ -3712,12 +3844,12 @@ if($request->hasFile("filess1")){
    $post=users::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
      // dd($post);
 //    }
@@ -3901,12 +4033,12 @@ if($request->hasFile("filess1")){
    $post=users::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -3941,12 +4073,12 @@ if($request->hasFile("filess1")){
    $post=users::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -3982,12 +4114,12 @@ if($request->hasFile("filess1")){
    $post=registers::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -4026,12 +4158,12 @@ if($request->hasFile("filess1")){
    $post=registers::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -4067,12 +4199,12 @@ if($request->hasFile("filess1")){
    $post=Event::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -4107,12 +4239,12 @@ if($request->hasFile("filess1")){
    $post=Event::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -4148,12 +4280,12 @@ if($request->hasFile("filess1")){
    $post=informdetails::findOrFail($informdetails_id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -4188,12 +4320,12 @@ if($request->hasFile("filess1")){
    $post=informdetails::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -4228,12 +4360,12 @@ if($request->hasFile("filess1")){
    $post=permission::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }
@@ -4270,12 +4402,12 @@ if($request->hasFile("filess1")){
    $post=users::findOrFail($id);
 
 //    if($request->hasFile("images")){
-//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
-//            File::delete("รูปโปรไฟล์/".$post->images);
+//        if (File::exists("Profile/".$post->images)) {
+//            File::delete("Profile/".$post->images);
 //        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
-//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $file->move(\public_path("/Profile"),$post->images);
 //         $request['images']=$post->images;
 //      // dd($post);
 //    }

@@ -1039,7 +1039,10 @@ $userId = auth()->user()->username;
     {
         return view('officer.personal',["msg"=>"I am Editor role"]);
     }
-
+    public function personal04()
+    {
+        return view('admin.personal',["msg"=>"I am Editor role"]);
+    }
     public function personal2($student_id)
     {
 // dd($student_id);
@@ -1233,7 +1236,10 @@ $users=DB::table('users')
                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
                 $users = users::query()
                     ->where('username', 'LIKE', '%' . $keyword . '%')
+                    ->where('fname', 'LIKE', '%' . $keyword . '%')
                     //->get();
+        ->orderBy('users.updated_at', 'desc')
+
                     ->paginate(5);
 
 
@@ -1646,11 +1652,11 @@ $users=DB::table('users')
                                 $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%');
+                                    //   ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
                                     //   $query = \Carbon\Carbon::parse($keyword)->addYears(543)->format('Y');
                             })
-                        ->select('users.*','users.fname','student.year','student.term')
+                        ->select('users.*','users.fname','student.term')
                             ->where('role',"student")
                             ->distinct()
                             ->orderBy('id', 'desc')
@@ -1830,10 +1836,10 @@ $users=DB::table('users')
                                                         $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
                                                             //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                                             //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
-                                                               ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
-                                                              ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
+                                                               ->orWhere('student.term', 'LIKE', '%' . $keyword . '%');
+                                                            //   ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
                                                     })
-                                                    ->select('users.*','users.fname','student.year','student.term')
+                                                    ->select('users.*','users.fname','student.term')
 
 
 
@@ -1875,10 +1881,10 @@ $users=DB::table('users')
                                                         $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
                                                             //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                                                             //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
-                                                              ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
-                                                               ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
+                                                              ->orWhere('student.term', 'LIKE', '%' . $keyword . '%');
+                                                            //    ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
                                                     })
-                                                    ->select('users.*','users.fname','student.year','student.term')
+                                                    ->select('users.*','users.fname','student.term')
                                                     ->where('role',"student")
                                                     ->distinct()
                                                     ->orderBy('users.updated_at', 'desc')
@@ -1987,10 +1993,10 @@ $users=DB::table('users')
                 $query->where('users.fname', 'LIKE', '%' . $keyword . '%')
                     //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
-                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
-                       ->orWhere('student.year', 'LIKE', '%' . $keyword . '%');
+                      ->orWhere('student.term', 'LIKE', '%' . $keyword . '%');
+                    //    ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
             })
-            ->select('users.*','users.fname','student.year','student.term')
+            ->select('users.*','users.fname','student.term')
             ->where('role',"student")
             ->distinct()
             ->orderBy('users.updated_at', 'desc')
@@ -3668,12 +3674,12 @@ return view('teacher.reportresults1',  ['report' => $report,]);
     // //->whereYear('created_at', date('Y'))
     // ->groupBy(DB::raw("YEAR(created_at)"))
     // ->pluck('count', 'year_name');
-    $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
-    ->groupBy(DB::raw("YEAR(created_at)"))
-    ->pluck('count', 'year_name');
+    // $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    // ->groupBy(DB::raw("YEAR(created_at)"))
+    // ->pluck('count', 'year_name');
 
-    $users2 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
-    ->get();
+    // $users2 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+    // ->get();
     $users3 =  acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
     ->get();
 
@@ -3700,26 +3706,74 @@ return view('teacher.reportresults1',  ['report' => $report,]);
  //year
  //YEAR
 
-        $users02 = Users::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        $users02 = Users::where('role', 'student')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
         ->groupBy(DB::raw("YEAR(created_at)"))
         ->pluck('count', 'year_name');
-        $labels = $users->keys();
+        $labels = $users02->keys();
         $labels = $labels->map(function($year) {
             return $year + 543;
         });
-        $data = $users->values();
-
-        $registers02 = registers::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        $data = $users02->values();
+//dd($users02);
+        $registers02 = registers::
+        where('Status_registers', 'อนุมัติเอกสารแล้ว')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
         ->groupBy(DB::raw("YEAR(created_at)"))
         ->pluck('count', 'year_name');
-        $labels01 = $registers02->keys();
-        $labels01 = $labels01->map(function($year) {
-            return $year + 543;
-        });
-        $data01 = $registers02->values();
+
+        $registers03 = registers::
+        where('Status_registers','รออนุมัติ')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $registers04 = registers::
+        where('Status_registers','ไม่อนุมัติ')
+        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        // $labels01 = $registers02->keys();
+        // $labels01 = $labels01->map(function($year) {
+        //     return $year + 543;
+        // });
+        // $data01 = $registers02->values();
+// dd($registers03);
+// ปีที่ใช้ใน labels
+$labels01 = $registers02->keys()
+ ->merge($registers03->keys())
+ ->merge($registers04->keys())
+// ->merge($supervision14->keys())
+// ->merge($supervision15->keys())
+// ->merge($supervision16->keys())
+// ->merge($supervision17->keys())
+// ->merge($supervision18->keys())
+// ->merge($supervision19->keys())
+->unique()
+->sort()
+->map(function($year) {
+    return $year + 543;
+});
+
+// เตรียมข้อมูลสำหรับ dataset
+$data01 = $labels01->map(function($year) use ($registers02) {
+    return $registers02->get($year - 543);
+});
+$data20 = $labels01->map(function($year) use ($registers03) {
+    return $registers03->get($year - 543);
+});
+$data21 = $labels01->map(function($year) use ($registers04) {
+    return $registers04->get($year - 543);
+});
+// $data12 = $labels04->map(function($year) use ($supervision12) {
+//     return $supervision12->get($year - 543);
+// });
+
+
+
 
 //  dd($data);
-$supervision = Event::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+$supervision = Event::where('Status_events', 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
         ->groupBy(DB::raw("YEAR(created_at)"))
         ->pluck('count', 'year_name');
         $labels02 = $supervision->keys();
@@ -3912,9 +3966,13 @@ $data19 = $labels04->map(function($year) use ($supervision19) {
     // ->groupBy(DB::raw('YEAR(created_at)'))
     // ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
     // ->get();
-        return view('officer.officerhome',compact('users','users1','users2','users02','users3','users4','users5'
+        return view('officer.officerhome',compact(
+            // 'users','users1','users2'
 
-        ,'labels01','data01','registers02'
+
+        'users02','users3','users4','users5'
+
+        ,'labels01','data01','registers02','registers03','data20','registers04','data21'
         ,'labels02','data02','supervision'
         ,'labels03','data03','supervision1',
         'labels04', 'data13', 'data12','supervision13','supervision12','data14','supervision15','data15'
@@ -4392,7 +4450,7 @@ $data19 = $labels04->map(function($year) use ($supervision19) {
         ->join('student','users.id','student.user_id')
        // ->select('registers.*','users.fname','student.year')
        // ->select('users.*','users.fname','student.year')
-       ->select('users.*','users.fname','student.year','student.term')
+       ->select('users.*','users.fname','student.term')
        ->where('role',"student")
        ->distinct()
        ->orderBy('users.updated_at', 'desc')
@@ -4529,7 +4587,7 @@ public function category()
         ->join('student','users.id','student.user_id')
        // ->select('registers.*','users.fname','student.year')
        // ->select('users.*','users.fname','student.year')
-       ->select('users.*','users.fname','student.year','student.term')
+       ->select('users.*','users.fname','student.term')
        ->where('role',"student")
        ->distinct()
        ->orderBy('users.updated_at', 'desc')
@@ -4804,7 +4862,8 @@ public function category()
         //  ->select('events.*', 'users.fname', 'users.surname')
         //  ->join('users','events.student_name','users.id')
         //  ->select('events.*','users.username')
-         ->orderBy('id', 'desc')
+         ->orderBy('events.updated_at','desc')
+
         ->paginate(10);
         $users2=DB::table('student')
         ->get();
@@ -5109,7 +5168,7 @@ $data12 = $labels04->map(function($year) use ($supervision12) {
          ->join('student','users.id','student.user_id')
         // ->select('registers.*','users.fname','student.year')
         // ->select('users.*','users.fname','student.year')
-        ->select('users.*','users.fname','student.year','student.term')
+        ->select('users.*','users.fname','student.term')
         ->where('role',"student")
         ->distinct()
         ->orderBy('users.updated_at', 'desc')
@@ -5424,7 +5483,7 @@ $data12 = $labels04->map(function($year) use ($supervision12) {
         // ->orWhere('role', '=', 'test')
         //-> where('role','1',)
 
-
+        ->orderBy('users.updated_at', 'desc')
         ->paginate(5);
         //->get();
         #แสดงข้อมูลเฉพาะ

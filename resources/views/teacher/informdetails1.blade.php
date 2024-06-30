@@ -73,7 +73,7 @@
             <tr>
               <td>{{$informdetails->firstItem()+$loop->index}}</td>
               <td>{{ $row->fname }} </td>
-              <td>{{($row->term) }}/{{($row->year) }}</td>
+              <td>{{($row->term) }}</td>
 
               {{-- <td> @if ($row->Status_informdetails === 'รออนุมัติ')
                 <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>

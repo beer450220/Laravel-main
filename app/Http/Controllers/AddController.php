@@ -787,6 +787,7 @@ public function addestimate1()
       ->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
+      ->orderBy('users.updated_at', 'DESC')
       ->get();
       $establishment=DB::table('establishment')
       //->where('role',"student")
@@ -1384,7 +1385,7 @@ public function addsupervision()
       ->get();
       $users2=DB::table('teacher')
     //   ->where('role',"student")
-
+    ->orderBy('teacher.updated_at', 'desc')
       ->get();
       $users1=DB::table('users')
       ->where('role',"student")
@@ -1396,7 +1397,7 @@ public function addsupervision()
     //   ->select('em_name', DB::raw('GROUP_CONCAT(student_id) AS student_ids'))
     // ->groupBy('em_name')
     // ->havingRaw('COUNT(*) > 1')
-    // ->orderBy('id', 'desc')
+     ->orderBy('establishment.updated_at', 'desc')
 
     // ->select( 'student_id','em_name')
     // ->groupBy('em_name','student_id')

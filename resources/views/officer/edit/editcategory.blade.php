@@ -110,7 +110,7 @@
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content ">
         <div class="modal-header bg-dark text-white ">
-          <h5 class="modal-title text center " id="varyModalLabel">ข้อมูลแก้ไข</h5>
+          <h5 class="modal-title text center " id="varyModalLabel">แก้ไขข้อมูล แจ้งกำหนดการสหกิจ</h5>
           {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button> --}}

@@ -65,7 +65,7 @@
 
                 {{-- <th style="width:10%">แก้ไข</th> --}}
 
-              {{-- <th>ลบ</th> --}}
+              {{-- <th>ลบ</th> --}}s
             </tr>
           </thead>
           <tbody>

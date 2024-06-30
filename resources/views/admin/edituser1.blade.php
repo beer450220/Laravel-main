@@ -1,4 +1,4 @@
-@extends('layouts.officermin1')
+@extends('layouts.adminmin1')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -295,6 +295,16 @@
 
                                       </div>
                                     </div> --}}
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger col-6">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul></div>@endif
+                                    @if(session("error"))
+                                    <div class="alert alert-danger col-6">{{session('error')}}</div>
+                                    @endif
                                     <br>
                                     <br>
                                     <div class="text-center">
@@ -318,7 +328,7 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <form method="POST"id="myForm" action="{{url('/officer/updateuser04/'.$users->id)}}" enctype="multipart/form-data">
+                                                      <form method="POST"id="myForm" action="{{url('/admin/updateuser05/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                       {{-- <label for="simpleinput">ชื่อผู้ใช้งาน</label>
                                                       <input type="text"value="{{ Auth::user()->username}}"name="username"  id="simpleinput" class="form-control">
@@ -344,7 +354,7 @@
 
 
                                                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                      <a href="/officer/home" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
+                                                      <a href="/adminhome" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ย้อนกลับ</a>
                                                       &nbsp;&nbsp;
                                                       <button  class="btn btn-outline-success me-md-2 delete-btn"  type="reset">ยกเลิก</button>&nbsp;
                                                       {{-- <button type="submit"  class="btn btn-outline-primary fe fe-edit fe-16" type="button"onclick="return confirm('ยืนยันอัพเดทข้อมูล !!');">อัพเดทข้อมูล</button> --}}

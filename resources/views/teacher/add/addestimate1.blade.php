@@ -107,7 +107,7 @@
   <div class="col-md-12">
     <div class="card shadow mb-4">
       <div class="card-header">
-        <strong class="card-title">เพิ่มข้อมูล</strong>
+        <strong class="card-title">เพิ่มข้อมูล เอกสารผลประเมินสหกิจศึกษา</strong>
       </div>
       <div class="card-body">
         <form method="POST"id="myForm" action="{{ route('addestimate') }}"enctype="multipart/form-data">
@@ -143,7 +143,7 @@
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 <option value="{{$row->id}}">{{$row->fname}}</option>
 
-              </optgroup>
+
 
               @endforeach
             </select>
@@ -240,7 +240,7 @@
             } else if (score > 200) {
                 feedback.textContent = 'คะแนนเกินกำหนด (มากกว่า 200)';
                 feedback.style.color = 'red';
-            } else if (score > 100) {
+            } else if (score > 99) {
                 feedback.textContent = 'ผ่าน';
                 feedback.style.color = 'green';
             }else if (score >= 100) {

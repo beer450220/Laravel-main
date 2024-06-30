@@ -101,7 +101,7 @@
             <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content ">
                 <div class="modal-header  text-white ">
-                  <h5 class="modal-title text center " id="varyModalLabel">ดูข้อมูล</h5>
+                  <h5 class="modal-title text center " id="varyModalLabel">ดูข้อมูลนักศึกษา</h5>
                   {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button> --}}
@@ -131,18 +131,16 @@
                         <input type="text" class="form-control" name="annotation" value=" {{$establishments->fname}}"disabled required>
                       </div>
                       <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">เบอร์โทร</label><br>
-                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->telephonenumber}}"disabled required>
+                        {{-- <label for="recipient-name" class="col-form-label">เบอร์โทร</label><br>
+                        <input type="text" class="form-control" name="annotation" value=" {{$establishments->telephonenumber}}"disabled required> --}}
+ <label for="recipient-name" class="col-form-label">อีเมล์</label><br>
+                        <input type="text" class="form-control" name="annotation" value="{{$establishments->email}}"disabled required>
 
                       </div>
                     </div>
                     <br>
                     <div class="row">
-                      <div class="col-md-4">
-                        <label for="recipient-name" class="col-form-label">อีเมล์</label><br>
-                        <input type="text" class="form-control" name="annotation" value="{{$establishments->email}}"disabled required>
 
-                      </div>
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">เกรดเฉลี่ย</label><br>
                         <input type="text" class="form-control" name="annotation" value="{{$establishments->GPA}}"disabled required>
@@ -154,11 +152,8 @@
                         <input type="text" class="form-control" name="annotation" value="{{$establishments->address}}"disabled required>
 
                       </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-5">
-                          <label for="recipient-name" class="col-form-label">หลักสูตร</label><br>
+                      <div class="col-md-4">
+                        <label for="recipient-name" class="col-form-label">หลักสูตร</label><br>
                           {{-- <input type="text" class="form-control" name="annotation" value="{{}}"disabled required> --}}
                           <select class="form-control " id="validationSelect1" name="major_id"disabled >
                             <option value="">กรุณาเลือกหลักสูตร</option>
@@ -171,11 +166,16 @@
 
                             @endforeach
                           </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="recipient-name" class="col-form-label">ปีการศึกษา</label><br>
-                            <input type="text" class="form-control" name="annotation" value=" {{$establishments->year}}"disabled required>
+                      </div>
+                    </div>
 
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            {{-- <label for="recipient-name" class="col-form-label">ปีการศึกษา</label><br>
+                            <input type="text" class="form-control" name="annotation" value=" {{$establishments->year}}"disabled required> --}}
+                            <label for="recipient-name" class="col-form-label">เบอร์โทร</label><br>
+                            <input type="text" class="form-control" name="annotation" value=" {{$establishments->telephonenumber}}"disabled required>
                           </div>
                         <div class="row">
                         <div class="col-md-6">

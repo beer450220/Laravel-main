@@ -112,7 +112,7 @@
               {{-- <td>{{ $row->id }} </td> --}}
               <td>{{ $row->fname }} </td>
               {{-- <td>{{ \Carbon\Carbon::parse($row->created_at)->addYears(543)->translatedFormat(' Y ') }}</td> --}}
-              <td>{{($row->term) }}/{{($row->year) }}</td>
+              <td>{{($row->term) }}</td>
 
               {{-- <td>{{ $row->namefile }}</td> --}}
 

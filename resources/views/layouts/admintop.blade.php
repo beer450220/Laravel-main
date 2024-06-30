@@ -311,7 +311,8 @@
                       <span class="badge badge-pill badge-dark">ผู้ดูแลระบบ</span>
 
                   @endif
-
+                  <img class="img-profile rounded-circle"
+                  src="../../Profile/{{ Auth::user()->images }}">
                         <br>
 
                             {{-- <img class="img-profile rounded-circle"
@@ -320,10 +321,10 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
-                            {{-- <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/admin/personal/{{ Auth::user()->id }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 ข้อมูลส่วนตัว
-                            </a> --}}
+                            </a>
                             {{-- <a class="dropdown-item" href="#">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Settings

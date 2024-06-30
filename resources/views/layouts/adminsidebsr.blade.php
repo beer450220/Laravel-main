@@ -181,7 +181,7 @@
         <ul class="navbar-nav bg-warning opacity-25 sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Admin/">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../adminhome">
                 <div class="sidebar-brand-icon ">
 
                     <img src="{{ asset('icons/1.png') }}" sizes="16x16"alt="Girl in a jacket" width="50" height="50">

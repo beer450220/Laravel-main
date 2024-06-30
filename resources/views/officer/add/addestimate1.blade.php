@@ -107,7 +107,7 @@
   <div class="col-md-12">
     <div class="card shadow mb-4">
       <div class="card-header">
-        <strong class="card-title">เพิ่มข้อมูล</strong>
+        <strong class="card-title text-dark">เพิ่มข้อมูล เอกสารผลประเมินสหกิจศึกษา</strong>
       </div>
       <div class="card-body">
         <form method="POST"id="myForm" action="{{ route('addestimate3') }}"enctype="multipart/form-data">
