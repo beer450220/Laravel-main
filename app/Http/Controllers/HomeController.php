@@ -2164,7 +2164,7 @@ public function searchreport1(Request $request){
                     //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                       ->orWhere('student.term', 'LIKE', '%' . $keyword . '%')
-                       ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
+                    //    ->orWhere('student.year', 'LIKE', '%' . $keyword . '%')
                        ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
 
             })
@@ -2215,20 +2215,20 @@ public function searchreport3(Request $request){
                                             //dd($request);
             // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
             $supervision = event::query()
-            ->join('student','events.student_name','student.user_id')
-            ->join('establishment','events.em_id','establishment.id')
+            // ->join('student','events.student_name','student.user_id')
+            // ->join('establishment','events.em_id','establishment.id')
             ->where(function ($query) use ($keyword) {
-                $query->where('student.fname', 'LIKE', '%' . $keyword . '%')
+                $query->where('events.em_id', 'LIKE', '%' . $keyword . '%')
                     //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%');
                     //   ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%');
                       //->orWhere('student.fname', 'LIKE', '%' . $keyword . '%')
-                        ->orWhere('student.student_id', 'LIKE', '%' . $keyword . '%')
-                       ->orWhere('establishment.em_name', 'LIKE', '%' . $keyword . '%');
+                        ->orWhere('events.student_name', 'LIKE', '%' . $keyword . '%');
+                    //    ->orWhere('events.em_id', 'LIKE', '%' . $keyword . '%')
 
             })
             ->select('events.*'
-            ,'student.fname' ,'student.student_id'
-           ,'establishment.em_name'
+        //     ,'student.fname' ,'student.student_id'
+        //    ,'establishment.em_name'
 
            )
             ->distinct()
@@ -3732,6 +3732,11 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
         ->groupBy(DB::raw("YEAR(created_at)"))
         ->pluck('count', 'year_name');
+        $registers05 = registers::
+
+        select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
         // $labels01 = $registers02->keys();
         // $labels01 = $labels01->map(function($year) {
         //     return $year + 543;
@@ -3742,6 +3747,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
 $labels01 = $registers02->keys()
  ->merge($registers03->keys())
  ->merge($registers04->keys())
+ ->merge($registers05->keys())
 // ->merge($supervision14->keys())
 // ->merge($supervision15->keys())
 // ->merge($supervision16->keys())
@@ -3763,6 +3769,9 @@ $data20 = $labels01->map(function($year) use ($registers03) {
 });
 $data21 = $labels01->map(function($year) use ($registers04) {
     return $registers04->get($year - 543);
+});
+$data021 = $labels01->map(function($year) use ($registers05) {
+    return $registers05->get($year - 543);
 });
 // $data12 = $labels04->map(function($year) use ($supervision12) {
 //     return $supervision12->get($year - 543);
@@ -3792,11 +3801,16 @@ $events2 = Event::where('Status_events', 'ขอเปลี่ยนเวล�
         ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
         ->groupBy(DB::raw("YEAR(created_at)"))
         ->pluck('count', 'year_name');
+        $events3 = Event::
+        select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
 
 // Merge and sort years for labels
 $labels05 = $events1->keys()
 ->merge($events2->keys())
     ->merge($supervision->keys())
+    ->merge($events3->keys())
     ->unique()
     ->sort()
 ->map(function($year) {
@@ -3814,7 +3828,9 @@ return $events2->get($year - 543, 0);
 $data07 = $labels05->map(function($year) use ($supervision) {
     return $supervision->get($year - 543, 0);
     });
-
+    $data007 = $labels05->map(function($year) use ($events3) {
+        return $events3->get($year - 543, 0);
+        });
 
         $supervision1 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
         ->groupBy(DB::raw("YEAR(created_at)"))
@@ -3875,6 +3891,11 @@ $supervision12 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as 
     ->where('score', '<', 50)
     ->groupBy(DB::raw("YEAR(created_at)"))
     ->pluck('count', 'year_name');
+    $supervision20 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    // ->where('namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+    // ->where('score', '<', 50)
+    ->groupBy(DB::raw("YEAR(created_at)"))
+    ->pluck('count', 'year_name');
 // ปีที่ใช้ใน labels
 $labels04 = $supervision13->keys()
 ->merge($supervision12->keys())
@@ -3884,6 +3905,7 @@ $labels04 = $supervision13->keys()
 ->merge($supervision17->keys())
 ->merge($supervision18->keys())
 ->merge($supervision19->keys())
+->merge($supervision20->keys())
 ->unique()
 ->sort()
 ->map(function($year) {
@@ -3916,7 +3938,9 @@ $data18 = $labels04->map(function($year) use ($supervision18) {
 $data19 = $labels04->map(function($year) use ($supervision19) {
     return $supervision19->get($year - 543);
 });
-
+$data20 = $labels04->map(function($year) use ($supervision20) {
+    return $supervision20->get($year - 543);
+});
         // $data1=
 
         // users::select(
@@ -3972,14 +3996,14 @@ $data19 = $labels04->map(function($year) use ($supervision19) {
 
         'users02','users3','users4','users5'
 
-        ,'labels01','data01','registers02','registers03','data20','registers04','data21'
+        ,'labels01','data01','registers02','registers03','data20','registers04','data21','registers05','data021'
         ,'labels02','data02','supervision'
         ,'labels03','data03','supervision1',
         'labels04', 'data13', 'data12','supervision13','supervision12','data14','supervision15','data15'
 
-,'supervision16','data16','supervision17','data17','supervision18','data18','supervision19','data19',
+,'supervision16','data16','supervision17','data17','supervision18','data18','supervision19','data19','supervision20','data20',
 
-        'labels05', 'data05', 'data06','data07','events1','events2'
+        'labels05', 'data05', 'data06','data07','events1','events2','events3','data007'
         ), compact('labels','data'
 
         ),["msg"=>"I am Editor role"]);
@@ -4652,7 +4676,7 @@ public function category()
        // ->where('establishment.establishment_id')
       ->join('student','users.id','student.user_id')
       ->join('establishment','users.id','establishment.user_id')
-                        ->select('users.*','student.student_id','student.term','student.year','establishment.em_name')
+                        ->select('users.*','student.student_id','student.term','establishment.em_name')
                         // ->select('users.*','users.fname')
                         ->where('role',"student") ->distinct()
                                                             ->orderBy('id', 'desc')
@@ -4760,18 +4784,19 @@ public function category()
         // ->select('supervision.*','users.fname','establishment.address')
         //->select('supervision.*')events
        // ->where('establishment.establishment_id')
-     ->join('student','events.student_name','student.user_id')
-     ->join('establishment','events.em_id','establishment.id')
+    //  ->join('student','events.student_name','student.student_id')
+    //  ->join('establishment','events.em_id','establishment.em_name')
                         ->select('events.*'
-                         ,'student.fname' ,'student.student_id'
-                        ,'establishment.em_name'
+                        //  ,'student.fname' ,'student.student_id'
+                        // ,'establishment.em_name'
                     //    ,'users.fname'
                         )
                         // ->select('users.*','users.fname')
                       //  ->where('role',"student")
-                        ->distinct()
+                        // ->distinct()
                                                             ->orderBy('id', 'desc')
         ->paginate(5);
+       // dd($supervision);
         $users1=DB::table('users')
         ->where('role',"student")
 
@@ -4980,167 +5005,298 @@ public function category()
 // teacherHome
     public function teacherHome()
     {
-        $users5 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        // $users5 = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        // ->get();
+        // $users10 = registers::select(DB::raw("COUNT(*) as count"))
+        // ->where('Status_registers', 'รอตรวจสอบ')
+        // ->get();
+        // $users11 = registers::select(DB::raw("COUNT(*) as count"))
+        // ->where('Status_registers', 'ตรวจสอบเอกสารแล้ว')
+        // ->get();
+
+        // $users6 = acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        // ->get();
+        // $users7 = informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        // ->get();
+        // $users9 = supervision::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        // ->get();
+
+        $users3 =  acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
         ->get();
-        $users10 = registers::select(DB::raw("COUNT(*) as count"))
-        ->where('Status_registers', 'รอตรวจสอบ')
+
+        $users4 =  event::select(DB::raw("COUNT(DISTINCT student_name) as count"))
         ->get();
-        $users11 = registers::select(DB::raw("COUNT(*) as count"))
-        ->where('Status_registers', 'ตรวจสอบเอกสารแล้ว')
+        $users5 =  informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
         ->get();
-
-        $users6 = acceptance::select(DB::raw("COUNT(DISTINCT user_id) as count"))
+        $users1 = registers::select(DB::raw("COUNT(DISTINCT id) as count"))
         ->get();
-        $users7 = informdetails::select(DB::raw("COUNT(DISTINCT user_id) as count"))
-        ->get();
-        $users9 = supervision::select(DB::raw("COUNT(DISTINCT user_id) as count"))
-        ->get();
-
-
-        //นิเทศงาน
-        $users1 = Event::select(DB::raw("COUNT(DISTINCT student_name) as count"))
-    ->get();
-    $users2 = Event::select(DB::raw("COUNT(*) as count"))
-    ->where('Status_events', 'รอรับทราบและยืนยันเวลานัดนิเทศ')
-    ->get();
-    $users3 = Event::select(DB::raw("COUNT(*) as count"))
-    ->where('Status_events', 'รับทราบและยืนยันเวลานัดแล้ว')
-    ->get();
-//เอกสารแจ้งรายละเอียด
-    $users4 = informdetails::select(DB::raw("COUNT(DISTINCT informdetails_id) as count"))
-    ->get();
-    //เอกสารแจ้งรายละเอียด
-    // $users5 = report::select(DB::raw("COUNT(DISTINCT report_id) as count"))
-    // ->get();
-
- //ยื่นประสงค์
-//  $users6 = users::select(DB::raw("COUNT(*) as count"))
-//  ->where('status', 'รออนุมัติ')
-//  ->get();
-//  $users7 = users::select(DB::raw("COUNT(*) as count"))
-//  ->where('status', 'อนุมัติแล้ว')
-//  ->get();
- $users8 = users::select(DB::raw("COUNT(*) as count"))
-//  ->where('role', '0')
- ->get();
-//  $users9 = users::select(DB::raw("COUNT(*) as count"))
-//  ->where('status', 'ไม่อนุมัติ')
-//  ->get();
-
-$users02 = Users::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
-        ->groupBy(DB::raw("YEAR(created_at)"))
-        ->pluck('count', 'year_name');
-        $labels = $users02->keys();
-        $labels = $labels->map(function($year) {
-            return $year + 543;
-        });
-        $data = $users02->values();
+        // $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at ) AS year_name "))
+        // ->groupBy(DB::raw("YEAR(created_at)"))
+        // ->pluck('count', 'year_name');
 
 
 
-        $registers02 = registers::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
-        ->groupBy(DB::raw("YEAR(created_at)"))
-        ->pluck('count', 'year_name');
-        $labels01 = $registers02->keys();
-        $labels01 = $labels01->map(function($year) {
-            return $year + 543;
-        });
-        $data01 = $registers02->values();
+    // $labels = $users->keys()->map(function ($month) {
+    //     return Carbon::createFromDate(null, $month, null)->format('F Y');
+    // });
 
-//  dd($data);
-$supervision = Event::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
-        ->groupBy(DB::raw("YEAR(created_at)"))
-        ->pluck('count', 'year_name');
-        $labels02 = $supervision->keys();
-        $labels02 = $labels02->map(function($year) {
-            return $year + 543;
-        });
-        $data02 = $supervision->values();
+    // $labels = $users->keys()->map(function ($monthName) {
+        //     return ucfirst($monthName);
+        // });
+      //dd($users);
+     //year
+     //YEAR
 
+            $users02 = Users::where('role', 'student')
+            ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+            $labels = $users02->keys();
+            $labels = $labels->map(function($year) {
+                return $year + 543;
+            });
+            $data = $users02->values();
+    //dd($users02);
+            $registers02 = registers::
+            where('Status_registers', 'อนุมัติเอกสารแล้ว')
+            ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
 
-        $events1 = Event::where('Status_events', 'รับทราบและยืนยันเวลานัดแล้ว')
-        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
-        ->groupBy(DB::raw("YEAR(created_at)"))
-        ->pluck('count', 'year_name');
+            $registers03 = registers::
+            where('Status_registers','รออนุมัติ')
+            ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+            $registers04 = registers::
+            where('Status_registers','ไม่อนุมัติ')
+            ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+            $registers05 = registers::
 
-$events2 = Event::where('Status_events', 'ขอเปลี่ยนเวลานัดนิเทศ')
-        ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
-        ->groupBy(DB::raw("YEAR(created_at)"))
-        ->pluck('count', 'year_name');
-
-// Merge and sort years for labels
-$labels05 = $events1->keys()
-->merge($events2->keys())
-    ->merge($supervision->keys())
+            select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+            // $labels01 = $registers02->keys();
+            // $labels01 = $labels01->map(function($year) {
+            //     return $year + 543;
+            // });
+            // $data01 = $registers02->values();
+    // dd($registers03);
+    // ปีที่ใช้ใน labels
+    $labels01 = $registers02->keys()
+     ->merge($registers03->keys())
+     ->merge($registers04->keys())
+     ->merge($registers05->keys())
+    // ->merge($supervision14->keys())
+    // ->merge($supervision15->keys())
+    // ->merge($supervision16->keys())
+    // ->merge($supervision17->keys())
+    // ->merge($supervision18->keys())
+    // ->merge($supervision19->keys())
     ->unique()
     ->sort()
-->map(function($year) {
-return $year + 543;
-});
-    // dd($labels05);
-// Get counts for each year
-$data05 = $labels05->map(function($year) use ($events1) {
-return $events1->get($year - 543, 0);
-});
-
-$data06 = $labels05->map(function($year) use ($events2) {
-return $events2->get($year - 543, 0);
-});
-$data07 = $labels05->map(function($year) use ($supervision) {
-    return $supervision->get($year - 543, 0);
+    ->map(function($year) {
+        return $year + 543;
     });
 
+    // เตรียมข้อมูลสำหรับ dataset
+    $data01 = $labels01->map(function($year) use ($registers02) {
+        return $registers02->get($year - 543);
+    });
+    $data20 = $labels01->map(function($year) use ($registers03) {
+        return $registers03->get($year - 543);
+    });
+    $data21 = $labels01->map(function($year) use ($registers04) {
+        return $registers04->get($year - 543);
+    });
+    $data021 = $labels01->map(function($year) use ($registers05) {
+        return $registers05->get($year - 543);
+    });
+    // $data12 = $labels04->map(function($year) use ($supervision12) {
+    //     return $supervision12->get($year - 543);
+    // });
 
-        $supervision1 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+
+
+
+    //  dd($data);
+    $supervision = Event::where('Status_events', 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+    ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+            $labels02 = $supervision->keys();
+            $labels02 = $labels02->map(function($year) {
+                return $year + 543;
+            });
+            $data02 = $supervision->values();
+
+
+            $events1 = Event::where('Status_events', 'รับทราบและยืนยันเวลานัดแล้ว')
+            ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+
+    $events2 = Event::where('Status_events', 'ขอเปลี่ยนเวลานัดนิเทศ')
+            ->select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+
+            $events3 = Event::
+            select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+
+    // Merge and sort years for labels
+    $labels05 = $events1->keys()
+    ->merge($events2->keys())
+        ->merge($supervision->keys())
+        ->merge($events3->keys())
+        ->unique()
+        ->sort()
+    ->map(function($year) {
+    return $year + 543;
+    });
+        // dd($labels05);
+    // Get counts for each year
+    $data05 = $labels05->map(function($year) use ($events1) {
+    return $events1->get($year - 543, 0);
+    });
+
+    $data06 = $labels05->map(function($year) use ($events2) {
+    return $events2->get($year - 543, 0);
+    });
+    $data07 = $labels05->map(function($year) use ($supervision) {
+        return $supervision->get($year - 543, 0);
+        });
+        $data007 = $labels05->map(function($year) use ($events3) {
+            return $events3->get($year - 543, 0);
+            });
+
+            $supervision1 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+            ->groupBy(DB::raw("YEAR(created_at)"))
+            ->pluck('count', 'year_name');
+            $labels03 = $supervision1->keys();
+            $labels03 = $labels03->map(function($year) {
+                return $year + 543;
+            });
+            $data03 = $supervision1->values();
+
+
+
+
+
+    // ข้อมูลแบบประเมินผลนักศึกษาสหกิจศึกษา (สก.13)
+    $supervision13 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+        ->where('score', '>', 100)
         ->groupBy(DB::raw("YEAR(created_at)"))
         ->pluck('count', 'year_name');
-        $labels03 = $supervision1->keys();
-        $labels03 = $labels03->map(function($year) {
-            return $year + 543;
-        });
-        $data03 = $supervision1->values();
+        $supervision14 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
+        ->where('score', '<', 100)
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+    // dd($supervision13);
+    // ข้อมูลแบบบันทึกการนิเทศสหกิจศึกษา (สก.12)
+    $supervision12 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+        ->where('score', '>', 50)
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $supervision15 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
+        ->where('score', '<', 50)
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
 
 
+        $supervision16 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
+        ->where('score', '>', 50)
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $supervision17 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)')
+        ->where('score', '<', 50)
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
 
+        $supervision18 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+        ->where('score', '>', 50)
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $supervision19 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->where('namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)')
+        ->where('score', '<', 50)
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+        $supervision20 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+        ->groupBy(DB::raw("YEAR(created_at)"))
+        ->pluck('count', 'year_name');
+    // ปีที่ใช้ใน labels
+    $labels04 = $supervision13->keys()
+    ->merge($supervision12->keys())
+    ->merge($supervision14->keys())
+    ->merge($supervision15->keys())
+    ->merge($supervision16->keys())
+    ->merge($supervision17->keys())
+    ->merge($supervision18->keys())
+    ->merge($supervision19->keys())
+    ->merge($supervision20->keys())
+    ->unique()
+    ->sort()
+    ->map(function($year) {
+        return $year + 543;
+    });
 
+    // เตรียมข้อมูลสำหรับ dataset
+    $data13 = $labels04->map(function($year) use ($supervision13) {
+        return $supervision13->get($year - 543);
+    });
 
-// ข้อมูลแบบประเมินผลนักศึกษาสหกิจศึกษา (สก.13)
-$supervision13 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
-    ->where('namefile', 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)')
-    ->groupBy(DB::raw("YEAR(created_at)"))
-    ->pluck('count', 'year_name');
+    $data12 = $labels04->map(function($year) use ($supervision12) {
+        return $supervision12->get($year - 543);
+    });
+    $data14 = $labels04->map(function($year) use ($supervision14) {
+        return $supervision14->get($year - 543);
+    });
+    $data15 = $labels04->map(function($year) use ($supervision15) {
+        return $supervision15->get($year - 543);
+    });
+    $data16 = $labels04->map(function($year) use ($supervision16) {
+        return $supervision16->get($year - 543);
+    });
+    $data17 = $labels04->map(function($year) use ($supervision17) {
+        return $supervision17->get($year - 543);
+    });
+    $data18 = $labels04->map(function($year) use ($supervision18) {
+        return $supervision18->get($year - 543);
+    });
+    $data19 = $labels04->map(function($year) use ($supervision19) {
+        return $supervision19->get($year - 543);
+    });
+    $data20 = $labels04->map(function($year) use ($supervision20) {
+        return $supervision20->get($year - 543);
+    });
+        return view('teacher.teacherhome',compact(
+            // 'users1','users2','users3','users4','users8'
 
-// ข้อมูลแบบบันทึกการนิเทศสหกิจศึกษา (สก.12)
-$supervision12 = supervision::select(DB::raw("COUNT(DISTINCT supervision_id) as count"), DB::raw("YEAR(created_at) as year_name"))
-    ->where('namefile', 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)')
-    ->groupBy(DB::raw("YEAR(created_at)"))
-    ->pluck('count', 'year_name');
+            'users02','users3','users4','users5'
 
-// ปีที่ใช้ใน labels
-$labels04 = $supervision13->keys()->merge($supervision12->keys())->unique()->sort()->map(function($year) {
-    return $year + 543;
-});
+            ,'labels01','data01','registers02','registers03','data20','registers04','data21','registers05','data021'
+            ,'labels02','data02','supervision'
+            ,'labels03','data03','supervision1',
+            'labels04', 'data13', 'data12','supervision13','supervision12','data14','supervision15','data15'
 
-// เตรียมข้อมูลสำหรับ dataset
-$data13 = $labels04->map(function($year) use ($supervision13) {
-    return $supervision13->get($year - 543);
-});
+    ,'supervision16','data16','supervision17','data17','supervision18','data18','supervision19','data19','supervision20','data20',
 
-$data12 = $labels04->map(function($year) use ($supervision12) {
-    return $supervision12->get($year - 543);
-});
-        return view('teacher.teacherhome',compact('users1','users2','users3','users4','users8'
-        ,'users6','users7','users9','users10','users11'
+            'labels05', 'data05', 'data06','data07','events1','events2','data007','events3'
+            ), compact('labels','data'
 
-        ,'labels','data','users02'
-        ,'labels01','data01','registers02'
-        ,'labels02','data02','supervision'
-        ,'labels03','data03','supervision1',
-        'labels04', 'data13', 'data12','supervision13','supervision12'
-        ,
-        'labels05', 'data05', 'data06','data07','events1','events2'
-
-        ,'users5'),["msg"=>"I am teacher role"]);
+            ),["msg"=>"I am teacher role"]);
     }
     public function documents1()
     {

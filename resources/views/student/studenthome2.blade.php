@@ -1046,7 +1046,7 @@ div.second {
                                             @endif
                                         @endforeach
 
-                                            </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</strong>
+                                            </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอความอนุเคราะห์รับนักศึกษาสหกิจศึกษา(สก04)</strong>
                                           </a> @foreach ($registers3 as $row)
                                           @if ($row->Status_registers === 'รออนุมัติ')
                                               <span class="text-warning">รออนุมัติเอกสาร</span>
@@ -1085,7 +1085,7 @@ div.second {
                                             @endif
                                         @endforeach
 
-                                            </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</strong>
+                                            </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอความอนุเคราะห์รับนักศึกษาสหกิจศึกษา(สก04)</strong>
                                           </a> @foreach ($registers3 as $row)
                                           @if ($row->Status_registers === 'รออนุมัติ')
                                               <span class="text-warning">รออนุมัติเอกสาร</span>
@@ -1121,7 +1121,7 @@ div.second {
                                               @endif
                                           @endforeach
 
-                                              </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</strong>
+                                              </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอความอนุเคราะห์รับนักศึกษาสหกิจศึกษา(สก04)</strong>
                                             </a> @foreach ($registers3 as $row)
                                             @if ($row->Status_registers === 'รออนุมัติ')
                                                 <span class="text-warning">รออนุมัติเอกสาร</span>
@@ -1164,7 +1164,7 @@ div.second {
 
 
 
-                                                       <H2><strong>แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</strong> </a> <span class="">
+                                                       <H2><strong>แบบคำรองขอหนังสือขอความอนุเคราะห์รับนักศึกษาสหกิจศึกษา(สก04)</strong> </a> <span class="">
                                                           @foreach ($registers3 as $row)
                                                           @if ($row->Status_registers === 'รออนุมัติ')
                                                               <span class="text-warning">รออนุมัติเอกสาร</span>
@@ -1219,7 +1219,7 @@ div.second {
                                                 @endif
                                             @endforeach
 
-                                                </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</strong>
+                                                </span> <span> </span> <h2><strong>แบบคำรองขอหนังสือขอความอนุเคราะห์รับนักศึกษาสหกิจศึกษา(สก04)</strong>
                                               </a> @foreach ($registers3 as $row)
                                               @if ($row->Status_registers === 'รออนุมัติ')
                                                   <span class="text-warning">รออนุมัติเอกสาร</span>
@@ -1264,7 +1264,7 @@ div.second {
                                             @endif
                                         @endforeach
 
-                                            </span> <h2><strong>บัตรชาชน</strong>
+                                            </span> <h2><strong>บัตรประชาชน</strong>
                                           </a>
                                           @foreach ($registers4 as $row)
                                           @if ($row->Status_registers === 'รออนุมัติ')
@@ -1307,7 +1307,7 @@ div.second {
                         @endif
                     @endforeach
 
-                        </span> <h2><strong>บัตรชาชน</strong>
+                        </span> <h2><strong>บัตรประชาชน</strong>
                       </a>
                       @foreach ($registers4 as $row)
                       @if ($row->Status_registers === 'รออนุมัติ')
@@ -1349,7 +1349,7 @@ div.second {
         @endif
     @endforeach
 
-        </span> <h2><strong>บัตรชาชน</strong>
+        </span> <h2><strong>บัตรประชาชน</strong>
       </a>
       @foreach ($registers4 as $row)
       @if ($row->Status_registers === 'รออนุมัติ')
@@ -1396,7 +1396,7 @@ div.second {
 
 
 
-                                                       <H2><strong>บัตรชาชน</strong> </a> <span class="">
+                                                       <H2><strong>บัตรประชาชน</strong> </a> <span class="">
                                                           @foreach ($registers4 as $row)
                                                           @if ($row->Status_registers === 'รออนุมัติ')
                                                               <span class="text-warning">รออนุมัติเอกสาร</span>
@@ -1452,7 +1452,7 @@ div.second {
         @endif
     @endforeach
 
-        </span> <h2><strong>บัตรชาชน</strong>
+        </span> <h2><strong>บัตรประชาชน</strong>
       </a>
       @foreach ($registers4 as $row)
       @if ($row->Status_registers === 'รออนุมัติ')

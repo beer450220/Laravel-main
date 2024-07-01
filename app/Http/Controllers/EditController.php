@@ -3820,7 +3820,7 @@ if($request->hasFile("filess1")){
     ]);
 
 
-    return redirect('/studenthome')->with('error','success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
  }
  public function   updateuser002(Request $request,$id) {
     //ตรวจสอบข้อมูล

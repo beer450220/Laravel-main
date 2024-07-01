@@ -209,15 +209,36 @@
     $(document).ready(function() {
         var labels =  {!! json_encode($labels01) !!};
         var users =  {!! json_encode($data01) !!};
-
+        var data2 =  {!! json_encode($data20) !!};
+        var data3 =  {!! json_encode($data21) !!};
+        var data4 =  {!! json_encode($data021) !!};
         const data = {
             labels: labels,
             datasets: [{
-                label: 'จำนวน',
+                label: 'อนุมัติเอกสารแล้ว',
+                backgroundColor: 'rgb(122, 198, 72)',
+                borderColor: 'rgb(122, 198, 72)',
+                data: users,
+            },
+            {
+                label: 'รออนุมัติ',
+                backgroundColor: 'rgb(75, 192, 192)',
+                borderColor: 'rgb(75, 192, 192)',
+                data: data2,
+            },
+            {
+                label: 'ไม่อนุมัติ',
                 backgroundColor: 'rgb(244, 125, 136)',
                 borderColor: 'rgb(244, 125, 136)',
-                data: users,
-            }]
+                data: data3,
+            }, {
+                    label: 'จำนวน',
+                    backgroundColor: 'rgb(255, 165, 0)',
+                    borderColor: 'rgb(255, 165, 0)',
+                    data: data4,
+                }
+
+        ]
         };
 
         const config = {
@@ -330,6 +351,7 @@ config
         var data1 = {!! json_encode($data05) !!};
         var data2 = {!! json_encode($data06) !!};
         var data3 = {!! json_encode($data07) !!};
+        var data4 = {!! json_encode($data007) !!};
         const data = {
             labels: labels,
             datasets: [
@@ -347,10 +369,17 @@ config
                 }
                 ,
                 {
-                    label: 'จำนวน',
+                    label: 'รอรับทราบและยืนยันเวลานัดนิเทศ',
                     backgroundColor: 'rgb(255, 165, 0)',
                     borderColor: 'rgb(255, 165, 0)',
                     data: data3,
+                }
+                ,
+                {
+                    label: 'จำนวน',
+                    backgroundColor: 'rgb(255, 165, 0)',
+                    borderColor: 'rgb(255, 165, 0)',
+                    data: data4,
                 }
             ]
         };
@@ -406,7 +435,7 @@ config
           </table> --}}
 
               <!-- Area Chart -->
-              <div class="col-xl-8 col-lg-7">
+              <div class="col-xl-12 col-lg-7">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div
@@ -414,14 +443,14 @@ config
                         {{-- <h6 class="m-0 font-weight-bold text-primary">ผู้ใช้งานระบบ</h6> --}}
 
                     </div>
-        <div class="card-body">
+        {{-- <div class="card-body">
             <div class="chart-area">
                 <canvas id="myChart4"></canvas>
             </div>
-        </div>
+        </div> --}}
         <div class="card-body">
             <div class="chart-area">
-                <canvas id="myChart5"></canvas>
+                <canvas id="myChart05"></canvas>
             </div>
         </div>
     </div>
@@ -429,6 +458,7 @@ config
 {{-- <div class="chart-pie pt-4 pb-2">
     <canvas id="myPieChart2"></canvas>
 </div> --}}
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript">
@@ -464,21 +494,71 @@ config
         var labels =  {!! json_encode($labels04) !!};
         var data13 =  {!! json_encode($data13) !!};
         var data12 =  {!! json_encode($data12) !!};
-
+        var data14 =  {!! json_encode($data14) !!};
+        var data15 =  {!! json_encode($data15) !!};
+        var data16 =  {!! json_encode($data16) !!};
+        var data17 =  {!! json_encode($data17) !!};
+        var data18 =  {!! json_encode($data18) !!};
+        var data19 =  {!! json_encode($data19) !!};
+        var data20 =  {!! json_encode($data20) !!};
         const data = {
             labels: labels,
             datasets: [
                 {
-                    label: 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13)',
-                    backgroundColor: 'rgb(244, 125, 136)',
-                    borderColor: 'rgb(244, 125, 136)',
+                    label: 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13) (จำนวนผ่าน)',
+                    backgroundColor: 'rgb(122, 198, 72)',
+                    borderColor: 'rgb(122, 198, 72)',
                     data: data13,
                 },
                 {
-                    label: 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)',
-                    backgroundColor: 'rgb(75, 192, 192)',
-                    borderColor: 'rgb(75, 192, 192)',
+                    label: 'แบบประเมินผลนักศึกษาสหกิจศึกษา(สก.13) (จำนวนไม่ผ่าน)',
+                    backgroundColor: 'rgb(244, 125, 136)',
+                borderColor: 'rgb(244, 125, 136)',
+                    data: data14,
+                },
+                {
+                    label: 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)(จำนวนผ่าน)',
+                    backgroundColor: 'rgb(122, 198, 72)',
+                    borderColor: 'rgb(122, 198, 72)',
                     data: data12,
+                },
+                {
+                    label: 'แบบบันทึกการนิเทศสหกิจศึกษา(สก.12)(จำนวนไม่ผ่าน)',
+                    backgroundColor: 'rgb(244, 125, 136)',
+                borderColor: 'rgb(244, 125, 136)',
+                    data: data15,
+                }
+                ,
+                {
+                    label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)(จำนวนผ่าน)',
+                    backgroundColor: 'rgb(122, 198, 72)',
+                    borderColor: 'rgb(122, 198, 72)',
+                    data: data16,
+                },
+                {
+                    label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.14)(จำนวนไม่ผ่าน)',
+                    backgroundColor: 'rgb(244, 125, 136)',
+                borderColor: 'rgb(244, 125, 136)',
+                    data: data17,
+                }
+                ,
+                {
+                    label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)(จำนวนผ่าน)',
+                    backgroundColor: 'rgb(122, 198, 72)',
+                    borderColor: 'rgb(122, 198, 72)',
+                    data: data18,
+                },
+                {
+                    label: 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก.15)(จำนวนไม่ผ่าน)',
+                    backgroundColor: 'rgb(244, 125, 136)',
+                borderColor: 'rgb(244, 125, 136)',
+                    data: data19,
+                } ,
+                {
+                    label: 'จำนวน',
+                    backgroundColor: 'rgb(255, 165, 0)',
+                    borderColor: 'rgb(255, 165, 0)',
+                    data: data20,
                 }
             ]
         };

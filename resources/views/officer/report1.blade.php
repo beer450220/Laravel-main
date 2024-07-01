@@ -98,7 +98,7 @@
                 {{$row->fname}} </td>
 
                <td>{{$row->em_name}}</td>
-             <td>{{$row->term}}/{{$row->year}}</td>
+             <td>{{$row->term}}</td>
               {{-- <td>{{$row->score}}</td> --}}
               {{-- <td>
                 @if ($row->Status_supervision === 'รอประเมินผล')

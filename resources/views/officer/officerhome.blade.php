@@ -358,6 +358,7 @@
             var users =  {!! json_encode($data01) !!};
             var data2 =  {!! json_encode($data20) !!};
             var data3 =  {!! json_encode($data21) !!};
+            var data4 =  {!! json_encode($data021) !!};
             const data = {
                 labels: labels,
                 datasets: [{
@@ -377,7 +378,13 @@
                     backgroundColor: 'rgb(244, 125, 136)',
                     borderColor: 'rgb(244, 125, 136)',
                     data: data3,
-                }
+                },
+                    {
+                        label: 'จำนวน',
+                        backgroundColor: 'rgb(244, 125, 36)',
+                        borderColor: 'rgb(244, 125, 36)',
+                        data: data4,
+                    }
 
             ]
             };
@@ -593,6 +600,7 @@ config
         var data1 = {!! json_encode($data05) !!};
         var data2 = {!! json_encode($data06) !!};
         var data3 = {!! json_encode($data07) !!};
+        var data4 = {!! json_encode($data007) !!}
         const data = {
             labels: labels,
             datasets: [
@@ -614,7 +622,13 @@ config
                     backgroundColor: 'rgb(255, 165, 0)',
                     borderColor: 'rgb(255, 165, 0)',
                     data: data3,
-                }
+                },
+                    {
+                        label: 'จำนวน',
+                        backgroundColor: 'rgb(244, 125, 36)',
+                        borderColor: 'rgb(244, 125, 36)',
+                        data: data4,
+                    }
             ]
         };
 
@@ -815,6 +829,7 @@ config
             var data17 =  {!! json_encode($data17) !!};
             var data18 =  {!! json_encode($data18) !!};
             var data19 =  {!! json_encode($data19) !!};
+            var data20 =  {!! json_encode($data20) !!};
             const data = {
                 labels: labels,
                 datasets: [
@@ -867,6 +882,12 @@ config
                         backgroundColor: 'rgb(244, 125, 136)',
                     borderColor: 'rgb(244, 125, 136)',
                         data: data19,
+                    },
+                    {
+                        label: 'จำนวน',
+                        backgroundColor: 'rgb(244, 125, 36)',
+                        borderColor: 'rgb(244, 125, 36)',
+                        data: data20,
                     }
                 ]
             };

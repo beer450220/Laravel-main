@@ -336,7 +336,7 @@
 
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียด</strong>
+                                                <strong class="card-title">ข้อมูลผู้ใช้งาน</strong>
                                               </div>
 
                                               <div class="card-body">

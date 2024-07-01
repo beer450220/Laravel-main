@@ -95,7 +95,7 @@
             <tr>
               <th>ลำดับ</th>
               <th>รหัสนักศึกษา</th>
-              <th>ชื่อนักศึกษา</th>
+              {{-- <th>ชื่อนักศึกษา</th> --}}
               <th>สถานประกอบการ</th>
               {{-- <th>ภาคเรียน</th>
                 <th>ปีการศึกษา</th> --}}
@@ -113,15 +113,15 @@
             @foreach ($supervision as $row)
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
-               <td>{{ $row->student_id}}</td>
-               <td>{{ $row->fname }}
+               <td>{{$row->student_name}}</td>
+               {{-- <td>{{ $row->fname }} --}}
                  {{-- @foreach ($users1 as $row1)
                 @if ($row1->id === $row->student_name)
                 {{ $row1->fname }}
             @endif   @endforeach --}}
-            </td>
+            {{-- </td> --}}
                <td>
-                {{$row->em_name}} </td>
+                {{$row->em_id}} </td>
 
                 <td> @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
                     <h4><span class="badge rounded-pill bg-warning text-dark">{{ $row->Status_events}}</span></h4>

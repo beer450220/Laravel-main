@@ -283,7 +283,7 @@
                                   <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                       <div class="col-8">
-                                        <h2 class="steps">แก้ไขข้อมูล</h2>
+                                        {{-- <h2 class="steps">แก้ไขข้อมูล</h2> --}}
                                     </div>
                                     </h2>
                                     {{-- <div id="collapseOne"  aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -312,7 +312,7 @@
 
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียดบุคคล</strong>
+                                                <strong class="card-title">แก้ไขข้อมูลผู้ใช้งาน</strong>
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">

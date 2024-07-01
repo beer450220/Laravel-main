@@ -287,7 +287,7 @@
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-                                      <h2 class="fs-title col">ข้อมูลผู้ใช้งาน:</h2>
+                                      {{-- <h2 class="fs-title col">ข้อมูลผู้ใช้งาน:</h2> --}}
                                   </div>
                                   <div class="col-4">
                                       {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
@@ -336,7 +336,7 @@
 
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียด</strong>
+                                                <strong class="card-title">ข้อมูลผู้ใช้งาน</strong>
                                               </div>
 
                                               <div class="card-body">
