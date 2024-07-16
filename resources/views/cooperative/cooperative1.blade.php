@@ -95,7 +95,7 @@
         <ul class="nav col-11 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><h4><a href="/" class="nav-link px-2 text-dark">หน้าแรก</a></h4></li>
           <li><h4><a href="/cooperative" class="nav-link px-2 text-dark">แบบฟอร์มสหกิจ</a></h4></li>
-          <li><h4><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></h4></li>
+          <li><h4><a href="manual/manual.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></h4></li>
           <li><h4><a type="button"href="/cooperative1" class="nav-link px-2 text-dark">สมัครสหกิจ</a></h4></li>
           {{-- <li><div class="dropdown">
             <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

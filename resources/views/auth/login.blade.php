@@ -65,7 +65,7 @@
             <ul class="nav col-11 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><h4><a href="/" class="nav-link px-2 text-dark">หน้าแรก</a></h4></li>
               <li><h4><a href="/cooperative" class="nav-link px-2 text-dark">แบบฟอร์มสหกิจ</a></h4></li>
-              <li><h4><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></h4></li>
+              <li><h4><a href="manual/manual.pdf" target="_blank" class="nav-link px-2 text-dark">คู่มือการใช้งาน</a></h4></li>
               <li><h4><a type="button"href="/cooperative1" class="nav-link px-2 text-dark">สมัครสหกิจ</a></h4></li>
               {{-- <li><div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -265,7 +265,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                               </div>
                                               @endif
-                                              <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
+                                              <label class="mb-2 input-group" for="email">ชื่อผู้ใช้งาน</label> <br>
                                                                 <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
                                                                 <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
 
